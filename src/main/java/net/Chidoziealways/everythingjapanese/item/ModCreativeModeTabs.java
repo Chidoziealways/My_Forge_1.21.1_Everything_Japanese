@@ -76,6 +76,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.everythingjapanese.japanese_fuel"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.DIESEL.get());
+                        output.accept(ModItems.INCENSE.get());
 
                     })
                     .build());

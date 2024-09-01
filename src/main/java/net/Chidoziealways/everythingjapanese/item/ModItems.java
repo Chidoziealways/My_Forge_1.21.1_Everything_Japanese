@@ -39,6 +39,9 @@ public class ModItems {
     public static final RegistryObject<Item> UDON = ITEMS.register("udon",
             () -> new Item(new Item.Properties().food(ModFoodProperties.UDON).stacksTo(1)));
 
+    public static final RegistryObject<Item> INCENSE = ITEMS.register("incense",
+            () -> new FuelItem(new Item.Properties().stacksTo(1), 20000));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

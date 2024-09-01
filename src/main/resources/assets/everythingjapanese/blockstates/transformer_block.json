@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "everythingjapanese:block/transformer_block"
+    }
+  }
+}

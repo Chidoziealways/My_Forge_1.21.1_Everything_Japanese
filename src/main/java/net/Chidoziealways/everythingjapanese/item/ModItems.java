@@ -5,6 +5,8 @@ import net.Chidoziealways.everythingjapanese.item.custom.ChiselItem;
 import net.Chidoziealways.everythingjapanese.item.custom.FuelItem;
 import net.Chidoziealways.everythingjapanese.item.custom.Sword;
 import net.Chidoziealways.everythingjapanese.item.custom.Drinks;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -41,6 +43,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> INCENSE = ITEMS.register("incense",
             () -> new FuelItem(new Item.Properties().stacksTo(1), 20000));
+
+    public static final RegistryObject<Item> YA = ITEMS.register("ya",
+            () -> new ArrowItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

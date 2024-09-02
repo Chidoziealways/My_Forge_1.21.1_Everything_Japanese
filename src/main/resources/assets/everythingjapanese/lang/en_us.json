@@ -11,6 +11,7 @@
   "creativetab.everythingjapanese.japanese_food": "日本人Food(Japanese Food)",
   "creativetab.everythingjapanese.japanese_drinks": "日本人Drinks(Japanese Drinks)",
   "creativetab.everythingjapanese.japanese_fuel": "日本人Fuel(Japanese Fuel)",
+  "creativetab.everythingjapanese.japanese_tools": "日本人Tools(Japanese Tools)",
   "item.everythingjapanese.pyrite_ingot": "黄鉄鉱インゴット(おうてっこうインゴット)(Pyrite Ingot)",
   "item.everythingjapanese.raw_pyrite": "黄鉄鉱原石(おうてっこうげんせき)(Raw Pyrite)",
   "item.everythingjapanese.chisel": "Chisel",
@@ -20,5 +21,6 @@
   "item.everythingjapanese.diesel": "ディーゼル(Diesel)",
   "item.everythingjapanese.incense": "お香(おかおり)(Incense)",
   "item.everythingjapanese.udon": "饂飩(うどん)(Udon)",
-  "item.everythingjapanese.ya": "矢(や)(Ya)"
+  "item.everythingjapanese.ya": "矢(や)(Ya)",
+  "item.everythingjapanese.pyrite_axe": "黄鉄鉱斧(おうてっこうおの)(Pyrite Axe)"
 }

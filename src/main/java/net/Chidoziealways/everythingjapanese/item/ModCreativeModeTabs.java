@@ -80,6 +80,16 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    public static final RegistryObject<CreativeModeTab> JAPANESE_TOOLS = CREATIVE_MODE_TABS.register("japanese_tools",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.PYRITE_AXE.get()))
+                    .withTabsBefore(JAPANESE_ITEMS.getId())
+                    .title(Component.translatable("creativetab.everythingjapanese.japanese_tools"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.PYRITE_AXE.get());
+
+                    })
+                    .build());
+
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
     }

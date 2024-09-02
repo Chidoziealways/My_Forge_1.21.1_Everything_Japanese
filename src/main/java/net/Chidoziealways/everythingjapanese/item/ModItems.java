@@ -4,8 +4,10 @@ import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.Chidoziealways.everythingjapanese.item.custom.ChiselItem;
 import net.Chidoziealways.everythingjapanese.item.custom.FuelItem;
 import net.Chidoziealways.everythingjapanese.item.custom.Drinks;
+import net.Chidoziealways.everythingjapanese.item.custom.ModAxeItem;
 import net.Chidoziealways.everythingjapanese.tiers.ModTiers;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,6 +28,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> PYRITE_SWORD = ITEMS.register("pyrite_sword",
             () -> new SwordItem(ModTiers.Pyrite,  new Item.Properties()));
+
+    public static final RegistryObject<Item> PYRITE_AXE = ITEMS.register("pyrite_axe",
+            () -> new ModAxeItem(ModTiers.Pyrite, new Item.Properties()));
 
     public static final RegistryObject<Item> SUSHI = ITEMS.register("sushi",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SUSHI).stacksTo(1)));

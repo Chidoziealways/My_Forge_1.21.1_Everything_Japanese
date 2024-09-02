@@ -11,7 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 public enum ModTiers implements Tier {
-    Pyrite(ModBLockTags.INCORRECT_FOR_PYRITE_TOOL, 100, 10.0F, 20.0F, 30, () -> Ingredient.of(ModItemTags.PYRITE));
+    Pyrite(ModBLockTags.INCORRECT_FOR_PYRITE_TOOL, 50000, 10.0F, 20.0F, 30, () -> Ingredient.of(ModItemTags.PYRITE));
 
     private final TagKey<Block> incorrectBlocksForDrops;
     private final int uses;

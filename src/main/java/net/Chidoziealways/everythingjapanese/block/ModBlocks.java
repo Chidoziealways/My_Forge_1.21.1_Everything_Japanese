@@ -2,11 +2,13 @@ package net.Chidoziealways.everythingjapanese.block;
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.Chidoziealways.everythingjapanese.block.custom.MagicBlock;
+import net.Chidoziealways.everythingjapanese.block.custom.ModdedCakeBlock;
 import net.Chidoziealways.everythingjapanese.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -47,6 +49,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> STRIPPED_HINOKI_MARUTA = registerBlock("stripped_hinoki_maruta",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> CHOCOLATE_CAKE = registerBlock("chocolate_cake",
+            () -> new ModdedCakeBlock(BlockBehaviour.Properties.of(), 16));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

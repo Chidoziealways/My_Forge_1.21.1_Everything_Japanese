@@ -46,6 +46,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.PYRITE_SWORD.get());
                         output.accept(ModItems.YA.get());
+                        output.accept(ModItems.WOODEN_KATANA.get());
                     })
                     .build());
 
@@ -56,6 +57,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SUSHI.get());
                         output.accept(ModItems.UDON.get());
+                        output.accept(ModBlocks.CHOCOLATE_CAKE.get());
                     })
                     .build());
 

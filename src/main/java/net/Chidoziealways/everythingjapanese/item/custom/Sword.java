@@ -52,8 +52,7 @@ public class Sword extends Item{
 
 
         return true;
-    }
-    @Override
+    }   @Override
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         pStack.hurtAndBreak(1, pAttacker, EquipmentSlot.MAINHAND);
     }

@@ -3,15 +3,16 @@ package net.Chidoziealways.everythingjapanese.tiers;
 import com.google.common.base.Suppliers;
 import java.util.function.Supplier;
 
-import net.Chidoziealways.everythingjapanese.tags.ModBLockTags;
-import net.Chidoziealways.everythingjapanese.tags.ModItemTags;
+import net.Chidoziealways.everythingjapanese.util.ModBLockTags;
+import net.Chidoziealways.everythingjapanese.util.ModItemTags;
+import net.Chidoziealways.everythingjapanese.util.ModTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 public enum ModTiers implements Tier {
-    Pyrite(ModBLockTags.INCORRECT_FOR_PYRITE_TOOL, 50000, 10.0F, 20.0F, 30, () -> Ingredient.of(ModItemTags.PYRITE));
+    Pyrite(ModTags.Blocks.INCORRECT_FOR_PYRITE_TOOL, 50000, 10.0F, 20.0F, 30, () -> Ingredient.of(ModTags.Items.PYRITE));
 
     private final TagKey<Block> incorrectBlocksForDrops;
     private final int uses;

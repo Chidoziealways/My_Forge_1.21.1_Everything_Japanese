@@ -5,6 +5,8 @@
   "block.everythingjapanese.pyrite_deepslate_ore": "黄鉄鉱DeepslateOre(おうてっこうDeeplsateOre)(Pyrite Deepslate Ore)",
   "block.everythingjapanese.transformer_block": "Transformer Block",
   "block.everythingjapanese.hinoki_maruta": "桧丸太(ひのきまるた)(Cypress Log)",
+  "block.everythingjapanese.chocolate_cake": "Chocolate Cake",
+
   "creativetab.everythingjapanese.japanese_items": "日本人Items(Japanese Items)",
   "creativetab.everythingjapanese.japanese_blocks": "日本人Blocks(Japanese Blocks)",
   "creativetab.everythingjapanese.japanese_weapons": "日本人Weapons(Japanese Weapons)",
@@ -12,6 +14,7 @@
   "creativetab.everythingjapanese.japanese_drinks": "日本人Drinks(Japanese Drinks)",
   "creativetab.everythingjapanese.japanese_fuel": "日本人Fuel(Japanese Fuel)",
   "creativetab.everythingjapanese.japanese_tools": "日本人Tools(Japanese Tools)",
+
   "item.everythingjapanese.pyrite_ingot": "黄鉄鉱インゴット(おうてっこうインゴット)(Pyrite Ingot)",
   "item.everythingjapanese.raw_pyrite": "黄鉄鉱原石(おうてっこうげんせき)(Raw Pyrite)",
   "item.everythingjapanese.chisel": "Chisel",
@@ -22,5 +25,13 @@
   "item.everythingjapanese.incense": "お香(おかおり)(Incense)",
   "item.everythingjapanese.udon": "饂飩(うどん)(Udon)",
   "item.everythingjapanese.ya": "矢(や)(Ya)",
-  "item.everythingjapanese.pyrite_axe": "黄鉄鉱斧(おうてっこうおの)(Pyrite Axe)"
+  "item.everythingjapanese.pyrite_axe": "黄鉄鉱斧(おうてっこうおの)(Pyrite Axe)",
+  "item.everythingjapanese.wooden_katana": "木製刀(もくせいかたな)(Earth katana)",
+
+  "tooltip.everythingjapanese.magic_block.tooltip": "A block.. §9That can transform any item thrown on it to another completely different item§l",
+  "tooltip.everythingjapanese.chisel_item.shift_down": "Press §eShift§l to see more of this item!",
+  "tooltip.everythingjapanese.chisel_item": "An item that turns certain items to other items",
+  "tooltip.everythingjapanese.sushi": "A very §9popular japanese§l food.",
+  "tooltip.everythingjapanese.earth_katana": "The §gWooden Katana§l. Capable of unspeakable things. Even capable of summoning Unknown things including §kTHE VERY DEMONS OF HELL§l",
+  "tooltip.everythingjapanese.earth_katana.no_shift": "Press §eShift§l to see more of this awesome item"
 }

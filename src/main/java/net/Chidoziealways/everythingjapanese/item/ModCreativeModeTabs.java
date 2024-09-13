@@ -58,6 +58,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SUSHI.get());
                         output.accept(ModItems.UDON.get());
                         output.accept(ModBlocks.CHOCOLATE_CAKE.get());
+                        output.accept(ModBlocks.JAPANESE_CHEESECAKE.get());
+                        output.accept(ModBlocks.WORKBENCH.get());
                     })
                     .build());
 

@@ -29,9 +29,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 
-public  class ModdedCakeBlock extends Block {
+public class ModdedCakeBlock extends Block {
     public static final MapCodec<CakeBlock> CODEC = simpleCodec(CakeBlock::new);
-    public static int MAX_BITES;
+    public static final int MAX_BITES = 16;
     public static final IntegerProperty BITES = BlockStateProperties.BITES;
     public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
     protected static final float AABB_OFFSET = 1.0F;
@@ -45,9 +45,14 @@ public  class ModdedCakeBlock extends Block {
             Block.box(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
     };
-    public ModdedCakeBlock(Properties p_51184_, int MAX_BITES) {
+
+    @Override
+    public MapCodec<CakeBlock> codec() {
+        return CODEC;
+    }
+
+    public ModdedCakeBlock(Properties p_51184_) {
         super(p_51184_);
-        ModdedCakeBlock.MAX_BITES = MAX_BITES;
         this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
     }
 

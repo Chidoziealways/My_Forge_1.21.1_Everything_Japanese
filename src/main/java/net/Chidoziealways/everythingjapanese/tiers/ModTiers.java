@@ -3,8 +3,6 @@ package net.Chidoziealways.everythingjapanese.tiers;
 import com.google.common.base.Suppliers;
 import java.util.function.Supplier;
 
-import net.Chidoziealways.everythingjapanese.util.ModBLockTags;
-import net.Chidoziealways.everythingjapanese.util.ModItemTags;
 import net.Chidoziealways.everythingjapanese.util.ModTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;

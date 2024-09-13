@@ -40,7 +40,7 @@ public class ModBlocks {
                     .strength(4f).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> TRANSFORMER_BLOCK = registerBlock("transformer_block",
-            () -> new MagicBlock(BlockBehaviour.Properties.of().strength(2).requiresCorrectToolForDrops()));
+            () -> new MagicBlock(BlockBehaviour.Properties.of().strength(2).noLootTable()));
 
     public static final RegistryObject<Block> HINOKI_MARUTA = registerBlock("hinoki_maruta",
             () -> new Block(BlockBehaviour.Properties.of()
@@ -51,7 +51,14 @@ public class ModBlocks {
                     .strength(4f).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> CHOCOLATE_CAKE = registerBlock("chocolate_cake",
-            () -> new ModdedCakeBlock(BlockBehaviour.Properties.of(), 16));
+            () -> new ModdedCakeBlock(BlockBehaviour.Properties.of()));
+
+    public static final RegistryObject<Block> JAPANESE_CHEESECAKE = registerBlock("japanese_cheesecake",
+            () -> new CakeBlock(BlockBehaviour.Properties.of()));
+
+    public static final RegistryObject<Block> WORKBENCH = registerBlock("workbench",
+            () -> new Block(BlockBehaviour.Properties.of()));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "everythingjapanese:block/stripped_hinoki_maruta"
+  }
+}

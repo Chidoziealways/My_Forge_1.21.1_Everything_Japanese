@@ -46,6 +46,17 @@ public class EverythingJapanese
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+        /*
+        HEllo {@Link SubscribeEvent} annoted methods
+         <dl>
+     *     <dt>Object Instance</dt>
+     *     <dd>Scanned for <em>non-static</em> methods annotated with {@link SubscribeEvent} and creates listeners for
+     *     each method found.</dd>
+     *     <dt>Class Instance</dt>
+     *     <dd>Scanned for <em>static</em> methods annotated with {@link SubscribeEvent} and creates listeners for
+     *     each method found.</dd>
+     * </dl>
+         */
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

@@ -30,7 +30,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 
 public class ModdedCakeBlock extends Block {
-    public static final MapCodec<CakeBlock> CODEC = simpleCodec(CakeBlock::new);
+    public static final MapCodec<ModdedCakeBlock> CODEC = simpleCodec(ModdedCakeBlock::new);
     public static final int MAX_BITES = 16;
     public static final IntegerProperty BITES = BlockStateProperties.BITES;
     public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
@@ -47,7 +47,7 @@ public class ModdedCakeBlock extends Block {
     };
 
     @Override
-    public MapCodec<CakeBlock> codec() {
+    public MapCodec<ModdedCakeBlock> codec() {
         return CODEC;
     }
 

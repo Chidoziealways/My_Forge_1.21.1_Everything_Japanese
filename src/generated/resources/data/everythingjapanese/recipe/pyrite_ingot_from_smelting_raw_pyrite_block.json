@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "pyrite",
+  "ingredient": {
+    "item": "everythingjapanese:raw_pyrite_block"
+  },
+  "result": {
+    "id": "everythingjapanese:pyrite_ingot"
+  }
+}

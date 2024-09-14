@@ -1,0 +1,3 @@
+// 1.21.1	2024-09-13T18:58:26.498095	Tags for minecraft:block mod id everythingjapanese
+3377a979bb7c0cb75e3089087e9710852fa7687c data/minecraft/tags/block/mineable/pickaxe.json
+8d402dd4d9fd72cb193c0a930e50606dc5f383e7 data/minecraft/tags/block/needs_diamond_tool.json

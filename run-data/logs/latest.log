@@ -1,27 +1,27 @@
-[14Sep2024 13:30:44.479] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, everythingjapanese, --all, --output, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\generated\resources, --existing, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\main\resources]
-[14Sep2024 13:30:44.528] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Amazon.com Inc. OpenJDK 64-Bit Server VM 21.0.4+7-LTS
-[14Sep2024 13:30:44.541] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.1 starting: java version 21.0.4 by Amazon.com Inc.; OS Windows 10 arch amd64 version 10.0
-[14Sep2024 13:30:45.716] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[14Sep2024 13:30:46.738] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/uzowu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
-[14Sep2024 13:30:56.194] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[14Sep2024 13:31:04.445] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, everythingjapanese, --all, --output, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\generated\resources, --existing, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\main\resources]
-[14Sep2024 13:31:48.562] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 52.0.9, for MC 1.21.1 with MCP 20240808.132146
-[14Sep2024 13:31:48.562] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v52.0.9 Initialized
-[14Sep2024 13:31:48.636] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
-[14Sep2024 13:31:54.375] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [everythingjapanese]
-[14Sep2024 13:31:54.900] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.0.9_mapped_parchment_2024.07.28-1.21/forge-1.21.1-52.0.9_mapped_parchment_2024.07.28-1.21-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
-[14Sep2024 13:31:54.901] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.0.9_mapped_parchment_2024.07.28-1.21/forge-1.21.1-52.0.9_mapped_parchment_2024.07.28-1.21-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
-[14Sep2024 13:31:56.804] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[14Sep2024 13:31:58.288] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 1482 ms
-[14Sep2024 13:31:58.289] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[14Sep2024 13:31:59.417] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 1124 ms
-[14Sep2024 13:31:59.418] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id everythingjapanese
-[14Sep2024 13:31:59.467] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id everythingjapanese finished after 48 ms
-[14Sep2024 13:31:59.468] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id everythingjapanese
-[14Sep2024 13:31:59.476] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id everythingjapanese finished after 7 ms
-[14Sep2024 13:31:59.477] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: everythingjapanese
-[14Sep2024 13:31:59.549] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: everythingjapanese finished after 70 ms
-[14Sep2024 13:31:59.550] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: everythingjapanese
-[14Sep2024 13:32:00.522] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: everythingjapanese finished after 972 ms
-[14Sep2024 13:32:00.523] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 3720 ms
-[14Sep2024 13:32:01.454] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 83, old count: 67, new count: 68, removed stale: 16, written: 16
+[22Sep2024 13:26:17.206] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, everythingjapanese, --all, --output, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\generated\resources, --existing, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\main\resources]
+[22Sep2024 13:26:17.272] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Amazon.com Inc. OpenJDK 64-Bit Server VM 21.0.4+7-LTS
+[22Sep2024 13:26:17.276] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.1 starting: java version 21.0.4 by Amazon.com Inc.; OS Windows 10 arch amd64 version 10.0
+[22Sep2024 13:26:17.888] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[22Sep2024 13:26:19.004] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/uzowu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
+[22Sep2024 13:26:24.442] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[22Sep2024 13:26:28.910] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, everythingjapanese, --all, --output, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\generated\resources, --existing, C:\Users\uzowu\OneDrive\Desktop\My Forge For Modding-mdk\src\main\resources]
+[22Sep2024 13:27:08.270] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 52.0.16, for MC 1.21.1 with MCP 20240808.132146
+[22Sep2024 13:27:08.271] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v52.0.16 Initialized
+[22Sep2024 13:27:08.454] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[22Sep2024 13:27:11.932] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [everythingjapanese]
+[22Sep2024 13:27:12.583] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.0.16_mapped_parchment_2024.07.28-1.21/forge-1.21.1-52.0.16_mapped_parchment_2024.07.28-1.21.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[22Sep2024 13:27:12.584] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.1-52.0.16_mapped_parchment_2024.07.28-1.21/forge-1.21.1-52.0.16_mapped_parchment_2024.07.28-1.21.jar%230!/data/.mcassetsroot' uses unexpected schema
+[22Sep2024 13:27:13.194] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[22Sep2024 13:27:14.175] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 981 ms
+[22Sep2024 13:27:14.183] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[22Sep2024 13:27:14.477] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 292 ms
+[22Sep2024 13:27:14.477] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id everythingjapanese
+[22Sep2024 13:27:14.555] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id everythingjapanese finished after 77 ms
+[22Sep2024 13:27:14.556] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id everythingjapanese
+[22Sep2024 13:27:14.561] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id everythingjapanese finished after 4 ms
+[22Sep2024 13:27:14.585] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: everythingjapanese
+[22Sep2024 13:27:14.649] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: everythingjapanese finished after 63 ms
+[22Sep2024 13:27:14.650] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: everythingjapanese
+[22Sep2024 13:27:15.319] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: everythingjapanese finished after 669 ms
+[22Sep2024 13:27:15.319] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 2126 ms
+[22Sep2024 13:27:15.351] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 151, old count: 147, new count: 152, removed stale: 0, written: 5

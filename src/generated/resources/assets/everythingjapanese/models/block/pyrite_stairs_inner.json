@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "everythingjapanese:block/pyrite_block",
+    "side": "everythingjapanese:block/pyrite_block",
+    "top": "everythingjapanese:block/pyrite_block"
+  }
+}

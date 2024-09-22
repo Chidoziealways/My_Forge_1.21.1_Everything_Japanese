@@ -1,3 +1,6 @@
-// 1.21.1	2024-09-13T18:58:26.498095	Tags for minecraft:block mod id everythingjapanese
+// 1.21.1	2024-09-21T15:59:59.6919947	Tags for minecraft:block mod id everythingjapanese
+a25ed6747f5d76e8b72f7671a66144bab9884a05 data/minecraft/tags/block/fences.json
+0b748d70895b28cc6521915127ac5338094cea43 data/minecraft/tags/block/fence_gates.json
 3377a979bb7c0cb75e3089087e9710852fa7687c data/minecraft/tags/block/mineable/pickaxe.json
 8d402dd4d9fd72cb193c0a930e50606dc5f383e7 data/minecraft/tags/block/needs_diamond_tool.json
+d0b321e4d4aaf94ffbd792c26e46117f141790e6 data/minecraft/tags/block/walls.json

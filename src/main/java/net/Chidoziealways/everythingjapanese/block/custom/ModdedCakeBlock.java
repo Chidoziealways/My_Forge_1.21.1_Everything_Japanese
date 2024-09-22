@@ -38,12 +38,21 @@ public class ModdedCakeBlock extends Block {
     protected static final float AABB_SIZE_PER_BITE = 2.0F;
     protected static final VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{
             Block.box(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(2.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(4.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(6.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(8.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(10.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-            Block.box(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+            Block.box(12.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(13.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(14.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(15.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+            Block.box(16.0, 0.0, 1.0, 16.0, 8.0, 15.0)
     };
 
     @Override
@@ -101,7 +110,7 @@ public class ModdedCakeBlock extends Block {
             pPlayer.getFoodData().eat(2, 0.1F);
             int i = pState.getValue(BITES);
             pLevel.gameEvent(pPlayer, GameEvent.EAT, pPos);
-            if (i < 6) {
+            if (i < 16) {
                 pLevel.setBlock(pPos, pState.setValue(BITES, Integer.valueOf(i + 1)), 3);
             } else {
                 pLevel.removeBlock(pPos, false);

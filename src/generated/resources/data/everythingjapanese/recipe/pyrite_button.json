@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "pyrite",
+  "ingredients": [
+    {
+      "item": "everythingjapanese:pyrite_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "everythingjapanese:pyrite_button"
+  }
+}

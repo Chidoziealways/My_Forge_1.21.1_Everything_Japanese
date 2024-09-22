@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "everythingjapanese:block/pyrite_door_bottom",
+    "top": "everythingjapanese:block/pyrite_door_top"
+  }
+}

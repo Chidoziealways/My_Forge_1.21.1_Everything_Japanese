@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "everythingjapanese:block/pyrite_block"
+  }
+}

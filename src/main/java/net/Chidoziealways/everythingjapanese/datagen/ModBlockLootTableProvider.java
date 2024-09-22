@@ -7,13 +7,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.piston.MovingPistonBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -35,11 +34,25 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.JAPANESE_CHEESECAKE.get());
         dropSelf(ModBlocks.STRIPPED_HINOKI_MARUTA.get());
         dropSelf(ModBlocks.WORKBENCH.get());
+        dropSelf(ModBlocks.PYRITE_BUTTON.get());
+        dropSelf(ModBlocks.PYRITE_FENCE.get());
+        dropSelf(ModBlocks.PYRITE_FENCE_GATE.get());
+        dropSelf(ModBlocks.PYRITE_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.PYRITE_STAIRS.get());
+        dropSelf(ModBlocks.PYRITE_TRAPDOOR.get());
+        dropSelf(ModBlocks.PYRITE_WALL.get());
+        dropSelf(ModBlocks.PYRITE_LAMP.get());
 
         this.add(ModBlocks.PYRITE_ORE.get(),
                 block -> createOreDrop(ModBlocks.PYRITE_ORE.get(), ModItems.RAW_PYRITE.get()));
         this.add(ModBlocks.PYRITE_DEEPSLATE_ORE.get(),
                 block -> createMultipleOreDrops(ModBlocks.PYRITE_DEEPSLATE_ORE.get(), ModItems.RAW_PYRITE.get(), 9, 20));
+
+        this.add(ModBlocks.PYRITE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.PYRITE_SLAB.get()));
+
+        this.add(ModBlocks.PYRITE_DOOR.get(),
+                block -> createDoorTable(ModBlocks.PYRITE_DOOR.get()));
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

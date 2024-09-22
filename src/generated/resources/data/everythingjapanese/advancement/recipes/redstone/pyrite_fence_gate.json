@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pyrite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:pyrite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everythingjapanese:pyrite_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pyrite_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everythingjapanese:pyrite_fence_gate"
+    ]
+  }
+}

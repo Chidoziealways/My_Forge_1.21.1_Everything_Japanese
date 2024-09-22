@@ -55,6 +55,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(pRecipeOutput, PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.PYRITE_INGOT.get(), 1f, 200, "pyrite");
         oreBlasting(pRecipeOutput, PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.PYRITE_INGOT.get(), 1f, 100, "pyrite");
 
+        stairBuilder(ModBlocks.PYRITE_STAIRS.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+                .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(pRecipeOutput);
+
+        buttonBuilder(ModBlocks.PYRITE_BUTTON.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+                        .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(pRecipeOutput);
+
+        pressurePlate(pRecipeOutput, ModBlocks.PYRITE_PRESSURE_PLATE.get(), ModItems.PYRITE_INGOT.get());
+
+        fenceBuilder(ModBlocks.PYRITE_FENCE.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+                .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(pRecipeOutput);
+
+        fenceGateBuilder(ModBlocks.PYRITE_FENCE_GATE.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+                .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(pRecipeOutput);
+
+        wall(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_WALL.get(), ModItems.PYRITE_INGOT.get());
+
+        doorBuilder(ModBlocks.PYRITE_DOOR.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+                .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(pRecipeOutput);
+
+        trapdoorBuilder(ModBlocks.PYRITE_TRAPDOOR.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+                .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(pRecipeOutput);
+
+        slab(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_SLAB.get(), ModItems.PYRITE_INGOT.get());
+
     }
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
                                       float pExperience, int pCookingTIme, String pGroup) {

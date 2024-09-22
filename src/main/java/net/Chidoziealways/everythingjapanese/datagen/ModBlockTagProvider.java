@@ -27,5 +27,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
    tag(BlockTags.NEEDS_DIAMOND_TOOL)
           .add(ModBlocks.PYRITE_ORE.get())
            .add(ModBlocks.RAW_PYRITE_BLOCK.get());
+
+   tag(BlockTags.FENCES).add(ModBlocks.PYRITE_FENCE.get());
+
+   tag(BlockTags.FENCE_GATES).add(ModBlocks.PYRITE_FENCE_GATE.get());
+
+   tag(BlockTags.WALLS).add(ModBlocks.PYRITE_WALL.get());
    }
 }

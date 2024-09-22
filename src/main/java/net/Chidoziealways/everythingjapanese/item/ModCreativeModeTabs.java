@@ -35,7 +35,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.PYRITE_DEEPSLATE_ORE.get());
                         output.accept(ModBlocks.TRANSFORMER_BLOCK.get());
                         output.accept(ModBlocks.HINOKI_MARUTA.get());
-
+                        output.accept(ModBlocks.PYRITE_BUTTON.get());
+                        output.accept(ModBlocks.PYRITE_DOOR.get());
+                        output.accept(ModBlocks.PYRITE_FENCE.get());
+                        output.accept(ModBlocks.PYRITE_FENCE_GATE.get());
+                        output.accept(ModBlocks.PYRITE_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.PYRITE_SLAB.get());
+                        output.accept(ModBlocks.PYRITE_STAIRS.get());
+                        output.accept(ModBlocks.PYRITE_TRAPDOOR.get());
+                        output.accept(ModBlocks.PYRITE_WALL.get());
                     })
                     .build());
 

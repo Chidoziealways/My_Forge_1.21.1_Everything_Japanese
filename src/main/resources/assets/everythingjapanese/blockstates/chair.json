@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "everythingjapanese:block/chair"
+    },
+    "facing=south": {
+      "model": "everythingjapanese:block/chair",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "everythingjapanese:block/chair",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "everythingjapanese:block/chair",
+      "y": 270
+    }
+  }
+}

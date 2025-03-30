@@ -11,4 +11,10 @@ public class ModFoodProperties {
 
     public static final FoodProperties UDON = new FoodProperties.Builder().nutrition(3).saturationModifier(0.25f)
             .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 400), 1f).usingConvertsTo(Items.BOWL).build();
+
+    public static final FoodProperties RICE = new FoodProperties.Builder().nutrition(10).saturationModifier(0.25f)
+            .usingConvertsTo(Items.BOWL).build();
+
+    public static final FoodProperties YAMAZAKI_BERRIES = new FoodProperties.Builder().nutrition(10).saturationModifier(0.25f)
+            .build();
 }

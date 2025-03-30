@@ -1,0 +1,6 @@
+// 1.21.1	2025-03-07T20:48:43.3435295	Global Loot Modifiers : everythingjapanese
+933d1aa3d66afd6addd38d1a96b95258d2fce6ce data/everythingjapanese/loot_modifiers/chisel_from_jungle_temple.json
+50ae4d6e5a093c6bb2f50fe3330a865bd52c2d2f data/everythingjapanese/loot_modifiers/rice_from_creeper.json
+51150670f70e48aecb67af5c1d76bba9c4e810a4 data/everythingjapanese/loot_modifiers/rice_seeds_from_short_grass.json
+8f3e54ab1ef331e2dbaaa50c43e3cbe4579ed0c8 data/everythingjapanese/loot_modifiers/rice_seeds_from_tall_grass.json
+2cda9684f5be75c797f14851c66d31413d295a35 data/forge/loot_modifiers/global_loot_modifiers.json

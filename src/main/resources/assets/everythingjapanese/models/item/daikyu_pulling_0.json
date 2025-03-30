@@ -1,0 +1,6 @@
+{
+  "parent": "everythingjapanese:item/daikyu",
+  "textures": {
+    "layer0": "everythingjapanese:item/daikyu_pulling_0"
+  }
+}

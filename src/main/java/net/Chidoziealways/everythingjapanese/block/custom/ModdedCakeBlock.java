@@ -1,26 +1,22 @@
 package net.Chidoziealways.everythingjapanese.block.custom;
 
-import net.minecraft.world.level.block.*;
-import com.mojang.serialization.MapCodec;
+import net.Chidoziealways.everythingjapanese.block.state.properties.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -28,11 +24,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-
 public class ModdedCakeBlock extends Block {
-    public static final MapCodec<ModdedCakeBlock> CODEC = simpleCodec(ModdedCakeBlock::new);
     public static final int MAX_BITES = 16;
-    public static final IntegerProperty BITES = BlockStateProperties.BITES;
+    public static final IntegerProperty BITES = ModBlockStateProperties.BITES;
     public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
     protected static final float AABB_OFFSET = 1.0F;
     protected static final float AABB_SIZE_PER_BITE = 2.0F;
@@ -52,69 +46,55 @@ public class ModdedCakeBlock extends Block {
             Block.box(13.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(14.0, 0.0, 1.0, 15.0, 8.0, 15.0),
             Block.box(15.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-            Block.box(16.0, 0.0, 1.0, 16.0, 8.0, 15.0)
+            Block.box(16.0, 0.0, 1.0, 16.0, 8.0, 15.0),
+            Block.box(17.0, 0.0, 1.0, 17.0, 8.0, 15.0),
     };
 
-    @Override
-    public MapCodec<ModdedCakeBlock> codec() {
-        return CODEC;
-    }
-
-    public ModdedCakeBlock(Properties p_51184_) {
-        super(p_51184_);
-        this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
+    public ModdedCakeBlock(BlockBehaviour.Properties properties) {
+        super(properties);
+        // Initialize default state with BITES set to 0
+        this.registerDefaultState(this.stateDefinition.any().setValue(BITES, Integer.valueOf(0)));
     }
 
     @Override
-    protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE_BY_BITE[pState.getValue(BITES)];
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(BITES);
+    }
+
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE_BY_BITE[state.getValue(BITES)];
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(
-            ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult
-    ) {
-        Item item = pStack.getItem();
-        if (pStack.is(ItemTags.CANDLES) && pState.getValue(BITES) == 0 && Block.byItem(item) instanceof CandleBlock candleblock) {
-            pStack.consume(1, pPlayer);
-            pLevel.playSound(null, pPos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            pLevel.setBlockAndUpdate(pPos, CandleCakeBlock.byCandle(candleblock));
-            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
-            pPlayer.awardStat(Stats.ITEM_USED.get(item));
-            return ItemInteractionResult.SUCCESS;
-        } else {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (pLevel.isClientSide) {
-            if (eat(pLevel, pPos, pState, pPlayer).consumesAction()) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (level.isClientSide) {
+            if (eat(level, pos, state, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
 
-            if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }
 
-        return eat(pLevel, pPos, pState, pPlayer);
+        return eat(level, pos, state, player);
     }
 
-    protected static InteractionResult eat(LevelAccessor pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-        if (!pPlayer.canEat(false)) {
+    protected static InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
+        if (!player.canEat(false)) {
             return InteractionResult.PASS;
         } else {
-            pPlayer.awardStat(Stats.EAT_CAKE_SLICE);
-            pPlayer.getFoodData().eat(2, 0.1F);
-            int i = pState.getValue(BITES);
-            pLevel.gameEvent(pPlayer, GameEvent.EAT, pPos);
+            player.awardStat(Stats.EAT_CAKE_SLICE);
+            player.getFoodData().eat(2, 0.1F);
+            int i = state.getValue(BITES);
+            level.gameEvent(player, GameEvent.EAT, pos);
             if (i < 16) {
-                pLevel.setBlock(pPos, pState.setValue(BITES, Integer.valueOf(i + 1)), 3);
+                level.setBlock(pos, state.setValue(BITES, i + 1), 3);
             } else {
-                pLevel.removeBlock(pPos, false);
-                pLevel.gameEvent(pPlayer, GameEvent.BLOCK_DESTROY, pPos);
+                level.removeBlock(pos, false);
+                level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
             }
 
             return InteractionResult.SUCCESS;
@@ -122,38 +102,31 @@ public class ModdedCakeBlock extends Block {
     }
 
     @Override
-    protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return pFacing == Direction.DOWN && !pState.canSurvive(pLevel, pCurrentPos)
-                ? Blocks.AIR.defaultBlockState()
-                : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+        return facing == Direction.DOWN && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
     }
 
     @Override
-    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return pLevel.getBlockState(pPos.below()).isSolid();
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return level.getBlockState(pos.below()).isSolid();
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(BITES);
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
-        return getOutputSignal(pBlockState.getValue(BITES));
-    }
-
-    public static int getOutputSignal(int pEaten) {
-        return (7 - pEaten) * 2;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(BlockState pState) {
+    public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
     }
 
     @Override
-    protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
+    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return getOutputSignal(state.getValue(BITES));
+    }
+
+    public static int getOutputSignal(int bites) {
+        return (16 - bites) * 2;
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState state, PathComputationType type) {
         return false;
     }
 }

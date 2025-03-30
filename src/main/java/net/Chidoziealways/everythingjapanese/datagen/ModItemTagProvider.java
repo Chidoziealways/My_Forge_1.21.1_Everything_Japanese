@@ -2,11 +2,13 @@ package net.Chidoziealways.everythingjapanese.datagen;
 
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
+import net.Chidoziealways.everythingjapanese.block.ModBlocks;
 import net.Chidoziealways.everythingjapanese.item.ModItems;
 import net.Chidoziealways.everythingjapanese.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -27,5 +29,34 @@ public class ModItemTagProvider extends ItemTagsProvider {
             .add(ModItems.RAW_PYRITE.get())
             .add(ModItems.PYRITE_SWORD.get())
             .add(ModItems.YA.get());
+
+    tag(ItemTags.TRIMMABLE_ARMOR)
+            .add(ModItems.PYRITE_HELMET.get())
+            .add(ModItems.PYRITE_CHESTPLATE.get())
+            .add(ModItems.PYRITE_LEGGINGS.get())
+            .add(ModItems.PYRITE_BOOTS.get());
+
+    tag(ItemTags.TRIM_MATERIALS)
+            .add(ModItems.PYRITE_INGOT.get());
+
+    tag(ItemTags.TRIM_TEMPLATES)
+            .add(ModItems.KOI_FISH_SMITHING_TEMPLATE.get());
+
+    tag(ItemTags.LOGS_THAT_BURN)
+            .add(ModBlocks.HINOKI_MARUTA.get().asItem())
+            .add(ModBlocks.HINOKI_MOKUZAI.get().asItem())
+            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.get().asItem())
+            .add(ModBlocks.STRIPPED_HINOKI_MOKUZAI.get().asItem());
+
+    tag(ItemTags.PLANKS)
+            .add(ModBlocks.HINOKI_BAN.get().asItem());
+
+    tag(ModTags.Items.HINOKI_MARUTA)
+            .add(ModBlocks.HINOKI_MARUTA.get().asItem())
+            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.get().asItem());
+
+    tag(ItemTags.ARROWS)
+            .add(ModItems.YA.get());
     }
+
 }

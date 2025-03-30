@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "everythingjapanese:item/chisel"
+  },
+  "overrides": [
+    {
+      "predicate":{
+        "everythingjapanese:used": 1
+      },
+      "model": "everythingjapanese:item/chisel_used"
+    }
+  ]
+}

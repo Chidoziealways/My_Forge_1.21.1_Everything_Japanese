@@ -11,9 +11,10 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
     public static class Blocks{
-
+        public static final TagKey<Block> NEEDS_PYRITE_TOOL = create("needs_pyrite_tool");
+        public static final TagKey<Block> NEEDS_NEPHRITE_TOOL = create("needs_nephrite_tool");
         public static final TagKey<Block> INCORRECT_FOR_PYRITE_TOOL = create("incorrect_for_pyrite_tool");
-
+        public static final TagKey<Block> INCORRECT_FOR_NEPHRITE_TOOL = create("incorrect_for_nephrite_tool");
         private Blocks() {
         }
 
@@ -28,6 +29,8 @@ public class ModTags {
     public static class Items {
         public static final TagKey<Item> TRANSFORMABLE_ITEMS = createtag("transformable_items");
         public static final TagKey<Item> PYRITE = bind("pyrite");
+        public static final TagKey<Item> NEPHRITE = bind("nephrite");
+        public static final TagKey<Item> HINOKI_MARUTA = bind("hinoki_maruta");
 
         private Items() {
         }

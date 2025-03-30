@@ -1,3 +1,6 @@
 {
-  "parent": "everythingjapanese:block/pyrite_fence"
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "everythingjapanese:pyrite_block"
+  }
 }

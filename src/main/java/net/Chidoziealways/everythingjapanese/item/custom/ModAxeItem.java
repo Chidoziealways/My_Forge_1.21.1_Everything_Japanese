@@ -49,7 +49,6 @@ public class ModAxeItem extends DiggerItem {
             .put(Blocks.MANGROVE_WOOD, Blocks.STRIPPED_MANGROVE_WOOD)
             .put(Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG)
             .put(Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK)
-            .put(ModBlocks.HINOKI_MARUTA.get(), ModBlocks.STRIPPED_HINOKI_MARUTA.get())
             .build();
 
     public ModAxeItem(Tier p_40521_, Item.Properties p_40524_) {

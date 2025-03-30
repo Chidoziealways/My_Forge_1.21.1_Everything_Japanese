@@ -1,0 +1,8 @@
+{
+  "asset_id": "everythingjapanese:koi_fish",
+  "decal": false,
+  "description": {
+    "translate": "trim_pattern.everythingjapanese.koi_fish"
+  },
+  "template_item": "everythingjapanese:koi_fish_armor_trim_smithing_template"
+}

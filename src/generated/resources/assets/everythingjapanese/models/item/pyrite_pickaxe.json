@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "everythingjapanese:item/pyrite_pickaxe"
+  }
+}

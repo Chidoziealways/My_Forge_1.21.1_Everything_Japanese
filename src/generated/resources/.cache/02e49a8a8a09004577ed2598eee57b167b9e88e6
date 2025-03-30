@@ -1,6 +1,11 @@
-// 1.21.1	2024-09-21T15:59:59.6919947	Tags for minecraft:block mod id everythingjapanese
+// 1.21.1	2024-12-26T13:44:34.3281992	Tags for minecraft:block mod id everythingjapanese
 a25ed6747f5d76e8b72f7671a66144bab9884a05 data/minecraft/tags/block/fences.json
 0b748d70895b28cc6521915127ac5338094cea43 data/minecraft/tags/block/fence_gates.json
-3377a979bb7c0cb75e3089087e9710852fa7687c data/minecraft/tags/block/mineable/pickaxe.json
-8d402dd4d9fd72cb193c0a930e50606dc5f383e7 data/minecraft/tags/block/needs_diamond_tool.json
+75008cf75aa60af53a65453f59c3a7184fc80bba data/minecraft/tags/block/incorrect_for_pyrite_tool.json
+2f8a48c59c9100707ef043bf7068139e0292ba35 data/minecraft/tags/block/logs_that_burn.json
+af642d2fa15b47c3ce40156ed0debe5b8323c49e data/minecraft/tags/block/mineable/pickaxe.json
+5b15784de508bae714b607aa3d13ccc2a465bb64 data/minecraft/tags/block/needs_diamond_tool.json
+016f850a613552443f95fad0bbdacbc74ca772ea data/minecraft/tags/block/needs_iron_tool.json
+3781bc68f33aa178e278c5387e43fa049bf6f307 data/minecraft/tags/block/needs_nephrite_tool.json
+79ef5b9e54d112efb7f4369b450d16ce8749b049 data/minecraft/tags/block/needs_pyrite_tool.json
 d0b321e4d4aaf94ffbd792c26e46117f141790e6 data/minecraft/tags/block/walls.json

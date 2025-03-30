@@ -1,0 +1,46 @@
+{
+  "chisel_use": {
+    "subtitle": "sounds.everythingjapanese.chisel_use",
+    "sounds": [
+      "everythingjapanese:chisel_use"
+    ]
+  },
+  "magic_block_break": {
+    "subtitle": "sounds.everythingjapanese.magic_block_break",
+    "sounds": [
+      "everythingjapanese:magic_block_break"
+    ]
+  },
+  "magic_block_fall": {
+    "subtitle": "sounds.everythingjapanese.magic_block_fall",
+    "sounds": [
+      "everythingjapanese:magic_block_fall"
+    ]
+  },
+  "magic_block_hit": {
+    "subtitle": "sounds.everythingjapanese.magic_block_hit",
+    "sounds": [
+      "everythingjapanese:magic_block_hit"
+    ]
+  },
+  "magic_block_place": {
+    "subtitle": "sounds.everythingjapanese.magic_block_place",
+    "sounds": [
+      "everythingjapanese:magic_block_place"
+    ]
+  },
+  "magic_block_step": {
+    "subtitle": "sounds.everythingjapanese.magic_block_step",
+    "sounds": [
+      "everythingjapanese:magic_block_step"
+    ]
+  },
+  "ao_to_natsu": {
+    "sounds": [
+      {
+        "name": "everythingjapanese:ao_to_natsu",
+        "stream": true
+      }
+    ]
+  }
+}

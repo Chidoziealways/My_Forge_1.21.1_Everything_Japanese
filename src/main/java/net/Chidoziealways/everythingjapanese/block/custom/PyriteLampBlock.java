@@ -1,5 +1,6 @@
 package net.Chidoziealways.everythingjapanese.block.custom;
 
+import net.Chidoziealways.everythingjapanese.block.state.properties.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class PyriteLampBlock extends Block {
-    public static final BooleanProperty CLICKED = BooleanProperty.create("clicked");
+    public static final BooleanProperty CLICKED = ModBlockStateProperties.CLICKED;
 
     public PyriteLampBlock(Properties properties) {
         super(properties);

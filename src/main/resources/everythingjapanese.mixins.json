@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "priority": 1100,
+  "package": "net.Chidoziealways.everythingjapanese.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "everythingjapanese.refmap.json",
+  "mixins": [
+    "GuiMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

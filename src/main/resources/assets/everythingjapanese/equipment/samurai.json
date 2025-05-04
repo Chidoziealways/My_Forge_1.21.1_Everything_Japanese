@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "everythingjapanese:samurai"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "everythingjapanese:samurai"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "everythingjapanese:samurai"
+      }
+    ]
+  }
+}

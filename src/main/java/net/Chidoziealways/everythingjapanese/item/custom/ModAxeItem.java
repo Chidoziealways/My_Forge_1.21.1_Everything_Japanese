@@ -1,4 +1,4 @@
-package net.Chidoziealways.everythingjapanese.item.custom;
+/*package net.Chidoziealways.everythingjapanese.item.custom;
 
 import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
@@ -129,4 +129,4 @@ public class ModAxeItem extends DiggerItem {
         Block block = STRIPPABLES.get(originalState.getBlock());
         return block != null ? block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, originalState.getValue(RotatedPillarBlock.AXIS)) : null;
     }
-}
+}*/

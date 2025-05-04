@@ -1,9 +1,0 @@
-// 1.21.1	2025-01-26T14:08:20.940274	Tags for minecraft:item mod id everythingjapanese
-6368cd09fd17341a38371827f76963d88c6949a5 data/everythingjapanese/tags/item/transformable_items.json
-a7ba26b7e595af1acae95d2886b2cc80f46244d4 data/minecraft/tags/item/arrows.json
-356a5565cf3903f666f85421b7adfee3b4b64f7c data/minecraft/tags/item/hinoki_maruta.json
-2f8a48c59c9100707ef043bf7068139e0292ba35 data/minecraft/tags/item/logs_that_burn.json
-abe61b4e33af2f1336f7d019ec2f928ab30b27e5 data/minecraft/tags/item/planks.json
-d8721d03a7eba4d5d251d16e40ba9f367f1a2819 data/minecraft/tags/item/trimmable_armor.json
-6ce84852f1695e75e2dfabd7fa5d641428750068 data/minecraft/tags/item/trim_materials.json
-9a7cbbde6a4a190ec8c004725f14f88df384dbdc data/minecraft/tags/item/trim_templates.json

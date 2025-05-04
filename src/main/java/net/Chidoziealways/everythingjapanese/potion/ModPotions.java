@@ -14,7 +14,7 @@ public class ModPotions {
             DeferredRegister.create(ForgeRegistries.POTIONS, EverythingJapanese.MOD_ID);
 
     public static final RegistryObject<Potion> ADRENALINE_POTION = POTIONS.register("adrenaline_potion",
-            () -> new Potion(new MobEffectInstance(ModEffects.ADRENALINE_EFFECT.getHolder().get(), 200, 0)));
+            () -> new Potion("adrenaline_potion", new MobEffectInstance(ModEffects.ADRENALINE_EFFECT.getHolder().get(), 200, 0)));
 
     public static void register(IEventBus eventBus){
         POTIONS.register(eventBus);

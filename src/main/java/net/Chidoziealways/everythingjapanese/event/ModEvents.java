@@ -7,15 +7,12 @@ import net.Chidoziealways.everythingjapanese.item.ModItems;
 import net.Chidoziealways.everythingjapanese.potion.ModPotions;
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.Item;
@@ -37,7 +34,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.level.BlockEvent;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.List;
@@ -76,7 +72,7 @@ public class ModEvents {
             Entity touchedEntity = event.getTarget();
             if(event.getTarget() instanceof Animal) {
                 if(player.getMainHandItem() == Items.AIR.getDefaultInstance()) {
-                    player.sendSystemMessage(Component.literal(player.getName().getString() + " Just Right Clicked " + touchedEntity.getName().getString()));
+                    player.displayClientMessage(Component.literal(player.getName().getString() + " Just Right Clicked " + touchedEntity.getName().getString()), true);
                 }
             }
 
@@ -89,7 +85,7 @@ public class ModEvents {
             if (event.getEntity() instanceof Animal) {
                 LivingEntity hitEntity = event.getEntity();
                 Item murderItem = player.getMainHandItem().getItem();
-                player.sendSystemMessage(Component.literal(player.getName().getString() + " Just Hit a Fricking " + hitEntity.getName().getString() + " with " + murderItem.getName(murderItem.getDefaultInstance()).getString()));
+                player.displayClientMessage(Component.literal(player.getName().getString() + " Just Hit a Fricking " + hitEntity.getName().getString() + " with " + murderItem.getName(murderItem.getDefaultInstance()).getString()), true);
                 hitEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 600, 5));
             }
         }
@@ -162,7 +158,7 @@ public class ModEvents {
 
 
         }
-        if (event.getType() == ModVillagers.FURNITURE_MAKER.get()) {
+        if (event.getType() == ModVillagers.FURNITURE_MAKER.getKey()) {
             var trades = event.getTrades();
 
             trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
@@ -173,16 +169,15 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void addWanderingTrades(WandererTradesEvent event) {
-        List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
-        List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
+        for (WandererTradesEvent.Pool pool : event.getPools()){
+            pool.getEntries().add(((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.DIAMOND, 12),
+                    new ItemStack(ModItems.RADIATION_STAFF.get(), 1), 1, 10, 0.2f)));
 
-        genericTrades.add((pTrader, pRandom) -> new MerchantOffer(
-                new ItemCost(Items.DIAMOND, 12),
-                new ItemStack(ModItems.RADIATION_STAFF.get(), 1), 1, 10, 0.2f));
-
-        rareTrades.add((pTrader, pRandom) -> new MerchantOffer(
-                new ItemCost(Items.NETHERITE_INGOT, 8),
-                new ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC.get(), 1), 1 ,10, 0.2f));
+            pool.getEntries().add(((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.NETHERITE_INGOT, 8),
+                    new ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC.get(), 1), 1, 10, 0.2f)));
+        }
     }
 
 }

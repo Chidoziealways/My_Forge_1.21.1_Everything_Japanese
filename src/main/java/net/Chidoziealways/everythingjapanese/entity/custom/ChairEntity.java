@@ -2,6 +2,8 @@ package net.Chidoziealways.everythingjapanese.entity.custom;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
@@ -17,6 +19,11 @@ public class ChairEntity extends Entity {
     }
 
     @Override
+    public boolean hurtServer(ServerLevel pLevel, DamageSource pDamageSource, float pAmount) {
+        return false;
+    }
+
+    @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
 
     }
@@ -29,6 +36,6 @@ public class ChairEntity extends Entity {
     @Override
     protected void removePassenger(Entity pPassenger) {
         super.removePassenger(pPassenger);
-        this.kill();
+        this.kill((ServerLevel) this.level());
     }
 }

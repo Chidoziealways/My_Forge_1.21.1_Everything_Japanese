@@ -14,12 +14,13 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 
-public class IronBattleAxeProjectileModel extends EntityModel<IronBattleAxeProjectileEntity> {
+public class IronBattleAxeProjectileModel extends EntityModel<IronBattleAxeRenderState> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "iron_battle_axe"), "main");
     private final ModelPart tomahawk;
 
     public IronBattleAxeProjectileModel(ModelPart root) {
+        super(root);
         this.tomahawk = root.getChild("tomahawk");
     }
 
@@ -43,12 +44,7 @@ public class IronBattleAxeProjectileModel extends EntityModel<IronBattleAxeProje
     }
 
     @Override
-    public void setupAnim(IronBattleAxeProjectileEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(IronBattleAxeRenderState renderState) {
 
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int colour) {
-        tomahawk.render(poseStack, vertexConsumer, packedLight, packedOverlay, colour);
     }
 }

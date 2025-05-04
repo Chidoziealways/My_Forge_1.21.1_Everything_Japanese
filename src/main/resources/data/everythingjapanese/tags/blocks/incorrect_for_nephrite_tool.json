@@ -1,0 +1,8 @@
+{
+  "remove": [
+    "#everythingjapanese:needs_nephrite_tool"
+  ],
+  "values": [
+    "#minecraft:needs_diamond_tool"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "everythingjapanese:pyrite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "everythingjapanese:pyrite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "everythingjapanese:pyrite"
+      }
+    ]
+  }
+}

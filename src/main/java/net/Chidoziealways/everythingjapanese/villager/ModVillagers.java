@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.Chidoziealways.everythingjapanese.block.ModBlocks;
 import net.Chidoziealways.everythingjapanese.sound.ModSounds;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,7 +23,7 @@ public class ModVillagers {
                     1, 1));
 
     public static final RegistryObject<VillagerProfession> FURNITURE_MAKER = VILLAGER_PROFESSIONS.register("furniture_maker",
-            () -> new VillagerProfession("furniture_maker", holder -> holder.value() == FURNITURE_POI.get(),
+            () -> new VillagerProfession(Component.literal("§cFurniture Maker"), holder -> holder.value() == FURNITURE_POI.get(),
                     holder -> holder.value() == FURNITURE_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
                     ModSounds.MAGIC_BLOCK_HIT.get()));
 

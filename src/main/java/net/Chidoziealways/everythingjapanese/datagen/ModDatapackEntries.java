@@ -8,6 +8,7 @@ import net.Chidoziealways.everythingjapanese.worldgen.ModBiomeModifiers;
 import net.Chidoziealways.everythingjapanese.worldgen.ModConfiguredFeatures;
 import net.Chidoziealways.everythingjapanese.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;

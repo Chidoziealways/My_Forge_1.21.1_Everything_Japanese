@@ -1,6 +1,7 @@
 package net.Chidoziealways.everythingjapanese.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.Chidoziealways.everythingjapanese.block.entity.custom.GrowthChamberBlockEntity;
 import net.Chidoziealways.everythingjapanese.block.entity.custom.PedestalBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -8,7 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -53,28 +54,29 @@ public class PedestalBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos,
-                            BlockState pNewState, boolean pMovedByPiston) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            if (pLevel.getBlockEntity(pPos) instanceof PedestalBlockEntity pedestalBlockEntity) {
-                pedestalBlockEntity.drops();
-                pLevel.updateNeighbourForOutputSignal(pPos, this);
+    public BlockState playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+        // Check if the block is actually being replaced (like on block break)
+        if (pState.getBlock() != pLevel.getBlockState(pPos).getBlock()) {
+            // Get the block entity at the position and check if it's an instance of your GrowthChamberBlockEntity
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof PedestalBlockEntity pedestalBlockEntity) {
+                pedestalBlockEntity.preRemoveSideEffects(pPos, pState);  // Call drops() method on the GrowthChamberBlockEntity
             }
         }
-        super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+        return super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel,
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel,
                                               BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (pLevel.getBlockEntity(pPos) instanceof PedestalBlockEntity pedestalBlockEntity) {
             if (pPlayer.isCrouching() && !pLevel.isClientSide()) {
                 ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pPos);
-                return ItemInteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS;
             }
 
             if (pPlayer.isCrouching() && pLevel.isClientSide()) {
-                return ItemInteractionResult.SUCCESS;
+                return InteractionResult.SUCCESS;
             }
 
             if (pedestalBlockEntity.inventory.getStackInSlot(0).isEmpty() && !pStack.isEmpty()) {
@@ -89,6 +91,6 @@ public class PedestalBlock extends BaseEntityBlock {
             }
         }
 
-        return ItemInteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 }

@@ -12,20 +12,23 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class YaRenderer extends EntityRenderer<YaProjectileEntity> {
+public class YaRenderer extends EntityRenderer<YaProjectileEntity, YaRenderState> {
     public YaRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
     }
 
-    public void render(YaProjectileEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
+    @Override
+    public void render(YaRenderState state, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         pPoseStack.pushPose();
-        pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTicks, pEntity.yRotO, pEntity.getYRot()) - 90.0F));
-        pPoseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(pPartialTicks, pEntity.xRotO, pEntity.getXRot())));
+
+        ResourceLocation texture = determineTexture(state.getEntity());
+
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(state.getPartialTicks(), state.getEntity().yRotO, state.getEntity().getYRot()) - 90.0F));
+        pPoseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(state.getPartialTicks(), state.getEntity().xRotO, state.getEntity().getXRot())));
         int i = 0;
         float f = 0.0F;
         float f1 = 0.5F;
@@ -36,7 +39,7 @@ public class YaRenderer extends EntityRenderer<YaProjectileEntity> {
         float f6 = 0.15625F;
         float f7 = 0.3125F;
         float f8 = 0.05625F;
-        float f9 = (float)pEntity.shakeTime - pPartialTicks;
+        float f9 = (float)state.getEntity().shakeTime - state.getPartialTicks();
         if (f9 > 0.0F) {
             float f10 = -Mth.sin(f9 * 3.0F) * f9;
             pPoseStack.mulPose(Axis.ZP.rotationDegrees(f10));
@@ -45,7 +48,7 @@ public class YaRenderer extends EntityRenderer<YaProjectileEntity> {
         pPoseStack.mulPose(Axis.XP.rotationDegrees(45.0F));
         pPoseStack.scale(0.05625F, 0.05625F, 0.05625F);
         pPoseStack.translate(-4.0F, 0.0F, 0.0F);
-        VertexConsumer vertexconsumer = pBuffer.getBuffer(RenderType.entityCutout(this.getTextureLocation(pEntity)));
+        VertexConsumer vertexconsumer = pBuffer.getBuffer(RenderType.entityCutout(texture));
         PoseStack.Pose posestack$pose = pPoseStack.last();
         this.vertex(posestack$pose, vertexconsumer, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, pPackedLight);
         this.vertex(posestack$pose, vertexconsumer, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, pPackedLight);
@@ -65,8 +68,20 @@ public class YaRenderer extends EntityRenderer<YaProjectileEntity> {
         }
 
         pPoseStack.popPose();
-        super.render(pEntity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
+        super.render(state, pPoseStack, pBuffer, pPackedLight);
     }
+
+    @Override
+    public YaRenderState createRenderState() {
+        return new YaRenderState();
+    }
+
+    @Override
+    public void extractRenderState(YaProjectileEntity pEntity, YaRenderState pReusedState, float pPartialTick) {
+        pReusedState.setEntity(pEntity);
+        super.extractRenderState(pEntity, pReusedState, pPartialTick);
+    }
+
     public void vertex(
             PoseStack.Pose pPose,
             VertexConsumer pConsumer,
@@ -88,8 +103,8 @@ public class YaRenderer extends EntityRenderer<YaProjectileEntity> {
                 .setNormal(pPose, (float)pNormalX, (float)pNormalZ, (float)pNormalY);
     }
 
-    @Override
-    public ResourceLocation getTextureLocation(YaProjectileEntity pEntity) {
+    private ResourceLocation determineTexture(YaProjectileEntity entity) {
+        // Logic to determine the appropriate texture based on the entity's state
         return ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "textures/entity/ya/ya.png");
     }
 }

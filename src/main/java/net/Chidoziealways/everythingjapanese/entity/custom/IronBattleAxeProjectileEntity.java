@@ -39,7 +39,7 @@ public class IronBattleAxeProjectileEntity extends AbstractArrow {
     }
 
     public boolean isGrounded() {
-        return inGround;
+        return onGround();
     }
 
     @Override

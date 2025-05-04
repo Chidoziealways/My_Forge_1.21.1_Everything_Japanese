@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-public class IronBattleAxeProjectileRenderer extends EntityRenderer<IronBattleAxeProjectileEntity> {
+public class IronBattleAxeProjectileRenderer extends EntityRenderer<IronBattleAxeProjectileEntity, IronBattleAxeRenderState> {
     private IronBattleAxeProjectileModel model;
 
     public IronBattleAxeProjectileRenderer(EntityRendererProvider.Context pContext) {
@@ -22,28 +22,47 @@ public class IronBattleAxeProjectileRenderer extends EntityRenderer<IronBattleAx
     }
 
     @Override
-    public void render(IronBattleAxeProjectileEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight) {
+    public void render(IronBattleAxeRenderState state, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight) {
         pPoseStack.pushPose();
 
-        if (!pEntity.isGrounded()) {
-            pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTick, pEntity.yRotO, pEntity.getYRot())));
-            pPoseStack.mulPose(Axis.XP.rotationDegrees(pEntity.getRenderingRotation() * 5f));
+        // Determine the texture based on the entity's state
+        ResourceLocation texture = determineTexture(state.getEntity());
+
+        // Apply transformations based on the entity's movement
+        if (!state.getEntity().isGrounded()) {
+            pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(state.getpPartialTick(), state.getEntity().yRotO, state.getEntity().getYRot())));
+            pPoseStack.mulPose(Axis.XP.rotationDegrees(state.getEntity().getRenderingRotation() * 5f));
             pPoseStack.translate(0, -1.0f, 0);
         } else {
-            pPoseStack.mulPose(Axis.YP.rotationDegrees((float) pEntity.groundedOffset.y));
-            pPoseStack.mulPose(Axis.XP.rotationDegrees((float) pEntity.groundedOffset.x));
+            pPoseStack.mulPose(Axis.YP.rotationDegrees((float) state.getEntity().groundedOffset.y));
+            pPoseStack.mulPose(Axis.XP.rotationDegrees((float) state.getEntity().groundedOffset.x));
             pPoseStack.translate(0, -1.0f, 0);
         }
 
-        VertexConsumer vertexConsumer = ItemRenderer.getFoilBufferDirect(
-                pBufferSource, this.model.renderType(this.getTextureLocation(pEntity)), false, false);
+        // Render the model with the determined texture
+        VertexConsumer vertexConsumer = ItemRenderer.getFoilBuffer(
+                pBufferSource, this.model.renderType(texture), false, false);
         this.model.renderToBuffer(pPoseStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY);
+
         pPoseStack.popPose();
-        super.render(pEntity, pEntityYaw, pPartialTick, pPoseStack, pBufferSource, pPackedLight);
+
+        super.render(state, pPoseStack, pBufferSource, pPackedLight);
+    }
+
+    private ResourceLocation determineTexture(IronBattleAxeProjectileEntity entity) {
+        // Logic to determine the appropriate texture based on the entity's state
+        return ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "textures/entity/ironbattleaxe/iron_battle_axe.png");
+    }
+
+
+    @Override
+    public IronBattleAxeRenderState createRenderState() {
+        return new IronBattleAxeRenderState();
     }
 
     @Override
-    public ResourceLocation getTextureLocation(IronBattleAxeProjectileEntity pEntity) {
-        return ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "textures/entity/ironbattleaxe/iron_battle_axe.png");
+    public void extractRenderState(IronBattleAxeProjectileEntity pEntity, IronBattleAxeRenderState pReusedState, float pPartialTick) {
+        pReusedState.setEntity(pEntity);
+        super.extractRenderState(pEntity, pReusedState, pPartialTick);
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -58,11 +59,11 @@ public class ModBiomeModifiers {
 
         context.register(SPAWN_TRICERATOPS, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.BAMBOO_JUNGLE), biomes.getOrThrow(Biomes.PLAINS)),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntities.TRICERATOPS.get(), 25, 3, 5))));
+                WeightedList.of(new MobSpawnSettings.SpawnerData(ModEntities.TRICERATOPS.get(), 3, 25))));
 
         context.register(SPAWN_SIKA_DEER, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.BAMBOO_JUNGLE), biomes.getOrThrow(Biomes.PLAINS), biomes.getOrThrow(Biomes.BIRCH_FOREST), biomes.getOrThrow(Biomes.DARK_FOREST), biomes.getOrThrow(Biomes.TAIGA), biomes.getOrThrow(Biomes.SUNFLOWER_PLAINS), biomes.getOrThrow(Biomes.JUNGLE)),
-                List.of(new MobSpawnSettings.SpawnerData(ModEntities.SIKA_DEER.get(), 25, 9, 20))));
+                WeightedList.of(new MobSpawnSettings.SpawnerData(ModEntities.SIKA_DEER.get(), 9, 25))));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name){

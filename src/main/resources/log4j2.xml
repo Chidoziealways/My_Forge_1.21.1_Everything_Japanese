@@ -1,0 +1,23 @@
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %highlight{%-5level} %c{1} - %msg%n</Pattern>
+                <DisableAnsi>false</DisableAnsi>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- Your Mod-Specific Logger -->
+        <Logger name="net.Chidoziealways.everythingjapanese" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+
+        <!-- Root Logger -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>

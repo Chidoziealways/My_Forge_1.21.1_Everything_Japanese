@@ -56,13 +56,15 @@ public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
         inventory.setStackInSlot(0, ItemStack.EMPTY);
     }
 
-    public void drops() {
+    @Override
+    public void preRemoveSideEffects(BlockPos p_397404_, BlockState p_395805_) {
         SimpleContainer inv = new SimpleContainer(inventory.getSlots());
         for (int i = 0; i < inventory.getSlots(); i++) {
             inv.setItem(i, inventory.getStackInSlot(i));
         }
 
         Containers.dropContents(this.level, this.worldPosition, inv);
+        super.preRemoveSideEffects(p_397404_, p_395805_);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
-        inventory.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
+        inventory.deserializeNBT(pRegistries, pTag.getCompoundOrEmpty("inventory"));
     }
 
     @Override

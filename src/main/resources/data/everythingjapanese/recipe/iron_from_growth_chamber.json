@@ -1,0 +1,8 @@
+{
+  "type": "everythingjapanese:growth_chamber",
+  "ingredient": "minecraft:raw_iron",
+  "result": {
+    "id": "minecraft:iron_ingot"
+  },
+  "category": "ingredients"
+}

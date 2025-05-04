@@ -2,6 +2,9 @@ package net.Chidoziealways.everythingjapanese.block.entity.custom;
 
 import net.Chidoziealways.everythingjapanese.block.entity.ModBlockEntities;
 import net.Chidoziealways.everythingjapanese.item.ModItems;
+import net.Chidoziealways.everythingjapanese.recipe.GrowthChamberRecipe;
+import net.Chidoziealways.everythingjapanese.recipe.GrowthChamberRecipeInput;
+import net.Chidoziealways.everythingjapanese.recipe.ModRecipes;
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -10,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -19,6 +23,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,6 +31,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
@@ -87,13 +94,15 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         lazyItemHandler.invalidate();
     }
 
-    public void drops() {
+    @Override
+    public void preRemoveSideEffects(BlockPos p_397404_, BlockState p_395805_) {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
         for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
+        super.preRemoveSideEffects(p_397404_, p_395805_);
     }
 
     @Override
@@ -106,13 +115,16 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
 
-        itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
-        progress = pTag.getInt("growth_chamber.progress");
-        maxProgress = pTag.getInt("growth_chamber.max_progress");
+        // 1.21.5+: itemHandler likely still uses `deserializeNBT`, but watch for capability changes
+        itemHandler.deserializeNBT(registries, tag.getCompoundOrEmpty("inventory"));
+
+        this.progress = tag.getInt("growth_chamber.progress").orElse(0);
+        this.maxProgress = tag.getInt("growth_chamber.max_progress").orElse(0);
     }
+
 
     @Override
     public Component getDisplayName() {
@@ -145,7 +157,8 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(ModItems.PYRITE_INGOT.get());
+        Optional<RecipeHolder<GrowthChamberRecipe>> recipe = getCurrentRecipe();
+        ItemStack output = recipe.get().value().output();
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
@@ -161,11 +174,22 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private boolean hasRecipe() {
-        Item input = ModItems.RAW_PYRITE.get();
-        ItemStack output = new ItemStack(ModItems.PYRITE_INGOT.get());
+        Optional<RecipeHolder<GrowthChamberRecipe>> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) {
+            return false;
+        }
 
-        return itemHandler.getStackInSlot(INPUT_SLOT).is(input) && canInsertItemIntoOutputSlot(output)
+        ItemStack output = recipe.get().value().output();
+        return canInsertItemIntoOutputSlot(output)
                 && canInsertAmountIntoOutputSlot(output.getCount());
+    }
+
+    private Optional<RecipeHolder<GrowthChamberRecipe>> getCurrentRecipe() {
+        if (level instanceof ServerLevel serverLevel) {
+            return serverLevel.getServer().getRecipeManager()
+                    .getRecipeFor(ModRecipes.GROWTH_CHAMBER_TYPE.get(), new GrowthChamberRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
+        }
+        return Optional.empty();
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {

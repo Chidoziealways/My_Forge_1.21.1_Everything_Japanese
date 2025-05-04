@@ -27,6 +27,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TriceratopsEntity extends Animal {
@@ -63,7 +64,8 @@ public class TriceratopsEntity extends Animal {
         return Animal.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 60D)
                 .add(Attributes.MOVEMENT_SPEED, 0.35D)
-                .add(Attributes.FOLLOW_RANGE, 24D);
+                .add(Attributes.FOLLOW_RANGE, 24D)
+                .add(Attributes.TEMPT_RANGE, 24D);
     }
 
     @Override
@@ -73,7 +75,7 @@ public class TriceratopsEntity extends Animal {
 
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return ModEntities.TRICERATOPS.get().create(pLevel);
+        return ModEntities.TRICERATOPS.get().create(pLevel, EntitySpawnReason.BREEDING);
     }
 
     private void setupAnimationStates(){
@@ -123,12 +125,12 @@ public class TriceratopsEntity extends Animal {
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        this.entityData.set(VARIANT, pCompound.getInt("Variant"));
+        this.entityData.set(VARIANT, pCompound.getInt("Variant").orElse(0));
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty,
-                                        MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
+    public @NotNull SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty,
+                                                 EntitySpawnReason pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
         TriceratopsVariant variant = Util.getRandom(TriceratopsVariant.values(), this.random);
         this.setVariant(variant);
         return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);

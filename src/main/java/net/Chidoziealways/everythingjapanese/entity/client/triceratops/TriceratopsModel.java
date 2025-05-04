@@ -4,23 +4,27 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.Chidoziealways.everythingjapanese.entity.custom.TriceratopsEntity;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.BabyModelTransform;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 
-public class TriceratopsModel<T extends TriceratopsEntity> extends HierarchicalModel<T> {
-    // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION =
-            new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "triceratops"), "main");
+import java.util.Set;
+
+public class TriceratopsModel<T extends TriceratopsEntity> extends EntityModel<TriceratopsRenderState> {
+    public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(true, 8.0F, 6.0F, Set.of("head"));
+
     private final ModelPart body;
     private final ModelPart head;
 
     public TriceratopsModel(ModelPart root) {
+        super(root);
         this.body = root.getChild("body");
         this.head = body.getChild("upper").getChild("neck").getChild("head");
     }
@@ -158,12 +162,13 @@ public class TriceratopsModel<T extends TriceratopsEntity> extends HierarchicalM
     }
 
     @Override
-    public void setupAnim(TriceratopsEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(TriceratopsRenderState state) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
-        this.applyHeadRotation(netHeadYaw, headPitch);
+        this.applyHeadRotation(state.getNetHeadYaw(), state.getHeadPitch());
 
-        this.animateWalk(TriceratopsAnimations.ANIM_TRICERATOPS_WALKING, limbSwing, limbSwingAmount, 2f, 2.5f);
-        this.animate(entity.idleAnimationState, TriceratopsAnimations.ANIM_TRICERATOPS_IDLE, ageInTicks, 1f);
+        this.animateWalk(TriceratopsAnimations.ANIM_TRICERATOPS_WALKING, state.getLimbSwing(), state.getLimbSwingAmount(), 2f, 2.5f);
+        this.animate(state.getEntity().idleAnimationState, TriceratopsAnimations.ANIM_TRICERATOPS_IDLE, state.getAgeInTicks(), 1f);
+        super.setupAnim(state);
     }
 
     private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch){
@@ -174,13 +179,4 @@ public class TriceratopsModel<T extends TriceratopsEntity> extends HierarchicalM
         this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
     }
 
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        body.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
-    }
-
-    @Override
-    public ModelPart root() {
-        return body;
-    }
 }

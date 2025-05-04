@@ -1,0 +1,8 @@
+{
+  "type": "everythingjapanese:growth_chamber",
+  "ingredient": "minecraft:raw_copper",
+  "result": {
+    "id": "minecraft:copper_ingot"
+  },
+  "category": "ingredients"
+}

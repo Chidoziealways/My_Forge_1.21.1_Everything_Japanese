@@ -4,18 +4,17 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.Tier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HammerItem extends DiggerItem {
-    public HammerItem(Tier pTier, Properties pProperties) {
-        super(pTier, BlockTags.MINEABLE_WITH_PICKAXE, pProperties);
+public class HammerItem extends Item {
+    public HammerItem(Item.Properties pProperties) {
+        super(pProperties);
     }
 
     public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initialBlockPos, ServerPlayer player) {

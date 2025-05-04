@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -46,7 +47,8 @@ public class SikaDeerEntity extends Animal{
         return Animal.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 60D)
                 .add(Attributes.MOVEMENT_SPEED, 0.35D)
-                .add(Attributes.FOLLOW_RANGE, 24D);
+                .add(Attributes.FOLLOW_RANGE, 24D)
+                .add(Attributes.TEMPT_RANGE, 24D);
     }
 
     @Override
@@ -56,7 +58,7 @@ public class SikaDeerEntity extends Animal{
 
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return ModEntities.SIKA_DEER.get().create(pLevel);
+        return ModEntities.SIKA_DEER.get().create(pLevel, EntitySpawnReason.BREEDING);
     }
 
     private void setupAnimationStates(){

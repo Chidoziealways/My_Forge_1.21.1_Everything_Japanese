@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -44,20 +44,20 @@ public class GrowthChamberBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
+    public BlockState playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+        // Check if the block is actually being replaced (like on block break)
+        if (pState.getBlock() != pLevel.getBlockState(pPos).getBlock()) {
+            // Get the block entity at the position and check if it's an instance of your GrowthChamberBlockEntity
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof GrowthChamberBlockEntity growthChamberBlockEntity) {
-                growthChamberBlockEntity.drops();
+                growthChamberBlockEntity.preRemoveSideEffects(pPos, pState);  // Call drops() method on the GrowthChamberBlockEntity
             }
         }
-
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+        return super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos,
-                                              Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof GrowthChamberBlockEntity growthChamberBlockEntity) {
@@ -67,7 +67,7 @@ public class GrowthChamberBlock extends BaseEntityBlock {
             }
         }
 
-        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable

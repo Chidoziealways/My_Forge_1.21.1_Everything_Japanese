@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.phys.Vec3;
 
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity> {
     public PedestalBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
@@ -23,7 +24,7 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
 
     @Override
     public void render(PedestalBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
-                       MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+                       MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay, Vec3 cameraPos) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack stack = pBlockEntity.inventory.getStackInSlot(0);
 
@@ -31,9 +32,11 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         pPoseStack.translate(0.5f, 1.15f, 0.5f);
         pPoseStack.mulPose(Axis.YP.rotationDegrees(pBlockEntity.getRenderingRotation()));
 
-        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
+        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()),
+                OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
         pPoseStack.popPose();
     }
+
 
     private int getLightLevel(Level level, BlockPos pos) {
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);

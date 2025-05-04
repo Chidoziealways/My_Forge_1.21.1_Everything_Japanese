@@ -13,7 +13,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -28,7 +27,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 public class Drinks extends Item {
     private static final int DRINK_DURATION = 32;
 
-    public Drinks(Item.Properties pProperties) {
+    public Drinks(Properties pProperties) {
         super(pProperties);
         System.out.println(DRINK_DURATION);
     }
@@ -51,11 +50,11 @@ public class Drinks extends Item {
             PotionContents potioncontents = pStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
             potioncontents.forEachEffect(p_327729_ -> {
                 if (p_327729_.getEffect().value().isInstantenous()) {
-                    p_327729_.getEffect().value().applyInstantenousEffect(player, player, pEntityLiving, p_327729_.getAmplifier(), 1.0);
+                    p_327729_.getEffect().value().applyInstantenousEffect(((ServerLevel) pLevel), player, pEntityLiving, player, p_327729_.getAmplifier(), 1.0);
                 } else {
                     pEntityLiving.addEffect(p_327729_);
                 }
-            });
+            }, 2.0f);
         }
 
         if (player != null) {
@@ -110,7 +109,7 @@ public class Drinks extends Item {
             level.playSound(null, blockpos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(null, GameEvent.FLUID_PLACE, blockpos);
             level.setBlockAndUpdate(blockpos, Blocks.MUD.defaultBlockState());
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
             return InteractionResult.PASS;
         }
@@ -122,12 +121,12 @@ public class Drinks extends Item {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.DRINK;
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) {
+        return ItemUseAnimation.DRINK;
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
+    public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         return ItemUtils.startUsingInstantly(pLevel, pPlayer, pHand);
     }
 }

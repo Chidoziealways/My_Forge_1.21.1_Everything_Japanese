@@ -20,6 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.BlockItemStateProperties;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class ChiselItem extends Item {
     private static final Map<Block, Block> CHISEL_MAP =
@@ -83,20 +85,20 @@ public class ChiselItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, TooltipDisplay display, Consumer<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         if(Screen.hasShiftDown()){
-            pTooltipComponents.add(Component.translatable("tooltip.everythingjapanese.chisel_item"));
+            pTooltipComponents.accept(Component.translatable("tooltip.everythingjapanese.chisel_item"));
         }else {
-            pTooltipComponents.add(Component.translatable("tooltip.everythingjapanese.chisel_item.shift_down"));
+            pTooltipComponents.accept(Component.translatable("tooltip.everythingjapanese.chisel_item.shift_down"));
         }
 
         if(pStack.get(ModDataComponentTypes.COORDINATES.get()) != null){
-            pTooltipComponents.add(Component.literal("Last Block Changed at :" + pStack.get(ModDataComponentTypes.COORDINATES.get())));
+            pTooltipComponents.accept(Component.literal("Last Block Changed at :" + pStack.get(ModDataComponentTypes.COORDINATES.get())));
         }
         if(pStack.get(DataComponents.BLOCK_STATE) != null){
-            pTooltipComponents.add(Component.literal("Last Block Changed's state:" + pStack.get(DataComponents.BLOCK_STATE)));
+            pTooltipComponents.accept(Component.literal("Last Block Changed's state:" + pStack.get(DataComponents.BLOCK_STATE)));
         }
 
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        super.appendHoverText(pStack, pContext, display, pTooltipComponents, pTooltipFlag);
     }
 }

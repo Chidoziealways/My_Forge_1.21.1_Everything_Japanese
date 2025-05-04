@@ -5,6 +5,7 @@ import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,15 +19,22 @@ public class PedestalScreen extends AbstractContainerScreen<PedestalMenu> {
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, GUI_TEXTURE);
+    protected void renderBg(GuiGraphics gui, float partialTicks, int mouseX, int mouseY) {
+        // 1) Compute top‑left corner to center the GUI
+        int x = (this.width  - this.imageWidth ) / 2;
+        int y = (this.height - this.imageHeight) / 2;
 
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
-
-        guiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+        // 2) Draw the full background in one call
+        //    – no more setShader/setShaderTexture calls
+        //    – blit now takes a RenderType supplier + texture + coords + texture‑size
+        gui.blit(
+                RenderType::guiTextured,      // use the built‑in GUI shader/type :contentReference[oaicite:0]{index=0}
+                GUI_TEXTURE,                  // your GUI texture ResourceLocation
+                x, y,                         // screen position
+                0, 0,                         // u/v start in the texture
+                imageWidth, imageHeight,      // width/height to draw
+                256, 256                      // full PNG size of your texture :contentReference[oaicite:1]{index=1}
+        );
     }
 
     @Override

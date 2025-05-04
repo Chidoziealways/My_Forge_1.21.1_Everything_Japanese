@@ -55,9 +55,4 @@ public class MagicBlock extends Block {
         return item.is(ModTags.Items.TRANSFORMABLE_ITEMS);
     }
 
-    @Override
-    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        pTooltipComponents.add(Component.translatable("tooltip.everythingjapanese.magic_block.tooltip"));
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-    }
 }

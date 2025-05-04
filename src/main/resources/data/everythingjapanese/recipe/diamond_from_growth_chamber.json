@@ -1,0 +1,8 @@
+{
+  "type": "everythingjapanese:growth_chamber",
+  "ingredient": "minecraft:coal",
+  "result": {
+    "id": "minecraft:diamond"
+  },
+  "category": "ingredients"
+}

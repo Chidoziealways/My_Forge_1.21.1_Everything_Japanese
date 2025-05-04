@@ -4,13 +4,11 @@ import net.Chidoziealways.everythingjapanese.block.state.properties.ModBlockStat
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
@@ -102,8 +100,10 @@ public class ModdedCakeBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-        return facing == Direction.DOWN && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+    public BlockState updateShape(BlockState state, LevelReader reader, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction facing, BlockPos pos2, BlockState newState, RandomSource randomSource) {
+        return facing == Direction.DOWN && !state.canSurvive(reader, currentPos)
+                ? Blocks.AIR.defaultBlockState()
+                : super.updateShape(state, reader, scheduledTickAccess, currentPos, facing, pos2, newState, randomSource);
     }
 
     @Override

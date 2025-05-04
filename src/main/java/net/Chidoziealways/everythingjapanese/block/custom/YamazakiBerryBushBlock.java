@@ -21,7 +21,7 @@ public class YamazakiBerryBushBlock extends SweetBerryBushBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean bool) {
         return new ItemStack(ModItems.YAMAZAKI_BERRIES.get());
     }
 
@@ -36,7 +36,7 @@ public class YamazakiBerryBushBlock extends SweetBerryBushBlock {
             BlockState blockstate = pState.setValue(AGE, Integer.valueOf(1));
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
             return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
         }

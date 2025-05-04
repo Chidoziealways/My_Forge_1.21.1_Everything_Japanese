@@ -1,5 +1,6 @@
 package net.Chidoziealways.everythingjapanese.block.custom;
 
+import net.Chidoziealways.everythingjapanese.block.state.properties.ModBlockStateProperties;
 import net.Chidoziealways.everythingjapanese.item.ModItems;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -10,7 +11,6 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class RiceCropBlock extends CropBlock {
     public static final int MAX_AGE = 4;
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 4);
 
     public RiceCropBlock(Properties properties) {
         super(properties);
@@ -23,7 +23,7 @@ public class RiceCropBlock extends CropBlock {
 
     @Override
     public IntegerProperty getAgeProperty() {
-        return AGE;
+        return ModBlockStateProperties.AGE_4;
     }
 
     @Override
@@ -33,6 +33,6 @@ public class RiceCropBlock extends CropBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(AGE);
+        pBuilder.add(ModBlockStateProperties.AGE_4);
     }
 }

@@ -28,6 +28,16 @@ public class ModCreativeModeTabs {
                     })
                     .build());
 
+    public static final RegistryObject<CreativeModeTab> JUTSU = CREATIVE_MODE_TABS.register("jutsu",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SMALL_FIREBALL_SCROLL.get()))
+                    .title(Component.literal("Jutsu"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.SMALL_FIREBALL_SCROLL.get());
+                        output.accept(ModItems.WINDBALL_SCROLL.get());
+                        output.accept(ModItems.LARGE_FIREBALL_SCROLL.get());
+                    })
+                    .build());
+
     public static final RegistryObject<CreativeModeTab> JAPANESE_ENTITIES = CREATIVE_MODE_TABS.register("japanese_entities",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TRICERATOPS_SPAWN_EGG.get()))
                     .title(Component.translatable("creativetab.everythingjapanese.japanese_entities"))
@@ -118,11 +128,11 @@ public class ModCreativeModeTabs {
 
 
     public static final RegistryObject<CreativeModeTab> JAPANESE_ARMOR_TRIMS = CREATIVE_MODE_TABS.register("japanese_armor_trims",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.KOI_FISH_SMITHING_TEMPLATE.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE.get()))
                     .withTabsBefore(JAPANESE_ITEMS.getId())
                     .title(Component.translatable("creativetab.everythingjapanese.japanese_armor_trims"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.KOI_FISH_SMITHING_TEMPLATE.get());
+                        output.accept(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE.get());
                     })
                     .build());
 

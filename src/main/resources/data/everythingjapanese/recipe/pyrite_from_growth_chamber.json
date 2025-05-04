@@ -1,0 +1,8 @@
+{
+  "type": "everythingjapanese:growth_chamber",
+  "ingredient": "everythingjapanese:raw_pyrite",
+  "result": {
+    "id": "everythingjapanese:pyrite_ingot"
+  },
+  "category": "ingredients"
+}

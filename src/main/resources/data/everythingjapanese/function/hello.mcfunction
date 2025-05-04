@@ -1,0 +1,1 @@
+execute as @a at Dev run summon zombie

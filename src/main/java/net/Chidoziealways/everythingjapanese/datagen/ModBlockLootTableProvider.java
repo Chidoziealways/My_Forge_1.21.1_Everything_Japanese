@@ -1,8 +1,7 @@
 package net.Chidoziealways.everythingjapanese.datagen;
 
 import net.Chidoziealways.everythingjapanese.block.ModBlocks;
-import net.Chidoziealways.everythingjapanese.block.custom.ModdedCakeBlock;
-import net.Chidoziealways.everythingjapanese.block.custom.RiceCropBlock;
+import net.Chidoziealways.everythingjapanese.block.state.properties.ModBlockStateProperties;
 import net.Chidoziealways.everythingjapanese.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -13,10 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
-import net.minecraft.world.level.block.piston.MovingPistonBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -25,7 +21,6 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
@@ -85,7 +80,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         System.out.println("17");
 
         LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_CROP.get())
-                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RiceCropBlock.AGE, 4));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ModBlockStateProperties.AGE_4, 4));
 
         this.add(ModBlocks.RICE_CROP.get(), this.createCropDrops(ModBlocks.RICE_CROP.get(),
                 ModItems.RAW_RICE.get(), ModItems.RICE_SEEDS.get(), lootItemConditionBuilder));

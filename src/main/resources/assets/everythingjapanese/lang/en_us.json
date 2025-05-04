@@ -1,9 +1,16 @@
 {
+  "argument.jutsu.id.invalid": "Unknown jutsu '%s'",
+  "arguments.jutsu.component.unknown": "Unknown jutsu component '%s'",
+  "arguments.jutsu.component.malformed": "Malformed '%s' component: '%s'",
+  "arguments.jutsu.component.expected": "Expected jutsu component",
+  "arguments.jutsu.component.repeated": "Jutsu component '%s' was repeated, but only one value can be specified",
+  "arguments.jutsu.malformed": "Malformed jutsu: '%s'",
+
   "block.everythingjapanese.pyrite_block": "黄鉄鉱ブロック(おうてっこうブロック)(Block of Pyrite)",
   "block.everythingjapanese.nephrite_block": "ネフライトブロック(Block of Nephrite)",
   "block.everythingjapanese.raw_pyrite_block": "黄鉄鉱原石ブロック(おうてっこうげんせきブロック)(Block of Raw Pyrite)",
   "block.everythingjapanese.pyrite_ore": "黄鉄鉱鉱石(おうてっこうこうせき)(Pyrite Ore)",
-  "block.everythingjapanese.pyrite_deepslate_ore": "黄鉄鉱ディープスレート鉱石(おうてっこうディープスレート鉱石)(Pyrite Deepslate Ore)",
+  "block.everythingjapanese.pyrite_deepslate_ore": "黄鉄鉱ディープスレート鉱石(おうてっこうディープスレートこうせき)(Pyrite Deepslate Ore)",
   "block.everythingjapanese.nephrite_ore": "ネフライト鉱石(おうてっこうこうせき)(Nephrite Ore)",
   "block.everythingjapanese.nephrite_deepslate_ore": "ネフライトディープスレート鉱石(おうてっこうディープスレートこうせき)(Nephrite Deepslate Ore)",
   "block.everythingjapanese.transformer_block": "Transformer Block",
@@ -80,6 +87,9 @@
   "item.everythingjapanese.nephrite_hoe": "ネフライト鍬(ネフライトくわ)(Nephrite Hoe)",
   "item.everythingjapanese.pyrite_helmet": "黄鉄鉱ヘルメット(Pyrite Helmet)",
   "item.everythingjapanese.pyrite_chestplate": "黄鉄鉱チェストプレート(Pyrite Chestplate)",
+  "item.everythingjapanese.small_fireball_scroll": "Small Fireball Jutsu Scroll",
+  "item.everythingjapanese.large_fireball_scroll": "Large Fireball Jutsu Scroll",
+  "item.everythingjapanese.windball_scroll": "Windball Jutsu Scroll",
   "item.everythingjapanese.pyrite_leggings": "黄鉄鉱レギンス(Pyrite Leggings)",
   "item.everythingjapanese.pyrite_boots": "黄鉄鉱ブーツ(Pyrite Boots)",
   "item.everythingjapanese.nephrite_helmet": "ネフライトヘルメット(Nephrite Helmet)",
@@ -107,6 +117,14 @@
   "item.everythingjapanese.pyrite_battle_axe": "黄鉄鉱の戦斧(おうてっこうのせんぷ)(Pyrite Battle Axe)",
   "item.everythingjapanese.iron_battle_axe": "鉄の戦斧(てつのせんぷ)(Iron Battle Axe)",
   "item.everythingjapanese.radiation_staff": "Radiation Staff",
+
+  "jutsu.everythingjapanese.small_fireball": "Small Fireball",
+  "jutsu.everythingjapanese.small_windball": "Windball",
+  "jutsu.everythingjapanese.large_fireball": "Large Fireball",
+
+  "key.everythingjapanese.cast_jutsu": "Cast Jutsu",
+  "key.everythingjapanese.cycle_jutsu": "Cycle Jutsu",
+  "key.categories.jutsu": "Jutsu(術)",
 
   "painting.everythingjapanese.samurai.title": "Samurai",
   "painting.everythingjapanese.samurai.author": "Chidoziealways",

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "everythingjapanese:pyrite_ingot"
+  },
+  "pattern": [
+    "AAA",
+    "A A",
+    "A A"
+  ],
+  "result": {
+    "count": 1,
+    "id": "everythingjapanese:pyrite_leggings"
+  }
+}

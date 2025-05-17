@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "everythingjapanese:pyrite_ingot",
+    "B": "minecraft:stick"
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "everythingjapanese:pyrite_battle_axe"
+  }
+}

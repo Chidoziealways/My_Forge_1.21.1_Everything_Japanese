@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "everythingjapanese:raw_pyrite_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "everythingjapanese:raw_pyrite"
+  }
+}

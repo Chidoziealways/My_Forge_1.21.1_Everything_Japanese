@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_rice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:raw_rice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everythingjapanese:rice_from_smelting_raw_rice"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_rice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everythingjapanese:rice_from_smelting_raw_rice"
+    ]
+  }
+}

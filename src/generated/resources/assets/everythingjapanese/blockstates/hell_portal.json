@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "everythingjapanese:block/hell_portal_ns"
+    },
+    "axis=z": {
+      "model": "everythingjapanese:block/hell_portal_ew"
+    }
+  }
+}

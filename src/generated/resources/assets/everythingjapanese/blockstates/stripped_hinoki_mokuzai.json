@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "everythingjapanese:block/stripped_hinoki_mokuzai",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "everythingjapanese:block/stripped_hinoki_mokuzai"
+    },
+    "axis=z": {
+      "model": "everythingjapanese:block/stripped_hinoki_mokuzai",
+      "x": 90
+    }
+  }
+}

@@ -21,6 +21,7 @@ import net.Chidoziealways.everythingjapanese.loot.ModLootModifiers;
 import net.Chidoziealways.everythingjapanese.network.ModNetwork;
 import net.Chidoziealways.everythingjapanese.particle.ModParticles;
 import net.Chidoziealways.everythingjapanese.particle.PyriteParticles;
+import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes;
 import net.Chidoziealways.everythingjapanese.potion.ModPotions;
 import net.Chidoziealways.everythingjapanese.recipe.ModRecipes;
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes;
@@ -30,6 +31,8 @@ import net.Chidoziealways.everythingjapanese.sound.ModSounds;
 import net.Chidoziealways.everythingjapanese.tests.ModGameTests;
 import net.Chidoziealways.everythingjapanese.util.KeyPressHandler;
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers;
+//import net.Chidoziealways.everythingjapanese.worldgen.biome.ModTerrablender;
+//import net.Chidoziealways.everythingjapanese.worldgen.biome.surface.ModSurfaceRules;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -63,6 +66,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.spongepowered.asm.launch.MixinBootstrap;
+//import terrablender.api.SurfaceRuleManager;
 
 import java.util.Optional;
 
@@ -84,6 +88,7 @@ public class EverythingJapanese {
         MinecraftForge.EVENT_BUS.register(this);
 
         MixinBootstrap.init();
+        ModPoiTypes.register(modEventBus);
         ModGameTests.register(modEventBus);
         ModJutsus.register(modEventBus);
         logDebug("Registering Registries");
@@ -119,6 +124,7 @@ public class EverythingJapanese {
         logDebug("Registering Recipes");
         logDebug("Hello");
         ModArgumentTypes.register(modEventBus);
+        //ModTerrablender.registerBiomes();
 
         // Register the commonSetup method for mod-loading
         modEventBus.addListener(this::commonSetup);
@@ -137,6 +143,7 @@ public class EverythingJapanese {
         event.enqueueWork(() -> {
             ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS.get(), 0.6f);
             ComposterBlock.COMPOSTABLES.put(ModItems.RAW_RICE.get(), 0.85f);
+            //SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
         });
     }
 
@@ -200,6 +207,8 @@ public class EverythingJapanese {
                 ItemBlockRenderTypes.setRenderLayer(ModBlocks.HINOKI_NAEGI.get(), RenderType.cutout());
                 ItemBlockRenderTypes.setRenderLayer(ModBlocks.YAMAZAKI_BERRY_BUSH.get(), RenderType.cutout());
                 ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), RenderType.cutout());
+                ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_DOOR.get(), RenderType.cutout());
+                ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_TRAPDOOR.get(), RenderType.cutout());
 
                 EntityRenderers.register(ModEntities.TRICERATOPS.get(), TriceratopsRenderer::new);
                 EntityRenderers.register(ModEntities.SIKA_DEER.get(), SikaDeerRenderer::new);

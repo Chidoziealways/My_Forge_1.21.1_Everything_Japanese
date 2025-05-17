@@ -21,11 +21,11 @@ public class ChakraRegenerationHandler {
         if (event.phase == TickEvent.Phase.END) {
             for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
                 player.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(chakra -> {
-                    int currentChakra = chakra.getChakra();
+                    float currentChakra = chakra.getChakra();
                     int maxChakra = chakra.getMaxChakra();
                     chakra.updateMaxChakraBasedOnXP(player.experienceLevel);
                     if (currentChakra < maxChakra) {
-                        chakra.addChakra(1);// Regenerate 1 Chakra every tick, adjust as needed
+                        chakra.addChakra(0.01f);// Regenerate 1 Chakra every tick, adjust as needed
                         player.level().addParticle(ParticleTypes.ENCHANT, player.getX(), player.getY(), player.getZ(), 0, 0.5, 0);
                     }
                 });

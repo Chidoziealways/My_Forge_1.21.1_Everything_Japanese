@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "pyrite",
   "ingredients": [
-    {
-      "item": "everythingjapanese:pyrite_ingot"
-    }
+    "everythingjapanese:pyrite_ingot"
   ],
   "result": {
     "count": 1,

@@ -6,10 +6,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 
 public class Chakra implements IChakra{
-    private int chakra = 100; // Default Chakra amount
+    private float chakra = 100; // Default Chakra amount
     private int maxChakra = 100;
 
-    public Chakra(int chakra, int maxChakra) {
+    public Chakra(float chakra, int maxChakra) {
         this.chakra = chakra;
         this.maxChakra = maxChakra;
     }
@@ -18,22 +18,22 @@ public class Chakra implements IChakra{
     }
 
     @Override
-    public int getChakra() {
+    public float getChakra() {
         return chakra;
     }
 
     @Override
-    public void setChakra(int amount) {
+    public void setChakra(float amount) {
         chakra = Math.min(amount, maxChakra);
     }
 
     @Override
-    public void addChakra(int amount) {
+    public void addChakra(float amount) {
         setChakra(chakra + amount);
     }
 
     @Override
-    public void subtractChakra(int amount) {
+    public void subtractChakra(float amount) {
         setChakra(chakra - amount);
     }
 
@@ -70,7 +70,7 @@ public class Chakra implements IChakra{
     }
 
     public static final Codec<IChakra> CODEC = RecordCodecBuilder.create(iChakraInstance -> iChakraInstance.group(
-            Codec.INT.fieldOf("chakra").forGetter(IChakra::getChakra),
+            Codec.FLOAT.fieldOf("chakra").forGetter(IChakra::getChakra),
             Codec.INT.fieldOf("maxChakra").forGetter(IChakra::getMaxChakra)
     ).apply(iChakraInstance, Chakra::new));
 }

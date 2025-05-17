@@ -1,16 +1,16 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "priority": 1100,
-  "package": "net.Chidoziealways.everythingjapanese.mixins",
-  "compatibilityLevel": "JAVA_21",
-  "refmap": "everythingjapanese.refmap.json",
-  "mixins": [
-    "GuiMixin"
-  ],
   "client": [],
-  "server": [],
+  "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "minVersion": "0.8",
+  "mixins": [
+    "GuiMixin",
+    "PortalForcerMixin",
+    "PortalShapeMixin"
+  ],
+  "package": "net.Chidoziealways.everythingjapanese.mixins",
+  "refmap": "everythingjapanese.refmap.json",
+  "required": true
 }

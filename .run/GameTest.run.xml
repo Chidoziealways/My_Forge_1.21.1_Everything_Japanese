@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GameTest" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <envs>
+      <env name="MOD_CLASSES" value="$PROJECT_DIR$/../EverythingJapaneseForge\build\sourcesSets\main" />
+      <env name="MCP_MAPPINGS" value="parchment_1.21.4-2025.03.23-1.21.5" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="net.minecraftforge.bootstrap.ForgeBootstrap" />
+    <module name="EverythingJapaneseForge.main" />
+    <option name="PROGRAM_PARAMETERS" value="--launchTarget forge_userdev_gametest --version MOD_DEV --assetIndex 24 --assetsDir C:\Users\uzowu\.gradle\caches\forge_gradle\assets --gameDir . -mixin.config=everythingjapanese.mixins.json" />
+    <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES -Dforge.enabledGameTestNamespaces=everythingjapanese -Dforge.enableGameTest=true -Djava.net.preferIPv6Addresses=system -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -Dlog4j.skipJansi=false  -Dlog4j.configurationFile=src/main/resources/log4j2.xml -Dmixin.env.remapRefMap=true -Dmixin.env.refMapRemappingFile=$PROJECT_DIR$/build/createSrgToMcp/output.srg" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -5,10 +5,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.event.network.CustomPayloadEvent;
 
-public record ChakraSyncPacket(int chakra) {
+public record ChakraSyncPacket(float chakra) {
 
     public static void encode(ChakraSyncPacket msg, FriendlyByteBuf buffer) {
-        buffer.writeInt(msg.chakra);
+        buffer.writeFloat(msg.chakra);
     }
 
     public static ChakraSyncPacket decode(FriendlyByteBuf buffer) {

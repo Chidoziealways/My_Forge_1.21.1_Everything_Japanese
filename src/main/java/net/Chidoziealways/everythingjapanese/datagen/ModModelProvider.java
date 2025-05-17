@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -131,6 +132,18 @@ public class ModModelProvider extends ModelProvider {
             createPlantWithDefaultItem(pBlock, pPottedBlock, pPlantType);
         }
 
+        public void createHellPortalBlock() {
+            this.blockStateOutput
+                    .accept(
+                            MultiVariantGenerator.dispatch(ModBlocks.HELL_PORTAL.get())
+                                    .with(
+                                            PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_AXIS)
+                                                    .select(Direction.Axis.X, plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.HELL_PORTAL.get(), "_ns")))
+                                                    .select(Direction.Axis.Z, plainVariant(ModelLocationUtils.getModelLocation(ModBlocks.HELL_PORTAL.get(), "_ew")))
+                                    )
+                    );
+        }
+
     }
 
     @Override
@@ -167,6 +180,7 @@ public class ModModelProvider extends ModelProvider {
         generators.createTintedLeaves(ModBlocks.HINOKI_HA.get(), TexturedModel.LEAVES, -12012264);
         generators.createSapling(ModBlocks.HINOKI_NAEGI.get(), ModBlocks.POTTED_HINOKI_NAEGI.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         generators.createTrivialCube(ModBlocks.GROWTH_CHAMBER.get());
+        generators.createHellPortalBlock();
 
         return generators;
     }

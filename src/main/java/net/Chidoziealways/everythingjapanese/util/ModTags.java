@@ -24,6 +24,7 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_NEPHRITE_TOOL = createBlockTag("needs_nephrite_tool");
         public static final TagKey<Block> INCORRECT_FOR_PYRITE_TOOL = createBlockTag("incorrect_for_pyrite_tool");
         public static final TagKey<Block> INCORRECT_FOR_NEPHRITE_TOOL = createBlockTag("incorrect_for_nephrite_tool");
+        public static final TagKey<Block> INFINIBURN_HELL = createBlockTag("infiniburn_hell");
 
         private Blocks() {
         }

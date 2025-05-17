@@ -5,10 +5,10 @@ import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 
 @AutoRegisterCapability
 public interface IChakra {
-    int getChakra();
-    void setChakra(int amount);
-    void addChakra(int amount);
-    void subtractChakra(int amount);
+    float getChakra();
+    void setChakra(float amount);
+    void addChakra(float amount);
+    void subtractChakra(float amount);
     int getMaxChakra();
     void setMaxChakra(int max);
     CompoundTag serializeNBT();

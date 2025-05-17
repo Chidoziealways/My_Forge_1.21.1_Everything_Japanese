@@ -1,7 +1,7 @@
 package net.Chidoziealways.everythingjapanese.jutsu;
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
-import net.Chidoziealways.everythingjapanese.jutsu.cutsom.LargeFireballJutsu;
+import net.Chidoziealways.everythingjapanese.jutsu.cutsom.LargeFireballJutsuLvel1;
 import net.Chidoziealways.everythingjapanese.jutsu.cutsom.SmallFireballJutsu;
 import net.Chidoziealways.everythingjapanese.jutsu.cutsom.SmallWindballJutsu;
 import net.Chidoziealways.everythingjapanese.util.ModRegistries;
@@ -25,7 +25,7 @@ public class ModJutsus {
             SmallWindballJutsu::new);
 
     public static final RegistryObject<Jutsu> LARGE_FIREBALL = JUTSUS.register("large_fireball",
-            LargeFireballJutsu::new);
+            LargeFireballJutsuLvel1::new);
 
     public static void register(IEventBus eventBus) {
         JUTSUS.register(eventBus);

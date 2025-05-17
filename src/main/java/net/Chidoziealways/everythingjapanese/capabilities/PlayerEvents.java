@@ -1,14 +1,20 @@
 package net.Chidoziealways.everythingjapanese.capabilities;
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
+import net.Chidoziealways.everythingjapanese.worldgen.dimension.ModDimensions;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Relative;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = EverythingJapanese.MOD_ID)
 public class PlayerEvents {

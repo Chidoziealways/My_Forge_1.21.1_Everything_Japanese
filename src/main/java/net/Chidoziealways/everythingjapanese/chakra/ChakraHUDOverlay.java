@@ -20,22 +20,7 @@ import org.slf4j.LoggerFactory;
 public class ChakraHUDOverlay {
     private static final Logger log = LoggerFactory.getLogger(ChakraHUDOverlay.class);
 
-    @SubscribeEvent
-    public static void onRender(TickEvent.RenderTickEvent.Post event) {
-        if (event.phase == TickEvent.Phase.END) {
-            Minecraft minecraft = Minecraft.getInstance();
-            Player player = minecraft.player;
-            if (player == null || minecraft.screen != null) return;
-
-             GuiGraphics graph = new GuiGraphics(minecraft, minecraft.renderBuffers().bufferSource());
-
-            player.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(iChakra -> {
-                renderChakraBar(graph, iChakra.getChakra(), iChakra.getMaxChakra());
-            });
-        }
-    }
-
-    public static void renderChakraBar(GuiGraphics guiGraphics, int chakra, int maxChakra) {
+    public static void renderChakraBar(GuiGraphics guiGraphics, float chakra, int maxChakra) {
         Minecraft minecraft = Minecraft.getInstance();
         Font font = minecraft.font;
 
@@ -47,25 +32,25 @@ public class ChakraHUDOverlay {
         int barHeight = 10;
         int x = screenWidth / 2 - (barWidth / 2); // Center horizontally
         int y = screenHeight / 2 - 51; // Position above hotbar
-        log.debug("ScreenWidth: {}, ScreenHeight: {}, x: {}, y: {}, BarWidth: {}, BarHeight: {}", screenWidth, screenHeight, x, y, barWidth, barHeight);
+        //log.debug("ScreenWidth: {}, ScreenHeight: {}, x: {}, y: {}, BarWidth: {}, BarHeight: {}", screenWidth, screenHeight, x, y, barWidth, barHeight);
 
         if (maxChakra <= 0) maxChakra = 1;
 
         // Background bar
         guiGraphics.fill(x, y, x + barWidth, y + barHeight, 0xFF555555); // Gray background
-        log.debug("Background Minx: {}, Background MinY: {}, Background MaxX: {}, Background MaxY: {}", x, y, x + barWidth, y + barHeight);
+        //log.debug("Background Minx: {}, Background MinY: {}, Background MaxX: {}, Background MaxY: {}", x, y, x + barWidth, y + barHeight);
 
         // Foreground bar
         int filledWidth = (int) ((chakra / (float) maxChakra) * (barWidth - 2));
         guiGraphics.fill(x + 1, y + 1, x + 1 + filledWidth, y + barHeight - 1, 0xFF0000FF); // Blue bar
-        log.debug("Foreground MinX: {}, Foreground MinY: {}, Foreground MaxX: {}, Foreground MaxY: {}", x + 1, y + 1, x + 1 + filledWidth, y + barHeight - 1);
+        //log.debug("Foreground MinX: {}, Foreground MinY: {}, Foreground MaxX: {}, Foreground MaxY: {}", x + 1, y + 1, x + 1 + filledWidth, y + barHeight - 1);
 
         // Text overlay
         String chakraText = chakra + " / " + maxChakra;
         int textWidth = font.width(chakraText);
-        log.debug("Chakra: {}, MaxChakra: {}", chakra, maxChakra);
+        //log.debug("Chakra: {}, MaxChakra: {}", chakra, maxChakra);
         guiGraphics.drawString(font, chakraText, x + (barWidth - textWidth) / 2, y - 10, 0xFFFFFF, false);
-        log.debug("String X: {}, String Y: {}", x + (barWidth - textWidth) / 2, y - 10);
-        log.debug("Font: {}", font);
+        //log.debug("String X: {}, String Y: {}", x + (barWidth - textWidth) / 2, y - 10);
+        //log.debug("Font: {}", font);
     }
 }

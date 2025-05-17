@@ -32,7 +32,7 @@ public class GetChakraCommand {
     }
 
     private static int getChakra(CommandSourceStack sourceStack, Player target) {
-        target.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(iChakra -> sourceStack.sendSuccess(() -> Component.literal(target + "'s Current Chakra: " + iChakra.getChakra()), true));
+        target.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(iChakra -> sourceStack.sendSuccess(() -> Component.literal(target.getName().toString() + "'s Current Chakra: " + iChakra.getChakra()), true));
         return Command.SINGLE_SUCCESS;
     }
 

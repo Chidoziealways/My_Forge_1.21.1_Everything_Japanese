@@ -217,6 +217,17 @@ public class ModBlocks {
             () -> new ChairBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "chair")))
                     .noOcclusion()));
 
+    public static final RegistryObject<Block> HELL_PORTAL = BLOCKS.register("hell_portal",
+            () -> new HellPortalBlock(BlockBehaviour.Properties.of()
+                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "hell_portal")))
+                    .noCollission()
+                    .randomTicks()
+                    .strength(-1.0F)
+                    .sound(SoundType.GLASS)
+                    .lightLevel(p_50884_ -> 11)
+                    .pushReaction(PushReaction.BLOCK)
+                    .noLootTable()));
+
 
     // Register Blocks
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

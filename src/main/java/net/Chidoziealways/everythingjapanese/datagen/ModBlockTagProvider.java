@@ -34,6 +34,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.FENCES).add(ModBlocks.PYRITE_FENCE.get());
 
+        tag(ModTags.Blocks.INFINIBURN_HELL)
+                .addTag(BlockTags.INFINIBURN_OVERWORLD);
+
         tag(BlockTags.FENCE_GATES).add(ModBlocks.PYRITE_FENCE_GATE.get());
 
         tag(BlockTags.WALLS).add(ModBlocks.PYRITE_WALL.get());

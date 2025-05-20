@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "block/japanese_cheesecake_slice2",
-		"particle": "block/japanese_cheesecake_slice2"
+		"0": "everythingjapanese:block/japanese_cheesecake_slice2",
+		"particle": "everythingjapanese:block/japanese_cheesecake_slice2"
 	},
 	"elements": [
 		{

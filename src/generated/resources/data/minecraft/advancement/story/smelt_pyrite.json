@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:story/smelt_iron",
+  "criteria": {
+    "pyrite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:pyrite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Smelt some Raw Pyrite",
+    "icon": {
+      "count": 1,
+      "id": "everythingjapanese:pyrite_ingot"
+    },
+    "title": "Fake Gold!"
+  },
+  "requirements": [
+    [
+      "pyrite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

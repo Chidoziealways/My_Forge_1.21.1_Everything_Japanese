@@ -1,7 +1,7 @@
 {
     "textures": {
-        "particle": "block/hell_portal",
-        "portal": "block/hell_portal"
+        "particle": "everythingjapanese:block/hell_portal",
+        "portal": "everythingjapanese:block/hell_portal"
     },
     "elements": [
         {   "from": [ 0, 0, 6 ],

@@ -13,11 +13,11 @@ import java.util.Set;
 public abstract class Jutsu {
     private final ResourceLocation id; // Unique identifier for the Jutsu
     protected final String name;         // Name of the Jutsu (localized)
-    private final int chakraCost;      // Chakra cost to use the Jutsu
+    private final float chakraCost;      // Chakra cost to use the Jutsu
     private final int powerLevel;      // Power level or damage output
     private final JutsuType[] type;      // Type of Jutsu (Ninjutsu, Genjutsu, Taijutsu, etc.)
 
-    public Jutsu(ResourceLocation id, String name, int chakraCost, int powerLevel, JutsuType... type) {
+    public Jutsu(ResourceLocation id, String name, float chakraCost, int powerLevel, JutsuType... type) {
         this.id = id;
         this.name = name;
         this.chakraCost = chakraCost;
@@ -58,7 +58,7 @@ public abstract class Jutsu {
         return name;
     }
 
-    public int getChakraCost() {
+    public float getChakraCost() {
         return chakraCost;
     }
 

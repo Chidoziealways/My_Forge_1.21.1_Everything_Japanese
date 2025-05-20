@@ -28,8 +28,8 @@ import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes;
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen;
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalScreen;
 import net.Chidoziealways.everythingjapanese.sound.ModSounds;
+import net.Chidoziealways.everythingjapanese.structure.ModStructuresR;
 import net.Chidoziealways.everythingjapanese.tests.ModGameTests;
-import net.Chidoziealways.everythingjapanese.util.KeyPressHandler;
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers;
 //import net.Chidoziealways.everythingjapanese.worldgen.biome.ModTerrablender;
 //import net.Chidoziealways.everythingjapanese.worldgen.biome.surface.ModSurfaceRules;
@@ -124,6 +124,7 @@ public class EverythingJapanese {
         logDebug("Registering Recipes");
         logDebug("Hello");
         ModArgumentTypes.register(modEventBus);
+        ModStructuresR.register(modEventBus);
         //ModTerrablender.registerBiomes();
 
         // Register the commonSetup method for mod-loading

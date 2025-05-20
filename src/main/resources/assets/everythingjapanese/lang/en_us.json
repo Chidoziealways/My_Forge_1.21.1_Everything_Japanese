@@ -1,4 +1,6 @@
 {
+  "advancements.hell.root.title": "Hell",
+  "advancements.hell.root.description": "There's no escape",
   "argument.jutsu.id.invalid": "Unknown jutsu '%s'",
   "arguments.jutsu.component.unknown": "Unknown jutsu component '%s'",
   "arguments.jutsu.component.malformed": "Malformed '%s' component: '%s'",

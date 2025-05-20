@@ -2,11 +2,13 @@ package net.Chidoziealways.everythingjapanese.util;
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -47,6 +49,18 @@ public class ModTags {
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, name));
+        }
+    }
+
+    public static class Biomes{
+        private Biomes() {
+        }
+
+        public static final TagKey<Biome> HAS_HELL_TEMPLE = createBiomeTag("has_structure/hell_temple");
+        public static final TagKey<Biome> IS_HELL = createBiomeTag("is_hell");
+
+        private static TagKey<Biome> createBiomeTag(String name) {
+            return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, name));
         }
     }
 }

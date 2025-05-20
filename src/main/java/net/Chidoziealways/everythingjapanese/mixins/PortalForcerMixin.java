@@ -65,6 +65,7 @@ public abstract class PortalForcerMixin {
                     .min(Comparator.comparingDouble(p -> p.distSqr(pExitPos)));
 
             if (foundPortal.isPresent()) {
+                myForgeForModding_mdk$log.info(myForgeForModding_mdk$mark, "We're entering our portal!!");
                 cir.setReturnValue(foundPortal); // Return your portal if found
             }
         }

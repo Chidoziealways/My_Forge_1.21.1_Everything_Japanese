@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "everythingjapanese:block/chocolate_cake_slice13"
+		"0": "everythingjapanese:block/chocolate_cake_slice13",
+		"particle": "everythingjapanese:block/chocolate_cake_slice13"
 	},
 	"elements": [
 		{

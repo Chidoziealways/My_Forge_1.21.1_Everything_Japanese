@@ -1,22 +1,11 @@
 package net.Chidoziealways.everythingjapanese.chakra;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.Chidoziealways.everythingjapanese.EverythingJapanese;
-import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Mod.EventBusSubscriber(modid = EverythingJapanese.MOD_ID, value = Dist.CLIENT)
 public class ChakraHUDOverlay {
     private static final Logger log = LoggerFactory.getLogger(ChakraHUDOverlay.class);
 

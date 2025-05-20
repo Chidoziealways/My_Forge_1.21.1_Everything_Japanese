@@ -2,6 +2,10 @@ package net.Chidoziealways.everythingjapanese.datagen;
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantments;
+import net.Chidoziealways.everythingjapanese.structure.ModPools;
+import net.Chidoziealways.everythingjapanese.structure.ModProcessorLists;
+import net.Chidoziealways.everythingjapanese.structure.ModStructureSets;
+import net.Chidoziealways.everythingjapanese.structure.ModStructuresGen;
 import net.Chidoziealways.everythingjapanese.trim.ModTrimMaterials;
 import net.Chidoziealways.everythingjapanese.trim.ModTrimPatterns;
 import net.Chidoziealways.everythingjapanese.worldgen.ModBiomeModifiers;
@@ -27,6 +31,10 @@ public class ModDatapackEntries extends DatapackBuiltinEntriesProvider {
             .add(Registries.ENCHANTMENT, ModEnchantments::bootstrap)
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
+            .add(Registries.STRUCTURE, ModStructuresGen::bootstrap)
+            .add(Registries.STRUCTURE_SET, ModStructureSets::bootstrap)
+            .add(Registries.PROCESSOR_LIST, ModProcessorLists::bootstrap)
+            .add(Registries.TEMPLATE_POOL, ModPools::bootstrap)
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
             .add(Registries.BIOME, ModBiomes::bootstrap)
             .add(Registries.LEVEL_STEM, ModDimensions::bootstrapStem);

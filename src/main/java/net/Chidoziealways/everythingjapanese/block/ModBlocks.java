@@ -217,7 +217,7 @@ public class ModBlocks {
             () -> new ChairBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "chair")))
                     .noOcclusion()));
 
-    public static final RegistryObject<Block> HELL_PORTAL = BLOCKS.register("hell_portal",
+    public static final RegistryObject<Block> HELL_PORTAL = registerBlock("hell_portal",
             () -> new HellPortalBlock(BlockBehaviour.Properties.of()
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "hell_portal")))
                     .noCollission()

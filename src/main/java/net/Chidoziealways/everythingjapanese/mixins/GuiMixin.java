@@ -25,27 +25,10 @@ public abstract class GuiMixin {
     private static final Logger log = LoggerFactory.getLogger(GuiMixin.class);
     @Shadow @Final private Minecraft minecraft;
 
-    @Unique
-    private float lastChakra = -1; // Store previous chakra value
-
     @Inject(method = "renderHotbarAndDecorations", at = @At("TAIL"))
     private void onRender(GuiGraphics pGuiGraphics, DeltaTracker pDeltaTracker, CallbackInfo ci) {
         if (minecraft.player == null) return;
-
-        // Fetch Chakra Capability
-        minecraft.player.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(iChakra -> {
-            float currentChakra = iChakra.getChakra();
-
-            ChakraHUDOverlay.renderChakraBar(pGuiGraphics, currentChakra, iChakra.getMaxChakra());
-
-            // Only redraw if chakra has changed
-            if (currentChakra != lastChakra) {
-                log.debug("Updating Chakra Bar: {} -> {}", lastChakra, currentChakra);
-                ChakraHUDOverlay.renderChakraBar(pGuiGraphics, currentChakra, iChakra.getMaxChakra());
-                lastChakra = currentChakra; // Update stored value
-            } else {
-                log.debug("The Chakra is the same");
-            }
-        });
+        // Fetch the client-side stored Chakra (updated via packets)
+        minecraft.player.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(iChakra -> ChakraHUDOverlay.renderChakraBar(pGuiGraphics, iChakra.getChakra(), iChakra.getMaxChakra()));
     }
 }

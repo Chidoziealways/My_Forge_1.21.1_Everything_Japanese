@@ -1,190 +1,196 @@
-[17May2025 16:19:51.214] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 24, --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, everythingjapanese, --all, --output, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\generated\resources, --existing, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\main\resources, -mixin.config=everythingjapanese.mixins.json]
-[17May2025 16:19:51.232] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Amazon.com Inc. OpenJDK 64-Bit Server VM 21.0.7+6-LTS
-[17May2025 16:19:51.234] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.4 starting: java version 21.0.7 by Amazon.com Inc.; OS Windows 10 arch amd64 version 10.0
-[17May2025 16:19:51.536] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[17May2025 16:19:51.821] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/uzowu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
-[17May2025 16:19:56.265] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[17May2025 16:19:58.373] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
-[17May2025 16:19:58.397] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --assetIndex, 24, --mod, everythingjapanese, --all, --output, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\generated\resources, --existing, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\main\resources]
-[17May2025 16:19:58.455] [main/WARN] [mixin/]: Reference map 'everythingjapanese.refmap.json' for everythingjapanese.mixins.json could not be read. If this is a development environment you can ignore this message
-[17May2025 16:19:58.571] [main/WARN] [mixin/]: Mixin environment was unable to detect the current side, sided mixins will not be applied
-[17May2025 16:20:12.340] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:root
-[17May2025 16:20:12.341] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:sound_event
-[17May2025 16:20:12.352] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:fluid
-[17May2025 16:20:12.353] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:particle_type
-[17May2025 16:20:12.353] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:attribute
-[17May2025 16:20:12.353] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:mob_effect
-[17May2025 16:20:12.354] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block
-[17May2025 16:20:12.355] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_effect_component_type
-[17May2025 16:20:12.356] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_score_provider_type
-[17May2025 16:20:12.357] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_number_provider_type
-[17May2025 16:20:12.357] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:map_decoration_type
-[17May2025 16:20:12.357] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_pool_entry_type
-[17May2025 16:20:12.358] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_nbt_provider_type
-[17May2025 16:20:12.358] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_function_type
-[17May2025 16:20:12.358] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:data_component_type
-[17May2025 16:20:12.359] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:entity_type
-[17May2025 16:20:12.359] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:item
-[17May2025 16:20:12.360] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:game_event
-[17May2025 16:20:12.360] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:potion
-[17May2025 16:20:12.370] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block_entity_type
-[17May2025 16:20:12.392] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:stat_type
-[17May2025 16:20:12.393] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:custom_stat
-[17May2025 16:20:12.393] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:chunk_status
-[17May2025 16:20:12.394] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:rule_test
-[17May2025 16:20:12.396] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:rule_block_entity_modifier
-[17May2025 16:20:12.396] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:pos_rule_test
-[17May2025 16:20:12.396] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:menu
-[17May2025 16:20:12.397] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_type
-[17May2025 16:20:12.397] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_serializer
-[17May2025 16:20:12.397] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:position_source_type
-[17May2025 16:20:12.397] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:command_argument_type
-[17May2025 16:20:12.399] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:villager_type
-[17May2025 16:20:12.400] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:villager_profession
-[17May2025 16:20:12.400] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:point_of_interest_type
-[17May2025 16:20:12.400] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:memory_module_type
-[17May2025 16:20:12.400] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:sensor_type
-[17May2025 16:20:12.401] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:activity
-[17May2025 16:20:12.401] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:schedule
-[17May2025 16:20:12.401] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_condition_type
-[17May2025 16:20:12.401] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:float_provider_type
-[17May2025 16:20:12.402] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:int_provider_type
-[17May2025 16:20:12.402] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:height_provider_type
-[17May2025 16:20:12.403] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block_predicate_type
-[17May2025 16:20:12.403] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/carver
-[17May2025 16:20:12.403] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_processor
-[17May2025 16:20:12.404] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/feature
-[17May2025 16:20:12.404] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_placement
-[17May2025 16:20:12.404] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_piece
-[17May2025 16:20:12.404] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_type
-[17May2025 16:20:12.405] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/placement_modifier_type
-[17May2025 16:20:12.405] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/block_state_provider_type
-[17May2025 16:20:12.405] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/foliage_placer_type
-[17May2025 16:20:12.406] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/trunk_placer_type
-[17May2025 16:20:12.407] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/root_placer_type
-[17May2025 16:20:12.423] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/tree_decorator_type
-[17May2025 16:20:12.423] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/feature_size_type
-[17May2025 16:20:12.424] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/biome_source
-[17May2025 16:20:12.424] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/chunk_generator
-[17May2025 16:20:12.424] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/material_condition
-[17May2025 16:20:12.424] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/material_rule
-[17May2025 16:20:12.424] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/density_function_type
-[17May2025 16:20:12.425] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block_type
-[17May2025 16:20:12.425] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_pool_element
-[17May2025 16:20:12.425] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/pool_alias_binding
-[17May2025 16:20:12.425] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:decorated_pot_pattern
-[17May2025 16:20:12.426] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:creative_mode_tab
-[17May2025 16:20:12.426] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:trigger_type
-[17May2025 16:20:12.426] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:number_format_type
-[17May2025 16:20:12.426] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:entity_sub_predicate_type
-[17May2025 16:20:12.428] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:data_component_predicate_type
-[17May2025 16:20:12.428] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_level_based_value_type
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_entity_effect_type
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_location_based_effect_type
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_value_effect_type
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_provider_type
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:consume_effect_type
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_display
-[17May2025 16:20:12.429] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:slot_display
-[17May2025 16:20:12.430] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_book_category
-[17May2025 16:20:12.430] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:ticket_type
-[17May2025 16:20:12.430] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:test_environment_definition_type
-[17May2025 16:20:12.430] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:test_instance_type
-[17May2025 16:20:12.430] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:spawn_condition_type
-[17May2025 16:20:12.430] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:test_function
-[17May2025 16:20:13.343] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 55.0.14, for MC 1.21.5 with MCP 20250325.155543
-[17May2025 16:20:13.343] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v55.0.14 Initialized
-[17May2025 16:20:13.385] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_block
-[17May2025 16:20:13.385] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_block
-[17May2025 16:20:13.408] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
-[17May2025 16:20:13.422] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_block
-[17May2025 16:20:13.422] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_block
-[17May2025 16:20:13.422] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: raw_pyrite_block
-[17May2025 16:20:13.423] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: raw_pyrite_block
-[17May2025 16:20:13.423] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_ore
-[17May2025 16:20:13.423] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_ore
-[17May2025 16:20:13.424] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_deepslate_ore
-[17May2025 16:20:13.424] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_deepslate_ore
-[17May2025 16:20:13.425] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_ore
-[17May2025 16:20:13.425] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_ore
-[17May2025 16:20:13.426] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_deepslate_ore
-[17May2025 16:20:13.426] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_deepslate_ore
-[17May2025 16:20:13.426] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: transformer_block
-[17May2025 16:20:13.426] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: transformer_block
-[17May2025 16:20:13.427] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chocolate_cake
-[17May2025 16:20:13.427] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chocolate_cake
-[17May2025 16:20:13.428] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: japanese_cheesecake
-[17May2025 16:20:13.428] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: japanese_cheesecake
-[17May2025 16:20:13.429] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pedestal
-[17May2025 16:20:13.429] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pedestal
-[17May2025 16:20:13.430] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: growth_chamber
-[17May2025 16:20:13.430] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: growth_chamber
-[17May2025 16:20:13.441] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_maruta
-[17May2025 16:20:13.441] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_maruta
-[17May2025 16:20:13.442] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_mokuzai
-[17May2025 16:20:13.442] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_mokuzai
-[17May2025 16:20:13.443] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_maruta
-[17May2025 16:20:13.443] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_maruta
-[17May2025 16:20:13.444] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_mokuzai
-[17May2025 16:20:13.444] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_mokuzai
-[17May2025 16:20:13.445] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ban
-[17May2025 16:20:13.445] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ban
-[17May2025 16:20:13.446] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ha
-[17May2025 16:20:13.446] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ha
-[17May2025 16:20:13.446] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_naegi
-[17May2025 16:20:13.446] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_naegi
-[17May2025 16:20:13.447] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: potted_hinoki_naegi
-[17May2025 16:20:13.447] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: potted_hinoki_naegi
-[17May2025 16:20:13.447] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_stairs
-[17May2025 16:20:13.447] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_stairs
-[17May2025 16:20:13.451] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_slab
-[17May2025 16:20:13.451] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_slab
-[17May2025 16:20:13.453] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_pressure_plate
-[17May2025 16:20:13.453] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_pressure_plate
-[17May2025 16:20:13.453] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_button
-[17May2025 16:20:13.454] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_button
-[17May2025 16:20:13.454] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence
-[17May2025 16:20:13.455] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence
-[17May2025 16:20:13.455] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence_gate
-[17May2025 16:20:13.455] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence_gate
-[17May2025 16:20:13.457] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_wall
-[17May2025 16:20:13.457] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_wall
-[17May2025 16:20:13.458] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_door
-[17May2025 16:20:13.458] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_door
-[17May2025 16:20:13.459] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_trapdoor
-[17May2025 16:20:13.459] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_trapdoor
-[17May2025 16:20:13.459] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_lamp
-[17May2025 16:20:13.460] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_lamp
-[17May2025 16:20:13.460] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chair
-[17May2025 16:20:13.460] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chair
-[17May2025 16:20:13.461] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hell_portal
-[17May2025 16:20:13.461] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hell_portal
-[17May2025 16:20:13.466] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE DATA COMPONENT IN MODDATACOMPONENTTYPES
-[17May2025 16:20:13.474] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE ITEM IN MODITEMS
-[17May2025 16:20:13.509] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE CREATIVEMODETAB IN MODCREATIVEMODETABS
-[17May2025 16:20:14.122] [main/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Registries
-[17May2025 16:20:14.124] [main/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Jutsu
-[17May2025 16:20:14.489] [main/WARN] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type: The object net.minecraft.world.level.block.entity.BlockEntityType@34bba7f7 has been registered twice for the same name everythingjapanese:pedestal_be.
-[17May2025 16:20:14.493] [main/WARN] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type: The object net.minecraft.world.level.block.entity.BlockEntityType@7a248528 has been registered twice for the same name everythingjapanese:growth_chamber_be.
-[17May2025 16:20:14.815] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [everythingjapanese]
-[17May2025 16:20:14.999] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.5-55.0.14_mapped_parchment_2025.04.19-1.21.5/forge-1.21.5-55.0.14_mapped_parchment_2025.04.19-1.21.5-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
-[17May2025 16:20:15.000] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.5-55.0.14_mapped_parchment_2025.04.19-1.21.5/forge-1.21.5-55.0.14_mapped_parchment_2025.04.19-1.21.5-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
-[17May2025 16:20:15.334] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[17May2025 16:20:15.753] [Worker-Main-1/INFO] [net.Chidoziealways.everythingjapanese.trim.ModTrimPatterns/]: Registering all Trim Patterns into DataPack Registry
-[17May2025 16:20:16.106] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 771 ms
-[17May2025 16:20:16.106] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[17May2025 16:20:16.172] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 65 ms
-[17May2025 16:20:16.172] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id everythingjapanese
-[17May2025 16:20:16.187] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id everythingjapanese finished after 14 ms
-[17May2025 16:20:16.187] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id everythingjapanese
-[17May2025 16:20:16.194] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id everythingjapanese finished after 5 ms
-[17May2025 16:20:16.194] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Model Definitions
-[17May2025 16:20:18.253] [main/INFO] [net.minecraft.data.DataGenerator/]: Model Definitions finished after 2058 ms
-[17May2025 16:20:18.254] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : everythingjapanese
-[17May2025 16:20:18.265] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : everythingjapanese finished after 11 ms
-[17May2025 16:20:18.265] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[17May2025 16:20:18.428] [main/ERROR] [net.Chidoziealways.everythingjapanese.datagen.ModRecipeProvider/]: For some reason, my armor trims won't be registered
-[17May2025 16:20:18.428] [main/INFO] [net.Chidoziealways.everythingjapanese.datagen.ModRecipeProvider/]: Continuing with my life
-[17May2025 16:20:18.429] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 162 ms
-[17May2025 16:20:18.429] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 3095 ms
-[17May2025 16:20:18.520] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 6077, old count: 6077, new count: 6078, removed stale: 0, written: 0
+[20May2025 17:56:48.520] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 24, --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, everythingjapanese, --all, --output, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\generated\resources, --existing, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\main\resources, -mixin.config=everythingjapanese.mixins.json]
+[20May2025 17:56:48.555] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Amazon.com Inc. OpenJDK 64-Bit Server VM 21.0.7+6-LTS
+[20May2025 17:56:48.566] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.4 starting: java version 21.0.7 by Amazon.com Inc.; OS Windows 10 arch amd64 version 10.0
+[20May2025 17:56:49.752] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[20May2025 17:56:51.004] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/uzowu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
+[20May2025 17:57:12.584] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[20May2025 17:57:18.986] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[20May2025 17:57:19.021] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\uzowu\.gradle\caches\forge_gradle\assets, --assetIndex, 24, --mod, everythingjapanese, --all, --output, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\generated\resources, --existing, C:\Users\uzowu\IdeaProjects\EverythingJapaneseForge\src\main\resources]
+[20May2025 17:57:19.201] [main/WARN] [mixin/]: Reference map 'everythingjapanese.refmap.json' for everythingjapanese.mixins.json could not be read. If this is a development environment you can ignore this message
+[20May2025 17:57:19.647] [main/WARN] [mixin/]: Mixin environment was unable to detect the current side, sided mixins will not be applied
+[20May2025 17:58:32.596] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:root
+[20May2025 17:58:32.599] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:sound_event
+[20May2025 17:58:32.600] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:fluid
+[20May2025 17:58:32.601] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:particle_type
+[20May2025 17:58:32.602] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:attribute
+[20May2025 17:58:32.608] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:mob_effect
+[20May2025 17:58:32.609] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block
+[20May2025 17:58:32.609] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_effect_component_type
+[20May2025 17:58:32.610] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_score_provider_type
+[20May2025 17:58:32.610] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_number_provider_type
+[20May2025 17:58:32.612] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:map_decoration_type
+[20May2025 17:58:32.614] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_pool_entry_type
+[20May2025 17:58:32.615] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_nbt_provider_type
+[20May2025 17:58:32.616] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_function_type
+[20May2025 17:58:32.617] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:data_component_type
+[20May2025 17:58:32.618] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:entity_type
+[20May2025 17:58:32.621] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:item
+[20May2025 17:58:32.622] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:game_event
+[20May2025 17:58:32.622] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:potion
+[20May2025 17:58:32.623] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block_entity_type
+[20May2025 17:58:32.623] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:stat_type
+[20May2025 17:58:32.624] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:custom_stat
+[20May2025 17:58:32.624] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:chunk_status
+[20May2025 17:58:32.625] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:rule_test
+[20May2025 17:58:32.654] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:rule_block_entity_modifier
+[20May2025 17:58:32.655] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:pos_rule_test
+[20May2025 17:58:32.656] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:menu
+[20May2025 17:58:32.658] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_type
+[20May2025 17:58:32.658] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_serializer
+[20May2025 17:58:32.666] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:position_source_type
+[20May2025 17:58:32.668] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:command_argument_type
+[20May2025 17:58:32.672] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:villager_type
+[20May2025 17:58:32.674] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:villager_profession
+[20May2025 17:58:32.675] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:point_of_interest_type
+[20May2025 17:58:32.677] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:memory_module_type
+[20May2025 17:58:32.677] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:sensor_type
+[20May2025 17:58:32.680] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:activity
+[20May2025 17:58:32.682] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:schedule
+[20May2025 17:58:32.684] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:loot_condition_type
+[20May2025 17:58:32.685] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:float_provider_type
+[20May2025 17:58:32.711] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:int_provider_type
+[20May2025 17:58:32.718] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:height_provider_type
+[20May2025 17:58:32.720] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block_predicate_type
+[20May2025 17:58:32.721] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/carver
+[20May2025 17:58:32.723] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_processor
+[20May2025 17:58:32.738] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/feature
+[20May2025 17:58:32.740] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_placement
+[20May2025 17:58:32.741] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_piece
+[20May2025 17:58:32.741] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_type
+[20May2025 17:58:32.742] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/placement_modifier_type
+[20May2025 17:58:32.744] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/block_state_provider_type
+[20May2025 17:58:32.750] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/foliage_placer_type
+[20May2025 17:58:32.753] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/trunk_placer_type
+[20May2025 17:58:32.754] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/root_placer_type
+[20May2025 17:58:32.755] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/tree_decorator_type
+[20May2025 17:58:32.756] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/feature_size_type
+[20May2025 17:58:32.757] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/biome_source
+[20May2025 17:58:32.757] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/chunk_generator
+[20May2025 17:58:32.757] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/material_condition
+[20May2025 17:58:32.763] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/material_rule
+[20May2025 17:58:32.774] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/density_function_type
+[20May2025 17:58:32.777] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:block_type
+[20May2025 17:58:32.778] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/structure_pool_element
+[20May2025 17:58:32.779] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:worldgen/pool_alias_binding
+[20May2025 17:58:32.780] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:decorated_pot_pattern
+[20May2025 17:58:32.780] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:creative_mode_tab
+[20May2025 17:58:32.781] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:trigger_type
+[20May2025 17:58:32.781] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:number_format_type
+[20May2025 17:58:32.781] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:entity_sub_predicate_type
+[20May2025 17:58:32.782] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:data_component_predicate_type
+[20May2025 17:58:32.782] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_level_based_value_type
+[20May2025 17:58:32.782] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_entity_effect_type
+[20May2025 17:58:32.783] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_location_based_effect_type
+[20May2025 17:58:32.784] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_value_effect_type
+[20May2025 17:58:32.784] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:enchantment_provider_type
+[20May2025 17:58:32.785] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:consume_effect_type
+[20May2025 17:58:32.786] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_display
+[20May2025 17:58:32.787] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:slot_display
+[20May2025 17:58:32.787] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:recipe_book_category
+[20May2025 17:58:32.788] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:ticket_type
+[20May2025 17:58:32.788] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:test_environment_definition_type
+[20May2025 17:58:32.788] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:test_instance_type
+[20May2025 17:58:32.789] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:spawn_condition_type
+[20May2025 17:58:32.789] [main/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: 	minecraft:test_function
+[20May2025 17:58:38.348] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 55.0.16, for MC 1.21.5 with MCP 20250325.155543
+[20May2025 17:58:38.349] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v55.0.16 Initialized
+[20May2025 17:58:38.358] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_block
+[20May2025 17:58:38.359] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_block
+[20May2025 17:58:38.417] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_block
+[20May2025 17:58:38.418] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_block
+[20May2025 17:58:38.419] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: raw_pyrite_block
+[20May2025 17:58:38.419] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: raw_pyrite_block
+[20May2025 17:58:38.420] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_ore
+[20May2025 17:58:38.420] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_ore
+[20May2025 17:58:38.421] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_deepslate_ore
+[20May2025 17:58:38.422] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_deepslate_ore
+[20May2025 17:58:38.423] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_ore
+[20May2025 17:58:38.423] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_ore
+[20May2025 17:58:38.424] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_deepslate_ore
+[20May2025 17:58:38.424] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_deepslate_ore
+[20May2025 17:58:38.425] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: transformer_block
+[20May2025 17:58:38.425] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: transformer_block
+[20May2025 17:58:38.426] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chocolate_cake
+[20May2025 17:58:38.426] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chocolate_cake
+[20May2025 17:58:38.427] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: japanese_cheesecake
+[20May2025 17:58:38.427] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: japanese_cheesecake
+[20May2025 17:58:38.428] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pedestal
+[20May2025 17:58:38.428] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pedestal
+[20May2025 17:58:38.428] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: growth_chamber
+[20May2025 17:58:38.429] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: growth_chamber
+[20May2025 17:58:38.430] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_maruta
+[20May2025 17:58:38.430] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_maruta
+[20May2025 17:58:38.431] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_mokuzai
+[20May2025 17:58:38.432] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_mokuzai
+[20May2025 17:58:38.432] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_maruta
+[20May2025 17:58:38.433] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_maruta
+[20May2025 17:58:38.433] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_mokuzai
+[20May2025 17:58:38.434] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_mokuzai
+[20May2025 17:58:38.435] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ban
+[20May2025 17:58:38.435] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ban
+[20May2025 17:58:38.436] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ha
+[20May2025 17:58:38.437] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ha
+[20May2025 17:58:38.437] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_naegi
+[20May2025 17:58:38.437] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_naegi
+[20May2025 17:58:38.438] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: potted_hinoki_naegi
+[20May2025 17:58:38.438] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: potted_hinoki_naegi
+[20May2025 17:58:38.439] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_stairs
+[20May2025 17:58:38.439] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_stairs
+[20May2025 17:58:38.440] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_slab
+[20May2025 17:58:38.440] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_slab
+[20May2025 17:58:38.441] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_pressure_plate
+[20May2025 17:58:38.441] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_pressure_plate
+[20May2025 17:58:38.442] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_button
+[20May2025 17:58:38.442] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_button
+[20May2025 17:58:38.442] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence
+[20May2025 17:58:38.442] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence
+[20May2025 17:58:38.505] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence_gate
+[20May2025 17:58:38.505] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence_gate
+[20May2025 17:58:38.506] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_wall
+[20May2025 17:58:38.506] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_wall
+[20May2025 17:58:38.506] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_door
+[20May2025 17:58:38.506] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_door
+[20May2025 17:58:38.507] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_trapdoor
+[20May2025 17:58:38.507] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_trapdoor
+[20May2025 17:58:38.508] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_lamp
+[20May2025 17:58:38.508] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_lamp
+[20May2025 17:58:38.509] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chair
+[20May2025 17:58:38.509] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chair
+[20May2025 17:58:38.509] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hell_portal
+[20May2025 17:58:38.509] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hell_portal
+[20May2025 17:58:38.512] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE DATA COMPONENT IN MODDATACOMPONENTTYPES
+[20May2025 17:58:38.524] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE ITEM IN MODITEMS
+[20May2025 17:58:38.546] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE CREATIVEMODETAB IN MODCREATIVEMODETABS
+[20May2025 17:58:38.740] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[20May2025 17:58:39.449] [main/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Registries
+[20May2025 17:58:39.451] [main/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Jutsu
+[20May2025 17:58:39.858] [main/WARN] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type: The object net.minecraft.world.level.block.entity.BlockEntityType@55e13772 has been registered twice for the same name everythingjapanese:pedestal_be.
+[20May2025 17:58:39.893] [main/WARN] [net.minecraftforge.registries.ForgeRegistry/REGISTRIES]: Registry minecraft:block_entity_type: The object net.minecraft.world.level.block.entity.BlockEntityType@6a474e00 has been registered twice for the same name everythingjapanese:growth_chamber_be.
+[20May2025 17:58:40.522] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [everythingjapanese]
+[20May2025 17:58:41.153] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.5-55.0.16_mapped_parchment_2025.04.19-1.21.5/forge-1.21.5-55.0.16_mapped_parchment_2025.04.19-1.21.5-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[20May2025 17:58:41.166] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/uzowu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21.5-55.0.16_mapped_parchment_2025.04.19-1.21.5/forge-1.21.5-55.0.16_mapped_parchment_2025.04.19-1.21.5-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
+[20May2025 17:58:42.370] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[20May2025 17:58:44.994] [Worker-Main-1/INFO] [net.Chidoziealways.everythingjapanese.trim.ModTrimPatterns/]: Registering all Trim Patterns into DataPack Registry
+[20May2025 17:58:45.000] [Worker-Main-1/INFO] [net.Chidoziealways.everythingjapanese.structure.ModStructuresGen/]: Bootstrapping Structures: everythingjapanese:hell_temple
+[20May2025 17:58:45.004] [Worker-Main-1/INFO] [net.Chidoziealways.everythingjapanese.structure.ModStructuresGen/]: Finished with Bootstrap
+[20May2025 17:58:45.176] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 2805 ms
+[20May2025 17:58:45.177] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id everythingjapanese
+[20May2025 17:58:45.245] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id everythingjapanese finished after 67 ms
+[20May2025 17:58:45.245] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id everythingjapanese
+[20May2025 17:58:45.296] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id everythingjapanese finished after 50 ms
+[20May2025 17:58:45.298] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:worldgen/biome mod id everythingjapanese
+[20May2025 17:58:45.341] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:worldgen/biome mod id everythingjapanese finished after 42 ms
+[20May2025 17:58:45.341] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[20May2025 17:58:46.088] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 745 ms
+[20May2025 17:58:46.088] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Model Definitions
+[20May2025 17:58:53.779] [main/INFO] [net.minecraft.data.DataGenerator/]: Model Definitions finished after 7689 ms
+[20May2025 17:58:53.779] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : everythingjapanese
+[20May2025 17:58:53.922] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : everythingjapanese finished after 142 ms
+[20May2025 17:58:53.922] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[20May2025 17:58:54.439] [main/ERROR] [net.Chidoziealways.everythingjapanese.datagen.ModRecipeProvider/]: For some reason, my armor trims won't be registered
+[20May2025 17:58:54.440] [main/INFO] [net.Chidoziealways.everythingjapanese.datagen.ModRecipeProvider/]: Continuing with my life
+[20May2025 17:58:54.472] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 548 ms
+[20May2025 17:58:54.473] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
+[20May2025 17:58:54.483] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 10 ms
+[20May2025 17:58:54.483] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 12112 ms
+[20May2025 17:58:55.225] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 6087, old count: 6087, new count: 6088, removed stale: 0, written: 0

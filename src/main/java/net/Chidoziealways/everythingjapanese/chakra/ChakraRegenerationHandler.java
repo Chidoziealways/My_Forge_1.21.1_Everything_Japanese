@@ -2,16 +2,13 @@ package net.Chidoziealways.everythingjapanese.chakra;
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese;
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities;
+import net.Chidoziealways.everythingjapanese.network.ModNetwork;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.data.worldgen.DimensionTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionDefaults;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.PacketDistributor;
 
 @Mod.EventBusSubscriber(modid = EverythingJapanese.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ChakraRegenerationHandler {
@@ -24,9 +21,16 @@ public class ChakraRegenerationHandler {
                     float currentChakra = chakra.getChakra();
                     int maxChakra = chakra.getMaxChakra();
                     chakra.updateMaxChakraBasedOnXP(player.experienceLevel);
+
                     if (currentChakra < maxChakra) {
-                        chakra.addChakra(0.01f);// Regenerate 1 Chakra every tick, adjust as needed
-                        player.level().addParticle(ParticleTypes.ENCHANT, player.getX(), player.getY(), player.getZ(), 0, 0.5, 0);
+                        chakra.addChakra(0.01f); // Regenerate chakra gradually
+                        player.level().addParticle(ParticleTypes.ENCHANT, player.getX(), player.getY(), player.getZ(), 0.5, 0.5, 0.5);
+
+                        // ✅ Send Chakra Sync Packet to Update Client UI
+                        ModNetwork.CHANNEL.send(
+                                new ChakraSyncPacket(chakra.getChakra(), chakra.getMaxChakra()),
+                                PacketDistributor.PLAYER.with(player)
+                        );
                     }
                 });
             }

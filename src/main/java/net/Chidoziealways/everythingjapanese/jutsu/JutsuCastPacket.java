@@ -35,13 +35,13 @@ public record JutsuCastPacket() {
                         log.debug("Learnt Jutsu: {}, Selected Jutsu: {}", iJutsuCapability.getLearnedJutsus(), iJutsuCapability.getSelectedJutsu());
                         if (jutsu != null) {
                             player.getCapability(ModCapabilities.CHAKRA_CAPABILITY).ifPresent(iChakra -> {
-                                int cost = jutsu.getChakraCost();
+                                float cost = jutsu.getChakraCost();
                                 if (iChakra.getChakra() >= cost) {
                                     iChakra.subtractChakra(cost);
                                     jutsu.cast(player);
 
                                     ModNetwork.CHANNEL.send(
-                                            new ChakraSyncPacket(iChakra.getChakra()),
+                                            new ChakraSyncPacket(iChakra.getChakra(), iChakra.getMaxChakra()),
                                             PacketDistributor.PLAYER.with(player)
                                     );
                                 } else {

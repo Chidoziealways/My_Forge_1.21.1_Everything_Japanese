@@ -1,4 +1,4 @@
-// 1.21.5	2025-05-20T17:41:16.0013899	Registries
+// 1.21.5	2025-05-23T18:04:06.0696405	Registries
 6fd4a248482fb795c01a12450836ca168cbeb9a8 data/everythingjapanese/dimension/hell.json
 20731f2d16840fac3b62cea1e3b21d771ada5d62 data/everythingjapanese/dimension_type/hell_type.json
 10ca8674ccccba46024641e204e1bceaa0192e51 data/everythingjapanese/enchantment/lightning_striker.json
@@ -8,6 +8,8 @@ fa90cce1b4d62594e858b0d31e1bb797c68ad120 data/everythingjapanese/forge/biome_mod
 8464a83aac5fea9eaa436155532faa01f0874023 data/everythingjapanese/forge/biome_modifier/add_yamazaki_berry_bush.json
 91ee6a3c98eb59de939a32d71f9cf9a1975101dd data/everythingjapanese/forge/biome_modifier/spawn_sika_deer.json
 8def284897e8a73b39d576d314b1e6be3f3d8f99 data/everythingjapanese/forge/biome_modifier/spawn_triceratops.json
+2e95b0d3a2955d86bc997bdeaa8bd61deb61392b data/everythingjapanese/test_environment/powdersnow.json
+e6d0c6764b8081d5833781bc41989120d5110485 data/everythingjapanese/test_instance/powdersnow.json
 5fdb5c46cd25414aa213c23fab3f23b3f0507fd8 data/everythingjapanese/trim_material/pyrite.json
 1a1f08eb43cb537d60c32dd083496f74be29d58e data/everythingjapanese/trim_pattern/koi_fish.json
 57be7de8ddc2da2c5069139884adf8c8072346b8 data/everythingjapanese/worldgen/biome/hell_biome.json

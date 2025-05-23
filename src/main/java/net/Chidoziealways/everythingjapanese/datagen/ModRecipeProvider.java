@@ -274,18 +274,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_SLAB.get(), ModItems.PYRITE_INGOT.get());
 
-        HolderLookup.Provider registries = this.registries;
-
-        HolderGetter<TrimPattern> trimPatterns = registries.lookupOrThrow(Registries.TRIM_PATTERN);
-        Optional<Holder.Reference<TrimPattern>> koiFish = trimPatterns.get(ModTrimPatterns.KOI_FISH);
-        if (koiFish.isPresent()) {
-            trimSmithing(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModTrimPatterns.KOI_FISH, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "koi_fish_smithing_recipe")));
-        }else {
-            log.error("For some reason, my armor trims won't be registered");
-            log.info("Continuing with my life");
-        }
-
-        //smithingTrims().forEach(trimTemplate -> this.trimSmithing(trimTemplate.template().get(), trimTemplate.patternId(), trimTemplate.recipeId()));
+        smithingTrims().forEach(trimTemplate -> this.trimSmithing(trimTemplate.template().get(), trimTemplate.patternId(), trimTemplate.recipeId()));
     }
 
 

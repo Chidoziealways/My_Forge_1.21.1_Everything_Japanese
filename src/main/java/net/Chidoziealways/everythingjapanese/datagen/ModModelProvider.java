@@ -31,6 +31,9 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +46,7 @@ public class ModModelProvider extends ModelProvider {
         super(output);
     }
 
-    private class MyBlockModelGenerators extends BlockModelGenerators{
+    private static class MyBlockModelGenerators extends BlockModelGenerators{
 
         static final List<Block> NON_ORIENTABLE_TRAPDOOR = List.of(Blocks.OAK_TRAPDOOR, Blocks.DARK_OAK_TRAPDOOR, Blocks.IRON_TRAPDOOR);
 
@@ -51,54 +54,40 @@ public class ModModelProvider extends ModelProvider {
             super(pBlockStateOutput, pItemModelOutput, pModelOutput);
         }
 
-        public BlockFamilyProvider family(RegistryObject<Block> block) {
-            return family(block.get());
-        }
-
-        private void door(Block pDoorBlock) {
-            TextureMapping texturemapping = TextureMapping.door(pDoorBlock);
-            MultiVariant multivariant = plainVariant(ModelTemplates.DOOR_BOTTOM_LEFT.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant1 = plainVariant(ModelTemplates.DOOR_BOTTOM_LEFT_OPEN.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant2 = plainVariant(ModelTemplates.DOOR_BOTTOM_RIGHT.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant3 = plainVariant(ModelTemplates.DOOR_BOTTOM_RIGHT_OPEN.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant4 = plainVariant(ModelTemplates.DOOR_TOP_LEFT.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant5 = plainVariant(ModelTemplates.DOOR_TOP_LEFT_OPEN.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant6 = plainVariant(ModelTemplates.DOOR_TOP_RIGHT.create(pDoorBlock, texturemapping, this.modelOutput));
-            MultiVariant multivariant7 = plainVariant(ModelTemplates.DOOR_TOP_RIGHT_OPEN.create(pDoorBlock, texturemapping, this.modelOutput));
-            this.registerSimpleFlatItemModel(pDoorBlock.asItem());
-            this.blockStateOutput
-                    .accept(createDoor(pDoorBlock, multivariant, multivariant1, multivariant2, multivariant3, multivariant4, multivariant5, multivariant6, multivariant7));
-        }
-
-        public void trapDoor(Block pTrapdoorBlock) {
-            if (NON_ORIENTABLE_TRAPDOOR.contains(pTrapdoorBlock)) {
-                createTrapdoor(pTrapdoorBlock);
-            } else {
-                createOrientableTrapdoor(pTrapdoorBlock);
-            }
-        }
-
-        protected void createOrientableTrapdoor(Block pOrientableTrapdoorBlock) {
-            TextureMapping texturemapping = TextureMapping.defaultTexture(pOrientableTrapdoorBlock);
-            MultiVariant multivariant = plainVariant(ModelTemplates.ORIENTABLE_TRAPDOOR_TOP.create(pOrientableTrapdoorBlock, texturemapping, this.modelOutput));
-            ResourceLocation resourcelocation = ModelTemplates.ORIENTABLE_TRAPDOOR_BOTTOM.create(pOrientableTrapdoorBlock, texturemapping, this.modelOutput);
-            MultiVariant multivariant1 = plainVariant(ModelTemplates.ORIENTABLE_TRAPDOOR_OPEN.create(pOrientableTrapdoorBlock, texturemapping, this.modelOutput));
-            this.blockStateOutput.accept(createOrientableTrapdoor(pOrientableTrapdoorBlock, multivariant, plainVariant(resourcelocation), multivariant1));
-            this.registerSimpleItemModel(pOrientableTrapdoorBlock, resourcelocation);
-        }
-
-        protected void createTrapdoor(Block pTrapdoorBlock) {
-            TextureMapping texturemapping = TextureMapping.defaultTexture(pTrapdoorBlock);
-            MultiVariant multivariant = plainVariant(ModelTemplates.TRAPDOOR_TOP.create(pTrapdoorBlock, texturemapping, this.modelOutput));
-            ResourceLocation resourcelocation = ModelTemplates.TRAPDOOR_BOTTOM.create(pTrapdoorBlock, texturemapping, this.modelOutput);
-            MultiVariant multivariant1 = plainVariant(ModelTemplates.TRAPDOOR_OPEN.create(pTrapdoorBlock, texturemapping, this.modelOutput));
-            this.blockStateOutput.accept(createTrapdoor(pTrapdoorBlock, multivariant, plainVariant(resourcelocation), multivariant1));
-            this.registerSimpleItemModel(pTrapdoorBlock, resourcelocation);
-        }
-
         @Override
-        protected void createCropBlock(Block pCropBlock, Property<Integer> pAgeProperty, int... pAgeToVisualStageMapping) {
-            super.createCropBlock(pCropBlock, pAgeProperty, pAgeToVisualStageMapping);
+        public void run() {
+            super.run();
+            this.createTrivialCube(ModBlocks.TRANSFORMER_BLOCK.get());
+            this.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
+            this.createTrivialCube(ModBlocks.PYRITE_DEEPSLATE_ORE.get());
+            this.createTrivialCube(ModBlocks.PYRITE_ORE.get());
+            this.createTrivialCube(ModBlocks.NEPHRITE_BLOCK.get());
+            this.createTrivialCube(ModBlocks.NEPHRITE_DEEPSLATE_ORE.get());
+            this.createTrivialCube(ModBlocks.NEPHRITE_ORE.get());
+            this.createTrivialCube(ModBlocks.HINOKI_BAN.get());
+            this.family(ModBlocks.PYRITE_BLOCK.get())
+                    .stairs(ModBlocks.PYRITE_STAIRS.get())
+                    .slab(ModBlocks.PYRITE_SLAB.get())
+                    .button(ModBlocks.PYRITE_BUTTON.get())
+                    .pressurePlate(ModBlocks.PYRITE_PRESSURE_PLATE.get())
+                    .fence(ModBlocks.PYRITE_FENCE.get())
+                    .fenceGate(ModBlocks.PYRITE_FENCE_GATE.get())
+                    .wall(ModBlocks.PYRITE_WALL.get());
+            this.woodProvider(ModBlocks.HINOKI_MARUTA.get())
+                    .logWithHorizontal(ModBlocks.HINOKI_MARUTA.get())
+                    .wood(ModBlocks.HINOKI_MOKUZAI.get());
+            this.woodProvider(ModBlocks.STRIPPED_HINOKI_MARUTA.get())
+                    .logWithHorizontal(ModBlocks.STRIPPED_HINOKI_MARUTA.get())
+                    .wood(ModBlocks.STRIPPED_HINOKI_MOKUZAI.get());
+            this.createDoor(ModBlocks.PYRITE_DOOR.get());
+            this.createTrapdoor(ModBlocks.PYRITE_TRAPDOOR.get());
+            this.createCropBlock(ModBlocks.RICE_CROP.get(), ModBlockStateProperties.AGE_4, 0, 1, 2, 3, 4);
+            this.createYamazakiBerryBush();
+            this.createLamp();
+            this.createTintedLeaves(ModBlocks.HINOKI_HA.get(), TexturedModel.LEAVES, -12012264);
+            this.createPlantWithDefaultItem(ModBlocks.HINOKI_NAEGI.get(), ModBlocks.POTTED_HINOKI_NAEGI.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+            this.createTrivialCube(ModBlocks.GROWTH_CHAMBER.get());
+            this.createHellPortalBlock();
         }
 
         public void createYamazakiBerryBush() {
@@ -124,14 +113,6 @@ public class ModModelProvider extends ModelProvider {
                     .accept(MultiVariantGenerator.dispatch(ModBlocks.PYRITE_LAMP.get()).with(createBooleanModelDispatch(ModBlockStateProperties.CLICKED, multivariant1, multivariant)));
         }
 
-        public WoodProvider wood(RegistryObject<RotatedPillarBlock> wood) {
-            return woodProvider(wood.get());
-        }
-
-        public void createSapling(Block pBlock, Block pPottedBlock, PlantType pPlantType) {
-            createPlantWithDefaultItem(pBlock, pPottedBlock, pPlantType);
-        }
-
         public void createHellPortalBlock() {
             this.blockStateOutput
                     .accept(
@@ -147,73 +128,64 @@ public class ModModelProvider extends ModelProvider {
     }
 
     @Override
-    protected BlockModelGenerators getBlockModelGenerators(BlockStateGeneratorCollector blocks, ItemInfoCollector items, SimpleModelCollector models) {
-        MyBlockModelGenerators generators = new MyBlockModelGenerators(blocks, items, models);
-
-        generators.createTrivialCube(ModBlocks.TRANSFORMER_BLOCK.get());
-        generators.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK.get());
-        generators.createTrivialCube(ModBlocks.PYRITE_DEEPSLATE_ORE.get());
-        generators.createTrivialCube(ModBlocks.PYRITE_ORE.get());
-        generators.createTrivialCube(ModBlocks.NEPHRITE_BLOCK.get());
-        generators.createTrivialCube(ModBlocks.NEPHRITE_DEEPSLATE_ORE.get());
-        generators.createTrivialCube(ModBlocks.NEPHRITE_ORE.get());
-        generators.createTrivialCube(ModBlocks.HINOKI_BAN.get());
-        generators.family(ModBlocks.PYRITE_BLOCK)
-                .stairs(ModBlocks.PYRITE_STAIRS.get())
-                .slab(ModBlocks.PYRITE_SLAB.get())
-                .button(ModBlocks.PYRITE_BUTTON.get())
-                .pressurePlate(ModBlocks.PYRITE_PRESSURE_PLATE.get())
-                .fence(ModBlocks.PYRITE_FENCE.get())
-                .fenceGate(ModBlocks.PYRITE_FENCE_GATE.get())
-                .wall(ModBlocks.PYRITE_WALL.get());
-        generators.wood(ModBlocks.HINOKI_MARUTA)
-                .logWithHorizontal(ModBlocks.HINOKI_MARUTA.get())
-                .wood(ModBlocks.HINOKI_MOKUZAI.get());
-        generators.wood(ModBlocks.STRIPPED_HINOKI_MARUTA)
-                .logWithHorizontal(ModBlocks.STRIPPED_HINOKI_MARUTA.get())
-                .wood(ModBlocks.STRIPPED_HINOKI_MOKUZAI.get());
-        generators.door(ModBlocks.PYRITE_DOOR.get());
-        generators.trapDoor(ModBlocks.PYRITE_TRAPDOOR.get());
-        generators.createCropBlock(ModBlocks.RICE_CROP.get(), ModBlockStateProperties.AGE_4, 0, 1, 2, 3, 4);
-        generators.createYamazakiBerryBush();
-        generators.createLamp();
-        generators.createTintedLeaves(ModBlocks.HINOKI_HA.get(), TexturedModel.LEAVES, -12012264);
-        generators.createSapling(ModBlocks.HINOKI_NAEGI.get(), ModBlocks.POTTED_HINOKI_NAEGI.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-        generators.createTrivialCube(ModBlocks.GROWTH_CHAMBER.get());
-        generators.createHellPortalBlock();
-
-        return generators;
+    protected @NotNull BlockModelGenerators getBlockModelGenerators(BlockStateGeneratorCollector blocks, ItemInfoCollector items, SimpleModelCollector models) {
+        return new MyBlockModelGenerators(blocks, items, models);
     }
 
-    private class MyItemModelGenerators extends ItemModelGenerators {
+    private static class MyItemModelGenerators extends ItemModelGenerators {
+
         public MyItemModelGenerators(ItemModelOutput pItemModelOutput, BiConsumer<ResourceLocation, ModelInstance> pModelOutput) {
             super(pItemModelOutput, pModelOutput);
         }
 
-        public void generateFlatItem(RegistryObject<Item> item, ModelTemplate template) {
-            generateFlatItem(item.get(), template);
-        }
-
-        public void generateBow(Item pBowItem) {
-            ItemModel.Unbaked itemmodel$unbaked = ItemModelUtils.plainModel(this.createFlatItemModel(pBowItem, ModelTemplates.BOW));
-            ItemModel.Unbaked itemmodel$unbaked1 = ItemModelUtils.plainModel(this.createFlatItemModel(pBowItem, "_pulling_0", ModelTemplates.BOW));
-            ItemModel.Unbaked itemmodel$unbaked2 = ItemModelUtils.plainModel(this.createFlatItemModel(pBowItem, "_pulling_1", ModelTemplates.BOW));
-            ItemModel.Unbaked itemmodel$unbaked3 = ItemModelUtils.plainModel(this.createFlatItemModel(pBowItem, "_pulling_2", ModelTemplates.BOW));
-            this.itemModelOutput
-                    .accept(
-                            pBowItem,
-                            ItemModelUtils.conditional(
-                                    ItemModelUtils.isUsingItem(),
-                                    ItemModelUtils.rangeSelect(
-                                            new UseDuration(false),
-                                            0.05F,
-                                            itemmodel$unbaked1,
-                                            ItemModelUtils.override(itemmodel$unbaked2, 0.65F),
-                                            ItemModelUtils.override(itemmodel$unbaked3, 0.9F)
-                                    ),
-                                    itemmodel$unbaked
-                            )
-                    );
+        @Override
+        public void run() {
+            super.run();
+            this.generateFlatItem(ModItems.RAW_PYRITE.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.DIESEL.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.GREEN_TEA.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.SUSHI.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.INCENSE.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.UDON.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.WOODEN_KATANA.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.YA.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.AO_TO_NATSU_MUSIC_DISC.get(), ModelTemplates.MUSIC_DISC);
+            this.generateFlatItem(ModItems.RAW_RICE.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.RICE.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.SMALL_FIREBALL_SCROLL.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.LARGE_FIREBALL_SCROLL.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.WINDBALL_SCROLL.get(), ModelTemplates.FLAT_ITEM);
+            this.generateBow(ModItems.DAIKYU.get());
+            this.generateFlatItem(ModItems.NEPHRITE.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_BATTLE_AXE.get(), ModelTemplates.FLAT_HANDHELD_MACE_ITEM);
+            this.generateFlatItem(ModItems.NEPHRITE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.NEPHRITE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.NEPHRITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.NEPHRITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.NEPHRITE_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateFlatItem(ModItems.PYRITE_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+            this.generateTrimmableItem(ModItems.PYRITE_HELMET.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+            this.generateTrimmableItem(ModItems.PYRITE_CHESTPLATE.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+            this.generateTrimmableItem(ModItems.PYRITE_LEGGINGS.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+            this.generateTrimmableItem(ModItems.PYRITE_BOOTS.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+            this.generateTrimmableItem(ModItems.NEPHRITE_HELMET.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+            this.generateTrimmableItem(ModItems.NEPHRITE_CHESTPLATE.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+            this.generateTrimmableItem(ModItems.NEPHRITE_LEGGINGS.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+            this.generateTrimmableItem(ModItems.NEPHRITE_BOOTS.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+            this.generateTrimmableItem(ModItems.SAMURAI_HELMET.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+            this.generateTrimmableItem(ModItems.SAMURAI_CHESTPLATE.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+            this.generateTrimmableItem(ModItems.SAMURAI_LEGGINGS.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+            this.generateTrimmableItem(ModItems.SAMURAI_BOOTS.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+            this.generateFlatItem(ModItems.PYRITE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.SIKA_DEER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+            this.generateFlatItem(ModItems.TRICERATOPS_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         }
 
         public static final List<MyItemModelGenerators.MyTrimMaterialData> TRIM_MATERIAL_MODELS = List.of(
@@ -273,53 +245,7 @@ public class ModModelProvider extends ModelProvider {
     }
 
     @Override
-    protected ItemModelGenerators getItemModelGenerators(ItemInfoCollector items, SimpleModelCollector models) {
-        MyItemModelGenerators generators = new MyItemModelGenerators(items, models);
-        generators.generateFlatItem(ModItems.RAW_PYRITE, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_INGOT, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.DIESEL, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.GREEN_TEA, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.SUSHI, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.INCENSE, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.UDON, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.WOODEN_KATANA, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.YA, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.AO_TO_NATSU_MUSIC_DISC, ModelTemplates.MUSIC_DISC);
-        generators.generateFlatItem(ModItems.RAW_RICE, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.RICE, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.SMALL_FIREBALL_SCROLL, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.LARGE_FIREBALL_SCROLL, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.WINDBALL_SCROLL, ModelTemplates.FLAT_ITEM);
-        generators.generateBow(ModItems.DAIKYU.get());
-        generators.generateFlatItem(ModItems.NEPHRITE, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_BATTLE_AXE, ModelTemplates.FLAT_HANDHELD_MACE_ITEM);
-        generators.generateFlatItem(ModItems.NEPHRITE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.NEPHRITE_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.NEPHRITE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.NEPHRITE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.NEPHRITE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateFlatItem(ModItems.PYRITE_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
-        generators.generateTrimmableItem(ModItems.PYRITE_HELMET.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        generators.generateTrimmableItem(ModItems.PYRITE_CHESTPLATE.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        generators.generateTrimmableItem(ModItems.PYRITE_LEGGINGS.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        generators.generateTrimmableItem(ModItems.PYRITE_BOOTS.get(), ModEquipmentAssets.PYRITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        generators.generateTrimmableItem(ModItems.NEPHRITE_HELMET.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        generators.generateTrimmableItem(ModItems.NEPHRITE_CHESTPLATE.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        generators.generateTrimmableItem(ModItems.NEPHRITE_LEGGINGS.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        generators.generateTrimmableItem(ModItems.NEPHRITE_BOOTS.get(), ModEquipmentAssets.NEPHRITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        generators.generateTrimmableItem(ModItems.SAMURAI_HELMET.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        generators.generateTrimmableItem(ModItems.SAMURAI_CHESTPLATE.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        generators.generateTrimmableItem(ModItems.SAMURAI_LEGGINGS.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        generators.generateTrimmableItem(ModItems.SAMURAI_BOOTS.get(), ModEquipmentAssets.SAMURAI, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
-        generators.generateFlatItem(ModItems.PYRITE_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.SIKA_DEER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
-        generators.generateFlatItem(ModItems.TRICERATOPS_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
-        return generators;
+    protected @NotNull ItemModelGenerators getItemModelGenerators(ItemInfoCollector items, SimpleModelCollector models) {
+        return new MyItemModelGenerators(items, models);
     }
 }

@@ -6,9 +6,7 @@
   },
   "minVersion": "0.8",
   "mixins": [
-    "GuiMixin",
-    "PortalForcerMixin",
-    "PortalShapeMixin"
+    "GuiMixin"
   ],
   "package": "net.Chidoziealways.everythingjapanese.mixins",
   "refmap": "everythingjapanese.refmap.json",

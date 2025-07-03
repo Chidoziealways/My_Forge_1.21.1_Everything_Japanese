@@ -1,4 +1,4 @@
-// 1.21.5	2025-05-23T18:04:06.0696405	Registries
+// 1.21.5	2025-05-27T11:45:43.9937676	Registries
 6fd4a248482fb795c01a12450836ca168cbeb9a8 data/everythingjapanese/dimension/hell.json
 20731f2d16840fac3b62cea1e3b21d771ada5d62 data/everythingjapanese/dimension_type/hell_type.json
 10ca8674ccccba46024641e204e1bceaa0192e51 data/everythingjapanese/enchantment/lightning_striker.json
@@ -23,6 +23,6 @@ be91ca9cef584faff6055344be9a0c4b86eb23ac data/everythingjapanese/worldgen/config
 0be08e0de04f7e8de3edc09a8fe9af9c09c4ccdc data/everythingjapanese/worldgen/placed_feature/yamazaki_berry_bush_placed.json
 8f704a82c03fa9a2021c630c5df23484a22192c1 data/everythingjapanese/worldgen/processor_list/empty.json
 c4c8450eed327931a71c7b2b57b87d84e01244a1 data/everythingjapanese/worldgen/processor_list/hell_temple_start_degradation.json
-df9bc5d7f63b3cdc36969ebc3339c7658f7d2f5f data/everythingjapanese/worldgen/structure/hell_temple.json
+ebe2e68cbc9de2627a24697e125e5839ee23f89c data/everythingjapanese/worldgen/structure/hell_temple.json
 f213346321338ece6b2a527f6cda4075ebea8a34 data/everythingjapanese/worldgen/structure_set/hell_temple.json
 07bd506df4cd2f6c76433fac617a50db66d7cf57 data/everythingjapanese/worldgen/template_pool/hell_temple.json

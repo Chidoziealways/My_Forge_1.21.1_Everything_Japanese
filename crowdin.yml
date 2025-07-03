@@ -6,10 +6,11 @@
 
 "files": [
   {
-    "source": "src/main/resources/assets/everythingjapanese/lang/en_US.json",
+    "source": "src/main/resources/assets/everythingjapanese/lang/en_us.json",
     "translation": "src/main/resources/assets/everythingjapanese/lang/%locale_with_underscore%.json",
     "languages_mapping": {
       "locale_with_underscore": {
+        "en": "en_us",
         "fr": "fr_fr",
         "fr-CA": "fr_ca",
         "ja": "ja_jp",

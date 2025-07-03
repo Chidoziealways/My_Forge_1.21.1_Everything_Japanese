@@ -39,7 +39,7 @@ public class ModStructuresGen {
                             .spawnOverrides(
                                     Map.of(MobCategory.MONSTER, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.PIECE, NetherFortressStructure.FORTRESS_ENEMIES))
                             )
-                            .generationStep(GenerationStep.Decoration.UNDERGROUND_DECORATION)
+                            .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
                             .build(),
                         holdergetter1.getOrThrow(HellTempleStructurePieces.START),
                         Optional.of(ResourceLocation.fromNamespaceAndPath(EverythingJapanese.MOD_ID, "hell_temple")),

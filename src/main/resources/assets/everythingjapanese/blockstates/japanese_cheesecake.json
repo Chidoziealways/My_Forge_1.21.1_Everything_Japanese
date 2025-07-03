@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "everythingjapanese:block/japanese_cheesecake"
+    },
+    "bites=1": {
+      "model": "everythingjapanese:block/japanese_cheesecake_slice1"
+    },
+    "bites=2": {
+      "model": "everythingjapanese:block/japanese_cheesecake_slice2"
+    },
+    "bites=3": {
+      "model": "everythingjapanese:block/japanese_cheesecake_slice3"
+    },
+    "bites=4": {
+      "model": "everythingjapanese:block/japanese_cheesecake_slice4"
+    },
+    "bites=5": {
+      "model": "everythingjapanese:block/japanese_cheesecake_slice5"
+    },
+    "bites=6": {
+      "model": "everythingjapanese:block/japanese_cheesecake_slice6"
+    }
+  }
+}

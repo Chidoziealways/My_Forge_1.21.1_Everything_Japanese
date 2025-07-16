@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "everythingjapanese:item/hell_portal_activator"
+  }
+}

@@ -43,8 +43,7 @@
   "start_height": {
     "absolute": -27
   },
-  "start_jigsaw_name": "everythingjapanese:hell_temple",
-  "start_pool": "everythingjapanese:hell_temple",
-  "step": "underground_decoration",
+  "start_pool": "everythingjapanese:hell_temple/stairs",
+  "step": "surface_structures",
   "use_expansion_hack": false
 }

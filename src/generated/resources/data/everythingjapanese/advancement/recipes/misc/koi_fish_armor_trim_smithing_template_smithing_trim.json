@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "everythingjapanese:koi_fish_smithing_recipe"
+        "recipe": "everythingjapanese:koi_fish_armor_trim_smithing_template_smithing_trim"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "everythingjapanese:koi_fish_smithing_recipe"
+      "everythingjapanese:koi_fish_armor_trim_smithing_template_smithing_trim"
     ]
   }
 }

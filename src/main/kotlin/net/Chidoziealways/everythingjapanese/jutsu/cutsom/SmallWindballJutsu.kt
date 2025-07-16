@@ -1,0 +1,45 @@
+package net.Chidoziealways.everythingjapanese.jutsu.cutsom
+
+import net.Chidoziealways.everythingjapanese.EverythingJapanese
+import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
+import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
+import net.minecraft.network.chat.Component
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.sounds.SoundEvents
+import net.minecraft.sounds.SoundSource
+import net.minecraft.world.entity.player.Player
+import net.minecraft.world.entity.projectile.windcharge.WindCharge
+import net.minecraft.world.phys.Vec3
+
+class SmallWindballJutsu : Jutsu(
+    ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_windball"),
+    "Small Windball",
+    20f,
+    5,
+    JutsuType.KUKINOJUTSU,
+    JutsuType.NINJUTSU
+) {
+    override fun cast(player: Player) {
+        player.displayClientMessage(Component.literal("Casting: $name"), true)
+        val world = player.level()
+        val lookVec = player.lookAngle
+        val eyePos = player.getEyePosition(1.0f)
+        val spawnPos = eyePos.add(lookVec.scale(0.5))
+
+        val windball = WindCharge(player, world, lookVec.x, lookVec.y, lookVec.z)
+        windball.setPos(spawnPos)
+        windball.deltaMovement = spawnPos.add(Vec3(1.0, 0.0, 0.0))
+
+        world.addFreshEntity(windball)
+
+        world.playSound(
+            null,
+            player.blockPosBelowThatAffectsMyMovement,
+            SoundEvents.WIND_CHARGE_BURST.get(),
+            SoundSource.PLAYERS,
+            1.0f,
+            1.0f
+        )
+    }
+}

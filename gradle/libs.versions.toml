@@ -1,16 +1,16 @@
 [versions]
-    everythingjapanese = "1.1.3"
+    everythingjapanese = "1.3.0"
 
     minecraft-range = "[1.21.1, 1.22)"
     minecraft = "1.21.7"
     parchment-minecraft = "1.21.5"
-    parchment = "2025.04.19"
+    parchment = "2025.06.15"
     jopt-simple = "5.0.4"
 
-    forge-fml-range = "[0,)"
+    forge-fml-range = "[5.3,)"
     forge-range = "[0,)"
-    forge = "57.0.0"
-    forge-mc = "1.21.7-57.0.0"
+    forge = "57.0.2"
+    forge-mc = "1.21.7-57.0.2"
 
     mixin = "0.8.7"
     mixinextras = "0.4.1"
@@ -19,7 +19,7 @@
     plugin-minotaur = "2.8.7"
     plugin-curseforge-gradle = "1.1.26"
     plugin-idea-ext = "1.1.10"
-    plugin-forge-gradle = "[6.0.35,6.2)"
+    plugin-forge-gradle = "6.0.36"
     plugin-mixin = "0.7.+"
     plugin-parchment-forge-gradle = "1.+"
 

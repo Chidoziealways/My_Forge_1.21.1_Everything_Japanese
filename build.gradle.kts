@@ -30,7 +30,7 @@ jarJar.enable()
 println("Java: ${System.getProperty("java.version")}, JVM: ${System.getProperty("java.vm.version")} (${System.getProperty("java.vendor")}), Arch: ${System.getProperty("os.arch")}")
 
 minecraft {
-    mappings("parchment", "${mappingsMinecraftVersion}-${parchmentVersion}-${minecraftVersion}")
+    mappings("official", minecraftVersion/*"${mappingsMinecraftVersion}-${parchmentVersion}-${minecraftVersion}"*/)
     //accessTransformer(file("src/main/resources/META-INF/accesstransformer.cfg"))
 
     reobf = false
@@ -87,6 +87,7 @@ sourceSets {
 }
 
 repositories {
+    mavenLocal()
     // Forge and Maven Central included automatically
     maven {
         name = "Jared's maven"
@@ -100,6 +101,12 @@ repositories {
         name = "GeckoLib"
         url = uri("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
     }
+
+    maven {
+        name = "Kotlin for Forge"
+        url = uri("https://thedarkcolour.github.io/KotlinForForge/")
+    }
+
 }
 
 dependencies {
@@ -107,6 +114,8 @@ dependencies {
 
     if (System.getProperty("idea.sync.active") != "true")
         annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
+
+    //annotationProcessor("net.minecraftforge:eventbus-validator:7.0-beta.7")
 
     compileOnly(libs.mixinextras.common)
     annotationProcessor(libs.mixinextras.common)
@@ -117,7 +126,15 @@ dependencies {
         jarJar.ranged(this, libs.versions.mixinextras.range.get())
     }
 
+
+
     implementation(libs.jopt.simple)
+
+    implementation("thedarkcolour:kotlinforforge:6.0.0") // Or whatever the latest is
+    implementation("thedarkcolour:kffmod:6.0.0")
+    implementation("thedarkcolour:kfflib:6.0.0")
+    implementation("thedarkcolour:kfflang:6.0.0")
+
 
     // Uncomment and add if you want those libs
     // implementation(fg.deobf("com.github.glitchfiend:TerraBlender-forge:$minecraftVersion-$terrablender_version"))
@@ -143,7 +160,7 @@ modrinth {
     println("Modrinth: " + System.getenv("MODRINTH_TOKEN"))
     projectId = "H7XfH3TW"
     versionNumber.set(project.version.toString())
-    versionName = "Forge $minecraftVersion"
+    versionName = "Everything Japanese ${project.version}"
     uploadFile.set(tasks.jarJar)
     changelog.set(rootProject.file("changelog.md").readText(Charsets.UTF_8))
     gameVersions.set(listOf(minecraftVersion))
@@ -163,9 +180,8 @@ tasks.register<TaskPublishCurseForge>("publishToCurseForge") {
     mainFile.addGameVersion(minecraftVersion)
     mainFile.addEnvironment("Client", "Server")
     mainFile.addJavaVersion("Java 21")
+    mainFile.changelogType = "markdown"
     mainFile.changelog = rootProject.file("changelog.md").readText(Charsets.UTF_8)
-
-    //https://github.com/Darkhax/CurseForgeGradle#available-properties
 }
 
 publishing {
@@ -189,5 +205,6 @@ sourceSets.all {
     val dir = layout.buildDirectory.dir("sourcesSets/$name")
     output.setResourcesDir(dir)
     java.destinationDirectory.set(dir)
+    kotlin.destinationDirectory.set(dir)
 }
 

@@ -1,16 +1,28 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     java
+    kotlin("jvm")  // or whatever version you're targeting
     `maven-publish`
     idea
     eclipse
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+kotlin {
+    jvmToolchain(21)
 
-    withSourcesJar()
-    withJavadocJar()
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+    }
 }
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+
 
 idea {
     module {
@@ -77,11 +89,6 @@ tasks.withType<Jar>().configureEach {
             "MixinConfigs"            to "$modId.mixins.json"
         ))
     }
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    this.options.encoding = "UTF-8"
-    this.options.getRelease().set(21)
 }
 
 tasks.withType<ProcessResources>().configureEach {

@@ -3,6 +3,7 @@ package net.Chidoziealways.everythingjapanese.event
 import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
+import net.Chidoziealways.everythingjapanese.quest.Quest
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
@@ -31,6 +32,12 @@ object ModRegistryEvents {
             RegistryBuilder<Jutsu>()
                 .setName(ModRegistries.JUTSU.location())
                 .setDefaultKey(ModRegistries.JUTSU.location())
+                .setMaxID(MAX_VARINT)
+        )
+        event.create(
+            RegistryBuilder<Quest>()
+                .setName(ModRegistries.QUEST.location())
+                .setDefaultKey(ModRegistries.QUEST.location())
                 .setMaxID(MAX_VARINT)
         )
         log.info(marker, "Finished Registering Jutsu")

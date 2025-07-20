@@ -35,6 +35,8 @@ import net.minecraftforge.eventbus.api.bus.BusGroup
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
+import thedarkcolour.kotlinforforge.forge.ObjectHolderDelegate
+import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.function.Supplier
 import java.util.function.ToIntFunction
 
@@ -43,7 +45,7 @@ object ModBlocks {
         DeferredRegister.create<Block?>(ForgeRegistries.BLOCKS, MOD_ID)
 
     // Basic Blocks
-    val PYRITE_BLOCK: RegistryObject<Block?> = registerBlock<Block?>(
+    val PYRITE_BLOCK = registerBlock<Block?>(
         "pyrite_block"
     ) {
         Block(
@@ -58,7 +60,7 @@ object ModBlocks {
         )
     }
 
-    val NEPHRITE_BLOCK: RegistryObject<Block?> = registerBlock<Block?>(
+    val NEPHRITE_BLOCK = registerBlock<Block?>(
         "nephrite_block"
     ) {
         Block(
@@ -73,7 +75,7 @@ object ModBlocks {
     }
 
 
-    val RAW_PYRITE_BLOCK: RegistryObject<Block?> = registerBlock<Block?>(
+    val RAW_PYRITE_BLOCK = registerBlock<Block?>(
         "raw_pyrite_block"
     ) {
         Block(
@@ -89,7 +91,7 @@ object ModBlocks {
 
     // Ore Blocks
     @JvmField
-    val PYRITE_ORE: RegistryObject<Block?> = registerBlock<Block?>(
+    val PYRITE_ORE = registerBlock<Block?>(
         "pyrite_ore"
     ) {
         DropExperienceBlock(
@@ -103,7 +105,7 @@ object ModBlocks {
     }
 
     @JvmField
-    val PYRITE_DEEPSLATE_ORE: RegistryObject<Block?> = registerBlock<Block?>(
+    val PYRITE_DEEPSLATE_ORE = registerBlock<Block?>(
         "pyrite_deepslate_ore"
     ) {
         DropExperienceBlock(
@@ -118,7 +120,7 @@ object ModBlocks {
     }
 
     @JvmField
-    val NEPHRITE_ORE: RegistryObject<Block?> = registerBlock<Block?>(
+    val NEPHRITE_ORE = registerBlock<Block?>(
         "nephrite_ore"
     ) {
         DropExperienceBlock(
@@ -133,7 +135,7 @@ object ModBlocks {
     }
 
     @JvmField
-    val NEPHRITE_DEEPSLATE_ORE: RegistryObject<Block?> = registerBlock<Block?>(
+    val NEPHRITE_DEEPSLATE_ORE = registerBlock<Block?>(
         "nephrite_deepslate_ore"
     ) {
         DropExperienceBlock(
@@ -148,7 +150,7 @@ object ModBlocks {
     }
 
     // Custom Blocks
-    val TRANSFORMER_BLOCK: RegistryObject<Block?> = registerBlock<Block?>(
+    val TRANSFORMER_BLOCK = registerBlock<Block?>(
         "transformer_block"
     ) {
         MagicBlock(
@@ -163,7 +165,7 @@ object ModBlocks {
         )
     }
 
-    val CHOCOLATE_CAKE: RegistryObject<Block?> = registerBlock<Block?>(
+    val CHOCOLATE_CAKE = registerBlock<Block?>(
         "chocolate_cake"
     ) {
         ModdedCakeBlock(
@@ -177,7 +179,7 @@ object ModBlocks {
         )
     }
 
-    val JAPANESE_CHEESECAKE: RegistryObject<Block?> = registerBlock<Block?>(
+    val JAPANESE_CHEESECAKE = registerBlock<Block?>(
         "japanese_cheesecake"
     ) {
         CakeBlock(
@@ -192,7 +194,7 @@ object ModBlocks {
     }
 
     @JvmField
-    val PEDESTAL: RegistryObject<Block?> = registerBlock<Block?>(
+    val PEDESTAL = registerBlock<Block?>(
         "pedestal"
     ) {
         PedestalBlock(
@@ -207,7 +209,7 @@ object ModBlocks {
     }
 
     @JvmField
-    val GROWTH_CHAMBER: RegistryObject<Block?> = registerBlock<Block?>(
+    val GROWTH_CHAMBER = registerBlock<Block?>(
         "growth_chamber"
     ) {
         GrowthChamberBlock(
@@ -221,7 +223,7 @@ object ModBlocks {
     }
 
     //Food/Crop Blocks
-    val RICE_CROP: RegistryObject<Block?> = BLOCKS.register<Block?>(
+    val RICE_CROP = BLOCKS.register<Block?>(
         "rice_crop",
         Supplier {
             RiceCropBlock(
@@ -238,7 +240,7 @@ object ModBlocks {
         })
 
     @JvmField
-    val YAMAZAKI_BERRY_BUSH: RegistryObject<Block?> = BLOCKS.register<Block?>(
+    val YAMAZAKI_BERRY_BUSH = BLOCKS.register<Block?>(
         "yamazaki_berry_bush",
         Supplier {
             YamazakiBerryBushBlock(
@@ -256,7 +258,7 @@ object ModBlocks {
 
     // Hinoki Wood Blocks
     @JvmField
-    val HINOKI_MARUTA: RegistryObject<RotatedPillarBlock?> = registerBlock<RotatedPillarBlock?>(
+    val HINOKI_MARUTA = registerBlock<RotatedPillarBlock?>(
         "hinoki_maruta"
     ) {
         ModFlammableRotatedPillarBlock(
@@ -270,7 +272,7 @@ object ModBlocks {
         )
     }
 
-    val HINOKI_MOKUZAI: RegistryObject<RotatedPillarBlock?> = registerBlock<RotatedPillarBlock?>(
+    val HINOKI_MOKUZAI = registerBlock<RotatedPillarBlock?>(
         "hinoki_mokuzai"
     ) {
         ModFlammableRotatedPillarBlock(
@@ -284,7 +286,7 @@ object ModBlocks {
         )
     }
 
-    val STRIPPED_HINOKI_MARUTA: RegistryObject<RotatedPillarBlock?> = registerBlock<RotatedPillarBlock?>(
+    val STRIPPED_HINOKI_MARUTA = registerBlock<RotatedPillarBlock?>(
         "stripped_hinoki_maruta"
     ) {
         ModFlammableRotatedPillarBlock(
@@ -298,7 +300,7 @@ object ModBlocks {
         )
     }
 
-    val STRIPPED_HINOKI_MOKUZAI: RegistryObject<RotatedPillarBlock?> = registerBlock<RotatedPillarBlock?>(
+    val STRIPPED_HINOKI_MOKUZAI = registerBlock<RotatedPillarBlock?>(
         "stripped_hinoki_mokuzai"
     ) {
         ModFlammableRotatedPillarBlock(
@@ -312,7 +314,7 @@ object ModBlocks {
         )
     }
 
-    val HINOKI_BAN: RegistryObject<Block?> = registerBlock<Block?>(
+    val HINOKI_BAN = registerBlock<Block?>(
         "hinoki_ban"
     ) {
         object : Block(
@@ -355,7 +357,7 @@ object ModBlocks {
 
 
     @JvmField
-    val HINOKI_HA: RegistryObject<Block?> = registerBlock<Block?>(
+    val HINOKI_HA = registerBlock<Block?>(
         "hinoki_ha"
     ) {
         TintedParticleLeavesBlock(
@@ -370,7 +372,7 @@ object ModBlocks {
     }
 
     @JvmField
-    val HINOKI_NAEGI: RegistryObject<Block?> = registerBlock<Block?>(
+    val HINOKI_NAEGI = registerBlock<Block?>(
         "hinoki_naegi"
     ) {
         SaplingBlock(
@@ -390,7 +392,7 @@ object ModBlocks {
         )
     }
 
-    val POTTED_HINOKI_NAEGI: RegistryObject<Block?> = registerBlock<Block?>(
+    val POTTED_HINOKI_NAEGI = registerBlock<Block?>(
         "potted_hinoki_naegi"
     ) {
         FlowerPotBlock(
@@ -406,11 +408,11 @@ object ModBlocks {
 
 
     // Pyrite Decor Blocks
-    val PYRITE_STAIRS: RegistryObject<StairBlock?> = registerBlock<StairBlock?>(
+    val PYRITE_STAIRS = registerBlock<StairBlock?>(
         "pyrite_stairs"
     ) {
         StairBlock(
-            PYRITE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.of()
+            PYRITE_BLOCK.get()!!.defaultBlockState(), BlockBehaviour.Properties.of()
                 .setId(
                     ResourceKey.create<Block?>(
                         Registries.BLOCK,
@@ -421,7 +423,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_SLAB: RegistryObject<SlabBlock?> = registerBlock<SlabBlock?>(
+    val PYRITE_SLAB = registerBlock<SlabBlock?>(
         "pyrite_slab"
     ) {
         SlabBlock(
@@ -435,7 +437,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_PRESSURE_PLATE: RegistryObject<PressurePlateBlock?> = registerBlock<PressurePlateBlock?>(
+    val PYRITE_PRESSURE_PLATE = registerBlock<PressurePlateBlock?>(
         "pyrite_pressure_plate"
     ) {
         PressurePlateBlock(
@@ -449,7 +451,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_BUTTON: RegistryObject<ButtonBlock?> = registerBlock<ButtonBlock?>(
+    val PYRITE_BUTTON = registerBlock<ButtonBlock?>(
         "pyrite_button"
     ) {
         ButtonBlock(
@@ -463,7 +465,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_FENCE: RegistryObject<FenceBlock?> = registerBlock<FenceBlock?>(
+    val PYRITE_FENCE = registerBlock<FenceBlock?>(
         "pyrite_fence"
     ) {
         FenceBlock(
@@ -477,7 +479,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_FENCE_GATE: RegistryObject<FenceGateBlock?> = registerBlock<FenceGateBlock?>(
+    val PYRITE_FENCE_GATE = registerBlock<FenceGateBlock?>(
         "pyrite_fence_gate"
     ) {
         FenceGateBlock(
@@ -492,7 +494,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_WALL: RegistryObject<WallBlock?> = registerBlock<WallBlock?>(
+    val PYRITE_WALL = registerBlock<WallBlock?>(
         "pyrite_wall"
     ) {
         WallBlock(
@@ -506,7 +508,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_DOOR: RegistryObject<DoorBlock?> = registerBlock<DoorBlock?>(
+    val PYRITE_DOOR = registerBlock<DoorBlock?>(
         "pyrite_door"
     ) {
         DoorBlock(
@@ -521,7 +523,7 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_TRAPDOOR: RegistryObject<TrapDoorBlock?> = registerBlock<TrapDoorBlock?>(
+    val PYRITE_TRAPDOOR = registerBlock<TrapDoorBlock?>(
         "pyrite_trapdoor"
     ) {
         TrapDoorBlock(
@@ -535,9 +537,8 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_LAMP: RegistryObject<Block?> = registerBlock<Block?>(
-        "pyrite_lamp"
-    ) {
+    val PYRITE_LAMP = registerBlock<Block?>(
+        "pyrite_lamp") {
         PyriteLampBlock(
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create<Block?>(
@@ -551,9 +552,8 @@ object ModBlocks {
     }
 
     @JvmField
-    val CHAIR: RegistryObject<Block?> = registerBlock<Block?>(
-        "chair"
-    ) {
+    val CHAIR = registerBlock<Block?>(
+        "chair" ) {
         ChairBlock(
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create<Block?>(
@@ -589,17 +589,17 @@ object ModBlocks {
 
 
     // Register Blocks
-    private fun <T : Block?> registerBlock(name: String, block: Supplier<T?>?): RegistryObject<T?> {
-        val toReturn = BLOCKS.register<T?>(name, block)
+    private fun <T : Block?> registerBlock(name: String, block: Function0<T>): ObjectHolderDelegate<T> {
+        val toReturn = BLOCKS.registerObject(name, block)
         logInfo("Attempting to register block: $name")
-        registerBlockItem<T?>(name, toReturn)
+        registerBlockItem(name, toReturn)
         return toReturn
     }
 
-    private fun <T : Block?> registerBlockItem(name: String, block: RegistryObject<T?>) {
+    private fun <T : Block?> registerBlockItem(name: String, block: ObjectHolderDelegate<T>) {
         logInfo("Registering BlockItem for: $name")
         //System.out.println(" Is Chocolate Cake Present? true or false? " + CHOCOLATE_CAKE.isPresent());
-        ModItems.ITEMS.register<BlockItem?>(name, Supplier {
+        ModItems.ITEMS.registerObject(name) {
             BlockItem(
                 block.get(), Item.Properties()
                     .useBlockDescriptionPrefix()
@@ -610,7 +610,7 @@ object ModBlocks {
                         )
                     )
             )
-        })
+        }
     }
 
     fun register(eventBus: BusGroup?) {

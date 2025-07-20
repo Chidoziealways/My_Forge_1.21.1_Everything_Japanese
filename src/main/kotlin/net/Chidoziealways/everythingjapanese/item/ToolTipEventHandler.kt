@@ -33,7 +33,7 @@ object ToolTipEventHandler {
             event.getToolTip().add(Component.translatable("tooltip.everythingjapanese.sushi"))
         }
 
-        if (event.getItemStack().getItem() === ModBlocks.TRANSFORMER_BLOCK.get().asItem()) {
+        if (event.getItemStack().getItem() === ModBlocks.TRANSFORMER_BLOCK.get()!!.asItem()) {
             event.getToolTip().add(Component.translatable("tooltip.everythingjapanese.magic_block.tooltip"))
         }
 

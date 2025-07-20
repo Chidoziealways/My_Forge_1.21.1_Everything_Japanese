@@ -67,7 +67,7 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
             ModBlocks.PYRITE_DEEPSLATE_ORE.get(),
             java.util.function.Function { block: net.minecraft.world.level.block.Block? ->
                 createMultipleOreDrops(
-                    ModBlocks.PYRITE_DEEPSLATE_ORE.get(),
+                    ModBlocks.PYRITE_DEEPSLATE_ORE.get()!!,
                     ModItems.RAW_PYRITE!!.get(),
                     9f,
                     20f
@@ -87,7 +87,7 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
             ModBlocks.NEPHRITE_DEEPSLATE_ORE.get(),
             java.util.function.Function { block: net.minecraft.world.level.block.Block? ->
                 createMultipleOreDrops(
-                    ModBlocks.NEPHRITE_DEEPSLATE_ORE.get(),
+                    ModBlocks.NEPHRITE_DEEPSLATE_ORE.get()!!,
                     ModItems.NEPHRITE!!.get(),
                     9f,
                     20f

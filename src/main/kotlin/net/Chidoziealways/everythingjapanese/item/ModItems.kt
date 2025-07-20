@@ -30,6 +30,7 @@ import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.*
 import java.util.List
 import java.util.function.Supplier
@@ -40,9 +41,9 @@ object ModItems {
     val ITEMS: DeferredRegister<Item?> =
         DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID)
 
-    val PYRITE_INGOT: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_ingot",
-        Supplier {
+    val PYRITE_INGOT = ITEMS.registerObject(
+        "pyrite_ingot")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -51,11 +52,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val SMALL_FIREBALL_SCROLL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "small_fireball_scroll",
-        Supplier {
+    val SMALL_FIREBALL_SCROLL = ITEMS.registerObject(
+        "small_fireball_scroll")
+        {
             JutsuScrollItem(
                 "small_fireball",
                 Item.Properties().setId(
@@ -65,11 +66,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val LARGE_FIREBALL_SCROLL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "large_fireball_scroll",
-        Supplier {
+    val LARGE_FIREBALL_SCROLL = ITEMS.registerObject(
+        "large_fireball_scroll")
+        {
             JutsuScrollItem(
                 "large_fireball",
                 Item.Properties().setId(
@@ -79,11 +80,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val WINDBALL_SCROLL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "windball_scroll",
-        Supplier {
+    val WINDBALL_SCROLL = ITEMS.registerObject(
+        "windball_scroll")
+        {
             JutsuScrollItem(
                 "small_windball",
                 Item.Properties().setId(
@@ -93,11 +94,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val HELL_PORTAL_ACTIVATOR: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "hell_portal_activator",
-        Supplier {
+    val HELL_PORTAL_ACTIVATOR = ITEMS.registerObject(
+        "hell_portal_activator")
+        {
             HellPortalItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -106,11 +107,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val NEPHRITE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite",
-        Supplier {
+    val NEPHRITE = ITEMS.registerObject(
+        "nephrite")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -119,11 +120,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val RAW_PYRITE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "raw_pyrite",
-        Supplier {
+    val RAW_PYRITE = ITEMS.registerObject(
+        "raw_pyrite")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -132,11 +133,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val CHISEL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "chisel",
-        Supplier {
+    val CHISEL = ITEMS.registerObject(
+        "chisel")
+        {
             ChiselItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -146,11 +147,11 @@ object ModItems {
                 )
                     .durability(100).stacksTo(1)
             )
-        })
+        }
 
-    val PYRITE_SWORD: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_sword",
-        Supplier {
+    val PYRITE_SWORD = ITEMS.registerObject(
+        "pyrite_sword")
+        {
             Item(
                 Item.Properties()
                     .setId(
@@ -164,7 +165,7 @@ object ModItems {
                         DataComponents.BLOCKS_ATTACKS, BlocksAttacks(
                             0.25f,
                             1.0f,
-                            List.of<DamageReduction?>(
+                            listOf<DamageReduction?>(
                                 DamageReduction(
                                     90.0f,
                                     Optional.empty<HolderSet<DamageType?>?>(),
@@ -179,11 +180,11 @@ object ModItems {
                         )
                     )
             )
-        })
+        }
 
-    val PYRITE_PICKAXE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_pickaxe",
-        Supplier {
+    val PYRITE_PICKAXE = ITEMS.registerObject(
+        "pyrite_pickaxe")
+        {
             Item(
                 Item.Properties()
                     .pickaxe(ModToolMaterials.PYRITE, 1f, -2.8f)
@@ -194,53 +195,53 @@ object ModItems {
                         )
                     )
             )
-        })
+        }
 
-    val PYRITE_SHOVEL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_shovel",
-        Supplier {
-            Item(
+    val PYRITE_SHOVEL = ITEMS.registerObject(
+        "pyrite_shovel")
+        {
+            ShovelItem(
+                ModToolMaterials.PYRITE, 1.5f, -3.0f,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_shovel")
                     )
                 )
-                    .shovel(ModToolMaterials.PYRITE, 1.5f, -3.0f)
             )
-        })
+        }
 
-    val PYRITE_AXE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_axe",
-        Supplier {
-            Item(
+    val PYRITE_AXE = ITEMS.registerObject(
+        "pyrite_axe")
+        {
+            AxeItem(
+                ModToolMaterials.PYRITE, 6f, -3.2f,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_axe")
                     )
                 )
-                    .axe(ModToolMaterials.PYRITE, 6f, -3.2f)
             )
-        })
+        }
 
-    val PYRITE_HOE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_hoe",
-        Supplier {
-            Item(
+    val PYRITE_HOE = ITEMS.registerObject(
+        "pyrite_hoe")
+        {
+            HoeItem(
+                ModToolMaterials.PYRITE, 0f, -3.0f,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_hoe")
                     )
                 )
-                    .hoe(ModToolMaterials.PYRITE, 0f, -3.0f)
             )
-        })
+        }
 
-    val SUSHI: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "sushi",
-        Supplier {
+    val SUSHI = ITEMS.registerObject(
+        "sushi")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -250,11 +251,11 @@ object ModItems {
                 )
                     .food(ModFoodProperties.SUSHI, ModFoodProperties.SUSHI_EFFECT).usingConvertsTo(Items.BOWL)
             )
-        })
+        }
 
-    val GREEN_TEA: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "green_tea",
-        Supplier {
+    val GREEN_TEA = ITEMS.registerObject(
+        "green_tea")
+        {
             Drinks(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -264,11 +265,11 @@ object ModItems {
                 )
                     .stacksTo(1)
             )
-        })
+        }
 
-    val DIESEL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "diesel",
-        Supplier {
+    val DIESEL = ITEMS.registerObject(
+        "diesel")
+        {
             FuelItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -278,11 +279,11 @@ object ModItems {
                 )
                     .stacksTo(1), 1200
             )
-        })
+        }
 
-    val UDON: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "udon",
-        Supplier {
+    val UDON = ITEMS.registerObject(
+        "udon")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -292,11 +293,11 @@ object ModItems {
                 )
                     .food(ModFoodProperties.UDON, ModFoodProperties.UDON_EFFECT).usingConvertsTo(Items.BOWL).stacksTo(1)
             )
-        })
+        }
 
-    val INCENSE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "incense",
-        Supplier {
+    val INCENSE = ITEMS.registerObject(
+        "incense")
+        {
             FuelItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -306,11 +307,11 @@ object ModItems {
                 )
                     .stacksTo(1), 20000
             )
-        })
+        }
 
-    val YA: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "ya",
-        Supplier {
+    val YA = ITEMS.registerObject(
+        "ya")
+        {
             ArrowItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -319,11 +320,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val WOODEN_KATANA: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "wooden_katana",
-        Supplier {
+    val WOODEN_KATANA = ITEMS.registerObject(
+        "wooden_katana")
+        {
             Katana(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -333,11 +334,11 @@ object ModItems {
                 )
                     .sword(ToolMaterial.WOOD, 3.0f, -2.4f), MobEffects()
             )
-        })
+        }
 
-    val NEPHRITE_SWORD: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_sword",
-        Supplier {
+    val NEPHRITE_SWORD = ITEMS.registerObject(
+        "nephrite_sword")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -350,7 +351,7 @@ object ModItems {
                         DataComponents.BLOCKS_ATTACKS, BlocksAttacks(
                             0.1f,
                             1.4f,
-                            List.of<DamageReduction?>(
+                            listOf<DamageReduction?>(
                                 DamageReduction(
                                     90.0f,
                                     Optional.empty<HolderSet<DamageType?>?>(),
@@ -365,11 +366,11 @@ object ModItems {
                         )
                     )
             )
-        })
+        }
 
-    val NEPHRITE_PICKAXE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_pickaxe",
-        Supplier {
+    val NEPHRITE_PICKAXE = ITEMS.registerObject(
+        "nephrite_pickaxe")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -379,53 +380,53 @@ object ModItems {
                 )
                     .pickaxe(ModToolMaterials.NEPHRITE, 5f, -2.5f)
             )
-        })
+        }
 
-    val NEPHRITE_SHOVEL: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_shovel",
-        Supplier {
-            Item(
+    val NEPHRITE_SHOVEL = ITEMS.registerObject(
+        "nephrite_shovel")
+        {
+            ShovelItem(
+                ModToolMaterials.NEPHRITE, 4.0f, -2.0f,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "nephrite_shovel")
                     )
                 )
-                    .shovel(ModToolMaterials.NEPHRITE, 4.0f, -2.0f)
             )
-        })
+        }
 
-    val NEPHRITE_AXE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_axe",
-        Supplier {
-            Item(
+    val NEPHRITE_AXE = ITEMS.registerObject(
+        "nephrite_axe")
+        {
+            AxeItem(
+                ModToolMaterials.NEPHRITE, 11f, -2.9f,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "nephrite_axe")
                     )
                 )
-                    .axe(ModToolMaterials.NEPHRITE, 11f, -2.9f)
             )
-        })
+        }
 
-    val NEPHRITE_HOE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_hoe",
-        Supplier {
-            Item(
+    val NEPHRITE_HOE = ITEMS.registerObject(
+        "nephrite_hoe")
+        {
+            HoeItem(
+                ModToolMaterials.NEPHRITE, 1f, -3.0f,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "nephrite_hoe")
                     )
                 )
-                    .hoe(ModToolMaterials.NEPHRITE, 1f, -3.0f)
             )
-        })
+        }
 
-    val PYRITE_HAMMER: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_hammer",
-        Supplier {
+    val PYRITE_HAMMER = ITEMS.registerObject(
+        "pyrite_hammer")
+        {
             HammerItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -435,11 +436,11 @@ object ModItems {
                 )
                     .pickaxe(ModToolMaterials.PYRITE, 7f, -2.5f)
             )
-        })
+        }
 
-    val PYRITE_HELMET: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_helmet",
-        Supplier {
+    val PYRITE_HELMET = ITEMS.registerObject(
+        "pyrite_helmet")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -449,11 +450,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.HELMET)
             )
-        })
+        }
 
-    val PYRITE_CHESTPLATE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_chestplate",
-        Supplier {
+    val PYRITE_CHESTPLATE = ITEMS.registerObject(
+        "pyrite_chestplate")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -463,11 +464,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.CHESTPLATE)
             )
-        })
+        }
 
-    val PYRITE_LEGGINGS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_leggings",
-        Supplier {
+    val PYRITE_LEGGINGS = ITEMS.registerObject(
+        "pyrite_leggings")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -477,11 +478,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.LEGGINGS)
             )
-        })
+        }
 
-    val PYRITE_BOOTS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_boots",
-        Supplier {
+    val PYRITE_BOOTS = ITEMS.registerObject(
+        "pyrite_boots")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -491,11 +492,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.BOOTS)
             )
-        })
+        }
 
-    val NEPHRITE_HELMET: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_helmet",
-        Supplier {
+    val NEPHRITE_HELMET = ITEMS.registerObject(
+        "nephrite_helmet")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -505,11 +506,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.HELMET)
             )
-        })
+        }
 
-    val NEPHRITE_CHESTPLATE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_chestplate",
-        Supplier {
+    val NEPHRITE_CHESTPLATE = ITEMS.registerObject(
+        "nephrite_chestplate")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -519,11 +520,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.CHESTPLATE)
             )
-        })
+        }
 
-    val NEPHRITE_LEGGINGS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_leggings",
-        Supplier {
+    val NEPHRITE_LEGGINGS = ITEMS.registerObject(
+        "nephrite_leggings")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -533,11 +534,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.LEGGINGS)
             )
-        })
+        }
 
-    val NEPHRITE_BOOTS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "nephrite_boots",
-        Supplier {
+    val NEPHRITE_BOOTS = ITEMS.registerObject(
+        "nephrite_boots")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -547,11 +548,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.BOOTS)
             )
-        })
+        }
 
-    val PYRITE_HORSE_ARMOR: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_horse_armor",
-        Supplier {
+    val PYRITE_HORSE_ARMOR = ITEMS.registerObject(
+        "pyrite_horse_armor")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -561,11 +562,11 @@ object ModItems {
                 )
                     .horseArmor(ModArmorMaterials.PYRITE)
             )
-        })
+        }
 
-    val KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "koi_fish_armor_trim_smithing_template",
-        Supplier {
+    val KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE = ITEMS.registerObject(
+        "koi_fish_armor_trim_smithing_template")
+        {
             SmithingTemplateItem.createArmorTrimTemplate(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -578,11 +579,11 @@ object ModItems {
                 )
                     .rarity(Rarity.UNCOMMON)
             )
-        })
+        }
 
-    val DAIKYU: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "daikyu",
-        Supplier {
+    val DAIKYU = ITEMS.registerObject(
+        "daikyu")
+        {
             BowItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -592,11 +593,11 @@ object ModItems {
                 )
                     .durability(600)
             )
-        })
+        }
 
-    val AO_TO_NATSU_MUSIC_DISC: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "ao_to_natsu_music_disc",
-        Supplier {
+    val AO_TO_NATSU_MUSIC_DISC = ITEMS.registerObject(
+        "ao_to_natsu_music_disc")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -606,11 +607,11 @@ object ModItems {
                 )
                     .jukeboxPlayable(ModSounds.AO_TO_NATSU_KEY).stacksTo(1)
             )
-        })
+        }
 
-    val RICE_SEEDS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "rice_seeds",
-        Supplier {
+    val RICE_SEEDS = ITEMS.registerObject(
+        "rice_seeds")
+        {
             BlockItem(
                 ModBlocks.RICE_CROP.get(), Item.Properties().useItemDescriptionPrefix()
                     .setId(
@@ -620,11 +621,11 @@ object ModItems {
                         )
                     )
             )
-        })
+        }
 
-    val RICE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "rice",
-        Supplier {
+    val RICE = ITEMS.registerObject(
+        "rice")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -634,11 +635,11 @@ object ModItems {
                 )
                     .food(ModFoodProperties.RICE).usingConvertsTo(Items.BOWL)
             )
-        })
+        }
 
-    val RAW_RICE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "raw_rice",
-        Supplier {
+    val RAW_RICE = ITEMS.registerObject(
+        "raw_rice")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -647,11 +648,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val YAMAZAKI_BERRIES: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "yamazaki_berries",
-        Supplier {
+    val YAMAZAKI_BERRIES = ITEMS.registerObject(
+        "yamazaki_berries")
+        {
             BlockItem(
                 ModBlocks.YAMAZAKI_BERRY_BUSH.get(), Item.Properties().useItemDescriptionPrefix()
                     .setId(
@@ -662,11 +663,11 @@ object ModItems {
                     )
                     .food(ModFoodProperties.YAMAZAKI_BERRIES)
             )
-        })
+        }
 
-    val SAMURAI_HELMET: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "samurai_helmet",
-        Supplier {
+    val SAMURAI_HELMET = ITEMS.registerObject(
+        "samurai_helmet")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -676,11 +677,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.HELMET)
             )
-        })
+        }
 
-    val SAMURAI_CHESTPLATE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "samurai_chestplate",
-        Supplier {
+    val SAMURAI_CHESTPLATE = ITEMS.registerObject(
+        "samurai_chestplate")
+         {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -690,11 +691,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.CHESTPLATE)
             )
-        })
+        }
 
-    val SAMURAI_LEGGINGS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "samurai_leggings",
-        Supplier {
+    val SAMURAI_LEGGINGS = ITEMS.registerObject(
+        "samurai_leggings")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -704,11 +705,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.LEGGINGS)
             )
-        })
+        }
 
-    val SAMURAI_BOOTS: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "samurai_boots",
-        Supplier {
+    val SAMURAI_BOOTS = ITEMS.registerObject(
+        "samurai_boots")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -718,11 +719,11 @@ object ModItems {
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.BOOTS)
             )
-        })
+        }
 
-    val TRICERATOPS_SPAWN_EGG: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "triceratops_spawn_egg",
-        Supplier {
+    val TRICERATOPS_SPAWN_EGG = ITEMS.registerObject(
+        "triceratops_spawn_egg")
+        {
             SpawnEggItem(
                 ModEntities.TRICERATOPS!!.get(),
                 Item.Properties().setId(
@@ -732,11 +733,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val SIKA_DEER_SPAWN_EGG: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "sika_deer_spawn_egg",
-        Supplier {
+    val SIKA_DEER_SPAWN_EGG = ITEMS.registerObject(
+        "sika_deer_spawn_egg")
+        {
             SpawnEggItem(
                 ModEntities.SIKA_DEER!!.get(),
                 Item.Properties().setId(
@@ -746,11 +747,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val PYRITE_BATTLE_AXE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "pyrite_battle_axe",
-        Supplier {
+    val PYRITE_BATTLE_AXE = ITEMS.registerObject(
+        "pyrite_battle_axe")
+        {
             MaceItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -759,11 +760,11 @@ object ModItems {
                     )
                 )
             )
-        })
+        }
 
-    val IRON_BATTLE_AXE: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "iron_battle_axe",
-        Supplier {
+    val IRON_BATTLE_AXE = ITEMS.registerObject(
+        "iron_battle_axe")
+        {
             IronBattleAxeItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -773,11 +774,11 @@ object ModItems {
                 )
                     .stacksTo(16)
             )
-        })
+        }
 
-    val RADIATION_STAFF: RegistryObject<Item?>? = ITEMS.register<Item?>(
-        "radiation_staff",
-        Supplier {
+    val RADIATION_STAFF = ITEMS.registerObject(
+        "radiation_staff")
+        {
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -787,7 +788,7 @@ object ModItems {
                 )
                     .stacksTo(1)
             )
-        })
+        }
 
     fun register(eventBus: BusGroup?) {
         ITEMS.register(eventBus)

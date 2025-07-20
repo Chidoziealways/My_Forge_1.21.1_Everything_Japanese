@@ -13,9 +13,13 @@ import net.minecraft.data.PackOutput
 import net.minecraft.data.recipes.*
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.item.AxeItem
+import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
+import net.minecraft.world.item.ShovelItem
+import net.minecraft.world.item.SmithingTemplateItem
 import net.minecraft.world.item.crafting.*
 import net.minecraft.world.item.equipment.trim.TrimPattern
 import net.minecraft.world.level.ItemLike
@@ -43,7 +47,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
 
     @JvmRecord
     data class TrimTemplate(
-        val template: RegistryObject<Item?>?,
+        val template: RegistryObject<SmithingTemplateItem?>?,
         val patternId: ResourceKey<TrimPattern?>?,
         val recipeId: ResourceKey<Recipe<*>?>?
     )
@@ -136,7 +140,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         saveShapelessRecipe(
             shapeless(RecipeCategory.MISC, ModItems.PYRITE_INGOT.get(), 9)
                 .requires(ModBlocks.PYRITE_BLOCK.get()),
-            ModBlocks.PYRITE_BLOCK.get().asItem()
+            ModBlocks.PYRITE_BLOCK.get()!!.asItem()
         )
 
         saveShapedRecipe(
@@ -149,23 +153,23 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
             ModItems.CHISEL.get()
         )
 
-        pickaxe(ModItems.PYRITE_INGOT, ModItems.PYRITE_PICKAXE!!)
+        pickaxe(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_PICKAXE!!.registryObject)
 
-        axe(ModItems.PYRITE_INGOT, ModItems.PYRITE_AXE!!)
+        axe(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_AXE!!.registryObject)
 
-        shovel(ModItems.PYRITE_INGOT, ModItems.PYRITE_SHOVEL!!)
+        shovel(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_SHOVEL!!.registryObject)
 
-        hoe(ModItems.PYRITE_INGOT, ModItems.PYRITE_HOE!!)
+        hoe(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_HOE!!.registryObject)
 
-        sword(ModItems.NEPHRITE, ModItems.NEPHRITE_SWORD!!)
+        sword(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_SWORD!!.registryObject)
 
-        pickaxe(ModItems.NEPHRITE, ModItems.NEPHRITE_PICKAXE!!)
+        pickaxe(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_PICKAXE!!.registryObject)
 
-        axe(ModItems.NEPHRITE, ModItems.NEPHRITE_AXE!!)
+        axe(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_AXE!!.registryObject)
 
-        shovel(ModItems.NEPHRITE, ModItems.NEPHRITE_SHOVEL!!)
+        shovel(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_SHOVEL!!.registryObject)
 
-        hoe(ModItems.NEPHRITE, ModItems.NEPHRITE_HOE!!)
+        hoe(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_HOE!!.registryObject)
 
 
         saveShapedRecipe(
@@ -198,32 +202,32 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
             Items.IRON_INGOT
         )
 
-        helmet(ModItems.PYRITE_INGOT, ModItems.PYRITE_HELMET!!)
+        helmet(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_HELMET!!.registryObject)
 
-        chestplate(ModItems.PYRITE_INGOT, ModItems.PYRITE_CHESTPLATE!!)
+        chestplate(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_CHESTPLATE!!.registryObject)
 
-        leggings(ModItems.PYRITE_INGOT, ModItems.PYRITE_LEGGINGS!!)
+        leggings(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_LEGGINGS!!.registryObject)
 
-        boots(ModItems.PYRITE_INGOT, ModItems.PYRITE_BOOTS!!)
+        boots(ModItems.PYRITE_INGOT.registryObject, ModItems.PYRITE_BOOTS!!.registryObject)
 
-        helmet(ModItems.NEPHRITE, ModItems.NEPHRITE_HELMET!!)
+        helmet(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_HELMET!!.registryObject)
 
-        chestplate(ModItems.NEPHRITE, ModItems.NEPHRITE_CHESTPLATE!!)
+        chestplate(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_CHESTPLATE!!.registryObject)
 
-        leggings(ModItems.NEPHRITE, ModItems.NEPHRITE_LEGGINGS!!)
+        leggings(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_LEGGINGS!!.registryObject)
 
-        boots(ModItems.NEPHRITE, ModItems.NEPHRITE_BOOTS!!)
+        boots(ModItems.NEPHRITE.registryObject, ModItems.NEPHRITE_BOOTS!!.registryObject)
 
         saveShapelessRecipe(
             shapeless(RecipeCategory.MISC, ModItems.NEPHRITE.get(), 9)
                 .requires(ModBlocks.NEPHRITE_BLOCK.get()),
-            ModBlocks.NEPHRITE_BLOCK.get().asItem()
+            ModBlocks.NEPHRITE_BLOCK.get()!!.asItem()
         )
 
         saveShapelessRecipe(
             shapeless(RecipeCategory.MISC, ModItems.RAW_PYRITE.get(), 9)
                 .requires(ModBlocks.RAW_PYRITE_BLOCK.get()),
-            ModBlocks.RAW_PYRITE_BLOCK.get().asItem()
+            ModBlocks.RAW_PYRITE_BLOCK.get()!!.asItem()
         )
 
         saveShapedRecipe(
@@ -272,7 +276,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         doorBuilder(ModBlocks.PYRITE_DOOR.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
             .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(this.output)
 
-        trapdoorBuilder(ModBlocks.PYRITE_TRAPDOOR.get(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
+        trapdoorBuilder(ModBlocks.PYRITE_TRAPDOOR.get()!!.asItem(), Ingredient.of(ModItems.PYRITE_INGOT.get())).group("pyrite")
             .unlockedBy(getHasName(ModItems.PYRITE_INGOT.get()), has(ModItems.PYRITE_INGOT.get())).save(this.output)
 
         slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_SLAB.get(), ModItems.PYRITE_INGOT.get())
@@ -407,7 +411,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         builder.unlockedBy(getHasName(unlockItem), has(unlockItem)).save(this.output)
     }
 
-    private fun helmet(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun helmet(ingredient: RegistryObject<Item>, result: RegistryObject<Item>) {
         saveShapedRecipe(
             shaped(RecipeCategory.COMBAT, result.get())
                 .pattern("AAA")
@@ -418,7 +422,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun chestplate(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun chestplate(ingredient: RegistryObject<Item>, result: RegistryObject<Item>) {
         saveShapedRecipe(
             shaped(RecipeCategory.COMBAT, result.get())
                 .pattern("A A")
@@ -429,7 +433,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun leggings(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun leggings(ingredient: RegistryObject<Item>, result: RegistryObject<Item>) {
         saveShapedRecipe(
             shaped(RecipeCategory.COMBAT, result.get())
                 .pattern("AAA")
@@ -440,7 +444,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun boots(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun boots(ingredient: RegistryObject<Item>, result: RegistryObject<Item>) {
         saveShapedRecipe(
             shaped(RecipeCategory.COMBAT, result.get())
                 .pattern("A A")
@@ -451,7 +455,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun hoe(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun hoe(ingredient: RegistryObject<Item>, result: RegistryObject<HoeItem>) {
         saveShapedRecipe(
             shaped(RecipeCategory.TOOLS, result.get())
                 .pattern("AA ")
@@ -463,7 +467,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun shovel(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun shovel(ingredient: RegistryObject<Item>, result: RegistryObject<ShovelItem>) {
         saveShapedRecipe(
             shaped(RecipeCategory.TOOLS, result.get())
                 .pattern(" A ")
@@ -475,7 +479,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun axe(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun axe(ingredient: RegistryObject<Item>, result: RegistryObject<AxeItem>) {
         saveShapedRecipe(
             shaped(RecipeCategory.TOOLS, result.get())
                 .pattern("AA ")
@@ -487,7 +491,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun pickaxe(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun pickaxe(ingredient: RegistryObject<Item>, result: RegistryObject<Item>) {
         saveShapedRecipe(
             shaped(RecipeCategory.TOOLS, result.get())
                 .pattern("AAA")
@@ -499,7 +503,7 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         )
     }
 
-    private fun sword(ingredient: RegistryObject<Item?>, result: RegistryObject<Item?>) {
+    private fun sword(ingredient: RegistryObject<Item>, result: RegistryObject<Item>) {
         saveShapedRecipe(
             shaped(RecipeCategory.TOOLS, result.get())
                 .pattern(" A ")
@@ -515,14 +519,14 @@ class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: RecipeOutpu
         private val log: Logger? = LoggerFactory.getLogger(ModRecipeProvider::class.java)
 
         fun smithingTrims(): Stream<TrimTemplate?>? {
-            return Stream.of<Pair<RegistryObject<Item?>?, ResourceKey<TrimPattern?>?>?>(
-                Pair.of<RegistryObject<Item?>?, ResourceKey<TrimPattern?>?>(
-                    ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE,
+            return Stream.of<Pair<RegistryObject<SmithingTemplateItem>, ResourceKey<TrimPattern?>?>?>(
+                Pair.of<RegistryObject<SmithingTemplateItem>, ResourceKey<TrimPattern?>?>(
+                    ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE.registryObject,
                     ModTrimPatterns.KOI_FISH
                 )
             )
-                .map<TrimTemplate?> { registryObjectResourceKeyPair: Pair<RegistryObject<Item?>?, ResourceKey<TrimPattern?>?>? ->
-                    val item = registryObjectResourceKeyPair!!.getFirst() as RegistryObject<Item?>
+                .map<TrimTemplate?> { registryObjectResourceKeyPair: Pair<RegistryObject<SmithingTemplateItem>, ResourceKey<TrimPattern?>?>? ->
+                    val item = registryObjectResourceKeyPair!!.getFirst() as RegistryObject<SmithingTemplateItem?>
                     val resourceKey = registryObjectResourceKeyPair.getSecond()
                     val resourceKey1 = ResourceKey.create<Recipe<*>?>(
                         Registries.RECIPE,

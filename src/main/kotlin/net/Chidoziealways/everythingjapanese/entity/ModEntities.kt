@@ -14,6 +14,7 @@ import net.minecraftforge.eventbus.api.bus.BusGroup
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
+import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.function.Supplier
 
 object ModEntities {
@@ -21,8 +22,7 @@ object ModEntities {
         DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MOD_ID)
 
     @JvmField
-    val TRICERATOPS: RegistryObject<EntityType<TriceratopsEntity?>?>? =
-        ENTITY_TYPES.register<EntityType<TriceratopsEntity?>?>("triceratops", Supplier {
+    val TRICERATOPS = ENTITY_TYPES.registerObject("triceratops") {
             EntityType.Builder.of<TriceratopsEntity?>(EntityFactory { pEntityType: EntityType<TriceratopsEntity?>, pLevel: Level ->
                 TriceratopsEntity(
                     pEntityType,
@@ -35,11 +35,10 @@ object ModEntities {
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "triceratops")
                     )
                 )
-        })
+        }
 
     @JvmField
-    val SIKA_DEER: RegistryObject<EntityType<SikaDeerEntity?>?>? =
-        ENTITY_TYPES.register<EntityType<SikaDeerEntity?>?>("sika_deer", Supplier {
+    val SIKA_DEER = ENTITY_TYPES.registerObject("sika_deer") {
             EntityType.Builder.of<SikaDeerEntity?>(EntityFactory { pEntityType: EntityType<SikaDeerEntity?>, pLevel: Level ->
                 SikaDeerEntity(
                     pEntityType,
@@ -52,10 +51,9 @@ object ModEntities {
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "sika_deer")
                     )
                 )
-        })
+        }
 
-    val IRON_BATTLE_AXE: RegistryObject<EntityType<IronBattleAxeProjectileEntity?>?>? =
-        ENTITY_TYPES.register<EntityType<IronBattleAxeProjectileEntity?>?>("iron_battle_axe", Supplier {
+    val IRON_BATTLE_AXE = ENTITY_TYPES.registerObject("iron_battle_axe") {
             EntityType.Builder.of<IronBattleAxeProjectileEntity?>(EntityFactory { pEntityType: EntityType<IronBattleAxeProjectileEntity?>, pLevel: Level ->
                 IronBattleAxeProjectileEntity(
                     pEntityType,
@@ -68,10 +66,9 @@ object ModEntities {
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "iron_battle_axe")
                     )
                 )
-        })
+        }
 
-    val YA: RegistryObject<EntityType<YaProjectileEntity?>?>? =
-        ENTITY_TYPES.register<EntityType<YaProjectileEntity?>?>("ya", Supplier {
+    val YA = ENTITY_TYPES.registerObject("ya") {
             EntityType.Builder.of<YaProjectileEntity?>(EntityFactory { entityType: EntityType<YaProjectileEntity?>, level: Level ->
                 YaProjectileEntity(
                     entityType,
@@ -84,10 +81,9 @@ object ModEntities {
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "ya")
                     )
                 )
-        })
+        }
 
-    val CHAIR: RegistryObject<EntityType<ChairEntity?>?>? =
-        ENTITY_TYPES.register<EntityType<ChairEntity?>?>("chair_entity", Supplier {
+    val CHAIR = ENTITY_TYPES.registerObject("chair_entity") {
             EntityType.Builder.of<ChairEntity?>(EntityFactory { pEntityType: EntityType<ChairEntity?>, pLevel: Level ->
                 ChairEntity(
                     pEntityType,
@@ -100,7 +96,7 @@ object ModEntities {
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "chair_entity")
                     )
                 )
-        })
+        }
 
 
     fun register(eventBus: BusGroup?) {

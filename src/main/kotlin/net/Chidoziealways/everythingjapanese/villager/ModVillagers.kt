@@ -29,7 +29,7 @@ object ModVillagers {
         "furniture_poi",
         Supplier {
             PoiType(
-                ImmutableSet.copyOf<BlockState?>(ModBlocks.CHAIR.get().getStateDefinition().getPossibleStates()),
+                ImmutableSet.copyOf<BlockState?>(ModBlocks.CHAIR.get()!!.getStateDefinition().getPossibleStates()),
                 1, 1
             )
         })

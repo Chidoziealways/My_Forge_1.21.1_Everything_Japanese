@@ -20,7 +20,7 @@ object ModPotions {
         Supplier {
             Potion(
                 "adrenaline_potion",
-                MobEffectInstance(ModEffects.ADRENALINE_EFFECT!!.getHolder().get(), 200, 0)
+                MobEffectInstance(ModEffects.ADRENALINE_EFFECT!!.registryObject.holder.get(), 200, 0)
             )
         })
 

@@ -21,7 +21,7 @@ object ModGameTestInstances {
         pContext.register(
             POWDER_SNOW,
             FunctionGameTestInstance(
-                ModGameTests.POWDER_SNOW!!.getKey(),
+                ModGameTests.POWDER_SNOW!!.registryObject.getKey(),
                 TestData<Holder<TestEnvironmentDefinition?>?>(
                     holdergetter1.getOrThrow(ModGameTestEnvironments.POWDER_SNOW),
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdersnow"),

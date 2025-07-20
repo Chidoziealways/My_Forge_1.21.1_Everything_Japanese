@@ -1,8 +1,9 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantments
+import net.Chidoziealways.everythingjapanese.quest.ModQuestsGen
+import net.Chidoziealways.everythingjapanese.quest.Quest
 import net.Chidoziealways.everythingjapanese.structure.ModPools
 import net.Chidoziealways.everythingjapanese.structure.ModProcessorLists
 import net.Chidoziealways.everythingjapanese.structure.ModStructureSets
@@ -11,6 +12,7 @@ import net.Chidoziealways.everythingjapanese.tests.environments.ModGameTestEnvir
 import net.Chidoziealways.everythingjapanese.tests.instances.ModGameTestInstances
 import net.Chidoziealways.everythingjapanese.trim.ModTrimMaterials
 import net.Chidoziealways.everythingjapanese.trim.ModTrimPatterns
+import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.Chidoziealways.everythingjapanese.worldgen.ModBiomeModifiers
 import net.Chidoziealways.everythingjapanese.worldgen.ModConfiguredFeatures
 import net.Chidoziealways.everythingjapanese.worldgen.ModPlacedFeatures
@@ -82,7 +84,6 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise.NoiseParameters
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider
 import net.minecraftforge.common.world.BiomeModifier
 import net.minecraftforge.registries.ForgeRegistries
-import java.util.Set
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
 
@@ -91,43 +92,17 @@ class ModDatapackEntries(output: PackOutput, registries: CompletableFuture<Holde
         output,
         registries,
         BUILDER,
-        Set.of(MOD_ID)
+        mutableSetOf(MOD_ID)
     ) {
     companion object {
         val BUILDER: RegistrySetBuilder = RegistrySetBuilder()
-            .add(
-                Registries.DIMENSION_TYPE,
-                RegistrySetBuilder.RegistryBootstrap { p_333835_: BootstrapContext<DimensionType?>? ->
-                    DimensionTypes.bootstrap(p_333835_)
-                })
-            .add(
-                Registries.CONFIGURED_CARVER,
-                RegistrySetBuilder.RegistryBootstrap { p_334235_: BootstrapContext<ConfiguredWorldCarver<*>>? -> Carvers.bootstrap(p_334235_) })
-            .add(
-                Registries.CONFIGURED_FEATURE,
-                RegistrySetBuilder.RegistryBootstrap { p_331696_: BootstrapContext<ConfiguredFeature<*, *>?> ->
-                    FeatureUtils.bootstrap(p_331696_)
-                })
-            .add(
-                Registries.PLACED_FEATURE,
-                RegistrySetBuilder.RegistryBootstrap { p_333757_: BootstrapContext<PlacedFeature?>? ->
-                    PlacementUtils.bootstrap(p_333757_)
-                })
-            .add(
-                Registries.STRUCTURE,
-                RegistrySetBuilder.RegistryBootstrap { p_329393_: BootstrapContext<Structure?>? ->
-                    Structures.bootstrap(p_329393_)
-                })
-            .add(
-                Registries.STRUCTURE_SET,
-                RegistrySetBuilder.RegistryBootstrap { p_336184_: BootstrapContext<StructureSet?>? ->
-                    StructureSets.bootstrap(p_336184_)
-                })
-            .add(
-                Registries.PROCESSOR_LIST,
-                RegistrySetBuilder.RegistryBootstrap { p_333601_: BootstrapContext<StructureProcessorList?>? ->
-                    ProcessorLists.bootstrap(p_333601_)
-                })
+            .add(Registries.DIMENSION_TYPE, { p_333835_: BootstrapContext<DimensionType?>? -> DimensionTypes.bootstrap(p_333835_) })
+            .add(Registries.CONFIGURED_CARVER, { p_334235_: BootstrapContext<ConfiguredWorldCarver<*>>? -> Carvers.bootstrap(p_334235_) })
+            .add(Registries.CONFIGURED_FEATURE, { p_331696_: BootstrapContext<ConfiguredFeature<*, *>?> -> FeatureUtils.bootstrap(p_331696_) })
+            .add(Registries.PLACED_FEATURE, { p_333757_: BootstrapContext<PlacedFeature?>? -> PlacementUtils.bootstrap(p_333757_) })
+            .add(Registries.STRUCTURE, { p_329393_: BootstrapContext<Structure?>? -> Structures.bootstrap(p_329393_) })
+            .add(Registries.STRUCTURE_SET, { p_336184_: BootstrapContext<StructureSet?>? -> StructureSets.bootstrap(p_336184_) })
+            .add(Registries.PROCESSOR_LIST, { p_333601_: BootstrapContext<StructureProcessorList?>? -> ProcessorLists.bootstrap(p_333601_) })
             .add(
                 Registries.TEMPLATE_POOL,
                 RegistrySetBuilder.RegistryBootstrap { p_332528_: BootstrapContext<StructureTemplatePool?>? ->
@@ -295,8 +270,14 @@ class ModDatapackEntries(output: PackOutput, registries: CompletableFuture<Holde
                     ModStructuresGen.bootstrap(context)
                 })
             .add(
+                ModRegistries.QUEST,
+                { context: BootstrapContext<Quest> ->
+                    ModQuestsGen.bootstrap(context)
+                }
+            )
+            .add(
                 Registries.STRUCTURE_SET,
-                RegistrySetBuilder.RegistryBootstrap { context: BootstrapContext<StructureSet?> ->
+                { context: BootstrapContext<StructureSet?> ->
                     ModStructureSets.bootstrap(context)
                 })
             .add(

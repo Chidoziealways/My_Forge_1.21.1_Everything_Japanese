@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.bus.BusGroup
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
+import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.function.Supplier
 
 object ModEffects {
@@ -18,9 +19,9 @@ object ModEffects {
         DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MOD_ID)
 
     @JvmField
-    val ADRENALINE_EFFECT: RegistryObject<MobEffect?>? = MOB_EFFECTS.register<MobEffect?>(
-        "adrenaline",
-        Supplier {
+    val ADRENALINE_EFFECT = MOB_EFFECTS.registerObject(
+        "adrenaline")
+        {
             AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x36ebab)
                 .addAttributeModifier(
                     Attributes.MOVEMENT_SPEED,
@@ -40,7 +41,7 @@ object ModEffects {
                     2.0,
                     AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                 )
-        })
+        }
 
 
     fun register(eventBus: BusGroup?) {

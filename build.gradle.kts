@@ -130,10 +130,28 @@ dependencies {
 
     implementation(libs.jopt.simple)
 
-    implementation("thedarkcolour:kotlinforforge:6.0.0") // Or whatever the latest is
-    implementation("thedarkcolour:kffmod:6.0.0")
-    implementation("thedarkcolour:kfflib:6.0.0")
-    implementation("thedarkcolour:kfflang:6.0.0")
+    compileOnly(libs.kotlinforforge)
+    compileOnly(libs.kffmod)
+    compileOnly(libs.kfflib)
+    compileOnly(libs.kfflang)
+
+    runtimeOnly(libs.kotlinforforge)
+    runtimeOnly(libs.kffmod)
+    runtimeOnly(libs.kfflib)
+    runtimeOnly(libs.kfflang)
+
+    jarJar(libs.kotlinforforge) {
+        jarJar.ranged(this, libs.versions.kff.range.get())
+    }
+    jarJar(libs.kffmod) {
+        jarJar.ranged(this, libs.versions.kff.range.get())
+    }
+    jarJar(libs.kfflib) {
+        jarJar.ranged(this, libs.versions.kff.range.get())
+    }
+    jarJar(libs.kfflang) {
+        jarJar.ranged(this, libs.versions.kff.range.get())
+    }
 
 
     // Uncomment and add if you want those libs

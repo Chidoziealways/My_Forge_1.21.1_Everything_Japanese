@@ -42,16 +42,16 @@ object ModConfiguredFeatures {
 
         val pyriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState?> =
             listOf<OreConfiguration.TargetBlockState?>(
-                OreConfiguration.target(stoneReplaceables, ModBlocks.PYRITE_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, ModBlocks.PYRITE_DEEPSLATE_ORE.get().defaultBlockState())
+                OreConfiguration.target(stoneReplaceables, ModBlocks.PYRITE_ORE.get()!!.defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.PYRITE_DEEPSLATE_ORE.get()!!.defaultBlockState())
             ) as MutableList<OreConfiguration.TargetBlockState?>
 
         val nephriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState?> =
             listOf<OreConfiguration.TargetBlockState?>(
-                OreConfiguration.target(stoneReplaceables, ModBlocks.NEPHRITE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(stoneReplaceables, ModBlocks.NEPHRITE_ORE.get()!!.defaultBlockState()),
                 OreConfiguration.target(
                     deepslateReplaceables,
-                    ModBlocks.NEPHRITE_DEEPSLATE_ORE.get().defaultBlockState()
+                    ModBlocks.NEPHRITE_DEEPSLATE_ORE.get()!!.defaultBlockState()
                 )
             ) as MutableList<OreConfiguration.TargetBlockState?>
 

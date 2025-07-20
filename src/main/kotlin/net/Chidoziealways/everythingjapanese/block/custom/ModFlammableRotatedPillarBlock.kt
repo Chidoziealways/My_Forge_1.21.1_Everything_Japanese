@@ -36,12 +36,12 @@ class ModFlammableRotatedPillarBlock(properties: Properties) : RotatedPillarBloc
     ): BlockState? {
         if (context.itemInHand.item is AxeItem) {
             if (state.`is`(ModBlocks.HINOKI_MARUTA.get())) {
-                return ModBlocks.STRIPPED_HINOKI_MARUTA.get().defaultBlockState()
+                return ModBlocks.STRIPPED_HINOKI_MARUTA.get()!!.defaultBlockState()
                     .setValue(AXIS, state.getValue(AXIS))
             }
 
             if (state.`is`(ModBlocks.HINOKI_MOKUZAI.get())) {
-                return ModBlocks.STRIPPED_HINOKI_MOKUZAI.get().defaultBlockState().setValue(
+                return ModBlocks.STRIPPED_HINOKI_MOKUZAI.get()!!.defaultBlockState().setValue(
                     AXIS, state.getValue(
                         AXIS
                     )

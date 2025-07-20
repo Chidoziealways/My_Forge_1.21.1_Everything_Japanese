@@ -10,7 +10,11 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.IntegerProperty
 
-class RiceCropBlock(properties: BlockBehaviour.Properties) : CropBlock(properties) {
+class RiceCropBlock(properties: Properties) : CropBlock(properties) {
+
+    override fun getMaxAge(): Int {
+        return MAX_AGE
+    }
 
     override fun getBaseSeedId(): ItemLike {
         return ModItems.RICE_SEEDS!!.get()
@@ -25,6 +29,6 @@ class RiceCropBlock(properties: BlockBehaviour.Properties) : CropBlock(propertie
     }
 
     companion object {
-        val maxAge: Int = 4
+        val MAX_AGE: Int = 4
     }
 }

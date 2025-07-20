@@ -58,17 +58,17 @@ class ModItemTagProvider(
             .add(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE!!.get())
 
         tag(ItemTags.LOGS_THAT_BURN)
-            .add(ModBlocks.HINOKI_MARUTA.get().asItem())
-            .add(ModBlocks.HINOKI_MOKUZAI.get().asItem())
-            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.get().asItem())
-            .add(ModBlocks.STRIPPED_HINOKI_MOKUZAI.get().asItem())
+            .add(ModBlocks.HINOKI_MARUTA.get()!!.asItem())
+            .add(ModBlocks.HINOKI_MOKUZAI.get()!!.asItem())
+            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.get()!!.asItem())
+            .add(ModBlocks.STRIPPED_HINOKI_MOKUZAI.get()!!.asItem())
 
         tag(ItemTags.PLANKS)
-            .add(ModBlocks.HINOKI_BAN.get().asItem())
+            .add(ModBlocks.HINOKI_BAN.get()!!.asItem())
 
         tag(ModTags.Items.HINOKI_MARUTA)
-            .add(ModBlocks.HINOKI_MARUTA.get().asItem())
-            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.get().asItem())
+            .add(ModBlocks.HINOKI_MARUTA.get()!!.asItem())
+            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.get()!!.asItem())
 
         tag(ItemTags.ARROWS)
             .add(ModItems.YA.get())

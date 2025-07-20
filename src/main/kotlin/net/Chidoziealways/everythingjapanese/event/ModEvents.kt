@@ -44,11 +44,11 @@ object ModEvents {
     @JvmStatic
     @SubscribeEvent
     fun onHammerUsage(event: BreakEvent) {
-        val player = event.getPlayer()
-        val mainHandItem = player.getMainHandItem()
+        val player = event.player
+        val mainHandItem = player.mainHandItem
 
-        if (mainHandItem.getItem() is HammerItem && player is ServerPlayer) {
-            val initialBlockPos = event.getPos()
+        if (mainHandItem.item is HammerItem && player is ServerPlayer) {
+            val initialBlockPos = event.pos
             if (HARVESTED_BLOCKS.contains(initialBlockPos)) {
                 return
             }
@@ -95,7 +95,7 @@ object ModEvents {
                 player.displayClientMessage(
                     Component.literal(
                         player.name.string + " Just Hit a Fricking " + hitEntity.getName()
-                            .string + " with " + murderItem.getName(murderItem.getDefaultInstance()).getString()
+                            .string + " with " + murderItem.getName(murderItem.defaultInstance).string
                     ), true
                 )
                 hitEntity.addEffect(MobEffectInstance(MobEffects.POISON, 600, 5))
@@ -111,7 +111,7 @@ object ModEvents {
             if (player.health <= 4.0f) {
                 player.addEffect(
                     MobEffectInstance(
-                        (ModEffects.ADRENALINE_EFFECT!!.getHolder().get()),
+                        (ModEffects.ADRENALINE_EFFECT!!.registryObject.holder.get()),
                         1000,
                         2,
                         true,

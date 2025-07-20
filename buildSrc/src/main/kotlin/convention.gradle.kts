@@ -69,7 +69,7 @@ val modVersion = libs.get().findVersion("everythingjapanese").get()
 val mcVersion = libs.get().findVersion("minecraft").get()
 val forgeVersion = libs.get().findVersion("forge").get()
 val forgeVersionRange = libs.get().findVersion("forge.range").get()
-val fmlVersionRange = libs.get().findVersion("forge.fml.range").get()
+val fmlVersionRange = libs.get().findVersion("kff.range").get()
 val mcVersionRange = libs.get().findVersion("minecraft.range").get()
 
 tasks.withType<Jar>().configureEach {

@@ -119,12 +119,12 @@ class JutsuCapability : IJutsuCapability {
                     Codec.STRING.fieldOf("selectedJutsu")
                         .forGetter<IJutsuCapability?>(Function { o: IJutsuCapability? -> if (o!!.getSelectedJutsu() != null) o.getSelectedJutsu() else " " })
                 ).apply<IJutsuCapability?>(
-                    instance,
-                    BiFunction { learnedJutsus: MutableList<String?>?, selectedJutsu: String? ->
-                        JutsuCapability(
-                            Set.copyOf<String?>(learnedJutsus), selectedJutsu
-                        )
-                    })
+                    instance
+                ) { learnedJutsus: MutableList<String?>?, selectedJutsu: String? ->
+                    JutsuCapability(
+                        Set.copyOf<String?>(learnedJutsus), selectedJutsu
+                    )
+                }
             })
     }
 }

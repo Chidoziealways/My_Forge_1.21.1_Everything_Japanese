@@ -18,13 +18,13 @@ object ModQuestsGen {
                 Component.literal("Find NPC 1"),
                 Component.literal("find the first npc hidden somewhere in this blocky world"),
                 listOf(
-                    QuestStage(Component.literal("locate the village"), "foundVillage")
+                    QuestStage(Component.literal("locate the village"), "collect:minecraft:emerald")
                 ),
                 listOf(
                     QuestReward(
                         "item",
                         buildJsonObject {
-                            addProperty("item", "minecraft:diamond")
+                            addProperty("id", "minecraft:diamond")
                             addProperty("count", 5)
                         }
                     )

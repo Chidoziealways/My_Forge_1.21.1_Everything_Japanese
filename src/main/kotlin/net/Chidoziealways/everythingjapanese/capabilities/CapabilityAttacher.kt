@@ -4,6 +4,7 @@ import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.chakra.ChakraProvider
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuProvider
+import net.Chidoziealways.everythingjapanese.quest.QuestProvider
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.player.Player
@@ -25,6 +26,10 @@ object CapabilityAttacher {
             event.addCapability(
                 ResourceLocation.fromNamespaceAndPath(MOD_ID, "jutsu"),
                 JutsuProvider()
+            )
+            event.addCapability(
+                ResourceLocation.fromNamespaceAndPath(MOD_ID, "quests"),
+                QuestProvider()
             )
         }
     }

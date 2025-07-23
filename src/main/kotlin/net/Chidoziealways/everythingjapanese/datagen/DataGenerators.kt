@@ -2,7 +2,10 @@ package net.Chidoziealways.everythingjapanese.datagen
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.quest.Quest
+import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.Util
+import net.minecraft.core.Cloner
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.loot.LootTableProvider
 import net.minecraft.data.loot.LootTableProvider.SubProviderEntry
@@ -13,6 +16,7 @@ import net.minecraftforge.common.data.ForgeAdvancementProvider
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
+import net.minecraftforge.registries.RegistryBuilder
 import thedarkcolour.common.KotlinBus
 import thedarkcolour.common.KotlinMod
 import java.util.List
@@ -24,9 +28,15 @@ import java.util.function.Supplier
 object DataGenerators {
     @SubscribeEvent
     fun gatherData(event: GatherDataEvent) {
+        val factory = Cloner.Factory()
+        factory.addCodec(ModRegistries.QUEST, Quest.QUEST_CODEC)
+        // Pass this factory to your RegistrySetBuilder or generator
+
+
         val generator = event.generator
         val packOutput = generator.packOutput
         val existingFileHelper = event.existingFileHelper
+
         val lookupProvider = event.lookupProvider
         val fLookupProvider = CompletableFuture.supplyAsync<HolderLookup.Provider?>(
             Supplier { ModDatapackEntries.Companion.createLookup() },
@@ -62,7 +72,7 @@ object DataGenerators {
 
         generator.addProvider<ModDatapackEntries?>(
             event.includeServer(),
-            ModDatapackEntries(packOutput, lookupProvider)
+            ModDatapackEntries(packOutput, fLookupProvider)
         )
 
         generator.addProvider<ModModelProvider?>(event.includeClient(), ModModelProvider(packOutput))

@@ -11,7 +11,7 @@ import net.minecraftforge.common.util.NonNullSupplier
 class JutsuProvider : ICapabilityProvider {
     private val instance: IJutsuCapability = JutsuCapability()
     private val optional: LazyOptional<IJutsuCapability?> =
-        LazyOptional.of<IJutsuCapability?>(NonNullSupplier { instance })
+        LazyOptional.of<IJutsuCapability?> { instance }
 
     override fun <T> getCapability(cap: Capability<T?>, side: Direction?): LazyOptional<T?> {
         return if (cap == ModCapabilities.JUTSU_CAPABILITY) optional.cast<T?>() else LazyOptional.empty<T?>()

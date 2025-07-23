@@ -49,7 +49,7 @@ object GetChakraCommand {
                 sourceStack.sendSuccess(
                     Supplier {
                         Component.literal(
-                            target.getName().toString() + "'s Current Chakra: " + iChakra!!.chakra
+                            target.displayName?.string + "'s Current Chakra: " + iChakra!!.chakra
                         )
                     }, true
                 )

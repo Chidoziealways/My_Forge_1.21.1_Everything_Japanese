@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Data" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="21" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <option name="MAIN_CLASS_NAME" value="net.minecraftforge.bootstrap.ForgeBootstrap" />
+    <module name="EverythingJapanese.main" />
+    <option name="PROGRAM_PARAMETERS" value="--launchTarget forge_userdev_data --gameDir C:\Users\Hanzo\IdeaProjects\EverythingJapanese\run-data --assetsDir C:\Users\Hanzo\.gradle\caches\forge_gradle\assets --assetIndex 24 --mod everythingjapanese --all --output C:\Users\Hanzo\IdeaProjects\EverythingJapanese\src\generated\resources --existing C:\Users\Hanzo\IdeaProjects\EverythingJapanese\src\main\resources -mixin.config=everythingjapanese.mixins.json" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

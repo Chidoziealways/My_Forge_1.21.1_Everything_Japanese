@@ -16,14 +16,17 @@ data class Quest(
     val isRepeatable: Boolean
 ) {
 
-    val QUEST_CODEC: Codec<Quest> = RecordCodecBuilder.create { instance ->
-        instance.group(
-            ResourceLocation.CODEC.fieldOf("id").forGetter { it.id },
-            ComponentSerialization.CODEC.fieldOf("title").forGetter { it.title },
-            ComponentSerialization.CODEC.fieldOf("description").forGetter { it.description },
-            QuestStage.CODEC.listOf().fieldOf("stages").forGetter { it.stages },
-            QuestReward.CODEC.listOf().fieldOf("rewards").forGetter { it.rewards },
-            Codec.BOOL.optionalFieldOf("repeatable", false).forGetter { it.isRepeatable }
-        ).apply(instance, ::Quest)
+    companion object {
+
+        val QUEST_CODEC: Codec<Quest> = RecordCodecBuilder.create { instance ->
+            instance.group(
+                ResourceLocation.CODEC.fieldOf("id").forGetter { it.id },
+                ComponentSerialization.CODEC.fieldOf("title").forGetter { it.title },
+                ComponentSerialization.CODEC.fieldOf("description").forGetter { it.description },
+                QuestStage.CODEC.listOf().fieldOf("stages").forGetter { it.stages },
+                QuestReward.CODEC.listOf().fieldOf("rewards").forGetter { it.rewards },
+                Codec.BOOL.optionalFieldOf("repeatable", false).forGetter { it.isRepeatable }
+            ).apply(instance, ::Quest)
+        }
     }
 }

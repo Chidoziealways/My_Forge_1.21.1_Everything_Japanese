@@ -26,13 +26,14 @@ object ChakraHUDOverlay {
         //log.debug("ScreenWidth: {}, ScreenHeight: {}, x: {}, y: {}, BarWidth: {}, BarHeight: {}", screenWidth, screenHeight, x, y, barWidth, barHeight);
         if (maxChakra <= 0) maxChakra = 1
 
+        val filledWidth = ((chakra / maxChakra.toFloat()) * (barWidth - 2)).toInt()
+
         // Background bar
-        guiGraphics.fill(x, y, x + barWidth, y + barHeight, -0xaaaaab) // Gray background
+        guiGraphics.fill(x, y, x + barWidth + filledWidth, y + barHeight, -0xaaaaab) // Gray background
 
         //log.debug("Background Minx: {}, Background MinY: {}, Background MaxX: {}, Background MaxY: {}", x, y, x + barWidth, y + barHeight);
 
         // Foreground bar
-        val filledWidth = ((chakra / maxChakra.toFloat()) * (barWidth - 2)).toInt()
         guiGraphics.fill(x + 1, y + 1, x + 1 + filledWidth, y + barHeight - 1, -0xffff01) // Blue bar
 
         //log.debug("Foreground MinX: {}, Foreground MinY: {}, Foreground MaxX: {}, Foreground MaxY: {}", x + 1, y + 1, x + 1 + filledWidth, y + barHeight - 1);

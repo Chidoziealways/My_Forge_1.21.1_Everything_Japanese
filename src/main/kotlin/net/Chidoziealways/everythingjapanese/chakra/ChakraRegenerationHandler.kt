@@ -10,8 +10,8 @@ import net.minecraftforge.network.PacketDistributor
 object ChakraRegenerationHandler {
     fun onServerTick(event: ServerTickEvent.Post) {
         // Run regeneration logic during the tick event (server-side only)
-        for (player in event.getServer().getPlayerList().getPlayers()) {
-            player.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+        for (player in event.server.playerList.players) {
+            player.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
                 .ifPresent(NonNullConsumer { chakra: IChakra? ->
                     val currentChakra = chakra!!.chakra
                     val maxChakra = chakra.getMaxChakra()
@@ -20,9 +20,9 @@ object ChakraRegenerationHandler {
                         chakra.addChakra(0.01f) // Regenerate chakra gradually
                         player.level().addParticle(
                             ParticleTypes.ENCHANT,
-                            player.getX(),
-                            player.getY(),
-                            player.getZ(),
+                            player.x,
+                            player.y,
+                            player.z,
                             0.5,
                             0.5,
                             0.5

@@ -55,7 +55,7 @@ object SetChakraCommand {
                 iChakra!!.chakra = amount.toFloat()
                 source.sendSuccess(Supplier {
                     Component.literal(
-                        "Set " + target.getName().getString() + "'s Chakra to " + amount
+                        "Set " + target.displayName?.string + "'s Chakra to " + amount
                     )
                 }, true)
             })

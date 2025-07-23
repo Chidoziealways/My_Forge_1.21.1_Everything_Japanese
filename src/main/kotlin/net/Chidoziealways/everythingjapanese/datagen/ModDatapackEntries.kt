@@ -23,6 +23,7 @@ import net.minecraft.core.*
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
+import net.minecraft.data.registries.RegistryPatchGenerator
 import net.minecraft.data.worldgen.*
 import net.minecraft.data.worldgen.biome.BiomeData
 import net.minecraft.data.worldgen.features.FeatureUtils
@@ -95,6 +96,9 @@ class ModDatapackEntries(output: PackOutput, registries: CompletableFuture<Holde
         mutableSetOf(MOD_ID)
     ) {
     companion object {
+        val factory = Cloner.Factory()
+            .addCodec(ModRegistries.QUEST, Quest.QUEST_CODEC)
+
         val BUILDER: RegistrySetBuilder = RegistrySetBuilder()
             .add(Registries.DIMENSION_TYPE, { p_333835_: BootstrapContext<DimensionType?>? -> DimensionTypes.bootstrap(p_333835_) })
             .add(Registries.CONFIGURED_CARVER, { p_334235_: BootstrapContext<ConfiguredWorldCarver<*>>? -> Carvers.bootstrap(p_334235_) })
@@ -269,12 +273,7 @@ class ModDatapackEntries(output: PackOutput, registries: CompletableFuture<Holde
                 RegistrySetBuilder.RegistryBootstrap { context: BootstrapContext<Structure?> ->
                     ModStructuresGen.bootstrap(context)
                 })
-            .add(
-                ModRegistries.QUEST,
-                { context: BootstrapContext<Quest> ->
-                    ModQuestsGen.bootstrap(context)
-                }
-            )
+            .add(ModRegistries.QUEST, { context: BootstrapContext<Quest> -> ModQuestsGen.bootstrap(context) })
             .add(
                 Registries.STRUCTURE_SET,
                 { context: BootstrapContext<StructureSet?> ->
@@ -321,6 +320,7 @@ class ModDatapackEntries(output: PackOutput, registries: CompletableFuture<Holde
                 RegistrySetBuilder.RegistryBootstrap { pContext: BootstrapContext<GameTestInstance?> ->
                     ModGameTestInstances.bootstrap(pContext)
                 })
+
         val DATAPACK_REGISTRY_KEYS: MutableList<out ResourceKey<out Registry<*>?>?> = BUILDER.getEntryKeys()
 
         private fun validateThatAllBiomeFeaturesHaveBiomeFilter(pProvider: HolderLookup.Provider) {

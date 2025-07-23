@@ -1,7 +1,8 @@
-// 1.21.7	2025-07-16T06:36:56.727302	Registries
+// 1.21.8	2025-07-23T13:36:34.649947	Registries
 6fd4a248482fb795c01a12450836ca168cbeb9a8 data/everythingjapanese/dimension/hell.json
 20731f2d16840fac3b62cea1e3b21d771ada5d62 data/everythingjapanese/dimension_type/hell_type.json
 10ca8674ccccba46024641e204e1bceaa0192e51 data/everythingjapanese/enchantment/lightning_striker.json
+ab02ad5f936415a1a227fb5807312d2e6d1e02b7 data/everythingjapanese/everythingjapanese/quest/find_npc1.json
 fa90cce1b4d62594e858b0d31e1bb797c68ad120 data/everythingjapanese/forge/biome_modifier/add_hinoki_tree.json
 91ab622cd58388c8ac68c46e00b54c6d701cd24f data/everythingjapanese/forge/biome_modifier/add_nephrite_ore.json
 125e1df4b0c57dc41e0e8ee53bfb08c686925f1e data/everythingjapanese/forge/biome_modifier/add_pyrite_ore.json

@@ -27,6 +27,10 @@ import net.Chidoziealways.everythingjapanese.particle.ModParticles
 import net.Chidoziealways.everythingjapanese.particle.PyriteParticles
 import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes
 import net.Chidoziealways.everythingjapanese.potion.ModPotions
+import net.Chidoziealways.everythingjapanese.quest.Quest
+import net.Chidoziealways.everythingjapanese.quest.QuestConditionRegistry
+import net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler
+import net.Chidoziealways.everythingjapanese.quest.conditions.CollectItemCondition
 import net.Chidoziealways.everythingjapanese.recipe.ModRecipes
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen
@@ -34,6 +38,7 @@ import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalScre
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
 import net.Chidoziealways.everythingjapanese.structure.ModStructuresR
 import net.Chidoziealways.everythingjapanese.tests.ModGameTests
+import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers
 import net.minecraft.client.gui.screens.MenuScreens
@@ -44,6 +49,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.EntityRenderers
+import net.minecraft.core.Cloner
 import net.minecraft.core.Holder
 import net.minecraft.core.RegistryAccess
 import net.minecraft.core.particles.SimpleParticleType
@@ -90,6 +96,7 @@ object EverythingJapanese {
     init {
         LOGGER = LogManager.getLogger(EverythingJapanese::class.java)
         EVERYTHINGJAPANESE = MarkerManager.getMarker("EVERYTHINGJAPANESE")
+
         // Register ourselves for server and other game events we are interested in
         MOD_BUS.register(MethodHandles.lookup(), this)
         MixinBootstrap.init()
@@ -154,9 +161,19 @@ object EverythingJapanese {
             )
         }
 
+        ServerTickEvent.Post.BUS.addListener { event: ServerTickEvent.Post ->
+            QuestStageProgressionHandler.onServerTick(
+                event
+            )
+        }
+
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         LOADING_CONTEXT.registerConfig(ModConfig.Type.COMMON, Config.SPEC)
+    }
+
+    fun registerQuestConditions() {
+        QuestConditionRegistry.register("collect", CollectItemCondition)
     }
 
     @SubscribeEvent
@@ -166,6 +183,7 @@ object EverythingJapanese {
         event.enqueueWork {
             ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS!!.get(), 0.6f)
             ComposterBlock.COMPOSTABLES.put(ModItems.RAW_RICE!!.get(), 0.85f)
+            registerQuestConditions()
         }
     }
 
@@ -275,29 +293,29 @@ object EverythingJapanese {
     }
 
     // Define mod id in a common place for everything to referenc
-        fun logInfo(message: Any?) {
-            LOGGER!!.info(message.toString())
-        }
+    fun logInfo(message: Any?) {
+        LOGGER!!.info(message.toString())
+    }
 
-        fun logError(message: Any?) {
-            LOGGER!!.error(message.toString())
-        }
+    fun logError(message: Any?) {
+        LOGGER!!.error(message.toString())
+    }
 
-        fun logDebug(message: Any?) {
-            LOGGER!!.debug(message.toString())
-        }
+    fun logDebug(message: Any?) {
+        LOGGER!!.debug(message.toString())
+    }
 
-        private fun debugTagContent(server: MinecraftServer) {
-            val access: RegistryAccess = server.registryAccess()
-            val itemRegistry = access.lookupOrThrow(Registries.ITEM)
-            val optionalTag = itemRegistry.get(ModTags.Items.REPAIRS_NEPHRITE_ARMOR)
+    private fun debugTagContent(server: MinecraftServer) {
+        val access: RegistryAccess = server.registryAccess()
+        val itemRegistry = access.lookupOrThrow(Registries.ITEM)
+        val optionalTag = itemRegistry.get(ModTags.Items.REPAIRS_NEPHRITE_ARMOR)
 
-            if (optionalTag.isPresent) {
-                val tagSet = optionalTag.get()
-                logDebug("Tag is LOADED and contains: " + tagSet.size() + " entries")
-                tagSet.forEach(Consumer { itemHolder: Holder<Item?>? -> logDebug(" - " + itemHolder!!.value()) })
-            } else {
-                logError("Tag is NOT present")
-            }
+        if (optionalTag.isPresent) {
+            val tagSet = optionalTag.get()
+            logDebug("Tag is LOADED and contains: " + tagSet.size() + " entries")
+            tagSet.forEach(Consumer { itemHolder: Holder<Item?>? -> logDebug(" - " + itemHolder!!.value()) })
+        } else {
+            logError("Tag is NOT present")
         }
     }
+}

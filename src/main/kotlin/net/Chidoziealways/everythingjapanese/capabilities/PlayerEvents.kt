@@ -22,18 +22,25 @@ object PlayerEvents {
     fun saveChakraData(player: Player) {
         checkNotNull(player)
         log.info("Saving data")
-        player.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+        player.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
             .ifPresent(NonNullConsumer { iChakra: IChakra? ->
                 val chakraTag = iChakra!!.serializeNBT()
                 log.info("Saving Chakra")
-                player.getPersistentData()
+                player.persistentData
                     .put("everythingjapanese:chakra_data", chakraTag) // Save Chakra data to persistent NBT
             })
-
-        player.getCapability<IJutsuCapability?>(ModCapabilities.JUTSU_CAPABILITY)
+        player.getCapability(ModCapabilities.QUEST_CAPABILITY)
+            .ifPresent { iQuestCapability ->
+                val questTag = iQuestCapability.serializeNBT()
+                log.info("Saving Quest")
+                player.persistentData
+                    .put("everythingjapanese:quest", questTag)
+            }
+        player.getCapability(ModCapabilities.JUTSU_CAPABILITY)
             .ifPresent(NonNullConsumer { iJutsu: IJutsuCapability? ->
                 val jutsuTag = iJutsu!!.serializeNBT()
-                player.getPersistentData()
+                log.info("Saving Jutsus")
+                player.persistentData
                     .put("everythingjapanese:jutsu_data", jutsuTag) // Save Jutsu data to persistent NBT
             })
     }
@@ -41,8 +48,8 @@ object PlayerEvents {
     @JvmStatic
     @SubscribeEvent
     fun onPlayerDeath(event: LivingDeathEvent) {
-        if (event.getEntity() is Player) {
-            val player = event.getEntity() as Player
+        if (event.entity is Player) {
+            val player = event.entity as Player
             saveChakraData(player)
         }
     }
@@ -50,7 +57,7 @@ object PlayerEvents {
     @JvmStatic
     @SubscribeEvent
     fun onPlayerLogout(event: PlayerLoggedOutEvent) {
-        val player = event.getEntity()
+        val player = event.entity
 
         // Save Chakra and Jutsu data to persistent NBT
         saveChakraData(player)
@@ -59,12 +66,12 @@ object PlayerEvents {
     @JvmStatic
     @SubscribeEvent
     fun onPlayerLogin(event: PlayerLoggedInEvent) {
-        val player = event.getEntity()
+        val player = event.entity
 
         // Retrieve persistent data
-        if (player.getPersistentData().contains("everythingjapanese:chakra_data")) {
-            val jutsuTag = player.getPersistentData().getCompoundOrEmpty("everythingjapanese:chakra_data")
-            player.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+        if (player.persistentData.contains("everythingjapanese:chakra_data")) {
+            val jutsuTag = player.persistentData.getCompoundOrEmpty("everythingjapanese:chakra_data")
+            player.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
                 .ifPresent(NonNullConsumer { iJutsu: IChakra? ->
                     log.info("Loading Chakra data from persistent NBT")
                     iJutsu!!.deserializeNBT(jutsuTag)
@@ -72,9 +79,19 @@ object PlayerEvents {
         }
 
         // Retrieve persistent data
-        if (player.getPersistentData().contains("everythingjapanese:jutsu_data")) {
-            val jutsuTag = player.getPersistentData().getCompoundOrEmpty("everythingjapanese:jutsu_data")
-            player.getCapability<IJutsuCapability?>(ModCapabilities.JUTSU_CAPABILITY)
+        if (player.persistentData.contains("everythingjapanese:quest")) {
+            val questTag = player.persistentData.getCompoundOrEmpty("everythingjapanese:quest")
+            player.getCapability(ModCapabilities.QUEST_CAPABILITY)
+                .ifPresent { iQuestCapability ->
+                    log.info("Loading Quest data from persistent NBT")
+                    iQuestCapability.deserializeNBT(questTag)
+                }
+        }
+
+        // Retrieve persistent data
+        if (player.persistentData.contains("everythingjapanese:jutsu_data")) {
+            val jutsuTag = player.persistentData.getCompoundOrEmpty("everythingjapanese:jutsu_data")
+            player.getCapability(ModCapabilities.JUTSU_CAPABILITY)
                 .ifPresent(NonNullConsumer { iJutsu: IJutsuCapability? ->
                     log.info("Loading Jutsu data from persistent NBT")
                     iJutsu!!.deserializeNBT(jutsuTag)

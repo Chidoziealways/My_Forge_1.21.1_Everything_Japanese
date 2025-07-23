@@ -131,19 +131,14 @@ dependencies {
     implementation(libs.jopt.simple)
 
     compileOnly(libs.kotlinforforge)
-    compileOnly(libs.kffmod)
     compileOnly(libs.kfflib)
     compileOnly(libs.kfflang)
 
     runtimeOnly(libs.kotlinforforge)
-    runtimeOnly(libs.kffmod)
     runtimeOnly(libs.kfflib)
     runtimeOnly(libs.kfflang)
 
     jarJar(libs.kotlinforforge) {
-        jarJar.ranged(this, libs.versions.kff.range.get())
-    }
-    jarJar(libs.kffmod) {
         jarJar.ranged(this, libs.versions.kff.range.get())
     }
     jarJar(libs.kfflib) {

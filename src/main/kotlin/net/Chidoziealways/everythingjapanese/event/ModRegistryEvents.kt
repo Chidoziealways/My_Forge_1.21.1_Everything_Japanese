@@ -5,8 +5,11 @@ import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.quest.Quest
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
+import net.minecraft.core.Cloner
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
+import net.minecraftforge.registries.DataPackRegistryEvent
+import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.NewRegistryEvent
 import net.minecraftforge.registries.RegistryBuilder
 import org.slf4j.Logger
@@ -34,12 +37,23 @@ object ModRegistryEvents {
                 .setDefaultKey(ModRegistries.JUTSU.location())
                 .setMaxID(MAX_VARINT)
         )
+
         event.create(
             RegistryBuilder<Quest>()
                 .setName(ModRegistries.QUEST.location())
                 .setDefaultKey(ModRegistries.QUEST.location())
                 .setMaxID(MAX_VARINT)
         )
-        log.info(marker, "Finished Registering Jutsu")
+
+        log.info(marker, "Finished Registering Registries")
+    }
+
+    @SubscribeEvent
+    fun onNewDatapackRegistries(event: DataPackRegistryEvent.NewRegistry) {
+        log.info(marker, "Registering Custom Datapack Registries")
+
+        event.dataPackRegistry(ModRegistries.QUEST, Quest.QUEST_CODEC)
+
+        log.info(marker, "Finished Registering Datapack Registries")
     }
 }

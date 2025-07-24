@@ -1,18 +1,8 @@
-**🏯 EverythingJapanese v1.4.0 — The Quest Awakens**
-A new era begins. The groundwork for the Quest System is finally here. Now you’ve got purpose, rewards, and commands to shape a full-on samurai journey.
+**Version 1.4.2**  
+**Added a smarter system for Quest Conditions, to avoid the player from auto-completing a quest if they already have the item or have already killed the mob.**  
+*Changelog*
+1. Added Quest dependencies which defaults to `everythingjapanese:air`
+2. Added Smarter quests.
+3. Added the First Complete QUEST! `everythingjapanese:find_village` you can start the quest by running this: `/startQuest everythingjapanese:find_village` suggestions for the command and easier ways to start quests coming soon!
 
-📜 Changelog
-- ✨ Quest System Framework — The foundation is set. Expect more blood-pumping quests soon.
-
-🧭 New Quest Added:
-
-- Find the Emerald — your first taste of destiny.
-
-🛠️ New Commands:
-
-- /startQuest <resource_location> — Begins your path.
-
-- /finishQuest <resource_location> — Concludes it, if you’ve got what it takes.
-
-🗂️ New Registry:
-- everythingjapanese:quest — All quests now have a home in the datapack registry.
+> Dedicated to me, myself and I

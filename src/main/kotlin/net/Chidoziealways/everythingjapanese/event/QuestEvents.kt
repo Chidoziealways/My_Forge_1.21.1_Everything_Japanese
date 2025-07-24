@@ -47,8 +47,8 @@ object QuestEvents {
                     }
                 }
                 "xp" -> {
-                    val json = reward.data
-                    val xpAmount = json.asInt
+                    val json = reward.data.asJsonObject
+                    val xpAmount = json.get("count")?.asInt ?: 0
                     player.giveExperiencePoints(xpAmount)
                 }
                 else -> {

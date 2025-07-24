@@ -1,0 +1,124 @@
+---- Minecraft Crash Report ----
+// Who set us up the TNT?
+
+Time: 2025-07-23 16:07:26
+Description: Exception in server tick loop
+
+java.lang.IllegalStateException: Missing element ResourceKey[minecraft:root / minecraft:worldgen/structure]
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.core.HolderGetter$Provider.lambda$getOrThrow$3(HolderGetter.java:34) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar:?]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[?:?]
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.core.HolderGetter$Provider.getOrThrow(HolderGetter.java:34) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar:?]
+	at TRANSFORMER/everythingjapanese@1.4.0/net.Chidoziealways.everythingjapanese.quest.conditions.LocatePlaceCondition.isComplete(LocatePlaceCondition.kt:23) ~[main/:?]
+	at TRANSFORMER/everythingjapanese@1.4.0/net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler.onServerTick$lambda$0(QuestStageProgressionHandler.kt:26) ~[main/:?]
+	at TRANSFORMER/everythingjapanese@1.4.0/net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler.onServerTick$lambda$1(QuestStageProgressionHandler.kt:14) ~[main/:?]
+	at TRANSFORMER/net.minecraftforge.forge@58.0.0/net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:136) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar:?]
+	at TRANSFORMER/everythingjapanese@1.4.0/net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler.onServerTick(QuestStageProgressionHandler.kt:14) ~[main/:?]
+	at TRANSFORMER/everythingjapanese@1.4.0/net.Chidoziealways.everythingjapanese.EverythingJapanese._init_$lambda$1(EverythingJapanese.kt:168) ~[main/:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.internal.InvokerFactory.lambda$createInvokerFromUnwrapped$8(InvokerFactory.java:225) ~[eventbus-7.0-beta.10.jar!/:7.0-beta.10]
+	at SECURE-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.internal.EventBusImpl.post(EventBusImpl.java:64) ~[eventbus-7.0-beta.10.jar!/:7.0-beta.10]
+	at TRANSFORMER/net.minecraftforge.forge@58.0.0/net.minecraftforge.event.ForgeEventFactory.onPostServerTick(ForgeEventFactory.java:808) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar%231!/:?]
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:972) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:107) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:710) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:277) ~[forge-1.21.8-58.0.0_mapped_official_1.21.8-recomp.jar%230!/:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Transformer Audit:
+  net.Chidoziealways.everythingjapanese.EverythingJapanese
+    REASON: classloading
+  net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler
+    REASON: classloading
+  net.Chidoziealways.everythingjapanese.quest.conditions.LocatePlaceCondition
+    REASON: classloading
+  net.minecraft.client.server.IntegratedServer
+    REASON: classloading
+  net.minecraft.core.HolderGetter$Provider
+    REASON: classloading
+  net.minecraft.server.MinecraftServer
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+  net.minecraftforge.common.util.LazyOptional
+    REASON: mixin
+    REASON: classloading
+  net.minecraftforge.event.ForgeEventFactory
+    REASON: classloading
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 274445896 bytes (261 MiB) / 880803840 bytes (840 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 21286.84
+	Virtual memory used (MiB): 20340.13
+	Swap memory total (MiB): 13251.63
+	Swap memory used (MiB): 3777.08
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 120572.75, total: 243176.00
+	Space in storage for workdir (MiB): available: 120572.75, total: 243176.00
+	JVM Flags: 0 total; 
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/82, l='ServerLevel[MY FRESH TEST WORLD]', x=658.37, y=65.00, z=-1508.56]]
+	Active Data Packs: vanilla, mod:mixinextras (incompatible), mod:kotlinforforge (incompatible), mod:forge, mod:everythingjapanese, trade_rebalance, redstone_experiments, minecart_improvements
+	Available Data Packs: minecart_improvements, mod:everythingjapanese, mod:forge, mod:kotlinforforge (incompatible), mod:mixinextras (incompatible), redstone_experiments, trade_rebalance, vanilla
+	Enabled Feature Flags: minecraft:redstone_experiments, minecraft:vanilla, minecraft:trade_rebalance, minecraft:minecart_improvements
+	World Generation: Experimental
+	World Seed: 7242588709382445501
+	Suppressed Exceptions: ~~NONE~~
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Launched Version: EVERYTHINGJAPANESE_MOD_DEV
+	ModLauncher: 10.2.4
+	ModLauncher launch target: forge_userdev_client
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/ slf4jfixer PLUGINSERVICE 
+		/ runtimedistcleaner PLUGINSERVICE 
+		/ runtime_enum_extender PLUGINSERVICE 
+		/ object_holder_definalize PLUGINSERVICE 
+		/ capability_token_subclass PLUGINSERVICE 
+		/ accesstransformer PLUGINSERVICE 
+		/ mixin PLUGINSERVICE 
+		/ fml TRANSFORMATIONSERVICE 
+		/ mixin TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		minecraft@1.0
+		lowcodefml@58
+		javafml@58.0.0
+	Mod List: 
+		                                                  |Minecraft                     |minecraft                     |1.21.8              |DONE      |Manifest: NOSIGNATURE
+		mixinextras-forge-0.4.1.jar                       |MixinExtras                   |mixinextras                   |0.4.1               |DONE      |Manifest: NOSIGNATURE
+		kffmod-6.0.0.jar                                  |Kotlin For Forge              |kotlinforforge                |6.0.0               |DONE      |Manifest: NOSIGNATURE
+		main                                              |Everything Japanese           |everythingjapanese            |1.4.0               |DONE      |Manifest: NOSIGNATURE
+		                                                  |Forge                         |forge                         |58.0.0              |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 6ac2ff37-82af-4be1-ab31-a70508af5640
+	FML: 0.0
+	Forge: net.minecraftforge:58.0.0

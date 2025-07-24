@@ -31,6 +31,8 @@ import net.Chidoziealways.everythingjapanese.quest.Quest
 import net.Chidoziealways.everythingjapanese.quest.QuestConditionRegistry
 import net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler
 import net.Chidoziealways.everythingjapanese.quest.conditions.CollectItemCondition
+import net.Chidoziealways.everythingjapanese.quest.conditions.KillEntityCondition
+import net.Chidoziealways.everythingjapanese.quest.conditions.LocatePlaceCondition
 import net.Chidoziealways.everythingjapanese.recipe.ModRecipes
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen
@@ -64,6 +66,8 @@ import net.minecraftforge.client.event.RegisterParticleProvidersEvent
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
 import net.minecraftforge.event.TickEvent.ServerTickEvent
+import net.minecraftforge.event.entity.living.LivingDeathEvent
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent
 import net.minecraftforge.event.server.ServerStartedEvent
 import net.minecraftforge.event.server.ServerStartingEvent
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent
@@ -167,6 +171,10 @@ object EverythingJapanese {
             )
         }
 
+        LivingDeathEvent.BUS.addListener(KillEntityCondition::onEntityKilled)
+
+        EntityItemPickupEvent.BUS.addListener(CollectItemCondition::onItemPickup)
+
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         LOADING_CONTEXT.registerConfig(ModConfig.Type.COMMON, Config.SPEC)
@@ -174,6 +182,8 @@ object EverythingJapanese {
 
     fun registerQuestConditions() {
         QuestConditionRegistry.register("collect", CollectItemCondition)
+        QuestConditionRegistry.register("kill", KillEntityCondition)
+        QuestConditionRegistry.register("locate", LocatePlaceCondition)
     }
 
     @SubscribeEvent

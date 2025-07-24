@@ -13,7 +13,8 @@ data class Quest(
     val description: Component,
     val stages: List<QuestStage>,
     val rewards: List<QuestReward>,
-    val isRepeatable: Boolean
+    val isRepeatable: Boolean,
+    val dependency: ResourceLocation
 ) {
 
     companion object {
@@ -25,7 +26,8 @@ data class Quest(
                 ComponentSerialization.CODEC.fieldOf("description").forGetter { it.description },
                 QuestStage.CODEC.listOf().fieldOf("stages").forGetter { it.stages },
                 QuestReward.CODEC.listOf().fieldOf("rewards").forGetter { it.rewards },
-                Codec.BOOL.optionalFieldOf("repeatable", false).forGetter { it.isRepeatable }
+                Codec.BOOL.optionalFieldOf("repeatable", false).forGetter { it.isRepeatable },
+                ResourceLocation.CODEC.fieldOf("dependency").forGetter { it.dependency }
             ).apply(instance, ::Quest)
         }
     }

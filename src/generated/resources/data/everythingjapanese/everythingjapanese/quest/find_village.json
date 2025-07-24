@@ -1,0 +1,32 @@
+{
+  "description": "Find the place where villagers roam free and happy",
+  "id": "everythingjapanese:find_village",
+  "repeatable": true,
+  "rewards": [
+    {
+      "type": "xp",
+      "data": {
+        "count": 10
+      }
+    }
+  ],
+  "stages": [
+    {
+      "complete_when": "locate:minecraft:village_plains",
+      "objective": "locate the village"
+    },
+    {
+      "complete_when": "collect:minecraft:emerald",
+      "objective": "Obtain a green stone"
+    },
+    {
+      "complete_when": "collect:minecraft:green_wool",
+      "objective": "Obtain green silk ※wool※"
+    },
+    {
+      "complete_when": "kill:minecraft:iron_golem",
+      "objective": "Kill the bodyguard"
+    }
+  ],
+  "title": "Find The Village"
+}

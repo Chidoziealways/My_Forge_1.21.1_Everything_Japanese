@@ -23,8 +23,11 @@ object QuestStageProgressionHandler {
                 val parsed = ParsedCondition.parse(stage.completeWhen)
                 val condition = QuestConditionRegistry.get(parsed.type)
 
+                player.sendSystemMessage(Component.literal("§aStage ${progress.stageIndex}: ${stage.objective.string}"))
+
                 if (condition?.isComplete(player, quest, stage) == true) {
                     progress.stageIndex++
+                    println("Index: ${progress.stageIndex}")
 
                     player.sendSystemMessage(Component.literal("§aStage Complete: ${stage.objective.string}"))
 

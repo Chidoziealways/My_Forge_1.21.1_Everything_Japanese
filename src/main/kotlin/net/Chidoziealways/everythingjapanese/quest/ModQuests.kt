@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 
 object ModQuests {
-    val FIND_NPC1: ResourceKey<Quest> = createKey("find_npc1")
+    val FIND_VILLAGE: ResourceKey<Quest> = createKey("find_village")
 
     private fun createKey(name: String): ResourceKey<Quest> {
         return ResourceKey.create(

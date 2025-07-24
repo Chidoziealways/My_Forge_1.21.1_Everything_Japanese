@@ -2,10 +2,12 @@ package net.Chidoziealways.everythingjapanese.quest
 
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
+import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.event.QuestFinishedEvent
 import net.Chidoziealways.everythingjapanese.event.QuestStartedEvent
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.NbtOps
+import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener
@@ -24,11 +26,16 @@ class QuestCapability(
     override fun giveQuest(id: ResourceLocation, player: ServerPlayer): Boolean {
         val quest = QUEST_LOOKUP[id] ?: return false //Not found
 
+        if (quest.dependency.path != "air" && !completedQuests.contains(quest.dependency)) {
+            player.sendSystemMessage(Component.literal("You haven't completed the dependency for this quest: ${quest.dependency.path}"))
+            return false
+        }
+
         if (!quest.isRepeatable && completedQuests.contains(id)) return false
 
         if (questProgress.containsKey(id)) return false //Already has it
 
-        questProgress[id] = QuestProgress(quest, 0) //initialize progress
+        questProgress[id] = QuestProgress(quest, 0, true) //initialize progress
 
         QuestStartedEvent.BUS.post(QuestStartedEvent(player, quest))
         return true

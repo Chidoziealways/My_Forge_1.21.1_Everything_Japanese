@@ -1,5 +1,5 @@
 [versions]
-    everythingjapanese = "1.4.0"
+    everythingjapanese = "1.4.2"
 
     minecraft-range = "[1.21.1, 1.22)"
     minecraft = "1.21.8"
@@ -20,7 +20,7 @@
     plugin-minotaur = "2.8.7"
     plugin-curseforge-gradle = "1.1.26"
     plugin-idea-ext = "1.1.10"
-    plugin-forge-gradle = "6.0.36"
+    plugin-forge-gradle = "6.0.37"
     plugin-mixin = "0.7.+"
     plugin-parchment-forge-gradle = "1.+"
 

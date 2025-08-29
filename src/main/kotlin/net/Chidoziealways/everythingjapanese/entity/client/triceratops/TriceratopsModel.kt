@@ -27,7 +27,7 @@ class TriceratopsModel<T : TriceratopsEntity?>(root: ModelPart) : EntityModel<Tr
     override fun setupAnim(state: TriceratopsRenderState?) {
         super.setupAnim(state!!)
         this.root().getAllParts().forEach(Consumer { obj: ModelPart? -> obj!!.resetPose() })
-        this.applyHeadRotation(state!!.netHeadYaw, state.headPitch)
+        this.applyHeadRotation(state.netHeadYaw, state.headPitch)
         this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2.0f, 2.5f)
         this.idleAnimation.apply(state.entity!!.idleAnimationState, state.ageInTicks)
     }

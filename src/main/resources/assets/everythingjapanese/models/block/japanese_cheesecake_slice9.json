@@ -1,0 +1,12 @@
+{
+	"loader": "neoforge:obj",
+	"model": "everythingjapanese:models/block/japanese_cheesecake_slice9.obj",
+	"textures": {
+		"texture0": "everythingjapanese:block/japanese_cheesecake_slice9",
+		"particle": "everythingjapanese:block/japanese_cheesecake_slice9"
+	},
+	"automatic_culling": false,
+	"shade_quads": true,
+	"flip_v": true,
+	"emissive_ambient": false
+}

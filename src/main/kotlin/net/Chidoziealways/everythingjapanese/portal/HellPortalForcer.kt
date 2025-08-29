@@ -1,7 +1,7 @@
 package net.Chidoziealways.everythingjapanese.portal
 
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.custom.HellPortalBlock
+import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
 import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes
 import net.minecraft.BlockUtil
 import net.minecraft.core.BlockPos
@@ -36,7 +36,7 @@ class HellPortalForcer(p_77650_: ServerLevel) {
         poimanager.ensureLoadedAndValid(this.level, p_345495_, i)
         return poimanager.getInSquare({ p_230634_: net.minecraft.core.Holder<PoiType?>? ->
             p_230634_!!.`is`(
-                ModPoiTypes.HELL_PORTAL!!.getKey()
+                ModPoiTypes.HELL_PORTAL.getKey()
             )
         }, p_345495_, i, PoiManager.Occupancy.ANY)
             .map<BlockPos?> { obj: PoiRecord? -> obj!!.getPos() }
@@ -199,8 +199,8 @@ class HellPortalForcer(p_77650_: ServerLevel) {
             }
         }
 
-        val blockstate: BlockState = ModBlocks.HELL_PORTAL.get().defaultBlockState()
-            .setValue<Direction.Axis?, Direction.Axis?>(
+        val blockstate: BlockState = ModBlocks.HELL_PORTAL.defaultBlockState()
+            .setValue(
                 HellPortalBlock.AXIS,
                 p_77668_
             )

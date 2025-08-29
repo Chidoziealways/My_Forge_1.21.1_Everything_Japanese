@@ -1,27 +1,27 @@
 package net.Chidoziealways.everythingjapanese.recipe
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.item.crafting.SmithingBladeRecipe
+import net.Chidoziealways.everythingjapanese.item.crafting.SmithingKanjiRecipe
+import net.Chidoziealways.everythingjapanese.item.crafting.SmithingWrapperRecipe
+import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object ModRecipes {
-    val SERIALIZERS: DeferredRegister<RecipeSerializer<*>?> =
-        DeferredRegister.create<RecipeSerializer<*>?>(ForgeRegistries.RECIPE_SERIALIZERS, MOD_ID)
-    val TYPES: DeferredRegister<RecipeType<*>?> =
-        DeferredRegister.create<RecipeType<*>?>(ForgeRegistries.RECIPE_TYPES, MOD_ID)
+    val SERIALIZERS = DeferredRegister.create<RecipeSerializer<*>?>(Registries.RECIPE_SERIALIZER, MOD_ID)
+    val TYPES = DeferredRegister.create<RecipeType<*>?>(Registries.RECIPE_TYPE, MOD_ID)
 
-    val GROWTH_CHAMBER_SERIALIZER: RegistryObject<RecipeSerializer<GrowthChamberRecipe?>?>? =
-        SERIALIZERS.register<RecipeSerializer<GrowthChamberRecipe?>?>(
+    val GROWTH_CHAMBER_SERIALIZER by
+        SERIALIZERS.register(
             "growth_chamber",
             Supplier { GrowthChamberRecipe.Serializer() })
-    val GROWTH_CHAMBER_TYPE: RegistryObject<RecipeType<GrowthChamberRecipe?>?> =
-        TYPES.register<RecipeType<GrowthChamberRecipe?>?>("growth_chamber", Supplier {
+    val GROWTH_CHAMBER_TYPE by
+        TYPES.register("growth_chamber", Supplier {
             object : RecipeType<GrowthChamberRecipe?> {
                 override fun toString(): String {
                     return "growth_chamber"
@@ -29,7 +29,47 @@ object ModRecipes {
             }
         })
 
-    fun register(eventBus: BusGroup?) {
+    val SMITHING_KANJI_SERIALIZER by
+            SERIALIZERS.register(
+                "smithing_kanji",
+                Supplier{ SmithingKanjiRecipe.Serializer() })
+
+    val SMITHING_KANJI_TYPE by
+            TYPES.register("smithing_kanji", Supplier {
+                object : RecipeType<SmithingKanjiRecipe> {
+                    override fun toString(): String {
+                        return "smithing_kanji"
+                    }
+                }
+            })
+
+    val SMITHING_BLADE_SERIALIZER by
+            SERIALIZERS.register("smithing_blade",
+                Supplier { SmithingBladeRecipe.Serializer() })
+
+    val SMITHING_BLADE_TYPE by
+            TYPES.register("smithing_blade", Supplier {
+                object : RecipeType<SmithingBladeRecipe> {
+                    override fun toString(): String {
+                        return "smithing_blade"
+                    }
+                }
+            })
+
+    val SMITHING_WRAPPER_SERIALIZER by
+    SERIALIZERS.register("smithing_wrapper",
+        Supplier { SmithingWrapperRecipe.Serializer() })
+
+    val SMITHING_WRAPPER_TYPE by
+    TYPES.register("smithing_wrapper", Supplier {
+        object : RecipeType<SmithingWrapperRecipe> {
+            override fun toString(): String {
+                return "smithing_wrapper"
+            }
+        }
+    })
+
+    fun register(eventBus: IEventBus) {
         SERIALIZERS.register(eventBus)
         TYPES.register(eventBus)
     }

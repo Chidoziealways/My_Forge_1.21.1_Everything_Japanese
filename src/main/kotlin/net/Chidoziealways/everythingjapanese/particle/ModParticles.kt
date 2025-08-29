@@ -1,23 +1,19 @@
 package net.Chidoziealways.everythingjapanese.particle
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.minecraft.core.particles.ParticleType
 import net.minecraft.core.particles.SimpleParticleType
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
+import net.minecraft.core.registries.Registries
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object ModParticles {
-    val PARTICLE_TYPES: DeferredRegister<ParticleType<*>?> =
-        DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MOD_ID)
+    val PARTICLE_TYPES = DeferredRegister.create(Registries.PARTICLE_TYPE, MOD_ID)
 
-    val PYRITE_PARTICLES: RegistryObject<SimpleParticleType?>? =
-        PARTICLE_TYPES.register<SimpleParticleType?>("pyrite_particles", Supplier { SimpleParticleType(true) })
+    val PYRITE_PARTICLES by PARTICLE_TYPES.register("pyrite_particles", Supplier { SimpleParticleType(true) })
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         PARTICLE_TYPES.register(eventBus)
     }
 }

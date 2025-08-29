@@ -1,5 +1,7 @@
 package net.Chidoziealways.everythingjapanese.portal
 
+import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
 import net.minecraft.BlockUtil.FoundRectangle
 import net.minecraft.core.BlockPos
 import net.minecraft.core.BlockPos.MutableBlockPos
@@ -12,7 +14,6 @@ import net.minecraft.world.entity.EntityDimensions
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.block.Blocks
-import net.minecraft.world.level.block.NetherPortalBlock
 import net.minecraft.world.level.block.state.BlockBehaviour.StatePredicate
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.phys.AABB
@@ -37,8 +38,8 @@ class HellPortalShape private constructor(
         get() = this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21
 
     fun createPortalBlocks(p_366077_: LevelAccessor) {
-        val blockstate = Blocks.NETHER_PORTAL.defaultBlockState()
-            .setValue<Direction.Axis?, Direction.Axis?>(NetherPortalBlock.AXIS, this.axis)
+        val blockstate = ModBlocks.HELL_PORTAL.defaultBlockState()
+            .setValue<Direction.Axis?, Direction.Axis?>(HellPortalBlock.AXIS, this.axis)
         BlockPos.betweenClosed(
             this.bottomLeft,
             this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)
@@ -54,14 +55,12 @@ class HellPortalShape private constructor(
         const val MAX_WIDTH: Int = 21
         private const val MIN_HEIGHT = 3
         const val MAX_HEIGHT: Int = 21
-        private val FRAME = StatePredicate { p_77720_: BlockState?, p_77721_: BlockGetter?, p_77722_: BlockPos? ->
-            p_77720_!!.isPortalFrame(
-                p_77721_,
-                p_77722_
-            )
+        private val FRAME = StatePredicate { state: BlockState, p_77721_: BlockGetter, p_77722_: BlockPos ->
+            state.`is`(Blocks.NETHERRACK)
         }
         private const val SAFE_TRAVEL_MAX_ENTITY_XY = 4.0f
         private const val SAFE_TRAVEL_MAX_VERTICAL_DELTA = 1.0
+        @JvmStatic
         fun findEmptyPortalShape(
             p_77709_: LevelAccessor,
             p_77710_: BlockPos,
@@ -223,7 +222,7 @@ class HellPortalShape private constructor(
                         return i
                     }
 
-                    if (blockstate.`is`(Blocks.NETHER_PORTAL)) {
+                    if (blockstate.`is`(ModBlocks.HELL_PORTAL)) {
                         p_363201_.increment()
                     }
                 }
@@ -232,8 +231,8 @@ class HellPortalShape private constructor(
             return 21
         }
 
-        private fun isEmpty(p_77718_: BlockState): Boolean {
-            return p_77718_.isAir() || p_77718_.`is`(BlockTags.FIRE) || p_77718_.`is`(Blocks.NETHER_PORTAL)
+        private fun isEmpty(state: BlockState): Boolean {
+            return state.isAir || state.`is`(BlockTags.FIRE) || state.`is`(ModBlocks.HELL_PORTAL)
         }
 
         fun getRelativePosition(

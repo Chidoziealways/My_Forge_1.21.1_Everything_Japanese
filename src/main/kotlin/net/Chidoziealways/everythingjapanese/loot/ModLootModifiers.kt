@@ -1,26 +1,20 @@
 package net.Chidoziealways.everythingjapanese.loot
 
-import com.mojang.serialization.MapCodec
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.minecraftforge.common.loot.IGlobalLootModifier
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
-import thedarkcolour.kotlinforforge.forge.registerObject
-import java.util.function.Supplier
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
+import net.neoforged.neoforge.registries.NeoForgeRegistries
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
 object ModLootModifiers {
-    val LOOT_MODIFIER_SERIALIZERS: DeferredRegister<MapCodec<out IGlobalLootModifier?>?> =
-        DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MOD_ID)
+    val LOOT_MODIFIER_SERIALIZERS = DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MOD_ID)
 
-    val ADD_ITEM = LOOT_MODIFIER_SERIALIZERS.registerObject(
+    val ADD_ITEM by LOOT_MODIFIER_SERIALIZERS.register(
             "add_item")
-            { AddItemModifier.Companion.CODEC }
+            { -> AddItemModifier.Companion.CODEC }
 
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         LOOT_MODIFIER_SERIALIZERS.register(eventBus)
     }
 }

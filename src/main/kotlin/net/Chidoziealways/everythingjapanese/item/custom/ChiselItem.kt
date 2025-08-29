@@ -28,43 +28,43 @@ import java.util.Map
 import java.util.function.Consumer
 
 class ChiselItem(pProperties: Properties) : Item(pProperties) {
-    override fun useOn(pContext: UseOnContext): InteractionResult {
-        val level = pContext.getLevel()
-        val clickedBlock = level.getBlockState(pContext.getClickedPos()).getBlock()
+    override fun useOn(context: UseOnContext): InteractionResult {
+        val level = context.level
+        val clickedBlock = level.getBlockState(context.clickedPos).block
 
         if (CHISEL_MAP.containsKey(clickedBlock)) {
             if (!level.isClientSide()) {
-                level.setBlockAndUpdate(pContext.getClickedPos(), CHISEL_MAP.get(clickedBlock)!!.defaultBlockState())
+                level.setBlockAndUpdate(context.clickedPos, CHISEL_MAP[clickedBlock]!!.defaultBlockState())
 
-                pContext.getItemInHand().hurtAndBreak(
-                    1, (level as ServerLevel), (pContext.getPlayer() as ServerPlayer?)
-                ) { item: Item? ->
-                    pContext.getPlayer()!!.onEquippedItemBroken(item, EquipmentSlot.MAINHAND)
+                context.itemInHand.hurtAndBreak(
+                    1, (level as ServerLevel), (context.player as ServerPlayer?)
+                ) { item: Item ->
+                    context.player!!.onEquippedItemBroken(item, EquipmentSlot.MAINHAND)
                 }
 
-                level.playSound(null, pContext.getClickedPos(), ModSounds.CHISEL_USE!!.get(), SoundSource.BLOCKS)
+                level.playSound(null, context.clickedPos, ModSounds.CHISEL_USE.get(), SoundSource.BLOCKS)
 
                 level.sendParticles<BlockParticleOption?>(
                     BlockParticleOption(ParticleTypes.BLOCK, clickedBlock.defaultBlockState()),
-                    pContext.getClickedPos().getX() + 0.5, pContext.getClickedPos().getY() + 1.0,
-                    pContext.getClickedPos().getZ() + 0.5, 10, 0.0, 0.0, 0.0, 1.0
+                    context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 1.0,
+                    context.getClickedPos().getZ() + 0.5, 10, 0.0, 0.0, 0.0, 1.0
                 )
 
                 level.sendParticles<SimpleParticleType?>(
                     ParticleTypes.ENCHANT,
-                    pContext.getClickedPos().getX() + 0.5, pContext.getClickedPos().getY() + 1.5,
-                    pContext.getClickedPos().getZ() + 0.5, 10, 0.0, 0.0, 0.0, 3.0
+                    context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 1.5,
+                    context.getClickedPos().getZ() + 0.5, 10, 0.0, 0.0, 0.0, 3.0
                 )
 
                 level.sendParticles<SimpleParticleType?>(
-                    ModParticles.PYRITE_PARTICLES!!.get(),
-                    pContext.getClickedPos().getX() + 0.5, pContext.getClickedPos().getY() + 1.5,
-                    pContext.getClickedPos().getZ() + 0.5, 15, 0.0, 0.0, 0.0, 2.0
+                    ModParticles.PYRITE_PARTICLES,
+                    context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 1.5,
+                    context.getClickedPos().getZ() + 0.5, 15, 0.0, 0.0, 0.0, 2.0
                 )
 
-                pContext.getItemInHand()
-                    .set<BlockPos?>(ModDataComponentTypes.COORDINATES!!.get(), pContext.getClickedPos())
-                pContext.getItemInHand()
+                context.itemInHand
+                    .set(ModDataComponentTypes.COORDINATES, context.clickedPos)
+                context.itemInHand
                     .set<BlockItemStateProperties?>(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY)
             }
         }
@@ -85,11 +85,11 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
             pTooltipComponents.accept(Component.translatable("tooltip.everythingjapanese.chisel_item.shift_down"))
         }
 
-        if (pStack.get<BlockPos?>(ModDataComponentTypes.COORDINATES!!.get()) != null) {
+        if (pStack.get<BlockPos?>(ModDataComponentTypes.COORDINATES) != null) {
             pTooltipComponents.accept(
                 Component.literal(
                     "Last Block Changed at :" + pStack.get<BlockPos?>(
-                        ModDataComponentTypes.COORDINATES.get()
+                        ModDataComponentTypes.COORDINATES
                     )
                 )
             )
@@ -108,17 +108,17 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
     }
 
     companion object {
-        private val CHISEL_MAP: MutableMap<Block?, Block?> = Map.ofEntries<Block?, Block?>(
-            Map.entry<Block?, Block?>(Blocks.STONE, Blocks.STONE_BRICKS),
-            Map.entry<Block?, Block?>(Blocks.END_STONE, Blocks.END_STONE_BRICKS),
-            Map.entry<Block?, Block?>(Blocks.GRASS_BLOCK, Blocks.BEDROCK),
-            Map.entry<Block?, Block?>(Blocks.IRON_BLOCK, Blocks.DIAMOND_BLOCK),
-            Map.entry<Block?, Block?>(Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE),
-            Map.entry<Block?, Block?>(Blocks.BEDROCK, Blocks.GRASS_BLOCK),
-            Map.entry<Block?, Block?>(Blocks.END_STONE_BRICKS, Blocks.END_STONE),
-            Map.entry<Block?, Block?>(
+        private val CHISEL_MAP: MutableMap<Block, Block> = Map.ofEntries<Block, Block>(
+            Map.entry<Block, Block>(Blocks.STONE, Blocks.STONE_BRICKS),
+            Map.entry<Block, Block>(Blocks.END_STONE, Blocks.END_STONE_BRICKS),
+            Map.entry<Block, Block>(Blocks.GRASS_BLOCK, Blocks.BEDROCK),
+            Map.entry<Block, Block>(Blocks.IRON_BLOCK, Blocks.DIAMOND_BLOCK),
+            Map.entry<Block, Block>(Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE),
+            Map.entry<Block, Block>(Blocks.BEDROCK, Blocks.GRASS_BLOCK),
+            Map.entry<Block, Block>(Blocks.END_STONE_BRICKS, Blocks.END_STONE),
+            Map.entry<Block, Block>(
                 Blocks.DIRT,
-                ModBlocks.PYRITE_BLOCK.get()
+                ModBlocks.PYRITE_BLOCK
             ) //Map.entry(Blocks.CAKE, ModBlocks.CHOCOLATE_CAKE.get()),
             //Map.entry(ModBlocks.CHOCOLATE_CAKE.get(), ModBlocks.JAPANESE_CHEESECAKE.get()),
             //Map.entry(ModBlocks.WORKBENCH.get(), Blocks.CRAFTING_TABLE)

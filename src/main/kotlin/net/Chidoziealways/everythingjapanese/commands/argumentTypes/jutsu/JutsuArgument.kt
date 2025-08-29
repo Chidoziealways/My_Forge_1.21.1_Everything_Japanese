@@ -16,11 +16,7 @@ import org.apache.logging.log4j.MarkerManager
 import java.util.concurrent.CompletableFuture
 
 class JutsuArgument(context: CommandBuildContext) : ArgumentType<JutsuInput?> {
-    private val parser: JutsuParser
-
-    init {
-        this.parser = JutsuParser(context)
-    }
+    private val parser: JutsuParser = JutsuParser(context)
 
     @Throws(CommandSyntaxException::class)
     override fun parse(reader: StringReader): JutsuInput {

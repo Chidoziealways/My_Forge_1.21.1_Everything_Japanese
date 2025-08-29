@@ -17,7 +17,7 @@ class RiceCropBlock(properties: Properties) : CropBlock(properties) {
     }
 
     override fun getBaseSeedId(): ItemLike {
-        return ModItems.RICE_SEEDS!!.get()
+        return ModItems.RICE_SEEDS
     }
 
     override fun getAgeProperty(): IntegerProperty {

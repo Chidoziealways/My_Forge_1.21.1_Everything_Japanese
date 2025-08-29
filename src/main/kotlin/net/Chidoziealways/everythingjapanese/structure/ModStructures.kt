@@ -10,6 +10,8 @@ import net.minecraft.world.level.levelgen.structure.Structure
 object ModStructures {
     val HELL_TEMPLE: ResourceKey<Structure?> = createKey("hell_temple")
 
+    val DOJO: ResourceKey<Structure?> = createKey("dojo")
+
     private fun createKey(pName: String): ResourceKey<Structure?> {
         return ResourceKey.create<Structure?>(
             Registries.STRUCTURE,

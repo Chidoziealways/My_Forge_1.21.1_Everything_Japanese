@@ -1,5 +1,6 @@
 package net.Chidoziealways.everythingjapanese.structure
 
+import net.Chidoziealways.everythingjapanese.structure.custom.dojo.DojoStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.hellTemple.HellTempleStructurePieces
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.registries.Registries
@@ -14,6 +15,7 @@ import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight
 import net.minecraft.world.level.levelgen.structure.Structure
 import net.minecraft.world.level.levelgen.structure.Structure.StructureSettings
 import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride
+import net.minecraft.world.level.levelgen.structure.TerrainAdjustment
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure
@@ -26,9 +28,9 @@ import java.util.Map
 object ModStructuresGen {
     private val log: Logger = LoggerFactory.getLogger(ModStructuresGen::class.java)
 
-    fun bootstrap(context: BootstrapContext<Structure?>) {
-        val holdergetter = context.lookup<Biome?>(Registries.BIOME)
-        val holdergetter1 = context.lookup<StructureTemplatePool?>(Registries.TEMPLATE_POOL)
+    fun bootstrap(context: BootstrapContext<Structure>) {
+        val holdergetter = context.lookup(Registries.BIOME)
+        val holdergetter1 = context.lookup(Registries.TEMPLATE_POOL)
         log.info("Bootstrapping Structures: {}", ModStructures.HELL_TEMPLE.location())
         context.register(
             ModStructures.HELL_TEMPLE,
@@ -55,6 +57,20 @@ object ModStructuresGen {
                 mutableListOf<PoolAliasBinding?>(),
                 JigsawStructure.DEFAULT_DIMENSION_PADDING,
                 JigsawStructure.DEFAULT_LIQUID_SETTINGS
+            )
+        )
+
+        context.register(
+            ModStructures.DOJO,
+            JigsawStructure(
+                StructureSettings.Builder(holdergetter.getOrThrow(ModTags.Biomes.HAS_DOJO))
+                    .terrainAdapation(TerrainAdjustment.BEARD_THIN)
+                    .build(),
+                holdergetter1.getOrThrow(DojoStructurePieces.START),
+                6,
+                ConstantHeight.of(VerticalAnchor.absolute(0)),
+                true,
+                Heightmap.Types.WORLD_SURFACE_WG
             )
         )
 

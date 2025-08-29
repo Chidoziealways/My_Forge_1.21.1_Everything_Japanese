@@ -4,11 +4,12 @@ import com.mojang.serialization.DataResult
 import net.minecraft.core.component.DataComponentMap
 import net.minecraft.core.component.DataComponentType
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.server.level.ServerPlayer
 import net.minecraft.util.Unit
 import net.minecraft.world.entity.player.Player
 
 abstract class Jutsu(// Unique identifier for the Jutsu
-    private val id: ResourceLocation?, // Name of the Jutsu (localized)
+    private val id: ResourceLocation, // Name of the Jutsu (localized)
     val name: String?, // Chakra cost to use the Jutsu
     private val chakraCost: Float, // Power level or damage output
     private val powerLevel: Int, vararg type: JutsuType?
@@ -34,7 +35,7 @@ abstract class Jutsu(// Unique identifier for the Jutsu
         return builtComponents!!
     }
 
-    fun getId(): ResourceLocation? {
+    fun getID(): ResourceLocation {
         return id
     }
 
@@ -61,7 +62,7 @@ abstract class Jutsu(// Unique identifier for the Jutsu
                 '}'
     }
 
-    abstract fun cast(player: Player)
+    abstract fun cast(player: ServerPlayer): Boolean
 
     companion object {
         fun validateComponents(components: DataComponentMap?): DataResult<Unit?> {

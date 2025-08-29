@@ -23,7 +23,9 @@ object ModBiomes {
         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_biome")
     )
 
-    fun bootstrap(context: BootstrapContext<Biome?>) {
+    fun bootstrap(context: BootstrapContext<Biome>) {
+        println("Bootstrapping Biomes")
+
         context.register(HELL_BIOME, hellBiome(context))
     }
 
@@ -33,7 +35,7 @@ object ModBiomes {
         BiomeDefaultFeatures.addSurfaceFreezing(builder)
     }
 
-    private fun hellBiome(context: BootstrapContext<Biome?>): Biome {
+    private fun hellBiome(context: BootstrapContext<Biome>): Biome {
         val spawnBuilder = MobSpawnSettings.Builder()
         spawnBuilder.addSpawn(MobCategory.MONSTER, 10, SpawnerData(EntityType.ZOMBIE, 50, 100))
 
@@ -62,7 +64,7 @@ object ModBiomes {
                     .foliageColorOverride(0xd203fc)
                     .fogColor(0x22a1e6)
                     .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                    .backgroundMusic(Musics.createGameMusic(ModSounds.AO_TO_NATSU!!.getHolder().get())).build()
+                    .backgroundMusic(Musics.createGameMusic(ModSounds.AO_TO_NATSU.delegate)).build()
             )
             .build()
     }

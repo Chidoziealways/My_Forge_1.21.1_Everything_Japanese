@@ -1,0 +1,11 @@
+{
+  "vertex": "everythingjapanese:shaders/core/washi_window.vert",
+  "fragment": "everythingjapanese:shaders/core/washi_window.frag",
+  "blend": {
+    "func": "add",
+    "srcrgb": "src_alpha",
+    "dstrgb": "one_minus_src_alpha"
+  },
+  "attributes": ["Position", "UV0"],
+  "samplers": [{ "name": "DiffuseSampler" }]
+}

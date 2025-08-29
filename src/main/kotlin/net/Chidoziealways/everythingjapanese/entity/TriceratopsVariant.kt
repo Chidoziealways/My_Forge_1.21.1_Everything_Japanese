@@ -9,13 +9,10 @@ enum class TriceratopsVariant(val id: Int) {
 
     companion object {
         private val BY_ID: Array<TriceratopsVariant?> =
-            Arrays.stream<TriceratopsVariant?>(entries.toTypedArray()).sorted(
-                Comparator
-                    .comparingInt<TriceratopsVariant?>(ToIntFunction { obj: TriceratopsVariant? -> obj!!.id })
-            ).toArray { Array(2, TriceratopsVariant::byId) }
+            entries.sortedBy { it.id }.toTypedArray()
 
         fun byId(id: Int): TriceratopsVariant? {
-            return BY_ID[id % BY_ID.size]
+            return BY_ID.getOrNull(id % BY_ID.size)
         }
     }
 }

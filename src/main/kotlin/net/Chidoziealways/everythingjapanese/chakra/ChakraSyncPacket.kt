@@ -1,35 +1,27 @@
 package net.Chidoziealways.everythingjapanese.chakra
 
-import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
-import net.minecraft.client.Minecraft
+import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.minecraft.network.FriendlyByteBuf
-import net.minecraftforge.common.util.NonNullConsumer
-import net.minecraftforge.event.network.CustomPayloadEvent
+import net.minecraft.network.codec.StreamCodec
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload
+import net.minecraft.resources.ResourceLocation
 
-@JvmRecord
-data class ChakraSyncPacket(@JvmField val chakra: Float, val maxChakra: Int) {
+data class ChakraSyncPacket(@JvmField val chakra: Float, val maxChakra: Int): CustomPacketPayload {
+    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> {
+        return TYPE
+    }
+
     companion object {
-        @JvmStatic
-        fun encode(msg: ChakraSyncPacket?, buffer: FriendlyByteBuf?) {
-            buffer!!.writeFloat(msg!!.chakra)
-            buffer.writeInt(msg.maxChakra)
-        }
+        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "chakra_sync")
+        val TYPE = CustomPacketPayload.Type<ChakraSyncPacket>(ID)
 
-        @JvmStatic
-        fun decode(buffer: FriendlyByteBuf?): ChakraSyncPacket {
-            return ChakraSyncPacket(buffer!!.readFloat(), buffer.readInt())
-        }
-
-        fun handle(packet: ChakraSyncPacket, context: CustomPayloadEvent.Context) {
-            context.enqueueWork(Runnable {
-                checkNotNull(Minecraft.getInstance().player)
-                Minecraft.getInstance().player!!.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
-                    .ifPresent(NonNullConsumer { iChakra: IChakra? ->
-                        iChakra!!.chakra = packet.chakra
-                        iChakra.setMaxChakra(packet.maxChakra)
-                    })
-            })
-            context.setPacketHandled(true)
-        }
+        val CODEC: StreamCodec<FriendlyByteBuf, ChakraSyncPacket> =
+            StreamCodec.of(
+                { buf, value ->
+                    buf.writeFloat(value.chakra)
+                    buf.writeInt(value.maxChakra)
+                },
+                { buf -> ChakraSyncPacket(buf.readFloat(), buf.readInt()) }
+            )
     }
 }

@@ -6,6 +6,7 @@
   "group": "rice",
   "ingredient": "everythingjapanese:raw_rice",
   "result": {
+    "count": 1,
     "id": "everythingjapanese:rice"
   }
 }

@@ -29,7 +29,7 @@ object ModDimensions {
         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell")
     )
 
-    val HELL_LEVEL_KEY: ResourceKey<Level?> = ResourceKey.create<Level?>(
+    val HELL_LEVEL_KEY: ResourceKey<Level> = ResourceKey.create<Level>(
         Registries.DIMENSION,
         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell")
     )
@@ -39,7 +39,7 @@ object ModDimensions {
         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_type")
     )
 
-    fun bootstrapType(context: BootstrapContext<DimensionType?>) {
+    fun bootstrapType(context: BootstrapContext<DimensionType>) {
         context.register(
             HELL_TYPE, DimensionType(
                 OptionalLong.of(18000L),
@@ -62,10 +62,10 @@ object ModDimensions {
         )
     }
 
-    fun bootstrapStem(context: BootstrapContext<LevelStem?>) {
-        val biomeRegistry = context.lookup<Biome?>(Registries.BIOME)
-        val dimTypes = context.lookup<DimensionType?>(Registries.DIMENSION_TYPE)
-        val noiseGenSettings = context.lookup<NoiseGeneratorSettings?>(Registries.NOISE_SETTINGS)
+    fun bootstrapStem(context: BootstrapContext<LevelStem>) {
+        val biomeRegistry = context.lookup(Registries.BIOME)
+        val dimTypes = context.lookup(Registries.DIMENSION_TYPE)
+        val noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS)
 
         val wrappedChunkGenerator = NoiseBasedChunkGenerator(
             FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.HELL_BIOME)),

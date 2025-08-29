@@ -32,16 +32,16 @@ class ChairBlock(pProperties: Properties) : HorizontalDirectionalBlock(pProperti
         pPlayer: Player,
         pHitResult: BlockHitResult
     ): InteractionResult {
-        if (!pLevel.isClientSide()) {
-            var entity: Entity? = null
-            val entities = pLevel.getEntities<ChairEntity?>(
-                ModEntities.CHAIR?.get(),
+        if (!pLevel.isClientSide) {
+            var entity: ChairEntity
+            val entities = pLevel.getEntities(
+                ModEntities.CHAIR,
                 AABB(pPos),
                 Predicate { chair: ChairEntity? -> true })
-            if (entities.isEmpty()) {
-                entity = ModEntities.CHAIR?.get()?.spawn(pLevel as ServerLevel, pPos, EntitySpawnReason.TRIGGERED)
+            entity = if (entities.isEmpty()) {
+                ModEntities.CHAIR.spawn(pLevel as ServerLevel, pPos, EntitySpawnReason.TRIGGERED)!!
             } else {
-                entity = entities.get(0)
+                entities[0]
             }
 
             pPlayer.startRiding(entity)

@@ -1,21 +1,17 @@
 package net.Chidoziealways.everythingjapanese.event
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.item.ModItems
-import net.minecraftforge.api.distmarker.Dist
-import net.minecraftforge.client.event.ComputeFovModifierEvent
-import net.minecraftforge.eventbus.api.listener.SubscribeEvent
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
-import thedarkcolour.common.KotlinBus
-import thedarkcolour.common.KotlinMod
+import net.neoforged.api.distmarker.Dist
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent
+import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, bus = KotlinBus.FORGE, value = [Dist.CLIENT])
+@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, value = [Dist.CLIENT])
 object ModClientEvents {
-    @JvmStatic
     @SubscribeEvent
     fun onComputerFovModifierEvent(event: ComputeFovModifierEvent) {
-        if (event.player.isUsingItem && event.player.getUseItem().item === ModItems.DAIKYU!!.get()) {
+        if (event.player.isUsingItem && event.player.getUseItem().item === ModItems.DAIKYU) {
             var fovModifier = 1f
             val ticksUsingItem = event.player.ticksUsingItem
             var deltaTicks = ticksUsingItem.toFloat() / 20f

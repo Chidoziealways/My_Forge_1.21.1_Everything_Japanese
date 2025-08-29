@@ -6,250 +6,273 @@ import net.Chidoziealways.everythingjapanese.block.ModBlocks
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.CreativeModeTab
-import net.minecraft.world.item.CreativeModeTab.DisplayItemsGenerator
 import net.minecraft.world.item.CreativeModeTab.ItemDisplayParameters
 import net.minecraft.world.item.ItemStack
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.RegistryObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Supplier
 
 object ModCreativeModeTabs {
-    val CREATIVE_MODE_TABS: DeferredRegister<CreativeModeTab?> =
-        DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID)
+    val CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID)
 
-    val JAPANESE_ITEMS: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_ITEMS = CREATIVE_MODE_TABS.register(
         "japanese_items",
         Supplier {
-            CreativeModeTab.builder().icon { ItemStack(ModItems.PYRITE_INGOT!!.get()) }
+            CreativeModeTab.builder().icon { ItemStack(ModItems.PYRITE_INGOT) }
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_items"))
                 .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.PYRITE_INGOT!!.get())
-                    output.accept(ModItems.RAW_PYRITE!!.get())
-                    output.accept(ModItems.NEPHRITE!!.get())
-                    output.accept(ModItems.CHISEL!!.get())
-                    output.accept(ModItems.RADIATION_STAFF!!.get())
+                    output!!.accept(ModItems.PYRITE_INGOT)
+                    output.accept(ModItems.RAW_PYRITE)
+                    output.accept(ModItems.NEPHRITE)
+                    output.accept(ModItems.CHISEL)
+                    output.accept(ModItems.RADIATION_STAFF)
+                    output.accept { ModItems.TALISMAN_ITEM }
                 }
                 .build()
         })
 
-    val JUTSU: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JUTSU = CREATIVE_MODE_TABS.register(
         "jutsu",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.SMALL_FIREBALL_SCROLL!!.get()) })
+            CreativeModeTab.builder().icon { ItemStack(ModItems.FIREBALL_SCROLL) }
                 .title(Component.literal("Jutsu"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.SMALL_FIREBALL_SCROLL!!.get())
-                    output.accept(ModItems.WINDBALL_SCROLL!!.get())
-                    output.accept(ModItems.LARGE_FIREBALL_SCROLL!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters, output: CreativeModeTab.Output ->
+                    output.accept(ModItems.WINDBALL_SCROLL)
+                    output.accept(ModItems.CHIRETSU_SHO_SCROLL)
+                    output.accept(ModItems.FIREBALL_SCROLL)
+                }
                 .build()
         })
 
-    val HELL: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val HELL = CREATIVE_MODE_TABS.register(
         "hell",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.HELL_PORTAL_ACTIVATOR!!.get()) })
+            CreativeModeTab.builder().icon { ItemStack(ModItems.HELL_PORTAL_ACTIVATOR) }
                 .title(Component.translatable("creativetab.everythingjapanese.hell"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.HELL_PORTAL_ACTIVATOR!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.HELL_PORTAL_ACTIVATOR)
+                }
                 .build()
         })
 
-    val JAPANESE_ENTITIES: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_ENTITIES = CREATIVE_MODE_TABS.register(
         "japanese_entities",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.TRICERATOPS_SPAWN_EGG!!.get()) })
+            CreativeModeTab.builder().icon { ItemStack(ModItems.TRICERATOPS_SPAWN_EGG) }
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_entities"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.TRICERATOPS_SPAWN_EGG!!.get())
-                    output.accept(ModItems.SIKA_DEER_SPAWN_EGG!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.TRICERATOPS_SPAWN_EGG)
+                    output.accept(ModItems.SIKA_DEER_SPAWN_EGG)
+                    output.accept(ModItems.CURSED_SAMURAI_SPAWN_EGG)
+                }
                 .build()
         })
 
-    val JAPANESE_BLOCKS: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_BLOCKS = CREATIVE_MODE_TABS.register(
         "japanese_blocks",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModBlocks.PYRITE_BLOCK.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModBlocks.PYRITE_BLOCK) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_blocks"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModBlocks.PYRITE_BLOCK.get())
-                    output.accept(ModBlocks.RAW_PYRITE_BLOCK.get())
-                    output.accept(ModBlocks.PYRITE_ORE.get())
-                    output.accept(ModBlocks.PYRITE_DEEPSLATE_ORE.get())
-                    output.accept(ModBlocks.NEPHRITE_ORE.get())
-                    output.accept(ModBlocks.NEPHRITE_DEEPSLATE_ORE.get())
-                    //  output.accept(ModBlocks.TRANSFORMER_BLOCK.get());
-                    output.accept(ModBlocks.HINOKI_MARUTA.get())
-                    output.accept(ModBlocks.PYRITE_BUTTON.get())
-                    output.accept(ModBlocks.PYRITE_DOOR.get())
-                    output.accept(ModBlocks.PYRITE_FENCE.get())
-                    output.accept(ModBlocks.PYRITE_FENCE_GATE.get())
-                    output.accept(ModBlocks.PYRITE_PRESSURE_PLATE.get())
-                    output.accept(ModBlocks.PYRITE_SLAB.get())
-                    output.accept(ModBlocks.PYRITE_STAIRS.get())
-                    output.accept(ModBlocks.PYRITE_TRAPDOOR.get())
-                    output.accept(ModBlocks.PYRITE_WALL.get())
-                    output.accept(ModBlocks.PYRITE_LAMP.get())
-                    output.accept(ModBlocks.HINOKI_MARUTA.get())
-                    output.accept(ModBlocks.HINOKI_MOKUZAI.get())
-                    output.accept(ModBlocks.STRIPPED_HINOKI_MARUTA.get())
-                    output.accept(ModBlocks.STRIPPED_HINOKI_MOKUZAI.get())
-                    output.accept(ModBlocks.HINOKI_BAN.get())
-                    output.accept(ModBlocks.HINOKI_HA.get())
-                    output.accept(ModBlocks.HINOKI_NAEGI.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModBlocks.PYRITE_BLOCK)
+                    output.accept(ModBlocks.RAW_PYRITE_BLOCK)
+                    output.accept(ModBlocks.PYRITE_ORE)
+                    output.accept(ModBlocks.PYRITE_DEEPSLATE_ORE)
+                    output.accept(ModBlocks.NEPHRITE_ORE)
+                    output.accept(ModBlocks.NEPHRITE_DEEPSLATE_ORE)
+                    output.accept(ModBlocks.HINOKI_MARUTA)
+                    output.accept(ModBlocks.PYRITE_BUTTON)
+                    output.accept(ModBlocks.PYRITE_DOOR)
+                    output.accept(ModBlocks.PYRITE_FENCE)
+                    output.accept(ModBlocks.PYRITE_FENCE_GATE)
+                    output.accept(ModBlocks.PYRITE_PRESSURE_PLATE)
+                    output.accept(ModBlocks.PYRITE_SLAB)
+                    output.accept(ModBlocks.PYRITE_STAIRS)
+                    output.accept(ModBlocks.PYRITE_TRAPDOOR)
+                    output.accept(ModBlocks.PYRITE_WALL)
+                    output.accept(ModBlocks.PYRITE_LAMP)
+                    output.accept(ModBlocks.HINOKI_MARUTA)
+                    output.accept(ModBlocks.HINOKI_MOKUZAI)
+                    output.accept(ModBlocks.STRIPPED_HINOKI_MARUTA)
+                    output.accept(ModBlocks.STRIPPED_HINOKI_MOKUZAI)
+                    output.accept(ModBlocks.HINOKI_BAN)
+                    output.accept(ModBlocks.HINOKI_HA)
+                    output.accept(ModBlocks.HINOKI_NAEGI)
+                }
                 .build()
         })
 
-    val JAPANESE_WEAPONS: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val KATANA_ADDONS = CREATIVE_MODE_TABS.register(
+        "katana_addons",
+        Supplier {
+            CreativeModeTab.builder().icon { ItemStack(ModItems.BLADE_STEEL) }
+                .withTabsBefore(JAPANESE_WEAPONS.id)
+                .title(Component.translatable("creativetab.everythingjapanese.katana_addons"))
+                .displayItems { itemDisplayParameters, output ->
+                    output.accept { ModItems.BLADE_STEEL }
+                    output.accept { ModItems.BLACK_WRAP }
+                    output.accept { ModItems.RED_WRAP }
+                    output.accept { ModItems.WHITE_WRAP }
+                }
+                .build()
+        }
+    )
+
+    val JAPANESE_WEAPONS = CREATIVE_MODE_TABS.register(
         "japanese_weapons",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.PYRITE_SWORD!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.PYRITE_SWORD) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_weapons"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.PYRITE_SWORD!!.get())
-                    output.accept(ModItems.YA!!.get())
-                    output.accept(ModItems.WOODEN_KATANA!!.get())
-                    output.accept(ModItems.DAIKYU!!.get())
-                    output.accept(ModItems.PYRITE_BATTLE_AXE!!.get())
-                    output.accept(ModItems.NEPHRITE_SWORD!!.get())
-                    output.accept(ModItems.IRON_BATTLE_AXE!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.PYRITE_SWORD)
+                    output.accept(ModItems.YA)
+                    output.accept(ModItems.DAIKYU)
+                    output.accept(ModItems.PYRITE_BATTLE_AXE)
+                    output.accept(ModItems.NEPHRITE_SWORD)
+                    output.accept(ModItems.IRON_BATTLE_AXE)
+                    output.accept(ModItems.KATANA)
+                }
                 .build()
         })
 
-    val JAPANESE_MUSIC: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_MUSIC = CREATIVE_MODE_TABS.register(
         "japanese_music",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_music"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.AO_TO_NATSU_MUSIC_DISC!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.AO_TO_NATSU_MUSIC_DISC)
+                }
                 .build()
         })
 
-    val JAPANESE_ARMOR: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_ARMOR = CREATIVE_MODE_TABS.register(
         "japanese_armor",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.PYRITE_HELMET!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.PYRITE_HELMET) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_armor"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.PYRITE_HELMET!!.get())
-                    output.accept(ModItems.PYRITE_CHESTPLATE!!.get())
-                    output.accept(ModItems.PYRITE_LEGGINGS!!.get())
-                    output.accept(ModItems.PYRITE_BOOTS!!.get())
-                    output.accept(ModItems.NEPHRITE_HELMET!!.get())
-                    output.accept(ModItems.NEPHRITE_CHESTPLATE!!.get())
-                    output.accept(ModItems.NEPHRITE_LEGGINGS!!.get())
-                    output.accept(ModItems.NEPHRITE_BOOTS!!.get())
-                    output.accept(ModItems.PYRITE_HORSE_ARMOR!!.get())
-                    output.accept(ModItems.SAMURAI_HELMET!!.get())
-                    output.accept(ModItems.SAMURAI_CHESTPLATE!!.get())
-                    output.accept(ModItems.SAMURAI_LEGGINGS!!.get())
-                    output.accept(ModItems.SAMURAI_BOOTS!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.PYRITE_HELMET)
+                    output.accept(ModItems.PYRITE_CHESTPLATE)
+                    output.accept(ModItems.PYRITE_LEGGINGS)
+                    output.accept(ModItems.PYRITE_BOOTS)
+                    output.accept(ModItems.NEPHRITE_HELMET)
+                    output.accept(ModItems.NEPHRITE_CHESTPLATE)
+                    output.accept(ModItems.NEPHRITE_LEGGINGS)
+                    output.accept(ModItems.NEPHRITE_BOOTS)
+                    output.accept(ModItems.PYRITE_HORSE_ARMOR)
+                    output.accept(ModItems.SAMURAI_HELMET)
+                    output.accept(ModItems.SAMURAI_CHESTPLATE)
+                    output.accept(ModItems.SAMURAI_LEGGINGS)
+                    output.accept(ModItems.SAMURAI_BOOTS)
+                }
                 .build()
         })
 
 
-    val JAPANESE_ARMOR_TRIMS: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_ARMOR_TRIMS = CREATIVE_MODE_TABS.register(
         "japanese_armor_trims",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_armor_trims"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE)
+                }
                 .build()
         })
 
 
-    val JAPANESE_FOOD: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_FOOD = CREATIVE_MODE_TABS.register(
         "japanese_food",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.SUSHI!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.SUSHI) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_food"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.SUSHI!!.get())
-                    output.accept(ModItems.UDON!!.get())
-                    output.accept(ModBlocks.CHOCOLATE_CAKE.get())
-                    output.accept(ModBlocks.JAPANESE_CHEESECAKE.get())
-                    output.accept(ModItems.RICE_SEEDS!!.get())
-                    output.accept(ModItems.RICE!!.get())
-                    output.accept(ModItems.RAW_RICE!!.get())
-                    output.accept(ModItems.YAMAZAKI_BERRIES!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.SUSHI)
+                    output.accept(ModItems.UDON)
+                    output.accept(ModBlocks.CHOCOLATE_CAKE)
+                    output.accept(ModBlocks.JAPANESE_CHEESECAKE)
+                    output.accept(ModItems.RICE_SEEDS)
+                    output.accept(ModItems.RICE)
+                    output.accept(ModItems.RAW_RICE)
+                    output.accept(ModItems.YAMAZAKI_BERRIES)
+                }
                 .build()
         })
 
-    val JAPANESE_DRINKS: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_DRINKS = CREATIVE_MODE_TABS.register(
         "japanese_drinks",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.GREEN_TEA!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.GREEN_TEA) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_drinks"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.GREEN_TEA!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.GREEN_TEA)
+                }
                 .build()
         })
 
-    val JAPANESE_FUEL: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_FUEL = CREATIVE_MODE_TABS.register(
         "japanese_fuel",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.DIESEL!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.DIESEL) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_fuel"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.DIESEL!!.get())
-                    output.accept(ModItems.INCENSE!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.DIESEL)
+                    output.accept(ModItems.INCENSE)
+                }
                 .build()
         })
 
-    val JAPANESE_TOOLS: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_TOOLS = CREATIVE_MODE_TABS.register(
         "japanese_tools",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModItems.PYRITE_AXE!!.get()) })
-                .withTabsBefore(JAPANESE_ITEMS.getId())
+            CreativeModeTab.builder().icon { ItemStack(ModItems.PYRITE_AXE) }
+                .withTabsBefore(JAPANESE_ITEMS.id)
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_tools"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModItems.PYRITE_AXE!!.get())
-                    output.accept(ModItems.PYRITE_PICKAXE!!.get())
-                    output.accept(ModItems.PYRITE_SHOVEL!!.get())
-                    output.accept(ModItems.PYRITE_HOE!!.get())
-                    output.accept(ModItems.NEPHRITE_AXE!!.get())
-                    output.accept(ModItems.NEPHRITE_PICKAXE!!.get())
-                    output.accept(ModItems.NEPHRITE_SHOVEL!!.get())
-                    output.accept(ModItems.NEPHRITE_HOE!!.get())
-                    output.accept(ModItems.PYRITE_HAMMER!!.get())
-                })
+                .displayItems { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
+                    output!!.accept(ModItems.PYRITE_AXE)
+                    output.accept(ModItems.PYRITE_PICKAXE)
+                    output.accept(ModItems.PYRITE_SHOVEL)
+                    output.accept(ModItems.PYRITE_HOE)
+                    output.accept(ModItems.NEPHRITE_AXE)
+                    output.accept(ModItems.NEPHRITE_PICKAXE)
+                    output.accept(ModItems.NEPHRITE_SHOVEL)
+                    output.accept(ModItems.NEPHRITE_HOE)
+                    output.accept(ModItems.PYRITE_HAMMER)
+                }
                 .build()
         })
 
-    val JAPANESE_FURNITURE: RegistryObject<CreativeModeTab?> = CREATIVE_MODE_TABS.register<CreativeModeTab?>(
+    val JAPANESE_FURNITURE = CREATIVE_MODE_TABS.register(
         "japanese_furniture",
         Supplier {
-            CreativeModeTab.builder().icon(Supplier { ItemStack(ModBlocks.CHAIR.get()) })
+            CreativeModeTab.builder().icon { ItemStack(ModBlocks.CHAIR) }
                 .title(Component.translatable("creativetab.everythingjapanese.japanese_furniture"))
-                .displayItems(DisplayItemsGenerator { itemDisplayParameters: ItemDisplayParameters?, output: CreativeModeTab.Output? ->
-                    output!!.accept(ModBlocks.CHAIR.get())
-                    output.accept(ModBlocks.PEDESTAL.get())
-                    output.accept(ModBlocks.GROWTH_CHAMBER.get())
-                }).build()
+                .displayItems { itemDisplayParameters: ItemDisplayParameters, output: CreativeModeTab.Output ->
+                    output.accept(ModBlocks.CHAIR)
+                    output.accept(ModBlocks.PEDESTAL)
+                    output.accept(ModBlocks.ZABUTON_BLUE)
+                    output.accept(ModBlocks.ZABUTON_RED)
+                    output.accept(ModBlocks.ZABUTON_GREEN)
+                    output.accept(ModBlocks.TATAMI_MAT)
+                    output.accept(ModBlocks.WASHI_WINDOW)
+                    output.accept(ModBlocks.WASHI_WINDOW_PANE)
+                    output.accept(ModBlocks.SHOJI_DOOR)
+                    output.accept(ModBlocks.CHABUDAI)
+                    output.accept(ModBlocks.FUSUMA_DOOR)
+                    output.accept(ModBlocks.GROWTH_CHAMBER)
+                }.build()
         })
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         CREATIVE_MODE_TABS.register(eventBus)
         logInfo("REGISTERING EVERY SINGLE CREATIVEMODETAB IN MODCREATIVEMODETABS")
     }

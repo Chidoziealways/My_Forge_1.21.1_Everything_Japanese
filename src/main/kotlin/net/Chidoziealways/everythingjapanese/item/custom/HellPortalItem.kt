@@ -20,20 +20,19 @@ class HellPortalItem(properties: Properties) : Item(properties) {
 
             // Try to get the block the player is looking at
             val hitResult = player.pick(5.0, 0.0f, false) as BlockHitResult // 5 block reach
-            val targetPos = hitResult.getBlockPos()
-            val axis = if (player.getDirection().getAxis().isHorizontal())
-                player.getDirection().getCounterClockWise().getAxis()
+            val targetPos = hitResult.blockPos
+            val axis = if (player.direction.axis.isHorizontal)
+                player.direction.counterClockWise.axis
             else
                 Direction.Axis.X
 
-            val shape = HellPortalShape.findPortalShape(
+            val shape = HellPortalShape.findEmptyPortalShape(
                 level,
                 targetPos,
-                Predicate { obj: HellPortalShape? -> obj!!.isValid },
                 axis
             )
 
-            if (shape.isPresent()) {
+            if (shape.isPresent) {
                 shape.get().createPortalBlocks(level)
                 level.playSound(null, targetPos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0f, 1.0f)
                 return InteractionResult.SUCCESS

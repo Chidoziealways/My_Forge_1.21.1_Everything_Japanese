@@ -17,15 +17,15 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import java.util.function.Function
 
 object HellTempleStructurePieces {
-    val START: ResourceKey<StructureTemplatePool?> =
+    val START: ResourceKey<StructureTemplatePool> =
         Pools.createKey(ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_temple/stairs"))
 
-    fun bootstrap(context: BootstrapContext<StructureTemplatePool?>) {
-        val holdergetter = context.lookup<StructureProcessorList?>(Registries.PROCESSOR_LIST)
-        val holder: Holder<StructureProcessorList?> =
+    fun bootstrap(context: BootstrapContext<StructureTemplatePool>) {
+        val holdergetter = context.lookup(Registries.PROCESSOR_LIST)
+        val holder: Holder<StructureProcessorList> =
             holdergetter.getOrThrow(ModProcessorLists.HELL_TEMPLE_START_DEGRADATION)
-        val holdergetter1 = context.lookup<StructureTemplatePool?>(Registries.TEMPLATE_POOL)
-        val holder1: Holder<StructureTemplatePool?> = holdergetter1.getOrThrow(Pools.EMPTY)
+        val holdergetter1 = context.lookup(Registries.TEMPLATE_POOL)
+        val holder1: Holder<StructureTemplatePool> = holdergetter1.getOrThrow(Pools.EMPTY)
         context.register(
             START,
             StructureTemplatePool(

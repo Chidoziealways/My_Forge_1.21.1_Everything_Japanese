@@ -1,4 +1,5 @@
-// 1.21.8	2025-07-22T19:20:27.4456574	Tags for minecraft:item mod id everythingjapanese
+// 1.21.8	2025-08-26T14:18:43.6702425	Tags for minecraft:item mod id everythingjapanese
+c2e9d23bf02859e81cb917b7e689b2d2269aa2e2 data/everythingjapanese/tags/item/animal_skin.json
 356a5565cf3903f666f85421b7adfee3b4b64f7c data/everythingjapanese/tags/item/hinoki_maruta.json
 84725138d8a27b9a9e76f74af3d207372c6f4080 data/everythingjapanese/tags/item/nephrite_tool_materials.json
 6ce84852f1695e75e2dfabd7fa5d641428750068 data/everythingjapanese/tags/item/pyrite_tool_materials.json
@@ -8,6 +9,6 @@
 a7ba26b7e595af1acae95d2886b2cc80f46244d4 data/minecraft/tags/item/arrows.json
 2f8a48c59c9100707ef043bf7068139e0292ba35 data/minecraft/tags/item/logs_that_burn.json
 abe61b4e33af2f1336f7d019ec2f928ab30b27e5 data/minecraft/tags/item/planks.json
-d8721d03a7eba4d5d251d16e40ba9f367f1a2819 data/minecraft/tags/item/trimmable_armor.json
+b8a58cb6794ac8aa8ce8fdc54187c77b42e2d4d3 data/minecraft/tags/item/trimmable_armor.json
 6ce84852f1695e75e2dfabd7fa5d641428750068 data/minecraft/tags/item/trim_materials.json
 9a7cbbde6a4a190ec8c004725f14f88df384dbdc data/minecraft/tags/item/trim_templates.json

@@ -28,25 +28,21 @@ import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.storage.ValueInput
 import net.minecraft.world.level.storage.ValueOutput
-import net.minecraftforge.common.util.LazyOptional
-import net.minecraftforge.common.util.NonNullSupplier
-import net.minecraftforge.items.IItemHandler
-import net.minecraftforge.items.ItemStackHandler
+import net.neoforged.neoforge.items.IItemHandler
+import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.*
 import java.util.function.Consumer
 
 class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
-    BlockEntity(ModBlockEntities.GROWTH_CHAMBER_BE?.get(), pPos, pBlockState), MenuProvider {
+    BlockEntity(ModBlockEntities.GROWTH_CHAMBER_BE, pPos, pBlockState), MenuProvider {
     val itemHandler: ItemStackHandler = object : ItemStackHandler(2) {
         override fun onContentsChanged(slot: Int) {
             setChanged()
             if (!level!!.isClientSide()) {
-                level?.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3)
+                level?.sendBlockUpdated(blockPos, blockState, blockState, 3)
             }
         }
     }
-
-    private var lazyItemHandler: LazyOptional<IItemHandler?> = LazyOptional.empty<IItemHandler?>()
 
     protected val data: ContainerData
     private var progress = 0
@@ -79,16 +75,6 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
         }
     }
 
-    override fun onLoad() {
-        super.onLoad()
-        lazyItemHandler = LazyOptional.of<IItemHandler?>(NonNullSupplier { itemHandler })
-    }
-
-    override fun invalidateCaps() {
-        super.invalidateCaps()
-        lazyItemHandler.invalidate()
-    }
-
     override fun preRemoveSideEffects(p_397404_: BlockPos, p_395805_: BlockState) {
         val inventory: SimpleContainer = SimpleContainer(itemHandler.getSlots())
         for (i in 0..<itemHandler.getSlots()) {
@@ -100,11 +86,7 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
     }
 
     override fun saveAdditional(output: ValueOutput) {
-        output.store<CompoundTag?>(
-            "inventory",
-            CompoundTag.CODEC,
-            itemHandler.serializeNBT(this.level?.registryAccess())
-        )
+        itemHandler.serialize(output)
         output.store<Int?>("growth_chamber.progress", Codec.INT, progress)
         output.store<Int?>("growth_chamber.max_progress", Codec.INT, maxProgress)
 
@@ -115,8 +97,7 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
         super.loadAdditional(input)
 
         // 1.21.5+: itemHandler likely still uses `deserializeNBT`, but watch for capability changes
-        input.read<CompoundTag?>("inventory", CompoundTag.CODEC)
-            .ifPresent(Consumer { tag: CompoundTag? -> itemHandler.deserializeNBT(level?.registryAccess(), tag) })
+        itemHandler.deserialize(input)
 
         this.progress = input.read<Int>("growth_chamber.progress", Codec.INT).orElse(0)
         this.maxProgress = input.read<Int>("growth_chamber.max_progress", Codec.INT).orElse(0)
@@ -182,7 +163,7 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
             if (level is ServerLevel) {
                 return level?.server?.recipeManager
                     ?.getRecipeFor<GrowthChamberRecipeInput?, GrowthChamberRecipe?>(
-                        ModRecipes.GROWTH_CHAMBER_TYPE?.get(),
+                        ModRecipes.GROWTH_CHAMBER_TYPE,
                         GrowthChamberRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)),
                         level
                     )

@@ -1,13 +1,15 @@
-package net.Chidoziealways.everythingjapanese.custom
+package net.Chidoziealways.everythingjapanese.block.custom
 
 import com.mojang.serialization.MapCodec
 import net.Chidoziealways.everythingjapanese.portal.HellPortalForcer
+import net.Chidoziealways.everythingjapanese.portal.HellPortalShape
 import net.Chidoziealways.everythingjapanese.worldgen.dimension.ModDimensions
 import net.minecraft.BlockUtil
 import net.minecraft.BlockUtil.FoundRectangle
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.util.RandomSource
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.InsideBlockEffectApplier
 import net.minecraft.world.entity.Relative
@@ -17,7 +19,9 @@ import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.GameRules
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelReader
+import net.minecraft.world.level.ScheduledTickAccess
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.Portal
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
@@ -33,8 +37,6 @@ import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.util.function.Function
-import java.util.function.Predicate
 import kotlin.math.max
 
 class HellPortalBlock(properties: Properties) : Block(properties), Portal {
@@ -49,31 +51,47 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
     }
 
     override fun getEntityInsideCollisionShape(
-        p_396779_: BlockState,
-        p_395715_: BlockGetter,
-        p_396107_: BlockPos,
-        p_395206_: Entity
+        blockState: BlockState,
+        blockGetter: BlockGetter,
+        blockPos: BlockPos,
+        entity: Entity
     ): VoxelShape {
-        return p_396779_.getShape(p_395715_, p_396107_)
+        return blockState.getShape(blockGetter, blockPos)
     }
 
     override fun entityInside(
-        p_54915_: BlockState,
-        p_54916_: Level,
-        p_54917_: BlockPos,
-        p_54918_: Entity,
-        p_392916_: InsideBlockEffectApplier
+        blockState: BlockState,
+        level: Level,
+        blockPos: BlockPos,
+        entity: Entity,
+        insideBlockEffectApplier: InsideBlockEffectApplier
     ) {
-        if (p_54918_.canUsePortal(false)) {
-            p_54918_.setAsInsidePortal(this, p_54917_)
+        if (entity.canUsePortal(false)) {
+            entity.setAsInsidePortal(this, blockPos)
         }
     }
 
-    override fun getPortalTransitionTime(p_342064_: ServerLevel, p_344634_: Entity): Int {
-        return if (p_344634_ is Player) max(
+    override fun updateShape(
+        state: BlockState,
+        level: LevelReader,
+        scheduledTickAccess: ScheduledTickAccess,
+        pos: BlockPos,
+        direction: Direction,
+        neighborPos: BlockPos,
+        neighborState: BlockState,
+        random: RandomSource
+    ): BlockState {
+        val axis = direction.axis
+        val axis1 = state.getValue(AXIS)
+        val flag = axis1 != axis && axis.isHorizontal
+        return if(!flag && !neighborState.`is`(this) && !HellPortalShape.findAnyShape(level, pos, axis1).isComplete) Blocks.AIR.defaultBlockState() else super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random)
+    }
+
+    override fun getPortalTransitionTime(serverLevel: ServerLevel, entity: Entity): Int {
+        return if (entity is Player) max(
             0,
-            p_342064_.getGameRules()
-                .getInt(if (p_344634_.getAbilities().invulnerable) GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY else GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
+            serverLevel.gameRules
+                .getInt(if (entity.abilities.invulnerable) GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY else GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
         ) else
             0
     }
@@ -81,14 +99,14 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
     override fun getPortalDestination(pLevel: ServerLevel, pEntity: Entity, pPos: BlockPos): TeleportTransition? {
         val resourcekey =
             if (pLevel.dimension() === ModDimensions.HELL_LEVEL_KEY) Level.OVERWORLD else ModDimensions.HELL_LEVEL_KEY
-        val serverlevel = pLevel.getServer().getLevel(resourcekey)
+        val serverlevel = pLevel.server.getLevel(resourcekey)
         if (serverlevel == null) {
             return null
         } else {
             val flag = serverlevel.dimension() === ModDimensions.HELL_LEVEL_KEY
-            val worldborder = serverlevel.getWorldBorder()
+            val worldborder = serverlevel.worldBorder
             val d0 = DimensionType.getTeleportationScale(pLevel.dimensionType(), serverlevel.dimensionType())
-            val blockpos = worldborder.clampToBounds(pEntity.getX() * d0, pEntity.getY(), pEntity.getZ() * d0)
+            val blockpos = worldborder.clampToBounds(pEntity.x * d0, pEntity.y, pEntity.z * d0)
             return this.getExitPortal(serverlevel, pEntity, pPos, blockpos, flag, worldborder)
         }
     }
@@ -103,44 +121,43 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
     ): TeleportTransition? {
         val forcer = HellPortalForcer(pLevel)
         val optional = forcer.findClosestPortalPosition(pExitPos, pIsNether, pWorldBorder)
-        val `blockutil$foundrectangle`: FoundRectangle?
-        val `teleporttransition$postteleporttransition`: PostTeleportTransition?
-        if (optional.isPresent()) {
+        val foundRectangle: FoundRectangle
+        val postTeleportTransition: PostTeleportTransition
+        if (optional.isPresent) {
             val blockpos = optional.get()
             val blockstate = pLevel.getBlockState(blockpos)
-            `blockutil$foundrectangle` = BlockUtil.getLargestRectangleAround(
+            foundRectangle = BlockUtil.getLargestRectangleAround(
                 blockpos,
-                blockstate.getValue<Direction.Axis?>(BlockStateProperties.HORIZONTAL_AXIS),
+                blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS),
                 21,
                 Direction.Axis.Y,
-                21,
-                Predicate { p_343533_: BlockPos? -> pLevel.getBlockState(p_343533_) === blockstate }
-            )
-            `teleporttransition$postteleporttransition` =
-                TeleportTransition.PLAY_PORTAL_SOUND.then(PostTeleportTransition { p_343530_: Entity? ->
-                    p_343530_!!.placePortalTicket(blockpos)
-                })
+                21
+            ) { pos: BlockPos -> pLevel.getBlockState(pos) === blockstate }
+            postTeleportTransition =
+                TeleportTransition.PLAY_PORTAL_SOUND.then { entity: Entity ->
+                    entity.placePortalTicket(blockpos)
+                }
         } else {
-            val `direction$axis` = pEntity.level().getBlockState(pPos).getOptionalValue<Direction.Axis>(AXIS).orElse(
+            val directionAxis = pEntity.level().getBlockState(pPos).getOptionalValue(AXIS).orElse(
                 Direction.Axis.X
             )
-            val optional1 = forcer.createPortal(pExitPos, `direction$axis`)
-            if (optional1.isEmpty()) {
+            val optional1 = forcer.createPortal(pExitPos, directionAxis)
+            if (optional1.isEmpty) {
                 LOGGER.error("Unable to create a portal, likely target out of worldborder")
                 return null
             }
 
-            `blockutil$foundrectangle` = optional1.get()
-            `teleporttransition$postteleporttransition` =
+            foundRectangle = optional1.get()
+            postTeleportTransition =
                 TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET)
         }
 
         return getDimensionTransitionFromExit(
             pEntity,
             pPos,
-            `blockutil$foundrectangle`!!,
+            foundRectangle,
             pLevel,
-            `teleporttransition$postteleporttransition`
+            postTeleportTransition
         )
     }
 
@@ -148,6 +165,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
         return Portal.Transition.CONFUSION
     }
 
+    @Deprecated("Deprecated in Java")
     override fun getCloneItemStack(
         pLevel: LevelReader,
         pPos: BlockPos,
@@ -163,13 +181,13 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
 
     companion object {
         private val LOGGER: Logger = LoggerFactory.getLogger(HellPortalBlock::class.java)
-        val CODEC: MapCodec<HellPortalBlock?> = simpleCodec<HellPortalBlock?>(Function { properties: Properties? ->
+        val CODEC: MapCodec<HellPortalBlock> = simpleCodec<HellPortalBlock> { properties: Properties ->
             HellPortalBlock(
-                properties!!
+                properties
             )
-        })
-        val AXIS: EnumProperty<Direction.Axis?> = BlockStateProperties.HORIZONTAL_AXIS
-        private val SHAPES: MutableMap<Direction.Axis?, VoxelShape?> =
+        }
+        val AXIS: EnumProperty<Direction.Axis> = BlockStateProperties.HORIZONTAL_AXIS
+        private val SHAPES: MutableMap<Direction.Axis, VoxelShape> =
             Shapes.rotateHorizontalAxis(column(4.0, 16.0, 0.0, 16.0))
 
         private fun getDimensionTransitionFromExit(
@@ -180,28 +198,27 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
             pPostTeleportTransition: PostTeleportTransition
         ): TeleportTransition {
             val blockstate = pEntity.level().getBlockState(pPos)
-            val `direction$axis`: Direction.Axis?
+            val directionAxis: Direction.Axis?
             val vec3: Vec3?
             if (blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
-                `direction$axis` = blockstate.getValue<Direction.Axis?>(BlockStateProperties.HORIZONTAL_AXIS)
-                val `blockutil$foundrectangle` = BlockUtil.getLargestRectangleAround(
+                directionAxis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS)
+                val blockUtilFoundRectangle = BlockUtil.getLargestRectangleAround(
                     pPos,
-                    `direction$axis`,
+                    directionAxis,
                     21,
                     Direction.Axis.Y,
-                    21,
-                    Predicate { p_342174_: BlockPos? -> pEntity.level().getBlockState(p_342174_) === blockstate }
-                )
-                vec3 = pEntity.getRelativePortalPosition(`direction$axis`, `blockutil$foundrectangle`)
+                    21
+                ) { blockPos: BlockPos -> pEntity.level().getBlockState(blockPos) === blockstate }
+                vec3 = pEntity.getRelativePortalPosition(directionAxis, blockUtilFoundRectangle)
             } else {
-                `direction$axis` = Direction.Axis.X
+                directionAxis = Direction.Axis.X
                 vec3 = Vec3(0.5, 0.0, 0.0)
             }
 
             return createDimensionTransition(
                 pLevel,
                 pRectangle,
-                `direction$axis`,
+                directionAxis,
                 vec3,
                 pEntity,
                 pPostTeleportTransition
@@ -218,22 +235,22 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
         ): TeleportTransition {
             val blockpos = pRectangle.minCorner
             val blockstate = pLevel.getBlockState(blockpos)
-            val `direction$axis` =
-                blockstate.getOptionalValue<Direction.Axis>(BlockStateProperties.HORIZONTAL_AXIS).orElse(
+            val directionAxis =
+                blockstate.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(
                     Direction.Axis.X
                 )
             val d0 = pRectangle.axis1Size.toDouble()
             val d1 = pRectangle.axis2Size.toDouble()
-            val entitydimensions = pEntity.getDimensions(pEntity.getPose())
-            val i = if (pAxis === `direction$axis`) 0 else 90
+            val entitydimensions = pEntity.getDimensions(pEntity.pose)
+            val i = if (pAxis === directionAxis) 0 else 90
             val d2 = entitydimensions.width() / 2.0 + (d0 - entitydimensions.width()) * pOffset.x()
             val d3 = (d1 - entitydimensions.height()) * pOffset.y()
             val d4 = 0.5 + pOffset.z()
-            val flag = `direction$axis` === Direction.Axis.X
+            val flag = directionAxis === Direction.Axis.X
             val vec3 = Vec3(
-                blockpos.getX() + (if (flag) d2 else d4),
-                blockpos.getY() + d3,
-                blockpos.getZ() + (if (flag) d4 else d2)
+                blockpos.x + (if (flag) d2 else d4),
+                blockpos.y + d3,
+                blockpos.z + (if (flag) d4 else d2)
             )
             val vec31 = PortalShape.findCollisionFreePosition(vec3, pLevel, pEntity, entitydimensions)
             return TeleportTransition(

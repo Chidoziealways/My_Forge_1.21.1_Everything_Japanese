@@ -3,28 +3,26 @@ package net.Chidoziealways.everythingjapanese.potion
 import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
+import net.minecraft.core.registries.Registries
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.item.alchemy.Potion
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Supplier
 
 object ModPotions {
-    val POTIONS: DeferredRegister<Potion?> =
-        DeferredRegister.create(ForgeRegistries.POTIONS, MOD_ID)
+    val POTIONS = DeferredRegister.create(Registries.POTION, MOD_ID)
 
-    val ADRENALINE_POTION: RegistryObject<Potion?>? = POTIONS.register<Potion?>(
+    val ADRENALINE_POTION = POTIONS.register(
         "adrenaline_potion",
         Supplier {
             Potion(
                 "adrenaline_potion",
-                MobEffectInstance(ModEffects.ADRENALINE_EFFECT!!.registryObject.holder.get(), 200, 0)
+                MobEffectInstance(ModEffects.ADRENALINE_EFFECT.delegate, 200, 0)
             )
         })
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         POTIONS.register(eventBus)
     }
 }

@@ -1,16 +1,17 @@
 package net.Chidoziealways.everythingjapanese.chakra
 
 import net.minecraft.nbt.CompoundTag
-import net.minecraftforge.common.capabilities.AutoRegisterCapability
+import net.minecraft.server.level.ServerPlayer
 
-@AutoRegisterCapability
 interface IChakra {
-    var chakra: Float
-    fun addChakra(amount: Float)
-    fun subtractChakra(amount: Float)
+    fun addChakra(amount: Float, player: ServerPlayer)
+    fun subtractChakra(amount: Float, player: ServerPlayer)
     fun getMaxChakra(): Int
     fun setMaxChakra(max: Int)
+    fun getCurrentChakra(): Float
+    fun setCurrentChakra(chakra: Float, player: ServerPlayer)
+    fun setCurrentChakra(chakra: Float)
     fun serializeNBT(): CompoundTag?
     fun deserializeNBT(nbt: CompoundTag?)
-    fun updateMaxChakraBasedOnXP(xpLevel: Int)
+    fun updateMaxChakraBasedOnXP(xpLevel: Int, player: ServerPlayer)
 }

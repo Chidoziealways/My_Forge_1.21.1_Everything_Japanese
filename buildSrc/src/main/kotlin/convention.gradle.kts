@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 
 plugins {
     java
@@ -67,8 +68,9 @@ val modLicense: String by project
 val modDescription: String by project
 val modVersion = libs.get().findVersion("everythingjapanese").get()
 val mcVersion = libs.get().findVersion("minecraft").get()
-val forgeVersion = libs.get().findVersion("forge").get()
-val forgeVersionRange = libs.get().findVersion("forge.range").get()
+val neoforgeVersion = libs.get().findVersion("neoforge").get()
+val geckolibVersionRange = libs.get().findVersion("geckolib_version_range").get()
+val neoforgeVersionRange = libs.get().findVersion("neoforge.range").get()
 val fmlVersionRange = libs.get().findVersion("kff.range").get()
 val mcVersionRange = libs.get().findVersion("minecraft.range").get()
 
@@ -92,13 +94,15 @@ tasks.withType<Jar>().configureEach {
 }
 
 tasks.withType<ProcessResources>().configureEach {
+    println("Processing Resources")
     val expandProps = mapOf(
         "minecraft_version" to mcVersion,
         "minecraft_version_range" to mcVersionRange,
-        "forge_version" to forgeVersion,
-        "forge_version_range" to forgeVersionRange,
+        "neoforge_version" to neoforgeVersion,
+        "neoforge_version_range" to neoforgeVersionRange,
         "loader_version_range" to fmlVersionRange,
         "mod_id" to modId,
+        "geckolib_version_range" to geckolibVersionRange,
         "mod_name" to modName,
         "mod_license" to modLicense,
         "mod_version" to modVersion,
@@ -107,7 +111,7 @@ tasks.withType<ProcessResources>().configureEach {
         "terrablender_version_range" to "[0, )"
     )
 
-    filesMatching(listOf("pack.mcmeta", "META-INF/mods.toml", "*.mixins.json")) {
+    filesMatching(listOf("pack.mcmeta", "META-INF/neoforge.mods.toml", "*.mixins.json")) {
         expand(expandProps)
     }
 

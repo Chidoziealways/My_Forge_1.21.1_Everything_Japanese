@@ -35,11 +35,11 @@ data class GrowthChamberRecipe(
     }
 
     override fun getSerializer(): RecipeSerializer<out Recipe<GrowthChamberRecipeInput?>?> {
-        return ModRecipes.GROWTH_CHAMBER_SERIALIZER!!.get()
+        return ModRecipes.GROWTH_CHAMBER_SERIALIZER
     }
 
     override fun getType(): RecipeType<out Recipe<GrowthChamberRecipeInput?>?> {
-        return ModRecipes.GROWTH_CHAMBER_TYPE.get()
+        return ModRecipes.GROWTH_CHAMBER_TYPE
     }
 
     override fun placementInfo(): PlacementInfo {

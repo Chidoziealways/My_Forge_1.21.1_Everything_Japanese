@@ -1,87 +1,121 @@
+import com.modrinth.minotaur.dependencies.DependencyType
+import com.modrinth.minotaur.dependencies.ModDependency
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
-import net.minecraftforge.gradle.userdev.tasks.JarJar
+import net.neoforged.moddevgradle.tasks.JarJar
+import org.jetbrains.kotlin.gradle.utils.extendsFrom
 
 plugins {
     id("convention")
 
     alias(libs.plugins.minotaur)
     alias(libs.plugins.curseforgegradle)
-    alias(libs.plugins.forgegradle)
-    alias(libs.plugins.mixin)
-    alias(libs.plugins.parchmentforgegradle)
+    alias(libs.plugins.moddevgradle)
 }
 
+// Stop ideaSync from generating run configs
+
+//subsystems {
+//    parchment {
+//        minecraftVersion = "1.21.8"
+//        mappingsVersion = "2025.07.20"
+//    }
+//}
 val modId: String by project
 val minecraftVersion = libs.versions.minecraft.asProvider().get()
-val mappingsMinecraftVersion = libs.versions.parchment.minecraft.get()
-val parchmentVersion = libs.versions.parchment.asProvider().get()
-val forgeVersion = libs.versions.forge.asProvider().get()
 val modGroupId: String by project
 
 version = libs.versions.everythingjapanese.get() + "-" + minecraftVersion
 group = modGroupId
 
+val jarJarConfig by configurations.creating
+
+configurations.getByName("implementation").extendsFrom(jarJarConfig)
+
 base {
     archivesName = modId
 }
 
-jarJar.enable()
+val libraries by configurations.creating
+
+neoForge {
+    version = libs.versions.neoforge.asProvider().get()
+
+    parchment {
+        mappingsVersion = "2025.07.20"
+        minecraftVersion = "1.21.8"
+    }
+
+    mods {
+        create(modId) {
+            sourceSet(sourceSets.main.get())
+        }
+    }
+
+    validateAccessTransformers = true
+
+    runs {
+        // Custom client run
+        create("runCustomClient") {
+            client() // Sets type = "client"
+            gameDirectory.set(project.layout.projectDirectory.dir("runs/client"))
+            systemProperty("neoforge.enableGameTest", "true")
+            programArguments.addAll(listOf(
+                "-mixin.config=everythingjapanese.mixins.json"
+            ))
+        }
+
+        // Custom data generator run
+        create("runCustomClientData") {
+            clientData() // type = "clientData"
+            gameDirectory.set(project.layout.projectDirectory.dir("runs/clientData"))
+            programArguments.addAll(listOf(
+                "--mod", "everythingjapanese",
+                "--all",
+                "--output", file("src/generated/resources").absolutePath,
+                "--existing", file("src/main/resources").absolutePath,
+                "-mixin.config=everythingjapanese.mixins.json"
+            ))
+        }
+
+        // Custom dedicated server run
+        create("runCustomServer") {
+            server() // type = "server"
+            gameDirectory.set(project.layout.projectDirectory.dir("runs/server"))
+            programArguments.add("--nogui")
+        }
+
+        configureEach {
+            // Recommended logging data for a userdev environment
+            // The markers can be added/remove as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
+            systemProperty("forge.logging.markers", "REGISTRIES")
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+            logLevel = org.slf4j.event.Level.DEBUG
+            additionalRuntimeClasspathConfiguration.extendsFrom(libraries)
+        }
+    }
+}
 
 println("Java: ${System.getProperty("java.version")}, JVM: ${System.getProperty("java.vm.version")} (${System.getProperty("java.vendor")}), Arch: ${System.getProperty("os.arch")}")
 
-minecraft {
-    mappings("official", minecraftVersion/*"${mappingsMinecraftVersion}-${parchmentVersion}-${minecraftVersion}"*/)
-    //accessTransformer(file("src/main/resources/META-INF/accesstransformer.cfg"))
+//  mappings("official", minecraftVersion/*"${mappingsMinecraftVersion}-${parchmentVersion}-${minecraftVersion}"*/)
+//accessTransformer(file("src/main/resources/META-INF/accesstransformer.cfg"))
 
-    reobf = false
-    copyIdeResources = true
-
-    /*runs {
-        configureEach {
-            workingDirectory = project.file("run")
-            property("forge.logging.markers", "REGISTRIES")
-            property("forge.logging.console.level", "debug")
-        }
-
-        named("client") {
-            property("forge.enabledGameTestNamespaces", property("mod_id"))
-        }
-
-        named("gametest") {
-            workingDirectory = project.file("run")
-            environment("gametest", "true")
-            args("--mixin", "--mod", "everythingjapanese", "--tests")
-            mods {
-                create("everythingjapanese") {
-                    source(sourceSets.main.get())
-                }
-            }
-        }
-
-        named("server") {
-            property("forge.enabledGameTestNamespaces", property("mod_id"))
-            args("--nogui")
-        }
-
-        named("gameTestServer") {
-            property("forge.enabledGameTestNamespaces", property("mod_id"))
-        }
-
-        named("data") {
-            workingDirectory = project.file("run-data")
-            args(
-                "--mod", property("mod_id") as String,
-                "--all",
-                "--output", file("src/generated/resources/").absolutePath,
-                "--existing", file("src/main/resources/").absolutePath
-            )
-        }
-    }*/
-}
+//minecraft {
+//    accessTransformers {
+//        file("src/main/resources/META-INF/accesstransformer.cfg")
+//    }
+//}
 
 // Include generated resources
 sourceSets {
     getByName("main") {
+
         resources.srcDir("src/generated/resources")
     }
 }
@@ -110,48 +144,25 @@ repositories {
 }
 
 dependencies {
-    minecraft(libs.forge)
-
     if (System.getProperty("idea.sync.active") != "true")
         annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
 
     //annotationProcessor("net.minecraftforge:eventbus-validator:7.0-beta.7")
 
-    compileOnly(libs.mixinextras.common)
-    annotationProcessor(libs.mixinextras.common)
-    testCompileOnly(libs.mixinextras.common)
-
-    runtimeOnly(libs.mixinextras.forge)
-    jarJar(libs.mixinextras.forge) {
-        jarJar.ranged(this, libs.versions.mixinextras.range.get())
-    }
-
-
 
     implementation(libs.jopt.simple)
 
-    compileOnly(libs.kotlinforforge)
-    compileOnly(libs.kfflib)
-    compileOnly(libs.kfflang)
+    jarJarConfig(libs.kotlinforforge)
+    jarJarConfig(libs.kfflib)
+    jarJarConfig(libs.kfflang)
 
-    runtimeOnly(libs.kotlinforforge)
-    runtimeOnly(libs.kfflib)
-    runtimeOnly(libs.kfflang)
-
-    jarJar(libs.kotlinforforge) {
-        jarJar.ranged(this, libs.versions.kff.range.get())
-    }
-    jarJar(libs.kfflib) {
-        jarJar.ranged(this, libs.versions.kff.range.get())
-    }
-    jarJar(libs.kfflang) {
-        jarJar.ranged(this, libs.versions.kff.range.get())
-    }
-
+    // Make Luaj available in dev runtime
+    jarJarConfig("org.luaj:luaj-jse:3.0.1")
+    libraries("org.luaj:luaj-jse:3.0.1")
 
     // Uncomment and add if you want those libs
     // implementation(fg.deobf("com.github.glitchfiend:TerraBlender-forge:$minecraftVersion-$terrablender_version"))
-    // implementation(fg.deobf("software.bernie.geckolib:geckolib-forge-$minecraftVersion:$geckolib_version"))
+    implementation("software.bernie.geckolib:geckolib-neoforge-1.21.8:5.2.2")
 }
 
 //Make the result of the jarJar task the one with no classifier instead of no classifier and "all"
@@ -159,25 +170,30 @@ tasks.named<Jar>("jar").configure {
     archiveClassifier.set("slim")
 }
 
-tasks.named<JarJar>("jarJar").configure {
-    archiveClassifier.set("")
+val jarJarTask by tasks.registering(JarJar::class) {
+    description = "Embed Dependencies into the Mod Jar"
+    group = "build"
+
+    configuration(jarJarConfig)
+
+    outputDirectory.set(layout.buildDirectory.dir("embed"))
 }
 
-mixin {
-    add(sourceSets.getByName("main"), "${modId}.refmap.json")
-    config("${modId}.mixins.json")
+tasks.jar {
+    dependsOn(jarJarTask)
+    from(jarJarTask.flatMap { it.outputDirectory })
 }
 
 modrinth {
     token = System.getenv("MODRINTH_TOKEN") ?: "Invalid/No API Token Found"
-    println("Modrinth: " + System.getenv("MODRINTH_TOKEN"))
     projectId = "H7XfH3TW"
     versionNumber.set(project.version.toString())
     versionName = "Everything Japanese ${project.version}"
-    uploadFile.set(tasks.jarJar)
+    uploadFile.set(tasks.jar.flatMap { it.archiveFile })
     changelog.set(rootProject.file("changelog.md").readText(Charsets.UTF_8))
     gameVersions.set(listOf(minecraftVersion))
-    loaders.set(listOf("forge"))
+    dependencies.add(ModDependency("geckolib", DependencyType.REQUIRED))
+    loaders.set(listOf("neoforge"))
 
     //https://github.com/modrinth/minotaur#available-properties
 }
@@ -185,11 +201,13 @@ modrinth {
 tasks.register<TaskPublishCurseForge>("publishToCurseForge") {
     group = "publishing"
     apiToken = System.getenv("CURSEFORGE_TOKEN") ?: "Invalid/No API Token Found"
-    println("CurseForge: " + System.getenv("CURSEFORGE_TOKEN"))
+    doFirst {
+        println("CurseForge: " + System.getenv("CURSEFORGE_TOKEN"))
+    }
 
-    val mainFile = upload(1096258, tasks.jarJar)
+    val mainFile = upload(1096258, tasks.jar.flatMap { it.archiveFile })
     mainFile.releaseType = "release"
-    mainFile.addModLoader("Forge")
+    mainFile.addModLoader("NeoForge")
     mainFile.addGameVersion(minecraftVersion)
     mainFile.addEnvironment("Client", "Server")
     mainFile.addJavaVersion("Java 21")
@@ -202,7 +220,7 @@ publishing {
         publications {
             create<MavenPublication>("everythingjapanese") {
                 from(components["java"])
-                jarJar.component(this)
+                //jarJar.component(this)
                 artifactId = base.archivesName.get()
             }
         }
@@ -221,3 +239,6 @@ sourceSets.all {
     kotlin.destinationDirectory.set(dir)
 }
 
+tasks.named<JavaCompile>("compileJava") {
+    dependsOn(tasks.named("processResources"))
+}

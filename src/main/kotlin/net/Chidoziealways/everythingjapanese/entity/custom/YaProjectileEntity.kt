@@ -28,12 +28,12 @@ class YaProjectileEntity : AbstractArrow {
         pZ: Double,
         pPickupItemStack: ItemStack,
         pFiredFromWeapon: ItemStack?
-    ) : super(ModEntities.YA!!.get(), pX, pY, pZ, pLevel, pPickupItemStack, pFiredFromWeapon) {
+    ) : super(ModEntities.YA, pX, pY, pZ, pLevel, pPickupItemStack, pFiredFromWeapon) {
         this.updateColor()
     }
 
     constructor(pLevel: Level, pOwner: LivingEntity, pPickupItemStack: ItemStack, pFiredFromWeapon: ItemStack?) : super(
-        ModEntities.YA!!.get(),
+        ModEntities.YA,
         pOwner,
         pLevel,
         pPickupItemStack,
@@ -86,7 +86,7 @@ class YaProjectileEntity : AbstractArrow {
             }
         } else if (this.onGround() && this.inGroundTime != 0 && this.getPotionContents() != PotionContents.EMPTY && this.inGroundTime >= 600) {
             this.level().broadcastEntityEvent(this, 0.toByte())
-            this.setPickupItemStack(ItemStack(ModItems.YA!!.get()))
+            this.setPickupItemStack(ItemStack(ModItems.YA))
         }
     }
 
@@ -137,7 +137,7 @@ class YaProjectileEntity : AbstractArrow {
     }
 
     override fun getDefaultPickupItem(): ItemStack {
-        return ItemStack(ModItems.YA!!.get())
+        return ItemStack(ModItems.YA)
     }
 
     override fun handleEntityEvent(pId: Byte) {

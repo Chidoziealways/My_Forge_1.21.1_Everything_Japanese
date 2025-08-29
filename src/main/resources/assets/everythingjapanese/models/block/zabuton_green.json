@@ -1,0 +1,12 @@
+{
+	"loader": "neoforge:obj",
+	"model": "everythingjapanese:models/block/zabuton_green.obj",
+	"textures": {
+		"texture0": "everythingjapanese:block/zabuton_green",
+		"particle": "everythingjapanese:block/zabuton_green"
+	},
+	"automatic_culling": false,
+	"shade_quads": true,
+	"flip_v": true,
+	"emissive_ambient": false
+}

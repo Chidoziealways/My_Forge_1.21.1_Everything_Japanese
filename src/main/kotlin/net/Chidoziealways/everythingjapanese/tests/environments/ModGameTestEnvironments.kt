@@ -19,7 +19,7 @@ object ModGameTestEnvironments {
         )
     }
 
-    fun bootstrap(pContext: BootstrapContext<TestEnvironmentDefinition?>) {
+    fun bootstrap(pContext: BootstrapContext<TestEnvironmentDefinition>) {
         pContext.register(POWDER_SNOW, Weather(Weather.Type.CLEAR))
     }
 }

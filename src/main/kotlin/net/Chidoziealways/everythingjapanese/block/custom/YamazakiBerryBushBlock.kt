@@ -21,7 +21,7 @@ class YamazakiBerryBushBlock(properties: Properties) : SweetBerryBushBlock(prope
         pState: BlockState,
         bool: Boolean
     ): ItemStack {
-        return ItemStack(ModItems.YAMAZAKI_BERRIES!!.get())
+        return ItemStack(ModItems.YAMAZAKI_BERRIES)
     }
 
     override fun useWithoutItem(
@@ -35,7 +35,7 @@ class YamazakiBerryBushBlock(properties: Properties) : SweetBerryBushBlock(prope
         val flag = i == 3
         if (i > 1) {
             val j = 1 + pLevel.random.nextInt(2)
-            popResource(pLevel, pPos, ItemStack(ModItems.YAMAZAKI_BERRIES!!.get(), j + (if (flag) 1 else 0)))
+            popResource(pLevel, pPos, ItemStack(ModItems.YAMAZAKI_BERRIES, j + (if (flag) 1 else 0)))
             pLevel.playSound(
                 null,
                 pPos,

@@ -1,32 +1,27 @@
 package net.Chidoziealways.everythingjapanese.tests
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.gametest.framework.GameTestHelper
 import net.minecraft.world.level.block.Blocks
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.RegistryObject
-import thedarkcolour.kotlinforforge.forge.registerObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Consumer
-import java.util.function.Supplier
 
 object ModGameTests {
-    val TEST_FUNCTIONS: DeferredRegister<Consumer<GameTestHelper?>?> =
-        DeferredRegister.create(
+    val TEST_FUNCTIONS = DeferredRegister.create(
             Registries.TEST_FUNCTION, MOD_ID
         )
 
-    val POWDER_SNOW = TEST_FUNCTIONS.registerObject(
-        "powdersnow") {
-            Consumer { helper: GameTestHelper? ->
-                helper!!.pressButton(3, 1, 2)
-                helper.succeedIf(Runnable { helper.assertBlockPresent(Blocks.POWDER_SNOW, 2, 2, 2) })
+    val POWDER_SNOW = TEST_FUNCTIONS.register(
+        "powdersnow") { ->
+            Consumer { helper: GameTestHelper ->
+                helper.pressButton(3, 1, 2)
+                helper.succeedIf { helper.assertBlockPresent(Blocks.POWDER_SNOW, 2, 2, 2) }
             }
         }
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         TEST_FUNCTIONS.register(eventBus)
     }
 }

@@ -2,7 +2,6 @@ package net.Chidoziealways.everythingjapanese.commands.comands
 
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.context.CommandContext
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.chakra.IChakra
@@ -12,21 +11,17 @@ import net.minecraft.commands.arguments.EntityArgument
 import net.minecraft.commands.arguments.selector.EntitySelector
 import net.minecraft.network.chat.Component
 import net.minecraft.world.entity.player.Player
-import net.minecraftforge.common.util.NonNullConsumer
-import net.minecraftforge.event.RegisterCommandsEvent
-import net.minecraftforge.eventbus.api.listener.SubscribeEvent
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
-import thedarkcolour.common.KotlinBus
-import thedarkcolour.common.KotlinMod
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.neoforge.event.RegisterCommandsEvent
+import thedarkcolour.kotlinforforge.common.KotlinMod
 import java.util.function.Predicate
 import java.util.function.Supplier
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, bus = KotlinBus.FORGE)
+@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
 object GetChakraCommand {
-    @JvmStatic
     @SubscribeEvent
     fun onRegisterCommands(event: RegisterCommandsEvent) {
-        val dispatcher = event.getDispatcher()
+        val dispatcher = event.dispatcher
 
         dispatcher.register(
             Commands.literal("getChakra")
@@ -44,16 +39,14 @@ object GetChakraCommand {
     }
 
     private fun getChakra(sourceStack: CommandSourceStack, target: Player): Int {
-        target.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
-            .ifPresent(NonNullConsumer { iChakra: IChakra? ->
-                sourceStack.sendSuccess(
-                    Supplier {
-                        Component.literal(
-                            target.displayName?.string + "'s Current Chakra: " + iChakra!!.chakra
-                        )
-                    }, true
+        val chakra = target.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+        sourceStack.sendSuccess(
+            Supplier {
+                Component.literal(
+                    target.displayName?.string + "'s Current Chakra: " + chakra!!.getCurrentChakra()
                 )
-            })
+            }, true
+        )
         return Command.SINGLE_SUCCESS
     }
 }

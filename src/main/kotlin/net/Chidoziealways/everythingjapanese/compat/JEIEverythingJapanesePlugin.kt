@@ -1,4 +1,4 @@
-import net.minecraftforge.common.capabilities.ICapabilityProvider
+/*import net.minecraftforge.common.capabilities.ICapabilityProvider
 import net.Chidoziealways.everythingjapanese.chakra.Chakra
 import net.minecraftforge.common.util.LazyOptional
 import net.Chidoziealways.everythingjapanese.chakra.IChakra
@@ -458,7 +458,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent
 import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.event.AttachCapabilitiesEvent
-import net.Chidoziealways.everythingjapanese.chakra.ChakraProvider
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuProvider
 import java.util.function.UnaryOperator
 import net.minecraft.world.item.ToolMaterial
@@ -492,4 +491,4 @@ import net.minecraftforge.common.loot.LootModifier
 import net.minecraft.world.level.storage.loot.LootContext
 import net.minecraftforge.common.loot.IGlobalLootModifier
 import net.Chidoziealways.everythingjapanese.loot.ModLootModifiers
-
+*/

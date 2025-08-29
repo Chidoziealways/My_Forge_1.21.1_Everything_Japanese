@@ -27,31 +27,31 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest
 import java.util.OptionalInt
 
 object ModConfiguredFeatures {
-    val PYRITE_ORE_KEY: ResourceKey<ConfiguredFeature<*, *>?> = registerKey("pyrite_ore")
+    val PYRITE_ORE_KEY: ResourceKey<ConfiguredFeature<*, *>> = registerKey("pyrite_ore")
 
-    val NEPHRITE_ORE_KEY: ResourceKey<ConfiguredFeature<*, *>?> = registerKey("nephrite_ore")
+    val NEPHRITE_ORE_KEY: ResourceKey<ConfiguredFeature<*, *>> = registerKey("nephrite_ore")
 
-    val HINOKI_KEY: ResourceKey<ConfiguredFeature<*, *>?> = registerKey("hinoki")
+    val HINOKI_KEY: ResourceKey<ConfiguredFeature<*, *>> = registerKey("hinoki")
 
-    val YAMAZAKI_BERRY_BUSH_KEY: ResourceKey<ConfiguredFeature<*, *>?> =
+    val YAMAZAKI_BERRY_BUSH_KEY: ResourceKey<ConfiguredFeature<*, *>> =
         registerKey("yamazaki_berry_bush")
 
-    fun bootstrap(context: BootstrapContext<ConfiguredFeature<*, *>?>) {
+    fun bootstrap(context: BootstrapContext<ConfiguredFeature<*, *>>) {
         val stoneReplaceables: RuleTest = TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES)
         val deepslateReplaceables: RuleTest = TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES)
 
         val pyriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState?> =
             listOf<OreConfiguration.TargetBlockState?>(
-                OreConfiguration.target(stoneReplaceables, ModBlocks.PYRITE_ORE.get()!!.defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, ModBlocks.PYRITE_DEEPSLATE_ORE.get()!!.defaultBlockState())
+                OreConfiguration.target(stoneReplaceables, ModBlocks.PYRITE_ORE!!.defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.PYRITE_DEEPSLATE_ORE!!.defaultBlockState())
             ) as MutableList<OreConfiguration.TargetBlockState?>
 
         val nephriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState?> =
             listOf<OreConfiguration.TargetBlockState?>(
-                OreConfiguration.target(stoneReplaceables, ModBlocks.NEPHRITE_ORE.get()!!.defaultBlockState()),
+                OreConfiguration.target(stoneReplaceables, ModBlocks.NEPHRITE_ORE!!.defaultBlockState()),
                 OreConfiguration.target(
                     deepslateReplaceables,
-                    ModBlocks.NEPHRITE_DEEPSLATE_ORE.get()!!.defaultBlockState()
+                    ModBlocks.NEPHRITE_DEEPSLATE_ORE.defaultBlockState()
                 )
             ) as MutableList<OreConfiguration.TargetBlockState?>
 
@@ -74,10 +74,10 @@ object ModConfiguredFeatures {
             HINOKI_KEY,
             Feature.TREE,
             TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.HINOKI_MARUTA.get()),
+                BlockStateProvider.simple(ModBlocks.HINOKI_MARUTA),
                 DarkOakTrunkPlacer(6, 2, 1),
 
-                BlockStateProvider.simple(ModBlocks.HINOKI_HA.get()),
+                BlockStateProvider.simple(ModBlocks.HINOKI_HA),
                 DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
 
                 ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())
@@ -94,8 +94,8 @@ object ModConfiguredFeatures {
                 Feature.SIMPLE_BLOCK,
                 SimpleBlockConfiguration(
                     BlockStateProvider.simple(
-                        ModBlocks.YAMAZAKI_BERRY_BUSH.get().defaultBlockState()
-                            .setValue<Int?, Int?>(SweetBerryBushBlock.AGE, 3)
+                        ModBlocks.YAMAZAKI_BERRY_BUSH.defaultBlockState()
+                            .setValue(SweetBerryBushBlock.AGE, 3)
                     )
                 ),
                 listOf<Block?>(Blocks.GRASS_BLOCK)
@@ -104,16 +104,16 @@ object ModConfiguredFeatures {
     }
 
 
-    fun registerKey(name: kotlin.String): ResourceKey<ConfiguredFeature<*, *>?> {
-        return ResourceKey.create<ConfiguredFeature<*, *>?>(
+    fun registerKey(name: kotlin.String): ResourceKey<ConfiguredFeature<*, *>> {
+        return ResourceKey.create(
             net.minecraft.core.registries.Registries.CONFIGURED_FEATURE,
             net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(MOD_ID, name)
         )
     }
 
     private fun <FC : FeatureConfiguration?, F : Feature<FC?>?> register(
-        context: BootstrapContext<ConfiguredFeature<*, *>?>,
-        key: ResourceKey<ConfiguredFeature<*, *>?>, feature: F?, configuration: FC?
+        context: BootstrapContext<ConfiguredFeature<*, *>>,
+        key: ResourceKey<ConfiguredFeature<*, *>>, feature: F?, configuration: FC?
     ) {
         context.register(key, ConfiguredFeature<FC?, F?>(feature, configuration))
     }

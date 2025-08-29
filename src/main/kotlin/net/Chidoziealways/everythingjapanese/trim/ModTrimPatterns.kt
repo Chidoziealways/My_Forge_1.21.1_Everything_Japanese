@@ -13,15 +13,15 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 object ModTrimPatterns {
-    val KOI_FISH: ResourceKey<TrimPattern?> = registryKey("koi_fish")
+    val KOI_FISH: ResourceKey<TrimPattern> = registryKey("koi_fish")
     private val log: Logger = LoggerFactory.getLogger(ModTrimPatterns::class.java)
 
-    fun bootstrap(context: BootstrapContext<TrimPattern?>) {
+    fun bootstrap(context: BootstrapContext<TrimPattern>) {
         log.info("Registering all Trim Patterns into DataPack Registry")
         register(context, KOI_FISH)
     }
 
-    private fun register(context: BootstrapContext<TrimPattern?>, key: ResourceKey<TrimPattern?>) {
+    private fun register(context: BootstrapContext<TrimPattern>, key: ResourceKey<TrimPattern>) {
         val trimPattern = TrimPattern(
             defaultAssetId(key),
             Component.translatable(Util.makeDescriptionId("trim_pattern", key.location())), false
@@ -29,14 +29,14 @@ object ModTrimPatterns {
         context.register(key, trimPattern)
     }
 
-    private fun registryKey(pName: String): ResourceKey<TrimPattern?> {
-        return ResourceKey.create<TrimPattern?>(
+    private fun registryKey(pName: String): ResourceKey<TrimPattern> {
+        return ResourceKey.create(
             Registries.TRIM_PATTERN,
             ResourceLocation.fromNamespaceAndPath(MOD_ID, pName)
         )
     }
 
-    fun defaultAssetId(p_394517_: ResourceKey<TrimPattern?>): ResourceLocation {
+    fun defaultAssetId(p_394517_: ResourceKey<TrimPattern>): ResourceLocation {
         return p_394517_.location()
     }
 }

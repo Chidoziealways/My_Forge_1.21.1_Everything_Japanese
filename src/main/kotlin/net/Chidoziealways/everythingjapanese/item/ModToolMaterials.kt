@@ -14,6 +14,15 @@ object ModToolMaterials {
         ItemTags.GOLD_TOOL_MATERIALS
     )
 
+    var STEEL: ToolMaterial = ToolMaterial(
+        BlockTags.INCORRECT_FOR_IRON_TOOL,
+        600,
+        4.5f,
+        6f,
+        10,
+        ItemTags.REPAIRS_IRON_ARMOR
+    )
+
     var NEPHRITE: ToolMaterial = ToolMaterial(
         BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
         200000,

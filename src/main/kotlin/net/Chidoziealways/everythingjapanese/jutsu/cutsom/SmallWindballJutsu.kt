@@ -4,8 +4,10 @@ import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
+import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
 import net.minecraft.world.entity.player.Player
@@ -20,7 +22,7 @@ class SmallWindballJutsu : Jutsu(
     JutsuType.KUKINOJUTSU,
     JutsuType.NINJUTSU
 ) {
-    override fun cast(player: Player) {
+    override fun cast(player: ServerPlayer): Boolean {
         player.displayClientMessage(Component.literal("Casting: $name"), true)
         val world = player.level()
         val lookVec = player.lookAngle
@@ -34,12 +36,15 @@ class SmallWindballJutsu : Jutsu(
         world.addFreshEntity(windball)
 
         world.playSound(
-            null,
+            player,
             player.blockPosBelowThatAffectsMyMovement,
-            SoundEvents.WIND_CHARGE_BURST.get(),
+            SoundEvents.WIND_CHARGE_BURST.value(),
             SoundSource.PLAYERS,
-            1.0f,
-            1.0f
+            1.0F,
+            1.0F
         )
+
+        MasteryHandler.addMastery(player, getID(), 0.01f)
+        return true
     }
 }

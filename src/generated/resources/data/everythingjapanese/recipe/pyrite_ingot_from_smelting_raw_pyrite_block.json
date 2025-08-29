@@ -6,6 +6,7 @@
   "group": "pyrite",
   "ingredient": "everythingjapanese:raw_pyrite_block",
   "result": {
+    "count": 1,
     "id": "everythingjapanese:pyrite_ingot"
   }
 }

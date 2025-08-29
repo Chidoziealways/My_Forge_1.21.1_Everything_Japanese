@@ -17,14 +17,14 @@ import net.minecraft.world.item.enchantment.EnchantmentTarget
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect
 
 object ModEnchantments {
-    val LIGHTNING_STRIKER: ResourceKey<Enchantment?> = ResourceKey.create<Enchantment?>(
+    val LIGHTNING_STRIKER: ResourceKey<Enchantment> = ResourceKey.create(
         Registries.ENCHANTMENT,
         ResourceLocation.fromNamespaceAndPath(MOD_ID, "lightning_striker")
     )
 
-    fun bootstrap(context: BootstrapContext<Enchantment?>) {
-        val enchantments = context.lookup<Enchantment?>(Registries.ENCHANTMENT)
-        val items = context.lookup<Item?>(Registries.ITEM)
+    fun bootstrap(context: BootstrapContext<Enchantment>) {
+        val enchantments = context.lookup(Registries.ENCHANTMENT)
+        val items = context.lookup(Registries.ITEM)
 
         register(
             context, LIGHTNING_STRIKER, Enchantment.enchantment(
@@ -49,8 +49,8 @@ object ModEnchantments {
 
 
     private fun register(
-        registry: BootstrapContext<Enchantment?>,
-        key: ResourceKey<Enchantment?>,
+        registry: BootstrapContext<Enchantment>,
+        key: ResourceKey<Enchantment>,
         builder: Enchantment.Builder
     ) {
         registry.register(key, builder.build(key.location()))

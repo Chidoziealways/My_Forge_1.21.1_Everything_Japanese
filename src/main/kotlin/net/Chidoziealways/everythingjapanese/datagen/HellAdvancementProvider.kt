@@ -15,25 +15,23 @@ import net.minecraft.advancements.critereon.PlayerTrigger
 import net.minecraft.core.HolderGetter
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
+import net.minecraft.data.advancements.AdvancementSubProvider
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.levelgen.structure.Structure
-import net.minecraftforge.common.data.ExistingFileHelper
-import net.minecraftforge.common.data.ForgeAdvancementProvider.AdvancementGenerator
 import java.util.function.Consumer
 
-class HellAdvancementProvider : AdvancementGenerator {
+class HellAdvancementProvider : AdvancementSubProvider {
     override fun generate(
         registries: HolderLookup.Provider,
-        saver: Consumer<AdvancementHolder?>,
-        existingFileHelper: ExistingFileHelper
+        saver: Consumer<AdvancementHolder?>
     ) {
         val holderGetter: HolderGetter<Structure?> = registries.lookupOrThrow<Structure?>(Registries.STRUCTURE)
 
         val enteredHell = Advancement.Builder.advancement()
             .display(
-                ModBlocks.PYRITE_BLOCK.get(),
+                ModBlocks.PYRITE_BLOCK,
                 Component.translatable("advancements.hell.root.title"),
                 Component.translatable("advancements.hell.root.description"),
                 ResourceLocation.fromNamespaceAndPath(MOD_ID, "gui/advancements/backgrounds/hell"),

@@ -14,14 +14,14 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import java.util.function.Function
 
 object HellTempleStructurePools {
-    fun bootstrap(pContext: BootstrapContext<StructureTemplatePool?>) {
-        val holdergetter1 = pContext.lookup<StructureProcessorList?>(Registries.PROCESSOR_LIST)
-        val holder1: Holder<StructureProcessorList?> =
+    fun bootstrap(pContext: BootstrapContext<StructureTemplatePool>) {
+        val holdergetter1 = pContext.lookup(Registries.PROCESSOR_LIST)
+        val holder1: Holder<StructureProcessorList> =
             holdergetter1.getOrThrow(ModProcessorLists.HELL_TEMPLE_START_DEGRADATION)
-        val holder4: Holder<StructureProcessorList?> =
+        val holder4: Holder<StructureProcessorList> =
             holdergetter1.getOrThrow(ModProcessorLists.HELL_TEMPLE_COURT_DEGRADATION)
-        val holdergetter2 = pContext.lookup<StructureTemplatePool?>(Registries.TEMPLATE_POOL)
-        val holder3: Holder<StructureTemplatePool?> = holdergetter2.getOrThrow(Pools.EMPTY)
+        val holdergetter2 = pContext.lookup(Registries.TEMPLATE_POOL)
+        val holder3: Holder<StructureTemplatePool> = holdergetter2.getOrThrow(Pools.EMPTY)
         ModPools.register(
             pContext,
             "hell_temple/hell_entrance",

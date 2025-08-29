@@ -8,7 +8,7 @@ import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.block.RotatedPillarBlock
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraftforge.common.ToolAction
+import net.neoforged.neoforge.common.ItemAbility
 
 class ModFlammableRotatedPillarBlock(properties: Properties) : RotatedPillarBlock(properties) {
     override fun isFlammable(state: BlockState?, level: BlockGetter?, pos: BlockPos?, direction: Direction?): Boolean {
@@ -31,17 +31,17 @@ class ModFlammableRotatedPillarBlock(properties: Properties) : RotatedPillarBloc
     override fun getToolModifiedState(
         state: BlockState,
         context: UseOnContext,
-        toolAction: ToolAction?,
+        itemAbility: ItemAbility,
         simulate: Boolean
     ): BlockState? {
         if (context.itemInHand.item is AxeItem) {
-            if (state.`is`(ModBlocks.HINOKI_MARUTA.get())) {
-                return ModBlocks.STRIPPED_HINOKI_MARUTA.get()!!.defaultBlockState()
+            if (state.`is`(ModBlocks.HINOKI_MARUTA)) {
+                return ModBlocks.STRIPPED_HINOKI_MARUTA.defaultBlockState()
                     .setValue(AXIS, state.getValue(AXIS))
             }
 
-            if (state.`is`(ModBlocks.HINOKI_MOKUZAI.get())) {
-                return ModBlocks.STRIPPED_HINOKI_MOKUZAI.get()!!.defaultBlockState().setValue(
+            if (state.`is`(ModBlocks.HINOKI_MOKUZAI)) {
+                return ModBlocks.STRIPPED_HINOKI_MOKUZAI.defaultBlockState().setValue(
                     AXIS, state.getValue(
                         AXIS
                     )
@@ -49,6 +49,6 @@ class ModFlammableRotatedPillarBlock(properties: Properties) : RotatedPillarBloc
             }
         }
 
-        return super.getToolModifiedState(state, context, toolAction, simulate)
+        return super.getToolModifiedState(state, context, itemAbility, simulate)
     }
 }

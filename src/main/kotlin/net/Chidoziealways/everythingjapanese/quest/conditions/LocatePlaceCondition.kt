@@ -24,7 +24,7 @@ object LocatePlaceCondition : QuestCondition {
         val resourceLocation = ResourceLocation.tryParse(structureId) ?: return false
         val structureKey = ResourceKey.create(Registries.STRUCTURE, resourceLocation)
 
-        val structure = structureRegistry.get(structureKey).get().get() ?: return false
+        val structure = structureRegistry.get(structureKey).get().value() ?: return false
 
         // Check if the player is inside the structure
         val structureAt = structureManager.getStructureAt(player.blockPosition(), structure)

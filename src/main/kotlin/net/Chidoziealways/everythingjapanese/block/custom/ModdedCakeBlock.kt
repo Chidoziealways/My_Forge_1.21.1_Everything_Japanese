@@ -26,7 +26,7 @@ class ModdedCakeBlock(properties: BlockBehaviour.Properties) : Block(properties)
     init {
         // Initialize default state with BITES set to 0
         this.registerDefaultState(
-            this.stateDefinition.any().setValue<Int, Int?>(BITES, 0)
+            this.stateDefinition.any().setValue(BITES, 0)
         )
     }
 
@@ -41,7 +41,7 @@ class ModdedCakeBlock(properties: BlockBehaviour.Properties) : Block(properties)
         pos: BlockPos,
         context: CollisionContext
     ): VoxelShape {
-        return SHAPE_BY_BITE[state.getValue<Int>(BITES)]
+        return SHAPE_BY_BITE[state.getValue(BITES)]
     }
 
     public override fun useWithoutItem(
@@ -102,7 +102,7 @@ class ModdedCakeBlock(properties: BlockBehaviour.Properties) : Block(properties)
 
     companion object {
         const val MAX_BITES: Int = 16
-        val BITES: IntegerProperty = ModBlockStateProperties.BITES
+        val BITES: IntegerProperty = ModBlockStateProperties.BITES_16
         val FULL_CAKE_SIGNAL: Int = getOutputSignal(0)
         protected const val AABB_OFFSET: Float = 1.0f
         protected const val AABB_SIZE_PER_BITE: Float = 2.0f

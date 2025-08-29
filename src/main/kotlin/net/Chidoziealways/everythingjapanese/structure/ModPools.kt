@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList
 import com.mojang.datafixers.util.Pair
 import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.structure.custom.dojo.DojoStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.hellTemple.HellTempleStructurePieces
 import net.minecraft.core.Holder
 import net.minecraft.core.registries.Registries
@@ -30,24 +31,25 @@ object ModPools {
     }
 
     fun register(
-        p_335139_: BootstrapContext<StructureTemplatePool?>,
+        p_335139_: BootstrapContext<StructureTemplatePool>,
         p_255837_: String,
         p_256161_: StructureTemplatePool
     ) {
         p_335139_.register(createKey(p_255837_), p_256161_)
     }
 
-    fun bootstrap(pContext: BootstrapContext<StructureTemplatePool?>) {
-        val holdergetter = pContext.lookup<StructureTemplatePool?>(Registries.TEMPLATE_POOL)
+    fun bootstrap(pContext: BootstrapContext<StructureTemplatePool>) {
+        val holdergetter = pContext.lookup(Registries.TEMPLATE_POOL)
         val holder: Holder<StructureTemplatePool?> = holdergetter.getOrThrow(EMPTY)
         pContext.register(
             EMPTY,
             StructureTemplatePool(
                 holder,
-                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>?>(),
+                ImmutableList.of(),
                 StructureTemplatePool.Projection.RIGID
             )
         )
         HellTempleStructurePieces.bootstrap(pContext)
+        DojoStructurePieces.bootstrap(pContext)
     }
 }

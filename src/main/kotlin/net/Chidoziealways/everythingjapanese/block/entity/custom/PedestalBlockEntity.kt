@@ -20,11 +20,11 @@ import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.storage.ValueInput
 import net.minecraft.world.level.storage.ValueOutput
-import net.minecraftforge.items.ItemStackHandler
+import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.function.Consumer
 
 class PedestalBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
-    BlockEntity(ModBlockEntities.PEDESTAL_BE?.get(), pPos, pBlockState), MenuProvider {
+    BlockEntity(ModBlockEntities.PEDESTAL_BE, pPos, pBlockState), MenuProvider {
     val inventory: ItemStackHandler = object : ItemStackHandler(1) {
         override fun getStackLimit(slot: Int, stack: ItemStack): Int {
             return 1
@@ -65,13 +65,12 @@ class PedestalBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
 
     override fun saveAdditional(output: ValueOutput) {
         super.saveAdditional(output)
-        output.store<CompoundTag?>("inventory", CompoundTag.CODEC, inventory.serializeNBT(this.level?.registryAccess()))
+        inventory.serialize(output)
     }
 
     override fun loadAdditional(input: ValueInput) {
         super.loadAdditional(input)
-        input.read<CompoundTag?>("inventory", CompoundTag.CODEC)
-            .ifPresent(Consumer { tag: CompoundTag? -> inventory.deserializeNBT(level?.registryAccess(), tag) })
+        inventory.deserialize(input)
     }
 
     override fun getUpdatePacket(): Packet<ClientGamePacketListener?>? {

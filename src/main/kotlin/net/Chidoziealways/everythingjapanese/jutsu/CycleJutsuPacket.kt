@@ -1,37 +1,34 @@
 package net.Chidoziealways.everythingjapanese.jutsu
 
+import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.chat.Component
-import net.minecraftforge.common.util.NonNullConsumer
-import net.minecraftforge.event.network.CustomPayloadEvent
+import net.minecraft.network.codec.StreamCodec
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.server.level.ServerPlayer
+import net.neoforged.neoforge.network.handling.IPayloadContext
 
-class CycleJutsuPacket {
-    fun encode(buf: FriendlyByteBuf?) {
-    }
+object CycleJutsuPacket: CustomPacketPayload {
+    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
 
-    companion object {
-        @JvmStatic
-        fun decode(buf: FriendlyByteBuf?): CycleJutsuPacket {
-            return CycleJutsuPacket()
-        }
+        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "jutsu_cycle")
+        val TYPE = CustomPacketPayload.Type<CycleJutsuPacket>(ID)
 
-        @JvmStatic
-        fun handle(msg: CycleJutsuPacket?, ctx: CustomPayloadEvent.Context?) {
-            ctx!!.enqueueWork(Runnable {
-                val player = ctx.getSender()
-                if (player != null) {
-                    player.getCapability<IJutsuCapability?>(ModCapabilities.JUTSU_CAPABILITY)
-                        .ifPresent(NonNullConsumer { iJutsuCapability: IJutsuCapability? ->
-                            iJutsuCapability!!.cycleJutsu()
-                            player.displayClientMessage(
-                                Component.literal("Selected Jutsu: " + iJutsuCapability.getSelectedJutsu()),
-                                true
-                            )
-                        })
+        val CODEC: StreamCodec<FriendlyByteBuf, CycleJutsuPacket> = StreamCodec.unit(CycleJutsuPacket)
+
+        fun handle(msg: CycleJutsuPacket?, ctx: IPayloadContext) {
+            ctx.enqueueWork(Runnable {
+                val player = ctx.player()
+                if (player is ServerPlayer) {
+                    val jutsu = player.getCapability(ModCapabilities.JUTSU_CAPABILITY)
+                    jutsu!!.cycleJutsu(player)
+                    player.displayClientMessage(
+                        Component.literal("Selected Jutsu: " + jutsu.getSelectedJutsu()),
+                        true
+                    )
                 }
             })
-            ctx.setPacketHandled(true)
         }
     }
-}

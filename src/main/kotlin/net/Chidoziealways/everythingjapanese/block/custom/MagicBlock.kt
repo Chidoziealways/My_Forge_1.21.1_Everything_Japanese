@@ -26,7 +26,7 @@ class MagicBlock(properties: Properties) : Block(properties) {
         pHitResult: BlockHitResult
     ): InteractionResult {
         pLevel.addParticle(
-            ModParticles.PYRITE_PARTICLES!!.get(), pPos.x + 0.5, (pPos.y + 1).toDouble(), pPos.z + 0.5,
+            ModParticles.PYRITE_PARTICLES, pPos.x + 0.5, (pPos.y + 1).toDouble(), pPos.z + 0.5,
             0.0, 1.0, 0.0
         )
 
@@ -40,7 +40,7 @@ class MagicBlock(properties: Properties) : Block(properties) {
                 pEntity.item = ItemStack(Items.DIAMOND, pEntity.item.count)
             }
             if (pEntity.item.item === Items.DIAMOND) {
-                pEntity.item = ItemStack(ModItems.PYRITE_INGOT!!.get(), pEntity.item.count)
+                pEntity.item = ItemStack(ModItems.PYRITE_INGOT, pEntity.item.count)
             }
         }
 

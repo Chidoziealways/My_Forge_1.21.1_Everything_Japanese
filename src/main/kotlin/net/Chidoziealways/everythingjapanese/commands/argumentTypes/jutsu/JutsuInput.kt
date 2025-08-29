@@ -6,6 +6,7 @@ import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.ModJutsus
+import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.core.Holder
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.component.DataComponentPatch
@@ -28,8 +29,8 @@ class JutsuInput(jutsu: Holder<Jutsu?>?, pComponents: DataComponentPatch?) {
     private val components: DataComponentPatch
 
     init {
-        if (jutsu == null || !ModJutsus.isValidJutsu(
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, jutsu.value()?.name)
+        if (jutsu == null || !ModRegistries.JUTSU.containsKey(
+                ResourceLocation.fromNamespaceAndPath(MOD_ID, jutsu.value()?.name!!)
             )
         ) {
             throw INVALID_JUTSU.create()

@@ -3,19 +3,24 @@ package net.Chidoziealways.everythingjapanese.util
 import com.mojang.blaze3d.platform.InputConstants
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.minecraft.client.KeyMapping
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent
-import net.minecraftforge.eventbus.api.listener.SubscribeEvent
+import net.neoforged.api.distmarker.Dist
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent
 import org.lwjgl.glfw.GLFW
-import thedarkcolour.common.KotlinBus
-import thedarkcolour.common.KotlinMod
+import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, bus = KotlinBus.MOD)
+@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, value = [Dist.CLIENT])
 object ModKeyBinds {
     const val CATEGORY_JUTSU: String = "key.categories.jutsu"
-    var CAST_JUTSU: KeyMapping? = null
-    var CYCLE_JUTSU: KeyMapping? = null
+    lateinit var CAST_JUTSU: KeyMapping
+    lateinit var CYCLE_JUTSU: KeyMapping
 
-    @JvmStatic
+    const val CATEGORY_QUEST: String = "key.categories.quest"
+    lateinit var SHOW_QUESTS: KeyMapping
+
+    const val CATEGORY_CHAKRA: String = "ket.categories.chakra"
+    lateinit var REGEN_CHAKRA: KeyMapping
+
     @SubscribeEvent
     fun registerKeyMappings(event: RegisterKeyMappingsEvent) {
         CAST_JUTSU = KeyMapping(
@@ -31,7 +36,24 @@ object ModKeyBinds {
             GLFW.GLFW_KEY_H,
             CATEGORY_JUTSU
         )
+
+        SHOW_QUESTS = KeyMapping(
+            "key.everythingjapanese.show_quests",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_K,
+            CATEGORY_QUEST
+        )
+
+        REGEN_CHAKRA = KeyMapping(
+            "key.everythingjapanese.regen_chakra",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_C,
+            CATEGORY_CHAKRA
+        )
+
         event.register(CYCLE_JUTSU)
         event.register(CAST_JUTSU)
+        event.register(SHOW_QUESTS)
+        event.register(REGEN_CHAKRA)
     }
 }

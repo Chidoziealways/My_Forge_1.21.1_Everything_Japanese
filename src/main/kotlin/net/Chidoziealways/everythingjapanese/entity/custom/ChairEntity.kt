@@ -25,6 +25,10 @@ class ChairEntity(pEntityType: EntityType<*>, pLevel: Level) : Entity(pEntityTyp
 
     override fun removePassenger(pPassenger: Entity) {
         super.removePassenger(pPassenger)
-        this.kill(this.level() as ServerLevel)
+        val level = level()
+        if (level is ServerLevel) {
+
+            this.kill(level)
+        }
     }
 }

@@ -1,6 +1,5 @@
 package net.Chidoziealways.everythingjapanese.event
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
@@ -25,25 +24,21 @@ import net.minecraft.world.item.Items
 import net.minecraft.world.item.alchemy.Potions
 import net.minecraft.world.item.trading.ItemCost
 import net.minecraft.world.item.trading.MerchantOffer
-import net.minecraftforge.event.brewing.BrewingRecipeRegisterEvent
-import net.minecraftforge.event.entity.living.LivingDamageEvent
-import net.minecraftforge.event.entity.living.LivingHurtEvent
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract
-import net.minecraftforge.event.level.BlockEvent.BreakEvent
-import net.minecraftforge.event.village.VillagerTradesEvent
-import net.minecraftforge.event.village.WandererTradesEvent
-import net.minecraftforge.eventbus.api.listener.SubscribeEvent
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
-import thedarkcolour.common.KotlinBus
-import thedarkcolour.common.KotlinMod
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent
+import net.neoforged.neoforge.event.level.BlockEvent
+import net.neoforged.neoforge.event.village.VillagerTradesEvent
+import net.neoforged.neoforge.event.village.WandererTradesEvent
+import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, bus = KotlinBus.FORGE)
+@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
 object ModEvents {
     private val HARVESTED_BLOCKS: MutableSet<BlockPos?> = HashSet<BlockPos?>()
 
-    @JvmStatic
     @SubscribeEvent
-    fun onHammerUsage(event: BreakEvent) {
+    fun onHammerUsage(event: BlockEvent.BreakEvent) {
         val player = event.player
         val mainHandItem = player.mainHandItem
 
@@ -65,9 +60,8 @@ object ModEvents {
         }
     }
 
-    @JvmStatic
     @SubscribeEvent
-    fun onLivingInteract(event: EntityInteract) {
+    fun onLivingInteract(event: PlayerInteractEvent.EntityInteract) {
         if (event.entity is Player) {
             val player = event.entity
             val touchedEntity = event.target
@@ -84,11 +78,10 @@ object ModEvents {
         }
     }
 
-    @JvmStatic
     @SubscribeEvent
-    fun onLivingDamage(event: LivingDamageEvent) {
-        if (event.source.directEntity is Player) {
-            val player: Player = event.source.directEntity as Player
+    fun onLivingDamage(event: LivingDamageEvent.Pre) {
+        if (event.source.entity is Player) {
+            val player: Player = event.source.entity as Player
             if (event.entity is Animal) {
                 val hitEntity = event.entity
                 val murderItem: Item = player.mainHandItem.item
@@ -102,16 +95,15 @@ object ModEvents {
             }
         }
     }
-
-    @JvmStatic
+    
     @SubscribeEvent
-    fun onPlayerHurt(event: LivingHurtEvent) {
+    fun onPlayerHurt(event: LivingDamageEvent.Pre) {
         if (event.entity is Player) {
             val player: Player = event.entity as Player
             if (player.health <= 4.0f) {
                 player.addEffect(
                     MobEffectInstance(
-                        (ModEffects.ADRENALINE_EFFECT!!.registryObject.holder.get()),
+                        (ModEffects.ADRENALINE_EFFECT.delegate),
                         1000,
                         2,
                         true,
@@ -122,15 +114,15 @@ object ModEvents {
         }
     }
 
-    @JvmStatic
+    
     @SubscribeEvent
-    fun onBrewingRecipeRegister(event: BrewingRecipeRegisterEvent) {
+    fun onBrewingRecipeRegister(event: RegisterBrewingRecipesEvent) {
         val builder = event.builder
 
-        builder.addMix(Potions.AWKWARD, Items.SLIME_BALL, ModPotions.ADRENALINE_POTION!!.getHolder().get())
+        builder.addMix(Potions.AWKWARD, Items.SLIME_BALL, ModPotions.ADRENALINE_POTION)
     }
 
-    @JvmStatic
+    
     @SubscribeEvent
     fun addCustomTrades(event: VillagerTradesEvent) {
         if (event.getType() === VillagerProfession.ARMORER) {
@@ -139,77 +131,77 @@ object ModEvents {
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_SWORD!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_SWORD, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_AXE!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_AXE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_SHOVEL!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_SHOVEL, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_HOE!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_HOE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 15),
-                    ItemStack(ModItems.PYRITE_BATTLE_AXE!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_BATTLE_AXE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_HAMMER!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_HAMMER, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_HORSE_ARMOR!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_HORSE_ARMOR, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_HELMET!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_HELMET, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_CHESTPLATE!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_CHESTPLATE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_LEGGINGS!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_LEGGINGS, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_BOOTS!!.get(), 1), 6, 4, 0.05f
+                    ItemStack(ModItems.PYRITE_BOOTS, 1), 6, 4, 0.05f
                 )
             })
         }
@@ -219,29 +211,26 @@ object ModEvents {
             trades.get(1)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.DIAMOND, 18),
-                    ItemStack(ModBlocks.CHAIR.get(), 20), 6, 4, 0.6f
+                    ItemStack(ModBlocks.CHAIR, 20), 6, 4, 0.6f
                 )
             })
         }
     }
 
-    @JvmStatic
+    
     @SubscribeEvent
     fun addWanderingTrades(event: WandererTradesEvent) {
-        for (pool in event.getPools()) {
-            pool.getEntries().add((ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
-                MerchantOffer(
-                    ItemCost(Items.DIAMOND, 12),
-                    ItemStack(ModItems.RADIATION_STAFF!!.get(), 1), 1, 10, 0.2f
-                )
-            }))
+        val genericTrades = event.genericTrades
+        val rareTrades = event.rareTrades
 
-            pool.getEntries().add((ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
-                MerchantOffer(
-                    ItemCost(Items.NETHERITE_INGOT, 8),
-                    ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC!!.get(), 1), 1, 10, 0.2f
-                )
-            }))
-        }
+        genericTrades.add { entity, randomSource -> MerchantOffer(
+            ItemCost(Items.DIAMOND, 12),
+            ItemStack(ModItems.RADIATION_STAFF, 1), 1, 10, 0.2f
+        ) }
+
+        rareTrades.add { entity, randomSource -> MerchantOffer(
+            ItemCost(Items.NETHERITE_INGOT, 8),
+            ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC, 1), 1, 10, 0.2f
+        ) }
     }
 }

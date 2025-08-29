@@ -1,9 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": [
-    "minecraft:dark_forest",
-    "minecraft:taiga"
-  ],
-  "features": "everythingjapanese:hinoki_placed",
-  "step": "vegetal_decoration"
-}

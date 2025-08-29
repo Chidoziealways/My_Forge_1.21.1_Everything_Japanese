@@ -1,8 +1,15 @@
-**Version 1.4.2**  
-**Added a smarter system for Quest Conditions, to avoid the player from auto-completing a quest if they already have the item or have already killed the mob.**  
-*Changelog*
-1. Added Quest dependencies which defaults to `everythingjapanese:air`
-2. Added Smarter quests.
-3. Added the First Complete QUEST! `everythingjapanese:find_village` you can start the quest by running this: `/startQuest everythingjapanese:find_village` suggestions for the command and easier ways to start quests coming soon!
+**Version 1.13.0**    
+*SAMURAI Pt. 2*    
+**ADDITIONS**
+1. Added a Tatami Mat Block which is purely decorational
+2. Added a Zabuton Cushion that comes in three different colours! Green, Red and Blue
+3. Added a Fusuma Sliding Door!
+4. Added a Simplified Chinese Localization!
+5. Added a Chabudai Block
 
-> Dedicated to me, myself and I
+**CHANGES**  
+1. Moved Washi Window, Washi Window Pane and Shoji Door to Japanese Furniture from Japanese Blocks
+
+>> Other blocks like 屏風 are coming soon when I have more... patience
+
+> Dedicated to all the smiths who sharpen their blades.

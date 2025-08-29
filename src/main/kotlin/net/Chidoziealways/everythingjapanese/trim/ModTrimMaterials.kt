@@ -1,6 +1,5 @@
 package net.Chidoziealways.everythingjapanese.trim
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.minecraft.Util
 import net.minecraft.core.registries.Registries
@@ -16,13 +15,14 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 object ModTrimMaterials {
-    val PYRITE: ResourceKey<TrimMaterial?> = ResourceKey.create<TrimMaterial?>(
-        Registries.TRIM_MATERIAL,
-        ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite")
-    )
+    val PYRITE = registryKey("pyrite")
     private val log: Logger? = LoggerFactory.getLogger(ModTrimMaterials::class.java)
 
-    fun bootstrap(context: BootstrapContext<TrimMaterial?>) {
+    fun registryKey(name: String): ResourceKey<TrimMaterial> {
+        return ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(MOD_ID, name))
+    }
+
+    fun bootstrap(context: BootstrapContext<TrimMaterial>) {
         register(
             context,
             PYRITE,
@@ -32,11 +32,11 @@ object ModTrimMaterials {
     }
 
     private fun register(
-        context: BootstrapContext<TrimMaterial?>, trimKey: ResourceKey<TrimMaterial?>,
+        context: BootstrapContext<TrimMaterial>, trimKey: ResourceKey<TrimMaterial>,
         style: Style, materialAssetGroup: MaterialAssetGroup
     ) {
         val component: Component =
-            Component.translatable(Util.makeDescriptionId("trim_materials", trimKey.location())).withStyle(style)
+            Component.translatable(Util.makeDescriptionId("trim_materials", trimKey?.location())).withStyle(style)
         context.register(trimKey, TrimMaterial(materialAssetGroup, component))
     }
 }

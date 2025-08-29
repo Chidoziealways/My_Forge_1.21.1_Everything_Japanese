@@ -33,7 +33,7 @@ class SikaDeerEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Anim
             TemptGoal(
                 this,
                 1.25,
-                Predicate { stack: ItemStack? -> stack!!.`is`(ModItems.YAMAZAKI_BERRIES!!.get()) },
+                { stack: ItemStack? -> stack!!.`is`(ModItems.YAMAZAKI_BERRIES) },
                 false
             )
         )
@@ -46,11 +46,11 @@ class SikaDeerEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Anim
     }
 
     override fun isFood(pStack: ItemStack): Boolean {
-        return pStack.`is`(ModItems.YAMAZAKI_BERRIES!!.get())
+        return pStack.`is`(ModItems.YAMAZAKI_BERRIES)
     }
 
     override fun getBreedOffspring(pLevel: ServerLevel, pOtherParent: AgeableMob): AgeableMob? {
-        return ModEntities.SIKA_DEER!!.get().create(pLevel, EntitySpawnReason.BREEDING)
+        return ModEntities.SIKA_DEER.create(pLevel, EntitySpawnReason.BREEDING)
     }
 
     private fun setupAnimationStates() {

@@ -19,15 +19,15 @@ class IronBattleAxeProjectileEntity : AbstractArrow {
     constructor(pEntityType: EntityType<out AbstractArrow?>, pLevel: Level) : super(pEntityType, pLevel)
 
     constructor(shooter: LivingEntity, level: Level) : super(
-        ModEntities.IRON_BATTLE_AXE!!.get(),
+        ModEntities.IRON_BATTLE_AXE,
         shooter,
         level,
-        ItemStack(ModItems.IRON_BATTLE_AXE!!.get()),
+        ItemStack(ModItems.IRON_BATTLE_AXE),
         null
     )
 
     override fun getDefaultPickupItem(): ItemStack {
-        return ItemStack(ModItems.IRON_BATTLE_AXE!!.get())
+        return ItemStack(ModItems.IRON_BATTLE_AXE)
     }
 
     val renderingRotation: Float

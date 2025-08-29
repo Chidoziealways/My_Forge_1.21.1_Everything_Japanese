@@ -3,9 +3,11 @@ package net.Chidoziealways.everythingjapanese.item
 import net.Chidoziealways.everythingjapanese.EverythingJapanese.logInfo
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.item.custom.*
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
+import net.Chidoziealways.everythingjapanese.trim.ModTrimMaterials
 import net.minecraft.core.Holder
 import net.minecraft.core.HolderSet
 import net.minecraft.core.component.DataComponents
@@ -24,67 +26,93 @@ import net.minecraft.world.item.component.BlocksAttacks
 import net.minecraft.world.item.component.BlocksAttacks.DamageReduction
 import net.minecraft.world.item.component.BlocksAttacks.ItemDamageFunction
 import net.minecraft.world.item.equipment.ArmorType
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import thedarkcolour.kotlinforforge.forge.registerObject
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.*
-import java.util.List
-import java.util.function.Supplier
 
 object ModItems {
     private val log: Logger? = LoggerFactory.getLogger(ModItems::class.java)
 
-    val ITEMS: DeferredRegister<Item?> =
-        DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID)
+    val ITEMS = DeferredRegister.createItems(MOD_ID)
 
-    val PYRITE_INGOT = ITEMS.registerObject(
-        "pyrite_ingot")
-        {
-            Item(
-                Item.Properties().setId(
-                    ResourceKey.create<Item?>(
-                        Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_ingot")
-                    )
-                )
-            )
+    val PYRITE_INGOT by ITEMS.register("pyrite_ingot")
+        { ->
+            Item(Item.Properties()
+                .trimMaterial(ModTrimMaterials.PYRITE)
+                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_ingot"))))
         }
 
-    val SMALL_FIREBALL_SCROLL = ITEMS.registerObject(
-        "small_fireball_scroll")
-        {
+    val KATANA by ITEMS.register("katana")
+        { ->
+            KatanaItem(Item.Properties()
+                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "katana"))))
+        }
+
+    val BLADE_STEEL by ITEMS.register("blade_steel")
+    { ->
+        Item(Item.Properties()
+            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "blade_steel"))))
+    }
+
+    val BLACK_WRAP by ITEMS.register("wrap_black")
+    { ->
+        Item(Item.Properties()
+            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "wrap_black"))))
+    }
+
+    val RED_WRAP by ITEMS.register("wrap_red")
+    { ->
+        Item(Item.Properties()
+            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "wrap_red"))))
+    }
+
+    val WHITE_WRAP by ITEMS.register("wrap_white")
+    { ->
+        Item(Item.Properties()
+            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "wrap_white"))))
+    }
+
+    val CHIRETSU_SHO_SCROLL by ITEMS.register("chiretsu_sho_scroll")
+    { ->
+        JutsuScrollItem(
+            "chiretsu_sho_jutsu",
+            Item.Properties().setId(
+                ResourceKey.create(
+                    Registries.ITEM,
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "chiretsu_sho_scroll")
+                )
+            )
+        )
+    }
+
+    val TALISMAN_ITEM by ITEMS.register("talisman_item")
+    { ->
+        TalismanItem(Item.Properties().setId(ResourceKey.create(
+            Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath(MOD_ID, "talisman_item")
+        )))
+    }
+
+    val FIREBALL_SCROLL by ITEMS.register(
+        "fireball_scroll")
+        { ->
             JutsuScrollItem(
-                "small_fireball",
+                "fireball",
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_fireball_scroll")
+                        ResourceLocation.fromNamespaceAndPath(MOD_ID, "fireball_scroll")
                     )
                 )
             )
         }
 
-    val LARGE_FIREBALL_SCROLL = ITEMS.registerObject(
-        "large_fireball_scroll")
-        {
-            JutsuScrollItem(
-                "large_fireball",
-                Item.Properties().setId(
-                    ResourceKey.create<Item?>(
-                        Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(MOD_ID, "large_fireball_scroll")
-                    )
-                )
-            )
-        }
-
-    val WINDBALL_SCROLL = ITEMS.registerObject(
+    val WINDBALL_SCROLL by ITEMS.register(
         "windball_scroll")
-        {
+        { ->
             JutsuScrollItem(
                 "small_windball",
                 Item.Properties().setId(
@@ -96,9 +124,9 @@ object ModItems {
             )
         }
 
-    val HELL_PORTAL_ACTIVATOR = ITEMS.registerObject(
+    val HELL_PORTAL_ACTIVATOR by ITEMS.register(
         "hell_portal_activator")
-        {
+        { ->
             HellPortalItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -109,9 +137,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE = ITEMS.registerObject(
+    val NEPHRITE by ITEMS.register(
         "nephrite")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -122,9 +150,9 @@ object ModItems {
             )
         }
 
-    val RAW_PYRITE = ITEMS.registerObject(
+    val RAW_PYRITE by ITEMS.register(
         "raw_pyrite")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -135,9 +163,9 @@ object ModItems {
             )
         }
 
-    val CHISEL = ITEMS.registerObject(
+    val CHISEL by ITEMS.register(
         "chisel")
-        {
+        { ->
             ChiselItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -149,9 +177,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_SWORD = ITEMS.registerObject(
+    val PYRITE_SWORD by ITEMS.register(
         "pyrite_sword")
-        {
+        { ->
             Item(
                 Item.Properties()
                     .setId(
@@ -182,9 +210,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_PICKAXE = ITEMS.registerObject(
+    val PYRITE_PICKAXE by ITEMS.register(
         "pyrite_pickaxe")
-        {
+        { ->
             Item(
                 Item.Properties()
                     .pickaxe(ModToolMaterials.PYRITE, 1f, -2.8f)
@@ -197,9 +225,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_SHOVEL = ITEMS.registerObject(
+    val PYRITE_SHOVEL by ITEMS.register(
         "pyrite_shovel")
-        {
+        { ->
             ShovelItem(
                 ModToolMaterials.PYRITE, 1.5f, -3.0f,
                 Item.Properties().setId(
@@ -211,9 +239,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_AXE = ITEMS.registerObject(
+    val PYRITE_AXE by ITEMS.register(
         "pyrite_axe")
-        {
+        { ->
             AxeItem(
                 ModToolMaterials.PYRITE, 6f, -3.2f,
                 Item.Properties().setId(
@@ -225,9 +253,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_HOE = ITEMS.registerObject(
+    val PYRITE_HOE by ITEMS.register(
         "pyrite_hoe")
-        {
+        { ->
             HoeItem(
                 ModToolMaterials.PYRITE, 0f, -3.0f,
                 Item.Properties().setId(
@@ -239,9 +267,9 @@ object ModItems {
             )
         }
 
-    val SUSHI = ITEMS.registerObject(
+    val SUSHI by ITEMS.register(
         "sushi")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -253,9 +281,9 @@ object ModItems {
             )
         }
 
-    val GREEN_TEA = ITEMS.registerObject(
+    val GREEN_TEA by ITEMS.register(
         "green_tea")
-        {
+        { ->
             Drinks(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -267,9 +295,9 @@ object ModItems {
             )
         }
 
-    val DIESEL = ITEMS.registerObject(
+    val DIESEL by ITEMS.register(
         "diesel")
-        {
+        { ->
             FuelItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -281,9 +309,9 @@ object ModItems {
             )
         }
 
-    val UDON = ITEMS.registerObject(
+    val UDON by ITEMS.register(
         "udon")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -295,9 +323,9 @@ object ModItems {
             )
         }
 
-    val INCENSE = ITEMS.registerObject(
+    val INCENSE by ITEMS.register(
         "incense")
-        {
+        { ->
             FuelItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -309,9 +337,9 @@ object ModItems {
             )
         }
 
-    val YA = ITEMS.registerObject(
+    val YA by ITEMS.register(
         "ya")
-        {
+        { ->
             ArrowItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -322,23 +350,9 @@ object ModItems {
             )
         }
 
-    val WOODEN_KATANA = ITEMS.registerObject(
-        "wooden_katana")
-        {
-            Katana(
-                Item.Properties().setId(
-                    ResourceKey.create<Item?>(
-                        Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(MOD_ID, "wooden_katana")
-                    )
-                )
-                    .sword(ToolMaterial.WOOD, 3.0f, -2.4f), MobEffects()
-            )
-        }
-
-    val NEPHRITE_SWORD = ITEMS.registerObject(
+    val NEPHRITE_SWORD by ITEMS.register(
         "nephrite_sword")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -368,9 +382,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_PICKAXE = ITEMS.registerObject(
+    val NEPHRITE_PICKAXE by ITEMS.register(
         "nephrite_pickaxe")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -382,9 +396,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_SHOVEL = ITEMS.registerObject(
+    val NEPHRITE_SHOVEL by ITEMS.register(
         "nephrite_shovel")
-        {
+        { ->
             ShovelItem(
                 ModToolMaterials.NEPHRITE, 4.0f, -2.0f,
                 Item.Properties().setId(
@@ -396,9 +410,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_AXE = ITEMS.registerObject(
+    val NEPHRITE_AXE by ITEMS.register(
         "nephrite_axe")
-        {
+        { ->
             AxeItem(
                 ModToolMaterials.NEPHRITE, 11f, -2.9f,
                 Item.Properties().setId(
@@ -410,9 +424,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_HOE = ITEMS.registerObject(
+    val NEPHRITE_HOE by ITEMS.register(
         "nephrite_hoe")
-        {
+        { ->
             HoeItem(
                 ModToolMaterials.NEPHRITE, 1f, -3.0f,
                 Item.Properties().setId(
@@ -424,9 +438,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_HAMMER = ITEMS.registerObject(
+    val PYRITE_HAMMER by ITEMS.register(
         "pyrite_hammer")
-        {
+        { ->
             HammerItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -438,9 +452,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_HELMET = ITEMS.registerObject(
+    val PYRITE_HELMET by ITEMS.register(
         "pyrite_helmet")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -452,9 +466,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_CHESTPLATE = ITEMS.registerObject(
+    val PYRITE_CHESTPLATE by ITEMS.register(
         "pyrite_chestplate")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -466,9 +480,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_LEGGINGS = ITEMS.registerObject(
+    val PYRITE_LEGGINGS by ITEMS.register(
         "pyrite_leggings")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -480,9 +494,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_BOOTS = ITEMS.registerObject(
+    val PYRITE_BOOTS by ITEMS.register(
         "pyrite_boots")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -494,9 +508,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_HELMET = ITEMS.registerObject(
+    val NEPHRITE_HELMET by ITEMS.register(
         "nephrite_helmet")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -508,9 +522,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_CHESTPLATE = ITEMS.registerObject(
+    val NEPHRITE_CHESTPLATE by ITEMS.register(
         "nephrite_chestplate")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -522,9 +536,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_LEGGINGS = ITEMS.registerObject(
+    val NEPHRITE_LEGGINGS by ITEMS.register(
         "nephrite_leggings")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -536,9 +550,9 @@ object ModItems {
             )
         }
 
-    val NEPHRITE_BOOTS = ITEMS.registerObject(
+    val NEPHRITE_BOOTS by ITEMS.register(
         "nephrite_boots")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -550,9 +564,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_HORSE_ARMOR = ITEMS.registerObject(
+    val PYRITE_HORSE_ARMOR by ITEMS.register(
         "pyrite_horse_armor")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -564,11 +578,12 @@ object ModItems {
             )
         }
 
-    val KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE = ITEMS.registerObject(
+    val KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE by ITEMS.register(
         "koi_fish_armor_trim_smithing_template")
-        {
+        { ->
             SmithingTemplateItem.createArmorTrimTemplate(
-                Item.Properties().setId(
+                Item.Properties()
+                    .setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
                         ResourceLocation.fromNamespaceAndPath(
@@ -581,9 +596,9 @@ object ModItems {
             )
         }
 
-    val DAIKYU = ITEMS.registerObject(
+    val DAIKYU by ITEMS.register(
         "daikyu")
-        {
+        { ->
             BowItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -595,9 +610,9 @@ object ModItems {
             )
         }
 
-    val AO_TO_NATSU_MUSIC_DISC = ITEMS.registerObject(
+    val AO_TO_NATSU_MUSIC_DISC by ITEMS.register(
         "ao_to_natsu_music_disc")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -609,11 +624,11 @@ object ModItems {
             )
         }
 
-    val RICE_SEEDS = ITEMS.registerObject(
+    val RICE_SEEDS by ITEMS.register(
         "rice_seeds")
-        {
+        { ->
             BlockItem(
-                ModBlocks.RICE_CROP.get(), Item.Properties().useItemDescriptionPrefix()
+                ModBlocks.RICE_CROP, Item.Properties().useItemDescriptionPrefix()
                     .setId(
                         ResourceKey.create<Item?>(
                             Registries.ITEM,
@@ -623,9 +638,9 @@ object ModItems {
             )
         }
 
-    val RICE = ITEMS.registerObject(
+    val RICE by ITEMS.register(
         "rice")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -637,9 +652,9 @@ object ModItems {
             )
         }
 
-    val RAW_RICE = ITEMS.registerObject(
+    val RAW_RICE by ITEMS.register(
         "raw_rice")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -650,11 +665,11 @@ object ModItems {
             )
         }
 
-    val YAMAZAKI_BERRIES = ITEMS.registerObject(
+    val YAMAZAKI_BERRIES by ITEMS.register(
         "yamazaki_berries")
-        {
+        { ->
             BlockItem(
-                ModBlocks.YAMAZAKI_BERRY_BUSH.get(), Item.Properties().useItemDescriptionPrefix()
+                ModBlocks.YAMAZAKI_BERRY_BUSH, Item.Properties().useItemDescriptionPrefix()
                     .setId(
                         ResourceKey.create<Item?>(
                             Registries.ITEM,
@@ -665,9 +680,9 @@ object ModItems {
             )
         }
 
-    val SAMURAI_HELMET = ITEMS.registerObject(
+    val SAMURAI_HELMET by ITEMS.register(
         "samurai_helmet")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -679,9 +694,9 @@ object ModItems {
             )
         }
 
-    val SAMURAI_CHESTPLATE = ITEMS.registerObject(
+    val SAMURAI_CHESTPLATE by ITEMS.register(
         "samurai_chestplate")
-         {
+         { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -693,9 +708,9 @@ object ModItems {
             )
         }
 
-    val SAMURAI_LEGGINGS = ITEMS.registerObject(
+    val SAMURAI_LEGGINGS by ITEMS.register(
         "samurai_leggings")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -707,9 +722,9 @@ object ModItems {
             )
         }
 
-    val SAMURAI_BOOTS = ITEMS.registerObject(
+    val SAMURAI_BOOTS by ITEMS.register(
         "samurai_boots")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -721,11 +736,11 @@ object ModItems {
             )
         }
 
-    val TRICERATOPS_SPAWN_EGG = ITEMS.registerObject(
+    val TRICERATOPS_SPAWN_EGG by ITEMS.register(
         "triceratops_spawn_egg")
-        {
+        { ->
             SpawnEggItem(
-                ModEntities.TRICERATOPS!!.get(),
+                ModEntities.TRICERATOPS,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
@@ -735,11 +750,25 @@ object ModItems {
             )
         }
 
-    val SIKA_DEER_SPAWN_EGG = ITEMS.registerObject(
+    val CURSED_SAMURAI_SPAWN_EGG by ITEMS.register(
+        "cursed_samurai_spawn_egg")
+    { ->
+        SpawnEggItem(
+            ModEntities.CURSED_SAMURAI,
+            Item.Properties().setId(
+                ResourceKey.create(
+                    Registries.ITEM,
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "cursed_samurai_spawn_egg")
+                )
+            )
+        )
+    }
+
+    val SIKA_DEER_SPAWN_EGG by ITEMS.register(
         "sika_deer_spawn_egg")
-        {
+        { ->
             SpawnEggItem(
-                ModEntities.SIKA_DEER!!.get(),
+                ModEntities.SIKA_DEER,
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
                         Registries.ITEM,
@@ -749,9 +778,9 @@ object ModItems {
             )
         }
 
-    val PYRITE_BATTLE_AXE = ITEMS.registerObject(
+    val PYRITE_BATTLE_AXE by ITEMS.register(
         "pyrite_battle_axe")
-        {
+        { ->
             MaceItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -762,9 +791,9 @@ object ModItems {
             )
         }
 
-    val IRON_BATTLE_AXE = ITEMS.registerObject(
+    val IRON_BATTLE_AXE by ITEMS.register(
         "iron_battle_axe")
-        {
+        { ->
             IronBattleAxeItem(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -776,9 +805,9 @@ object ModItems {
             )
         }
 
-    val RADIATION_STAFF = ITEMS.registerObject(
+    val RADIATION_STAFF by ITEMS.register(
         "radiation_staff")
-        {
+        { ->
             Item(
                 Item.Properties().setId(
                     ResourceKey.create<Item?>(
@@ -790,7 +819,7 @@ object ModItems {
             )
         }
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         ITEMS.register(eventBus)
         logInfo("REGISTERING EVERY SINGLE ITEM IN MODITEMS")
     }

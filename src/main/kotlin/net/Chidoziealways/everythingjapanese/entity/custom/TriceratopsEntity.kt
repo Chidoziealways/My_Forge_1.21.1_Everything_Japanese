@@ -28,14 +28,13 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.ServerLevelAccessor
 import net.minecraft.world.level.storage.ValueInput
 import net.minecraft.world.level.storage.ValueOutput
-import java.util.function.Predicate
 
 class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Animal(pEntityType, pLevel) {
     val idleAnimationState: AnimationState = AnimationState()
     private var idleAnimationTimeout = 0
 
     private val bossEvent = ServerBossEvent(
-        Component.literal("私達のかっこいトリケラトプス(Our Cool Triceratops)"),
+        Component.literal("私たちのかっこいトリケラトプス(Our Cool Triceratops)"),
         BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.NOTCHED_20
     )
 
@@ -49,7 +48,7 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
             TemptGoal(
                 this,
                 1.25,
-                { stack: ItemStack? -> stack!!.`is`(ModItems.YAMAZAKI_BERRIES!!.get()) },
+                { stack: ItemStack? -> stack!!.`is`(ModItems.YAMAZAKI_BERRIES) },
                 false
             )
         )
@@ -62,11 +61,11 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
     }
 
     override fun isFood(pStack: ItemStack): Boolean {
-        return pStack.`is`(ModItems.YAMAZAKI_BERRIES!!.get())
+        return pStack.`is`(ModItems.YAMAZAKI_BERRIES)
     }
 
     override fun getBreedOffspring(pLevel: ServerLevel, pOtherParent: AgeableMob): AgeableMob? {
-        return ModEntities.TRICERATOPS!!.get().create(pLevel, EntitySpawnReason.BREEDING)
+        return ModEntities.TRICERATOPS.create(pLevel, EntitySpawnReason.BREEDING)
     }
 
     private fun setupAnimationStates() {
@@ -90,26 +89,26 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
     /*VARIANT*/
     override fun defineSynchedData(pBuilder: SynchedEntityData.Builder) {
         super.defineSynchedData(pBuilder)
-        pBuilder.define<Int?>(VARIANT, 0)
+        pBuilder.define(VARIANT, 0)
     }
 
     private val typeVariant: Int
-        get() = this.entityData.get<Int?>(VARIANT)
+        get() = this.entityData.get(VARIANT)
 
     var variant: TriceratopsVariant?
         get() = TriceratopsVariant.Companion.byId(this.typeVariant and 255)
         private set(variant) {
-            this.entityData.set<Int?>(VARIANT, variant!!.id and 255)
+            this.entityData.set(VARIANT, variant!!.id and 255)
         }
 
     public override fun addAdditionalSaveData(output: ValueOutput) {
         super.addAdditionalSaveData(output)
-        output.store<Int?>("Variant", Codec.INT, this.typeVariant)
+        output.store("Variant", Codec.INT, this.typeVariant)
     }
 
     public override fun readAdditionalSaveData(input: ValueInput) {
         super.readAdditionalSaveData(input)
-        this.entityData.set<Int?>(VARIANT, input.read<Int?>("Variant", Codec.INT).orElse(0))
+        this.entityData.set(VARIANT, input.read("Variant", Codec.INT).orElse(0))
     }
 
     override fun finalizeSpawn(
@@ -151,12 +150,12 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
 
     override fun aiStep() {
         super.aiStep()
-        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth())
+        this.bossEvent.setProgress(this.health / this.maxHealth)
     }
 
     companion object {
-        private val VARIANT: EntityDataAccessor<Int?> =
-            SynchedEntityData.defineId<Int?>(TriceratopsEntity::class.java, EntityDataSerializers.INT)
+        private val VARIANT: EntityDataAccessor<Int> =
+            SynchedEntityData.defineId(TriceratopsEntity::class.java, EntityDataSerializers.INT)
 
         fun createAttributes(): AttributeSupplier.Builder {
             return createLivingAttributes()

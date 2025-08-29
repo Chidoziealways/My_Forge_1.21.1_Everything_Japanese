@@ -2,9 +2,16 @@ package net.Chidoziealways.everythingjapanese.block
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese.logInfo
 import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.block.custom.ByoubuBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ChairBlock
+import net.Chidoziealways.everythingjapanese.block.custom.FusumaDoorBlock
+import net.Chidoziealways.everythingjapanese.block.custom.JapaneseCheesecakeBlock
+import net.Chidoziealways.everythingjapanese.block.custom.ShojiDoorBlock
+import net.Chidoziealways.everythingjapanese.block.custom.PaperWindowBlock
 import net.Chidoziealways.everythingjapanese.custom.GrowthChamberBlock
-import net.Chidoziealways.everythingjapanese.custom.HellPortalBlock
+import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
+import net.Chidoziealways.everythingjapanese.block.custom.TatamiMatBlock
+import net.Chidoziealways.everythingjapanese.block.custom.ZabutonBlock
 import net.Chidoziealways.everythingjapanese.custom.MagicBlock
 import net.Chidoziealways.everythingjapanese.custom.ModFlammableRotatedPillarBlock
 import net.Chidoziealways.everythingjapanese.custom.ModdedCakeBlock
@@ -12,6 +19,7 @@ import net.Chidoziealways.everythingjapanese.custom.PedestalBlock
 import net.Chidoziealways.everythingjapanese.custom.PyriteLampBlock
 import net.Chidoziealways.everythingjapanese.custom.RiceCropBlock
 import net.Chidoziealways.everythingjapanese.custom.YamazakiBerryBushBlock
+import net.Chidoziealways.everythingjapanese.fluids.ModFluids
 import net.Chidoziealways.everythingjapanese.item.ModItems
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
 import net.Chidoziealways.everythingjapanese.worldgen.tree.ModTreeGrowers
@@ -28,30 +36,27 @@ import net.minecraft.world.level.block.*
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockSetType
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument
 import net.minecraft.world.level.block.state.properties.WoodType
 import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.level.material.PushReaction
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
-import thedarkcolour.kotlinforforge.forge.ObjectHolderDelegate
-import thedarkcolour.kotlinforforge.forge.registerObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredBlock
+import net.neoforged.neoforge.registries.DeferredRegister
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
-import java.util.function.ToIntFunction
 
 object ModBlocks {
-    val BLOCKS: DeferredRegister<Block?> =
-        DeferredRegister.create<Block?>(ForgeRegistries.BLOCKS, MOD_ID)
+    val BLOCKS = DeferredRegister.createBlocks(MOD_ID)
 
     // Basic Blocks
-    val PYRITE_BLOCK = registerBlock<Block?>(
+    val PYRITE_BLOCK by registerBlock(
         "pyrite_block"
     ) {
         Block(
             BlockBehaviour.Properties.of()
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_block")
                     )
@@ -60,12 +65,12 @@ object ModBlocks {
         )
     }
 
-    val NEPHRITE_BLOCK = registerBlock<Block?>(
+    val NEPHRITE_BLOCK by registerBlock(
         "nephrite_block"
     ) {
         Block(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "nephrite_block")
                 )
@@ -75,12 +80,12 @@ object ModBlocks {
     }
 
 
-    val RAW_PYRITE_BLOCK = registerBlock<Block?>(
+    val RAW_PYRITE_BLOCK by registerBlock(
         "raw_pyrite_block"
     ) {
         Block(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "raw_pyrite_block")
                 )
@@ -89,14 +94,91 @@ object ModBlocks {
         )
     }
 
+    val WASHI_WINDOW by registerBlock(
+        "washi_window"
+    ) {
+        PaperWindowBlock(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.HAT)
+                .strength(0.15F)
+                .sound(SoundType.GLASS)
+                .noOcclusion()
+                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "washi_window")))
+        )
+    }
+
+    val WASHI_WINDOW_PANE by registerBlock(
+        "washi_window_pane"
+    ) {
+        IronBarsBlock(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.HAT)
+                .strength(0.13F)
+                .sound(SoundType.GLASS)
+                .noOcclusion()
+                .noLootTable()
+                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "washi_window_pane")))
+        )
+    }
+
+    val SHOJI_DOOR by registerBlock(
+        "shoji_door"
+    ) {
+        ShojiDoorBlock(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.HAT)
+                .sound(SoundType.GLASS)
+                .strength(0.2F)
+                .noOcclusion()
+                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "shoji_door")))
+        )
+    }
+
+    val BYOUBU by registerBlock(
+        "byoubu"
+    ) {
+        ByoubuBlock(
+            BlockBehaviour.Properties.of()
+                .noOcclusion()
+                .sound(SoundType.WOOL)
+                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "byoubu")))
+        )
+    }
+
+    val CHABUDAI by registerBlock(
+        "chabudai"
+    ) {
+        Block(BlockBehaviour.Properties.of()
+            .noOcclusion()
+            .instrument(NoteBlockInstrument.BASS)
+            .sound(SoundType.WOOD)
+            .strength(0.5F)
+            .setId(ResourceKey.create(
+                Registries.BLOCK,
+                ResourceLocation.fromNamespaceAndPath(MOD_ID, "chabudai")
+            )))
+    }
+
+    val FUSUMA_DOOR by registerBlock(
+        "fusuma_door"
+    ) {
+        FusumaDoorBlock(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.HAT)
+                .sound(SoundType.GLASS)
+                .strength(0.2F)
+                .noOcclusion()
+                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "fusuma_door")))
+        )
+    }
+
     // Ore Blocks
-    @JvmField
-    val PYRITE_ORE = registerBlock<Block?>(
+    val PYRITE_ORE by registerBlock(
         "pyrite_ore"
     ) {
         DropExperienceBlock(
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_ore")
                 )
             )
@@ -104,13 +186,12 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val PYRITE_DEEPSLATE_ORE = registerBlock<Block?>(
+    val PYRITE_DEEPSLATE_ORE by registerBlock(
         "pyrite_deepslate_ore"
     ) {
         DropExperienceBlock(
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_deepslate_ore")
                 )
@@ -119,13 +200,12 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val NEPHRITE_ORE = registerBlock<Block?>(
+    val NEPHRITE_ORE by registerBlock(
         "nephrite_ore"
     ) {
         DropExperienceBlock(
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "nephrite_ore")
                 )
@@ -134,13 +214,12 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val NEPHRITE_DEEPSLATE_ORE = registerBlock<Block?>(
+    val NEPHRITE_DEEPSLATE_ORE by registerBlock(
         "nephrite_deepslate_ore"
     ) {
         DropExperienceBlock(
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "nephrite_deepslate_ore")
                 )
@@ -150,13 +229,13 @@ object ModBlocks {
     }
 
     // Custom Blocks
-    val TRANSFORMER_BLOCK = registerBlock<Block?>(
+    val TRANSFORMER_BLOCK by registerBlock(
         "transformer_block"
     ) {
         MagicBlock(
             BlockBehaviour.Properties.of()
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "transformer_block")
                     )
@@ -165,12 +244,14 @@ object ModBlocks {
         )
     }
 
-    val CHOCOLATE_CAKE = registerBlock<Block?>(
+    val CHOCOLATE_CAKE by registerBlock(
         "chocolate_cake"
     ) {
         ModdedCakeBlock(
-            BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+            BlockBehaviour.Properties.of()
+                .sound(SoundType.WOOL)
+                .setId(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "chocolate_cake")
                 )
@@ -179,12 +260,14 @@ object ModBlocks {
         )
     }
 
-    val JAPANESE_CHEESECAKE = registerBlock<Block?>(
+    val JAPANESE_CHEESECAKE by registerBlock(
         "japanese_cheesecake"
     ) {
-        CakeBlock(
-            BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+        JapaneseCheesecakeBlock(
+            BlockBehaviour.Properties.of()
+                .sound(SoundType.WOOL)
+                .setId(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "japanese_cheesecake")
                 )
@@ -193,13 +276,12 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val PEDESTAL = registerBlock<Block?>(
+    val PEDESTAL by registerBlock(
         "pedestal"
     ) {
         PedestalBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pedestal")
                 )
@@ -208,13 +290,12 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val GROWTH_CHAMBER = registerBlock<Block?>(
+    val GROWTH_CHAMBER by registerBlock(
         "growth_chamber"
     ) {
         GrowthChamberBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "growth_chamber")
                 )
@@ -223,14 +304,14 @@ object ModBlocks {
     }
 
     //Food/Crop Blocks
-    val RICE_CROP = BLOCKS.register<Block?>(
+    val RICE_CROP by BLOCKS.register(
         "rice_crop",
         Supplier {
             RiceCropBlock(
                 BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
                     .setId(
-                        ResourceKey.create<Block?>(
+                        ResourceKey.create(
                             Registries.BLOCK,
                             ResourceLocation.fromNamespaceAndPath(MOD_ID, "rice_crop")
                         )
@@ -239,8 +320,7 @@ object ModBlocks {
             )
         })
 
-    @JvmField
-    val YAMAZAKI_BERRY_BUSH = BLOCKS.register<Block?>(
+    val YAMAZAKI_BERRY_BUSH by BLOCKS.register(
         "yamazaki_berry_bush",
         Supplier {
             YamazakiBerryBushBlock(
@@ -248,7 +328,7 @@ object ModBlocks {
                     .mapColor(MapColor.PLANT).randomTicks().noCollission().sound(SoundType.SWEET_BERRY_BUSH)
                     .pushReaction(PushReaction.DESTROY)
                     .setId(
-                        ResourceKey.create<Block?>(
+                        ResourceKey.create(
                             Registries.BLOCK,
                             ResourceLocation.fromNamespaceAndPath(MOD_ID, "yamazaki_berry_bush")
                         )
@@ -257,14 +337,13 @@ object ModBlocks {
         })
 
     // Hinoki Wood Blocks
-    @JvmField
-    val HINOKI_MARUTA = registerBlock<RotatedPillarBlock?>(
+    val HINOKI_MARUTA by registerBlock(
         "hinoki_maruta"
     ) {
         ModFlammableRotatedPillarBlock(
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hinoki_maruta")
                     )
@@ -272,13 +351,13 @@ object ModBlocks {
         )
     }
 
-    val HINOKI_MOKUZAI = registerBlock<RotatedPillarBlock?>(
+    val HINOKI_MOKUZAI by registerBlock(
         "hinoki_mokuzai"
     ) {
         ModFlammableRotatedPillarBlock(
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hinoki_mokuzai")
                     )
@@ -286,13 +365,13 @@ object ModBlocks {
         )
     }
 
-    val STRIPPED_HINOKI_MARUTA = registerBlock<RotatedPillarBlock?>(
+    val STRIPPED_HINOKI_MARUTA by registerBlock(
         "stripped_hinoki_maruta"
     ) {
         ModFlammableRotatedPillarBlock(
             BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "stripped_hinoki_maruta")
                     )
@@ -300,13 +379,13 @@ object ModBlocks {
         )
     }
 
-    val STRIPPED_HINOKI_MOKUZAI = registerBlock<RotatedPillarBlock?>(
+    val STRIPPED_HINOKI_MOKUZAI by registerBlock(
         "stripped_hinoki_mokuzai"
     ) {
         ModFlammableRotatedPillarBlock(
             BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "stripped_hinoki_mokuzai")
                     )
@@ -314,56 +393,54 @@ object ModBlocks {
         )
     }
 
-    val HINOKI_BAN = registerBlock<Block?>(
+    val HINOKI_BAN by registerBlock(
         "hinoki_ban"
     ) {
         object : Block(
             Properties.ofFullCopy(Blocks.OAK_PLANKS)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hinoki_ban")
                     )
                 )
         ) {
             override fun isFlammable(
-                state: BlockState?,
-                level: BlockGetter?,
-                pos: BlockPos?,
-                direction: Direction?
+                state: BlockState,
+                level: BlockGetter,
+                pos: BlockPos,
+                direction: Direction
             ): Boolean {
                 return true
             }
 
             override fun getFlammability(
-                state: BlockState?,
-                level: BlockGetter?,
-                pos: BlockPos?,
-                direction: Direction?
+                state: BlockState,
+                level: BlockGetter,
+                pos: BlockPos,
+                direction: Direction
             ): Int {
                 return 20
             }
 
             override fun getFireSpreadSpeed(
-                state: BlockState?,
-                level: BlockGetter?,
-                pos: BlockPos?,
-                direction: Direction?
+                state: BlockState,
+                level: BlockGetter,
+                pos: BlockPos,
+                direction: Direction
             ): Int {
                 return 5
             }
         }
     }
 
-
-    @JvmField
-    val HINOKI_HA = registerBlock<Block?>(
+    val HINOKI_HA by registerBlock(
         "hinoki_ha"
     ) {
         TintedParticleLeavesBlock(
             0.1f, leavesProperties(SoundType.GRASS)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hinoki_ha")
                     )
@@ -371,8 +448,7 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val HINOKI_NAEGI = registerBlock<Block?>(
+    val HINOKI_NAEGI by registerBlock(
         "hinoki_naegi"
     ) {
         SaplingBlock(
@@ -384,7 +460,7 @@ object ModBlocks {
                 .sound(SoundType.GRASS)
                 .pushReaction(PushReaction.DESTROY)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hinoki_naegi")
                     )
@@ -392,13 +468,13 @@ object ModBlocks {
         )
     }
 
-    val POTTED_HINOKI_NAEGI = registerBlock<Block?>(
+    val POTTED_HINOKI_NAEGI by registerBlock(
         "potted_hinoki_naegi"
     ) {
         FlowerPotBlock(
-            HINOKI_NAEGI.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)
+            HINOKI_NAEGI, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "hinoki_naegi")
                     )
@@ -408,13 +484,13 @@ object ModBlocks {
 
 
     // Pyrite Decor Blocks
-    val PYRITE_STAIRS = registerBlock<StairBlock?>(
+    val PYRITE_STAIRS by registerBlock(
         "pyrite_stairs"
     ) {
         StairBlock(
-            PYRITE_BLOCK.get()!!.defaultBlockState(), BlockBehaviour.Properties.of()
+            PYRITE_BLOCK.defaultBlockState(), BlockBehaviour.Properties.of()
                 .setId(
-                    ResourceKey.create<Block?>(
+                    ResourceKey.create(
                         Registries.BLOCK,
                         ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_stairs")
                     )
@@ -423,12 +499,12 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_SLAB = registerBlock<SlabBlock?>(
+    val PYRITE_SLAB by registerBlock(
         "pyrite_slab"
     ) {
         SlabBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_slab")
                 )
@@ -437,12 +513,12 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_PRESSURE_PLATE = registerBlock<PressurePlateBlock?>(
+    val PYRITE_PRESSURE_PLATE by registerBlock(
         "pyrite_pressure_plate"
     ) {
         PressurePlateBlock(
             BlockSetType.IRON, BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_pressure_plate")
                 )
@@ -451,12 +527,12 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_BUTTON = registerBlock<ButtonBlock?>(
+    val PYRITE_BUTTON by registerBlock(
         "pyrite_button"
     ) {
         ButtonBlock(
             BlockSetType.IRON, 30, BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_button")
                 )
@@ -465,12 +541,12 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_FENCE = registerBlock<FenceBlock?>(
+    val PYRITE_FENCE by registerBlock(
         "pyrite_fence"
     ) {
         FenceBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_fence")
                 )
@@ -479,13 +555,13 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_FENCE_GATE = registerBlock<FenceGateBlock?>(
+    val PYRITE_FENCE_GATE by registerBlock(
         "pyrite_fence_gate"
     ) {
         FenceGateBlock(
             WoodType.ACACIA,
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_fence_gate")
                 )
@@ -494,12 +570,12 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_WALL = registerBlock<WallBlock?>(
+    val PYRITE_WALL by registerBlock(
         "pyrite_wall"
     ) {
         WallBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_wall")
                 )
@@ -508,13 +584,13 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_DOOR = registerBlock<DoorBlock?>(
+    val PYRITE_DOOR by registerBlock(
         "pyrite_door"
     ) {
         DoorBlock(
             BlockSetType.IRON,
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_door")
                 )
@@ -523,12 +599,12 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_TRAPDOOR = registerBlock<TrapDoorBlock?>(
+    val PYRITE_TRAPDOOR by registerBlock(
         "pyrite_trapdoor"
     ) {
         TrapDoorBlock(
             BlockSetType.IRON, BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_trapdoor")
                 )
@@ -537,11 +613,11 @@ object ModBlocks {
         )
     }
 
-    val PYRITE_LAMP = registerBlock<Block?>(
+    val PYRITE_LAMP by registerBlock(
         "pyrite_lamp") {
         PyriteLampBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_lamp")
                 )
@@ -551,12 +627,11 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val CHAIR = registerBlock<Block?>(
-        "chair" ) {
+    val CHAIR by registerBlock(
+        "chair") {
         ChairBlock(
             BlockBehaviour.Properties.of().setId(
-                ResourceKey.create<Block?>(
+                ResourceKey.create(
                     Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "chair")
                 )
@@ -565,14 +640,64 @@ object ModBlocks {
         )
     }
 
-    @JvmField
-    val HELL_PORTAL: RegistryObject<Block?> = BLOCKS.register<Block?>(
+    val ZABUTON_BLUE by registerBlock(
+        "zabuton_blue") {
+        ZabutonBlock(
+            BlockBehaviour.Properties.of().setId(
+                ResourceKey.create(
+                    Registries.BLOCK,
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "zabuton_blue")
+                )
+            )
+                .noOcclusion()
+        )
+    }
+
+    val ZABUTON_GREEN by registerBlock(
+        "zabuton_green") {
+        ZabutonBlock(
+            BlockBehaviour.Properties.of().setId(
+                ResourceKey.create(
+                    Registries.BLOCK,
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "zabuton_green")
+                )
+            )
+                .noOcclusion()
+        )
+    }
+
+    val ZABUTON_RED by registerBlock(
+        "zabuton_red") {
+        ZabutonBlock(
+            BlockBehaviour.Properties.of().setId(
+                ResourceKey.create(
+                    Registries.BLOCK,
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "zabuton_red")
+                )
+            )
+                .noOcclusion()
+        )
+    }
+
+    val TATAMI_MAT by registerBlock(
+        "tatami_mat") {
+        TatamiMatBlock(
+            BlockBehaviour.Properties.of().noOcclusion().setId(
+                ResourceKey.create(
+                    Registries.BLOCK,
+                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "tatami_mat")
+                )
+            )
+        )
+    }
+
+    val HELL_PORTAL by BLOCKS.register(
         "hell_portal",
         Supplier {
             HellPortalBlock(
                 BlockBehaviour.Properties.of()
                     .setId(
-                        ResourceKey.create<Block?>(
+                        ResourceKey.create(
                             Registries.BLOCK,
                             ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_portal")
                         )
@@ -581,30 +706,45 @@ object ModBlocks {
                     .randomTicks()
                     .strength(-1.0f)
                     .sound(SoundType.GLASS)
-                    .lightLevel { p_50884_: BlockState? -> 11 }
+                    .lightLevel { p_50884_: BlockState -> 11 }
                     .pushReaction(PushReaction.BLOCK)
                     .noLootTable()
             )
         })
 
+    //FLUIDS
+    val BLOOD by BLOCKS.register("blood") { ->
+        object : LiquidBlock(ModFluids.BLOOD.get(), Properties.of()
+            .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "blood")))
+            .noCollission()
+            .replaceable()
+            .pushReaction(PushReaction.DESTROY)
+            .noLootTable()
+            .liquid()
+            .sound(SoundType.EMPTY)
+            .strength(100f)
+            .noLootTable()
+        ){}
+    }
+
 
     // Register Blocks
-    private fun <T : Block?> registerBlock(name: String, block: Function0<T>): ObjectHolderDelegate<T> {
-        val toReturn = BLOCKS.registerObject(name, block)
+    private fun <T : Block?> registerBlock(name: String, block: Function0<T>): DeferredBlock<T> {
+        val toReturn = BLOCKS.register(name, block)
         logInfo("Attempting to register block: $name")
         registerBlockItem(name, toReturn)
         return toReturn
     }
 
-    private fun <T : Block?> registerBlockItem(name: String, block: ObjectHolderDelegate<T>) {
+    private fun <T : Block?> registerBlockItem(name: String, block: DeferredBlock<T>) {
         logInfo("Registering BlockItem for: $name")
         //System.out.println(" Is Chocolate Cake Present? true or false? " + CHOCOLATE_CAKE.isPresent());
-        ModItems.ITEMS.registerObject(name) {
+        ModItems.ITEMS.register(name) { ->
             BlockItem(
                 block.get(), Item.Properties()
                     .useBlockDescriptionPrefix()
                     .setId(
-                        ResourceKey.create<Item?>(
+                        ResourceKey.create(
                             Registries.ITEM,
                             ResourceLocation.fromNamespaceAndPath(MOD_ID, name)
                         )
@@ -613,7 +753,7 @@ object ModBlocks {
         }
     }
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         BLOCKS.register(eventBus)
     }
 

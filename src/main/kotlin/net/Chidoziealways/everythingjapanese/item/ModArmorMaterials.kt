@@ -12,7 +12,7 @@ import java.util.function.Consumer
 object ModArmorMaterials {
     val PYRITE: ArmorMaterial = ArmorMaterial(
         1200,
-        Util.make<EnumMap<ArmorType, Int>>(
+        Util.make(
             EnumMap<ArmorType, Int>(ArmorType::class.java),
             Consumer { attribute: EnumMap<ArmorType, Int> ->
                 attribute.put(ArmorType.BOOTS, 1)
@@ -26,7 +26,7 @@ object ModArmorMaterials {
 
     val NEPHRITE: ArmorMaterial = ArmorMaterial(
         1000000,
-        Util.make<EnumMap<ArmorType, Int>>(
+        Util.make(
             EnumMap<ArmorType, Int>(ArmorType::class.java),
             Consumer { attribute: EnumMap<ArmorType, Int> ->
                 attribute.put(ArmorType.BOOTS, 5)

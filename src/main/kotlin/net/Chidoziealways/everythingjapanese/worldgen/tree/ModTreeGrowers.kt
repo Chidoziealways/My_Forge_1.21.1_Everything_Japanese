@@ -10,9 +10,9 @@ import java.util.*
 
 object ModTreeGrowers {
     val HINOKI: TreeGrower = TreeGrower(
-        MOD_ID + ":hinoki",
-        Optional.empty<ResourceKey<ConfiguredFeature<*, *>?>?>(),
-        Optional.of<ResourceKey<ConfiguredFeature<*, *>?>?>(ModConfiguredFeatures.HINOKI_KEY),
-        Optional.empty<ResourceKey<ConfiguredFeature<*, *>?>?>()
+        "$MOD_ID:hinoki",
+        Optional.empty(),
+        Optional.of(ModConfiguredFeatures.HINOKI_KEY),
+        Optional.empty()
     )
 }

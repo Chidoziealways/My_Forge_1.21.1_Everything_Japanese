@@ -1,11 +1,10 @@
 package net.Chidoziealways.everythingjapanese.quest
 
+import net.minecraft.client.player.LocalPlayer
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerPlayer
-import net.minecraftforge.common.capabilities.AutoRegisterCapability
 
-@AutoRegisterCapability
 interface IQuestCapability {
     fun getQuest(): Quest?
 
@@ -14,6 +13,7 @@ interface IQuestCapability {
     fun serializeNBT(): CompoundTag
 
     var currentQuestId: ResourceLocation?
+    var completedQuests: MutableSet<ResourceLocation>
 
     fun deserializeNBT(nbt: CompoundTag)
 
@@ -21,5 +21,9 @@ interface IQuestCapability {
 
     fun giveQuest(id: ResourceLocation, player: ServerPlayer): Boolean
 
+    fun giveQuest(id: ResourceLocation, player: LocalPlayer): Boolean
+
     fun finishQuest(id: ResourceLocation, player: ServerPlayer): Boolean
+
+    fun finishQuest(id: ResourceLocation, player: LocalPlayer): Boolean
 }

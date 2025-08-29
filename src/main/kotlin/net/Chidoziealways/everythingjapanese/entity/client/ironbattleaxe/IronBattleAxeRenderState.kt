@@ -2,10 +2,7 @@ package net.Chidoziealways.everythingjapanese.entity.client.ironbattleaxe
 
 import net.Chidoziealways.everythingjapanese.entity.custom.IronBattleAxeProjectileEntity
 import net.minecraft.client.renderer.entity.state.EntityRenderState
-import net.minecraftforge.api.distmarker.Dist
-import net.minecraftforge.api.distmarker.OnlyIn
 
-@OnlyIn(Dist.CLIENT)
 class IronBattleAxeRenderState : EntityRenderState() {
     var xRot: Float = 0f
     var yRot: Float = 0f

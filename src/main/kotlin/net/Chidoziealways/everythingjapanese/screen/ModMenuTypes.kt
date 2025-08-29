@@ -1,6 +1,5 @@
 package net.Chidoziealways.everythingjapanese.screen
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberMenu
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalMenu
@@ -8,43 +7,41 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.inventory.MenuType
-import net.minecraftforge.common.extensions.IForgeMenuType
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.network.IContainerFactory
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.RegistryObject
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension
+import net.neoforged.neoforge.registries.DeferredRegister
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object ModMenuTypes {
-    val MENUS: DeferredRegister<MenuType<*>?> =
-        DeferredRegister.create(Registries.MENU, MOD_ID)
+    val MENUS = DeferredRegister.create(Registries.MENU, MOD_ID)
 
-    val PEDESTAL_MENU: RegistryObject<MenuType<PedestalMenu?>?>? = MENUS.register<MenuType<PedestalMenu?>?>(
+    val PEDESTAL_MENU by MENUS.register(
         "pedestal_menu",
         Supplier {
-            IForgeMenuType.create<PedestalMenu?>(IContainerFactory { pContainerId: Int, inv: Inventory, extraData: FriendlyByteBuf ->
+            IMenuTypeExtension.create { pContainerId: Int, inv: Inventory, extraData: FriendlyByteBuf ->
                 PedestalMenu(
                     pContainerId,
                     inv,
                     extraData
                 )
-            })
+            }
         })
 
-    val GROWTH_CHAMBER_MENU: RegistryObject<MenuType<GrowthChamberMenu?>?>? =
-        MENUS.register<MenuType<GrowthChamberMenu?>?>(
+    val GROWTH_CHAMBER_MENU by
+        MENUS.register(
             "growth_chamber_menu",
             Supplier {
-                IForgeMenuType.create<GrowthChamberMenu?>(IContainerFactory { pContainerId: Int, inv: Inventory, extraData: FriendlyByteBuf ->
+                IMenuTypeExtension.create<GrowthChamberMenu?> { pContainerId: Int, inv: Inventory, extraData: FriendlyByteBuf ->
                     GrowthChamberMenu(
                         pContainerId,
                         inv,
                         extraData
                     )
-                })
+                }
             })
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         MENUS.register(eventBus)
     }
 }

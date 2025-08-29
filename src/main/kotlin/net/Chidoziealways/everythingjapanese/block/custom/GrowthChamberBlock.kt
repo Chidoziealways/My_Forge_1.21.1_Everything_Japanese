@@ -85,9 +85,9 @@ class GrowthChamberBlock(pProperties: BlockBehaviour.Properties) : BaseEntityBlo
         return if (pLevel.isClientSide) {
             null
         } else {
-            BaseEntityBlock.createTickerHelper(
+            BaseEntityBlock.createTickerHelper<GrowthChamberBlockEntity, T>(
                 pBlockEntityType,
-                ModBlockEntities.GROWTH_CHAMBER_BE!!.get()
+                ModBlockEntities.GROWTH_CHAMBER_BE
             ) { level, pos, state, blockEntity ->
                 (blockEntity as GrowthChamberBlockEntity).tick(level, pos, state)
             }

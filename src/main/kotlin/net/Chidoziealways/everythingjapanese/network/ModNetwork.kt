@@ -1,90 +1,80 @@
 package net.Chidoziealways.everythingjapanese.network
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.chakra.ChakraSyncPacket
 import net.Chidoziealways.everythingjapanese.chakra.IChakra
+import net.Chidoziealways.everythingjapanese.chakra.IncreaseChakraPacket
 import net.Chidoziealways.everythingjapanese.jutsu.CycleJutsuPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket
+import net.Chidoziealways.everythingjapanese.jutsu.JutsuSyncPacket
+import net.Chidoziealways.everythingjapanese.quest.packets.FinishQuestPacket
+import net.Chidoziealways.everythingjapanese.quest.packets.StartQuestPacket
+import net.Chidoziealways.everythingjapanese.quest.packets.UpdateStagePacket
+import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaDecreasePacket
+import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaIncreasePacket
 import net.minecraft.client.Minecraft
-import net.minecraft.network.RegistryFriendlyByteBuf
-import net.minecraft.resources.ResourceLocation
-import net.minecraftforge.common.util.NonNullConsumer
-import net.minecraftforge.event.network.CustomPayloadEvent
-import net.minecraftforge.network.Channel.VersionTest
-import net.minecraftforge.network.ChannelBuilder
-import net.minecraftforge.network.NetworkDirection
-import net.minecraftforge.network.SimpleChannel
-import java.util.function.BiConsumer
-import java.util.function.Function
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
+import thedarkcolour.kotlinforforge.common.KotlinMod
 
+@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
 object ModNetwork {
-    private const val PROTOCOL_VERSION = 1
+    @SubscribeEvent
+    fun registerPackets(event: RegisterPayloadHandlersEvent) {
+        val registrar = event.registrar("1.0.0")
 
-    val CHANNEL: SimpleChannel = ChannelBuilder
-        .named(ResourceLocation.fromNamespaceAndPath(MOD_ID, "network"))
-        .clientAcceptedVersions(VersionTest { status: VersionTest.Status?, version: Int -> true })
-        .serverAcceptedVersions(VersionTest { status: VersionTest.Status?, version: Int -> true })
-        .networkProtocolVersion(PROTOCOL_VERSION)
-        .simpleChannel()
-
-    fun registerPackets() {
-        var id = 0
-
-        CHANNEL.messageBuilder<ChakraSyncPacket?, RegistryFriendlyByteBuf?>(
-            ChakraSyncPacket::class.java,
-            id++,
-            NetworkDirection.PLAY_TO_CLIENT
-        )
-            .encoder(BiConsumer { obj: ChakraSyncPacket?, msg: RegistryFriendlyByteBuf? ->
-                ChakraSyncPacket.Companion.encode(
-                    obj,
-                    msg
-                )
-            })
-            .decoder(Function { obj: RegistryFriendlyByteBuf? -> ChakraSyncPacket.Companion.decode(obj) })
-            .consumer(BiConsumer { chakraSyncPacket: ChakraSyncPacket?, context: CustomPayloadEvent.Context? ->
-                context!!.enqueueWork(Runnable {
-                    val mc = Minecraft.getInstance()
-                    checkNotNull(mc.player)
-                    mc.player!!.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY!!)
-                        .ifPresent(NonNullConsumer { iChakra: IChakra? ->
-                            iChakra!!.chakra = chakraSyncPacket!!.chakra
-                        })
-                })
-                context.setPacketHandled(true)
-            })
-            .add()
-
-        CHANNEL.messageBuilder<JutsuCastPacket?, RegistryFriendlyByteBuf?>(
-            JutsuCastPacket::class.java,
-            id++,
-            NetworkDirection.PLAY_TO_SERVER
-        )
-            .encoder { obj: JutsuCastPacket?, buf: RegistryFriendlyByteBuf? -> obj!!.encode(buf) }
-            .decoder { obj: RegistryFriendlyByteBuf? -> JutsuCastPacket.Companion.decode(obj) }
-            .consumer { obj: JutsuCastPacket?, packet: CustomPayloadEvent.Context? ->
-                JutsuCastPacket.Companion.handle(
-                    obj,
-                    packet
-                )
+        registrar.playToClient(ChakraSyncPacket.TYPE, ChakraSyncPacket.CODEC) { message, context ->
+            context.enqueueWork {
+                checkNotNull(Minecraft.getInstance().player)
+                val chakra = Minecraft.getInstance().player!!.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+                chakra!!.setCurrentChakra(message.chakra)
+                chakra.setMaxChakra(message.maxChakra)
             }
-            .add()
+        }
 
-        CHANNEL.messageBuilder<CycleJutsuPacket?, RegistryFriendlyByteBuf?>(
-            CycleJutsuPacket::class.java,
-            id++,
-            NetworkDirection.PLAY_TO_SERVER
-        )
-            .encoder(BiConsumer { obj: CycleJutsuPacket?, buf: RegistryFriendlyByteBuf? -> obj!!.encode(buf) })
-            .decoder(Function { obj: RegistryFriendlyByteBuf? -> CycleJutsuPacket.Companion.decode(obj) })
-            .consumer(BiConsumer { obj: CycleJutsuPacket?, msg: CustomPayloadEvent.Context? ->
-                CycleJutsuPacket.Companion.handle(
-                    obj,
-                    msg
-                )
-            })
-            .add()
+        registrar.playToServer(JutsuCastPacket.TYPE, JutsuCastPacket.STREAM_CODEC) { message, context ->
+            context.enqueueWork { JutsuCastPacket.handle(message, context) }
+        }
+
+        registrar.playToClient(StartQuestPacket.TYPE, StartQuestPacket.CODEC) { message, context ->
+            context.enqueueWork {
+                StartQuestPacket.handle(message, context)
+            }
+        }
+
+        registrar.playToClient(FinishQuestPacket.TYPE, FinishQuestPacket.CODEC) { message, context ->
+            context.enqueueWork {
+                FinishQuestPacket.handle(message, context)
+            }
+        }
+
+        registrar.playToClient(JutsuSyncPacket.TYPE, JutsuSyncPacket.CODEC) { message, context ->
+            context.enqueueWork {
+                JutsuSyncPacket.handle(message, context)
+            }
+        }
+
+        registrar.playToClient(UpdateStagePacket.TYPE, UpdateStagePacket.CODEC) { message, context ->
+            context.enqueueWork {
+                UpdateStagePacket.handle(message, context)
+            }
+        }
+
+        registrar.playToServer(CycleJutsuPacket.TYPE, CycleJutsuPacket.CODEC) { message, context ->
+            context.enqueueWork {
+                CycleJutsuPacket.handle(message, context)
+            }
+        }
+
+        registrar.playToServer(IncreaseChakraPacket.TYPE, IncreaseChakraPacket.CODEC) { message, context -> context.enqueueWork {
+                IncreaseChakraPacket.handle(message, context) }
+        }
+
+        registrar.playToClient(StaminaIncreasePacket.TYPE, StaminaIncreasePacket.CODEC) { message, context -> context.enqueueWork {
+            StaminaIncreasePacket.handle(message, context)
+        } }
+
+        registrar.playToClient(StaminaDecreasePacket.TYPE, StaminaDecreasePacket.CODEC, StaminaDecreasePacket::handle)
     }
 }

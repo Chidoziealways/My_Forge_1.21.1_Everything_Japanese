@@ -1,4 +1,4 @@
-import net.Chidoziealways.everythingjapanese.chakra.ChakraHUDOverlay.renderChakraBar
+/*import net.Chidoziealways.everythingjapanese.chakra.ChakraHUDOverlay.renderChakraBar
 import net.minecraft.client.gui.Gui
 import org.spongepowered.asm.mixin.Shadow
 import org.spongepowered.asm.mixin.Final
@@ -233,3 +233,4 @@ import net.minecraft.data.worldgen.placement.PlacementUtils
 import net.minecraftforge.common.ForgeConfigSpec
 import net.minecraftforge.fml.event.config.ModConfigEvent
 
+*/

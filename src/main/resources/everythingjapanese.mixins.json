@@ -6,7 +6,8 @@
   },
   "minVersion": "0.8",
   "mixins": [
-    "GuiMixin"
+    "BaseFireBlockMixin",
+    "ModDataFixers"
   ],
   "package": "net.Chidoziealways.everythingjapanese.mixins",
   "refmap": "everythingjapanese.refmap.json",

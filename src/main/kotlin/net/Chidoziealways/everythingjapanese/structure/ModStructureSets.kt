@@ -15,14 +15,24 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType
 object ModStructureSets {
     var HELL_TEMPLE: ResourceKey<StructureSet?> = register("hell_temple")
 
-    fun bootstrap(context: BootstrapContext<StructureSet?>) {
-        val holdergetter = context.lookup<Structure?>(Registries.STRUCTURE)
-        val holdergetter1 = context.lookup<Biome?>(Registries.BIOME)
+    var DOJO: ResourceKey<StructureSet?> = register("dojo")
+
+    fun bootstrap(context: BootstrapContext<StructureSet>) {
+        val holdergetter = context.lookup(Registries.STRUCTURE)
+        val holdergetter1 = context.lookup(Registries.BIOME)
 
         context.register(
             HELL_TEMPLE,
             StructureSet(
                 holdergetter.getOrThrow(ModStructures.HELL_TEMPLE),
+                RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 20083232)
+            )
+        )
+
+        context.register(
+            DOJO,
+            StructureSet(
+                holdergetter.getOrThrow(ModStructures.DOJO),
                 RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 20083232)
             )
         )

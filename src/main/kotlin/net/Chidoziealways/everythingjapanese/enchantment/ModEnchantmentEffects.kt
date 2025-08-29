@@ -1,27 +1,20 @@
 package net.Chidoziealways.everythingjapanese.enchantment
 
-import com.mojang.serialization.MapCodec
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.enchantment.custom.LightningStrikerEnchantmentEffect
 import net.minecraft.core.registries.Registries
-import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.RegistryObject
-import thedarkcolour.kotlinforforge.forge.registerObject
-import java.util.function.Supplier
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
+import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
 object ModEnchantmentEffects {
-    val ENTITY_ENCHANTMENT_EFFECT: DeferredRegister<MapCodec<out EnchantmentEntityEffect?>?> =
-        DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, MOD_ID)
+    val ENTITY_ENCHANTMENT_EFFECT = DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, MOD_ID)
 
-    val LIGHTNING_STRIKER =
-        ENTITY_ENCHANTMENT_EFFECT.registerObject(
+    val LIGHTNING_STRIKER by ENTITY_ENCHANTMENT_EFFECT.register(
             "lightning_striker")
-            { LightningStrikerEnchantmentEffect.Companion.CODEC }
+            { -> LightningStrikerEnchantmentEffect.Companion.CODEC }
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         ENTITY_ENCHANTMENT_EFFECT.register(eventBus)
     }
 }

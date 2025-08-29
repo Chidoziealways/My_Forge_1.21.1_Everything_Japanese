@@ -51,7 +51,7 @@ class JutsuParser(registries: HolderLookup.Provider) {
         registries.listRegistryKeys()
             .forEach { resourceKey: ResourceKey<out Registry<*>?>? -> log.info(marker, "Registry: {}", resourceKey) }
 
-        this.jutsus = registries.lookupOrThrow<Jutsu?>(ModRegistries.JUTSU)
+        this.jutsus = registries.lookupOrThrow<Jutsu?>(ModRegistries.JUTSU_KEY)
         this.registryOps = registries.createSerializationContext<Tag?>(NbtOps.INSTANCE)
         this.tagParser = TagParser.create<Tag?>(this.registryOps)
     }
@@ -130,7 +130,7 @@ class JutsuParser(registries: HolderLookup.Provider) {
             val i = this.reader.getCursor()
             val resourcelocation = ResourceLocation.read(this.reader)
             this.visitor.visitJutsu(
-                this@JutsuParser.jutsus.get(ResourceKey.create<Jutsu?>(ModRegistries.JUTSU, resourcelocation))
+                this@JutsuParser.jutsus.get(ResourceKey.create<Jutsu?>(ModRegistries.JUTSU_KEY, resourcelocation))
                     .orElseThrow<CommandSyntaxException?>(
                         Supplier {
                             this.reader.setCursor(i)

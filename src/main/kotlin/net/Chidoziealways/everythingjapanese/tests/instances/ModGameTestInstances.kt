@@ -13,16 +13,16 @@ import net.minecraft.resources.ResourceLocation
 import java.util.function.Consumer
 
 object ModGameTestInstances {
-    val POWDER_SNOW: ResourceKey<GameTestInstance?> = create("powdersnow")
+    val POWDER_SNOW: ResourceKey<GameTestInstance> = create("powdersnow")
 
-    fun bootstrap(pContext: BootstrapContext<GameTestInstance?>) {
-        val holdergetter = pContext.lookup<Consumer<GameTestHelper?>?>(Registries.TEST_FUNCTION)
-        val holdergetter1 = pContext.lookup<TestEnvironmentDefinition?>(Registries.TEST_ENVIRONMENT)
+    fun bootstrap(pContext: BootstrapContext<GameTestInstance>) {
+        val holdergetter = pContext.lookup(Registries.TEST_FUNCTION)
+        val holdergetter1 = pContext.lookup(Registries.TEST_ENVIRONMENT)
         pContext.register(
             POWDER_SNOW,
             FunctionGameTestInstance(
-                ModGameTests.POWDER_SNOW!!.registryObject.getKey(),
-                TestData<Holder<TestEnvironmentDefinition?>?>(
+                ModGameTests.POWDER_SNOW.key,
+                TestData(
                     holdergetter1.getOrThrow(ModGameTestEnvironments.POWDER_SNOW),
                     ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdersnow"),
                     200,
@@ -33,8 +33,8 @@ object ModGameTestInstances {
         )
     }
 
-    private fun create(pKey: String): ResourceKey<GameTestInstance?> {
-        return ResourceKey.create<GameTestInstance?>(
+    private fun create(pKey: String): ResourceKey<GameTestInstance> {
+        return ResourceKey.create(
             Registries.TEST_INSTANCE,
             ResourceLocation.fromNamespaceAndPath(MOD_ID, pKey)
         )

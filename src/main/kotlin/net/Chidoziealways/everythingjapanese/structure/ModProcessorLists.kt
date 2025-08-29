@@ -13,27 +13,27 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.levelgen.structure.templatesystem.*
 
 object ModProcessorLists {
-    private val EMPTY: ResourceKey<StructureProcessorList?> = createKey("empty")
-    val HELL_TEMPLE_START_DEGRADATION: ResourceKey<StructureProcessorList?> = createKey("hell_temple_start_degradation")
-    val HELL_TEMPLE_COURT_DEGRADATION: ResourceKey<StructureProcessorList?> = createKey("hell_temple_court_degradation")
+    private val EMPTY: ResourceKey<StructureProcessorList> = createKey("empty")
+    val HELL_TEMPLE_START_DEGRADATION: ResourceKey<StructureProcessorList> = createKey("hell_temple_start_degradation")
+    val HELL_TEMPLE_COURT_DEGRADATION: ResourceKey<StructureProcessorList> = createKey("hell_temple_court_degradation")
 
-    private fun createKey(pName: String): ResourceKey<StructureProcessorList?> {
-        return ResourceKey.create<StructureProcessorList?>(
+    private fun createKey(pName: String): ResourceKey<StructureProcessorList> {
+        return ResourceKey.create(
             Registries.PROCESSOR_LIST,
             ResourceLocation.fromNamespaceAndPath(MOD_ID, pName)
         )
     }
 
     private fun register(
-        pContext: BootstrapContext<StructureProcessorList?>,
-        pKey: ResourceKey<StructureProcessorList?>,
-        pProcessors: MutableList<StructureProcessor?>
+        pContext: BootstrapContext<StructureProcessorList>,
+        pKey: ResourceKey<StructureProcessorList>,
+        pProcessors: MutableList<StructureProcessor>
     ) {
         pContext.register(pKey, StructureProcessorList(pProcessors))
     }
 
-    fun bootstrap(pContext: BootstrapContext<StructureProcessorList?>) {
-        val holdergetter = pContext.lookup<Block?>(Registries.BLOCK)
+    fun bootstrap(pContext: BootstrapContext<StructureProcessorList>) {
+        val holdergetter = pContext.lookup(Registries.BLOCK)
         val processorrule = ProcessorRule(
             RandomBlockMatchTest(Blocks.BLACKSTONE, 0.01f),
             AlwaysTrueTest.INSTANCE,
@@ -44,14 +44,14 @@ object ModProcessorLists {
             AlwaysTrueTest.INSTANCE,
             Blocks.BLACKSTONE.defaultBlockState()
         )
-        register(pContext, EMPTY, ImmutableList.of<StructureProcessor?>())
+        register(pContext, EMPTY, ImmutableList.of<StructureProcessor>())
 
         register(
             pContext,
             HELL_TEMPLE_COURT_DEGRADATION,
-            ImmutableList.of<StructureProcessor?>(
+            ImmutableList.of<StructureProcessor>(
                 RuleProcessor(
-                    ImmutableList.of<ProcessorRule?>( // ⚒️ Cracked Deepslate Tiles (30% chance)
+                    ImmutableList.of( // ⚒️ Cracked Deepslate Tiles (30% chance)
                         ProcessorRule(
                             RandomBlockMatchTest(Blocks.DEEPSLATE_TILES, 0.3f),
                             AlwaysTrueTest.INSTANCE,
@@ -91,9 +91,9 @@ object ModProcessorLists {
         register(
             pContext,
             HELL_TEMPLE_START_DEGRADATION,
-            ImmutableList.of<StructureProcessor?>(
+            ImmutableList.of(
                 RuleProcessor(
-                    ImmutableList.of<ProcessorRule?>(
+                    ImmutableList.of(
                         ProcessorRule(
                             RandomBlockMatchTest(Blocks.DEEPSLATE_BRICKS, 0.3f),
                             AlwaysTrueTest.INSTANCE,

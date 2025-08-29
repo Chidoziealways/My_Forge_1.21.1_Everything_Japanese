@@ -1,27 +1,20 @@
 package net.Chidoziealways.everythingjapanese.effect
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
 import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.effect.MobEffect
 import net.minecraft.world.effect.MobEffectCategory
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
-import net.minecraftforge.eventbus.api.bus.BusGroup
-import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
-import thedarkcolour.kotlinforforge.forge.registerObject
-import java.util.function.Supplier
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.neoforge.registries.DeferredRegister
 
 object ModEffects {
-    val MOB_EFFECTS: DeferredRegister<MobEffect?> =
-        DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MOD_ID)
+    val MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MOD_ID)
 
-    @JvmField
-    val ADRENALINE_EFFECT = MOB_EFFECTS.registerObject(
+    val ADRENALINE_EFFECT = MOB_EFFECTS.register(
         "adrenaline")
-        {
+        { ->
             AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x36ebab)
                 .addAttributeModifier(
                     Attributes.MOVEMENT_SPEED,
@@ -44,7 +37,7 @@ object ModEffects {
         }
 
 
-    fun register(eventBus: BusGroup?) {
+    fun register(eventBus: IEventBus) {
         MOB_EFFECTS.register(eventBus)
     }
 }

@@ -1,35 +1,37 @@
 package net.Chidoziealways.everythingjapanese
 
+import com.mojang.datafixers.DSL
+import com.mojang.datafixers.DataFixer
+import net.Chidoziealways.everythingjapanese.attachments.ModAttachments
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.FusumaDoorRenderer
 import net.Chidoziealways.everythingjapanese.block.entity.renderer.PedestalBlockEntityRenderer
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.ShojiDoorRenderer
 import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
 import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
-import net.Chidoziealways.everythingjapanese.chakra.ChakraRegenerationHandler
 import net.Chidoziealways.everythingjapanese.commands.ModArgumentTypes
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
-import net.Chidoziealways.everythingjapanese.datagen.DataGenerators
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantmentEffects
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.entity.client.chair.ChairRenderer
+import net.Chidoziealways.everythingjapanese.entity.client.chiretsusho.ChiretsuShoProjectileRenderer
+import net.Chidoziealways.everythingjapanese.entity.client.cursed_samurai.CursedSamuraiRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.ironbattleaxe.IronBattleAxeProjectileRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.sikadeer.SikaDeerRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.triceratops.TriceratopsRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.ya.YaRenderer
-import net.Chidoziealways.everythingjapanese.entity.custom.*
-import net.Chidoziealways.everythingjapanese.event.ModRegistryEvents
+import net.Chidoziealways.everythingjapanese.fluids.ModFluidTypes
+import net.Chidoziealways.everythingjapanese.fluids.ModFluids
 import net.Chidoziealways.everythingjapanese.item.ModCreativeModeTabs
 import net.Chidoziealways.everythingjapanese.item.ModItems
 import net.Chidoziealways.everythingjapanese.jutsu.ModJutsus
 import net.Chidoziealways.everythingjapanese.loot.ModLootModifiers
-import net.Chidoziealways.everythingjapanese.network.ModNetwork
 import net.Chidoziealways.everythingjapanese.particle.ModParticles
 import net.Chidoziealways.everythingjapanese.particle.PyriteParticles
 import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes
 import net.Chidoziealways.everythingjapanese.potion.ModPotions
-import net.Chidoziealways.everythingjapanese.quest.Quest
 import net.Chidoziealways.everythingjapanese.quest.QuestConditionRegistry
-import net.Chidoziealways.everythingjapanese.quest.QuestStageProgressionHandler
 import net.Chidoziealways.everythingjapanese.quest.conditions.CollectItemCondition
 import net.Chidoziealways.everythingjapanese.quest.conditions.KillEntityCondition
 import net.Chidoziealways.everythingjapanese.quest.conditions.LocatePlaceCondition
@@ -38,61 +40,54 @@ import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalScreen
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
-import net.Chidoziealways.everythingjapanese.structure.ModStructuresR
 import net.Chidoziealways.everythingjapanese.tests.ModGameTests
-import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers
-import net.minecraft.client.gui.screens.MenuScreens
-import net.minecraft.client.particle.ParticleEngine.SpriteParticleRegistration
+import net.minecraft.client.Minecraft
 import net.minecraft.client.particle.SpriteSet
 import net.minecraft.client.renderer.ItemBlockRenderTypes
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.EntityRenderers
-import net.minecraft.core.Cloner
+import net.minecraft.core.BlockPos
 import net.minecraft.core.Holder
 import net.minecraft.core.RegistryAccess
-import net.minecraft.core.particles.SimpleParticleType
 import net.minecraft.core.registries.Registries
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.MinecraftServer
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
+import net.minecraft.world.level.BlockAndTintGetter
 import net.minecraft.world.level.block.ComposterBlock
-import net.minecraftforge.api.distmarker.Dist
-import net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent
-import net.minecraftforge.data.event.GatherDataEvent
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
-import net.minecraftforge.event.TickEvent.ServerTickEvent
-import net.minecraftforge.event.entity.living.LivingDeathEvent
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent
-import net.minecraftforge.event.server.ServerStartedEvent
-import net.minecraftforge.event.server.ServerStartingEvent
-import net.minecraftforge.eventbus.api.listener.SubscribeEvent
-import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
-import net.minecraftforge.fml.config.ModConfig
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
-import net.minecraftforge.registries.NewRegistryEvent
-import net.minecraftforge.registries.RegisterEvent
+import net.minecraft.world.level.material.FluidState
+import net.neoforged.api.distmarker.Dist
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.fml.config.ModConfig
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
+import net.neoforged.neoforge.client.NeoForgeRenderTypes
+import net.neoforged.neoforge.client.event.EntityRenderersEvent
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
+import net.neoforged.neoforge.client.event.RegisterNamedRenderTypesEvent
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent
+import net.neoforged.neoforge.registries.RegisterEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.apache.logging.log4j.Marker
 import org.apache.logging.log4j.MarkerManager
 import org.spongepowered.asm.launch.MixinBootstrap
-import thedarkcolour.common.KotlinBus
-import thedarkcolour.common.KotlinMod
-import thedarkcolour.kotlinforforge.KotlinModLoadingContext
-import thedarkcolour.kotlinforforge.forge.LOADING_CONTEXT
-import thedarkcolour.kotlinforforge.forge.MOD_BUS
-import java.lang.invoke.MethodHandles
+import thedarkcolour.kotlinforforge.common.KotlinMod
+import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
+import thedarkcolour.kotlinforforge.neoforge.forge.MOD_CONTEXT
 import java.util.function.Consumer
 
-// The value here should match an entry in the META-INF/mods.toml file
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
 const val MOD_ID: String = "everythingjapanese"
+lateinit var DATAFIXER: DataFixer
+val EVERYTHING_JAPANESE_CAPABILITY = DSL.TypeReference { "capability" }
 private var LOGGER: Logger? = null
 private var EVERYTHINGJAPANESE: Marker? = null
 @KotlinMod(MOD_ID)
@@ -101,8 +96,7 @@ object EverythingJapanese {
         LOGGER = LogManager.getLogger(EverythingJapanese::class.java)
         EVERYTHINGJAPANESE = MarkerManager.getMarker("EVERYTHINGJAPANESE")
 
-        // Register ourselves for server and other game events we are interested in
-        MOD_BUS.register(MethodHandles.lookup(), this)
+        MOD_BUS.register(this)
         MixinBootstrap.init()
         ModPoiTypes.register(MOD_BUS)
         ModGameTests.register(MOD_BUS)
@@ -150,34 +144,20 @@ object EverythingJapanese {
         ModRecipes.register(MOD_BUS)
         logDebug("Registering Recipes")
 
+        ModFluidTypes.register(MOD_BUS)
+        ModFluids.register(MOD_BUS)
+        ModAttachments.register(MOD_BUS)
+
         logDebug("Hello")
 
         ModArgumentTypes.register(MOD_BUS)
-        ModStructuresR.register(MOD_BUS)
 
         //ModTerrablender.registerBiomes();
 
         // Register the commonSetup method for mod-loading
 
-        ServerTickEvent.Post.BUS.addListener { event: ServerTickEvent.Post ->
-            ChakraRegenerationHandler.onServerTick(
-                event
-            )
-        }
-
-        ServerTickEvent.Post.BUS.addListener { event: ServerTickEvent.Post ->
-            QuestStageProgressionHandler.onServerTick(
-                event
-            )
-        }
-
-        LivingDeathEvent.BUS.addListener(KillEntityCondition::onEntityKilled)
-
-        EntityItemPickupEvent.BUS.addListener(CollectItemCondition::onItemPickup)
-
-
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        LOADING_CONTEXT.registerConfig(ModConfig.Type.COMMON, Config.SPEC)
+        MOD_CONTEXT.container.registerConfig(ModConfig.Type.COMMON, Config.SPEC)
     }
 
     fun registerQuestConditions() {
@@ -188,11 +168,9 @@ object EverythingJapanese {
 
     @SubscribeEvent
     private fun commonSetup(event: FMLCommonSetupEvent) {
-        ModJutsus.buildLookup()
-        ModNetwork.registerPackets()
         event.enqueueWork {
-            ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS!!.get(), 0.6f)
-            ComposterBlock.COMPOSTABLES.put(ModItems.RAW_RICE!!.get(), 0.85f)
+            ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS!!, 0.6f)
+            ComposterBlock.COMPOSTABLES.put(ModItems.RAW_RICE!!, 0.85f)
             registerQuestConditions()
         }
     }
@@ -213,69 +191,101 @@ object EverythingJapanese {
         }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    fun onServerStarting(event: ServerStartingEvent?) {
-        logInfo("The Server is Starting")
-    }
-
-    @SubscribeEvent
-    fun onServerStarted(event: ServerStartedEvent) {
-        debugTagContent(event.getServer())
-    }
-
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, bus = KotlinBus.MOD, value = [Dist.CLIENT])
+    @KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, value = [Dist.CLIENT])
     object ClientModEvents {
-        @JvmStatic
+        @SubscribeEvent
+        fun onRegisterRender(event: RegisterNamedRenderTypesEvent) {
+            event.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "washi_window"),
+                ChunkSectionLayer.TRANSLUCENT,
+                NeoForgeRenderTypes.ITEM_LAYERED_TRANSLUCENT.get()
+            )
+        }
+
+        @SubscribeEvent
+        fun onRegisterClientExtensions(event: RegisterClientExtensionsEvent) {
+            event.registerFluidType(object : IClientFluidTypeExtensions {
+                val BLOOD_STILL = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/blood_still")
+                val BLOOD_FLOW = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/blood_flow")
+                val BLOOD_OVERLAY = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/blood_overlay")
+
+                override fun getStillTexture(): ResourceLocation = BLOOD_STILL
+
+                override fun getFlowingTexture(): ResourceLocation = BLOOD_FLOW
+
+                override fun getOverlayTexture(): ResourceLocation? = BLOOD_OVERLAY
+
+                override fun getRenderOverlayTexture(mc: Minecraft): ResourceLocation? {
+                    return ResourceLocation.withDefaultNamespace("textures/misc/underwater.png")
+                }
+
+                override fun getTintColor(): Int = 0xFFFF0000.toInt()
+
+                override fun getTintColor(state: FluidState, getter: BlockAndTintGetter, pos: BlockPos): Int = 0xFFFF0000.toInt()
+
+            }, ModFluidTypes.BLOOD_TYPE)
+        }
+
+        @SubscribeEvent
+        fun onRegisterMenuScreens(event: RegisterMenuScreensEvent) {
+            event.register(
+                ModMenuTypes.PEDESTAL_MENU
+            ) { menu, inventory, title ->
+                PedestalScreen(menu, inventory, title)
+            }
+
+            event.register(
+                ModMenuTypes.GROWTH_CHAMBER_MENU
+            ) { menu, inventory, title ->
+                GrowthChamberScreen(menu, inventory, title)
+            }
+        }
+
+        
         @SubscribeEvent
         fun onClientSetup(event: FMLClientSetupEvent?) {
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HINOKI_NAEGI.get(), ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.YAMAZAKI_BERRY_BUSH.get(), ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_DOOR.get(), ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_TRAPDOOR.get(), ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HINOKI_NAEGI, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.YAMAZAKI_BERRY_BUSH, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_DOOR, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_TRAPDOOR, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WASHI_WINDOW, ChunkSectionLayer.TRANSLUCENT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WASHI_WINDOW_PANE, ChunkSectionLayer.TRANSLUCENT)
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHOJI_DOOR, ChunkSectionLayer.TRANSLUCENT)
 
             EntityRenderers.register(
-                ModEntities.TRICERATOPS!!.get()
+                ModEntities.TRICERATOPS
             ) { pContext: EntityRendererProvider.Context -> TriceratopsRenderer(pContext) }
             EntityRenderers.register(
-                ModEntities.SIKA_DEER!!.get()
+                ModEntities.SIKA_DEER
             ) { pContext: EntityRendererProvider.Context -> SikaDeerRenderer(pContext) }
+            EntityRenderers.register(ModEntities.CURSED_SAMURAI
+            ) { pContext -> CursedSamuraiRenderer(pContext) }
             EntityRenderers.register(
-                ModEntities.IRON_BATTLE_AXE!!.get()
+                ModEntities.IRON_BATTLE_AXE
             ) { pContext: EntityRendererProvider.Context ->
                 IronBattleAxeProjectileRenderer(pContext)
             }
             EntityRenderers.register(
-                ModEntities.CHAIR!!.get()
+                ModEntities.CHAIR
             ) { pContext: EntityRendererProvider.Context -> ChairRenderer(pContext) }
             EntityRenderers.register(
-                ModEntities.YA!!.get()
+                ModEntities.CHIRETSU_SHO_PROJECTILE
+            ) { pContext: EntityRendererProvider.Context -> ChiretsuShoProjectileRenderer(pContext) }
+            EntityRenderers.register(
+                ModEntities.YA
             ) { pContext: EntityRendererProvider.Context -> YaRenderer(pContext) }
-
-            MenuScreens.register(
-                ModMenuTypes.PEDESTAL_MENU!!.get()
-            ) { menu, inventory, title ->
-                PedestalScreen(menu!!, inventory, title)
-            }
-
-            MenuScreens.register(
-                ModMenuTypes.GROWTH_CHAMBER_MENU!!.get()
-            ) { menu, inventory, title ->
-                GrowthChamberScreen(menu!!, inventory, title)
-            }
         }
 
-        @JvmStatic
+        
         @SubscribeEvent
         fun registerParticleProvider(event: RegisterParticleProvidersEvent) {
             event.registerSpriteSet(
-                ModParticles.PYRITE_PARTICLES!!.get()
+                ModParticles.PYRITE_PARTICLES
             ) { spriteSet: SpriteSet -> PyriteParticles.Provider(spriteSet) }
         }
 
-        @JvmStatic
+        
         @SubscribeEvent
         fun onRegisterEvent(event: RegisterEvent?) {
             /*Optional<HolderSet.Named<Block>> optionalTag = BuiltInRegistries.BLOCK.getTags().filter(namedHolderSet -> namedHolderSet.key().location().equals(ModTags.Blocks.INCORRECT_FOR_NEPHRITE_TOOL.location()))
@@ -291,13 +301,23 @@ object EverythingJapanese {
                 }*/
         }
 
-        @JvmStatic
+        
         @SubscribeEvent
-        fun registerBER(event: RegisterRenderers) {
+        fun registerBER(event: EntityRenderersEvent.RegisterRenderers) {
             event.registerBlockEntityRenderer<PedestalBlockEntity>(
-                ModBlockEntities.PEDESTAL_BE!!.get()
+                ModBlockEntities.PEDESTAL_BE
             ) { context ->
                 PedestalBlockEntityRenderer(context)
+            }
+            event.registerBlockEntityRenderer(
+                ModBlockEntities.SHOJI_DOOR_BE
+            ) { context ->
+                ShojiDoorRenderer(context)
+            }
+            event.registerBlockEntityRenderer(
+                ModBlockEntities.FUSUMA_DOOR_BE
+            ) { context ->
+                FusumaDoorRenderer(context)
             }
         }
     }

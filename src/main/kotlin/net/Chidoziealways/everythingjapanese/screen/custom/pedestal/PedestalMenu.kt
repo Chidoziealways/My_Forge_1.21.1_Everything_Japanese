@@ -9,10 +9,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu
 import net.minecraft.world.inventory.ContainerLevelAccess
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.entity.BlockEntity
-import net.minecraftforge.items.SlotItemHandler
+import net.neoforged.neoforge.items.SlotItemHandler
 
 class PedestalMenu(pContainerId: Int, inv: Inventory, blockEntity: BlockEntity?) :
-    AbstractContainerMenu(ModMenuTypes.PEDESTAL_MENU!!.get(), pContainerId) {
+    AbstractContainerMenu(ModMenuTypes.PEDESTAL_MENU, pContainerId) {
     val blockEntity: PedestalBlockEntity
     private val level: net.minecraft.world.level.Level
 
@@ -33,7 +33,7 @@ class PedestalMenu(pContainerId: Int, inv: Inventory, blockEntity: BlockEntity?)
     }
 
     override fun quickMoveStack(playerIn: net.minecraft.world.entity.player.Player, pIndex: kotlin.Int): ItemStack {
-        val sourceSlot = slots.get(pIndex)!!
+        val sourceSlot = slots.get(pIndex)
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY //EMPTY_ITEM
 
         val sourceStack: ItemStack = sourceSlot.item
@@ -80,7 +80,7 @@ class PedestalMenu(pContainerId: Int, inv: Inventory, blockEntity: BlockEntity?)
     override fun stillValid(player: net.minecraft.world.entity.player.Player): kotlin.Boolean {
         return AbstractContainerMenu.stillValid(
             ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-            player, ModBlocks.PEDESTAL.get()
+            player, ModBlocks.PEDESTAL
         )
     }
 

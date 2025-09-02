@@ -16,7 +16,6 @@ object PlayerEvents {
     private val log: Logger = LoggerFactory.getLogger(PlayerEvents::class.java)
 
     fun saveCapabilityData(player: Player) {
-        checkNotNull(player)
         log.info("Saving data")
         val chakra =  player.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
         val chakraTag = chakra!!.serializeNBT()
@@ -37,6 +36,11 @@ object PlayerEvents {
         val jutsuTag = jutsu!!.serializeNBT()
         log.info("Saving Jutsus")
         player.persistentData.put("everythingjapanese:jutsu_data", jutsuTag) // Save Jutsu data to persistent NBT
+
+        val money = player.getCapability(ModCapabilities.MONEY_CAPABILITY_ENTITY)
+        val moneyTag = money!!.serializeNBT()
+        log.info("Saving Money")
+        player.persistentData.put("everythingjapanese:money_data", moneyTag) // Save Money data to persistent NBT
 
     }
     @SubscribeEvent
@@ -88,6 +92,14 @@ object PlayerEvents {
             val jutsu = player.getCapability(ModCapabilities.JUTSU_CAPABILITY)
             log.info("Loading Jutsu data from persistent NBT")
             jutsu!!.deserializeNBT(jutsuTag)
+        }
+
+        // Retrieve persistent data
+        if (player.persistentData.contains("everythingjapanese:money_data")) {
+            val moneyTag = player.persistentData.getCompoundOrEmpty("everythingjapanese:money_data")
+            val money = player.getCapability(ModCapabilities.MONEY_CAPABILITY_ENTITY)
+            log.info("Loading Money data from persistent NBT")
+            money!!.deserializeNBT(moneyTag)
         }
     }
 
@@ -145,6 +157,16 @@ object PlayerEvents {
             jutsu!!.deserializeNBT(jutsuTag)
         } else {
             log.error("Doesn't contain jutsu_data")
+        }
+
+        // Restore Jutsu data
+        if (oldPlayer.persistentData.contains("everythingjapanese:money_data")) {
+            val moneyTag = oldPlayer.persistentData.getCompoundOrEmpty("everythingjapanese:money_data")
+            val money = newPlayer.getCapability(ModCapabilities.MONEY_CAPABILITY_ENTITY)
+            log.info("Restoring Money Data")
+            money!!.deserializeNBT(moneyTag)
+        } else {
+            log.error("Doesn't contain money_data")
         }
     }
 }

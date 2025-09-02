@@ -1,0 +1,6 @@
+{
+  "blockEffectId": "everythingjapanese:lightning",
+  "entityEffectId": "everythingjapanese:lightning",
+  "id": "lightning",
+  "overlay": "everythingjapanese:item/talisman_lightning_overlay"
+}

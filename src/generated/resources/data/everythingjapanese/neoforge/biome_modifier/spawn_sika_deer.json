@@ -1,0 +1,18 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:bamboo_jungle",
+    "minecraft:plains",
+    "minecraft:birch_forest",
+    "minecraft:dark_forest",
+    "minecraft:taiga",
+    "minecraft:sunflower_plains",
+    "minecraft:jungle"
+  ],
+  "spawners": {
+    "type": "everythingjapanese:sika_deer",
+    "maxCount": 25,
+    "minCount": 9,
+    "weight": 1
+  }
+}

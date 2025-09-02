@@ -108,6 +108,27 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
+            shaped(RecipeCategory.DECORATIONS, ModBlocks.MONEY_VAULT_BLOCK)
+                .pattern("GGG")
+                .pattern("GCG")
+                .pattern("GGG")
+                .define('G', Blocks.IRON_BLOCK)
+                .define('C', Blocks.CHEST),
+            Blocks.CHEST.asItem()
+        )
+
+        saveShapedRecipe(
+            shaped(RecipeCategory.TOOLS, ModItems.CREDIT_CARD_ITEM)
+                .pattern("III")
+                .pattern("SPS")
+                .pattern("   ")
+                .define('I', Items.IRON_INGOT)
+                .define('S', Items.PAPER)
+                .define('P', Items.REDSTONE),
+            Items.PAPER
+        )
+
+        saveShapedRecipe(
             shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TATAMI_MAT, 2)
                 .pattern("HHH")
                 .pattern("WWW")

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "everythingjapanese:block/washi_window_pane_top",
+    "pane": "everythingjapanese:block/washi_window"
+  }
+}

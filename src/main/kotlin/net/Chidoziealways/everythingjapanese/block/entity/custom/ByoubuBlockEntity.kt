@@ -1,4 +1,4 @@
-package net.Chidoziealways.everythingjapanese.block.entity.custom
+/*package net.Chidoziealways.everythingjapanese.block.entity.custom
 
 import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
 import net.minecraft.core.BlockPos
@@ -21,3 +21,5 @@ class ByoubuBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBlockE
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache = cache
 }
+
+ */

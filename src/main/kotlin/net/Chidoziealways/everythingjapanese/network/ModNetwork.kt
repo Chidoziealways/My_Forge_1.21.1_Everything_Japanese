@@ -3,11 +3,11 @@ package net.Chidoziealways.everythingjapanese.network
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.chakra.ChakraSyncPacket
-import net.Chidoziealways.everythingjapanese.chakra.IChakra
 import net.Chidoziealways.everythingjapanese.chakra.IncreaseChakraPacket
 import net.Chidoziealways.everythingjapanese.jutsu.CycleJutsuPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuSyncPacket
+import net.Chidoziealways.everythingjapanese.money.packets.MoneySyncPacket
 import net.Chidoziealways.everythingjapanese.quest.packets.FinishQuestPacket
 import net.Chidoziealways.everythingjapanese.quest.packets.StartQuestPacket
 import net.Chidoziealways.everythingjapanese.quest.packets.UpdateStagePacket
@@ -27,7 +27,7 @@ object ModNetwork {
         registrar.playToClient(ChakraSyncPacket.TYPE, ChakraSyncPacket.CODEC) { message, context ->
             context.enqueueWork {
                 checkNotNull(Minecraft.getInstance().player)
-                val chakra = Minecraft.getInstance().player!!.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+                val chakra = Minecraft.getInstance().player!!.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
                 chakra!!.setCurrentChakra(message.chakra)
                 chakra.setMaxChakra(message.maxChakra)
             }
@@ -76,5 +76,7 @@ object ModNetwork {
         } }
 
         registrar.playToClient(StaminaDecreasePacket.TYPE, StaminaDecreasePacket.CODEC, StaminaDecreasePacket::handle)
+
+        registrar.playToClient(MoneySyncPacket.TYPE, MoneySyncPacket.CODEC, MoneySyncPacket::handle)
     }
 }

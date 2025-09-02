@@ -1,0 +1,6 @@
+{
+  "type": "everythingjapanese:smithing_wrapper",
+  "base": "everythingjapanese:katana",
+  "template": "everythingjapanese:wrap_white",
+  "wrapper": "white"
+}

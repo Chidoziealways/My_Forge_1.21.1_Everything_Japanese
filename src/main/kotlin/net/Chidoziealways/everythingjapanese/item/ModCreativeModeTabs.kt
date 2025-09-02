@@ -263,6 +263,8 @@ object ModCreativeModeTabs {
                     output.accept(ModBlocks.ZABUTON_RED)
                     output.accept(ModBlocks.ZABUTON_GREEN)
                     output.accept(ModBlocks.TATAMI_MAT)
+                    output.accept(ModBlocks.MONEY_VAULT_BLOCK)
+                    output.accept(ModItems.CREDIT_CARD_ITEM)
                     output.accept(ModBlocks.WASHI_WINDOW)
                     output.accept(ModBlocks.WASHI_WINDOW_PANE)
                     output.accept(ModBlocks.SHOJI_DOOR)

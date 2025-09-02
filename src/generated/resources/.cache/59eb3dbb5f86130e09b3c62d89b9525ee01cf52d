@@ -1,4 +1,4 @@
-// 1.21.8	2025-08-27T13:06:12.7368314	Loot Tables
+// 1.21.8	2025-08-31T16:54:49.3848437	Loot Tables
 8c135c63d6a48f090149f6e25ca39614a8281fd5 data/everythingjapanese/loot_table/blocks/chabudai.json
 043400b1257909d4cf3d07c94645f29cf6f993a1 data/everythingjapanese/loot_table/blocks/chair.json
 790f31cbe046db4426a446ef55719b26dc435aee data/everythingjapanese/loot_table/blocks/chocolate_cake.json
@@ -9,6 +9,7 @@ d45c89afc95415cd9e96f9ca55365b5ddaf4a81f data/everythingjapanese/loot_table/bloc
 b1a7f63e0d8b9ee228d09963e013d3c1c3a6fd5b data/everythingjapanese/loot_table/blocks/hinoki_maruta.json
 f79a4e378bf86d88872602dca4f9bac0ab5a2538 data/everythingjapanese/loot_table/blocks/hinoki_mokuzai.json
 9495ff5dc758250ae1c1480b053b2fec47d730e1 data/everythingjapanese/loot_table/blocks/hinoki_naegi.json
+e4ee65d8ead827f620fb6cdc07c09dfcb00bf48b data/everythingjapanese/loot_table/blocks/money_vault_block.json
 48b91cd0a3f930df3e293c062014fd1cff73b778 data/everythingjapanese/loot_table/blocks/nephrite_block.json
 d4dd3db2814730cb317d4d37e208d154f264dee8 data/everythingjapanese/loot_table/blocks/nephrite_deepslate_ore.json
 9072b87bef6ae10faf3ba39f365267ac9a154a2a data/everythingjapanese/loot_table/blocks/nephrite_ore.json

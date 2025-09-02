@@ -15,16 +15,18 @@ object HUDManager {
     private const val BAR_HEIGHT = 8
     private const val PADDING = 4
 
-    fun renderJutsuHUD(gui: GuiGraphics, partialTicks: DeltaTracker): Int {
-        val mc = Minecraft.getInstance()
-        val player = mc.player ?: return 10
+    var startY = 10
 
-        val jutsuCap = player.getCapability(ModCapabilities.JUTSU_CAPABILITY) ?: return 10
+    fun renderJutsuHUD(gui: GuiGraphics, partialTicks: DeltaTracker) {
+        val mc = Minecraft.getInstance()
+        val player = mc.player ?: return
+
+        val jutsuCap = player.getCapability(ModCapabilities.JUTSU_CAPABILITY) ?: return
         val selectedJutsuId = jutsuCap.getSelectedJutsu()
         val allJutsus = jutsuCap.getLearnedJutsus()
 
         val startX = 10
-        var startY = 10
+        startY = 10
 
         ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, selectedJutsuId)).ifPresent { selectedJutsu ->
             gui.drawString(mc.font, "Jutsu: ${selectedJutsu.name}", startX, startY, 0xFFFFFFFF.toInt())
@@ -53,20 +55,18 @@ object HUDManager {
                 }
             }
         }
-
-        return startY
     }
 
-    fun renderChakraHUD(gui: GuiGraphics, deltaTracker: DeltaTracker): Int {
+    fun renderChakraHUD(gui: GuiGraphics, deltaTracker: DeltaTracker) {
         val mc = Minecraft.getInstance()
-        val player = mc.player ?: return 10
-        val chakraCap = player.getCapability(ModCapabilities.CHAKRA_CAPABILITY) ?: return 10
+        val player = mc.player ?: return
+        val chakraCap = player.getCapability(ModCapabilities.CHAKRA_CAPABILITY) ?: return
 
         val chakra = chakraCap.getCurrentChakra()
         val maxChakra = chakraCap.getMaxChakra().coerceAtLeast(1)
 
         val startX = 10
-        var startY = renderJutsuHUD(gui, deltaTracker) + 10
+        startY += 10
 
         val filledWidth = ((chakra / maxChakra.toFloat()) * BAR_WIDTH).coerceAtMost(BAR_WIDTH.toFloat()).toInt()
 
@@ -77,7 +77,7 @@ object HUDManager {
         val textWidth = mc.font.width(text)
         gui.drawString(mc.font, text, startX + (BAR_WIDTH - textWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
 
-        return startY + BAR_HEIGHT
+        startY += BAR_HEIGHT
     }
 
     fun renderStaminaHUD(gui: GuiGraphics, deltaTracker: DeltaTracker) {
@@ -89,7 +89,7 @@ object HUDManager {
         val maxStamina = staminaCap.getMaxStamina().coerceAtLeast(1)
 
         val startX = 10
-        var startY = renderChakraHUD(gui, deltaTracker) + 10
+        startY += 10
 
         val filledWidth = ((stamina / maxStamina) * BAR_WIDTH).coerceAtMost(BAR_WIDTH.toFloat()).toInt()
 
@@ -99,5 +99,17 @@ object HUDManager {
         val text = "Stamina: $stamina / $maxStamina"
         val textWidth = mc.font.width(text)
         gui.drawString(mc.font, text, startX + (BAR_WIDTH - textWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
+    }
+
+    fun renderMoneyHUD(gui: GuiGraphics, deltaTracker: DeltaTracker) {
+        val mc = Minecraft.getInstance()
+        val player = mc.player ?: return
+        val moneyCap = player.getCapability(ModCapabilities.MONEY_CAPABILITY_ENTITY) ?: return
+
+        val money = moneyCap.getMoney()
+        val startX = 10
+        startY += 10
+        gui.drawString(mc.font, "¥ $money", startX, startY, 0xFFFFFF00.toInt())
+        startY += 12
     }
 }

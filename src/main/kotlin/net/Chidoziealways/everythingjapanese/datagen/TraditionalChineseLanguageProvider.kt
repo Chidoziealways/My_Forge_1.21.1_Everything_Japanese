@@ -64,6 +64,7 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         add(ModBlocks.ZABUTON_BLUE, "藍色座布團")
         add(ModBlocks.ZABUTON_RED, "紅色座布團")
         add(ModBlocks.ZABUTON_GREEN, "綠色座布團")
+        add(ModBlocks.MONEY_VAULT_BLOCK, "金庫")
 
         // CREATIVE TABS
         add("creativetab.everythingjapanese.japanese_items", "日本物品")
@@ -160,6 +161,7 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         add(ModItems.BLACK_WRAP, "黑色刀柄纏繞")
         add(ModItems.RED_WRAP, "紅色刀柄纏繞")
         add(ModItems.WHITE_WRAP, "白色刀柄纏繞")
+        add(ModItems.CREDIT_CARD_ITEM, "信用卡")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "風球術")

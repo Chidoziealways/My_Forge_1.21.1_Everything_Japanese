@@ -46,6 +46,8 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
         dropSelf(ModBlocks.CHABUDAI)
         dropSelf(ModBlocks.FUSUMA_DOOR)
         dropSelf(ModBlocks.PYRITE_TRAPDOOR)
+        //dropSelf(ModBlocks.BYOUBU)
+        dropSelf(ModBlocks.MONEY_VAULT_BLOCK)
         dropSelf(ModBlocks.PYRITE_WALL)
         dropSelf(ModBlocks.PYRITE_LAMP)
         dropSelf(ModBlocks.NEPHRITE_BLOCK)

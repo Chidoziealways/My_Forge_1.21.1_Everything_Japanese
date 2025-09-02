@@ -6,7 +6,7 @@
     jopt-simple = "5.0.4"
 
     kff-range = "[6.0,)"
-    neoforge = "21.8.36"
+    neoforge = "21.8.40"
     neoforge-range = "[21.8.29,)"
     kff = "[6.0.0,)"
 

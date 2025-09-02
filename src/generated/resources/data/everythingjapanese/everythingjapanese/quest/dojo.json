@@ -1,0 +1,28 @@
+{
+  "dependency": "everythingjapanese:village",
+  "description": "Find the place where Samurai train to become FIERCE warriors",
+  "id": "everythingjapanese:dojo",
+  "repeatable": true,
+  "rewards": [
+    {
+      "type": "xp",
+      "data": {
+        "count": 30
+      }
+    },
+    {
+      "type": "item",
+      "data": {
+        "count": 64,
+        "id": "minecraft:iron"
+      }
+    }
+  ],
+  "stages": [
+    {
+      "complete_when": "locate:everythingjapanese:dojo",
+      "objective": "Locate The Dojo"
+    }
+  ],
+  "title": "The Dojo"
+}

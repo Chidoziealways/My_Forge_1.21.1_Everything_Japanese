@@ -68,9 +68,9 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
         goalSelector.addGoal(9, MeleeAttackGoal(this, 1.0, true))
         goalSelector.addGoal(6, MoveThroughVillageGoal(this, 1.0, false, 6) {true})
         targetSelector.addGoal(5, HurtByTargetGoal(this).setAlertOthers(CursedSamurai::class.java))
-        targetSelector.addGoal(6, NearestAttackableTargetGoal(this, Player::class.java, true))
-        targetSelector.addGoal(6, NearestAttackableTargetGoal(this, AbstractVillager::class.java, true))
-        targetSelector.addGoal(6, NearestAttackableTargetGoal(this, IronGolem::class.java, true))
+        targetSelector.addGoal(10, NearestAttackableTargetGoal(this, Player::class.java, false))
+        targetSelector.addGoal(10, NearestAttackableTargetGoal(this, AbstractVillager::class.java, false))
+        targetSelector.addGoal(10, NearestAttackableTargetGoal(this, IronGolem::class.java, false))
     }
 
     override fun doHurtTarget(server: ServerLevel, entity: Entity): Boolean {

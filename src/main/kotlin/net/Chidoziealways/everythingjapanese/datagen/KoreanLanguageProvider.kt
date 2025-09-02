@@ -64,6 +64,7 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, MOD_
         add(ModBlocks.ZABUTON_BLUE, "청색 자부톤")
         add(ModBlocks.ZABUTON_RED, "적색 자부톤")
         add(ModBlocks.ZABUTON_GREEN, "녹색 자부톤")
+        add(ModBlocks.MONEY_VAULT_BLOCK, "머니 금고")
 
         // CREATIVE TABS
         add("creativetab.everythingjapanese.japanese_items", "일본 아이템")
@@ -160,6 +161,7 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, MOD_
         add(ModItems.BLACK_WRAP, "검은색 칼자루 감싸기")
         add(ModItems.RED_WRAP, "빨간색 칼자루 감싸기")
         add(ModItems.WHITE_WRAP, "흰색 칼자루 감싸기")
+        add(ModItems.CREDIT_CARD_ITEM, "신용 카드")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "바람구슬")

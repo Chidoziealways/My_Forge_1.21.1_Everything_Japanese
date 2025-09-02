@@ -64,6 +64,7 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         add(ModBlocks.ZABUTON_BLUE, "蓝色座布团")
         add(ModBlocks.ZABUTON_RED, "红色座布团")
         add(ModBlocks.ZABUTON_GREEN, "绿色座布团")
+        add(ModBlocks.MONEY_VAULT_BLOCK, "金库")
 
         // CREATIVE TABS
         add("creativetab.everythingjapanese.japanese_items", "日本物品")
@@ -160,6 +161,7 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         add(ModItems.BLACK_WRAP, "黑色刀柄缠绕")
         add(ModItems.RED_WRAP, "红色刀柄缠绕")
         add(ModItems.WHITE_WRAP, "白色刀柄缠绕")
+        add(ModItems.CREDIT_CARD_ITEM, "信用卡")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "风球术")

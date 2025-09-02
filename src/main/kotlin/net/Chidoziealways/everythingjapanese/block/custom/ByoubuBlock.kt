@@ -1,4 +1,4 @@
-package net.Chidoziealways.everythingjapanese.block.custom
+/*package net.Chidoziealways.everythingjapanese.block.custom
 
 import com.mojang.serialization.MapCodec
 import net.Chidoziealways.everythingjapanese.block.entity.custom.ByoubuBlockEntity
@@ -39,3 +39,4 @@ class ByoubuBlock(properties: Properties): BaseEntityBlock(properties) {
         return ByoubuBlockEntity(pos, state)
     }
 }
+ */

@@ -2,8 +2,9 @@ package net.Chidoziealways.everythingjapanese.entity
 
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.block.entity.custom.ByoubuBlockEntity
+//import net.Chidoziealways.everythingjapanese.block.entity.custom.ByoubuBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.FusumaDoorBlockEntity
+import net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.ShojiDoorBlockEntity
 import net.Chidoziealways.everythingjapanese.entity.custom.GrowthChamberBlockEntity
 import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
@@ -39,7 +40,7 @@ object ModBlockEntities {
             mutableSetOf<Block>(ModBlocks.FUSUMA_DOOR))
     }
 
-    val BYOUBU_BE by BLOCK_ENTITIES.register("byoubu_be") { ->
+    /*val BYOUBU_BE by BLOCK_ENTITIES.register("byoubu_be") { ->
         BlockEntityType(BlockEntitySupplier { pos, state ->
             ByoubuBlockEntity(
                 pos,
@@ -47,6 +48,7 @@ object ModBlockEntities {
             ) },
             mutableSetOf<Block>(ModBlocks.BYOUBU))
     }
+     */
 
     val PEDESTAL_BE by
         BLOCK_ENTITIES.register("pedestal_be") { ->
@@ -66,6 +68,17 @@ object ModBlockEntities {
                     pState
                 ) },
             mutableSetOf<Block?>(ModBlocks.GROWTH_CHAMBER)
+        )
+    }
+
+    val MONEY_VAULT_BE by BLOCK_ENTITIES.register("money_vault_be") {  ->
+        BlockEntityType(
+            BlockEntitySupplier { pos, state ->
+                MoneyVaultBlockEntity(
+                    pos,
+                    state
+                ) },
+            mutableSetOf<Block>(ModBlocks.MONEY_VAULT_BLOCK)
         )
     }
 

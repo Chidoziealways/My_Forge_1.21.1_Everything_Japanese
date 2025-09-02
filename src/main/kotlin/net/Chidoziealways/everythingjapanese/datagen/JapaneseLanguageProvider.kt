@@ -64,6 +64,7 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, MO
         add(ModBlocks.ZABUTON_BLUE, "座布団 青")
         add(ModBlocks.ZABUTON_RED, "座布団 赤")
         add(ModBlocks.ZABUTON_GREEN, "座布団 緑")
+        add(ModBlocks.MONEY_VAULT_BLOCK, "マネーヴォールト")
 
         // CREATIVE TABS
         add("creativetab.everythingjapanese.japanese_items", "日本のアイテム")
@@ -160,6 +161,7 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, MO
         add(ModItems.BLACK_WRAP, "黒の柄巻き")
         add(ModItems.RED_WRAP, "赤の柄巻き")
         add(ModItems.WHITE_WRAP, "白の柄巻き")
+        add(ModItems.CREDIT_CARD_ITEM, "クレジットカード")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "風の玉")

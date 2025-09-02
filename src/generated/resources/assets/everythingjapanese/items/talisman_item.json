@@ -1,0 +1,49 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "everythingjapanese:item/talisman_base"
+      },
+      {
+        "type": "minecraft:select",
+        "cases": [
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "everythingjapanese:item/talisman_lightning_overlay"
+            },
+            "when": "everythingjapanese:lightning"
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "everythingjapanese:item/talisman_fire_overlay"
+            },
+            "when": "everythingjapanese:fire"
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "everythingjapanese:item/talisman_water_overlay"
+            },
+            "when": "everythingjapanese:water"
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "everythingjapanese:item/talisman_seal_overlay"
+            },
+            "when": "everythingjapanese:seal"
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:model",
+          "model": "everythingjapanese:item/talisman_base"
+        },
+        "property": "everythingjapanese:kanji"
+      }
+    ]
+  }
+}

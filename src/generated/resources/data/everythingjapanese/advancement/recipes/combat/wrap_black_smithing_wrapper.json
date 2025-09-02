@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smithing_wrapper_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:wrap_black"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everythingjapanese:wrap_black_smithing_wrapper"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smithing_wrapper_template"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everythingjapanese:wrap_black_smithing_wrapper"
+    ]
+  }
+}

@@ -64,6 +64,7 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, MOD_
         add(ModBlocks.ZABUTON_BLUE, "Zabuton Blue")
         add(ModBlocks.ZABUTON_RED, "Zabuton Red")
         add(ModBlocks.ZABUTON_GREEN, "Zabuton Green")
+        add(ModBlocks.MONEY_VAULT_BLOCK, "Money Vault")
 
         // CREATIVE TABS
         add("creativetab.everythingjapanese.japanese_items", "Japanese Items")
@@ -160,6 +161,7 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, MOD_
         add(ModItems.BLACK_WRAP, "Katana Black Wrap")
         add(ModItems.RED_WRAP, "Katana Red Wrap")
         add(ModItems.WHITE_WRAP, "Katana White Wrap")
+        add(ModItems.CREDIT_CARD_ITEM, "Credit Card")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "Windball")

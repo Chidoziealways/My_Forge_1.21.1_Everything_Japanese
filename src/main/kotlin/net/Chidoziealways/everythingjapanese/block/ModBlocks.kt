@@ -2,7 +2,7 @@ package net.Chidoziealways.everythingjapanese.block
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese.logInfo
 import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.custom.ByoubuBlock
+//import net.Chidoziealways.everythingjapanese.block.custom.ByoubuBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ChairBlock
 import net.Chidoziealways.everythingjapanese.block.custom.FusumaDoorBlock
 import net.Chidoziealways.everythingjapanese.block.custom.JapaneseCheesecakeBlock
@@ -10,6 +10,7 @@ import net.Chidoziealways.everythingjapanese.block.custom.ShojiDoorBlock
 import net.Chidoziealways.everythingjapanese.block.custom.PaperWindowBlock
 import net.Chidoziealways.everythingjapanese.custom.GrowthChamberBlock
 import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
+import net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock
 import net.Chidoziealways.everythingjapanese.block.custom.TatamiMatBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ZabutonBlock
 import net.Chidoziealways.everythingjapanese.custom.MagicBlock
@@ -134,7 +135,18 @@ object ModBlocks {
         )
     }
 
-    val BYOUBU by registerBlock(
+    val MONEY_VAULT_BLOCK by registerBlock(
+        "money_vault_block"
+    ) {
+        MoneyVaultBlock(
+            BlockBehaviour.Properties.of()
+                .sound(SoundType.IRON)
+                .strength(0.5f)
+                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "money_vault_block")))
+        )
+    }
+
+    /*val BYOUBU by registerBlock(
         "byoubu"
     ) {
         ByoubuBlock(
@@ -144,6 +156,7 @@ object ModBlocks {
                 .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "byoubu")))
         )
     }
+     */
 
     val CHABUDAI by registerBlock(
         "chabudai"

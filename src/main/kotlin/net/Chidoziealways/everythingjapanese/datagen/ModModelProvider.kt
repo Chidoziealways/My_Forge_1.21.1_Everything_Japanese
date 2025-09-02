@@ -3,6 +3,8 @@ package net.Chidoziealways.everythingjapanese.datagen
 import com.mojang.math.Quadrant
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock
+import net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection
 import net.Chidoziealways.everythingjapanese.datagen.ModModelProvider.MyItemModelGenerators.Companion.TRIM_MATERIAL_MODELS
 import net.Chidoziealways.everythingjapanese.kanji.KanjiType
 import net.Chidoziealways.everythingjapanese.item.ModEquipmentAssets
@@ -63,6 +65,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         blockModels.createZabuton(ModBlocks.ZABUTON_GREEN, "zabuton_green")
         itemModels.createTatamiMat()
         blockModels.createShojiDoor()
+        blockModels.createMoneyVault()
         blockModels.createFusumaDoor()
         blockModels.createTrivialCube(ModBlocks.NEPHRITE_BLOCK )
         blockModels.createTrivialCube(ModBlocks.NEPHRITE_DEEPSLATE_ORE )
@@ -118,6 +121,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         itemModels.generateFlatItem(ModBlocks.ZABUTON_BLUE.asItem(), ModelTemplates.FLAT_ITEM)
         itemModels.generateFlatItem(ModBlocks.ZABUTON_RED.asItem(), ModelTemplates.FLAT_ITEM)
         itemModels.generateFlatItem(ModBlocks.ZABUTON_GREEN.asItem(), ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(ModItems.CREDIT_CARD_ITEM, ModelTemplates.FLAT_ITEM)
         itemModels.createChisel()
         itemModels.createIronBattleAxe()
         itemModels.createRadiationStaff()
@@ -584,7 +588,74 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/iron_battle_axe"))
         this.itemModelOutput.accept(ModItems.IRON_BATTLE_AXE, model)
     }
-    
+
+    fun BlockModelGenerators.createMoneyVault() {
+        val block = ModBlocks.MONEY_VAULT_BLOCK
+
+        // Base models
+        val singleModel = TexturedModel.CUBE.create(block, modelOutput)
+
+        // Top
+        //LEFT
+        val topLeftModel = TexturedModel.CUBE_TOP.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_top_left"))
+        }.createWithSuffix(block, "_top_left", modelOutput)
+        //MIDDLE
+        val topMiddleModel = TexturedModel.CUBE_TOP.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_top_middle"))
+        }.createWithSuffix(block, "_top_middle", modelOutput)
+        //RIGHT
+        val topRightModel = TexturedModel.CUBE_TOP.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_top_right"))
+        }.createWithSuffix(block, "_top_right", modelOutput)
+
+        // Bottom
+        //LEFT
+        val bottomLeftModel = TexturedModel.CUBE_TOP_BOTTOM.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_bottom_left"))
+        }.createWithSuffix(block, "_bottom_left", modelOutput)
+        //MIDDLE
+        val bottomMiddleModel = TexturedModel.CUBE_TOP_BOTTOM.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_bottom_middle"))
+        }.createWithSuffix(block, "_bottom_middle", modelOutput)
+        //RIGHT
+        val bottomRightModel = TexturedModel.CUBE_TOP_BOTTOM.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_bottom_right"))
+        }.createWithSuffix(block, "_bottom_right", modelOutput)
+
+        // Middle
+        //LEFT
+        val middleLeftModel = TexturedModel.COLUMN.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_middle_left"))
+        }.createWithSuffix(block, "_middle_left", modelOutput)
+        //MIDDLE
+        val middleMiddleModel = TexturedModel.COLUMN.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_middle_middle"))
+        }.createWithSuffix(block, "_middle_middle", modelOutput)
+        //RIGHT
+        val middleRightModel = TexturedModel.COLUMN.updateTexture { mapping ->
+            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_middle_right"))
+        }.createWithSuffix(block, "_middle_right", modelOutput)
+
+        this.blockStateOutput.accept(
+            MultiVariantGenerator.dispatch(block)
+                .with(
+                    PropertyDispatch.initial(MoneyVaultBlock.SECTION)
+                        .select(VaultSection.SINGLE, plainVariant(singleModel))
+                        .select(VaultSection.TOP_LEFT, plainVariant(topLeftModel))
+                        .select(VaultSection.TOP_MIDDLE, plainVariant(topMiddleModel))
+                        .select(VaultSection.TOP_RIGHT, plainVariant(topRightModel))
+                        .select(VaultSection.MIDDLE_LEFT, plainVariant(middleLeftModel))
+                        .select(VaultSection.MIDDLE_MIDDLE, plainVariant(middleMiddleModel))
+                        .select(VaultSection.MIDDLE_RIGHT, plainVariant(middleRightModel))
+                        .select(VaultSection.BOTTOM_LEFT, plainVariant(bottomLeftModel))
+                        .select(VaultSection.BOTTOM_MIDDLE, plainVariant(bottomMiddleModel))
+                        .select(VaultSection.BOTTOM_RIGHT, plainVariant(bottomRightModel))
+                )
+        )
+    }
+
+
     fun ItemModelGenerators.generateTrimmableItemE(p_376312_: Item, p_375739_: ResourceKey<EquipmentAsset?>, p_396254_: ResourceLocation, p_377962_: Boolean) {
         val resourcelocation: ResourceLocation = ModelLocationUtils.getModelLocation(p_376312_)
         val resourcelocation1: ResourceLocation = TextureMapping.getItemTexture(p_376312_)

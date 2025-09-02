@@ -12,12 +12,18 @@ import thedarkcolour.kotlinforforge.common.KotlinMod
 @KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, value = [Dist.CLIENT])
 object ModGUILayers {
 
-    val EV_HUD = ResourceLocation.fromNamespaceAndPath(MOD_ID, "ev_hud")
+    val JUTSU = ResourceLocation.fromNamespaceAndPath(MOD_ID, "jutsu")
+    val CHAKRA = ResourceLocation.fromNamespaceAndPath(MOD_ID, "chakra")
+    val STAMINA = ResourceLocation.fromNamespaceAndPath(MOD_ID, "stamina")
+    val MONEY = ResourceLocation.fromNamespaceAndPath(MOD_ID, "money")
 
     @SubscribeEvent
     fun onRegisterGuiLayers(event: RegisterGuiLayersEvent) {
         print("Registering Layers")
-        event.registerAbove(VanillaGuiLayers.HOTBAR, EV_HUD, HUDManager::renderStaminaHUD)
+        event.registerAbove(VanillaGuiLayers.HOTBAR, JUTSU, HUDManager::renderJutsuHUD)
+        event.registerAbove(JUTSU, CHAKRA, HUDManager::renderChakraHUD)
+        event.registerAbove(CHAKRA, STAMINA, HUDManager::renderStaminaHUD)
+        event.registerAbove(STAMINA, MONEY, HUDManager::renderMoneyHUD)
         println("Registered!")
     }
 }

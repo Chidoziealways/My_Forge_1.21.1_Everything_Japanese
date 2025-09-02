@@ -1,0 +1,33 @@
+{
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2025-08-10 11:24:14 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:desert": "2025-08-10 11:24:14 +0100"
+    },
+    "done": false
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_blasting_raw_pyrite_block": {
+    "criteria": {
+      "has_raw_pyrite_block": "2025-08-10 11:26:01 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_smelting_raw_pyrite_block": {
+    "criteria": {
+      "has_raw_pyrite_block": "2025-08-10 11:26:01 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/raw_pyrite": {
+    "criteria": {
+      "has_raw_pyrite_block": "2025-08-10 11:26:01 +0100"
+    },
+    "done": true
+  },
+  "DataVersion": 4440
+}

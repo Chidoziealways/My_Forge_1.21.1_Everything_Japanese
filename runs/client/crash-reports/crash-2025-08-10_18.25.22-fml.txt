@@ -1,0 +1,111 @@
+---- Minecraft Crash Report ----
+// Uh... Did I do that?
+
+Time: 2025-08-10 18:25:22
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.schemas.Schema.registerEntities(Schema.java:123) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+-- Mod loading issue for: everythingjapanese --
+Details:
+	Mod file: /C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main/
+	Failure message: Everything Japanese (everythingjapanese) encountered an error while dispatching the net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent event
+		java.lang.NullPointerException: Cannot invoke "com.mojang.datafixers.schemas.Schema.registerEntities(com.mojang.datafixers.schemas.Schema)" because "this.parent" is null
+	Mod version: 1.6.1
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.NullPointerException: Cannot invoke "com.mojang.datafixers.schemas.Schema.registerEntities(com.mojang.datafixers.schemas.Schema)" because "this.parent" is null
+Stacktrace:
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.schemas.Schema.registerEntities(Schema.java:123) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.schemas.Schema.<init>(Schema.java:37) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.6.1/net.Chidoziealways.everythingjapanese.EverythingJapanese.registerFixes$lambda$5(EverythingJapanese.kt:212) ~[%23221!/:?] {re:classloading}
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.DataFixerBuilder.addSchema(DataFixerBuilder.java:44) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.DataFixerBuilder.addSchema(DataFixerBuilder.java:38) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.6.1/net.Chidoziealways.everythingjapanese.EverythingJapanese.registerFixes(EverythingJapanese.kt:215) ~[%23221!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.6.1/net.Chidoziealways.everythingjapanese.EverythingJapanese.commonSetup(EverythingJapanese.kt:184) ~[%23221!/:?] {re:classloading}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23176!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:328) ~[bus-8.0.5.jar%23176!/:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:158) ~[loader-9.0.16.jar%23172!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$dispatchParallelEvent$4(ModLoader.java:170) ~[loader-9.0.16.jar%23172!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:229) ~[loader-9.0.16.jar%23172!/:9.0] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?] {}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$prepareTasks$0(SimpleReloadInstance.java:65) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.TracingExecutor.lambda$forName$0(TracingExecutor.java:18) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1423) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 52147584 bytes (49 MiB) / 507510784 bytes (484 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 22266.84
+	Virtual memory used (MiB): 17788.97
+	Swap memory total (MiB): 14231.63
+	Swap memory used (MiB): 3496.62
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 90153.24, total: 243176.00
+	Space in storage for workdir (MiB): available: 90153.24, total: 243176.00
+	JVM Flags: 2 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.16.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.16.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.16.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.16.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.16.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.16.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.6.1               |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		kffmod-neoforge-6.0.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.0.0               |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |NeoForge                      |neoforge                      |21.8.29             |Manifest: NOSIGNATURE
+	Crash Report UUID: e9ff090b-e6b5-462c-9de8-263f2be06fc3
+	FML: 9.0.16
+	NeoForge: 21.8.29

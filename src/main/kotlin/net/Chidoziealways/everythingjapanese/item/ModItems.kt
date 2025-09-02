@@ -3,7 +3,6 @@ package net.Chidoziealways.everythingjapanese.item
 import net.Chidoziealways.everythingjapanese.EverythingJapanese.logInfo
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.item.custom.*
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
@@ -19,7 +18,6 @@ import net.minecraft.sounds.SoundEvents
 import net.minecraft.tags.DamageTypeTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.damagesource.DamageType
-import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.item.*
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.component.BlocksAttacks
@@ -44,6 +42,11 @@ object ModItems {
                 .trimMaterial(ModTrimMaterials.PYRITE)
                 .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "pyrite_ingot"))))
         }
+
+    val CREDIT_CARD_ITEM by ITEMS.register("credit_card")
+    { ->
+        CreditCardItem(Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "credit_card"))))
+    }
 
     val KATANA by ITEMS.register("katana")
         { ->

@@ -3,12 +3,14 @@ package net.Chidoziealways.everythingjapanese.capabilities
 import net.Chidoziealways.everythingjapanese.MOD_ID
 import net.Chidoziealways.everythingjapanese.chakra.IChakra
 import net.Chidoziealways.everythingjapanese.jutsu.IJutsuCapability
+import net.Chidoziealways.everythingjapanese.money.IMoneyCapability
 import net.Chidoziealways.everythingjapanese.quest.IQuestCapability
 import net.Chidoziealways.everythingjapanese.seal.ISealLock
 import net.Chidoziealways.everythingjapanese.stamina.IStaminaCapability
 import net.minecraft.resources.ResourceLocation
 import net.neoforged.neoforge.capabilities.BlockCapability
 import net.neoforged.neoforge.capabilities.EntityCapability
+import net.neoforged.neoforge.capabilities.ItemCapability
 
 object ModCapabilities {
     @JvmField
@@ -23,4 +25,10 @@ object ModCapabilities {
     @JvmField
     val LOCK_CAPABILITY: BlockCapability<ISealLock, Void?> =
         BlockCapability.createVoid(ResourceLocation.fromNamespaceAndPath(MOD_ID, "seal"), ISealLock::class.java)
+    val MONEY_CAPABILITY_ENTITY: EntityCapability<IMoneyCapability, Void?> =
+        EntityCapability.createVoid(ResourceLocation.fromNamespaceAndPath(MOD_ID, "money_entity"), IMoneyCapability::class.java)
+    val MONEY_CAPABILITY_BLOCK: BlockCapability<IMoneyCapability, Void?> =
+        BlockCapability.createVoid(ResourceLocation.fromNamespaceAndPath(MOD_ID, "money_block"), IMoneyCapability::class.java)
+    val MONEY_CAPABILITY_ITEM: ItemCapability<IMoneyCapability, Void?> =
+        ItemCapability.createVoid(ResourceLocation.fromNamespaceAndPath(MOD_ID, "money_item"), IMoneyCapability::class.java)
 }

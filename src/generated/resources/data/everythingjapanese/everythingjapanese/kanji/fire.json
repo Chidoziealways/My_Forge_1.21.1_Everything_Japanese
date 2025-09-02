@@ -1,0 +1,6 @@
+{
+  "blockEffectId": "everythingjapanese:fire",
+  "entityEffectId": "everythingjapanese:fire",
+  "id": "fire",
+  "overlay": "everythingjapanese:item/talisman_fire_overlay"
+}

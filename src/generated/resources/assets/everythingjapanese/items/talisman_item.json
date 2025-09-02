@@ -19,13 +19,6 @@
           {
             "model": {
               "type": "minecraft:model",
-              "model": "everythingjapanese:item/talisman_fire_overlay"
-            },
-            "when": "everythingjapanese:fire"
-          },
-          {
-            "model": {
-              "type": "minecraft:model",
               "model": "everythingjapanese:item/talisman_water_overlay"
             },
             "when": "everythingjapanese:water"
@@ -36,6 +29,13 @@
               "model": "everythingjapanese:item/talisman_seal_overlay"
             },
             "when": "everythingjapanese:seal"
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "everythingjapanese:item/talisman_fire_overlay"
+            },
+            "when": "everythingjapanese:fire"
           }
         ],
         "fallback": {

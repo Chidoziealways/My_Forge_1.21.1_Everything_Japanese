@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "everythingjapanese:block/money_vault_block_top",
+    "side": "everythingjapanese:block/money_vault_block_side_middle_right"
+  }
+}

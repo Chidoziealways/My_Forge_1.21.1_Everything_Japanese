@@ -1,0 +1,320 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 2025-08-23 15:09:31
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?] {}
+-- Mod loading issue for: everythingjapanese --
+Details:
+	Caused by 0: java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+		at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getHINOKI_NAEGI(ModBlocks.kt:412) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.POTTED_HINOKI_NAEGI_delegate$lambda$24(ModBlocks.kt:436) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.registerBlock$lambda$40(ModBlocks.kt:643) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister$Blocks.lambda$register$0(DeferredRegister.java:417) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+		at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+	Mod file: /C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main/
+	Failure message: Everything Japanese (everythingjapanese) encountered an error while dispatching the net.neoforged.neoforge.registries.RegisterEvent event
+		java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+	Mod version: 1.10.0
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.ClassNotFoundException: net.neoforged.neoforge.registries.DeferredBlock
+Stacktrace:
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?] {}
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:228) ~[securejarhandler-9.0.16.jar:?] {}
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
+	at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getHINOKI_NAEGI(ModBlocks.kt:412) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.POTTED_HINOKI_NAEGI_delegate$lambda$24(ModBlocks.kt:436) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.registerBlock$lambda$40(ModBlocks.kt:643) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister$Blocks.lambda$register$0(DeferredRegister.java:417) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+
+-- Mod loading issue for: everythingjapanese --
+Details:
+	Caused by 0: java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+		at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getPYRITE_BLOCK(ModBlocks.kt:52) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.item.custom.ChiselItem.<clinit>(ChiselItem.kt:121) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.item.ModItems.CHISEL_delegate$lambda$8(ModItems.kt:138) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister$Items.lambda$register$0(DeferredRegister.java:515) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+		at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+	Mod file: /C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main/
+	Failure message: Everything Japanese (everythingjapanese) encountered an error while dispatching the net.neoforged.neoforge.registries.RegisterEvent event
+		java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+	Mod version: 1.10.0
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.ClassNotFoundException: net.neoforged.neoforge.registries.DeferredBlock
+Stacktrace:
+	at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getPYRITE_BLOCK(ModBlocks.kt:52) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.item.custom.ChiselItem.<clinit>(ChiselItem.kt:121) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.item.ModItems.CHISEL_delegate$lambda$8(ModItems.kt:138) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister$Items.lambda$register$0(DeferredRegister.java:515) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+
+-- Mod loading issue for: everythingjapanese --
+Details:
+	Caused by 0: java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+		at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getSHOJI_DOOR(ModBlocks.kt:123) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.entity.ModBlockEntities.SHOJI_DOOR_BE_delegate$lambda$1(ModBlockEntities.kt:29) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$0(DeferredRegister.java:215) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+		at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+	Mod file: /C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main/
+	Failure message: Everything Japanese (everythingjapanese) encountered an error while dispatching the net.neoforged.neoforge.registries.RegisterEvent event
+		java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+	Mod version: 1.10.0
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.ClassNotFoundException: net.neoforged.neoforge.registries.DeferredBlock
+Stacktrace:
+	at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getSHOJI_DOOR(ModBlocks.kt:123) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.entity.ModBlockEntities.SHOJI_DOOR_BE_delegate$lambda$1(ModBlockEntities.kt:29) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$0(DeferredRegister.java:215) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+
+-- Mod loading issue for: everythingjapanese --
+Details:
+	Caused by 0: java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+		at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getHELL_PORTAL(ModBlocks.kt:604) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.poi.ModPoiTypes.HELL_PORTAL$lambda$0(ModPoiTypes.kt:23) ~[%23240!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$0(DeferredRegister.java:215) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+		at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+		at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+	Mod file: /C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main/
+	Failure message: Everything Japanese (everythingjapanese) encountered an error while dispatching the net.neoforged.neoforge.registries.RegisterEvent event
+		java.lang.NoClassDefFoundError: net/neoforged/neoforge/registries/DeferredBlock
+	Mod version: 1.10.0
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.ClassNotFoundException: net.neoforged.neoforge.registries.DeferredBlock
+Stacktrace:
+	at MC-BOOTSTRAP/thedarkcolour.kotlinforforge.lib.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.forge.DeferredHoldersKt.getValue(DeferredHolders.kt:15) ~[kfflib-neoforge-6.0.0.jar%23234!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.block.ModBlocks.getHELL_PORTAL(ModBlocks.kt:604) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.10.0/net.Chidoziealways.everythingjapanese.poi.ModPoiTypes.HELL_PORTAL$lambda$0(ModPoiTypes.kt:23) ~[%23240!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$0(DeferredRegister.java:215) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$register$1(DeferredRegister.java:234) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.lambda$addEntries$2(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.RegisterEvent.register(RegisterEvent.java:48) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.DeferredRegister.addEntries(DeferredRegister.java:375) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:342) ~[bus-8.0.5.jar%23184!/:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$postEventWithWrapInModOrder$16(ModLoader.java:377) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWithWrapInModOrder(ModLoader.java:375) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.postEventWrapContainerInModOrder(ModLoader.java:366) ~[loader-9.0.16.jar%23180!/:9.0] {}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:89) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.8.29.jar%23239!/:?] {re:classloading}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 46751456 bytes (44 MiB) / 559939584 bytes (534 MiB) up to 4294967296 bytes (4096 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 22734.29
+	Virtual memory used (MiB): 18846.93
+	Swap memory total (MiB): 14699.08
+	Swap memory used (MiB): 3012.29
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 84354.59, total: 243176.00
+	Space in storage for workdir (MiB): available: 84354.59, total: 243176.00
+	JVM Flags: 1 total; -Xmx4G
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.16.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.16.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.16.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.16.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.16.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.16.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.10.0              |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |NeoForge                      |neoforge                      |21.8.29             |Manifest: NOSIGNATURE
+	Crash Report UUID: c42be60f-1d57-4c33-9ec0-05a4ecd3a6e2
+	FML: 9.0.16
+	NeoForge: 21.8.29

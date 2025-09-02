@@ -1,4 +1,4 @@
-// 1.21.8	2025-09-01T14:11:09.0654772	Model Definitions - everythingjapanese
+// 1.21.8	2025-09-02T08:01:47.2566637	Model Definitions - everythingjapanese
 1869b10580925a16172b3161bacadb66c15c9f1f assets/everythingjapanese/blockstates/blood.json
 5bf05c70f4701f85fb37dcc31beecdcaa8f9b3d8 assets/everythingjapanese/blockstates/chabudai.json
 4547327ca26267967d528ed0066942ab2630e031 assets/everythingjapanese/blockstates/chair.json
@@ -127,7 +127,7 @@ cb808d0753d14905d48aa8b87a40743721648f03 assets/everythingjapanese/items/sika_de
 e649f97c931ae1ee3a6aef26f34a4fcd307463f7 assets/everythingjapanese/items/stripped_hinoki_maruta.json
 4a2101b11d66c6122b83dee0fbd6f19a2fc97604 assets/everythingjapanese/items/stripped_hinoki_mokuzai.json
 e852db6a588593be8eb165a1866d679d5e36311d assets/everythingjapanese/items/sushi.json
-19529c92da6cf0e7bbe48dbffa448afa66ae17f7 assets/everythingjapanese/items/talisman_item.json
+0a65bcf610ccf7319897dc22975809d8e35a7b55 assets/everythingjapanese/items/talisman_item.json
 3119f4d7d7f5877c87b6ffc0efa27e603b194f4e assets/everythingjapanese/items/tatami_mat.json
 db8f17392d5e9956fef9ed0c35960b3e642cb90e assets/everythingjapanese/items/transformer_block.json
 bf8f3e4237b7b850e3f29dd17fda1d3389853ca6 assets/everythingjapanese/items/triceratops_spawn_egg.json

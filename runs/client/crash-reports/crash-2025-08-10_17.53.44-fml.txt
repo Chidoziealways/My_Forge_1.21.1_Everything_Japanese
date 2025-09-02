@@ -1,0 +1,147 @@
+---- Minecraft Crash Report ----
+// Don't do that.
+
+Time: 2025-08-10 17:53:44
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.schemas.Schema.registerEntities(Schema.java:123) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+-- Mod loading issue for: everythingjapanese --
+Details:
+	Caused by 0: java.lang.ExceptionInInitializerError
+		at java.base/jdk.internal.misc.Unsafe.ensureClassInitialized0(Native Method) ~[?:?] {}
+		at java.base/jdk.internal.misc.Unsafe.ensureClassInitialized(Unsafe.java:1160) ~[?:?] {}
+		at java.base/jdk.internal.reflect.MethodHandleAccessorFactory.ensureClassInitialized(MethodHandleAccessorFactory.java:300) ~[?:?] {}
+		at java.base/jdk.internal.reflect.MethodHandleAccessorFactory.newFieldAccessor(MethodHandleAccessorFactory.java:140) ~[?:?] {}
+		at java.base/jdk.internal.reflect.ReflectionFactory.newFieldAccessor(ReflectionFactory.java:145) ~[?:?] {}
+		at java.base/java.lang.reflect.Field.acquireFieldAccessor(Field.java:1185) ~[?:?] {}
+		at java.base/java.lang.reflect.Field.getFieldAccessor(Field.java:1164) ~[?:?] {}
+		at java.base/java.lang.reflect.Field.get(Field.java:442) ~[?:?] {}
+		at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data.objectInstance_delegate$lambda$14(KClassImpl.kt:155) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+		at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data.accessor$KClassImpl$Data$lambda7(KClassImpl.kt) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+		at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data$$Lambda$7.invoke(Unknown Source) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+		at LAYER PLUGIN/kotlin.stdlib/kotlin.SafePublicationLazyImpl.getValue(LazyJVM.kt:125) ~[kotlin-stdlib-2.2.0.jar%23269!/:2.2.0-release-294] {}
+		at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data.getObjectInstance(KClassImpl.kt:141) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+		at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl.getObjectInstance(KClassImpl.kt:287) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+		at LAYER PLUGIN/kfflang.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.KotlinModContainer.constructMod(KotlinModContainer.kt:77) ~[kfflang-neoforge-6.0.0.jar%23238!/:6.0.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:151) ~[loader-9.0.16.jar%23172!/:9.0] {}
+		at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:229) ~[loader-9.0.16.jar%23172!/:9.0] {}
+		at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+		at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+		at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+	Mod file: /C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main/
+	Failure message: Everything Japanese (everythingjapanese) has failed to load correctly
+		java.lang.ExceptionInInitializerError: null
+	Mod version: 1.6.1
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.NullPointerException: Cannot invoke "com.mojang.datafixers.schemas.Schema.registerEntities(com.mojang.datafixers.schemas.Schema)" because "this.parent" is null
+Stacktrace:
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.schemas.Schema.registerEntities(Schema.java:123) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.schemas.Schema.<init>(Schema.java:37) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.6.1/net.Chidoziealways.everythingjapanese.EverythingJapanese.registerFixes$lambda$7(EverythingJapanese.kt:211) ~[%23221!/:?] {re:classloading}
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.DataFixerBuilder.addSchema(DataFixerBuilder.java:44) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.datafixers.DataFixerBuilder.addSchema(DataFixerBuilder.java:38) ~[datafixerupper-8.0.16.jar%23140!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.6.1/net.Chidoziealways.everythingjapanese.EverythingJapanese.registerFixes(EverythingJapanese.kt:214) ~[%23221!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.6.1/net.Chidoziealways.everythingjapanese.EverythingJapanese.<clinit>(EverythingJapanese.kt:174) ~[%23221!/:?] {re:classloading}
+	at java.base/jdk.internal.misc.Unsafe.ensureClassInitialized0(Native Method) ~[?:?] {}
+	at java.base/jdk.internal.misc.Unsafe.ensureClassInitialized(Unsafe.java:1160) ~[?:?] {}
+	at java.base/jdk.internal.reflect.MethodHandleAccessorFactory.ensureClassInitialized(MethodHandleAccessorFactory.java:300) ~[?:?] {}
+	at java.base/jdk.internal.reflect.MethodHandleAccessorFactory.newFieldAccessor(MethodHandleAccessorFactory.java:140) ~[?:?] {}
+	at java.base/jdk.internal.reflect.ReflectionFactory.newFieldAccessor(ReflectionFactory.java:145) ~[?:?] {}
+	at java.base/java.lang.reflect.Field.acquireFieldAccessor(Field.java:1185) ~[?:?] {}
+	at java.base/java.lang.reflect.Field.getFieldAccessor(Field.java:1164) ~[?:?] {}
+	at java.base/java.lang.reflect.Field.get(Field.java:442) ~[?:?] {}
+	at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data.objectInstance_delegate$lambda$14(KClassImpl.kt:155) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+	at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data.accessor$KClassImpl$Data$lambda7(KClassImpl.kt) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+	at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data$$Lambda$7.invoke(Unknown Source) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+	at LAYER PLUGIN/kotlin.stdlib/kotlin.SafePublicationLazyImpl.getValue(LazyJVM.kt:125) ~[kotlin-stdlib-2.2.0.jar%23269!/:2.2.0-release-294] {}
+	at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl$Data.getObjectInstance(KClassImpl.kt:141) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+	at LAYER PLUGIN/kotlin.reflect/kotlin.reflect.jvm.internal.KClassImpl.getObjectInstance(KClassImpl.kt:287) ~[kotlin-reflect-2.2.0.jar%23272!/:2.2.0-release-294] {}
+	at LAYER PLUGIN/kfflang.neoforge@6.0.0/thedarkcolour.kotlinforforge.neoforge.KotlinModContainer.constructMod(KotlinModContainer.kt:77) ~[kfflang-neoforge-6.0.0.jar%23238!/:6.0.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:151) ~[loader-9.0.16.jar%23172!/:9.0] {}
+	at MC-BOOTSTRAP/fml_loader@9.0.16/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:229) ~[loader-9.0.16.jar%23172!/:9.0] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 131548064 bytes (125 MiB) / 481296384 bytes (459 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 22266.84
+	Virtual memory used (MiB): 17935.51
+	Swap memory total (MiB): 14231.63
+	Swap memory used (MiB): 3636.19
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 90149.22, total: 243176.00
+	Space in storage for workdir (MiB): available: 90149.22, total: 243176.00
+	JVM Flags: 2 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.16.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.16.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.16.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.16.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.16.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.16.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.6.1               |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		kffmod-neoforge-6.0.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.0.0               |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |NeoForge                      |neoforge                      |21.8.29             |Manifest: NOSIGNATURE
+	Crash Report UUID: 7aa35dfd-4613-4640-8a7a-02051e3d4436
+	FML: 9.0.16
+	NeoForge: 21.8.29

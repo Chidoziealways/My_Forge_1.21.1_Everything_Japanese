@@ -1,0 +1,1094 @@
+{
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2025-08-24 18:58:42 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:plains": "2025-08-24 18:58:42 +0100"
+    },
+    "done": false
+  },
+  "everythingjapanese:recipes/tools/pyrite_hoe": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/pyrite_block": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/pyrite_helmet": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/decorations/pyrite_fence": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/pyrite_boots": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/pyrite_button": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/pyrite_slab": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/pyrite_leggings": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/pyrite_chestplate": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/pyrite_trapdoor": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/pyrite_hammer": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/pyrite_battle_axe": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/pyrite_shovel": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/pyrite_pressure_plate": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/pyrite_axe": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/pyrite_stairs": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/pyrite_fence_gate": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/pyrite_door": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/smelt_pyrite": {
+    "criteria": {
+      "pyrite": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/pyrite_wall": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/pyrite_pickaxe": {
+    "criteria": {
+      "has_pyrite_ingot": "2025-08-24 19:00:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_smelting_raw_pyrite": {
+    "criteria": {
+      "has_raw_pyrite": "2025-08-24 19:00:07 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_blasting_raw_pyrite": {
+    "criteria": {
+      "has_raw_pyrite": "2025-08-24 19:00:07 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/raw_pyrite_block": {
+    "criteria": {
+      "has_raw_pyrite": "2025-08-24 19:00:07 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/transformer_block": {
+    "criteria": {
+      "has_chisel": "2025-08-24 19:00:22 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/fire_charge_smithing_kanji": {
+    "criteria": {
+      "has_smithing_kanji_template": "2025-08-24 19:01:17 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2025-08-24 19:01:20 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/water_bucket_smithing_kanji": {
+    "criteria": {
+      "has_smithing_kanji_template": "2025-08-24 19:01:20 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/totem_of_undying_smithing_kanji": {
+    "criteria": {
+      "has_smithing_kanji_template": "2025-08-24 19:01:24 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/lightning_rod_smithing_kanji": {
+    "criteria": {
+      "has_smithing_kanji_template": "2025-08-24 19:01:28 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pedestal": {
+    "criteria": {
+      "has_chest": "2025-08-24 19:02:13 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/cherry_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/bamboo_raft": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/mangrove_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/pale_oak_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "in_water": "2025-08-24 19:02:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/sticky_piston": {
+    "criteria": {
+      "has_slime_ball": "2025-08-24 19:02:47 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/slime_block": {
+    "criteria": {
+      "has_slime_ball": "2025-08-24 19:02:47 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/koi_fish_armor_trim_smithing_template_smithing_trim": {
+    "criteria": {
+      "has_smithing_trim_template": "2025-08-24 19:04:29 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/koi_fish_armor_trim_smithing_template": {
+    "criteria": {
+      "has_koi_fish_armor_trim_smithing_template": "2025-08-24 19:04:29 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/obtain_armor": {
+    "criteria": {
+      "iron_helmet": "2025-08-24 19:04:46 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget_from_smelting": {
+    "criteria": {
+      "has_iron_helmet": "2025-08-24 19:04:46 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget_from_blasting": {
+    "criteria": {
+      "has_iron_helmet": "2025-08-24 19:04:46 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/golden_axe": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/golden_pickaxe": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_nugget": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/golden_shovel": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/golden_apple": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/golden_boots": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/golden_helmet": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/golden_chestplate": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/light_weighted_pressure_plate": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/golden_sword": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/gold_block": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/golden_hoe": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/golden_leggings": {
+    "criteria": {
+      "has_gold_ingot": "2025-08-24 19:04:54 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot": {
+    "criteria": {
+      "has_pyrite_block": "2025-08-24 19:05:42 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_blasting_raw_pyrite_block": {
+    "criteria": {
+      "has_raw_pyrite_block": "2025-08-24 19:05:44 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_smelting_pyrite_ore": {
+    "criteria": {
+      "has_pyrite_ore": "2025-08-24 19:05:44 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_smelting_raw_pyrite_block": {
+    "criteria": {
+      "has_raw_pyrite_block": "2025-08-24 19:05:44 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_blasting_pyrite_ore": {
+    "criteria": {
+      "has_pyrite_ore": "2025-08-24 19:05:44 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/raw_pyrite": {
+    "criteria": {
+      "has_raw_pyrite_block": "2025-08-24 19:05:44 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_blasting_pyrite_deepslate_ore": {
+    "criteria": {
+      "has_pyrite_deepslate_ore": "2025-08-24 19:05:45 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/misc/pyrite_ingot_from_smelting_pyrite_deepslate_ore": {
+    "criteria": {
+      "has_pyrite_deepslate_ore": "2025-08-24 19:05:45 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/hinoki_mokuzai": {
+    "criteria": {
+      "has_log": "2025-08-24 19:07:06 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2025-08-24 19:07:06 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/hinoki_ban": {
+    "criteria": {
+      "has_logs": "2025-08-24 19:07:06 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/stick": {
+    "criteria": {
+      "has_planks": "2025-08-24 19:09:16 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/barrel": {
+    "criteria": {
+      "has_planks": "2025-08-24 19:09:16 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/white_dye": {
+    "criteria": {
+      "has_bone_meal": "2025-08-24 19:10:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bone_block": {
+    "criteria": {
+      "has_bone_meal": "2025-08-24 19:10:54 +0100"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2025-08-24 19:11:09 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/food/sushi": {
+    "criteria": {
+      "has_rice": "2025-08-24 19:11:26 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/food/rice_from_smelting_raw_rice": {
+    "criteria": {
+      "has_raw_rice": "2025-08-24 19:11:27 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/mushroom_stew": {
+    "criteria": {
+      "has_bowl": "2025-08-24 19:11:39 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2025-08-24 19:13:06 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_beef_from_smoking": {
+    "criteria": {
+      "has_beef": "2025-08-24 19:13:26 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2025-08-24 19:13:26 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_beef": {
+    "criteria": {
+      "has_beef": "2025-08-24 19:13:26 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_beef_from_campfire_cooking": {
+    "criteria": {
+      "has_beef": "2025-08-24 19:13:26 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/leather_helmet": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/leather_leggings": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/leather_chestplate": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/leather_horse_armor": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/saddle": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/item_frame": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/leather_boots": {
+    "criteria": {
+      "has_leather": "2025-08-24 19:13:32 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/smoker": {
+    "criteria": {
+      "has_furnace": "2025-08-24 19:14:13 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/nephrite_pickaxe": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/nephrite_axe": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/nephrite": {
+    "criteria": {
+      "nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/nephrite_chestplate": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/nephrite_boots": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/nephrite_shovel": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/nephrite_hoe": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/nephrite_leggings": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/tools/nephrite_sword": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/nephrite_block": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/nephrite_helmet": {
+    "criteria": {
+      "has_nephrite": "2025-08-24 19:17:03 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/kill_all_mobs": {
+    "criteria": {
+      "minecraft:skeleton": "2025-08-25 10:32:31 +0100",
+      "minecraft:spider": "2025-08-25 10:36:59 +0100",
+      "minecraft:zombie": "2025-08-24 19:22:55 +0100",
+      "minecraft:creeper": "2025-08-24 19:23:42 +0100",
+      "minecraft:slime": "2025-08-24 19:17:16 +0100"
+    },
+    "done": false
+  },
+  "minecraft:adventure/kill_a_mob": {
+    "criteria": {
+      "minecraft:slime": "2025-08-24 19:17:16 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/shoot_arrow": {
+    "criteria": {
+      "shot_arrow": "2025-08-24 19:19:50 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/blade_steel_smithing_blade": {
+    "criteria": {
+      "has_smithing_blade_template": "2025-08-24 19:23:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/wrap_black_smithing_wrapper": {
+    "criteria": {
+      "has_smithing_wrapper_template": "2025-08-24 19:23:03 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/wrap_red_smithing_wrapper": {
+    "criteria": {
+      "has_smithing_wrapper_template": "2025-08-24 19:23:04 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/wrap_white_smithing_wrapper": {
+    "criteria": {
+      "has_smithing_wrapper_template": "2025-08-24 19:23:04 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/firework_rocket_simple": {
+    "criteria": {
+      "has_gunpowder": "2025-08-24 19:23:42 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/tnt": {
+    "criteria": {
+      "has_gunpowder": "2025-08-24 19:23:42 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:hell/root": {
+    "criteria": {
+      "entered_hell": "2025-08-24 19:24:49 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:hell/find_temple": {
+    "criteria": {
+      "found_temple": "2025-08-24 19:25:27 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/emerald_block": {
+    "criteria": {
+      "has_emerald": "2025-08-24 19:28:27 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/sentry_armor_trim_smithing_template": {
+    "criteria": {
+      "has_sentry_armor_trim_smithing_template": "2025-08-25 08:51:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/sentry_armor_trim_smithing_template_smithing_trim": {
+    "criteria": {
+      "has_smithing_trim_template": "2025-08-25 08:51:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/trim_with_any_armor_pattern": {
+    "criteria": {
+      "armor_trimmed_minecraft:sentry_armor_trim_smithing_template_smithing_trim": "2025-08-25 08:51:58 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/nether_brick": {
+    "criteria": {
+      "has_netherrack": "2025-08-25 09:05:48 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/flint_and_steel": {
+    "criteria": {
+      "has_obsidian": "2025-08-25 10:05:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2025-08-25 10:05:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2025-08-25 10:05:37 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2025-08-25 10:30:13 +0100"
+    },
+    "done": true
+  },
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:warped_forest": "2025-08-25 10:30:14 +0100"
+    },
+    "done": false
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2025-08-25 10:30:14 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_mutton_from_smoking": {
+    "criteria": {
+      "has_mutton": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/painting": {
+    "criteria": {
+      "has_wool": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_carpet": {
+    "criteria": {
+      "has_white_wool": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_mutton": {
+    "criteria": {
+      "has_mutton": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_banner": {
+    "criteria": {
+      "has_white_wool": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_mutton_from_campfire_cooking": {
+    "criteria": {
+      "has_mutton": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_bed": {
+    "criteria": {
+      "has_white_wool": "2025-08-25 10:32:45 +0100"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/balanced_diet": {
+    "criteria": {
+      "mutton": "2025-08-25 10:35:36 +0100",
+      "rotten_flesh": "2025-08-25 10:35:27 +0100"
+    },
+    "done": false
+  },
+  "minecraft:recipes/combat/bow": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/fishing_rod": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/tripwire_hook": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/candle": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/lead": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/white_wool_from_string": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/crossbow": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/loom": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/bundle": {
+    "criteria": {
+      "has_string": "2025-08-25 10:37:00 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/fermented_spider_eye": {
+    "criteria": {
+      "has_spider_eye": "2025-08-25 10:37:01 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_porkchop_from_campfire_cooking": {
+    "criteria": {
+      "has_porkchop": "2025-08-25 10:37:14 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_porkchop": {
+    "criteria": {
+      "has_porkchop": "2025-08-25 10:37:14 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_porkchop_from_smoking": {
+    "criteria": {
+      "has_porkchop": "2025-08-25 10:37:14 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/gray_bed": {
+    "criteria": {
+      "has_gray_wool": "2025-08-25 10:37:19 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/gray_carpet": {
+    "criteria": {
+      "has_gray_wool": "2025-08-25 10:37:19 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/gray_banner": {
+    "criteria": {
+      "has_gray_wool": "2025-08-25 10:37:19 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_iron_block": {
+    "criteria": {
+      "has_iron_block": "2025-08-25 10:38:02 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/anvil": {
+    "criteria": {
+      "has_iron_block": "2025-08-25 10:38:02 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/iron_leggings": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/iron_chestplate": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bucket": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/iron_helmet": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/minecart": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/iron_hoe": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/katana": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:story/smelt_iron": {
+    "criteria": {
+      "iron": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/shears": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chain": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/iron_block": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/smithing_table": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lodestone": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/iron_sword": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/iron_pickaxe": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/shield": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/hopper": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/iron_bars": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/iron_boots": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lantern": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/iron_shovel": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/iron_battle_axe": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/iron_trapdoor": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/iron_axe": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/iron_door": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/heavy_weighted_pressure_plate": {
+    "criteria": {
+      "has_iron_ingot": "2025-08-25 10:38:05 +0100"
+    },
+    "done": true
+  },
+  "DataVersion": 4440
+}

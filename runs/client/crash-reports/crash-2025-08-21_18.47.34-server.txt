@@ -1,0 +1,132 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 2025-08-21 18:47:34
+Description: Exception in server tick loop
+
+java.lang.ExceptionInInitializerError: null
+	at net.minecraft.sounds.SoundEvents.register(SoundEvents.java:1719) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.sounds.SoundEvents.register(SoundEvents.java:1707) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.sounds.SoundEvents.register(SoundEvents.java:1703) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.sounds.SoundEvents.<clinit>(SoundEvents.java:16) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.world.level.block.SoundType.<clinit>(SoundType.java:7) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.world.level.block.state.BlockBehaviour$Properties.<init>(BlockBehaviour.java:1066) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.world.level.block.state.BlockBehaviour$Properties.of(BlockBehaviour.java:1118) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.world.level.block.Blocks.<clinit>(Blocks.java:51) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?] {}
+	at java.base/java.lang.Class.forName(Class.java:534) ~[?:?] {}
+	at java.base/java.lang.Class.forName(Class.java:513) ~[?:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.lib.jse.LuajavaLib.classForName(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.lib.jse.LuajavaLib.invoke(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.lib.VarArgFunction.call(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.LuaClosure.execute(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.LuaClosure.call(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.LuaClosure.execute(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.LuaClosure.onInvoke(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at MC-BOOTSTRAP/luaj.jse@3.0.1/org.luaj.vm2.LuaClosure.invoke(Unknown Source) ~[luaj-jse-3.0.1.jar%23195!/:?] {}
+	at TRANSFORMER/everythingjapanese@1.9.0/net.Chidoziealways.everythingjapanese.kanji.KanjiEffectLoader.coerceToKanjiEffect$lambda$25(KanjiEffectLoader.kt:167) ~[%23223!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.9.0/net.Chidoziealways.everythingjapanese.item.custom.TalismanItem.useOn(TalismanItem.kt:61) ~[%23223!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.common.CommonHooks.onPlaceItemIntoWorld(CommonHooks.java:625) ~[neoforge-21.8.29.jar%23222!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.item.ItemStack.useOn(ItemStack.java:370) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:mixin:APP:geckolib.mixins.json:common.ItemStackMixin from mod geckolib,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerPlayerGameMode.useItemOn(ServerPlayerGameMode.java:390) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.network.ServerGamePacketListenerImpl.handleUseItemOn(ServerGamePacketListenerImpl.java:1310) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.game.ServerboundUseItemOnPacket.handle(ServerboundUseItemOnPacket.java:48) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.game.ServerboundUseItemOnPacket.handle(ServerboundUseItemOnPacket.java:10) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.PacketUtils.lambda$ensureRunningOnSameThread$0(PacketUtils.java:36) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.TickTask.run(TickTask.java:18) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:155) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:24) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.doRunTask(MinecraftServer.java:898) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.doRunTask(MinecraftServer.java:177) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:126) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.pollTaskInternal(MinecraftServer.java:881) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.pollTask(MinecraftServer.java:875) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:115) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.waitUntilNextTick(MinecraftServer.java:844) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:728) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:277) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+Caused by: java.lang.IllegalArgumentException: Not bootstrapped (called from registry minecraft:game_event)
+	at net.minecraft.server.Bootstrap.createBootstrapException(Bootstrap.java:116) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.server.Bootstrap.checkBootstrapCalled(Bootstrap.java:109) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.core.registries.BuiltInRegistries.internalRegister(BuiltInRegistries.java:354) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.core.registries.BuiltInRegistries.registerDefaulted(BuiltInRegistries.java:342) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	at net.minecraft.core.registries.BuiltInRegistries.<clinit>(BuiltInRegistries.java:154) ~[neoforge-21.8.29.jar%23221!/:?] {re:classloading}
+	... 41 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 214112208 bytes (204 MiB) / 648019968 bytes (618 MiB) up to 4294967296 bytes (4096 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 22371.21
+	Virtual memory used (MiB): 13903.15
+	Swap memory total (MiB): 14336.00
+	Swap memory used (MiB): 1044.96
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 88155.09, total: 243176.00
+	Space in storage for workdir (MiB): available: 88155.09, total: 243176.00
+	JVM Flags: 1 total; -Xmx4G
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/5, l='ServerLevel[My Structure Creation World]', x=224.55, y=-60.00, z=244.67]]
+	Active Data Packs: vanilla, trade_rebalance, redstone_experiments, minecart_improvements, mod_data, mod/kotlinforforge (incompatible), mod/everythingjapanese, mod/geckolib, mod/neoforge
+	Available Data Packs: minecart_improvements, redstone_experiments, trade_rebalance, vanilla, mod/everythingjapanese, mod/geckolib, mod/kotlinforforge (incompatible), mod/neoforge, mod_data
+	Enabled Feature Flags: minecraft:redstone_experiments, minecraft:vanilla, minecraft:trade_rebalance, minecraft:minecart_improvements
+	World Generation: Experimental
+	World Seed: -3830398451704043929
+	Suppressed Exceptions: ~~NONE~~
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'neoforge'; Server brand changed to 'neoforge'
+	Launched Version: 21.8.29
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.16.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.16.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.16.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.16.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.16.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.16.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.9.0               |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		kffmod-neoforge-6.0.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.0.0               |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |NeoForge                      |neoforge                      |21.8.29             |Manifest: NOSIGNATURE
+	Crash Report UUID: 98cb79d7-48d1-44c7-af3b-13b96d39e61c
+	FML: 9.0.16
+	NeoForge: 21.8.29

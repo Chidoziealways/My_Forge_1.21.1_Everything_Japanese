@@ -102,36 +102,29 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
                 else -> "MIDDLE"
             }
 
-            // Determine face and column
-            val col = when {
-                // +Z face
-                z == maxZ -> when (x) {
-                    minX -> "LEFT"
-                    maxX -> "RIGHT"
-                    else -> "MIDDLE"
-                }
-                // -Z face
-                z == minZ -> when (x) {
-                    maxX -> "LEFT"
-                    minX -> "RIGHT"
-                    else -> "MIDDLE"
-                }
-                // +X face
-                x == maxX -> when (z) {
-                    minZ -> "LEFT"
-                    maxZ -> "RIGHT"
-                    else -> "MIDDLE"
-                }
-                // -X face
-                x == minX -> when (z) {
-                    maxZ -> "LEFT"
-                    minZ -> "RIGHT"
-                    else -> "MIDDLE"
-                }
-                // fallback
+            val dx = x - minX   // distance from the leftmost X
+            val dz = z - minZ   // distance from the frontmost Z
+
+            val sizeX = maxX - minX
+            val sizeZ = maxZ - minZ
+
+            // X-axis
+            val colX = when (dx) {
+                0 -> "LEFT"
+                sizeX -> "RIGHT"
                 else -> "MIDDLE"
             }
 
+            // Z-axis
+            val colZ = when (dz) {
+                0 -> "LEFT"
+                sizeZ -> "RIGHT"
+                else -> "MIDDLE"
+            }
+
+            // Final column selection
+            // If the vault is wider in X than Z, X dominates; otherwise Z dominates
+            val col = if (sizeX >= sizeZ) colX else colZ
 
             val section = VaultSection.valueOf("${row}_${col}")
             level!!.setBlock(pos, state.setValue(MoneyVaultBlock.SECTION, section), 3)

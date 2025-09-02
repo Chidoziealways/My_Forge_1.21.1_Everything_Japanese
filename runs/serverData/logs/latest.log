@@ -1,0 +1,39 @@
+[10:20:50] [main/INFO]: ModLauncher running: args [--launchTarget, neoforgeserverdatadev, --fml.fmlVersion, 9.0.16, --fml.mcVersion, 1.21.8, --fml.neoForgeVersion, 21.8.29, --fml.neoFormVersion, 20250717.133445]
+[10:20:50] [main/INFO]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 21.0.8+12-LTS-250
+[10:20:50] [main/INFO]: ModLauncher 9.0 starting: java version 21.0.8 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[10:20:51] [main/INFO]: ImmediateWindowProvider not loading because launch target is neoforgeserverdatadev
+[10:20:51] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23162!/ Service=ModLauncher Env=SERVER
+[10:20:51] [main/INFO]: Found mod file "neoforge-21.8.29.jar" [locator: neoforge devenv provider ([C:\Users\Hanzo\IdeaProjects\EverythingJapanese\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.8.29\neoforge-21.8.29.jar])]
+[10:20:51] [main/INFO]: Found mod file "neoforge-21.8.29.jar" [locator: neoforge devenv provider ([C:\Users\Hanzo\IdeaProjects\EverythingJapanese\.gradle\repositories\ng_dummy_ng\net\neoforged\neoforge\21.8.29\neoforge-21.8.29.jar])]
+[10:20:51] [main/INFO]: Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found mod file "neoforge-21.8.29.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found mod file "geckolib-neoforge-1.21.8-5.2.2.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found mod file "kffmod-neoforge-6.0.0.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found library file "kotlinforforge-neoforge-6.0.0.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found gamelibrary file "kfflib-neoforge-6.0.0.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found library file "kfflang-neoforge-6.0.0.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:51] [main/INFO]: Found gamelibrary file "mixinextras-neoforge-0.5.0.jar" [locator: userdev mods and services, reader: mod manifest]
+[10:20:52] [main/WARN]: Attempted to select a dependency jar for JarJar which was passed in as source: library:mixinextras.neoforge. Using Mod File: C:\Users\Hanzo\.gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-neoforge\0.5.0\d734b83ce6542bb70ea31755c1595b88992dbe65\mixinextras-neoforge-0.5.0.jar
+[10:20:52] [main/INFO]: Found 9 dependencies adding them to mods collection
+[10:20:52] [main/INFO]: Found library file "kotlinx-serialization-core-jvm-1.8.1.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "kotlinx-coroutines-jdk8-1.10.2.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "kotlin-reflect-2.2.0.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "kotlin-stdlib-2.2.0.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "kotlinx-serialization-json-jvm-1.8.1.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "kotlinx-coroutines-core-jvm-1.10.2.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "net.neoforged.neoforge-coremods-21.8.29.jar" [parent: neoforge-21.8.29.jar, locator: jarinjar, reader: mod manifest]
+[10:20:52] [main/INFO]: Found library file "kotlin-stdlib-jdk7-2.2.0.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: Found library file "kotlin-stdlib-jdk8-2.2.0.jar" [parent: kotlinforforge-neoforge-6.0.0.jar, locator: jarinjar]
+[10:20:52] [main/INFO]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Everything Japanese 1.5.0 (everythingjapanese)
+		GeckoLib 5 5.2.2 (geckolib)
+		Kotlin For Forge 6.0.0 (kotlinforforge)
+		Minecraft 1.21.8 (minecraft)
+		NeoForge 21.8.29 (neoforge)
+[10:20:54] [main/INFO]: Compatibility level set to JAVA_17
+[10:20:54] [main/INFO]: Launching target 'neoforgeserverdatadev' with arguments []
+[09Aug2025 10:20:54.954] [main/WARN] [mixin/]: Reference map 'geckolib.refmap.json' for geckolib.mixins.json could not be read. If this is a development environment you can ignore this message
+[09Aug2025 10:20:55.323] [main/ERROR] [net.neoforged.fml.loading.moddiscovery.locators.NeoForgeDevDistCleaner/DISTXFORM]: Attempted to load class net.minecraft.client.renderer.entity.EntityRenderer which is not present on the dedicated server

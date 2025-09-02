@@ -1,0 +1,232 @@
+[02Sep2025 10:32:29.798] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, neoforgeclientdev, --version, 21.8.40, --assetIndex, 26, --assetsDir, C:\\Users\\Hanzo\\.gradle\\caches\\neoformruntime\\assets, --fml.fmlVersion, 9.0.18, --fml.mcVersion, 1.21.8, --fml.neoForgeVersion, 21.8.40, --fml.neoFormVersion, 20250717.133445, -mixin.config=everythingjapanese.mixins.json]
+[02Sep2025 10:32:29.805] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 21.0.8+12-LTS-250
+[02Sep2025 10:32:29.808] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.0 starting: java version 21.0.8 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[02Sep2025 10:32:30.164] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[02Sep2025 10:32:31.287] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23158!/ Service=ModLauncher Env=CLIENT
+[02Sep2025 10:32:31.812] [fml-loadingscreen/INFO] [net.neoforged.fml.earlydisplay.render.LoadingScreenRenderer/]: GL info: Intel(R) UHD Graphics 620 GL version 3.2.0 - Build 31.0.101.2121, Intel
+[02Sep2025 10:32:33.355] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 10 dependencies adding them to mods collection
+[02Sep2025 10:32:33.361] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Everything Japanese 1.13.0 (everythingjapanese)
+		GeckoLib 5 5.2.2 (geckolib)
+		Kotlin For Forge 6.0.0 (kotlinforforge)
+		Minecraft 1.21.8 (minecraft)
+		NeoForge 21.8.40 (neoforge)
+[02Sep2025 10:32:36.957] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[02Sep2025 10:32:36.968] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[02Sep2025 10:32:37.008] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'neoforgeclientdev' with arguments [--version, 21.8.40, --assetsDir, C:\Users\Hanzo\.gradle\caches\neoformruntime\assets, --assetIndex, 26]
+[02Sep2025 10:32:37.310] [main/WARN] [mixin/]: Reference map 'geckolib.refmap.json' for geckolib.mixins.json could not be read. If this is a development environment you can ignore this message
+[02Sep2025 10:32:37.313] [main/WARN] [mixin/]: Reference map 'everythingjapanese.refmap.json' for everythingjapanese.mixins.json could not be read. If this is a development environment you can ignore this message
+[02Sep2025 10:32:38.081] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$Internal (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$Internal)
+[02Sep2025 10:32:39.017] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
+[02Sep2025 10:32:42.873] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 274 Datafixer optimizations took 1765 milliseconds
+[02Sep2025 10:33:06.963] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[02Sep2025 10:33:06.966] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[02Sep2025 10:33:07.017] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[02Sep2025 10:33:07.022] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[02Sep2025 10:33:07.025] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[02Sep2025 10:33:07.030] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [waypoint, modify, waypoint, color, reset] and [waypoint, modify, waypoint, color, color] with inputs: [reset]
+[02Sep2025 10:33:07.345] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.8.40, for MC 1.21.8
+[02Sep2025 10:33:08.744] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_block
+[02Sep2025 10:33:08.745] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_block
+[02Sep2025 10:33:08.796] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_block
+[02Sep2025 10:33:08.796] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_block
+[02Sep2025 10:33:08.797] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: raw_pyrite_block
+[02Sep2025 10:33:08.797] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: raw_pyrite_block
+[02Sep2025 10:33:08.800] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: washi_window
+[02Sep2025 10:33:08.800] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: washi_window
+[02Sep2025 10:33:08.801] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: washi_window_pane
+[02Sep2025 10:33:08.802] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: washi_window_pane
+[02Sep2025 10:33:08.806] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: shoji_door
+[02Sep2025 10:33:08.807] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: shoji_door
+[02Sep2025 10:33:08.811] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: money_vault_block
+[02Sep2025 10:33:08.811] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: money_vault_block
+[02Sep2025 10:33:08.812] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chabudai
+[02Sep2025 10:33:08.812] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chabudai
+[02Sep2025 10:33:08.815] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: fusuma_door
+[02Sep2025 10:33:08.815] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: fusuma_door
+[02Sep2025 10:33:08.816] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_ore
+[02Sep2025 10:33:08.816] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_ore
+[02Sep2025 10:33:08.816] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_deepslate_ore
+[02Sep2025 10:33:08.817] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_deepslate_ore
+[02Sep2025 10:33:08.818] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_ore
+[02Sep2025 10:33:08.820] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_ore
+[02Sep2025 10:33:08.821] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_deepslate_ore
+[02Sep2025 10:33:08.821] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_deepslate_ore
+[02Sep2025 10:33:08.825] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: transformer_block
+[02Sep2025 10:33:08.825] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: transformer_block
+[02Sep2025 10:33:08.828] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chocolate_cake
+[02Sep2025 10:33:08.829] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chocolate_cake
+[02Sep2025 10:33:08.832] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: japanese_cheesecake
+[02Sep2025 10:33:08.832] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: japanese_cheesecake
+[02Sep2025 10:33:08.837] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pedestal
+[02Sep2025 10:33:08.838] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pedestal
+[02Sep2025 10:33:08.841] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: growth_chamber
+[02Sep2025 10:33:08.841] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: growth_chamber
+[02Sep2025 10:33:08.849] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_maruta
+[02Sep2025 10:33:08.849] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_maruta
+[02Sep2025 10:33:08.850] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_mokuzai
+[02Sep2025 10:33:08.850] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_mokuzai
+[02Sep2025 10:33:08.850] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_maruta
+[02Sep2025 10:33:08.850] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_maruta
+[02Sep2025 10:33:08.854] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_mokuzai
+[02Sep2025 10:33:08.855] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_mokuzai
+[02Sep2025 10:33:08.857] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ban
+[02Sep2025 10:33:08.858] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ban
+[02Sep2025 10:33:08.858] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ha
+[02Sep2025 10:33:08.858] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ha
+[02Sep2025 10:33:08.860] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_naegi
+[02Sep2025 10:33:08.860] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_naegi
+[02Sep2025 10:33:08.860] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: potted_hinoki_naegi
+[02Sep2025 10:33:08.861] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: potted_hinoki_naegi
+[02Sep2025 10:33:08.861] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_stairs
+[02Sep2025 10:33:08.861] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_stairs
+[02Sep2025 10:33:08.862] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_slab
+[02Sep2025 10:33:08.862] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_slab
+[02Sep2025 10:33:08.863] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_pressure_plate
+[02Sep2025 10:33:08.863] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_pressure_plate
+[02Sep2025 10:33:08.864] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_button
+[02Sep2025 10:33:08.864] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_button
+[02Sep2025 10:33:08.864] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence
+[02Sep2025 10:33:08.864] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence
+[02Sep2025 10:33:08.865] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence_gate
+[02Sep2025 10:33:08.865] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence_gate
+[02Sep2025 10:33:08.865] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_wall
+[02Sep2025 10:33:08.866] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_wall
+[02Sep2025 10:33:08.866] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_door
+[02Sep2025 10:33:08.866] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_door
+[02Sep2025 10:33:08.867] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_trapdoor
+[02Sep2025 10:33:08.868] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_trapdoor
+[02Sep2025 10:33:08.872] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_lamp
+[02Sep2025 10:33:08.873] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_lamp
+[02Sep2025 10:33:08.876] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chair
+[02Sep2025 10:33:08.876] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chair
+[02Sep2025 10:33:08.880] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: zabuton_blue
+[02Sep2025 10:33:08.881] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: zabuton_blue
+[02Sep2025 10:33:08.881] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: zabuton_green
+[02Sep2025 10:33:08.882] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: zabuton_green
+[02Sep2025 10:33:08.883] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: zabuton_red
+[02Sep2025 10:33:08.883] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: zabuton_red
+[02Sep2025 10:33:08.888] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: tatami_mat
+[02Sep2025 10:33:08.888] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: tatami_mat
+[02Sep2025 10:33:08.900] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE DATA COMPONENT IN MODDATACOMPONENTTYPES
+[02Sep2025 10:33:08.909] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE ITEM IN MODITEMS
+[02Sep2025 10:33:08.916] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE CREATIVEMODETAB IN MODCREATIVEMODETABS
+[02Sep2025 10:33:09.874] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Registries
+[02Sep2025 10:33:09.874] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Registries
+[02Sep2025 10:33:09.875] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Datapack Registries
+[02Sep2025 10:33:09.900] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Datapack Registries
+[02Sep2025 10:33:11.142] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/moddev/artifacts/neoforge-21.8.40.jar%23214!/assets/.mcassetsroot' uses unexpected schema
+[02Sep2025 10:33:11.144] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/moddev/artifacts/neoforge-21.8.40.jar%23214!/data/.mcassetsroot' uses unexpected schema
+[02Sep2025 10:33:11.222] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[02Sep2025 10:33:11.277] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[02Sep2025 10:33:11.749] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
+[02Sep2025 10:33:12.044] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Using optional rendering extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access
+[02Sep2025 10:33:14.362] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/kotlinforforge, mod/everythingjapanese, mod/geckolib, mod/neoforge
+[02Sep2025 10:33:14.580] [resourceLoad/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_pua-16.0.03.hex, loading
+[02Sep2025 10:33:14.582] [resourceLoad/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-16.0.03.hex, loading
+[02Sep2025 10:33:15.603] [resourceLoad/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-16.0.03.hex, loading
+[02Sep2025 10:33:21.986] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelDiscovery/]: Missing block model: minecraft:builtin/entity
+[02Sep2025 10:33:23.541] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/nephrite_chestplate_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/chestplate_trim_pyrite
+[02Sep2025 10:33:23.542] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/samurai_helmet_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/helmet_trim_pyrite
+[02Sep2025 10:33:23.543] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:block/chabudai:
+    minecraft:textures/atlas/blocks.png:minecraft:chabudai
+[02Sep2025 10:33:23.544] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:block/washi_window_pane_side:
+    minecraft:textures/atlas/blocks.png:everythingjapanese:block/washi_window_pane_top
+[02Sep2025 10:33:23.544] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/pyrite_chestplate_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/chestplate_trim_pyrite
+[02Sep2025 10:33:23.544] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/nephrite_helmet_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/helmet_trim_pyrite
+[02Sep2025 10:33:23.544] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/nephrite_boots_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/boots_trim_pyrite
+[02Sep2025 10:33:23.545] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/samurai_leggings_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/leggings_trim_pyrite
+[02Sep2025 10:33:23.545] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/pyrite_leggings_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/leggings_trim_pyrite
+[02Sep2025 10:33:23.545] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:block/washi_window_pane_post:
+    minecraft:textures/atlas/blocks.png:everythingjapanese:block/washi_window_pane_top
+[02Sep2025 10:33:23.545] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:block/washi_window_pane_side_alt:
+    minecraft:textures/atlas/blocks.png:everythingjapanese:block/washi_window_pane_top
+[02Sep2025 10:33:23.545] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/pyrite_boots_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/boots_trim_pyrite
+[02Sep2025 10:33:23.546] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/nephrite_leggings_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/leggings_trim_pyrite
+[02Sep2025 10:33:23.546] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/samurai_boots_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/boots_trim_pyrite
+[02Sep2025 10:33:23.547] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/pyrite_helmet_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/helmet_trim_pyrite
+[02Sep2025 10:33:23.547] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:item/samurai_chestplate_pyrite_trim:
+    minecraft:textures/atlas/blocks.png:minecraft:trims/items/chestplate_trim_pyrite
+[02Sep2025 10:33:23.547] [resourceLoad/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model everythingjapanese:block/blood:
+    minecraft:textures/atlas/blocks.png:minecraft:block/blood_still
+[02Sep2025 10:33:27.196] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (Conexant ISST Audio)
+[02Sep2025 10:33:27.198] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[02Sep2025 10:33:27.492] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[02Sep2025 10:33:32.298] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[02Sep2025 10:33:32.521] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[02Sep2025 10:33:33.042] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[02Sep2025 10:33:33.609] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[02Sep2025 10:33:35.879] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[02Sep2025 10:33:35.883] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[02Sep2025 10:33:35.888] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[02Sep2025 10:33:35.892] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[02Sep2025 10:33:35.904] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[02Sep2025 10:33:35.912] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
+[02Sep2025 10:33:36.212] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[02Sep2025 10:33:36.244] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x0 minecraft:textures/atlas/paintings.png-atlas
+[02Sep2025 10:33:36.254] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[02Sep2025 10:34:21.002] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1480 recipes
+[02Sep2025 10:34:21.023] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1591 advancements
+[02Sep2025 10:34:21.030] [Render thread/INFO] [net.neoforged.neoforge.common.crafting.RecipePriorityManager/]: Loaded 0 recipe priority overrides
+[02Sep2025 10:34:21.569] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21.8
+[02Sep2025 10:34:21.569] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[02Sep2025 10:34:22.742] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[02Sep2025 10:34:26.921] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.922] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.923] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.925] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.928] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.929] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.929] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.930] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:26.930] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02Sep2025 10:34:27.282] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[02Sep2025 10:34:27.412] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[02Sep2025 10:34:27.415] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 4663 ms
+[02Sep2025 10:34:27.688] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[02Sep2025 10:34:27.688] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[02Sep2025 10:34:31.450] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:60af43b0] logged in with entity id 1 at (-1874.2387323940077, 76.65831375659384, -205.26664880124653)
+[02Sep2025 10:34:31.814] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[02Sep2025 10:34:32.071] [Server thread/INFO] [net.Chidoziealways.everythingjapanese.capabilities.PlayerEvents/]: Loading Chakra data from persistent NBT
+[02Sep2025 10:34:32.081] [Server thread/INFO] [net.Chidoziealways.everythingjapanese.capabilities.PlayerEvents/]: Loading Stamina data from persistent NBT
+[02Sep2025 10:34:32.083] [Server thread/INFO] [net.Chidoziealways.everythingjapanese.capabilities.PlayerEvents/]: Loading Quest data from persistent NBT
+[02Sep2025 10:34:32.103] [Server thread/INFO] [net.Chidoziealways.everythingjapanese.capabilities.PlayerEvents/]: Loading Jutsu data from persistent NBT
+[02Sep2025 10:34:32.121] [Server thread/INFO] [net.Chidoziealways.everythingjapanese.jutsu.JutsuCapability/]: Deserializing Jutsu NBT: {learnedJutsus:["chiretsu_sho_jutsu","small_windball","fireball"],masteryMap:{chiretsu_sho_jutsu:48.476196f,fireball:0.65999967f,small_windball:0.01f},selectedJutsu:"fireball"}
+[02Sep2025 10:34:32.139] [Server thread/INFO] [net.Chidoziealways.everythingjapanese.capabilities.PlayerEvents/]: Loading Money data from persistent NBT
+[02Sep2025 10:34:32.140] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2119ms or 42 ticks behind
+[02Sep2025 10:34:35.539] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 2 reached during a single frame. New capacity will be 4.
+[02Sep2025 10:34:35.672] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 4 reached during a single frame. New capacity will be 8.
+[02Sep2025 10:34:35.824] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 194 advancements
+[02Sep2025 10:34:37.876] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 8 reached during a single frame. New capacity will be 16.
+[02Sep2025 10:34:38.087] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 16 reached during a single frame. New capacity will be 32.
+[02Sep2025 10:34:38.493] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 32 reached during a single frame. New capacity will be 64.
+[02Sep2025 10:34:38.714] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[02Sep2025 10:34:38.845] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/minecraft:overworld
+[02Sep2025 10:34:38.905] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 64 reached during a single frame. New capacity will be 128.
+[02Sep2025 10:34:39.124] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/everythingjapanese:hell
+[02Sep2025 10:34:39.133] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/minecraft:the_nether
+[02Sep2025 10:34:39.135] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/minecraft:the_end
+[02Sep2025 10:34:39.871] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 128 reached during a single frame. New capacity will be 256.
+[02Sep2025 10:34:44.478] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 256 reached during a single frame. New capacity will be 512.
+[02Sep2025 10:34:45.956] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 512 reached during a single frame. New capacity will be 1024.
+[02Sep2025 10:34:52.600] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 5477ms or 109 ticks behind
+[02Sep2025 10:35:00.190] [Render thread/INFO] [net.minecraft.client.renderer.DynamicUniformStorage/]: Resizing Dynamic Transforms UBO, capacity limit of 1024 reached during a single frame. New capacity will be 2048.
+[02Sep2025 10:35:02.990] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[02Sep2025 10:35:03.054] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/minecraft:overworld
+[02Sep2025 10:35:04.285] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/everythingjapanese:hell
+[02Sep2025 10:35:04.286] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/minecraft:the_nether
+[02Sep2025 10:35:04.288] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New Worlds]'/minecraft:the_end

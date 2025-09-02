@@ -1,0 +1,165 @@
+---- Minecraft Network Protocol Error Report ----
+// Too many suspicious packets
+
+Time: 2025-08-10 12:05:12
+Description: Packet handling error
+
+io.netty.handler.codec.EncoderException: Failed to encode packet 'serverbound/minecraft:custom_payload'
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.IdDispatchCodec.encode(IdDispatchCodec.java:60) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.IdDispatchCodec.encode(IdDispatchCodec.java:13) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.network.filters.GenericPacketSplitter.encode(GenericPacketSplitter.java:104) ~[neoforge-21.8.29.jar%23220!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.29/net.neoforged.neoforge.network.filters.GenericPacketSplitter.encode(GenericPacketSplitter.java:39) ~[neoforge-21.8.29.jar%23220!/:?] {re:classloading}
+	at MC-BOOTSTRAP/io.netty.codec@4.1.118.Final/io.netty.handler.codec.MessageToMessageEncoder.write(MessageToMessageEncoder.java:90) ~[netty-codec-4.1.118.Final.jar%23154!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:893) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:875) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:984) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:868) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.ChannelOutboundHandlerAdapter.write(ChannelOutboundHandlerAdapter.java:113) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection$2.write(Connection.java:519) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:893) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWriteAndFlush(AbstractChannelHandlerContext.java:956) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:982) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:950) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:969) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:310) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection.doSendPacket(Connection.java:367) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection.lambda$sendPacket$12(Connection.java:358) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.DefaultEventLoop.run(DefaultEventLoop.java:54) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+Caused by: java.lang.RuntimeException: Failed encoding custom payload everythingjapanese:jutsu_cast: java.lang.IllegalStateException: Can't encode 'net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket@dd90a77', expected 'net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket@1a227c49'
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.common.custom.CustomPacketPayload$1.writeCap(CustomPacketPayload.java:42) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.common.custom.CustomPacketPayload$1.encode(CustomPacketPayload.java:47) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.common.custom.CustomPacketPayload$1.encode(CustomPacketPayload.java:29) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$4.encode(StreamCodec.java:76) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$5.encode(StreamCodec.java:90) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$5.encode(StreamCodec.java:82) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.IdDispatchCodec.encode(IdDispatchCodec.java:55) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	... 23 more
+Caused by: java.lang.IllegalStateException: Can't encode 'net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket@dd90a77', expected 'net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket@1a227c49'
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$3.encode(StreamCodec.java:57) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.common.custom.CustomPacketPayload$1.writeCap(CustomPacketPayload.java:40) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.common.custom.CustomPacketPayload$1.encode(CustomPacketPayload.java:47) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.common.custom.CustomPacketPayload$1.encode(CustomPacketPayload.java:29) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$4.encode(StreamCodec.java:76) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$5.encode(StreamCodec.java:90) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.StreamCodec$5.encode(StreamCodec.java:82) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.codec.IdDispatchCodec.encode(IdDispatchCodec.java:55) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	... 23 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Netty Local Client IO #0
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.PacketListener.fillCrashReport(PacketListener.java:33) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+-- Connection --
+Details:
+	Protocol: play
+	Flow: CLIENTBOUND
+	Is Local: true
+	Server type: <none>
+	Server brand: neoforge
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.PacketListener.fillCrashReport(PacketListener.java:33) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.protocol.PacketUtils.fillCrashReport(PacketUtils.java:61) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl.storeDisconnectionReport(ClientCommonPacketListenerImpl.java:134) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl.createDisconnectionInfo(ClientCommonPacketListenerImpl.java:127) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection.exceptionCaught(Connection.java:156) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.fireExceptionCaught(AbstractChannelHandlerContext.java:317) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.DefaultChannelPipeline$HeadContext.exceptionCaught(DefaultChannelPipeline.java:1324) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:346) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeExceptionCaught(AbstractChannelHandlerContext.java:325) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.DefaultChannelPipeline.fireExceptionCaught(DefaultChannelPipeline.java:856) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.VoidChannelPromise.fireException0(VoidChannelPromise.java:236) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.VoidChannelPromise.tryFailure(VoidChannelPromise.java:178) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.internal.PromiseNotificationUtil.tryFailure(PromiseNotificationUtil.java:64) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.notifyOutboundHandlerException(AbstractChannelHandlerContext.java:1006) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:898) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:875) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:984) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:868) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.ChannelOutboundHandlerAdapter.write(ChannelOutboundHandlerAdapter.java:113) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection$2.write(Connection.java:519) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:893) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.invokeWriteAndFlush(AbstractChannelHandlerContext.java:956) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:982) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:950) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:969) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:310) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection.doSendPacket(Connection.java:367) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.network.Connection.lambda$sendPacket$12(Connection.java:358) ~[neoforge-21.8.29.jar%23219!/:?] {re:classloading}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.transport@4.1.118.Final/io.netty.channel.DefaultEventLoop.run(DefaultEventLoop.java:54) ~[netty-transport-4.1.118.Final.jar%23160!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at MC-BOOTSTRAP/io.netty.common@4.1.118.Final/io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.118.Final.jar%23155!/:4.1.118.Final] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 201883136 bytes (192 MiB) / 802160640 bytes (765 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 22266.84
+	Virtual memory used (MiB): 18158.95
+	Swap memory total (MiB): 14231.63
+	Swap memory used (MiB): 2875.86
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 87558.52, total: 243176.00
+	Space in storage for workdir (MiB): available: 87558.52, total: 243176.00
+	JVM Flags: 2 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.16.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.16.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.16.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.16.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.16.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.16.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.6.0               |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		kffmod-neoforge-6.0.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.0.0               |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.29.jar                              |NeoForge                      |neoforge                      |21.8.29             |Manifest: NOSIGNATURE
+	Crash Report UUID: 19c2edf2-5b60-4bcf-ad37-ba3c1ca26043
+	FML: 9.0.16
+	NeoForge: 21.8.29

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "section=bottom_left": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_left"
+    },
+    "section=bottom_middle": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_middle"
+    },
+    "section=bottom_right": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_right"
+    },
+    "section=middle_left": {
+      "model": "everythingjapanese:block/money_vault_block_middle_left"
+    },
+    "section=middle_middle": {
+      "model": "everythingjapanese:block/money_vault_block_middle_middle"
+    },
+    "section=middle_right": {
+      "model": "everythingjapanese:block/money_vault_block_middle_right"
+    },
+    "section=single": {
+      "model": "everythingjapanese:block/money_vault_block"
+    },
+    "section=top_left": {
+      "model": "everythingjapanese:block/money_vault_block_top_left"
+    },
+    "section=top_middle": {
+      "model": "everythingjapanese:block/money_vault_block_top_middle"
+    },
+    "section=top_right": {
+      "model": "everythingjapanese:block/money_vault_block_top_right"
+    }
+  }
+}

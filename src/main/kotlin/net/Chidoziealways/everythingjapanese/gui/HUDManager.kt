@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.gui
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
@@ -28,11 +28,11 @@ object HUDManager {
         val startX = 10
         startY = 10
 
-        ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, selectedJutsuId)).ifPresent { selectedJutsu ->
+        ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, selectedJutsuId)).ifPresent { selectedJutsu ->
             gui.drawString(mc.font, "Jutsu: ${selectedJutsu.name}", startX, startY, 0xFFFFFFFF.toInt())
             startY += PADDING + 20
 
-            val masteryValue = MasteryHandler.getMastery(player, ResourceLocation.fromNamespaceAndPath(MOD_ID, selectedJutsuId))
+            val masteryValue = MasteryHandler.getMastery(player, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, selectedJutsuId))
             val masteryFraction = masteryValue / 1000
             gui.fill(
                 startX,
@@ -49,7 +49,7 @@ object HUDManager {
 
             for (jutsuId in allJutsus) {
                 val color = if (jutsuId == selectedJutsuId) 0xFF00FF00.toInt() else 0xFFFFFFFF.toInt()
-                ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, jutsuId)).ifPresent { juts ->
+                ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsuId)).ifPresent { juts ->
                     gui.drawString(mc.font, juts.name, startX, startY, color)
                     startY += 12
                 }

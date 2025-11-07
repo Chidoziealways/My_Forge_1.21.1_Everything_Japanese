@@ -1,18 +1,16 @@
 package net.Chidoziealways.everythingjapanese.entity
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 //import net.Chidoziealways.everythingjapanese.block.entity.custom.ByoubuBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.FusumaDoorBlockEntity
+import net.Chidoziealways.everythingjapanese.block.entity.custom.HangingScrollBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.ShojiDoorBlockEntity
 import net.Chidoziealways.everythingjapanese.entity.custom.GrowthChamberBlockEntity
 import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
 import net.minecraft.core.BlockPos
-import net.minecraft.core.Registry
-import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier
@@ -22,14 +20,23 @@ import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
 object ModBlockEntities {
-    val BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MOD_ID)
+    val BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, JAPANESE_MOD_ID)
 
     val SHOJI_DOOR_BE by BLOCK_ENTITIES.register("shoji_door_be") { ->
         BlockEntityType(BlockEntitySupplier { pPos: BlockPos, pBlockState: BlockState ->
             ShojiDoorBlockEntity(
                 pPos,
                 pBlockState) },
-            mutableSetOf<Block>(ModBlocks.SHOJI_DOOR))
+            mutableSetOf<Block>(JModBlocks.SHOJI_DOOR))
+    }
+
+    val HANGING_SCROLL_BE by BLOCK_ENTITIES.register("hanging_scroll_be") { ->
+        BlockEntityType(BlockEntitySupplier { pos, state ->
+            HangingScrollBlockEntity(
+                pos,
+                state
+            ) },
+            mutableSetOf<Block>(JModBlocks.HANGING_SCROLL))
     }
 
     val FUSUMA_DOOR_BE by BLOCK_ENTITIES.register("fusuma_door_be") { ->
@@ -37,7 +44,7 @@ object ModBlockEntities {
             FusumaDoorBlockEntity(
                 pPos,
                 pBlockState) },
-            mutableSetOf<Block>(ModBlocks.FUSUMA_DOOR))
+            mutableSetOf<Block>(JModBlocks.FUSUMA_DOOR))
     }
 
     /*val BYOUBU_BE by BLOCK_ENTITIES.register("byoubu_be") { ->
@@ -57,7 +64,7 @@ object ModBlockEntities {
                         pPos,
                         pBlockState
                     ) },
-                    mutableSetOf<Block?>(ModBlocks.PEDESTAL))
+                    mutableSetOf<Block?>(JModBlocks.PEDESTAL))
         }
 
     val GROWTH_CHAMBER_BE by BLOCK_ENTITIES.register("growth_chamber_be") { ->
@@ -67,7 +74,7 @@ object ModBlockEntities {
                     pPos,
                     pState
                 ) },
-            mutableSetOf<Block?>(ModBlocks.GROWTH_CHAMBER)
+            mutableSetOf<Block?>(JModBlocks.GROWTH_CHAMBER)
         )
     }
 
@@ -78,7 +85,7 @@ object ModBlockEntities {
                     pos,
                     state
                 ) },
-            mutableSetOf<Block>(ModBlocks.MONEY_VAULT_BLOCK)
+            mutableSetOf<Block>(JModBlocks.MONEY_VAULT_BLOCK)
         )
     }
 

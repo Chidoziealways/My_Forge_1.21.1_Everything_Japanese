@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.trim
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.Util
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
@@ -32,7 +31,7 @@ object ModTrimPatterns {
     private fun registryKey(pName: String): ResourceKey<TrimPattern> {
         return ResourceKey.create(
             Registries.TRIM_PATTERN,
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, pName)
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
         )
     }
 

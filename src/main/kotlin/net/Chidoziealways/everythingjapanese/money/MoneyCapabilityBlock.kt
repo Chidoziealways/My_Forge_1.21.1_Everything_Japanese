@@ -10,10 +10,18 @@ import net.neoforged.neoforge.network.PacketDistributor
 
 class MoneyCapabilityBlock(): IMoneyCapability {
     var balance: Int = 20
+    var currentMaxMoney: Int = 100
 
-    constructor(balance: Int): this() {
+    constructor(balance: Int, maxMoney: Int): this() {
         this.balance = balance
+        this.currentMaxMoney = maxMoney
     }
+
+    override fun setMaxMoney(amount: Int) {
+        currentMaxMoney = amount
+    }
+
+    override fun getMaxMoney(): Int = currentMaxMoney
 
     override fun getMoney(): Int = balance
 
@@ -63,7 +71,8 @@ class MoneyCapabilityBlock(): IMoneyCapability {
         val CODEC: Codec<IMoneyCapability> =
             RecordCodecBuilder.create { instance ->
                 instance.group(
-                    Codec.INT.fieldOf("balance").forGetter{ it.getMoney() }
+                    Codec.INT.fieldOf("balance").forGetter{ it.getMoney() },
+                    Codec.INT.fieldOf("maxMoney").forGetter { it.getMaxMoney() }
                 ).apply(instance, ::MoneyCapabilityBlock)
             }
     }

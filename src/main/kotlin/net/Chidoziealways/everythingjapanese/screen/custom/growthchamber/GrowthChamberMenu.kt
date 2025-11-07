@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.screen.custom.growthchamber
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.entity.custom.GrowthChamberBlockEntity
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.minecraft.network.FriendlyByteBuf
@@ -114,7 +114,7 @@ class GrowthChamberMenu(pContainerId: Int, inv: Inventory, entity: BlockEntity?,
     override fun stillValid(player: Player): Boolean {
         return stillValid(
             ContainerLevelAccess.create(level, blockEntity.blockPos),
-            player, ModBlocks.GROWTH_CHAMBER
+            player, JModBlocks.GROWTH_CHAMBER
         )
     }
 

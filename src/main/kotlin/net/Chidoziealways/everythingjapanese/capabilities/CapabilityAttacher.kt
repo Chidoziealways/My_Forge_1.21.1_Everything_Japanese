@@ -1,14 +1,13 @@
 package net.Chidoziealways.everythingjapanese.capabilities
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.chakra.Chakra
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuCapability
 import net.Chidoziealways.everythingjapanese.money.MoneyCapabilityBlock
 import net.Chidoziealways.everythingjapanese.money.MoneyCapabilityEntity
 import net.Chidoziealways.everythingjapanese.money.MoneyCapabilityItem
-import net.Chidoziealways.everythingjapanese.quest.QuestCapability
 import net.Chidoziealways.everythingjapanese.seal.SealLock
 import net.Chidoziealways.everythingjapanese.stamina.StaminaCapability
 import net.minecraft.core.BlockPos
@@ -20,13 +19,12 @@ import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object CapabilityAttacher {
 
     private val chakraMap = mutableMapOf<Player, Chakra>()
     private val staminaMap = mutableMapOf<Player, StaminaCapability>()
     private val jutsuMap = mutableMapOf<Player, JutsuCapability>()
-    private val questMap = mutableMapOf<Player, QuestCapability>()
     private val lockMap = mutableMapOf<BlockPos, SealLock>()
     private val moneyEntityMap = mutableMapOf<Player, MoneyCapabilityEntity>()
     private val moneyBlockMap = mutableMapOf<BlockPos, MoneyCapabilityBlock>()
@@ -49,11 +47,6 @@ object CapabilityAttacher {
             EntityType.PLAYER) { entity, _ ->
             jutsuMap.getOrPut(entity) { JutsuCapability() }
         }
-        event.registerEntity(
-            ModCapabilities.QUEST_CAPABILITY,
-            EntityType.PLAYER) { entity, _ ->
-            questMap.getOrPut(entity) { QuestCapability() }
-        }
         event.registerBlock(
             ModCapabilities.LOCK_CAPABILITY,
             { level, pos, state, entity, side ->
@@ -71,12 +64,12 @@ object CapabilityAttacher {
             { _, pos, _, _, _ ->
                 moneyBlockMap.getOrPut(pos) { MoneyCapabilityBlock() }
             },
-            ModBlocks.MONEY_VAULT_BLOCK
+            JModBlocks.MONEY_VAULT_BLOCK
         )
         event.registerItem(
             ModCapabilities.MONEY_CAPABILITY_ITEM,
             {stack, _ -> moneyItemMap.getOrPut(stack) { MoneyCapabilityItem() } },
-            ModItems.CREDIT_CARD_ITEM
+            JModItems.CREDIT_CARD_ITEM
         )
     }
 }

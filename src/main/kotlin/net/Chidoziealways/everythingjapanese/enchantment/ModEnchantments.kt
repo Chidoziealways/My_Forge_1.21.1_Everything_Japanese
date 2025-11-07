@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.enchantment
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.enchantment.custom.LightningStrikerEnchantmentEffect
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
@@ -10,7 +9,6 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.EnchantmentTags
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.entity.EquipmentSlotGroup
-import net.minecraft.world.item.Item
 import net.minecraft.world.item.enchantment.Enchantment
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents
 import net.minecraft.world.item.enchantment.EnchantmentTarget
@@ -19,7 +17,7 @@ import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect
 object ModEnchantments {
     val LIGHTNING_STRIKER: ResourceKey<Enchantment> = ResourceKey.create(
         Registries.ENCHANTMENT,
-        ResourceLocation.fromNamespaceAndPath(MOD_ID, "lightning_striker")
+        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning_striker")
     )
 
     fun bootstrap(context: BootstrapContext<Enchantment>) {

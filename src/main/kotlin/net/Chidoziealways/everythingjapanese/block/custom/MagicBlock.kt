@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.custom
 
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.particle.ModParticles
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.BlockPos
@@ -40,7 +40,7 @@ class MagicBlock(properties: Properties) : Block(properties) {
                 pEntity.item = ItemStack(Items.DIAMOND, pEntity.item.count)
             }
             if (pEntity.item.item === Items.DIAMOND) {
-                pEntity.item = ItemStack(ModItems.PYRITE_INGOT, pEntity.item.count)
+                pEntity.item = ItemStack(JModItems.PYRITE_INGOT, pEntity.item.count)
             }
         }
 

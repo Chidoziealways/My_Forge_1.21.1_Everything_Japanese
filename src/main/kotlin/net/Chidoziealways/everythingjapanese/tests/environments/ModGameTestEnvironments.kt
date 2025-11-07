@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.tests.environments
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.gametest.framework.TestEnvironmentDefinition
@@ -15,7 +14,7 @@ object ModGameTestEnvironments {
     private fun create(pName: String): ResourceKey<TestEnvironmentDefinition?> {
         return ResourceKey.create<TestEnvironmentDefinition?>(
             Registries.TEST_ENVIRONMENT,
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, pName)
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
         )
     }
 

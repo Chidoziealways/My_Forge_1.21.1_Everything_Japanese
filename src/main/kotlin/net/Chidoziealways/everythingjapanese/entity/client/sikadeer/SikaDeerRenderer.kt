@@ -1,14 +1,15 @@
 package net.Chidoziealways.everythingjapanese.entity.client.sikadeer
 
 import com.mojang.blaze3d.vertex.PoseStack
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.client.ModModelLayers
 import net.Chidoziealways.everythingjapanese.entity.custom.SikaDeerEntity
 import net.minecraft.client.model.AdultAndBabyModelPair
 import net.minecraft.client.renderer.MultiBufferSource
+import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.MobRenderer
+import net.minecraft.client.renderer.state.CameraRenderState
 import net.minecraft.resources.ResourceLocation
 
 class SikaDeerRenderer(pContext: EntityRendererProvider.Context) :
@@ -35,16 +36,16 @@ class SikaDeerRenderer(pContext: EntityRendererProvider.Context) :
 
     override fun getTextureLocation(pEntity: SikaDeerRenderState): ResourceLocation {
         return ResourceLocation.fromNamespaceAndPath(
-            MOD_ID,
+            JAPANESE_MOD_ID,
             "textures/entity/sikadeer/sika_deer.png"
         )
     }
 
-    override fun render(
+    override fun submit(
         sikaDeerRenderState: SikaDeerRenderState,
         poseStack: PoseStack,
-        multiBufferSource: MultiBufferSource,
-        p_115313_: Int
+        collector: SubmitNodeCollector,
+        cameraRenderState: CameraRenderState
     ) {
         if (sikaDeerRenderState.isBaby) {
             poseStack.scale(0.5f, 0.5f, 0.5f)
@@ -53,7 +54,7 @@ class SikaDeerRenderer(pContext: EntityRendererProvider.Context) :
             poseStack.scale(1.0f, 1.0f, 1.0f)
             this.shadowRadius = 0.7f
         }
-        super.render(sikaDeerRenderState, poseStack, multiBufferSource, p_115313_)
+        super.submit(sikaDeerRenderState, poseStack, collector, cameraRenderState)
     }
 
     companion object {

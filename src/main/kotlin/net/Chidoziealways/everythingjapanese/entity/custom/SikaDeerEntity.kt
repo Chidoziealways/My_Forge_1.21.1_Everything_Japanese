@@ -1,7 +1,7 @@
 package net.Chidoziealways.everythingjapanese.entity.custom
 
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
@@ -17,7 +17,6 @@ import net.minecraft.world.entity.animal.Animal
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
-import java.util.function.Predicate
 
 class SikaDeerEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Animal(pEntityType, pLevel) {
     val idleAnimationState: AnimationState = AnimationState()
@@ -33,7 +32,7 @@ class SikaDeerEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Anim
             TemptGoal(
                 this,
                 1.25,
-                { stack: ItemStack? -> stack!!.`is`(ModItems.YAMAZAKI_BERRIES) },
+                { stack: ItemStack? -> stack!!.`is`(JModItems.YAMAZAKI_BERRIES) },
                 false
             )
         )
@@ -46,7 +45,7 @@ class SikaDeerEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Anim
     }
 
     override fun isFood(pStack: ItemStack): Boolean {
-        return pStack.`is`(ModItems.YAMAZAKI_BERRIES)
+        return pStack.`is`(JModItems.YAMAZAKI_BERRIES)
     }
 
     override fun getBreedOffspring(pLevel: ServerLevel, pOtherParent: AgeableMob): AgeableMob? {

@@ -11,10 +11,13 @@ import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.HorizontalDirectionalBlock
+import net.minecraft.world.level.block.Mirror
 import net.minecraft.world.level.block.RenderShape
+import net.minecraft.world.level.block.Rotation
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
@@ -24,10 +27,15 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DoorHingeSide
 import net.minecraft.world.level.block.state.properties.EnumProperty
 import net.minecraft.world.level.gameevent.GameEvent
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
+import java.util.Random
 
 class ShojiDoorBlock(properties: BlockBehaviour.Properties): BaseEntityBlock(properties) {
 
@@ -147,6 +155,15 @@ class ShojiDoorBlock(properties: BlockBehaviour.Properties): BaseEntityBlock(pro
             Direction.EAST  -> if (dz < 0.5) DoorHingeSide.LEFT else DoorHingeSide.RIGHT
             else -> DoorHingeSide.LEFT
         }
+    }
+
+    override fun rotate(state: BlockState, rotation: Rotation): BlockState {
+        val facing = state.getValue(FACING)
+        return state.setValue(FACING, rotation.rotate(facing))
+    }
+
+    override fun mirror(state: BlockState, mirror: Mirror): BlockState {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)))
     }
 
     companion object {

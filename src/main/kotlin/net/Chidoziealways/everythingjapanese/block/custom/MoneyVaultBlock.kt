@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec
 import net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.core.BlockPos
+import net.minecraft.core.Direction
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
@@ -13,12 +14,15 @@ import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.HorizontalDirectionalBlock
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
+import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.EnumProperty
 import net.minecraft.world.phys.BlockHitResult
 import org.apache.logging.log4j.LogManager
@@ -60,10 +64,9 @@ class MoneyVaultBlock(props: Properties): BaseEntityBlock(props) {
                 true
             )
         } else {
-            val balance = moneyCap.getMoney()
-            if (balance > 0) vault.depositFromPlayer(moneyCap, 50, player)
+            val deposited = vault.depositFromPlayer(moneyCap, 50, player)
             player.displayClientMessage(
-                Component.literal(if (balance > 0) "Deposited ¥50 into the vault!" else "You have no money to deposit!"),
+                Component.literal(deposited),
                 true
             )
         }
@@ -79,6 +82,11 @@ class MoneyVaultBlock(props: Properties): BaseEntityBlock(props) {
         be.getControllerBE()?.updateConnectivity()
     }
 
+    override fun getStateForPlacement(context: BlockPlaceContext): BlockState? {
+        return defaultBlockState()
+            .setValue(SECTION, VaultSection.SINGLE)
+    }
+
     companion object {
         val CODEC: MapCodec<MoneyVaultBlock> = simpleCodec { MoneyVaultBlock(it) }
         val log = LogManager.getLogger(MoneyVaultBlock::class.java)
@@ -88,9 +96,19 @@ class MoneyVaultBlock(props: Properties): BaseEntityBlock(props) {
 
     enum class VaultSection : StringRepresentable {
         SINGLE,
-        TOP_LEFT, TOP_MIDDLE, TOP_RIGHT,
-        MIDDLE_LEFT, MIDDLE_MIDDLE, MIDDLE_RIGHT,
-        BOTTOM_LEFT, BOTTOM_MIDDLE, BOTTOM_RIGHT;
+
+        // Rows × Cols × Depth
+        TOP_LEFT_FRONT, TOP_MIDDLE_FRONT, TOP_RIGHT_FRONT,
+        TOP_LEFT_MIDDLE, TOP_MIDDLE_MIDDLE, TOP_RIGHT_MIDDLE,
+        TOP_LEFT_BACK, TOP_MIDDLE_BACK, TOP_RIGHT_BACK,
+
+        MIDDLE_LEFT_FRONT, MIDDLE_MIDDLE_FRONT, MIDDLE_RIGHT_FRONT,
+        MIDDLE_LEFT_MIDDLE, MIDDLE_MIDDLE_MIDDLE, MIDDLE_RIGHT_MIDDLE,
+        MIDDLE_LEFT_BACK, MIDDLE_MIDDLE_BACK, MIDDLE_RIGHT_BACK,
+
+        BOTTOM_LEFT_FRONT, BOTTOM_MIDDLE_FRONT, BOTTOM_RIGHT_FRONT,
+        BOTTOM_LEFT_MIDDLE, BOTTOM_MIDDLE_MIDDLE, BOTTOM_RIGHT_MIDDLE,
+        BOTTOM_LEFT_BACK, BOTTOM_MIDDLE_BACK, BOTTOM_RIGHT_BACK;
 
         override fun getSerializedName(): String = name.lowercase()
     }

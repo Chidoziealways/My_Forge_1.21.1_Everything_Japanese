@@ -1,9 +1,10 @@
 package net.Chidoziealways.everythingjapanese.item.custom
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
 import net.Chidoziealways.everythingjapanese.particle.ModParticles
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
+import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.core.BlockPos
 import net.minecraft.core.component.DataComponents
@@ -72,6 +73,7 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
         return InteractionResult.SUCCESS
     }
 
+    @Deprecated("Deprecated in Java")
     override fun appendHoverText(
         pStack: ItemStack,
         pContext: TooltipContext,
@@ -79,7 +81,8 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
         pTooltipComponents: Consumer<Component?>,
         pTooltipFlag: TooltipFlag
     ) {
-        if (Screen.hasShiftDown()) {
+        val minecraft = Minecraft.getInstance()
+        if (minecraft.hasShiftDown()) {
             pTooltipComponents.accept(Component.translatable("tooltip.everythingjapanese.chisel_item"))
         } else {
             pTooltipComponents.accept(Component.translatable("tooltip.everythingjapanese.chisel_item.shift_down"))
@@ -118,7 +121,7 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
             Map.entry<Block, Block>(Blocks.END_STONE_BRICKS, Blocks.END_STONE),
             Map.entry<Block, Block>(
                 Blocks.DIRT,
-                ModBlocks.PYRITE_BLOCK
+                JModBlocks.PYRITE_BLOCK
             ) //Map.entry(Blocks.CAKE, ModBlocks.CHOCOLATE_CAKE.get()),
             //Map.entry(ModBlocks.CHOCOLATE_CAKE.get(), ModBlocks.JAPANESE_CHEESECAKE.get()),
             //Map.entry(ModBlocks.WORKBENCH.get(), Blocks.CRAFTING_TABLE)

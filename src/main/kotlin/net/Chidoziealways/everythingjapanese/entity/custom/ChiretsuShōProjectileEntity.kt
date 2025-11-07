@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.entity.custom
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
 import net.minecraft.core.registries.BuiltInRegistries
@@ -12,11 +12,8 @@ import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.MobCategory
-import net.minecraft.world.entity.MoverType
-import net.minecraft.world.entity.player.Player
 import net.minecraft.world.entity.projectile.ProjectileUtil
 import net.minecraft.world.entity.projectile.ThrowableProjectile
-import net.minecraft.world.level.ClipContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
@@ -183,7 +180,7 @@ class ChiretsuShōProjectileEntity(
                 level.destroyBlock(pos, true) // true to drop items
             }
 
-            MasteryHandler.addMastery(shooter, ResourceLocation.fromNamespaceAndPath(MOD_ID, "chiretsu_sho_jutsu"), 0.02f)
+            MasteryHandler.addMastery(shooter, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"), 0.02f)
 
             this.discard() // Remove the projectile after hitting
         }
@@ -200,7 +197,7 @@ class ChiretsuShōProjectileEntity(
         if (level is ServerLevel && shooter is ServerPlayer) {
             val baseDamage = 5.0f
 
-            val mastery = MasteryHandler.getMastery(shooter, ResourceLocation.fromNamespaceAndPath(MOD_ID, "chiretsu_sho_jutsu"))
+            val mastery = MasteryHandler.getMastery(shooter, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"))
 
             val scaledDamage = baseDamage * (1f + (mastery / 200f))
 
@@ -228,7 +225,7 @@ class ChiretsuShōProjectileEntity(
 
                 MasteryHandler.addMastery(
                     shooter,
-                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "chiretsu_sho_jutsu"),
+                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"),
                     gain
                 )
 

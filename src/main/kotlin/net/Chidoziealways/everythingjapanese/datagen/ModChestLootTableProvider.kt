@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.loot.LootTableSubProvider
 import net.minecraft.resources.ResourceKey
@@ -20,9 +20,10 @@ class ModChestLootTableProvider(registries: HolderLookup.Provider): LootTableSub
                     LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(3.0F))
                         .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE).setWeight(5))
-                        .add(LootItem.lootTableItem { ModItems.WINDBALL_SCROLL }.setWeight(20))
-                        .add(LootItem.lootTableItem(ModItems.FIREBALL_SCROLL).setWeight(10))
-                        .add(LootItem.lootTableItem(ModItems.CHIRETSU_SHO_SCROLL).setWeight(10))
+                        .add(LootItem.lootTableItem { JModItems.WINDBALL_SCROLL }.setWeight(20))
+                        .add(LootItem.lootTableItem(JModItems.FIREBALL_SCROLL).setWeight(10))
+                        .add(LootItem.lootTableItem(JModItems.CHIRETSU_SHO_SCROLL).setWeight(10))
+                        .add(LootItem.lootTableItem(JModItems.EKIRETSU_SHO_SCROLL).setWeight(9))
                         .add(LootItem.lootTableItem { Items.IRON_SWORD }.setWeight(30))
                 )
         )

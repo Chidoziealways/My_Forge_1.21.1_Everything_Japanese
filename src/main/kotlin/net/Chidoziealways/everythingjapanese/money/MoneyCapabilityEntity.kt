@@ -15,6 +15,12 @@ class MoneyCapabilityEntity(): IMoneyCapability {
         this.balance = balance
     }
 
+    override fun getMaxMoney(): Int? = null
+
+    override fun setMaxMoney(amount: Int) {
+
+    }
+
     override fun getMoney(): Int = balance
 
     override fun addMoney(amount: Int, player: ServerPlayer) {

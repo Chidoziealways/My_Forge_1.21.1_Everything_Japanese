@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.custom
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.item.AxeItem
@@ -35,13 +35,13 @@ class ModFlammableRotatedPillarBlock(properties: Properties) : RotatedPillarBloc
         simulate: Boolean
     ): BlockState? {
         if (context.itemInHand.item is AxeItem) {
-            if (state.`is`(ModBlocks.HINOKI_MARUTA)) {
-                return ModBlocks.STRIPPED_HINOKI_MARUTA.defaultBlockState()
+            if (state.`is`(JModBlocks.HINOKI_MARUTA)) {
+                return JModBlocks.STRIPPED_HINOKI_MARUTA.defaultBlockState()
                     .setValue(AXIS, state.getValue(AXIS))
             }
 
-            if (state.`is`(ModBlocks.HINOKI_MOKUZAI)) {
-                return ModBlocks.STRIPPED_HINOKI_MOKUZAI.defaultBlockState().setValue(
+            if (state.`is`(JModBlocks.HINOKI_MOKUZAI)) {
+                return JModBlocks.STRIPPED_HINOKI_MOKUZAI.defaultBlockState().setValue(
                     AXIS, state.getValue(
                         AXIS
                     )

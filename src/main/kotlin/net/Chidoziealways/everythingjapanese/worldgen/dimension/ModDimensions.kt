@@ -1,8 +1,7 @@
 package net.Chidoziealways.everythingjapanese.worldgen.dimension
 
 import com.mojang.datafixers.util.Pair
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.Chidoziealways.everythingjapanese.worldgen.biome.ModBiomes
 import net.minecraft.core.Holder
@@ -26,17 +25,17 @@ import java.util.List
 object ModDimensions {
     val HELL_KEY: ResourceKey<LevelStem?> = ResourceKey.create<LevelStem?>(
         Registries.LEVEL_STEM,
-        ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell")
+        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell")
     )
 
     val HELL_LEVEL_KEY: ResourceKey<Level> = ResourceKey.create<Level>(
         Registries.DIMENSION,
-        ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell")
+        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell")
     )
 
     val HELL_TYPE: ResourceKey<DimensionType?> = ResourceKey.create<DimensionType?>(
         Registries.DIMENSION_TYPE,
-        ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_type")
+        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_type")
     )
 
     fun bootstrapType(context: BootstrapContext<DimensionType>) {

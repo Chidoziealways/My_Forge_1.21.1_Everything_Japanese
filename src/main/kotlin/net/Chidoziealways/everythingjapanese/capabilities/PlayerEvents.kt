@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.capabilities
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.chakra.IChakra
 import net.Chidoziealways.everythingjapanese.jutsu.IJutsuCapability
 import net.minecraft.world.entity.player.Player
@@ -11,7 +11,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object PlayerEvents {
     private val log: Logger = LoggerFactory.getLogger(PlayerEvents::class.java)
 
@@ -26,11 +26,6 @@ object PlayerEvents {
         val staminaTag = stamina!!.serializeNBT()
         log.info("Saving Stamina")
         player.persistentData.put("everythingjapanese:stamina_data", staminaTag) // Save Chakra data to persistent NBT
-
-        val quests = player.getCapability(ModCapabilities.QUEST_CAPABILITY)
-        val questTag = quests!!.serializeNBT()
-        log.info("Saving Quest")
-        player.persistentData.put("everythingjapanese:quest", questTag)
 
         val jutsu = player.getCapability(ModCapabilities.JUTSU_CAPABILITY)
         val jutsuTag = jutsu!!.serializeNBT()
@@ -76,14 +71,6 @@ object PlayerEvents {
             val stamina = player.getCapability(ModCapabilities.STAMINA_CAPABILITY)
             log.info("Loading Stamina data from persistent NBT")
             stamina!!.deserializeNBT(staminaTag)
-        }
-
-        // Retrieve persistent data
-        if (player.persistentData.contains("everythingjapanese:quest")) {
-            val questTag = player.persistentData.getCompoundOrEmpty("everythingjapanese:quest")
-            val quests = player.getCapability(ModCapabilities.QUEST_CAPABILITY)
-            log.info("Loading Quest data from persistent NBT")
-            quests!!.deserializeNBT(questTag)
         }
 
         // Retrieve persistent data
@@ -137,16 +124,6 @@ object PlayerEvents {
             stamina!!.deserializeNBT(staminaTag)
         } else {
             log.error("Doesn't contain stamina_data")
-        }
-
-        // Restore Jutsu data
-        if (oldPlayer.persistentData.contains("everythingjapanese:quest")) {
-            val questTag = oldPlayer.persistentData.getCompoundOrEmpty("everythingjapanese:quest")
-            val quests = newPlayer.getCapability(ModCapabilities.QUEST_CAPABILITY)
-            log.info("Restoring Quest Data")
-            quests!!.deserializeNBT(questTag)
-        } else {
-            log.error("Doesn't contain quest")
         }
 
         // Restore Jutsu data

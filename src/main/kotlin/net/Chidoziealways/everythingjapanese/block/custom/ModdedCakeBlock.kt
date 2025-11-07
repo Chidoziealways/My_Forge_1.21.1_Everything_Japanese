@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.custom
 
 import net.Chidoziealways.everythingjapanese.state.properties.ModBlockStateProperties
 import net.minecraft.core.BlockPos
+import net.minecraft.core.Direction
 import net.minecraft.util.RandomSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
@@ -90,8 +91,9 @@ class ModdedCakeBlock(properties: BlockBehaviour.Properties) : Block(properties)
 
     public override fun getAnalogOutputSignal(
         state: BlockState,
-        level: net.minecraft.world.level.Level,
-        pos: BlockPos
+        level: Level,
+        pos: BlockPos,
+        p_435855_: Direction
     ): Int {
         return getOutputSignal(state.getValue<Int>(BITES))
     }

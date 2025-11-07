@@ -1,11 +1,7 @@
 package net.Chidoziealways.everythingjapanese.jutsu
 
-import kotlinx.coroutines.CompletableDeferred
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
-import net.Chidoziealways.everythingjapanese.chakra.ChakraSyncPacket
-import net.Chidoziealways.everythingjapanese.chakra.IChakra
-import net.Chidoziealways.everythingjapanese.network.ModNetwork
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.chat.Component
@@ -13,7 +9,6 @@ import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerPlayer
-import net.neoforged.neoforge.network.PacketDistributor
 import net.neoforged.neoforge.network.handling.IPayloadContext
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -23,7 +18,7 @@ object JutsuCastPacket: CustomPacketPayload {
         return TYPE
     }
 
-        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "jutsu_cast")
+        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu_cast")
         val TYPE = CustomPacketPayload.Type<JutsuCastPacket>(ID)
 
         val STREAM_CODEC: StreamCodec<FriendlyByteBuf, JutsuCastPacket> = StreamCodec.unit(JutsuCastPacket)
@@ -39,7 +34,7 @@ object JutsuCastPacket: CustomPacketPayload {
                     val jutsuPath = jutsuCap.getSelectedJutsu()
                     val learnedJutsus = jutsuCap.getLearnedJutsus()
                     if (jutsuPath != "") {
-                        val jutsuId = ResourceLocation.fromNamespaceAndPath(MOD_ID, jutsuPath)
+                        val jutsuId = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsuPath)
                         if (jutsuCap.hasLearnedJutsu(jutsuId.path)) {
                             val jutsu = ModRegistries.JUTSU.getValue(jutsuId)
                             println("Jutsu learned: ${jutsuId.path}")

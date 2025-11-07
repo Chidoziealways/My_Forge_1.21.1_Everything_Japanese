@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.trim
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.Util
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
@@ -19,7 +19,7 @@ object ModTrimMaterials {
     private val log: Logger? = LoggerFactory.getLogger(ModTrimMaterials::class.java)
 
     fun registryKey(name: String): ResourceKey<TrimMaterial> {
-        return ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(MOD_ID, name))
+        return ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name))
     }
 
     fun bootstrap(context: BootstrapContext<TrimMaterial>) {

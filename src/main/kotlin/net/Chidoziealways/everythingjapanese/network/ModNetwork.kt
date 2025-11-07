@@ -1,16 +1,14 @@
 package net.Chidoziealways.everythingjapanese.network
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.chakra.ChakraSyncPacket
 import net.Chidoziealways.everythingjapanese.chakra.IncreaseChakraPacket
+import net.Chidoziealways.everythingjapanese.item.custom.SetScrollTextPacket
 import net.Chidoziealways.everythingjapanese.jutsu.CycleJutsuPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuSyncPacket
 import net.Chidoziealways.everythingjapanese.money.packets.MoneySyncPacket
-import net.Chidoziealways.everythingjapanese.quest.packets.FinishQuestPacket
-import net.Chidoziealways.everythingjapanese.quest.packets.StartQuestPacket
-import net.Chidoziealways.everythingjapanese.quest.packets.UpdateStagePacket
 import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaDecreasePacket
 import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaIncreasePacket
 import net.minecraft.client.Minecraft
@@ -18,7 +16,7 @@ import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object ModNetwork {
     @SubscribeEvent
     fun registerPackets(event: RegisterPayloadHandlersEvent) {
@@ -37,27 +35,9 @@ object ModNetwork {
             context.enqueueWork { JutsuCastPacket.handle(message, context) }
         }
 
-        registrar.playToClient(StartQuestPacket.TYPE, StartQuestPacket.CODEC) { message, context ->
-            context.enqueueWork {
-                StartQuestPacket.handle(message, context)
-            }
-        }
-
-        registrar.playToClient(FinishQuestPacket.TYPE, FinishQuestPacket.CODEC) { message, context ->
-            context.enqueueWork {
-                FinishQuestPacket.handle(message, context)
-            }
-        }
-
         registrar.playToClient(JutsuSyncPacket.TYPE, JutsuSyncPacket.CODEC) { message, context ->
             context.enqueueWork {
                 JutsuSyncPacket.handle(message, context)
-            }
-        }
-
-        registrar.playToClient(UpdateStagePacket.TYPE, UpdateStagePacket.CODEC) { message, context ->
-            context.enqueueWork {
-                UpdateStagePacket.handle(message, context)
             }
         }
 
@@ -78,5 +58,7 @@ object ModNetwork {
         registrar.playToClient(StaminaDecreasePacket.TYPE, StaminaDecreasePacket.CODEC, StaminaDecreasePacket::handle)
 
         registrar.playToClient(MoneySyncPacket.TYPE, MoneySyncPacket.CODEC, MoneySyncPacket::handle)
+
+        registrar.playToServer(SetScrollTextPacket.TYPE, SetScrollTextPacket.CODEC, SetScrollTextPacket::handle)
     }
 }

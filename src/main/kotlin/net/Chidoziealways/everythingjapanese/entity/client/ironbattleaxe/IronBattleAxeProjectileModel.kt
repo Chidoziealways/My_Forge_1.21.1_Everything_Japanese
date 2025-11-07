@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.entity.client.ironbattleaxe
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.client.model.EntityModel
 import net.minecraft.client.model.geom.ModelLayerLocation
 import net.minecraft.client.model.geom.ModelPart
@@ -30,7 +29,7 @@ class IronBattleAxeProjectileModel(root: ModelPart) : EntityModel<IronBattleAxeR
     companion object {
         // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
         val LAYER_LOCATION: ModelLayerLocation = ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, "iron_battle_axe"),
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe"),
             "main"
         )
 

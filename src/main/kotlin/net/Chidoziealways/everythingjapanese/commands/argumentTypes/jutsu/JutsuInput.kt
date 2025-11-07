@@ -2,10 +2,8 @@ package net.Chidoziealways.everythingjapanese.commands.argumentTypes.jutsu
 
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import com.mojang.serialization.DynamicOps
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
-import net.Chidoziealways.everythingjapanese.jutsu.ModJutsus
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.core.Holder
 import net.minecraft.core.HolderLookup
@@ -30,7 +28,7 @@ class JutsuInput(jutsu: Holder<Jutsu?>?, pComponents: DataComponentPatch?) {
 
     init {
         if (jutsu == null || !ModRegistries.JUTSU.containsKey(
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, jutsu.value()?.name!!)
+                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsu.value()?.name!!)
             )
         ) {
             throw INVALID_JUTSU.create()

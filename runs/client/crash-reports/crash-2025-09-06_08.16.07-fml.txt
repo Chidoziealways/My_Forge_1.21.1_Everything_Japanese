@@ -1,0 +1,118 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 2025-09-06 08:16:07
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.phys.shapes.Shapes.box(Shapes.java:57) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading}
+-- Mod loading issue --
+Details:
+	Mod file: <No mod information provided>
+	Failure message: An uncaught parallel processing error has occurred.
+		java.lang.IllegalArgumentException: The min values need to be smaller or equals to the max values
+	Mod version: <No mod information provided>
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.IllegalArgumentException: The min values need to be smaller or equals to the max values
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.phys.shapes.Shapes.box(Shapes.java:57) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.Block.box(Block.java:155) ~[neoforge-21.8.46.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/everythingjapanese@1.14.0/net.Chidoziealways.everythingjapanese.block.custom.TatamiMatBlock.getShape(TatamiMatBlock.kt:54) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.getShape(BlockBehaviour.java:744) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.getShape(BlockBehaviour.java:740) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour.propagatesSkylightDown(BlockBehaviour.java:442) ~[neoforge-21.8.46.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.initCache(BlockBehaviour.java:586) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading}
+	at MC-BOOTSTRAP/com.google.common@33.3.1-jre/com.google.common.collect.ImmutableList.forEach(ImmutableList.java:423) ~[guava-33.3.1-jre.jar%23127!/:?] {}
+	at TRANSFORMER/neoforge@21.8.46/net.neoforged.neoforge.registries.NeoForgeRegistryCallbacks$BlockCallbacks.onBake(NeoForgeRegistryCallbacks.java:54) ~[neoforge-21.8.46.jar%23215!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.core.MappedRegistry.lambda$freeze$6(MappedRegistry.java:316) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading,pl:mixin:APP:neoforge.mixins.json:MappedRegistryAccessor from mod neoforge,pl:mixin:A}
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?] {}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.core.MappedRegistry.freeze(MappedRegistry.java:316) ~[neoforge-21.8.46.jar%23214!/:?] {re:classloading,pl:mixin:APP:neoforge.mixins.json:MappedRegistryAccessor from mod neoforge,pl:mixin:A}
+	at TRANSFORMER/neoforge@21.8.46/net.neoforged.neoforge.registries.GameData.lambda$freezeData$3(GameData.java:69) ~[neoforge-21.8.46.jar%23215!/:?] {re:classloading}
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[?:?] {}
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[?:?] {}
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133) ~[?:?] {}
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1939) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?] {}
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[?:?] {}
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[?:?] {}
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[?:?] {}
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[?:?] {}
+	at TRANSFORMER/neoforge@21.8.46/net.neoforged.neoforge.registries.GameData.freezeData(GameData.java:66) ~[neoforge-21.8.46.jar%23215!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.46/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:55) ~[neoforge-21.8.46.jar%23215!/:?] {re:classloading}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run$$$capture(CompletableFuture.java:1804) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 102808552 bytes (98 MiB) / 578813952 bytes (552 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 23395.21
+	Virtual memory used (MiB): 15843.94
+	Swap memory total (MiB): 15360.00
+	Swap memory used (MiB): 2757.04
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 54122.35, total: 243176.00
+	Space in storage for workdir (MiB): available: 54122.35, total: 243176.00
+	JVM Flags: 0 total; 
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.18.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.18.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.18.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.18.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.18.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.18.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.14.0              |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		kffmod-neoforge-6.0.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.0.0               |Manifest: NOSIGNATURE
+		neoforge-21.8.46.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.46.jar                              |NeoForge                      |neoforge                      |21.8.46             |Manifest: NOSIGNATURE
+	Crash Report UUID: ce1d0954-f541-4348-9266-f89d6a0b2ece
+	FML: 9.0.18
+	NeoForge: 21.8.46

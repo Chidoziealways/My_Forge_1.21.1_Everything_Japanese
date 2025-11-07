@@ -1,9 +1,9 @@
 package net.Chidoziealways.everythingjapanese.event
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.item.custom.HammerItem
 import net.Chidoziealways.everythingjapanese.potion.ModPotions
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers
@@ -33,7 +33,7 @@ import net.neoforged.neoforge.event.village.VillagerTradesEvent
 import net.neoforged.neoforge.event.village.WandererTradesEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object ModEvents {
     private val HARVESTED_BLOCKS: MutableSet<BlockPos?> = HashSet<BlockPos?>()
 
@@ -131,77 +131,77 @@ object ModEvents {
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_SWORD, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_SWORD, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_AXE, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_AXE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_SHOVEL, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_SHOVEL, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_HOE, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_HOE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 15),
-                    ItemStack(ModItems.PYRITE_BATTLE_AXE, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_BATTLE_AXE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_HAMMER, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_HAMMER, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
-                    ItemStack(ModItems.PYRITE_HORSE_ARMOR, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_HORSE_ARMOR, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_HELMET, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_HELMET, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_CHESTPLATE, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_CHESTPLATE, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_LEGGINGS, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_LEGGINGS, 1), 6, 4, 0.05f
                 )
             })
 
             trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
-                    ItemStack(ModItems.PYRITE_BOOTS, 1), 6, 4, 0.05f
+                    ItemStack(JModItems.PYRITE_BOOTS, 1), 6, 4, 0.05f
                 )
             })
         }
@@ -211,7 +211,7 @@ object ModEvents {
             trades.get(1)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
                 MerchantOffer(
                     ItemCost(Items.DIAMOND, 18),
-                    ItemStack(ModBlocks.CHAIR, 20), 6, 4, 0.6f
+                    ItemStack(JModBlocks.CHAIR, 20), 6, 4, 0.6f
                 )
             })
         }
@@ -225,12 +225,12 @@ object ModEvents {
 
         genericTrades.add { entity, randomSource -> MerchantOffer(
             ItemCost(Items.DIAMOND, 12),
-            ItemStack(ModItems.RADIATION_STAFF, 1), 1, 10, 0.2f
+            ItemStack(JModItems.RADIATION_STAFF, 1), 1, 10, 0.2f
         ) }
 
         rareTrades.add { entity, randomSource -> MerchantOffer(
             ItemCost(Items.NETHERITE_INGOT, 8),
-            ItemStack(ModItems.AO_TO_NATSU_MUSIC_DISC, 1), 1, 10, 0.2f
+            ItemStack(JModItems.AO_TO_NATSU_MUSIC_DISC, 1), 1, 10, 0.2f
         ) }
     }
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "everythingjapanese:block/money_vault_block_bottom",
-    "side": "everythingjapanese:block/money_vault_block_side_bottom_left",
-    "top": "everythingjapanese:block/money_vault_block_top"
-  }
-}

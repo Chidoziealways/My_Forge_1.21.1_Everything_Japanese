@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.commands
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.commands.argumentTypes.jutsu.JutsuArgument
 import net.minecraft.commands.CommandBuildContext
 import net.minecraft.commands.synchronization.ArgumentTypeInfo
@@ -9,11 +9,10 @@ import net.minecraft.commands.synchronization.SingletonArgumentInfo
 import net.minecraft.core.registries.Registries
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.neoforge.registries.DeferredRegister
-import java.util.function.Supplier
 import java.util.function.Function
 
 object ModArgumentTypes {
-    val ARGUMENT_TYPES = DeferredRegister.create<ArgumentTypeInfo<*, *>?>(Registries.COMMAND_ARGUMENT_TYPE, MOD_ID)
+    val ARGUMENT_TYPES = DeferredRegister.create<ArgumentTypeInfo<*, *>?>(Registries.COMMAND_ARGUMENT_TYPE, JAPANESE_MOD_ID)
 
     val JUTSU_ARGUMENT =
         ARGUMENT_TYPES.register(

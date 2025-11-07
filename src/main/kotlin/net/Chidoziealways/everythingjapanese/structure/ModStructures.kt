@@ -1,21 +1,22 @@
 package net.Chidoziealways.everythingjapanese.structure
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.levelgen.structure.Structure
 
 object ModStructures {
-    val HELL_TEMPLE: ResourceKey<Structure?> = createKey("hell_temple")
+    val HELL_TEMPLE: ResourceKey<Structure> = createKey("hell_temple")
 
-    val DOJO: ResourceKey<Structure?> = createKey("dojo")
+    val DOJO: ResourceKey<Structure> = createKey("dojo")
 
-    private fun createKey(pName: String): ResourceKey<Structure?> {
-        return ResourceKey.create<Structure?>(
+    val SHOJI_HOUSE: ResourceKey<Structure> = createKey("shoji_house")
+
+    private fun createKey(pName: String): ResourceKey<Structure> {
+        return ResourceKey.create(
             Registries.STRUCTURE,
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, pName)
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
         )
     }
 }

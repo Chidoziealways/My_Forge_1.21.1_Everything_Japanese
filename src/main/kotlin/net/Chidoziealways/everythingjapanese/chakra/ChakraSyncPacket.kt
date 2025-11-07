@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.chakra
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
@@ -12,7 +12,7 @@ data class ChakraSyncPacket(@JvmField val chakra: Float, val maxChakra: Int): Cu
     }
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "chakra_sync")
+        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chakra_sync")
         val TYPE = CustomPacketPayload.Type<ChakraSyncPacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, ChakraSyncPacket> =

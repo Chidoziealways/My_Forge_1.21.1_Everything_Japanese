@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.advancements.Advancement
 import net.minecraft.advancements.AdvancementHolder
 import net.minecraft.advancements.AdvancementType
@@ -19,7 +19,7 @@ class StoryAdvancementProvider : AdvancementSubProvider {
         val pyrite = Advancement.Builder.advancement()
             .parent(ResourceLocation.withDefaultNamespace("story/smelt_iron"))
             .display(
-                ModItems.PYRITE_INGOT,
+                JModItems.PYRITE_INGOT,
                 Component.literal("Fake Gold!"),
                 Component.literal("Smelt some Raw Pyrite"),
                 null,
@@ -28,13 +28,13 @@ class StoryAdvancementProvider : AdvancementSubProvider {
                 true,
                 false
             )
-            .addCriterion("pyrite", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PYRITE_INGOT))
+            .addCriterion("pyrite", InventoryChangeTrigger.TriggerInstance.hasItems(JModItems.PYRITE_INGOT))
             .save(saver, "story/smelt_pyrite")
 
         val nephrite = Advancement.Builder.advancement()
             .parent(pyrite)
             .display(
-                ModItems.NEPHRITE,
+                JModItems.NEPHRITE,
                 Component.literal("Are these Emeralds?"),
                 Component.literal("Acquire Nephrite"),
                 null,
@@ -43,7 +43,7 @@ class StoryAdvancementProvider : AdvancementSubProvider {
                 true,
                 false
             )
-            .addCriterion("nephrite", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.NEPHRITE))
+            .addCriterion("nephrite", InventoryChangeTrigger.TriggerInstance.hasItems(JModItems.NEPHRITE))
             .save(saver, "story/nephrite")
     }
 }

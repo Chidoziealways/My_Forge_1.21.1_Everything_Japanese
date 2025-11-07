@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.recipe
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.item.crafting.SmithingBladeRecipe
 import net.Chidoziealways.everythingjapanese.item.crafting.SmithingKanjiRecipe
 import net.Chidoziealways.everythingjapanese.item.crafting.SmithingWrapperRecipe
@@ -13,8 +13,8 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object ModRecipes {
-    val SERIALIZERS = DeferredRegister.create<RecipeSerializer<*>?>(Registries.RECIPE_SERIALIZER, MOD_ID)
-    val TYPES = DeferredRegister.create<RecipeType<*>?>(Registries.RECIPE_TYPE, MOD_ID)
+    val SERIALIZERS = DeferredRegister.create<RecipeSerializer<*>?>(Registries.RECIPE_SERIALIZER, JAPANESE_MOD_ID)
+    val TYPES = DeferredRegister.create<RecipeType<*>?>(Registries.RECIPE_TYPE, JAPANESE_MOD_ID)
 
     val GROWTH_CHAMBER_SERIALIZER by
         SERIALIZERS.register(

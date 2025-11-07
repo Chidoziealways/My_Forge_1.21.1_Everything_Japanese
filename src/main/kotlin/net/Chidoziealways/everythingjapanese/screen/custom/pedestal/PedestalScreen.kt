@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.screen.custom.pedestal
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
 import net.minecraft.client.renderer.RenderPipelines
@@ -42,6 +41,6 @@ class PedestalScreen(pMenu: PedestalMenu, pPlayerInventory: Inventory, pTitle: C
 
     companion object {
         private val GUI_TEXTURE: ResourceLocation =
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/gui/pedestal/pedestal_gui.png")
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "textures/gui/pedestal/pedestal_gui.png")
     }
 }

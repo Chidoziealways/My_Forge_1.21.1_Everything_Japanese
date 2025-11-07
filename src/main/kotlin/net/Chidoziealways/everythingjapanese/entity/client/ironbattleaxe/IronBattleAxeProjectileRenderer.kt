@@ -2,13 +2,14 @@ package net.Chidoziealways.everythingjapanese.entity.client.ironbattleaxe
 
 import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Axis
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.custom.IronBattleAxeProjectileEntity
 import net.minecraft.client.renderer.MultiBufferSource
+import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRenderer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.ItemRenderer
+import net.minecraft.client.renderer.state.CameraRenderState
 import net.minecraft.client.renderer.texture.OverlayTexture
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.Mth
@@ -22,51 +23,60 @@ class IronBattleAxeProjectileRenderer(pContext: EntityRendererProvider.Context) 
             IronBattleAxeProjectileModel(pContext.bakeLayer(IronBattleAxeProjectileModel.Companion.LAYER_LOCATION))
     }
 
-    override fun render(
+    override fun submit(
         state: IronBattleAxeRenderState,
         pPoseStack: PoseStack,
-        pBufferSource: MultiBufferSource,
-        pPackedLight: Int
+        collector: SubmitNodeCollector,
+        cameraRenderState: CameraRenderState
     ) {
+        super.submit(state, pPoseStack, collector, cameraRenderState)
+
+        val entity = state.getEntity() ?: return
+
         pPoseStack.pushPose()
 
-        // Determine the texture based on the entity's state
-        val texture = determineTexture(state.getEntity())
+        // Determine the texture for the entity
+        val texture = determineTexture(entity)
 
-        // Apply transformations based on the entity's movement
-        if (!state.getEntity()!!.isGrounded) {
+        // Apply transformations based on whether the entity is grounded
+        if (!entity.isGrounded) {
             pPoseStack.mulPose(
                 Axis.YP.rotationDegrees(
                     Mth.lerp(
                         state.getpPartialTick(),
-                        state.getEntity()!!.yRotO,
-                        state.getEntity()!!.getYRot()
+                        entity.yRotO,
+                        entity.yRot
                     )
                 )
             )
-            pPoseStack.mulPose(Axis.XP.rotationDegrees(state.getEntity()!!.renderingRotation * 5f))
+            pPoseStack.mulPose(Axis.XP.rotationDegrees(entity.renderingRotation * 5f))
             pPoseStack.translate(0f, -1.0f, 0f)
         } else {
-            pPoseStack.mulPose(Axis.YP.rotationDegrees(state.getEntity()!!.groundedOffset!!.y))
-            pPoseStack.mulPose(Axis.XP.rotationDegrees(state.getEntity()!!.groundedOffset!!.x))
+            entity.groundedOffset?.let {
+                pPoseStack.mulPose(Axis.YP.rotationDegrees(it.y))
+                pPoseStack.mulPose(Axis.XP.rotationDegrees(it.x))
+            }
             pPoseStack.translate(0f, -1.0f, 0f)
         }
 
-        // Render the model with the determined texture
-        val vertexConsumer = ItemRenderer.getFoilBuffer(
-            pBufferSource, this.model.renderType(texture), false, false
-        )
-        this.model.renderToBuffer(pPoseStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY)
+        // Submit the model for rendering through the collector
+        collector.submitCustomGeometry(pPoseStack, this.model.renderType(texture)) { _, consumer ->
+            this.model.renderToBuffer(
+                pPoseStack,
+                consumer,
+                state.lightCoords,          // use your render state's light coords
+                OverlayTexture.NO_OVERLAY
+            )
+        }
 
         pPoseStack.popPose()
-
-        super.render(state, pPoseStack, pBufferSource, pPackedLight)
     }
+
 
     private fun determineTexture(entity: IronBattleAxeProjectileEntity?): ResourceLocation {
         // Logic to determine the appropriate texture based on the entity's state
         return ResourceLocation.fromNamespaceAndPath(
-            MOD_ID,
+            JAPANESE_MOD_ID,
             "textures/entity/ironbattleaxe/iron_battle_axe.png"
         )
     }

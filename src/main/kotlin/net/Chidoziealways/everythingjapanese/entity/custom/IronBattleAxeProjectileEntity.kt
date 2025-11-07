@@ -1,7 +1,7 @@
 package net.Chidoziealways.everythingjapanese.entity.custom
 
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.core.Direction
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
@@ -22,12 +22,12 @@ class IronBattleAxeProjectileEntity : AbstractArrow {
         ModEntities.IRON_BATTLE_AXE,
         shooter,
         level,
-        ItemStack(ModItems.IRON_BATTLE_AXE),
+        ItemStack(JModItems.IRON_BATTLE_AXE),
         null
     )
 
     override fun getDefaultPickupItem(): ItemStack {
-        return ItemStack(ModItems.IRON_BATTLE_AXE)
+        return ItemStack(JModItems.IRON_BATTLE_AXE)
     }
 
     val renderingRotation: Float

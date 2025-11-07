@@ -1,20 +1,18 @@
 package net.Chidoziealways.everythingjapanese.entity.client.triceratops
 
-import com.google.common.collect.Maps
 import com.mojang.blaze3d.vertex.PoseStack
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.TriceratopsVariant
 import net.Chidoziealways.everythingjapanese.entity.client.ModModelLayers
 import net.Chidoziealways.everythingjapanese.entity.custom.TriceratopsEntity
-import net.minecraft.Util
 import net.minecraft.client.model.AdultAndBabyModelPair
 import net.minecraft.client.renderer.MultiBufferSource
+import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.MobRenderer
+import net.minecraft.client.renderer.state.CameraRenderState
 import net.minecraft.resources.ResourceLocation
 import java.util.*
-import java.util.function.Consumer
 
 class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
     MobRenderer<TriceratopsEntity, TriceratopsRenderState, TriceratopsModel<TriceratopsEntity?>?>(
@@ -33,9 +31,9 @@ class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
         return LOCATION_BY_VARIANT[state.entity!!.variant]!!
     }
 
-    override fun render(
+    override fun submit(
         pEntity: TriceratopsRenderState, pPoseStack: PoseStack,
-        pBuffer: MultiBufferSource, pPackedLight: Int
+        collector: SubmitNodeCollector, cameraRenderState: CameraRenderState
     ) {
         if (pEntity.isBaby) {
             pPoseStack.scale(0.5f, 0.5f, 0.5f)
@@ -43,7 +41,7 @@ class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
             pPoseStack.scale(1f, 1f, 1f)
         }
 
-        super.render(pEntity, pPoseStack, pBuffer, pPackedLight)
+        super.submit(pEntity, pPoseStack, collector, cameraRenderState)
     }
 
     override fun createRenderState(): TriceratopsRenderState {
@@ -62,14 +60,14 @@ class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
                 put(
                     TriceratopsVariant.GRAY,
                     ResourceLocation.fromNamespaceAndPath(
-                        MOD_ID,
+                        JAPANESE_MOD_ID,
                         "textures/entity/triceratops/triceratops_gray.png"
                     )
                 )
                 put(
                     TriceratopsVariant.GREEN,
                     ResourceLocation.fromNamespaceAndPath(
-                        MOD_ID,
+                        JAPANESE_MOD_ID,
                         "textures/entity/triceratops/triceratops_green.png"
                     )
                 )

@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.item
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.equipment.EquipmentAsset
@@ -12,7 +11,7 @@ interface ModEquipmentAssets {
         fun createId(pName: String): ResourceKey<EquipmentAsset?> {
             return ResourceKey.create<EquipmentAsset?>(
                 EquipmentAssets.ROOT_ID,
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, pName)
+                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
             )
         }
 

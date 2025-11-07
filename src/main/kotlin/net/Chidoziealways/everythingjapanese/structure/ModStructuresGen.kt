@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.structure
 
 import net.Chidoziealways.everythingjapanese.structure.custom.dojo.DojoStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.hellTemple.HellTempleStructurePieces
+import net.Chidoziealways.everythingjapanese.structure.custom.shoji_house.ShojiHouseStructurePieces
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
@@ -53,7 +54,7 @@ object ModStructuresGen {
                 ConstantHeight.of(VerticalAnchor.absolute(-27)),
                 false,
                 Optional.empty<Heightmap.Types?>(),
-                116,
+                JigsawStructure.MaxDistance(116),
                 mutableListOf<PoolAliasBinding?>(),
                 JigsawStructure.DEFAULT_DIMENSION_PADDING,
                 JigsawStructure.DEFAULT_LIQUID_SETTINGS
@@ -67,6 +68,20 @@ object ModStructuresGen {
                     .terrainAdapation(TerrainAdjustment.BEARD_THIN)
                     .build(),
                 holdergetter1.getOrThrow(DojoStructurePieces.START),
+                6,
+                ConstantHeight.of(VerticalAnchor.absolute(0)),
+                true,
+                Heightmap.Types.WORLD_SURFACE_WG
+            )
+        )
+
+        context.register(
+            ModStructures.SHOJI_HOUSE,
+            JigsawStructure(
+                StructureSettings.Builder(holdergetter.getOrThrow(ModTags.Biomes.HAS_DOJO))
+                    .terrainAdapation(TerrainAdjustment.BEARD_THIN)
+                    .build(),
+                holdergetter1.getOrThrow(ShojiHouseStructurePieces.START),
                 6,
                 ConstantHeight.of(VerticalAnchor.absolute(0)),
                 true,

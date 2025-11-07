@@ -2,7 +2,7 @@ package net.Chidoziealways.everythingjapanese.entity.custom
 
 import it.unimi.dsi.fastutil.ints.Int2IntFunction
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.core.component.DataComponents
 import net.minecraft.core.particles.ColorParticleOption
 import net.minecraft.core.particles.ParticleTypes
@@ -86,7 +86,7 @@ class YaProjectileEntity : AbstractArrow {
             }
         } else if (this.onGround() && this.inGroundTime != 0 && this.getPotionContents() != PotionContents.EMPTY && this.inGroundTime >= 600) {
             this.level().broadcastEntityEvent(this, 0.toByte())
-            this.setPickupItemStack(ItemStack(ModItems.YA))
+            this.setPickupItemStack(ItemStack(JModItems.YA))
         }
     }
 
@@ -137,7 +137,7 @@ class YaProjectileEntity : AbstractArrow {
     }
 
     override fun getDefaultPickupItem(): ItemStack {
-        return ItemStack(ModItems.YA)
+        return ItemStack(JModItems.YA)
     }
 
     override fun handleEntityEvent(pId: Byte) {

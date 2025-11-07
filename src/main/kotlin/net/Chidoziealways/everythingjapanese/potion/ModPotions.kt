@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.potion
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.effect.MobEffectInstance
@@ -11,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Supplier
 
 object ModPotions {
-    val POTIONS = DeferredRegister.create(Registries.POTION, MOD_ID)
+    val POTIONS = DeferredRegister.create(Registries.POTION, JAPANESE_MOD_ID)
 
     val ADRENALINE_POTION = POTIONS.register(
         "adrenaline_potion",

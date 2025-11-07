@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.tests
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.gametest.framework.GameTestHelper
 import net.minecraft.world.level.block.Blocks
@@ -10,7 +10,7 @@ import java.util.function.Consumer
 
 object ModGameTests {
     val TEST_FUNCTIONS = DeferredRegister.create(
-            Registries.TEST_FUNCTION, MOD_ID
+            Registries.TEST_FUNCTION, JAPANESE_MOD_ID
         )
 
     val POWDER_SNOW = TEST_FUNCTIONS.register(

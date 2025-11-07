@@ -1,7 +1,7 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.loot.AddItemModifier
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
@@ -14,8 +14,8 @@ import net.neoforged.neoforge.common.data.GlobalLootModifierProvider
 import net.neoforged.neoforge.common.loot.LootTableIdCondition
 import java.util.concurrent.CompletableFuture
 
-class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider?>) :
-    GlobalLootModifierProvider(output,  registries, MOD_ID) {
+class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider>) :
+    GlobalLootModifierProvider(output,  registries, JAPANESE_MOD_ID) {
     override fun start() {
         this.add(
             "rice_seeds_from_short_grass",
@@ -23,7 +23,7 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
                 arrayOf<LootItemCondition>(
                     LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SHORT_GRASS).build(),
                     LootItemRandomChanceCondition.randomChance(0.5f).build()
-                ) as Array<LootItemCondition?>, ModItems.RICE_SEEDS
+                ) as Array<LootItemCondition?>, JModItems.RICE_SEEDS
             )
         )
         this.add<AddItemModifier?>(
@@ -32,7 +32,7 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
                 arrayOf<LootItemCondition>(
                     LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build(),
                     LootItemRandomChanceCondition.randomChance(0.9f).build()
-                ) as Array<LootItemCondition?>, ModItems.RICE_SEEDS
+                ) as Array<LootItemCondition?>, JModItems.RICE_SEEDS
             )
         )
         this.add<AddItemModifier?>(
@@ -40,7 +40,7 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
             AddItemModifier(
                 arrayOf<LootItemCondition>(
                     LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/jungle_temple")).build()
-                ) as Array<LootItemCondition?>, ModItems.CHISEL
+                ) as Array<LootItemCondition?>, JModItems.CHISEL
             )
         )
         this.add<AddItemModifier?>(
@@ -48,7 +48,7 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
             AddItemModifier(
                 arrayOf<LootItemCondition>(
                     LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/ancient_city")).build()
-                ) as Array<LootItemCondition?>, ModItems.FIREBALL_SCROLL
+                ) as Array<LootItemCondition?>, JModItems.FIREBALL_SCROLL
             )
         )
         this.add<AddItemModifier?>(
@@ -56,7 +56,7 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
             AddItemModifier(
                 arrayOf<LootItemCondition>(
                     LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/end_city_treasure")).build()
-                ) as Array<LootItemCondition?>, ModItems.WINDBALL_SCROLL
+                ) as Array<LootItemCondition?>, JModItems.WINDBALL_SCROLL
             )
         )
         this.add<AddItemModifier?>(
@@ -66,7 +66,7 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
                     LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("entities/creeper"))
                         .and(LootItemRandomChanceCondition.randomChance(0.29f)).build()
                 ) as Array<LootItemCondition?>,
-                ModItems.RICE
+                JModItems.RICE
             )
         )
     }

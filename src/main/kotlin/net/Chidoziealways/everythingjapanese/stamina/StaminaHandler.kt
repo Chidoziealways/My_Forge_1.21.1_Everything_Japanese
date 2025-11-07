@@ -1,14 +1,13 @@
 package net.Chidoziealways.everythingjapanese.stamina
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.server.level.ServerPlayer
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.tick.PlayerTickEvent
-import net.neoforged.neoforge.event.tick.ServerTickEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object StaminaHandler {
     @SubscribeEvent
     fun onPlayerTick(event: PlayerTickEvent.Post) {

@@ -1,8 +1,9 @@
 package net.Chidoziealways.everythingjapanese.event
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.entity.client.ModModelLayers
+import net.Chidoziealways.everythingjapanese.entity.client.bullet.BulletModel
 import net.Chidoziealways.everythingjapanese.entity.client.ironbattleaxe.IronBattleAxeProjectileModel
 import net.Chidoziealways.everythingjapanese.entity.client.sikadeer.SikaDeerModel
 import net.Chidoziealways.everythingjapanese.entity.client.triceratops.TriceratopsModel
@@ -15,7 +16,6 @@ import net.minecraft.util.RandomSource
 import net.minecraft.world.entity.EntitySpawnReason
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.SpawnPlacementTypes
-import net.minecraft.world.entity.SpawnPlacements
 import net.minecraft.world.entity.animal.Animal
 import net.minecraft.world.entity.monster.Monster
 import net.minecraft.world.level.ServerLevelAccessor
@@ -27,12 +27,13 @@ import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 import java.util.function.Supplier
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object ModEventBusEvents {
     @SubscribeEvent
     fun registerLayers(event: EntityRenderersEvent.RegisterLayerDefinitions) {
-        val sikaDeerLayer: LayerDefinition = SikaDeerModel.Companion.createBodyLayer()
-        val triceratopsLayer: LayerDefinition = TriceratopsModel.Companion.createBodyLayer()
+        val sikaDeerLayer: LayerDefinition = SikaDeerModel.createBodyLayer()
+        val triceratopsLayer: LayerDefinition = TriceratopsModel.createBodyLayer()
+        val bulletLayer: LayerDefinition = BulletModel.createBodyLayer()
 
         event.registerLayerDefinition(ModModelLayers.SIKA_DEER, Supplier { sikaDeerLayer })
         event.registerLayerDefinition(
@@ -45,6 +46,8 @@ object ModEventBusEvents {
         event.registerLayerDefinition(
             IronBattleAxeProjectileModel.Companion.LAYER_LOCATION,
             Supplier { IronBattleAxeProjectileModel.Companion.createBodyLayer() })
+        event.registerLayerDefinition(
+            ModModelLayers.BULLET) { bulletLayer }
     }
 
     

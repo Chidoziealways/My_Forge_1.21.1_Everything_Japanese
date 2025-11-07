@@ -2,8 +2,7 @@ package net.Chidoziealways.everythingjapanese.structure.custom.hellTemple
 
 import com.google.common.collect.ImmutableList
 import com.mojang.datafixers.util.Pair
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.structure.ModProcessorLists
 import net.minecraft.core.Holder
 import net.minecraft.core.registries.Registries
@@ -18,7 +17,7 @@ import java.util.function.Function
 
 object HellTempleStructurePieces {
     val START: ResourceKey<StructureTemplatePool> =
-        Pools.createKey(ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_temple/stairs"))
+        Pools.createKey(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_temple/stairs"))
 
     fun bootstrap(context: BootstrapContext<StructureTemplatePool>) {
         val holdergetter = context.lookup(Registries.PROCESSOR_LIST)

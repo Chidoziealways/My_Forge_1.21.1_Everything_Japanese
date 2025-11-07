@@ -1,10 +1,11 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
 import com.mojang.datafixers.util.Pair
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingcore.datagen.*
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.bladeSmithing
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.item.katana.BladeType
 import net.Chidoziealways.everythingjapanese.item.katana.Wrapping
 import net.Chidoziealways.everythingjapanese.kanji.KanjiType
@@ -19,6 +20,7 @@ import net.minecraft.data.PackOutput
 import net.minecraft.data.recipes.*
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.tags.ItemTags
 import net.minecraft.world.item.AxeItem
 import net.minecraft.world.item.HoeItem
 import net.minecraft.world.item.Item
@@ -32,7 +34,6 @@ import net.minecraft.world.level.ItemLike
 import net.minecraft.world.level.block.Blocks
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.util.List
 import java.util.concurrent.CompletableFuture
 import java.util.stream.Stream
 
@@ -80,35 +81,49 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
 
     override fun buildRecipes() {
         val PYRITE_SMELTABLES = listOf<ItemLike>(
-            ModItems.RAW_PYRITE,
-            ModBlocks.RAW_PYRITE_BLOCK,
-            ModBlocks.PYRITE_ORE,
-            ModBlocks.PYRITE_DEEPSLATE_ORE
+            JModItems.RAW_PYRITE,
+            JModBlocks.RAW_PYRITE_BLOCK,
+            JModBlocks.PYRITE_ORE,
+            JModBlocks.PYRITE_DEEPSLATE_ORE
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEPHRITE_BLOCK)
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModBlocks.NEPHRITE_BLOCK)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
-                .define('A', ModItems.NEPHRITE),
-            ModItems.NEPHRITE
+                .define('A', JModItems.NEPHRITE),
+            JModItems.NEPHRITE
         )
 
-        saveShapelessRecipe(shapeless(RecipeCategory.TOOLS, ModItems.TALISMAN_ITEM, 5).requires(Items.BAMBOO).requires(Items.INK_SAC),
+        saveShapelessRecipe(shapeless(RecipeCategory.TOOLS, JModItems.TALISMAN_ITEM, 5).requires(Items.BAMBOO).requires(Items.INK_SAC),
             Items.INK_SAC)
 
         saveShapedRecipe(
-            shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_PYRITE_BLOCK)
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModBlocks.RAW_PYRITE_BLOCK)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
-                .define('A', ModItems.RAW_PYRITE),
-            ModItems.RAW_PYRITE
+                .define('A', JModItems.RAW_PYRITE),
+            JModItems.RAW_PYRITE
         )
 
+        /*saveShapedRecipe(
+            shaped(RecipeCategory.COMBAT, JModItems.SOUL_GUITAR)
+                .pattern(" T ")
+                .pattern("RIR")
+                .pattern("KSN")
+                .define('I', Items.IRON_INGOT)
+                .define('S', Items.SOUL_SAND)
+                .define('T', Items.STICK)
+                .define('N', Items.NOTE_BLOCK)
+                .define('K', Items.SCULK_CATALYST)
+                .define('R', Items.STRING),
+            Items.IRON_INGOT
+        )*/
+
         saveShapedRecipe(
-            shaped(RecipeCategory.DECORATIONS, ModBlocks.MONEY_VAULT_BLOCK)
+            shaped(RecipeCategory.DECORATIONS, JModBlocks.MONEY_VAULT_BLOCK)
                 .pattern("GGG")
                 .pattern("GCG")
                 .pattern("GGG")
@@ -118,7 +133,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.TOOLS, ModItems.CREDIT_CARD_ITEM)
+            shaped(RecipeCategory.TOOLS, JModItems.CREDIT_CARD_ITEM)
                 .pattern("III")
                 .pattern("SPS")
                 .pattern("   ")
@@ -129,7 +144,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TATAMI_MAT, 2)
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModBlocks.TATAMI_MAT, 2)
                 .pattern("HHH")
                 .pattern("WWW")
                 .pattern("HHH")
@@ -139,18 +154,18 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_BLOCK)
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModBlocks.PYRITE_BLOCK)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
-                .define('A', ModItems.PYRITE_INGOT),
-            ModItems.PYRITE_INGOT
+                .define('A', JModItems.PYRITE_INGOT),
+            JModItems.PYRITE_INGOT
         )
 
-        this.copySmithingTemplate(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE, ModBlocks.PYRITE_BLOCK)
+        this.copySmithingTemplate(JModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE, JModBlocks.PYRITE_BLOCK)
 
         saveShapedRecipe(
-            shaped(RecipeCategory.MISC, ModBlocks.GROWTH_CHAMBER)
+            shaped(RecipeCategory.MISC, JModBlocks.GROWTH_CHAMBER)
                 .pattern("ABA")
                 .pattern("BCB")
                 .pattern("ABA")
@@ -161,7 +176,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.MISC, ModBlocks.PEDESTAL)
+            shaped(RecipeCategory.MISC, JModBlocks.PEDESTAL)
                 .pattern("ABA")
                 .pattern("BAB")
                 .pattern("ABA")
@@ -171,7 +186,41 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.FOOD, ModBlocks.CHOCOLATE_CAKE)
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModBlocks.HANGING_SCROLL)
+                .pattern("AAA")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('A', ItemTags.PLANKS)
+                .define('B', Items.PAPER),
+            Items.PAPER
+        )
+
+        /*saveShapedRecipe(
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModItems.SCROLL)
+                .pattern(" P ")
+                .pattern(" P ")
+                .pattern(" S ")
+                .define('P', Items.PAPER)
+                .define('S', Items.STICK),
+            Items.PAPER
+        )
+
+        saveShapedRecipe(
+            shaped(RecipeCategory.BUILDING_BLOCKS, JModBlocks.CALLIGRAPHY_TABLE)
+                .pattern("PPP")
+                .pattern(" S ")
+                .pattern("WDW")
+                .define('P', Items.PAPER)
+                .define('S', JModItems.SCROLL)
+                .define('W', ItemTags.PLANKS)
+                .define('D', Items.BLACK_DYE),
+            Items.PAPER
+        )*/
+
+
+
+        saveShapedRecipe(
+            shaped(RecipeCategory.FOOD, JModBlocks.CHOCOLATE_CAKE)
                 .pattern("MMM")
                 .pattern("SES")
                 .pattern("AWA")
@@ -184,12 +233,12 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.MISC, ModItems.CHISEL)
+            shaped(RecipeCategory.MISC, JModItems.CHISEL)
                 .pattern("ABC")
                 .pattern("EDE")
                 .pattern("CBA")
                 .define('A', Items.WIND_CHARGE)
-                .define('B', ModItems.PYRITE_INGOT)
+                .define('B', JModItems.PYRITE_INGOT)
                 .define('C', Items.BLAZE_POWDER)
                 .define('D', Items.STICK)
                 .define('E', Items.GHAST_TEAR),
@@ -198,62 +247,62 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         )
 
         saveShapelessRecipe(
-            shapeless(RecipeCategory.MISC, ModItems.PYRITE_INGOT, 9)
-                .requires(ModBlocks.PYRITE_BLOCK),
-            ModBlocks.PYRITE_BLOCK.asItem()
+            shapeless(RecipeCategory.MISC, JModItems.PYRITE_INGOT, 9)
+                .requires(JModBlocks.PYRITE_BLOCK),
+            JModBlocks.PYRITE_BLOCK.asItem()
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, ModBlocks.TRANSFORMER_BLOCK)
+            shaped(RecipeCategory.COMBAT, JModBlocks.TRANSFORMER_BLOCK)
                 .pattern("AAA")
                 .pattern("ABA")
                 .pattern("AAA")
-                .define('A', ModBlocks.PYRITE_BLOCK)
-                .define('B', ModItems.CHISEL),
-            ModItems.CHISEL
+                .define('A', JModBlocks.PYRITE_BLOCK)
+                .define('B', JModItems.CHISEL),
+            JModItems.CHISEL
         )
 
-        pickaxe(ModItems.PYRITE_INGOT, ModItems.PYRITE_PICKAXE)
+        pickaxe(JModItems.PYRITE_INGOT, JModItems.PYRITE_PICKAXE)
 
-        axe(ModItems.PYRITE_INGOT, ModItems.PYRITE_AXE)
+        axe(JModItems.PYRITE_INGOT, JModItems.PYRITE_AXE)
 
-        shovel(ModItems.PYRITE_INGOT, ModItems.PYRITE_SHOVEL)
+        shovel(JModItems.PYRITE_INGOT, JModItems.PYRITE_SHOVEL)
 
-        hoe(ModItems.PYRITE_INGOT, ModItems.PYRITE_HOE)
+        hoe(JModItems.PYRITE_INGOT, JModItems.PYRITE_HOE)
 
-        sword(ModItems.NEPHRITE, ModItems.NEPHRITE_SWORD)
+        sword(JModItems.NEPHRITE, JModItems.NEPHRITE_SWORD)
 
-        pickaxe(ModItems.NEPHRITE, ModItems.NEPHRITE_PICKAXE)
+        pickaxe(JModItems.NEPHRITE, JModItems.NEPHRITE_PICKAXE)
 
-        axe(ModItems.NEPHRITE, ModItems.NEPHRITE_AXE)
+        axe(JModItems.NEPHRITE, JModItems.NEPHRITE_AXE)
 
-        shovel(ModItems.NEPHRITE, ModItems.NEPHRITE_SHOVEL)
+        shovel(JModItems.NEPHRITE, JModItems.NEPHRITE_SHOVEL)
 
-        hoe(ModItems.NEPHRITE, ModItems.NEPHRITE_HOE)
+        hoe(JModItems.NEPHRITE, JModItems.NEPHRITE_HOE)
 
 
         saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, ModItems.PYRITE_HAMMER)
+            shaped(RecipeCategory.COMBAT, JModItems.PYRITE_HAMMER)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern(" B ")
-                .define('A', ModItems.PYRITE_INGOT)
+                .define('A', JModItems.PYRITE_INGOT)
                 .define('B', Items.STICK),
-            ModItems.PYRITE_INGOT
+            JModItems.PYRITE_INGOT
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, ModItems.PYRITE_BATTLE_AXE)
+            shaped(RecipeCategory.COMBAT, JModItems.PYRITE_BATTLE_AXE)
                 .pattern("AAA")
                 .pattern("ABA")
                 .pattern(" B ")
-                .define('A', ModItems.PYRITE_INGOT)
+                .define('A', JModItems.PYRITE_INGOT)
                 .define('B', Items.STICK),
-            ModItems.PYRITE_INGOT
+            JModItems.PYRITE_INGOT
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, ModItems.IRON_BATTLE_AXE)
+            shaped(RecipeCategory.COMBAT, JModItems.IRON_BATTLE_AXE)
                 .pattern("AAA")
                 .pattern("ABA")
                 .pattern(" B ")
@@ -262,87 +311,125 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             Items.IRON_INGOT
         )
 
-        helmet(ModItems.PYRITE_INGOT, ModItems.PYRITE_HELMET)
+        helmet(JModItems.PYRITE_INGOT, JModItems.PYRITE_HELMET)
 
-        chestplate(ModItems.PYRITE_INGOT, ModItems.PYRITE_CHESTPLATE)
+        chestplate(JModItems.PYRITE_INGOT, JModItems.PYRITE_CHESTPLATE)
 
-        leggings(ModItems.PYRITE_INGOT, ModItems.PYRITE_LEGGINGS)
+        leggings(JModItems.PYRITE_INGOT, JModItems.PYRITE_LEGGINGS)
 
-        boots(ModItems.PYRITE_INGOT, ModItems.PYRITE_BOOTS)
+        boots(JModItems.PYRITE_INGOT, JModItems.PYRITE_BOOTS)
 
-        helmet(ModItems.NEPHRITE, ModItems.NEPHRITE_HELMET)
+        helmet(JModItems.NEPHRITE, JModItems.NEPHRITE_HELMET)
 
-        chestplate(ModItems.NEPHRITE, ModItems.NEPHRITE_CHESTPLATE)
+        chestplate(JModItems.NEPHRITE, JModItems.NEPHRITE_CHESTPLATE)
 
-        leggings(ModItems.NEPHRITE, ModItems.NEPHRITE_LEGGINGS)
+        leggings(JModItems.NEPHRITE, JModItems.NEPHRITE_LEGGINGS)
 
-        boots(ModItems.NEPHRITE, ModItems.NEPHRITE_BOOTS)
+        boots(JModItems.NEPHRITE, JModItems.NEPHRITE_BOOTS)
 
         saveShapelessRecipe(
-            shapeless(RecipeCategory.MISC, ModItems.NEPHRITE, 9)
-                .requires(ModBlocks.NEPHRITE_BLOCK),
-            ModBlocks.NEPHRITE_BLOCK.asItem()
+            shapeless(RecipeCategory.MISC, JModItems.NEPHRITE, 9)
+                .requires(JModBlocks.NEPHRITE_BLOCK),
+            JModBlocks.NEPHRITE_BLOCK.asItem()
         )
 
         saveShapelessRecipe(
-            shapeless(RecipeCategory.MISC, ModItems.RAW_PYRITE, 9)
-                .requires(ModBlocks.RAW_PYRITE_BLOCK),
-            ModBlocks.RAW_PYRITE_BLOCK.asItem()
+            shapeless(RecipeCategory.MISC, JModItems.RAW_PYRITE, 9)
+                .requires(JModBlocks.RAW_PYRITE_BLOCK),
+            JModBlocks.RAW_PYRITE_BLOCK.asItem()
         )
 
         saveShapedRecipe(
-            shaped(RecipeCategory.FOOD, ModItems.SUSHI)
+            shaped(RecipeCategory.FOOD, JModItems.SUSHI)
                 .pattern("AAA")
                 .pattern("ABA")
                 .pattern("AAA")
-                .define('A', ModItems.RICE)
+                .define('A', JModItems.RICE)
                 .define('B', Items.COOKED_SALMON),
-            ModItems.RICE
+            JModItems.RICE
         )
 
-        planksFromLogs(ModBlocks.HINOKI_BAN, ModTags.Items.HINOKI_MARUTA, 4)
+        saveShapedRecipe(
+            shaped(RecipeCategory.FOOD, JModItems.RAMEN)
+                .pattern(" K ")
+                .pattern(" A ")
+                .pattern("WB ")
+                .define('B', Items.BOWL)
+                .define('A', Items.WHEAT)
+                .define('K', Items.KELP)
+                .define('W', Items.POTION),
+            Items.BOWL
+        )
 
-        woodFromLogs(ModBlocks.HINOKI_MOKUZAI, ModBlocks.HINOKI_MARUTA)
+        saveShapedRecipe(
+            shaped(RecipeCategory.COMBAT, JModItems.SOUL_DAGGER)
+                .pattern("  S")
+                .pattern(" S ")
+                .pattern("T  ")
+                .define('S', Items.SOUL_SAND)
+                .define('T', Items.STICK),
+            Items.STICK
+        )
+
+        planksFromLogs(JModBlocks.HINOKI_BAN, ModTags.Items.HINOKI_MARUTA, 4)
+
+        woodFromLogs(JModBlocks.HINOKI_MOKUZAI, JModBlocks.HINOKI_MARUTA)
 
         smelting(this.output,
-            PYRITE_SMELTABLES as MutableList<ItemLike>, RecipeCategory.MISC, ModItems.PYRITE_INGOT, 1f, 200, "pyrite")
-        oreBlasting(this.output, PYRITE_SMELTABLES, RecipeCategory.MISC, ModItems.PYRITE_INGOT, 1f, 100, "pyrite")
+            PYRITE_SMELTABLES as MutableList<ItemLike>, RecipeCategory.MISC, JModItems.PYRITE_INGOT, 1f, 200, "pyrite")
+        oreBlasting(this.output, PYRITE_SMELTABLES, RecipeCategory.MISC, JModItems.PYRITE_INGOT, 1f, 100, "pyrite")
         smoking(
             this.output,
-            listOf<ItemLike>(ModItems.RAW_RICE) as MutableList<ItemLike>,
+            listOf<ItemLike>(JModItems.RAW_RICE) as MutableList<ItemLike>,
             RecipeCategory.FOOD,
-            ModItems.RICE,
+            JModItems.RICE,
             1f,
             100,
             "rice"
         )
 
-        stairBuilder(ModBlocks.PYRITE_STAIRS, Ingredient.of(ModItems.PYRITE_INGOT)).group("pyrite")
-            .unlockedBy(getHasName(ModItems.PYRITE_INGOT), has(ModItems.PYRITE_INGOT)).save(this.output)
+        stairBuilder(JModBlocks.PYRITE_STAIRS, Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
+            .unlockedBy(getHasName(JModItems.PYRITE_INGOT), has(JModItems.PYRITE_INGOT)).save(this.output)
 
-        buttonBuilder(ModBlocks.PYRITE_BUTTON, Ingredient.of(ModItems.PYRITE_INGOT)).group("pyrite")
-            .unlockedBy(getHasName(ModItems.PYRITE_INGOT), has(ModItems.PYRITE_INGOT)).save(this.output)
+        stairBuilder(JModBlocks.HINOKI_STAIRS, Ingredient.of(JModBlocks.HINOKI_BAN)).group("hinoki")
+            .unlockedBy(getHasName(JModBlocks.HINOKI_BAN), has(JModBlocks.HINOKI_BAN)).save(this.output)
 
-        pressurePlate(ModBlocks.PYRITE_PRESSURE_PLATE, ModItems.PYRITE_INGOT)
+        buttonBuilder(JModBlocks.PYRITE_BUTTON, Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
+            .unlockedBy(getHasName(JModItems.PYRITE_INGOT), has(JModItems.PYRITE_INGOT)).save(this.output)
 
-        fenceBuilder(ModBlocks.PYRITE_FENCE, Ingredient.of(ModItems.PYRITE_INGOT)).group("pyrite")
-            .unlockedBy(getHasName(ModItems.PYRITE_INGOT), has(ModItems.PYRITE_INGOT)).save(this.output)
+        buttonBuilder(JModBlocks.HINOKI_BUTTON, Ingredient.of(JModBlocks.HINOKI_BAN)).group("hinoki")
+            .unlockedBy(getHasName(JModBlocks.HINOKI_BAN), has(JModBlocks.HINOKI_BAN)).save(this.output)
 
-        fenceGateBuilder(ModBlocks.PYRITE_FENCE_GATE, Ingredient.of(ModItems.PYRITE_INGOT)).group("pyrite")
-            .unlockedBy(getHasName(ModItems.PYRITE_INGOT), has(ModItems.PYRITE_INGOT)).save(this.output)
+        pressurePlate(JModBlocks.PYRITE_PRESSURE_PLATE, JModItems.PYRITE_INGOT)
 
-        wall(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_WALL, ModItems.PYRITE_INGOT)
+        pressurePlate(JModBlocks.HINOKI_PRESSURE_PLATE, JModBlocks.HINOKI_BAN)
 
-        doorBuilder(ModBlocks.PYRITE_DOOR, Ingredient.of(ModItems.PYRITE_INGOT)).group("pyrite")
-            .unlockedBy(getHasName(ModItems.PYRITE_INGOT), has(ModItems.PYRITE_INGOT)).save(this.output)
+        fenceBuilder(JModBlocks.PYRITE_FENCE, Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
+            .unlockedBy(getHasName(JModItems.PYRITE_INGOT), has(JModItems.PYRITE_INGOT)).save(this.output)
 
-        trapdoorBuilder(ModBlocks.PYRITE_TRAPDOOR.asItem(), Ingredient.of(ModItems.PYRITE_INGOT)).group("pyrite")
-            .unlockedBy(getHasName(ModItems.PYRITE_INGOT), has(ModItems.PYRITE_INGOT)).save(this.output)
+        fenceGateBuilder(JModBlocks.PYRITE_FENCE_GATE, Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
+            .unlockedBy(getHasName(JModItems.PYRITE_INGOT), has(JModItems.PYRITE_INGOT)).save(this.output)
 
-        slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PYRITE_SLAB, ModItems.PYRITE_INGOT)
+        fenceBuilder(JModBlocks.HINOKI_FENCE, Ingredient.of(JModBlocks.HINOKI_BAN)).group("hinoki")
+            .unlockedBy(getHasName(JModBlocks.HINOKI_BAN), has(JModBlocks.HINOKI_BAN)).save(this.output)
+
+        fenceGateBuilder(JModBlocks.HINOKI_FENCE_GATE, Ingredient.of(JModBlocks.HINOKI_BAN)).group("pyrite")
+            .unlockedBy(getHasName(JModBlocks.HINOKI_BAN), has(JModBlocks.HINOKI_BAN)).save(this.output)
+
+        wall(RecipeCategory.BUILDING_BLOCKS, JModBlocks.PYRITE_WALL, JModItems.PYRITE_INGOT)
+
+        doorBuilder(JModBlocks.PYRITE_DOOR, Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
+            .unlockedBy(getHasName(JModItems.PYRITE_INGOT), has(JModItems.PYRITE_INGOT)).save(this.output)
+
+        trapdoorBuilder(JModBlocks.PYRITE_TRAPDOOR.asItem(), Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
+            .unlockedBy(getHasName(JModItems.PYRITE_INGOT), has(JModItems.PYRITE_INGOT)).save(this.output)
+
+        slab(RecipeCategory.BUILDING_BLOCKS, JModBlocks.PYRITE_SLAB, JModItems.PYRITE_INGOT)
+
+        slab(RecipeCategory.BUILDING_BLOCKS, JModBlocks.HINOKI_SLAB, JModBlocks.HINOKI_BAN)
 
         saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, ModItems.KATANA)
+            shaped(RecipeCategory.COMBAT, JModItems.KATANA)
                 .pattern(" A ")
                 .pattern(" A ")
                 .pattern(" B ")
@@ -492,121 +579,9 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             )
                 .save(
                     recipeOutput,
-                    MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike)
+                    JAPANESE_MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike)
                 )
         }
-    }
-
-    private fun saveShapedRecipe(builder: ShapedRecipeBuilder, unlockItem: Item) {
-        builder.unlockedBy(getHasName(unlockItem), has(unlockItem)).save(this.output)
-    }
-
-    private fun saveShapelessRecipe(builder: ShapelessRecipeBuilder, unlockItem: Item) {
-        builder.unlockedBy(getHasName(unlockItem), has(unlockItem)).save(this.output)
-    }
-
-    private fun helmet(ingredient: Item, result: Item) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, result)
-                .pattern("AAA")
-                .pattern("A A")
-                .pattern("   ")
-                .define('A', ingredient),
-            ingredient
-        )
-    }
-
-    private fun chestplate(ingredient: Item, result: Item) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, result)
-                .pattern("A A")
-                .pattern("AAA")
-                .pattern("AAA")
-                .define('A', ingredient),
-            ingredient
-        )
-    }
-
-    private fun leggings(ingredient: Item, result: Item) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, result)
-                .pattern("AAA")
-                .pattern("A A")
-                .pattern("A A")
-                .define('A', ingredient),
-            ingredient
-        )
-    }
-
-    private fun boots(ingredient: Item, result: Item) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.COMBAT, result)
-                .pattern("A A")
-                .pattern("A A")
-                .pattern("   ")
-                .define('A', ingredient),
-            ingredient
-        )
-    }
-
-    private fun hoe(ingredient: Item, result: HoeItem) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.TOOLS, result)
-                .pattern("AA ")
-                .pattern(" B ")
-                .pattern(" B ")
-                .define('A', ingredient)
-                .define('B', Items.STICK),
-            ingredient
-        )
-    }
-
-    private fun shovel(ingredient: Item, result: ShovelItem) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.TOOLS, result)
-                .pattern(" A ")
-                .pattern(" B ")
-                .pattern(" B ")
-                .define('A', ingredient)
-                .define('B', Items.STICK),
-            ingredient
-        )
-    }
-
-    private fun axe(ingredient: Item, result: AxeItem) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.TOOLS, result)
-                .pattern("AA ")
-                .pattern("AB ")
-                .pattern(" B ")
-                .define('A', ingredient)
-                .define('B', Items.STICK),
-            ingredient
-        )
-    }
-
-    private fun pickaxe(ingredient: Item, result: Item) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.TOOLS, result)
-                .pattern("AAA")
-                .pattern(" B ")
-                .pattern(" B ")
-                .define('A', ingredient)
-                .define('B', Items.STICK),
-            ingredient
-        )
-    }
-
-    private fun sword(ingredient: Item, result: Item) {
-        saveShapedRecipe(
-            shaped(RecipeCategory.TOOLS, result)
-                .pattern(" A ")
-                .pattern(" A ")
-                .pattern(" B ")
-                .define('A', ingredient)
-                .define('B', Items.STICK),
-            ingredient
-        )
     }
 
     companion object {
@@ -615,7 +590,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         fun smithingTrims(): Stream<TrimTemplate> {
             return Stream.of<Pair<SmithingTemplateItem, ResourceKey<TrimPattern>>>(
                 Pair.of<SmithingTemplateItem, ResourceKey<TrimPattern>>(
-                    ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE,
+                    JModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE,
                     ModTrimPatterns.KOI_FISH
                 )
             )
@@ -625,7 +600,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
                         ResourceLocation.fromNamespaceAndPath(
-                            MOD_ID,
+                            JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_trim"
                         )
                     )
@@ -658,7 +633,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
                         ResourceLocation.fromNamespaceAndPath(
-                            MOD_ID,
+                            JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_kanji"
                         )
                     )
@@ -669,7 +644,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         fun smithingBlade(): Stream<BladeTemplate> {
             return Stream.of<Pair<Item, BladeType>>(
                 Pair.of<Item, BladeType>(
-                    ModItems.BLADE_STEEL,
+                    JModItems.BLADE_STEEL,
                     BladeType.STEEL
                 )
             )
@@ -679,7 +654,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
                         ResourceLocation.fromNamespaceAndPath(
-                            MOD_ID,
+                            JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_blade"
                         )
                     )
@@ -690,15 +665,15 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         fun smithingWrapper(): Stream<WrappingTemplate> {
             return Stream.of<Pair<Item, Wrapping>>(
                 Pair.of<Item, Wrapping>(
-                    ModItems.WHITE_WRAP,
+                    JModItems.WHITE_WRAP,
                     Wrapping.WHITE
                 ),
                 Pair.of(
-                    ModItems.BLACK_WRAP,
+                    JModItems.BLACK_WRAP,
                     Wrapping.BLACK
                 ),
                 Pair.of(
-                    ModItems.RED_WRAP,
+                    JModItems.RED_WRAP,
                     Wrapping.RED
                 )
             )
@@ -708,7 +683,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
                         ResourceLocation.fromNamespaceAndPath(
-                            MOD_ID,
+                            JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_wrapper"
                         )
                     )

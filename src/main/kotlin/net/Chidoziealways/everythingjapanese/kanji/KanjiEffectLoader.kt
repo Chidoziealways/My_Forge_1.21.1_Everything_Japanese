@@ -2,13 +2,14 @@ package net.Chidoziealways.everythingjapanese.kanji
 
 import it.unimi.dsi.fastutil.Pair
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.core.BlockPos
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.server.packs.resources.PreparableReloadListener
 import net.minecraft.server.packs.resources.Resource
 import net.minecraft.server.packs.resources.ResourceManager
 import net.minecraft.server.packs.resources.PreparableReloadListener.PreparationBarrier
@@ -28,11 +29,11 @@ import java.util.concurrent.CompletableFuture
 import java.util.concurrent.Executor
 import java.util.function.BiFunction
 
-object KanjiEffectLoader {
+object KanjiEffectLoader: PreparableReloadListener {
 
-    val MODULES_PATH = ResourceLocation.fromNamespaceAndPath(MOD_ID, "scripts/modules")
-    val BLOCK_EFFECTS_PATH = ResourceLocation.fromNamespaceAndPath(MOD_ID, "scripts/effects/block")
-    val ENTITY_EFFECTS_PATH = ResourceLocation.fromNamespaceAndPath(MOD_ID, "scripts/effects/entity")
+    val MODULES_PATH = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/modules")
+    val BLOCK_EFFECTS_PATH = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/effects/block")
+    val ENTITY_EFFECTS_PATH = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/effects/entity")
 
     private val globals by lazy { JsePlatform.standardGlobals() }
 
@@ -55,13 +56,15 @@ object KanjiEffectLoader {
         val luaFunc: LuaValue
     )
 
-    fun reload(
-        stage: PreparationBarrier,
-        resourceManager: ResourceManager,
+    override fun reload(
+        sharedState: PreparableReloadListener.SharedState,
         backgroundExecutor: Executor,
+        stage: PreparationBarrier,
         gameExecutor: Executor
-    ): CompletableFuture<Void> {
+    ): CompletableFuture<Void?> {
         setupLuaGlobals()
+
+        val resourceManager = sharedState.resourceManager()
 
         val modulesFuture = preloadModules(backgroundExecutor, resourceManager)
         val blockEffectsFuture = loadBlockEffects(backgroundExecutor, resourceManager)

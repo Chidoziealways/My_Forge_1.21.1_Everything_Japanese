@@ -1,5 +1,13 @@
 {
   "asset_id": "everythingjapanese:samurai",
+  "author": {
+    "color": "gray",
+    "translate": "Chidoziealways"
+  },
   "height": 16,
+  "title": {
+    "color": "yellow",
+    "translate": "Samurai"
+  },
   "width": 16
 }

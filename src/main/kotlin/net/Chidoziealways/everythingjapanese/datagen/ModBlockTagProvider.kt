@@ -1,8 +1,7 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
@@ -22,51 +21,51 @@ class ModBlockTagProvider(
     Registries.BLOCK,
     lookupProvider,
     Function { block: Block? -> block!!.builtInRegistryHolder().key() },
-    MOD_ID
+    JAPANESE_MOD_ID
 ) {
     override fun addTags(pProvider: HolderLookup.Provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-            .add(ModBlocks.RAW_PYRITE_BLOCK)
-            .add(ModBlocks.PYRITE_BLOCK)
-            .add(ModBlocks.NEPHRITE_BLOCK)
-            .add(ModBlocks.PYRITE_DEEPSLATE_ORE)
-            .add(ModBlocks.PYRITE_ORE)
-            .add(ModBlocks.NEPHRITE_DEEPSLATE_ORE)
-            .add(ModBlocks.NEPHRITE_ORE)
-            .add(ModBlocks.TRANSFORMER_BLOCK)
+            .add(JModBlocks.RAW_PYRITE_BLOCK)
+            .add(JModBlocks.PYRITE_BLOCK)
+            .add(JModBlocks.NEPHRITE_BLOCK)
+            .add(JModBlocks.PYRITE_DEEPSLATE_ORE)
+            .add(JModBlocks.PYRITE_ORE)
+            .add(JModBlocks.NEPHRITE_DEEPSLATE_ORE)
+            .add(JModBlocks.NEPHRITE_ORE)
+            .add(JModBlocks.TRANSFORMER_BLOCK)
 
         tag(ModTags.Blocks.HELL_FIRE_BASE_BLOCK)
             .add(Blocks.NETHERRACK)
 
-        tag(BlockTags.FENCES).add(ModBlocks.PYRITE_FENCE)
+        tag(BlockTags.FENCES).add(JModBlocks.PYRITE_FENCE).add(JModBlocks.HINOKI_FENCE)
 
         tag(ModTags.Blocks.INFINIBURN_HELL)
             .addTag(BlockTags.INFINIBURN_OVERWORLD)
 
-        tag(BlockTags.FENCE_GATES).add(ModBlocks.PYRITE_FENCE_GATE)
+        tag(BlockTags.FENCE_GATES).add(JModBlocks.PYRITE_FENCE_GATE).add(JModBlocks.HINOKI_FENCE_GATE)
 
-        tag(BlockTags.WALLS).add(ModBlocks.PYRITE_WALL)
+        tag(BlockTags.WALLS).add(JModBlocks.PYRITE_WALL)
 
         tag(ModTags.Blocks.NEEDS_PYRITE_TOOL)
-            .add(ModBlocks.PYRITE_BLOCK)
-            .add(ModBlocks.RAW_PYRITE_BLOCK)
+            .add(JModBlocks.PYRITE_BLOCK)
+            .add(JModBlocks.RAW_PYRITE_BLOCK)
             .add(Blocks.OBSIDIAN)
             .addTag(BlockTags.NEEDS_IRON_TOOL)
 
         tag(BlockTags.NEEDS_IRON_TOOL)
-            .add(ModBlocks.PYRITE_ORE)
-            .add(ModBlocks.PYRITE_DEEPSLATE_ORE)
-            .add(ModBlocks.PYRITE_BLOCK)
-            .add(ModBlocks.TRANSFORMER_BLOCK)
+            .add(JModBlocks.PYRITE_ORE)
+            .add(JModBlocks.PYRITE_DEEPSLATE_ORE)
+            .add(JModBlocks.PYRITE_BLOCK)
+            .add(JModBlocks.TRANSFORMER_BLOCK)
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
-            .add(ModBlocks.NEPHRITE_ORE)
-            .add(ModBlocks.NEPHRITE_DEEPSLATE_ORE)
-            .add(ModBlocks.NEPHRITE_BLOCK)
+            .add(JModBlocks.NEPHRITE_ORE)
+            .add(JModBlocks.NEPHRITE_DEEPSLATE_ORE)
+            .add(JModBlocks.NEPHRITE_BLOCK)
 
         tag(ModTags.Blocks.NEEDS_NEPHRITE_TOOL)
             .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
-            .add(ModBlocks.NEPHRITE_BLOCK)
+            .add(JModBlocks.NEPHRITE_BLOCK)
 
         tag(ModTags.Blocks.INCORRECT_FOR_PYRITE_TOOL)
             .addTag(BlockTags.NEEDS_IRON_TOOL)
@@ -77,9 +76,9 @@ class ModBlockTagProvider(
             .replace(false)
 
         tag(BlockTags.LOGS_THAT_BURN)
-            .add(ModBlocks.HINOKI_MARUTA)
-            .add(ModBlocks.HINOKI_MOKUZAI)
-            .add(ModBlocks.STRIPPED_HINOKI_MARUTA)
-            .add(ModBlocks.STRIPPED_HINOKI_MOKUZAI)
+            .add(JModBlocks.HINOKI_MARUTA)
+            .add(JModBlocks.HINOKI_MOKUZAI)
+            .add(JModBlocks.STRIPPED_HINOKI_MARUTA)
+            .add(JModBlocks.STRIPPED_HINOKI_MOKUZAI)
     }
 }

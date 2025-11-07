@@ -1,8 +1,8 @@
 package net.Chidoziealways.everythingjapanese.poi
 
 import com.google.common.collect.ImmutableSet
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.entity.ai.village.poi.PoiType
 import net.minecraft.world.level.block.state.BlockState
@@ -12,7 +12,7 @@ import java.util.function.Supplier
 
 object ModPoiTypes {
     val POI_TYPES = DeferredRegister.create(
-        Registries.POINT_OF_INTEREST_TYPE, MOD_ID
+        Registries.POINT_OF_INTEREST_TYPE, JAPANESE_MOD_ID
     )
 
     val HELL_PORTAL = POI_TYPES.register(
@@ -20,7 +20,7 @@ object ModPoiTypes {
         Supplier {
             PoiType(
                 ImmutableSet.copyOf<BlockState?>(
-                    ModBlocks.HELL_PORTAL.getStateDefinition().getPossibleStates()
+                    JModBlocks.HELL_PORTAL.getStateDefinition().getPossibleStates()
                 ), 1, 1
             )
         })

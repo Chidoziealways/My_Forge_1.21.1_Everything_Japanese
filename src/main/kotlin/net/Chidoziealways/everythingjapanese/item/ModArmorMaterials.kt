@@ -15,11 +15,11 @@ object ModArmorMaterials {
         Util.make(
             EnumMap<ArmorType, Int>(ArmorType::class.java),
             Consumer { attribute: EnumMap<ArmorType, Int> ->
-                attribute.put(ArmorType.BOOTS, 1)
-                attribute.put(ArmorType.LEGGINGS, 3)
-                attribute.put(ArmorType.CHESTPLATE, 5)
-                attribute.put(ArmorType.HELMET, 2)
-                attribute.put(ArmorType.BODY, 7)
+                attribute[ArmorType.BOOTS] = 1
+                attribute[ArmorType.LEGGINGS] = 3
+                attribute[ArmorType.CHESTPLATE] = 5
+                attribute[ArmorType.HELMET] = 2
+                attribute[ArmorType.BODY] = 7
             }), 15, SoundEvents.ARMOR_EQUIP_GOLD,
         10f, 0.1f, ItemTags.REPAIRS_GOLD_ARMOR, ModEquipmentAssets.Companion.PYRITE
     )
@@ -29,18 +29,18 @@ object ModArmorMaterials {
         Util.make(
             EnumMap<ArmorType, Int>(ArmorType::class.java),
             Consumer { attribute: EnumMap<ArmorType, Int> ->
-                attribute.put(ArmorType.BOOTS, 5)
-                attribute.put(ArmorType.LEGGINGS, 6)
-                attribute.put(ArmorType.CHESTPLATE, 8)
-                attribute.put(ArmorType.HELMET, 7)
-                attribute.put(ArmorType.BODY, 13)
+                attribute[ArmorType.BOOTS] = 5
+                attribute[ArmorType.LEGGINGS] = 6
+                attribute[ArmorType.CHESTPLATE] = 8
+                attribute[ArmorType.HELMET] = 7
+                attribute[ArmorType.BODY] = 13
             }),
         20,
         SoundEvents.ARMOR_EQUIP_DIAMOND,
         50f,
         0.1f,
         ItemTags.REPAIRS_NETHERITE_ARMOR,
-        ModEquipmentAssets.Companion.NEPHRITE
+        ModEquipmentAssets.NEPHRITE
     )
 
     init {
@@ -49,20 +49,20 @@ object ModArmorMaterials {
 
     val SAMURAI_ARMOR_MATERIAL: ArmorMaterial = ArmorMaterial(
         100000000,
-        Util.make<EnumMap<ArmorType, Int>>(
+        Util.make(
             EnumMap<ArmorType, Int>(ArmorType::class.java),
             Consumer { attribute: EnumMap<ArmorType, Int> ->
-                attribute.put(ArmorType.BOOTS, 5)
-                attribute.put(ArmorType.LEGGINGS, 7)
-                attribute.put(ArmorType.CHESTPLATE, 9)
-                attribute.put(ArmorType.HELMET, 5)
-                attribute.put(ArmorType.BODY, 11)
+                attribute[ArmorType.BOOTS] = 5
+                attribute[ArmorType.LEGGINGS] = 7
+                attribute[ArmorType.CHESTPLATE] = 9
+                attribute[ArmorType.HELMET] = 5
+                attribute[ArmorType.BODY] = 11
             }),
         15,
         SoundEvents.ARMOR_EQUIP_IRON,
         4f,
         0.1f,
         ItemTags.REPAIRS_IRON_ARMOR,
-        ModEquipmentAssets.Companion.SAMURAI
+        ModEquipmentAssets.SAMURAI
     )
 }

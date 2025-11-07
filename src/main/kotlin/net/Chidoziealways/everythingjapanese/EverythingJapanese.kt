@@ -1,45 +1,43 @@
 package net.Chidoziealways.everythingjapanese
 
-import com.mojang.datafixers.DSL
-import com.mojang.datafixers.DataFixer
 import net.Chidoziealways.everythingjapanese.attachments.ModAttachments
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.block.entity.renderer.FusumaDoorRenderer
-import net.Chidoziealways.everythingjapanese.block.entity.renderer.PedestalBlockEntityRenderer
-import net.Chidoziealways.everythingjapanese.block.entity.renderer.ShojiDoorRenderer
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.hanging_scroll.HangingScrollBlockEntityRenderer
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.shoji_door.ShojiDoorRenderer
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.fusuma_door.FusumaDoorRenderer
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.pedestal.PedestalBlockEntityRenderer
 import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
-import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
 import net.Chidoziealways.everythingjapanese.commands.ModArgumentTypes
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantmentEffects
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
+import net.Chidoziealways.everythingjapanese.entity.client.bullet.BulletRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.chair.ChairRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.chiretsusho.ChiretsuShoProjectileRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.cursed_samurai.CursedSamuraiRenderer
+import net.Chidoziealways.everythingjapanese.entity.client.ekiretsusho.EkiretsuShoProjectileRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.ironbattleaxe.IronBattleAxeProjectileRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.sikadeer.SikaDeerRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.triceratops.TriceratopsRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.ya.YaRenderer
 import net.Chidoziealways.everythingjapanese.fluids.ModFluidTypes
 import net.Chidoziealways.everythingjapanese.fluids.ModFluids
-import net.Chidoziealways.everythingjapanese.item.ModCreativeModeTabs
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModCreativeModeTabs
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.jutsu.ModJutsus
 import net.Chidoziealways.everythingjapanese.loot.ModLootModifiers
 import net.Chidoziealways.everythingjapanese.particle.ModParticles
 import net.Chidoziealways.everythingjapanese.particle.PyriteParticles
 import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes
 import net.Chidoziealways.everythingjapanese.potion.ModPotions
-import net.Chidoziealways.everythingjapanese.quest.QuestConditionRegistry
-import net.Chidoziealways.everythingjapanese.quest.conditions.CollectItemCondition
-import net.Chidoziealways.everythingjapanese.quest.conditions.KillEntityCondition
-import net.Chidoziealways.everythingjapanese.quest.conditions.LocatePlaceCondition
 import net.Chidoziealways.everythingjapanese.recipe.ModRecipes
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
+import net.Chidoziealways.everythingjapanese.screen.custom.calligraphytable.CalligraphyTableScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalScreen
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
+import net.Chidoziealways.everythingjapanese.stats.ModStats
 import net.Chidoziealways.everythingjapanese.tests.ModGameTests
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers
@@ -58,10 +56,10 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.BlockAndTintGetter
-import net.minecraft.world.level.block.ComposterBlock
 import net.minecraft.world.level.material.FluidState
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.fml.ModList
 import net.neoforged.fml.config.ModConfig
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
@@ -85,12 +83,10 @@ import thedarkcolour.kotlinforforge.neoforge.forge.MOD_CONTEXT
 import java.util.function.Consumer
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-const val MOD_ID: String = "everythingjapanese"
-lateinit var DATAFIXER: DataFixer
-val EVERYTHING_JAPANESE_CAPABILITY = DSL.TypeReference { "capability" }
+const val JAPANESE_MOD_ID: String = "everythingjapanese"
 private var LOGGER: Logger? = null
 private var EVERYTHINGJAPANESE: Marker? = null
-@KotlinMod(MOD_ID)
+@KotlinMod(JAPANESE_MOD_ID)
 object EverythingJapanese {
     init {
         LOGGER = LogManager.getLogger(EverythingJapanese::class.java)
@@ -102,8 +98,9 @@ object EverythingJapanese {
         ModGameTests.register(MOD_BUS)
         ModJutsus.register(MOD_BUS)
         logDebug("Registering Registries")
-        ModBlocks.register(MOD_BUS)
+        JModBlocks.register(MOD_BUS)
         logDebug("Registering Blocks")
+        ModStats.register(MOD_BUS)
         ModDataComponentTypes.register(MOD_BUS)
         logDebug("Registering DataComponents")
         ModSounds.register(MOD_BUS)
@@ -111,10 +108,10 @@ object EverythingJapanese {
         ModEffects.register(MOD_BUS)
         logDebug("Registering Effects")
 
-        ModItems.register(MOD_BUS)
+        JModItems.register(MOD_BUS)
         logDebug("Registering Items")
 
-        ModCreativeModeTabs.register(MOD_BUS)
+        JModCreativeModeTabs.register(MOD_BUS)
         logDebug("Registering CreativeMode Tabs")
 
         ModPotions.register(MOD_BUS)
@@ -148,6 +145,10 @@ object EverythingJapanese {
         ModFluids.register(MOD_BUS)
         ModAttachments.register(MOD_BUS)
 
+        if (ModList.get().isLoaded("everythingkorean")) {
+            logInfo("EVERYTHING KOREAN LOCKED AND LOADED!")
+        }
+
         logDebug("Hello")
 
         ModArgumentTypes.register(MOD_BUS)
@@ -160,43 +161,32 @@ object EverythingJapanese {
         MOD_CONTEXT.container.registerConfig(ModConfig.Type.COMMON, Config.SPEC)
     }
 
-    fun registerQuestConditions() {
-        QuestConditionRegistry.register("collect", CollectItemCondition)
-        QuestConditionRegistry.register("kill", KillEntityCondition)
-        QuestConditionRegistry.register("locate", LocatePlaceCondition)
-    }
-
     @SubscribeEvent
     private fun commonSetup(event: FMLCommonSetupEvent) {
-        event.enqueueWork {
-            ComposterBlock.COMPOSTABLES.put(ModItems.RICE_SEEDS!!, 0.6f)
-            ComposterBlock.COMPOSTABLES.put(ModItems.RAW_RICE!!, 0.85f)
-            registerQuestConditions()
-        }
     }
 
     // Add the example block item to the building blocks tab
     @SubscribeEvent
     private fun addCreative(event: BuildCreativeModeTabContentsEvent) {
         if (event.tabKey === CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.PYRITE_INGOT)
+            event.accept(JModItems.PYRITE_INGOT)
         }
 
         if (event.tabKey === CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(ModBlocks.PYRITE_BLOCK)
+            event.accept(JModBlocks.PYRITE_BLOCK)
         }
 
         if (event.tabKey === CreativeModeTabs.OP_BLOCKS) {
-            event.accept(ModItems.CHISEL)
+            event.accept(JModItems.CHISEL)
         }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID, value = [Dist.CLIENT])
+    @KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID, value = [Dist.CLIENT])
     object ClientModEvents {
         @SubscribeEvent
         fun onRegisterRender(event: RegisterNamedRenderTypesEvent) {
-            event.register(ResourceLocation.fromNamespaceAndPath(MOD_ID, "washi_window"),
+            event.register(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "washi_window"),
                 ChunkSectionLayer.TRANSLUCENT,
                 NeoForgeRenderTypes.ITEM_LAYERED_TRANSLUCENT.get()
             )
@@ -205,9 +195,9 @@ object EverythingJapanese {
         @SubscribeEvent
         fun onRegisterClientExtensions(event: RegisterClientExtensionsEvent) {
             event.registerFluidType(object : IClientFluidTypeExtensions {
-                val BLOOD_STILL = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/blood_still")
-                val BLOOD_FLOW = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/blood_flow")
-                val BLOOD_OVERLAY = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/blood_overlay")
+                val BLOOD_STILL = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_still")
+                val BLOOD_FLOW = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_flow")
+                val BLOOD_OVERLAY = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_overlay")
 
                 override fun getStillTexture(): ResourceLocation = BLOOD_STILL
 
@@ -235,6 +225,12 @@ object EverythingJapanese {
             }
 
             event.register(
+                ModMenuTypes.CALLIGRAPHY_TABLE_MENU
+            ) { menu, inventory, title ->
+                CalligraphyTableScreen(menu, inventory, title)
+            }
+
+            event.register(
                 ModMenuTypes.GROWTH_CHAMBER_MENU
             ) { menu, inventory, title ->
                 GrowthChamberScreen(menu, inventory, title)
@@ -244,37 +240,16 @@ object EverythingJapanese {
         
         @SubscribeEvent
         fun onClientSetup(event: FMLClientSetupEvent?) {
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HINOKI_NAEGI, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.YAMAZAKI_BERRY_BUSH, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_DOOR, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PYRITE_TRAPDOOR, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WASHI_WINDOW, ChunkSectionLayer.TRANSLUCENT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.WASHI_WINDOW_PANE, ChunkSectionLayer.TRANSLUCENT)
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHOJI_DOOR, ChunkSectionLayer.TRANSLUCENT)
-
-            EntityRenderers.register(
-                ModEntities.TRICERATOPS
-            ) { pContext: EntityRendererProvider.Context -> TriceratopsRenderer(pContext) }
-            EntityRenderers.register(
-                ModEntities.SIKA_DEER
-            ) { pContext: EntityRendererProvider.Context -> SikaDeerRenderer(pContext) }
-            EntityRenderers.register(ModEntities.CURSED_SAMURAI
-            ) { pContext -> CursedSamuraiRenderer(pContext) }
-            EntityRenderers.register(
-                ModEntities.IRON_BATTLE_AXE
-            ) { pContext: EntityRendererProvider.Context ->
-                IronBattleAxeProjectileRenderer(pContext)
-            }
-            EntityRenderers.register(
-                ModEntities.CHAIR
-            ) { pContext: EntityRendererProvider.Context -> ChairRenderer(pContext) }
-            EntityRenderers.register(
-                ModEntities.CHIRETSU_SHO_PROJECTILE
-            ) { pContext: EntityRendererProvider.Context -> ChiretsuShoProjectileRenderer(pContext) }
-            EntityRenderers.register(
-                ModEntities.YA
-            ) { pContext: EntityRendererProvider.Context -> YaRenderer(pContext) }
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.HINOKI_NAEGI, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.YAMAZAKI_BERRY_BUSH, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.RICE_CROP, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.PYRITE_DOOR, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.PYRITE_TRAPDOOR, ChunkSectionLayer.CUTOUT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.WASHI_WINDOW, ChunkSectionLayer.TRANSLUCENT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.WASHI_WINDOW_PANE, ChunkSectionLayer.TRANSLUCENT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.SHOJI_WINDOW, ChunkSectionLayer.TRANSLUCENT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.SHOJI_WINDOW_PANE, ChunkSectionLayer.TRANSLUCENT)
+            ItemBlockRenderTypes.setRenderLayer(JModBlocks.SHOJI_DOOR, ChunkSectionLayer.TRANSLUCENT)
         }
 
         
@@ -303,21 +278,70 @@ object EverythingJapanese {
 
         
         @SubscribeEvent
-        fun registerBER(event: EntityRenderersEvent.RegisterRenderers) {
-            event.registerBlockEntityRenderer<PedestalBlockEntity>(
+        fun registerER(event: EntityRenderersEvent.RegisterRenderers) {
+            // ENTITIES
+            event.registerEntityRenderer(
+                ModEntities.TRICERATOPS
+            ) { pContext: EntityRendererProvider.Context -> TriceratopsRenderer(pContext) }
+
+            event.registerEntityRenderer(
+                ModEntities.SIKA_DEER
+            ) { pContext: EntityRendererProvider.Context -> SikaDeerRenderer(pContext) }
+
+            event.registerEntityRenderer(ModEntities.CURSED_SAMURAI
+            ) { pContext -> CursedSamuraiRenderer(pContext) }
+
+            event.registerEntityRenderer(
+                ModEntities.IRON_BATTLE_AXE
+            ) { pContext: EntityRendererProvider.Context ->
+                IronBattleAxeProjectileRenderer(pContext)
+            }
+
+            event.registerEntityRenderer(
+                ModEntities.CHAIR
+            ) { pContext: EntityRendererProvider.Context -> ChairRenderer(pContext) }
+
+            event.registerEntityRenderer(
+                ModEntities.CHIRETSU_SHO_PROJECTILE
+            ) { pContext: EntityRendererProvider.Context -> ChiretsuShoProjectileRenderer(pContext) }
+
+            event.registerEntityRenderer(
+                ModEntities.EKIRETSU_SHO_PROJECTILE
+            ) { EkiretsuShoProjectileRenderer(it) }
+
+            event.registerEntityRenderer(
+                ModEntities.YA
+            ) { pContext: EntityRendererProvider.Context -> YaRenderer(pContext) }
+
+            event.registerEntityRenderer(
+                ModEntities.BULLET
+            ) { context ->
+                BulletRenderer(context)
+            }
+
+            // BLOCK ENTITIES
+            event.registerBlockEntityRenderer(
                 ModBlockEntities.PEDESTAL_BE
             ) { context ->
                 PedestalBlockEntityRenderer(context)
             }
+
             event.registerBlockEntityRenderer(
                 ModBlockEntities.SHOJI_DOOR_BE
             ) { context ->
                 ShojiDoorRenderer(context)
             }
+
             event.registerBlockEntityRenderer(
                 ModBlockEntities.FUSUMA_DOOR_BE
             ) { context ->
                 FusumaDoorRenderer(context)
+            }
+
+            event.registerBlockEntityRenderer(
+                ModBlockEntities.HANGING_SCROLL_BE
+            ) { context ->
+                HangingScrollBlockEntityRenderer(context)
             }
         }
     }

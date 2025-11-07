@@ -1,9 +1,8 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
@@ -26,58 +25,61 @@ class ModItemTagProvider(
     Registries.ITEM,
     lookupProvider,
     Function { item: Item? -> item!!.builtInRegistryHolder().key() },
-    MOD_ID
+    JAPANESE_MOD_ID
 ) {
     override fun addTags(pProvider: HolderLookup.Provider) {
         tag(ModTags.Items.TRANSFORMABLE_ITEMS)
-            .add(ModItems.PYRITE_INGOT)
-            .add(ModItems.RAW_PYRITE)
-            .add(ModItems.PYRITE_SWORD)
-            .add(ModItems.YA)
+            .add(JModItems.PYRITE_INGOT)
+            .add(JModItems.RAW_PYRITE)
+            .add(JModItems.PYRITE_SWORD)
+            .add(JModItems.YA)
 
         tag(ModTags.Items.ANIMAL_SKIN)
             .add(Items.LEATHER)
             .add(Items.RABBIT_HIDE)
 
-        tag(ModTags.Items.REPAIRS_PYRITE_ARMOR).add(ModItems.PYRITE_INGOT)
+        tag(ModTags.Items.REPAIRS_PYRITE_ARMOR).add(JModItems.PYRITE_INGOT)
 
-        tag(ModTags.Items.REPAIRS_NEPHRITE_ARMOR).add(ModItems.NEPHRITE)
+        tag(ModTags.Items.REPAIRS_NEPHRITE_ARMOR).add(JModItems.NEPHRITE)
 
-        tag(ModTags.Items.PYRITE_TOOL_MATERIALS).add(ModItems.PYRITE_INGOT)
+        tag(ModTags.Items.PYRITE_TOOL_MATERIALS).add(JModItems.PYRITE_INGOT)
 
-        tag(ModTags.Items.NEPHRITE_TOOL_MATERIALS).add(ModItems.NEPHRITE)
+        tag(ModTags.Items.NEPHRITE_TOOL_MATERIALS).add(JModItems.NEPHRITE)
+
+        tag(ModTags.Items.BULLETS)
+            .add(JModItems.BULLET)
 
         tag(ItemTags.TRIMMABLE_ARMOR)
-            .add(ModItems.PYRITE_HELMET)
-            .add(ModItems.PYRITE_CHESTPLATE)
-            .add(ModItems.PYRITE_LEGGINGS)
-            .add(ModItems.PYRITE_BOOTS)
-            .add(ModItems.NEPHRITE_HELMET)
-            .add(ModItems.NEPHRITE_CHESTPLATE)
-            .add(ModItems.NEPHRITE_LEGGINGS)
-            .add(ModItems.NEPHRITE_BOOTS)
+            .add(JModItems.PYRITE_HELMET)
+            .add(JModItems.PYRITE_CHESTPLATE)
+            .add(JModItems.PYRITE_LEGGINGS)
+            .add(JModItems.PYRITE_BOOTS)
+            .add(JModItems.NEPHRITE_HELMET)
+            .add(JModItems.NEPHRITE_CHESTPLATE)
+            .add(JModItems.NEPHRITE_LEGGINGS)
+            .add(JModItems.NEPHRITE_BOOTS)
 
         tag(ItemTags.TRIM_MATERIALS)
-            .add(ModItems.PYRITE_INGOT)
+            .add(JModItems.PYRITE_INGOT)
 
         tag(TRIM_TEMPLATES)
-            .add(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE)
+            .add(JModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE)
 
         tag(ItemTags.LOGS_THAT_BURN)
-            .add(ModBlocks.HINOKI_MARUTA.asItem())
-            .add(ModBlocks.HINOKI_MOKUZAI.asItem())
-            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.asItem())
-            .add(ModBlocks.STRIPPED_HINOKI_MOKUZAI.asItem())
+            .add(JModBlocks.HINOKI_MARUTA.asItem())
+            .add(JModBlocks.HINOKI_MOKUZAI.asItem())
+            .add(JModBlocks.STRIPPED_HINOKI_MARUTA.asItem())
+            .add(JModBlocks.STRIPPED_HINOKI_MOKUZAI.asItem())
 
         tag(ItemTags.PLANKS)
-            .add(ModBlocks.HINOKI_BAN.asItem())
+            .add(JModBlocks.HINOKI_BAN.asItem())
 
         tag(ModTags.Items.HINOKI_MARUTA)
-            .add(ModBlocks.HINOKI_MARUTA.asItem())
-            .add(ModBlocks.STRIPPED_HINOKI_MARUTA.asItem())
+            .add(JModBlocks.HINOKI_MARUTA.asItem())
+            .add(JModBlocks.STRIPPED_HINOKI_MARUTA.asItem())
 
         tag(ItemTags.ARROWS)
-            .add(ModItems.YA)
+            .add(JModItems.YA)
     }
 
     companion object {

@@ -2,37 +2,63 @@ package net.Chidoziealways.everythingjapanese.particle
 
 import net.minecraft.client.multiplayer.ClientLevel
 import net.minecraft.client.particle.*
+import net.minecraft.client.renderer.RenderPipelines
+import net.minecraft.client.renderer.texture.TextureAtlas
 import net.minecraft.core.particles.SimpleParticleType
+import net.minecraft.util.RandomSource
 
-/**
- * This class represents a sheet of particles containing the Pyrite Ingot Texture.
- * @author Chidozie Derek Chidozie-Uzowulu
- */
-class PyriteParticles protected constructor(
-    pLevel: ClientLevel, pX: Double, pY: Double, pZ: Double,
-    spriteSet: SpriteSet, pXSpeed: Double, pYSpeed: Double, pZSpeed: Double
-) : TextureSheetParticle(pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed) {
+class PyriteParticles(
+    level: ClientLevel,
+    x: Double,
+    y: Double,
+    z: Double,
+    private val spriteSet: SpriteSet
+) : SingleQuadParticle(level, x, y, z, spriteSet.first()) {
+
     init {
         this.friction = 0.8f
         this.lifetime = 40
 
-        this.setSpriteFromAge(spriteSet)
-
+        // initial color
         this.rCol = 1f
         this.gCol = 1f
         this.bCol = 1f
     }
 
-    override fun getRenderType(): ParticleRenderType {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT
+    override fun tick() {
+        super.tick()
+        // Update sprite each tick
+        this.setSpriteFromAge(spriteSet)
     }
 
-    class Provider(private val spriteSet: SpriteSet) : ParticleProvider<SimpleParticleType?> {
+    override fun getLayer(): SingleQuadParticle.Layer {
+        // Use a default translucent particle layer
+        return PARTICLE_LAYER
+    }
+
+    companion object {
+        // Define a custom particle layer (or reuse vanilla ones)
+        val PARTICLE_LAYER = SingleQuadParticle.Layer(
+            true,                      // allows translucency
+            TextureAtlas.LOCATION_PARTICLES,
+            RenderPipelines.WEATHER_DEPTH_WRITE // choose appropriate pipeline
+        )
+    }
+
+    // Provider for registration
+    class Provider(private val spriteSet: SpriteSet) : ParticleProvider<SimpleParticleType> {
         override fun createParticle(
-            pType: SimpleParticleType?, pLevel: ClientLevel, pX: Double, pY: Double, pZ: Double,
-            pXSpeed: Double, pYSpeed: Double, pZSpeed: Double
-        ): Particle? {
-            return PyriteParticles(pLevel, pX, pY, pZ, this.spriteSet, pXSpeed, pYSpeed, pZSpeed)
+            type: SimpleParticleType,
+            level: ClientLevel,
+            x: Double,
+            y: Double,
+            z: Double,
+            xd: Double,
+            yd: Double,
+            zd: Double,
+            random: RandomSource
+        ): Particle {
+            return PyriteParticles(level, x, y, z, spriteSet)
         }
     }
 }

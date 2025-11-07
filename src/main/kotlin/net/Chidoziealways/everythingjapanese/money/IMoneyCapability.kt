@@ -4,6 +4,8 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.server.level.ServerPlayer
 
 interface IMoneyCapability {
+    fun getMaxMoney(): Int?
+    fun setMaxMoney(amount: Int)
     fun getMoney(): Int
     fun addMoney(amount: Int, player: ServerPlayer)
     fun addMoney(amount: Int)

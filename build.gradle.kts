@@ -41,7 +41,7 @@ neoForge {
     version = libs.versions.neoforge.asProvider().get()
 
     parchment {
-        mappingsVersion = "2025.07.20"
+        mappingsVersion = "2025.09.14"
         minecraftVersion = "1.21.8"
     }
 
@@ -55,7 +55,7 @@ neoForge {
 
     runs {
         // Custom client run
-        create("runCustomClient") {
+        create("customClient") {
             client() // Sets type = "client"
             gameDirectory.set(project.layout.projectDirectory.dir("runs/client"))
             systemProperty("neoforge.enableGameTest", "true")
@@ -65,7 +65,7 @@ neoForge {
         }
 
         // Custom data generator run
-        create("runCustomClientData") {
+        create("customClientData") {
             clientData() // type = "clientData"
             gameDirectory.set(project.layout.projectDirectory.dir("runs/clientData"))
             programArguments.addAll(listOf(
@@ -78,7 +78,7 @@ neoForge {
         }
 
         // Custom dedicated server run
-        create("runCustomServer") {
+        create("customServer") {
             server() // type = "server"
             gameDirectory.set(project.layout.projectDirectory.dir("runs/server"))
             programArguments.add("--nogui")
@@ -116,7 +116,7 @@ println("Java: ${System.getProperty("java.version")}, JVM: ${System.getProperty(
 sourceSets {
     getByName("main") {
 
-        resources.srcDir("src/generated/resources")
+        resources.srcDir("src/generated/resources/$modId")
     }
 }
 
@@ -152,17 +152,12 @@ dependencies {
 
     implementation(libs.jopt.simple)
 
-    jarJarConfig(libs.kotlinforforge)
-    jarJarConfig(libs.kfflib)
-    jarJarConfig(libs.kfflang)
+    //implementation("net.Chidoziealways.everythingkorean:everythingkorean:0.0.8-1.21.10")
 
-    // Make Luaj available in dev runtime
-    jarJarConfig("org.luaj:luaj-jse:3.0.1")
-    libraries("org.luaj:luaj-jse:3.0.1")
-
+    implementation("net.Chidoziealways.everythingcore:EverythingCore:5.0.0")
     // Uncomment and add if you want those libs
     // implementation(fg.deobf("com.github.glitchfiend:TerraBlender-forge:$minecraftVersion-$terrablender_version"))
-    implementation("software.bernie.geckolib:geckolib-neoforge-1.21.8:5.2.2")
+    implementation("software.bernie.geckolib:geckolib-neoforge-1.21.10:5.3-alpha-1")
 }
 
 //Make the result of the jarJar task the one with no classifier instead of no classifier and "all"
@@ -193,6 +188,7 @@ modrinth {
     changelog.set(rootProject.file("changelog.md").readText(Charsets.UTF_8))
     gameVersions.set(listOf(minecraftVersion))
     dependencies.add(ModDependency("geckolib", DependencyType.REQUIRED))
+    dependencies.add(ModDependency("everything-core", DependencyType.REQUIRED))
     loaders.set(listOf("neoforge"))
 
     //https://github.com/modrinth/minotaur#available-properties
@@ -210,22 +206,34 @@ tasks.register<TaskPublishCurseForge>("publishToCurseForge") {
     mainFile.addModLoader("NeoForge")
     mainFile.addGameVersion(minecraftVersion)
     mainFile.addEnvironment("Client", "Server")
-    mainFile.addJavaVersion("Java 21")
+    mainFile.addJavaVersion("Java 22")
     mainFile.changelogType = "markdown"
     mainFile.changelog = rootProject.file("changelog.md").readText(Charsets.UTF_8)
 }
 
 publishing {
-    publishing {
-        publications {
-            create<MavenPublication>("everythingjapanese") {
-                from(components["java"])
-                //jarJar.component(this)
-                artifactId = base.archivesName.get()
-            }
+    publications {
+        create<MavenPublication>("everythingjapanese") {
+            from(components["java"])
+            artifactId = base.archivesName.get()
         }
     }
+    repositories {
+        mavenLocal() // <-- local repo (~/.m2/repository)
+        maven {
+            url = uri("${project.buildDir}/repo")
+        }
+        // Or remote server
+        // maven {
+        //     url = uri("https://my.maven.repo/releases")
+        //     credentials {
+        //         username = "user"
+        //         password = "pass"
+        //     }
+        // }
+    }
 }
+
 
 tasks.named<DefaultTask>("publish").configure {
     finalizedBy("modrinth")

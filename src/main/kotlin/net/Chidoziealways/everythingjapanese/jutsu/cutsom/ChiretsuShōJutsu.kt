@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.jutsu.cutsom
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
 import net.minecraft.network.chat.Component
@@ -21,7 +21,7 @@ import java.util.function.Predicate
 import kotlin.math.sqrt
 
 class ChiretsuShōJutsu: Jutsu(
-    ResourceLocation.fromNamespaceAndPath(MOD_ID, "chiretsu_sho_jutsu"),
+    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"),
     "Chiretsu Shō",
     15f,
     3,
@@ -47,7 +47,7 @@ class ChiretsuShōJutsu: Jutsu(
     }
 
     override fun cast(player: ServerPlayer): Boolean {
-        if (!JutsuTracker.has(player)) {
+        if (!ChiretsuJutsuTracker.has(player)) {
             val mastery = MasteryHandler.getMastery(player, getID())
             println("Mastery: $mastery, Id: ${getID()}")
             val stage = ChiretsuShoMastery.fromMastery(mastery)
@@ -96,7 +96,7 @@ class ChiretsuShōJutsu: Jutsu(
                     player.level().addFreshEntity(proj)
 
                     // Track only first projectile for the recast launch
-                    JutsuTracker.add(player, proj)
+                    ChiretsuJutsuTracker.add(player, proj)
                 }
                 player.displayClientMessage(Component.literal("Blocks levitated! (${blocks.size} blocks, radius $radius"), true)
             } else {
@@ -104,7 +104,7 @@ class ChiretsuShōJutsu: Jutsu(
                 return false
             }
         } else {
-            val projectiles = JutsuTracker.getAll(player) // You’ll need this method to track ALL, not just one
+            val projectiles = ChiretsuJutsuTracker.getAll(player) // You’ll need this method to track ALL, not just one
             if (projectiles.isNotEmpty()) {
                 val hitResult = getTargetHitResult(player, 50.0)
                 val eyePos = player.eyePosition
@@ -130,7 +130,7 @@ class ChiretsuShōJutsu: Jutsu(
                 player.displayClientMessage(Component.literal("No levitating blocks found."), true)
                 return false
             }
-            JutsuTracker.clear(player)
+            ChiretsuJutsuTracker.clear(player)
         }
         return true
     }

@@ -1,16 +1,13 @@
 package net.Chidoziealways.everythingjapanese.tests.instances
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.tests.ModGameTests
 import net.Chidoziealways.everythingjapanese.tests.environments.ModGameTestEnvironments
-import net.minecraft.core.Holder
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.gametest.framework.*
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
-import java.util.function.Consumer
 
 object ModGameTestInstances {
     val POWDER_SNOW: ResourceKey<GameTestInstance> = create("powdersnow")
@@ -24,7 +21,7 @@ object ModGameTestInstances {
                 ModGameTests.POWDER_SNOW.key,
                 TestData(
                     holdergetter1.getOrThrow(ModGameTestEnvironments.POWDER_SNOW),
-                    ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdersnow"),
+                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "powdersnow"),
                     200,
                     40,
                     true
@@ -36,7 +33,7 @@ object ModGameTestInstances {
     private fun create(pKey: String): ResourceKey<GameTestInstance> {
         return ResourceKey.create(
             Registries.TEST_INSTANCE,
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, pKey)
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pKey)
         )
     }
 }

@@ -1,15 +1,13 @@
 package net.Chidoziealways.everythingjapanese.chakra
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
-import net.Chidoziealways.everythingjapanese.network.ModNetwork
 import net.minecraft.core.particles.ParticleTypes
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.tick.ServerTickEvent
-import net.neoforged.neoforge.network.PacketDistributor
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object ChakraRegenerationHandler {
     @SubscribeEvent
     fun onServerTick(event: ServerTickEvent.Post) {

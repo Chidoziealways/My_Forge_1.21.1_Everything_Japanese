@@ -1,10 +1,12 @@
 package net.Chidoziealways.everythingjapanese.entity.custom
 
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
+import net.Chidoziealways.everythingjapanese.entity.getAnimationSeconds
+import net.Chidoziealways.everythingjapanese.entity.getAnimationTick
+import net.Chidoziealways.everythingjapanese.entity.isAnimationPlaying
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.damagesource.DamageSource
 import net.minecraft.world.entity.Entity
-import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal
@@ -13,14 +15,12 @@ import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableWitchTargetGoal
 import net.minecraft.world.entity.animal.IronGolem
 import net.minecraft.world.entity.monster.Monster
 import net.minecraft.world.entity.npc.AbstractVillager
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.gameevent.GameEvent
-import net.minecraft.world.phys.Vec3
 import net.neoforged.neoforge.common.CommonHooks
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache
@@ -30,22 +30,56 @@ import software.bernie.geckolib.animatable.processing.AnimationTest
 import software.bernie.geckolib.animation.PlayState
 import software.bernie.geckolib.animation.RawAnimation
 import software.bernie.geckolib.util.GeckoLibUtil
+import java.util.Random
 
 class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), GeoEntity {
 
     val WALK = RawAnimation.begin().thenLoop("walk")
     val IDLE = RawAnimation.begin().thenLoop("idle")
-    val SWORD_SWING = RawAnimation.begin().thenPlay("horizontal_sword_swing")
+    val HORIZONTAL_SWORD_SWING = RawAnimation.begin().thenPlay("horizontal_sword_swing")
+    val SUCCESSIVE_SWORD_SWING = RawAnimation.begin().thenPlay("successive_sword_swing")
     val HURT = RawAnimation.begin().thenPlay("hurt")
     val DEATH = RawAnimation.begin().thenPlay("death")
 
     val geoCache = GeckoLibUtil.createInstanceCache(this)
 
+    private var currentTarget: Entity? = null
+    private var hitsRemaining: Int = 0
+
     override fun registerControllers(controllers: AnimatableManager.ControllerRegistrar) {
         controllers.add(AnimationController("Movement", 5, this::walkAnimController))
-        controllers.add(AnimationController<CursedSamurai>("attack_controller", 0) { animTest -> PlayState.STOP}.triggerableAnim("sword_swing", SWORD_SWING))
+        controllers.add(AnimationController<CursedSamurai>("horizontal_attack_controller", 0) { animState ->
+            if (animState.isAnimationPlaying()) {
+                print("HORIZONTAL ATTACK")
+                performAttackIfFrame(animState, "horizontal_sword_swing", listOf(2))
+            }
+            PlayState.STOP
+        }.triggerableAnim("horizontal_sword_swing", HORIZONTAL_SWORD_SWING))
+
+        controllers.add(AnimationController<CursedSamurai>("successive_attack_controller", 0) { animState ->
+            if (animState.isAnimationPlaying()) {
+                print("SUCCESSIVE ATTACK")
+                performAttackIfFrame(animState, "successive_sword_swing", listOf(2, 3, 4, 5))
+            }
+            PlayState.STOP
+        }.triggerableAnim("successive_sword_swing", SUCCESSIVE_SWORD_SWING))
         controllers.add(AnimationController<CursedSamurai>("hurt", 0) { animTest -> PlayState.STOP }.triggerableAnim("hurt", HURT))
         controllers.add(AnimationController<CursedSamurai>("death", 0) { animTest -> PlayState.STOP }.triggerableAnim("death", DEATH))
+    }
+
+    private fun performAttackIfFrame(animState: AnimationTest<CursedSamurai>, animName: String, hitFrames: List<Int>) {
+        if (currentTarget == null || hitsRemaining <= 0) return
+
+        val currentTick = animState.getAnimationSeconds().toInt()
+        println(currentTick)
+        if (hitFrames.contains(currentTick)) {
+            // Melee range check
+            if (distanceTo(currentTarget!!) <= 5.0) {
+                currentTarget!!.hurt(damageSources().mobAttack(this), attributes.getValue(Attributes.ATTACK_DAMAGE).toFloat())
+            }
+            hitsRemaining--
+            if (hitsRemaining <= 0) currentTarget = null
+        }
     }
 
     fun walkAnimController(animTest: AnimationTest<CursedSamurai>): PlayState {
@@ -74,10 +108,16 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
     }
 
     override fun doHurtTarget(server: ServerLevel, entity: Entity): Boolean {
-        println("Setting Swinging to true!")
-        triggerAnim("attack_controller", "sword_swing")
-        server.scheduleTick(blockPosition(), server.getBlockState(blockPosition()).block, 10)
-        return super.doHurtTarget(server, entity)
+        val attacks = arrayOf("horizontal_sword_swing", "successive_sword_swing")
+        val controllers = arrayOf("horizontal_attack_controller", "successive_attack_controller")
+        val index = Random().nextInt(0, 2)
+
+        currentTarget = entity
+        hitsRemaining = if (attacks[index] == "horizontal_sword_swing") 1 else 4
+
+        triggerAnim(controllers[index], attacks[index])
+
+        return super.doHurtTarget(server, entity) // damage will be handled in the controller
     }
 
     override fun animateHurt(p_265265_: Float) {
@@ -119,7 +159,7 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
             combatTracker.recheckStatus()
             val level = level()
             if (level is ServerLevel) {
-                if (entity == null || entity.killedEntity(level, this)) {
+                if (entity == null || entity.killedEntity(level, this, damageSource)) {
                     gameEvent(GameEvent.ENTITY_DIE)
                     dropAllDeathLoot(level, damageSource)
                     createWitherRose(livingEntity)
@@ -136,9 +176,9 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
                 .add(Attributes.FOLLOW_RANGE, 35.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.23)
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
-                .add(Attributes.ARMOR, 50.0)
-                .add(Attributes.ARMOR_TOUGHNESS, 100.0)
-                .add(Attributes.MAX_HEALTH, 50.0)
+                .add(Attributes.ARMOR, 100.0)
+                .add(Attributes.ARMOR_TOUGHNESS, 900.0)
+                .add(Attributes.MAX_HEALTH, 100.0)
                 .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 10.0)
         }
     }

@@ -4,6 +4,7 @@ import net.Chidoziealways.everythingjapanese.custom.ModdedCakeBlock
 import net.Chidoziealways.everythingjapanese.custom.ModdedCakeBlock.Companion.eat
 import net.Chidoziealways.everythingjapanese.state.properties.ModBlockStateProperties
 import net.minecraft.core.BlockPos
+import net.minecraft.core.Direction
 import net.minecraft.util.RandomSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
@@ -80,7 +81,7 @@ class JapaneseCheesecakeBlock(properties: Properties): Block(properties) {
         return true
     }
 
-    override fun getAnalogOutputSignal(state: BlockState, level: Level, pos: BlockPos): Int {
+    override fun getAnalogOutputSignal(state: BlockState, level: Level, pos: BlockPos, p_435855_: Direction): Int {
         return getOutputSignal(state.getValue(BITES))
     }
 

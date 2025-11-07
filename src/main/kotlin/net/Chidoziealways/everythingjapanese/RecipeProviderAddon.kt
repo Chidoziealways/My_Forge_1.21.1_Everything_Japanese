@@ -3,8 +3,7 @@ package net.Chidoziealways.everythingjapanese
 import net.Chidoziealways.everythingjapanese.data.recipes.SmithingBladeRecipeBuilder
 import net.Chidoziealways.everythingjapanese.data.recipes.SmithingKanjiRecipeBuilder
 import net.Chidoziealways.everythingjapanese.data.recipes.SmithingWrapperRecipeBuilder
-import net.Chidoziealways.everythingjapanese.item.ModItems
-import net.Chidoziealways.everythingjapanese.item.crafting.SmithingWrapperRecipe
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.item.katana.BladeType
 import net.Chidoziealways.everythingjapanese.item.katana.Wrapping
 import net.Chidoziealways.everythingjapanese.kanji.KanjiType
@@ -20,20 +19,20 @@ fun RecipeProvider.kanjiSmithing(template: Item, kanji: ResourceKey<KanjiType>, 
     val reference = this.registries.lookupOrThrow(ModRegistries.KANJI).getOrThrow(kanji)
     SmithingKanjiRecipeBuilder.smithingKanji(
         Ingredient.of(template),
-        Ingredient.of(ModItems.TALISMAN_ITEM), reference, RecipeCategory.MISC).unlocks("has_smithing_kanji_template", this.has(template))
+        Ingredient.of(JModItems.TALISMAN_ITEM), reference, RecipeCategory.MISC).unlocks("has_smithing_kanji_template", this.has(template))
         .save(this.output, recipe)
 }
 
 fun RecipeProvider.bladeSmithing(template: Item, blade: BladeType, recipe: ResourceKey<Recipe<*>>) {
     SmithingBladeRecipeBuilder.smithingBlade(
         Ingredient.of(template),
-        Ingredient.of(ModItems.KATANA), blade, RecipeCategory.COMBAT).unlocks("has_smithing_blade_template", this.has(template))
+        Ingredient.of(JModItems.KATANA), blade, RecipeCategory.COMBAT).unlocks("has_smithing_blade_template", this.has(template))
         .save(this.output, recipe)
 }
 
 fun RecipeProvider.wrapSmithing(template: Item, wrapper: Wrapping, recipe: ResourceKey<Recipe<*>>) {
     SmithingWrapperRecipeBuilder.smithingWrapper(
         Ingredient.of(template),
-        Ingredient.of(ModItems.KATANA), wrapper, RecipeCategory.COMBAT).unlocks("has_smithing_wrapper_template", this.has(template))
+        Ingredient.of(JModItems.KATANA), wrapper, RecipeCategory.COMBAT).unlocks("has_smithing_wrapper_template", this.has(template))
         .save(this.output, recipe)
 }

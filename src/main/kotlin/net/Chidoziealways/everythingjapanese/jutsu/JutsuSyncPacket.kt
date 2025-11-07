@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.jutsu
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.readSet
 import net.Chidoziealways.everythingjapanese.writeSet
@@ -15,7 +15,7 @@ data class JutsuSyncPacket(val learnedJutsus: MutableSet<String>, val jutsuMaste
     override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "jutsu_sync")
+        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu_sync")
         val TYPE = CustomPacketPayload.Type<JutsuSyncPacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, JutsuSyncPacket> = StreamCodec.of(

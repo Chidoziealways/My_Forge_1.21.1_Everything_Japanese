@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.fluids.ModFluids
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.HolderLookup
@@ -18,7 +18,7 @@ class ModFluidTagProvider(
     Registries.FLUID,
     future,
     { fluid -> fluid.builtInRegistryHolder().key() },
-    MOD_ID
+    JAPANESE_MOD_ID
 ) {
     override fun addTags(provider: HolderLookup.Provider) {
         tag(ModTags.Fluids.BLOOD).add(ModFluids.BLOOD.get()).add(ModFluids.FLOWING_BLOOD.get())

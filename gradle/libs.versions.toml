@@ -1,14 +1,14 @@
 [versions]
-    everythingjapanese = "1.13.0"
+    everythingjapanese = "1.21.1"
 
     minecraft-range = "[1.21.1, 1.22)"
-    minecraft = "1.21.8"
+    minecraft = "1.21.10"
     jopt-simple = "5.0.4"
 
     kff-range = "[6.0,)"
-    neoforge = "21.8.40"
-    neoforge-range = "[21.8.29,)"
-    kff = "[6.0.0,)"
+    neoforge = "21.10.43-beta"
+    neoforge-range = "[21.10.0-beta,)"
+    kff = "[6.1.0,)"
 
     geckolib_version_range = "[5.2.2,)"
 
@@ -16,10 +16,10 @@
     mixinextras = "0.4.1"
     mixinextras-range = "[0.4.1,)"
 
-    plugin-minotaur = "2.8.7"
+    plugin-minotaur = "2.8.10"
     plugin-curseforge-gradle = "1.1.26"
     plugin-idea-ext = "1.1.10"
-    plugin-moddevgradle = "2.0.107"
+    plugin-moddevgradle = "2.0.115"
     plugin-mixin = "0.7.+"
 
 [libraries]

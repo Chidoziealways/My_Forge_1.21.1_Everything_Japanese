@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.worldgen.biome
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BiomeDefaultFeatures
@@ -20,7 +19,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature
 object ModBiomes {
     val HELL_BIOME: ResourceKey<Biome?> = ResourceKey.create<Biome?>(
         Registries.BIOME,
-        ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell_biome")
+        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_biome")
     )
 
     fun bootstrap(context: BootstrapContext<Biome>) {

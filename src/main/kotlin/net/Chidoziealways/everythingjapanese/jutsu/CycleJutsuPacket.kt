@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.jutsu
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.chat.Component
@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext
 object CycleJutsuPacket: CustomPacketPayload {
     override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
 
-        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "jutsu_cycle")
+        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu_cycle")
         val TYPE = CustomPacketPayload.Type<CycleJutsuPacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, CycleJutsuPacket> = StreamCodec.unit(CycleJutsuPacket)

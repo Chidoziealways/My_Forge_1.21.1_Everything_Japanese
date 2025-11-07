@@ -24,7 +24,9 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
     override fun setRemoved() {
         val controllerBE = getControllerBE()
         super.setRemoved()
-        controllerBE?.updateConnectivity()
+        if (controllerBE != null && !controllerBE.isRemoved) {
+            controllerBE.updateConnectivity()
+        }
     }
 
     fun isController(): Boolean = controller == null || controller == worldPosition
@@ -50,7 +52,7 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
     fun updateConnectivity() {
         if (level!!.isClientSide) return
 
-        // Flood-fill to find all connected vault blocks
+        // Flood-fill connected vault blocks
         val visited = mutableSetOf<BlockPos>()
         val queue = ArrayDeque<BlockPos>()
         queue.add(worldPosition)
@@ -61,9 +63,7 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
 
             for (dir in Direction.entries) {
                 val next = current.relative(dir)
-                if (!visited.contains(next) &&
-                    level!!.getBlockState(next).block is MoneyVaultBlock
-                ) {
+                if (!visited.contains(next) && level!!.getBlockState(next).block is MoneyVaultBlock) {
                     queue.add(next)
                 }
             }
@@ -71,66 +71,84 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
 
         if (visited.isEmpty()) return
 
-        // Bounding box
-        val minX = visited.minOf { it.x }
-        val maxX = visited.maxOf { it.x }
-        val minY = visited.minOf { it.y }
-        val maxY = visited.maxOf { it.y }
-        val minZ = visited.minOf { it.z }
-        val maxZ = visited.maxOf { it.z }
+        val controllerPos = getControllerBE()?.worldPosition ?: worldPosition
+
+        // Local space relative to controller
+        val localVisited = visited.map { pos ->
+            Triple(pos, pos.x - controllerPos.x, pos.z - controllerPos.z)
+        }
+
+        val minX = localVisited.minOf { it.second }
+        val maxX = localVisited.maxOf { it.second }
+        val minZ = localVisited.minOf { it.third }
+        val maxZ = localVisited.maxOf { it.third }
 
         val sizeX = maxX - minX + 1
         val sizeZ = maxZ - minZ + 1
 
-        val valid = (sizeX in 2..3) && (sizeZ in 2..3)
+        // Shift X/Z to start at 0 for proper LEFT/MIDDLE/RIGHT and FRONT/MIDDLE/BACK assignment
+        val normalized = localVisited.map { (pos, lx, lz) ->
+            Triple(pos, lx - minX, lz - minZ)
+        }
 
-        for (pos in visited) {
+        val minY = visited.minOf { it.y }
+        val maxY = visited.maxOf { it.y }
+        val height = maxY - minY + 1
+
+        val valid = (sizeX in 2..5) && (sizeZ in 2..5)
+
+        // --- NEW: Calculate dynamic max money ---
+        val vaultVolume = sizeX * sizeZ * height
+        val baseMaxPerBlock = 1000 // adjust as needed
+        getControllerCapability()?.setMaxMoney(baseMaxPerBlock * vaultVolume)
+        println(getControllerCapability()?.getMaxMoney())
+
+        for ((pos, nx, nz) in normalized) {
             val state = level!!.getBlockState(pos)
             if (state.block !is MoneyVaultBlock) continue
 
-            val (x, y, z) = listOf(pos.x, pos.y, pos.z)
-
             if (!valid) {
-                level!!.setBlock(pos, state.setValue(MoneyVaultBlock.SECTION, VaultSection.SINGLE), 3)
+                level!!.setBlock(
+                    pos,
+                    state.setValue(MoneyVaultBlock.SECTION, VaultSection.SINGLE),
+                    3
+                )
                 continue
             }
 
-            // Row = vertical
-            val row = when (y) {
-                maxY -> "TOP"
+            val row = when (pos.y) {
                 minY -> "BOTTOM"
+                maxY -> "TOP"
                 else -> "MIDDLE"
             }
 
-            val dx = x - minX   // distance from the leftmost X
-            val dz = z - minZ   // distance from the frontmost Z
+            val lx = pos.x - controllerPos.x
+            //val lz = pos.z - controllerPos.z
 
-            val sizeX = maxX - minX
-            val sizeZ = maxZ - minZ
-
-            // X-axis
-            val colX = when (dx) {
-                0 -> "LEFT"
-                sizeX -> "RIGHT"
+            val col = when {
+                lx == minX -> "LEFT"   // +X = left
+                lx == maxX -> "RIGHT"  // -X = right
                 else -> "MIDDLE"
             }
 
-            // Z-axis
-            val colZ = when (dz) {
-                0 -> "LEFT"
-                sizeZ -> "RIGHT"
+            val depth = when (nz) {
+                0 -> "FRONT"
+                sizeZ - 1 -> "BACK"
                 else -> "MIDDLE"
             }
 
-            // Final column selection
-            // If the vault is wider in X than Z, X dominates; otherwise Z dominates
-            val col = if (sizeX >= sizeZ) colX else colZ
+            val sectionName = "${row}_${col}_${depth}"
+            val section = VaultSection.valueOf(sectionName)
+            val be = level!!.getBlockEntity(pos) as? MoneyVaultBlockEntity
+            be?.setController(controllerPos) // make sure all connected blocks point to the controller
 
-            val section = VaultSection.valueOf("${row}_${col}")
-            level!!.setBlock(pos, state.setValue(MoneyVaultBlock.SECTION, section), 3)
+            level!!.setBlock(
+                pos,
+                state.setValue(MoneyVaultBlock.SECTION, section),
+                3
+            )
         }
     }
-
 
     override fun onLoad() {
         super.onLoad()
@@ -147,7 +165,7 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
     }
 
     private fun onMoneyCapInvalidated() {
-        level?.invalidateCapabilities(worldPosition)
+        level?.invalidateCapabilities(controller ?: worldPosition)
     }
 
     override fun saveAdditional(output: ValueOutput) {
@@ -162,22 +180,40 @@ class MoneyVaultBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(ModBl
         getControllerCapability()?.setMoney(money)
     }
 
-    fun depositFromPlayer(cap: IMoneyCapability, amount: Int, player: ServerPlayer) {
+    fun depositFromPlayer(cap: IMoneyCapability, amount: Int, player: ServerPlayer): String {
+        val controllerCapability = getControllerCapability() ?: return "The Controller is NULL!"
+        if ((controllerCapability.getMoney() +  amount) > controllerCapability.getMaxMoney()!!) {
+            return "The Vault is full!"
+        }
+        if (cap.getMoney() <= 0) {
+            return "There is no money to Deposit!"
+        }
         log.info("About to remove money from the player")
         cap.removeMoney(amount, player)
         log.info("Removed money from player, adding to vault")
-        getControllerCapability()?.addMoney(amount)
+        controllerCapability.addMoney(amount)
         log.info("Added to vault")
         setChanged() // mark block for saving
+
+        return "Successfully Deposited Money!"
     }
 
-    fun deposit(cap: IMoneyCapability, amount: Int) {
+    fun deposit(cap: IMoneyCapability, amount: Int): String {
+        val controllerCapability = getControllerCapability() ?: return "The Controller is NULL!"
+        if ((controllerCapability.getMoney() +  amount) > controllerCapability.getMaxMoney()!!) {
+            return "The Vault is full!"
+        }
+        if (cap.getMoney() <= 0) {
+            return "There is no Money to deposit!"
+        }
         log.info("About to remove money from the card")
         cap.removeMoney(amount)
         log.info("Removed money from card, adding to vault")
-        getControllerCapability()?.addMoney(amount)
+        controllerCapability.addMoney(amount)
         log.info("Added to vault credit card side")
         setChanged() // mark block for saving
+
+        return "Successfully Deposited Money!"
     }
 
     fun withdrawFromPlayer(capNew: IMoneyCapability, amount: Int, player: ServerPlayer): Boolean {

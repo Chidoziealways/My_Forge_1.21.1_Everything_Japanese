@@ -1,11 +1,10 @@
 package net.Chidoziealways.everythingjapanese.custom
 
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.state.properties.ModBlockStateProperties
 import net.minecraft.world.level.ItemLike
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.CropBlock
-import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.IntegerProperty
@@ -17,7 +16,7 @@ class RiceCropBlock(properties: Properties) : CropBlock(properties) {
     }
 
     override fun getBaseSeedId(): ItemLike {
-        return ModItems.RICE_SEEDS
+        return JModItems.RICE_SEEDS
     }
 
     override fun getAgeProperty(): IntegerProperty {

@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.screen.custom.growthchamber
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
 import net.minecraft.client.renderer.RenderPipelines
@@ -59,10 +58,10 @@ class GrowthChamberScreen(pMenu: GrowthChamberMenu, pPlayerInventory: Inventory,
 
     companion object {
         private val GUI_TEXTURE: ResourceLocation = ResourceLocation.fromNamespaceAndPath(
-            MOD_ID,
+            JAPANESE_MOD_ID,
             "textures/gui/growth_chamber/growth_chamber_gui.png"
         )
         private val ARROW_TEXTURE: ResourceLocation =
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/gui/arrow_progress.png")
+            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "textures/gui/arrow_progress.png")
     }
 }

@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.portal
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
 import net.minecraft.BlockUtil.FoundRectangle
 import net.minecraft.core.BlockPos
@@ -38,7 +38,7 @@ class HellPortalShape private constructor(
         get() = this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21
 
     fun createPortalBlocks(p_366077_: LevelAccessor) {
-        val blockstate = ModBlocks.HELL_PORTAL.defaultBlockState()
+        val blockstate = JModBlocks.HELL_PORTAL.defaultBlockState()
             .setValue<Direction.Axis?, Direction.Axis?>(HellPortalBlock.AXIS, this.axis)
         BlockPos.betweenClosed(
             this.bottomLeft,
@@ -222,7 +222,7 @@ class HellPortalShape private constructor(
                         return i
                     }
 
-                    if (blockstate.`is`(ModBlocks.HELL_PORTAL)) {
+                    if (blockstate.`is`(JModBlocks.HELL_PORTAL)) {
                         p_363201_.increment()
                     }
                 }
@@ -232,7 +232,7 @@ class HellPortalShape private constructor(
         }
 
         private fun isEmpty(state: BlockState): Boolean {
-            return state.isAir || state.`is`(BlockTags.FIRE) || state.`is`(ModBlocks.HELL_PORTAL)
+            return state.isAir || state.`is`(BlockTags.FIRE) || state.`is`(JModBlocks.HELL_PORTAL)
         }
 
         fun getRelativePosition(

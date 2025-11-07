@@ -1,0 +1,199 @@
+---- Minecraft Crash Report ----
+// My bad.
+
+Time: 2025-09-02 15:00:04
+Description: Ticking entity
+
+java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_MIDDLE_MIDDLE
+	at java.base/java.lang.Enum.valueOf(Enum.java:293) ~[?:?] {}
+	at TRANSFORMER/everythingjapanese@1.13.0/net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock$VaultSection.valueOf(MoneyVaultBlock.kt) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.13.0/net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity.updateConnectivity(MoneyVaultBlockEntity.kt:129) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.13.0/net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity.setRemoved(MoneyVaultBlockEntity.kt:28) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.chunk.LevelChunk.removeBlockEntity(LevelChunk.java:491) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.chunk.LevelChunk.setBlockState(LevelChunk.java:309) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.setBlock(Level.java:253) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.setBlock(Level.java:233) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/neoforge@21.8.40/net.neoforged.neoforge.common.extensions.IBlockExtension.onBlockExploded(IBlockExtension.java:761) ~[neoforge-21.8.40.jar%23215!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.40/net.neoforged.neoforge.common.extensions.IBlockStateExtension.onBlockExploded(IBlockStateExtension.java:631) ~[neoforge-21.8.40.jar%23215!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour.onExplosionHit(BlockBehaviour.java:214) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.onExplosionHit(BlockBehaviour.java:830) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.ServerExplosion.interactWithBlocks(ServerExplosion.java:235) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.ServerExplosion.explode(ServerExplosion.java:258) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.explode(ServerLevel.java:1223) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.explode(Level.java:719) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.entity.item.PrimedTnt.explode(PrimedTnt.java:127) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.entity.item.PrimedTnt.tick(PrimedTnt.java:114) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:781) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.guardEntityTick(Level.java:614) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:417) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:397) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1095) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:968) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:111) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:722) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:277) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at java.base/java.lang.Enum.valueOf(Enum.java:293) ~[?:?] {}
+	at TRANSFORMER/everythingjapanese@1.13.0/net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock$VaultSection.valueOf(MoneyVaultBlock.kt) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.13.0/net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity.updateConnectivity(MoneyVaultBlockEntity.kt:129) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/everythingjapanese@1.13.0/net.Chidoziealways.everythingjapanese.block.entity.custom.MoneyVaultBlockEntity.setRemoved(MoneyVaultBlockEntity.kt:28) ~[%23216!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.chunk.LevelChunk.removeBlockEntity(LevelChunk.java:491) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.chunk.LevelChunk.setBlockState(LevelChunk.java:309) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.setBlock(Level.java:253) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.setBlock(Level.java:233) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/neoforge@21.8.40/net.neoforged.neoforge.common.extensions.IBlockExtension.onBlockExploded(IBlockExtension.java:761) ~[neoforge-21.8.40.jar%23215!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.8.40/net.neoforged.neoforge.common.extensions.IBlockStateExtension.onBlockExploded(IBlockStateExtension.java:631) ~[neoforge-21.8.40.jar%23215!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour.onExplosionHit(BlockBehaviour.java:214) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.onExplosionHit(BlockBehaviour.java:830) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.ServerExplosion.interactWithBlocks(ServerExplosion.java:235) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.ServerExplosion.explode(ServerExplosion.java:258) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.explode(ServerLevel.java:1223) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.explode(Level.java:719) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.entity.item.PrimedTnt.explode(PrimedTnt.java:127) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.entity.item.PrimedTnt.tick(PrimedTnt.java:114) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:781) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.guardEntityTick(Level.java:614) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:417) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+-- Entity being ticked --
+Details:
+	Entity Type: minecraft:tnt (net.minecraft.world.entity.item.PrimedTnt)
+	Entity ID: 2430
+	Entity Name: Primed TNT
+	Entity's Exact location: -1865.78, 75.00, -234.77
+	Entity's Block location: World: (-1866,75,-235), Section: (at 6,11,5 in -117,4,-15; chunk contains blocks -1872,-64,-240 to -1857,319,-225), Region: (-4,-1; contains chunks -128,-32 to -97,-1, blocks -2048,-64,-512 to -1537,319,-1)
+	Entity's Momentum: 0.77, 0.00, -0.56
+	Entity's Passengers: []
+	Entity's Vehicle: null
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.Level.guardEntityTick(Level.java:614) ~[neoforge-21.8.40.jar%23214!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:417) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:397) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1095) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:968) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:111) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:722) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:277) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; ServerPlayer{name=Dev, id=1, pos=(-1898.679745285358, 114.94200044307175, -262.84846732991355), mode=CREATIVE, permission=4}
+	Chunk stats: 3381
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (-624,70,640), Section: (at 0,6,0 in -39,4,40; chunk contains blocks -624,-64,640 to -609,319,655), Region: (-2,1; contains chunks -64,32 to -33,63, blocks -1024,-64,512 to -513,319,1023)
+	Level time: 313006 game time, 7152 day time
+	Level name: New Worlds
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Commands: true
+	Level weather: Rain time: 1 (now: false), thunder time: 1 (now: false)
+	Known server brands: neoforge
+	Removed feature flags: 
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+	Loaded entity count: 1737
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.level.ServerLevel.fillReportDetails(ServerLevel.java:1808) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1098) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:968) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:111) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:722) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.8/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:277) ~[neoforge-21.8.40.jar%23214!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.8
+	Minecraft Version ID: 1.21.8
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 419430400 bytes (400 MiB) / 1258291200 bytes (1200 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 22883.21
+	Virtual memory used (MiB): 14770.84
+	Swap memory total (MiB): 14848.00
+	Swap memory used (MiB): 2293.88
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 69823.28, total: 243176.00
+	Space in storage for workdir (MiB): available: 69823.28, total: 243176.00
+	JVM Flags: 0 total; 
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/1, l='ServerLevel[New Worlds]', x=-1898.68, y=114.94, z=-262.85]]
+	Active Data Packs: vanilla, mod_data, mod/kotlinforforge (incompatible), mod/everythingjapanese, mod/geckolib, mod/neoforge
+	Available Data Packs: minecart_improvements, redstone_experiments, trade_rebalance, vanilla, mod/everythingjapanese, mod/geckolib, mod/kotlinforforge (incompatible), mod/neoforge, mod_data
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Experimental
+	World Seed: 5580768659661978209
+	Suppressed Exceptions: 
+		Latest entries:
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_MIDDLE_MIDDLE (151555ms ago)
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_LEFT_MIDDLE (148793ms ago)
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_LEFT_MIDDLE (146570ms ago)
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_MIDDLE_MIDDLE (146245ms ago)
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_MIDDLE_MIDDLE (144916ms ago)
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_LEFT_MIDDLE (144494ms ago)
+			packet/serverbound/minecraft:player_action:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_RIGHT_MIDDLE (130596ms ago)
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException: No enum constant net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection.BOTTOM_RIGHT_MIDDLE (130116ms ago)
+		Entry counts:
+			packet/serverbound/minecraft:use_item_on:class java.lang.IllegalArgumentException x 26
+			packet/serverbound/minecraft:player_action:class java.lang.IllegalArgumentException x 1
+
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'neoforge'; Server brand changed to 'neoforge'
+	Launched Version: 21.8.40
+	ModLauncher: 9.0
+	ModLauncher launch target: neoforgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-9.0.18.jar neoforgedevdistcleaner PLUGINSERVICE 
+		loader-9.0.18.jar slf4jfixer PLUGINSERVICE 
+		loader-9.0.18.jar runtime_enum_extender PLUGINSERVICE 
+		loader-9.0.18.jar accesstransformer PLUGINSERVICE 
+		loader-9.0.18.jar mixin TRANSFORMATIONSERVICE 
+		loader-9.0.18.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		kotlinforforge@6.0.0
+		javafml@9.0
+		minecraft@9.0
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.13.0              |Manifest: NOSIGNATURE
+		geckolib-neoforge-1.21.8-5.2.2.jar                |GeckoLib 5                    |geckolib                      |5.2.2               |Manifest: NOSIGNATURE
+		kffmod-neoforge-6.0.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.0.0               |Manifest: NOSIGNATURE
+		neoforge-21.8.40.jar                              |Minecraft                     |minecraft                     |1.21.8              |Manifest: NOSIGNATURE
+		neoforge-21.8.40.jar                              |NeoForge                      |neoforge                      |21.8.40             |Manifest: NOSIGNATURE
+	Crash Report UUID: d8f6e6b8-fc52-42bd-92e4-380d65ed86d5
+	FML: 9.0.18
+	NeoForge: 21.8.40

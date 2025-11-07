@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.portal
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
 import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes
 import net.minecraft.BlockUtil
@@ -199,7 +199,7 @@ class HellPortalForcer(p_77650_: ServerLevel) {
             }
         }
 
-        val blockstate: BlockState = ModBlocks.HELL_PORTAL.defaultBlockState()
+        val blockstate: BlockState = JModBlocks.HELL_PORTAL.defaultBlockState()
             .setValue(
                 HellPortalBlock.AXIS,
                 p_77668_

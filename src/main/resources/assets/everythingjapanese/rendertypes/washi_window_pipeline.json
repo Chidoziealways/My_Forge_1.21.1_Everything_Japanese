@@ -2,7 +2,7 @@
   "pipeline": "custom",
   "rendertype": "washi_window",
   "shader": "everythingjapanese:washi_window",
-  "textures": ["everythingjapanese:block/washi_window", "everythingjapanese:block/shoji_door", "everythingjapanese:item/shoji_door"],
+  "textures": ["everythingjapanese:block/washi_window", "everythingjapanese:block/shoji_door", "everythingjapanese:item/shoji_door", "everythingjapanese:block/shoji_window"],
   "blend": { "func": "add", "srcrgb": "src_alpha", "dstrgb": "one_minus_src_alpha" },
   "depth": { "test": "lequal", "write": true },
   "cull": false,

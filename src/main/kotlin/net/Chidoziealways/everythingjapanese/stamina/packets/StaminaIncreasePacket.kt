@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.stamina.packets
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.client.Minecraft
 import net.minecraft.network.FriendlyByteBuf
@@ -13,7 +13,7 @@ data class StaminaIncreasePacket(val amount: Float): CustomPacketPayload {
     override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "stamina_increase")
+        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "stamina_increase")
         val TYPE = CustomPacketPayload.Type<StaminaIncreasePacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, StaminaIncreasePacket> = StreamCodec.of(

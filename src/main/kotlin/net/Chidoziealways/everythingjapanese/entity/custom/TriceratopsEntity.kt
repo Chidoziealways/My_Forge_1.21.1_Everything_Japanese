@@ -3,7 +3,7 @@ package net.Chidoziealways.everythingjapanese.entity.custom
 import com.mojang.serialization.Codec
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.entity.TriceratopsVariant
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.Util
 import net.minecraft.network.chat.Component
 import net.minecraft.network.syncher.EntityDataAccessor
@@ -48,7 +48,7 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
             TemptGoal(
                 this,
                 1.25,
-                { stack: ItemStack? -> stack!!.`is`(ModItems.YAMAZAKI_BERRIES) },
+                { stack: ItemStack? -> stack!!.`is`(JModItems.YAMAZAKI_BERRIES) },
                 false
             )
         )
@@ -61,7 +61,7 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
     }
 
     override fun isFood(pStack: ItemStack): Boolean {
-        return pStack.`is`(ModItems.YAMAZAKI_BERRIES)
+        return pStack.`is`(JModItems.YAMAZAKI_BERRIES)
     }
 
     override fun getBreedOffspring(pLevel: ServerLevel, pOtherParent: AgeableMob): AgeableMob? {

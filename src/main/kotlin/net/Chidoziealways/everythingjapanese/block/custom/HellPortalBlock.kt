@@ -64,7 +64,8 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
         level: Level,
         blockPos: BlockPos,
         entity: Entity,
-        insideBlockEffectApplier: InsideBlockEffectApplier
+        insideBlockEffectApplier: InsideBlockEffectApplier,
+        boolean: Boolean
     ) {
         if (entity.canUsePortal(false)) {
             entity.setAsInsidePortal(this, blockPos)

@@ -8,7 +8,7 @@ import java.util.concurrent.CompletableFuture
 object ModAdvancementProvider {
     fun create(
         pOutput: PackOutput,
-        pRegistries: CompletableFuture<HolderLookup.Provider?>
+        pRegistries: CompletableFuture<HolderLookup.Provider>
     ): AdvancementProvider {
         return AdvancementProvider(
             pOutput,

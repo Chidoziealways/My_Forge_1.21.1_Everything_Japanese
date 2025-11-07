@@ -36,10 +36,9 @@ class CreditCardItem(props: Properties): Item(props) {
                 true
             )
         } else {
-            val balance = moneyCap.getMoney()
-            if (balance > 0)  vault.deposit(moneyCap, 50)
+            val deposited = vault.deposit(moneyCap, 50)
             player.displayClientMessage(
-                Component.literal(if (balance > 0) "Deposited ¥50 into the vault!" else "You have no money to deposit!"),
+                Component.literal(deposited),
                 true
             )
         }

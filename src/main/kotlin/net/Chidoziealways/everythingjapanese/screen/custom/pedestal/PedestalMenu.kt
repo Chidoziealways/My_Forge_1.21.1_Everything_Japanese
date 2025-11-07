@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.screen.custom.pedestal
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.minecraft.network.FriendlyByteBuf
@@ -80,7 +80,7 @@ class PedestalMenu(pContainerId: Int, inv: Inventory, blockEntity: BlockEntity?)
     override fun stillValid(player: net.minecraft.world.entity.player.Player): kotlin.Boolean {
         return AbstractContainerMenu.stillValid(
             ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-            player, ModBlocks.PEDESTAL
+            player, JModBlocks.PEDESTAL
         )
     }
 

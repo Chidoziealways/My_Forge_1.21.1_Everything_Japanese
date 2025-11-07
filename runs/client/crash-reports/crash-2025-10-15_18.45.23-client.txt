@@ -1,0 +1,152 @@
+---- Minecraft Crash Report ----
+// There are four lights!
+
+Time: 2025-10-15 18:45:23
+Description: Unexpected error
+
+java.lang.NullPointerException: Cannot invoke "net.minecraft.client.renderer.entity.EntityRenderer.shouldRender(net.minecraft.world.entity.Entity, net.minecraft.client.renderer.culling.Frustum, double, double, double)" because "entityrenderer" is null
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.entity.EntityRenderDispatcher.shouldRender(EntityRenderDispatcher.java:136) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.LevelRenderer.extractVisibleEntities(LevelRenderer.java:822) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:469) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:761) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:542) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.runTick(Minecraft.java:1336) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.run(Minecraft.java:934) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.main.Main.main(Main.java:227) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at net.neoforged.fml.startup.Client.main(Client.java:26) [loader-10.0.21.jar:10.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.entity.EntityRenderDispatcher.shouldRender(EntityRenderDispatcher.java:136) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.LevelRenderer.extractVisibleEntities(LevelRenderer.java:822) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:469) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:761) ~[neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {neoforge:access_transformer}
+-- Uptime --
+Details:
+	JVM uptime: 232.013s
+	Wall uptime: 164.407s
+	High-res time: 225.833s
+	Client ticks: 2596 ticks / 129.800s
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.fillReport(Minecraft.java:2381) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.emergencySaveAndCrash(Minecraft.java:998) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.Minecraft.run(Minecraft.java:957) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at TRANSFORMER/minecraft@1.21.10/net.minecraft.client.main.Main.main(Main.java:227) [neoforge-21.10.12-beta-client-extra-aka-minecraft-resources.jar:?] {}
+	at net.neoforged.fml.startup.Client.main(Client.java:26) [loader-10.0.21.jar:10.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; LocalPlayer{name=Dev, id=1, pos=(32.930939648533666, -60.0, -11.842400177801975), mode=CREATIVE, permission=4}
+	Chunk stats: 961, 637
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,-60,0), Section: (at 0,4,0 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 175446 game time, 1000 day time
+	Server brand: neoforge
+	Server type: Integrated singleplayer server
+	Tracked entity count: 18
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, mod_resources, mod/everythingcore, mod/kotlinforforge, mod/everythingjapanese, mod/geckolib, mod/neoforge
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.10
+	Minecraft Version ID: 1.21.10
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 292045616 bytes (278 MiB) / 1024458752 bytes (977 MiB) up to 2107637760 bytes (2010 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Identifier: Intel64 Family 6 Model 142 Stepping 10
+	Microarchitecture: Coffee Lake
+	Frequency (GHz): 1.90
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) UHD Graphics 620
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 1024.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 31.0.101.2121
+	Memory slot #0 capacity (MiB): 4096.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MiB): 4096.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MiB): 19299.21
+	Virtual memory used (MiB): 16539.96
+	Swap memory total (MiB): 11264.00
+	Swap memory used (MiB): 3155.40
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 37452.04, total: 243176.00
+	Space in storage for workdir (MiB): available: 37452.04, total: 243176.00
+	JVM Flags: 0 total; 
+	Debug Flags: 0 total; 
+	Launched Version: 21.10.12-beta
+	Backend library: LWJGL version 3.3.3+5
+	Backend API: Intel(R) UHD Graphics 620 GL version 3.3.0 - Build 31.0.101.2121, Intel
+	Window size: 1920x1046
+	GFLW Platform: win32
+	Render Extensions: GL_ARB_buffer_storage, GL_KHR_debug, GL_ARB_vertex_attrib_binding, GL_ARB_direct_state_access
+	GL debug messages: 
+	Is Modded: Definitely; Client brand changed to 'neoforge'; Server brand changed to 'neoforge'
+	Universe: 400921fb54442d18
+	Type: Integrated Server (map_client.txt)
+	Graphics mode: fancy
+	Render Distance: 12/12 chunks
+	Resource Packs: vanilla, mod_resources, mod/everythingcore, mod/kotlinforforge (incompatible), mod/everythingjapanese, mod/geckolib, mod/neoforge (incompatible)
+	Current Language: en_us
+	Locale: en_US
+	System encoding: Cp1252
+	File encoding: UTF-8
+	CPU: 8x Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/1, l='ServerLevel[random world]', x=32.93, y=-60.00, z=-11.84]]
+	Active Data Packs: vanilla, mod_data, mod/everythingcore, mod/kotlinforforge (incompatible), mod/everythingjapanese (incompatible), mod/geckolib, mod/neoforge
+	Available Data Packs: minecart_improvements, redstone_experiments, trade_rebalance, vanilla, mod/everythingcore, mod/everythingjapanese (incompatible), mod/geckolib, mod/kotlinforforge (incompatible), mod/neoforge, mod_data
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Experimental
+	World Seed: -4038189208379242751
+	Suppressed Exceptions: ~~NONE~~
+	Class Processors: 
+		00.00%: neoforge:neoforge_dev_dist_cleaner
+		00.00%: neoforge:computing_frames (marker)
+		00.00%: neoforge:runtime_enum_extender
+		04.63%: neoforge:access_transformer
+		00.20%: neoforge:mixin
+		00.00%: neoforge:simple_processors_default (marker)
+		00.01%: neoforge.coremods:field_to_getter.net.minecraft.world.level.biome.biome
+		00.01%: neoforge.coremods:field_to_getter.net.minecraft.world.level.block.flowerpotblock
+		00.01%: neoforge.coremods:field_to_getter.net.minecraft.world.level.levelgen.structure.structure
+		00.23%: neoforge.coremods:method_redirector
+	Mod List: 
+		main                                              |Everything Japanese           |everythingjapanese            |1.18.0              |Manifest: NOSIGNATURE
+		EverythingCore-4.3.0.jar                          |EverythingCore                |everythingcore                |4.3.0               |Manifest: 0aca63c7b928101c6791e5963a5406bebd67d4f9687d2fab61c4d897d80af3f0
+		geckolib-neoforge-1.21.10-5.3-alpha-1.jar         |GeckoLib 5                    |geckolib                      |5.3-alpha-1         |Manifest: a54bc4ac28403d9d8dd3cfdb727a6411d3d105a797631df5c5d29aed68453d1b
+		kffmod-neoforge-6.1.0.jar                         |Kotlin For Forge              |kotlinforforge                |6.1.0               |Manifest: 0840c65ba6a4987524f58d8bf807f8ba3380074e525255ce24ba22c1822956ac
+		neoforge-21.10.12-beta-client-extra-aka-minecraft-|Minecraft                     |minecraft                     |1.21.10             |Manifest: NOSIGNATURE
+		neoforge-21.10.12-beta.jar                        |NeoForge                      |neoforge                      |21.10.12-beta       |Manifest: NOSIGNATURE
+	Crash Report UUID: 49e3a357-4054-43ef-a30e-7428589296b1
+	FML: 10.0.21
+	NeoForge: 21.10.12-beta

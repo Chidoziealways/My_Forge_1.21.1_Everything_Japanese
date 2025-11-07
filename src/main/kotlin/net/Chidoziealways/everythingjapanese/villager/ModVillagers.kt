@@ -1,8 +1,8 @@
 package net.Chidoziealways.everythingjapanese.villager
 
 import com.google.common.collect.ImmutableSet
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
 import net.minecraft.core.Holder
 import net.minecraft.core.registries.Registries
@@ -14,14 +14,14 @@ import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Supplier
 
 object ModVillagers {
-    val POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, MOD_ID)
-    val VILLAGER_PROFESSIONS = DeferredRegister.create(Registries.VILLAGER_PROFESSION, MOD_ID)
+    val POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, JAPANESE_MOD_ID)
+    val VILLAGER_PROFESSIONS = DeferredRegister.create(Registries.VILLAGER_PROFESSION, JAPANESE_MOD_ID)
 
     val FURNITURE_POI = POI_TYPES.register(
         "furniture_poi",
         Supplier {
             PoiType(
-                ImmutableSet.copyOf(ModBlocks.CHAIR.getStateDefinition().getPossibleStates()),
+                ImmutableSet.copyOf(JModBlocks.CHAIR.getStateDefinition().getPossibleStates()),
                 1, 1
             )
         })

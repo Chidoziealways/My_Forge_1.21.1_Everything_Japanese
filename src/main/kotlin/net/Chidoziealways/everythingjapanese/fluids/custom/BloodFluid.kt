@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.fluids.custom
 
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.fluids.ModFluidTypes
 import net.Chidoziealways.everythingjapanese.fluids.ModFluids
 import net.Chidoziealways.everythingjapanese.util.ModTags
@@ -12,23 +12,19 @@ import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
-import net.minecraft.tags.FluidTags
 import net.minecraft.util.RandomSource
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.InsideBlockEffectApplier
 import net.minecraft.world.entity.InsideBlockEffectType
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.Items
 import net.minecraft.world.level.*
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.LiquidBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.material.FlowingFluid
 import net.minecraft.world.level.material.Fluid
 import net.minecraft.world.level.material.FluidState
-import net.minecraft.world.level.material.Fluids
 import net.neoforged.neoforge.fluids.FluidType
 import java.util.*
 
@@ -92,7 +88,7 @@ abstract class BloodFluid: FlowingFluid() {
     }
 
     public override fun createLegacyBlock(state: FluidState): BlockState {
-        return ModBlocks.BLOOD.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state))
+        return JModBlocks.BLOOD.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state))
     }
 
     override fun isSame(fluid: Fluid): Boolean {

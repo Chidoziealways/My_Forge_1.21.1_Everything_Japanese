@@ -1,7 +1,6 @@
 package net.Chidoziealways.everythingjapanese.jutsu.cutsom
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
 import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
@@ -10,12 +9,11 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
-import net.minecraft.world.entity.player.Player
 import net.minecraft.world.entity.projectile.windcharge.WindCharge
 import net.minecraft.world.phys.Vec3
 
 class SmallWindballJutsu : Jutsu(
-    ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_windball"),
+    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "small_windball"),
     "Small Windball",
     20f,
     5,

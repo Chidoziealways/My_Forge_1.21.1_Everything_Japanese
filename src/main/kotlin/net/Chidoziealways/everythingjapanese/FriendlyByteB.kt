@@ -1,9 +1,12 @@
 package net.Chidoziealways.everythingjapanese
 
-import net.Chidoziealways.everythingjapanese.quest.Quest
+import io.netty.buffer.ByteBuf
+import net.Chidoziealways.everythingcore.quest.Quest
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.NbtOps
 import net.minecraft.network.FriendlyByteBuf
+import net.minecraft.network.RegistryFriendlyByteBuf
+import net.minecraft.network.codec.StreamCodec
 
 fun <T> FriendlyByteBuf.writeSet(set: Set<T>, writeElement: (FriendlyByteBuf, T) -> Unit) {
     this.writeVarInt(set.size)
@@ -20,6 +23,29 @@ fun <T> FriendlyByteBuf.readSet(readElement: (FriendlyByteBuf) -> T): MutableSet
     }
     return result
 }
+
+fun <T> setStreamCodecOf(
+    elementCodec: StreamCodec<ByteBuf, T>
+): StreamCodec<FriendlyByteBuf, Set<T>> {
+    return StreamCodec.of(
+        { buf, set ->
+            buf.writeVarInt(set.size)
+            for (element in set) {
+                elementCodec.encode(buf, element)
+            }
+        },
+        { buf ->
+            val size = buf.readVarInt()
+            val result = LinkedHashSet<T>(size)
+            repeat(size) {
+                result += elementCodec.decode(buf)
+            }
+            result
+        }
+    )
+}
+
+
 
 fun FriendlyByteBuf.writeQuest(quest: Quest) {
     val result = Quest.QUEST_CODEC.encodeStart(NbtOps.INSTANCE, quest)

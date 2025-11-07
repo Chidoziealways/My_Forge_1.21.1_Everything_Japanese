@@ -3,7 +3,7 @@ package net.Chidoziealways.everythingjapanese.commands.comands
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.arguments.IntegerArgumentType
 import com.mojang.brigadier.context.CommandContext
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.commands.CommandSourceStack
 import net.minecraft.commands.Commands
@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 import java.util.function.Predicate
 
-@KotlinMod.KotlinEventBusSubscriber(modId = MOD_ID)
+@KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
 object SetChakraCommand {
     @SubscribeEvent
     fun onRegisterCommands(event: RegisterCommandsEvent) {

@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.item.custom
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
 import net.Chidoziealways.everythingjapanese.item.ModToolMaterials
 import net.Chidoziealways.everythingjapanese.item.katana.BladeType
@@ -25,8 +25,8 @@ class KatanaItem(props: Properties): Item(props.sword(ModToolMaterials.STEEL, 4f
     }
 
     companion object {
-        private val DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "katana_damage")
-        private val SPEED_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "katana_speed")
+        private val DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana_damage")
+        private val SPEED_ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana_speed")
 
         fun setBlade(stack: ItemStack, type: BladeType) {
             stack.set(ModDataComponentTypes.BLADE.get(), type)

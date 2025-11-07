@@ -15,7 +15,9 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.HorizontalDirectionalBlock
+import net.minecraft.world.level.block.Mirror
 import net.minecraft.world.level.block.RenderShape
+import net.minecraft.world.level.block.Rotation
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
@@ -122,6 +124,11 @@ class FusumaDoorBlock(properties: Properties): BaseEntityBlock(properties) {
         return FusumaDoorBlockEntity(p_153215_, p_153216_)
     }
 
+    override fun rotate(state: BlockState, rotation: Rotation): BlockState {
+        val facing = state.getValue(FACING)
+        return state.setValue(FACING, rotation.rotate(facing))
+    }
+
     override fun getStateForPlacement(context: BlockPlaceContext): BlockState {
         val level = context.level
         val pos = context.clickedPos
@@ -148,6 +155,10 @@ class FusumaDoorBlock(properties: Properties): BaseEntityBlock(properties) {
             Direction.EAST  -> if (dz < 0.5) DoorHingeSide.LEFT else DoorHingeSide.RIGHT
             else -> DoorHingeSide.LEFT
         }
+    }
+
+    override fun mirror(state: BlockState, mirror: Mirror): BlockState {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)))
     }
 
     companion object {

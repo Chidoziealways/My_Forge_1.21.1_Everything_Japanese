@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.chakra
 
-import net.Chidoziealways.everythingjapanese.MOD_ID
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
@@ -13,7 +13,7 @@ data class IncreaseChakraPacket(val toBeAddedChakra: Float): CustomPacketPayload
     override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "increase_chakra")
+        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "increase_chakra")
         val TYPE = CustomPacketPayload.Type<IncreaseChakraPacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, IncreaseChakraPacket> = StreamCodec.of(

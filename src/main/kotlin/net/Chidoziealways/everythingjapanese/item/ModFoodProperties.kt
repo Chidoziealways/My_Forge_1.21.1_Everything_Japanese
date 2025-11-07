@@ -10,6 +10,8 @@ import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect
 object ModFoodProperties {
     val SUSHI: FoodProperties = FoodProperties.Builder().nutrition(3).saturationModifier(0.25f).build()
 
+    val RAMEN: FoodProperties = FoodProperties.Builder().nutrition(3).saturationModifier(1f).build()
+
     val SUSHI_EFFECT: Consumable = Consumables.defaultFood().onConsume(
         ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.HEALTH_BOOST, 400), 1f)
     ).build()

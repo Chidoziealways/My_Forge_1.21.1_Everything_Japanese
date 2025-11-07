@@ -1,14 +1,15 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
 import com.mojang.math.Quadrant
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
-import net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock
-import net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock.VaultSection
+import net.Chidoziealways.everythingcore.datagen.createBlockStateDefinition
+import net.Chidoziealways.everythingcore.datagen.createBlockstateWithRotation
+import net.Chidoziealways.everythingcore.datagen.createItemDefiniton
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.datagen.ModModelProvider.MyItemModelGenerators.Companion.TRIM_MATERIAL_MODELS
 import net.Chidoziealways.everythingjapanese.kanji.KanjiType
 import net.Chidoziealways.everythingjapanese.item.ModEquipmentAssets
-import net.Chidoziealways.everythingjapanese.item.ModItems
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.item.katana.BladeType
 import net.Chidoziealways.everythingjapanese.item.katana.BladeWrapProperty
 import net.Chidoziealways.everythingjapanese.item.katana.Wrapping
@@ -46,49 +47,59 @@ import net.minecraft.world.level.block.state.properties.DoorHingeSide
 import java.util.concurrent.CompletableFuture
 import java.util.function.BiConsumer
 
-class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderLookup.Provider>) : ModelProvider(output, MOD_ID) {
+class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderLookup.Provider>) : ModelProvider(output, JAPANESE_MOD_ID) {
     override fun registerModels(blockModels: BlockModelGenerators, itemModels: ItemModelGenerators) {
         /*---BLOCKS---*/
-        blockModels.createTrivialCube(ModBlocks.TRANSFORMER_BLOCK )
-        blockModels.createTrivialCube(ModBlocks.RAW_PYRITE_BLOCK )
-        blockModels.createNonTemplateModelBlock(ModBlocks.BLOOD)
-        blockModels.createTrivialCube(ModBlocks.PYRITE_DEEPSLATE_ORE )
-        blockModels.createTrivialCube(ModBlocks.PYRITE_ORE )
+        blockModels.createTrivialCube(JModBlocks.TRANSFORMER_BLOCK )
+        blockModels.createTrivialCube(JModBlocks.RAW_PYRITE_BLOCK )
+        blockModels.createNonTemplateModelBlock(JModBlocks.BLOOD)
+        blockModels.createTrivialCube(JModBlocks.PYRITE_DEEPSLATE_ORE )
+        blockModels.createTrivialCube(JModBlocks.PYRITE_ORE )
+        blockModels.createBlockStateDefinition(JModBlocks.JAPANESE_FLAG, "japanese_flag", JAPANESE_MOD_ID)
         blockModels.createChocolateCake()
         blockModels.createChair()
         blockModels.createJapaneseCheeseCake()
         blockModels.createPedestal()
+        //blockModels.createCalligraphyTable()
         blockModels.createChabudai()
         blockModels.createTatamiMat()
-        blockModels.createZabuton(ModBlocks.ZABUTON_BLUE, "zabuton_blue")
-        blockModels.createZabuton(ModBlocks.ZABUTON_RED, "zabuton_red")
-        blockModels.createZabuton(ModBlocks.ZABUTON_GREEN, "zabuton_green")
+        blockModels.createBlockstateWithRotation(JModBlocks.HANGING_SCROLL, "hanging_scroll", "everythingjapanese")
+        blockModels.createZabuton(JModBlocks.ZABUTON_BLUE, "zabuton_blue")
+        blockModels.createZabuton(JModBlocks.ZABUTON_RED, "zabuton_red")
+        blockModels.createZabuton(JModBlocks.ZABUTON_GREEN, "zabuton_green")
         itemModels.createTatamiMat()
         blockModels.createShojiDoor()
         blockModels.createMoneyVault()
         blockModels.createFusumaDoor()
-        blockModels.createTrivialCube(ModBlocks.NEPHRITE_BLOCK )
-        blockModels.createTrivialCube(ModBlocks.NEPHRITE_DEEPSLATE_ORE )
-        blockModels.createGlassBlocks(ModBlocks.WASHI_WINDOW , ModBlocks.WASHI_WINDOW_PANE )
-        blockModels.createTrivialCube(ModBlocks.NEPHRITE_ORE )
-        blockModels.createTrivialCube(ModBlocks.HINOKI_BAN )
-        blockModels.family(ModBlocks.PYRITE_BLOCK )
-            .stairs(ModBlocks.PYRITE_STAIRS )
-            .slab(ModBlocks.PYRITE_SLAB )
-            .button(ModBlocks.PYRITE_BUTTON )
-            .pressurePlate(ModBlocks.PYRITE_PRESSURE_PLATE )
-            .fence(ModBlocks.PYRITE_FENCE )
-            .fenceGate(ModBlocks.PYRITE_FENCE_GATE )
-            .wall(ModBlocks.PYRITE_WALL )
-        blockModels.woodProvider(ModBlocks.HINOKI_MARUTA )
-            .logWithHorizontal(ModBlocks.HINOKI_MARUTA )
-            .wood(ModBlocks.HINOKI_MOKUZAI )
-        blockModels.woodProvider(ModBlocks.STRIPPED_HINOKI_MARUTA )
-            .logWithHorizontal(ModBlocks.STRIPPED_HINOKI_MARUTA )
-            .wood(ModBlocks.STRIPPED_HINOKI_MOKUZAI )
-        blockModels.createDoor(ModBlocks.PYRITE_DOOR )
-        blockModels.createTrapdoor(ModBlocks.PYRITE_TRAPDOOR )
-        blockModels.createCropBlock(ModBlocks.RICE_CROP , ModBlockStateProperties.AGE_4, 0, 1, 2, 3, 4)
+        blockModels.createTrivialCube(JModBlocks.NEPHRITE_BLOCK )
+        blockModels.createTrivialCube(JModBlocks.NEPHRITE_DEEPSLATE_ORE )
+        blockModels.createGlassBlocks(JModBlocks.WASHI_WINDOW , JModBlocks.WASHI_WINDOW_PANE )
+        blockModels.createGlassBlocks(JModBlocks.SHOJI_WINDOW , JModBlocks.SHOJI_WINDOW_PANE )
+        blockModels.createTrivialCube(JModBlocks.NEPHRITE_ORE )
+        blockModels.family(JModBlocks.PYRITE_BLOCK )
+            .stairs(JModBlocks.PYRITE_STAIRS )
+            .slab(JModBlocks.PYRITE_SLAB )
+            .button(JModBlocks.PYRITE_BUTTON )
+            .pressurePlate(JModBlocks.PYRITE_PRESSURE_PLATE )
+            .fence(JModBlocks.PYRITE_FENCE )
+            .fenceGate(JModBlocks.PYRITE_FENCE_GATE )
+            .wall(JModBlocks.PYRITE_WALL )
+        blockModels.family(JModBlocks.HINOKI_BAN)
+            .stairs(JModBlocks.HINOKI_STAIRS)
+            .slab(JModBlocks.HINOKI_SLAB)
+            .button(JModBlocks.HINOKI_BUTTON)
+            .pressurePlate(JModBlocks.HINOKI_PRESSURE_PLATE)
+            .fence(JModBlocks.HINOKI_FENCE)
+            .fenceGate(JModBlocks.HINOKI_FENCE_GATE)
+        blockModels.woodProvider(JModBlocks.HINOKI_MARUTA )
+            .logWithHorizontal(JModBlocks.HINOKI_MARUTA )
+            .wood(JModBlocks.HINOKI_MOKUZAI )
+        blockModels.woodProvider(JModBlocks.STRIPPED_HINOKI_MARUTA )
+            .logWithHorizontal(JModBlocks.STRIPPED_HINOKI_MARUTA )
+            .wood(JModBlocks.STRIPPED_HINOKI_MOKUZAI )
+        blockModels.createDoor(JModBlocks.PYRITE_DOOR )
+        blockModels.createTrapdoor(JModBlocks.PYRITE_TRAPDOOR )
+        blockModels.createCropBlock(JModBlocks.RICE_CROP , ModBlockStateProperties.AGE_4, 0, 1, 2, 3, 4)
         blockModels.createYamazakiBerryBush()
         /*blockModels.createTrivialBlock(
             ModBlocks.JAPANESE_CHEESECAKE,
@@ -101,148 +112,154 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         ))
          */
         blockModels.createLamp()
-        blockModels.createTintedLeaves(ModBlocks.HINOKI_HA , TexturedModel.LEAVES, -12012264)
+        blockModels.createTintedLeaves(JModBlocks.HINOKI_HA , TexturedModel.LEAVES, -12012264)
         blockModels.createPlantWithDefaultItem(
-            ModBlocks.HINOKI_NAEGI ,
-            ModBlocks.POTTED_HINOKI_NAEGI ,
+            JModBlocks.HINOKI_NAEGI ,
+            JModBlocks.POTTED_HINOKI_NAEGI ,
             BlockModelGenerators.PlantType.NOT_TINTED
         )
-        blockModels.createTrivialCube(ModBlocks.GROWTH_CHAMBER )
+        blockModels.createTrivialCube(JModBlocks.GROWTH_CHAMBER )
         blockModels.createHellPortalBlock()
         
         /*---ITEMS---*/
-        itemModels.generateFlatItem(ModItems.RAW_PYRITE!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_INGOT!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.DIESEL!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.GREEN_TEA!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.SUSHI!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.INCENSE!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.UDON!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModBlocks.ZABUTON_BLUE.asItem(), ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModBlocks.ZABUTON_RED.asItem(), ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModBlocks.ZABUTON_GREEN.asItem(), ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.CREDIT_CARD_ITEM, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.RAW_PYRITE!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_INGOT!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.DIESEL!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.GREEN_TEA!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.SUSHI!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.INCENSE!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.UDON!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModBlocks.ZABUTON_BLUE.asItem(), ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModBlocks.ZABUTON_RED.asItem(), ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModBlocks.ZABUTON_GREEN.asItem(), ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.CREDIT_CARD_ITEM, ModelTemplates.FLAT_ITEM)
         itemModels.createChisel()
         itemModels.createIronBattleAxe()
         itemModels.createRadiationStaff()
-        itemModels.generateFlatItem(ModItems.YA!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.AO_TO_NATSU_MUSIC_DISC!!, ModelTemplates.MUSIC_DISC)
-        itemModels.generateFlatItem(ModItems.RAW_RICE!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.RICE!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.CHIRETSU_SHO_SCROLL, ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.FIREBALL_SCROLL!!, ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.WINDBALL_SCROLL!!, ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.HELL_PORTAL_ACTIVATOR!!, ModelTemplates.FLAT_HANDHELD_ROD_ITEM)
-        itemModels.generateBow(ModItems.DAIKYU!!)
-        itemModels.generateFlatItem(ModItems.NEPHRITE!!, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_SWORD!!, ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_PICKAXE!!, ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_AXE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_HOE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_SHOVEL!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_BATTLE_AXE!! , ModelTemplates.FLAT_HANDHELD_MACE_ITEM)
-        itemModels.generateFlatItem(ModItems.NEPHRITE_SWORD!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.NEPHRITE_PICKAXE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.NEPHRITE_AXE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.NEPHRITE_SHOVEL!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.NEPHRITE_HOE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.PYRITE_HAMMER!! , ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(ModItems.BLADE_STEEL, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.BLACK_WRAP, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.RED_WRAP, ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.WHITE_WRAP, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.YA!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.AO_TO_NATSU_MUSIC_DISC!!, ModelTemplates.MUSIC_DISC)
+        itemModels.generateFlatItem(JModItems.SOUL_DAGGER, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.RAW_RICE!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.RICE!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.CHIRETSU_SHO_SCROLL, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.EKIRETSU_SHO_SCROLL, ModelTemplates.FLAT_HANDHELD_ITEM)
+        //itemModels.generateFlatItem(JModItems.SCROLL, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.RAMEN, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.FIREBALL_SCROLL!!, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.WINDBALL_SCROLL!!, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.HELL_PORTAL_ACTIVATOR!!, ModelTemplates.FLAT_HANDHELD_ROD_ITEM)
+        itemModels.generateBow(JModItems.DAIKYU!!)
+        itemModels.generateFlatItem(JModItems.NEPHRITE!!, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_SWORD!!, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_PICKAXE!!, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_AXE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_HOE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_SHOVEL!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_BATTLE_AXE!! , ModelTemplates.FLAT_HANDHELD_MACE_ITEM)
+        itemModels.generateFlatItem(JModItems.NEPHRITE_SWORD!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.NEPHRITE_PICKAXE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.NEPHRITE_AXE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.NEPHRITE_SHOVEL!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.NEPHRITE_HOE!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_HAMMER!! , ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.generateFlatItem(JModItems.BLADE_STEEL, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.BLACK_WRAP, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.RED_WRAP, ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.WHITE_WRAP, ModelTemplates.FLAT_ITEM)
         itemModels.generateTrimmableItemE(
-            ModItems.PYRITE_HELMET!! ,
+            JModItems.PYRITE_HELMET!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_HELMET,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.PYRITE_CHESTPLATE!! ,
+            JModItems.PYRITE_CHESTPLATE!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
             false
         )
         itemModels.createTalisman()
-        itemModels.createKatana(ModItems.KATANA, false)
+        itemModels.createKatana(JModItems.KATANA, false)
         itemModels.generateTrimmableItemE(
-            ModItems.PYRITE_LEGGINGS!! ,
+            JModItems.PYRITE_LEGGINGS!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.PYRITE_BOOTS!! ,
+            JModItems.PYRITE_BOOTS!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_BOOTS,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.NEPHRITE_HELMET!! ,
+            JModItems.NEPHRITE_HELMET!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_HELMET,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.NEPHRITE_CHESTPLATE!! ,
+            JModItems.NEPHRITE_CHESTPLATE!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.NEPHRITE_LEGGINGS!! ,
+            JModItems.NEPHRITE_LEGGINGS!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.NEPHRITE_BOOTS!! ,
+            JModItems.NEPHRITE_BOOTS!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_BOOTS,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.SAMURAI_HELMET!! ,
+            JModItems.SAMURAI_HELMET!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_HELMET,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.SAMURAI_CHESTPLATE!! ,
+            JModItems.SAMURAI_CHESTPLATE!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.SAMURAI_LEGGINGS!! ,
+            JModItems.SAMURAI_LEGGINGS!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
             false
         )
         itemModels.generateTrimmableItemE(
-            ModItems.SAMURAI_BOOTS!! ,
+            JModItems.SAMURAI_BOOTS!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_BOOTS,
             false
         )
-        itemModels.generateFlatItem(ModItems.PYRITE_HORSE_ARMOR!! , ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE!! , ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.SIKA_DEER_SPAWN_EGG!! , ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.TRICERATOPS_SPAWN_EGG!! , ModelTemplates.FLAT_ITEM)
-        itemModels.generateFlatItem(ModItems.CURSED_SAMURAI_SPAWN_EGG , ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.PYRITE_HORSE_ARMOR!! , ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE!! , ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.SIKA_DEER_SPAWN_EGG!! , ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.TRICERATOPS_SPAWN_EGG!! , ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.CURSED_SAMURAI_SPAWN_EGG , ModelTemplates.FLAT_ITEM)
+        itemModels.generateFlatItem(JModItems.BULLET, ModelTemplates.FLAT_ITEM)
+        itemModels.createItemDefiniton(JModItems.GUN, "gun", JAPANESE_MOD_ID)
     }
 
     fun BlockModelGenerators.createYamazakiBerryBush() {
-        this.registerSimpleFlatItemModel(ModItems.YAMAZAKI_BERRIES)
+        this.registerSimpleFlatItemModel(JModItems.YAMAZAKI_BERRIES)
         this.blockStateOutput
             .accept(
-                MultiVariantGenerator.dispatch(ModBlocks.YAMAZAKI_BERRY_BUSH )
+                MultiVariantGenerator.dispatch(JModBlocks.YAMAZAKI_BERRY_BUSH )
                     .with(
                         PropertyDispatch.initial(BlockStateProperties.AGE_3)
                             .generate { p_389159_: Int ->
                                 plainVariant(
                                     this.createSuffixedVariant(
-                                        ModBlocks.YAMAZAKI_BERRY_BUSH,
+                                        JModBlocks.YAMAZAKI_BERRY_BUSH,
                                         "_stage$p_389159_",
                                         ModelTemplates.CROSS
                                     ) { p_378193_: ResourceLocation ->
@@ -257,20 +274,19 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     fun BlockModelGenerators.createLamp() {
         val multivariant: MultiVariant = plainVariant(
             TexturedModel.CUBE.create(
-                ModBlocks.PYRITE_LAMP,
+                JModBlocks.PYRITE_LAMP,
                 this.modelOutput
             )
         )
         val multivariant1: MultiVariant = plainVariant(
             this.createSuffixedVariant(
-                ModBlocks.PYRITE_LAMP,
+                JModBlocks.PYRITE_LAMP,
                 "_on",
                 ModelTemplates.CUBE_ALL
             ) { p_377582_: ResourceLocation -> TextureMapping.cube(p_377582_) }
         )
         this.blockStateOutput
-            .accept(
-                MultiVariantGenerator.dispatch(ModBlocks.PYRITE_LAMP).with(
+            .accept(MultiVariantGenerator.dispatch(JModBlocks.PYRITE_LAMP).with(
                     BlockModelGenerators.createBooleanModelDispatch(
                         ModBlockStateProperties.CLICKED,
                         multivariant1,
@@ -281,15 +297,15 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun BlockModelGenerators.createChocolateCake() {
-        this.registerSimpleFlatItemModel(ModBlocks.CHOCOLATE_CAKE.asItem()) // or your custom cake item if any
+        this.registerSimpleFlatItemModel(JModBlocks.CHOCOLATE_CAKE.asItem()) // or your custom cake item if any
 
         this.blockStateOutput.accept(
-            MultiVariantGenerator.dispatch(ModBlocks.CHOCOLATE_CAKE)
+            MultiVariantGenerator.dispatch(JModBlocks.CHOCOLATE_CAKE)
                 .with(
                     PropertyDispatch.initial(ModBlockStateProperties.BITES_16).run {
-                        var dispatch = this.select(0, plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chocolate_cake")))
+                        var dispatch = this.select(0, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake")))
                         for (bite in 1..16) {
-                            dispatch = select(bite, plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chocolate_cake_slice$bite")))
+                            dispatch = select(bite, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice$bite")))
                         }
                         dispatch
                     }
@@ -298,15 +314,15 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun BlockModelGenerators.createJapaneseCheeseCake() {
-        registerSimpleFlatItemModel(ModBlocks.JAPANESE_CHEESECAKE.asItem())
+        registerSimpleFlatItemModel(JModBlocks.JAPANESE_CHEESECAKE.asItem())
 
         this.blockStateOutput.accept(
-            MultiVariantGenerator.dispatch(ModBlocks.JAPANESE_CHEESECAKE)
+            MultiVariantGenerator.dispatch(JModBlocks.JAPANESE_CHEESECAKE)
                 .with(
                     PropertyDispatch.initial(ModBlockStateProperties.BITES_11).run {
-                        var dispatch = this.select(0, plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/japanese_cheesecake")))
+                        var dispatch = this.select(0, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake")))
                         for (bite in 1..11) {
-                            dispatch = select(bite, plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/japanese_cheesecake_slice$bite")))
+                            dispatch = select(bite, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice$bite")))
                         }
                         dispatch
                     }
@@ -315,11 +331,10 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun BlockModelGenerators.createShojiDoor() {
-        val block = ModBlocks.SHOJI_DOOR
+        val block = JModBlocks.SHOJI_DOOR
 
-        registerSimpleFlatItemModel(ModBlocks.SHOJI_DOOR.asItem())
+        registerSimpleFlatItemModel(block.asItem())
 
-        // All variants use the same builtin/entity model
         val closedLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
         val closedRight = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
         val openLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
@@ -333,35 +348,38 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                         BlockStateProperties.OPEN,
                         BlockStateProperties.DOOR_HINGE
                     )
-                        .select(Direction.NORTH, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.NORTH, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.NORTH, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.NORTH, true, DoorHingeSide.RIGHT, openRight)
+                        // NORTH
+                        .select(Direction.NORTH, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
+                        .select(Direction.NORTH, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
+                        .select(Direction.NORTH, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
+                        .select(Direction.NORTH, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
 
-                        .select(Direction.SOUTH, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.SOUTH, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.SOUTH, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.SOUTH, true, DoorHingeSide.RIGHT, openRight)
+                        // SOUTH
+                        .select(Direction.SOUTH, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
+                        .select(Direction.SOUTH, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
+                        .select(Direction.SOUTH, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
+                        .select(Direction.SOUTH, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
 
-                        .select(Direction.EAST, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.EAST, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.EAST, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.EAST, true, DoorHingeSide.RIGHT, openRight)
+                        // EAST
+                        .select(Direction.EAST, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
+                        .select(Direction.EAST, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
+                        .select(Direction.EAST, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
+                        .select(Direction.EAST, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
 
-                        .select(Direction.WEST, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.WEST, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.WEST, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.WEST, true, DoorHingeSide.RIGHT, openRight)
+                        // WEST
+                        .select(Direction.WEST, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
+                        .select(Direction.WEST, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
+                        .select(Direction.WEST, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
+                        .select(Direction.WEST, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
                 )
         )
     }
 
     fun BlockModelGenerators.createFusumaDoor() {
-        val block = ModBlocks.FUSUMA_DOOR
+        val block = JModBlocks.FUSUMA_DOOR
 
-        registerSimpleFlatItemModel(ModBlocks.FUSUMA_DOOR.asItem())
+        registerSimpleFlatItemModel(block.asItem())
 
-        // All variants use the same builtin/entity model
         val closedLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
         val closedRight = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
         val openLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
@@ -375,50 +393,68 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                         BlockStateProperties.OPEN,
                         BlockStateProperties.DOOR_HINGE
                     )
-                        .select(Direction.NORTH, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.NORTH, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.NORTH, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.NORTH, true, DoorHingeSide.RIGHT, openRight)
+                        // NORTH
+                        .select(Direction.NORTH, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
+                        .select(Direction.NORTH, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
+                        .select(Direction.NORTH, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
+                        .select(Direction.NORTH, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R0)))
 
-                        .select(Direction.SOUTH, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.SOUTH, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.SOUTH, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.SOUTH, true, DoorHingeSide.RIGHT, openRight)
+                        // SOUTH
+                        .select(Direction.SOUTH, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
+                        .select(Direction.SOUTH, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
+                        .select(Direction.SOUTH, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
+                        .select(Direction.SOUTH, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R180)))
 
-                        .select(Direction.EAST, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.EAST, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.EAST, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.EAST, true, DoorHingeSide.RIGHT, openRight)
+                        // EAST
+                        .select(Direction.EAST, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
+                        .select(Direction.EAST, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
+                        .select(Direction.EAST, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
+                        .select(Direction.EAST, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R90)))
 
-                        .select(Direction.WEST, false, DoorHingeSide.LEFT, closedLeft)
-                        .select(Direction.WEST, false, DoorHingeSide.RIGHT, closedRight)
-                        .select(Direction.WEST, true, DoorHingeSide.LEFT, openLeft)
-                        .select(Direction.WEST, true, DoorHingeSide.RIGHT, openRight)
+                        // WEST
+                        .select(Direction.WEST, false, DoorHingeSide.LEFT, closedLeft.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
+                        .select(Direction.WEST, false, DoorHingeSide.RIGHT, closedRight.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
+                        .select(Direction.WEST, true, DoorHingeSide.LEFT, openLeft.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
+                        .select(Direction.WEST, true, DoorHingeSide.RIGHT, openRight.with(rotationMutator(Quadrant.R0, Quadrant.R270)))
                 )
         )
     }
 
     fun BlockModelGenerators.createPedestal() {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/pedestal"))
+        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/pedestal"))
 
-        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.PEDESTAL, variant))
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(JModBlocks.PEDESTAL, variant))
     }
 
     fun BlockModelGenerators.createChabudai() {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chabudai"))
+        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chabudai"))
 
-        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.CHABUDAI, variant))
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(JModBlocks.CHABUDAI, variant))
     }
 
     fun BlockModelGenerators.createTatamiMat() {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/tatami_mat"))
+        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/tatami_mat"))
 
-        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.TATAMI_MAT, variant))
+        this.blockStateOutput.accept(
+            MultiVariantGenerator.dispatch(JModBlocks.TATAMI_MAT)
+                .with(
+                    PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_FACING)
+                        .select(Direction.NORTH, variant)
+                        .select(Direction.SOUTH, variant.with(
+                            rotationMutator(Quadrant.R0, Quadrant.R180)
+                        ))
+                        .select(Direction.EAST, variant.with(
+                            rotationMutator(Quadrant.R0, Quadrant.R90)
+                        ))
+                        .select(Direction.WEST, variant.with(
+                            rotationMutator(Quadrant.R0, Quadrant.R270)
+                        ))
+                ))
     }
 
     fun ItemModelGenerators.createTatamiMat() {
-        val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/tatami_mat"))
-        this.itemModelOutput.accept(ModBlocks.TATAMI_MAT.asItem(), model)
+        val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/tatami_mat"))
+        this.itemModelOutput.accept(JModBlocks.TATAMI_MAT.asItem(), model)
     }
 
     fun rotationMutator(xRotation: Quadrant, yRotation: Quadrant): VariantMutator {
@@ -428,16 +464,16 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
     fun BlockModelGenerators.createChair() {
         this.blockStateOutput.accept(
-            MultiVariantGenerator.dispatch(ModBlocks.CHAIR)
+            MultiVariantGenerator.dispatch(JModBlocks.CHAIR)
                 .with(
                     PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_FACING)
-                        .select(Direction.NORTH, plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chair")))
-                        .select(Direction.SOUTH, plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chair")).with(
+                        .select(Direction.NORTH, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")))
+                        .select(Direction.SOUTH, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
                             rotationMutator(Quadrant.R0, Quadrant.R180)))
-                        .select(Direction.EAST,  plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chair")).with(
+                        .select(Direction.EAST,  plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
                             rotationMutator(Quadrant.R0, Quadrant.R90)
                         ))
-                        .select(Direction.WEST,  plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/chair")).with(
+                        .select(Direction.WEST,  plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
                             rotationMutator(Quadrant.R0, Quadrant.R270)
                         ))
                 )
@@ -445,7 +481,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun BlockModelGenerators.createZabuton(block: Block, name: String) {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/$name"))
+        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/$name"))
 
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, variant))
     }
@@ -453,14 +489,14 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     fun BlockModelGenerators.createHellPortalBlock() {
         this.blockStateOutput
             .accept(
-                MultiVariantGenerator.dispatch(ModBlocks.HELL_PORTAL)
+                MultiVariantGenerator.dispatch(JModBlocks.HELL_PORTAL)
                     .with(
                         PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_AXIS)
                             .select(
                                 Direction.Axis.X,
                                 plainVariant(
                                     ModelLocationUtils.getModelLocation(
-                                        ModBlocks.HELL_PORTAL,
+                                        JModBlocks.HELL_PORTAL,
                                         "_ns"
                                     )
                                 )
@@ -469,7 +505,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                                 Direction.Axis.Z,
                                 plainVariant(
                                     ModelLocationUtils.getModelLocation(
-                                        ModBlocks.HELL_PORTAL,
+                                        JModBlocks.HELL_PORTAL,
                                         "_ew"
                                     )
                                 )
@@ -479,7 +515,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createTalisman() {
-        val base = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/talisman_base"))
+        val base = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_base"))
 
         // Property: the actual KanjiType from the component
         val kanjiProp = KanjiProperty()
@@ -494,7 +530,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
             val key: ResourceKey<KanjiType> = entry.key()
             val kanjiType = entry.value()
             val overlayModel = ItemModelUtils.plainModel(
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/talisman_${kanjiType.id}_overlay")
+                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_${kanjiType.id}_overlay")
             )
             overlayCases.add(ItemModelUtils.`when`(key, overlayModel))
         }
@@ -509,7 +545,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         // Composite: base + overlay
         val composite = ItemModelUtils.composite(base, kanjiSelect)
 
-        this.itemModelOutput.accept(ModItems.TALISMAN_ITEM, composite)
+        this.itemModelOutput.accept(JModItems.TALISMAN_ITEM, composite)
     }
 
     fun ItemModelGenerators.createKatana(item: Item, hasTint: Boolean) {
@@ -541,7 +577,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
         // Base model (fallback)
         val baseModel = if (hasTint) {
-            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(baseTexture, ResourceLocation.fromNamespaceAndPath(MOD_ID, "empty")), this.modelOutput)
+            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(baseTexture, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "empty")), this.modelOutput)
             ItemModelUtils.tintedModel(modelLocation, Dye(-6265536))
         } else {
             ModelTemplates.FLAT_HANDHELD_ITEM.create(modelLocation, TextureMapping.layer0(baseTexture), this.modelOutput)
@@ -559,8 +595,8 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createChisel() {
-        val baseModel = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/chisel"))
-        val usedModel = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/chisel_used"))
+        val baseModel = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/chisel"))
+        val usedModel = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/chisel_used"))
 
         val property = CustomModelDataProperty(0)
 
@@ -568,12 +604,12 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
         val model = ItemModelUtils.rangeSelect(property, baseModel, overrideEntry)
 
-        this.itemModelOutput.accept(ModItems.CHISEL, model)
+        this.itemModelOutput.accept(JModItems.CHISEL, model)
     }
 
     fun ItemModelGenerators.createRadiationStaff() {
-        val model2d = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/radiation_staff_2d"))
-        val model3d = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/radiation_staff_3d"))
+        val model2d = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/radiation_staff_2d"))
+        val model3d = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/radiation_staff_3d"))
 
         val property = DisplayContext()
 
@@ -581,85 +617,18 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
         val model = ItemModelUtils.select(property, model3d, case2d)
 
-        this.itemModelOutput.accept(ModItems.RADIATION_STAFF, model)
+        this.itemModelOutput.accept(JModItems.RADIATION_STAFF, model)
     }
 
     fun ItemModelGenerators.createIronBattleAxe() {
-        val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/iron_battle_axe"))
-        this.itemModelOutput.accept(ModItems.IRON_BATTLE_AXE, model)
+        val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/iron_battle_axe"))
+        this.itemModelOutput.accept(JModItems.IRON_BATTLE_AXE, model)
     }
 
-    fun BlockModelGenerators.createMoneyVault() {
-        val block = ModBlocks.MONEY_VAULT_BLOCK
-
-        // Base models
-        val singleModel = TexturedModel.CUBE.create(block, modelOutput)
-
-        // Top
-        //LEFT
-        val topLeftModel = TexturedModel.CUBE_TOP.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_top_left"))
-        }.createWithSuffix(block, "_top_left", modelOutput)
-        //MIDDLE
-        val topMiddleModel = TexturedModel.CUBE_TOP.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_top_middle"))
-        }.createWithSuffix(block, "_top_middle", modelOutput)
-        //RIGHT
-        val topRightModel = TexturedModel.CUBE_TOP.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_top_right"))
-        }.createWithSuffix(block, "_top_right", modelOutput)
-
-        // Bottom
-        //LEFT
-        val bottomLeftModel = TexturedModel.CUBE_TOP_BOTTOM.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_bottom_left"))
-        }.createWithSuffix(block, "_bottom_left", modelOutput)
-        //MIDDLE
-        val bottomMiddleModel = TexturedModel.CUBE_TOP_BOTTOM.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_bottom_middle"))
-        }.createWithSuffix(block, "_bottom_middle", modelOutput)
-        //RIGHT
-        val bottomRightModel = TexturedModel.CUBE_TOP_BOTTOM.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_bottom_right"))
-        }.createWithSuffix(block, "_bottom_right", modelOutput)
-
-        // Middle
-        //LEFT
-        val middleLeftModel = TexturedModel.COLUMN.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_middle_left"))
-        }.createWithSuffix(block, "_middle_left", modelOutput)
-        //MIDDLE
-        val middleMiddleModel = TexturedModel.COLUMN.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_middle_middle"))
-        }.createWithSuffix(block, "_middle_middle", modelOutput)
-        //RIGHT
-        val middleRightModel = TexturedModel.COLUMN.updateTexture { mapping ->
-            mapping.put(TextureSlot.SIDE, ResourceLocation.parse("everythingjapanese:block/money_vault_block_side_middle_right"))
-        }.createWithSuffix(block, "_middle_right", modelOutput)
-
-        this.blockStateOutput.accept(
-            MultiVariantGenerator.dispatch(block)
-                .with(
-                    PropertyDispatch.initial(MoneyVaultBlock.SECTION)
-                        .select(VaultSection.SINGLE, plainVariant(singleModel))
-                        .select(VaultSection.TOP_LEFT, plainVariant(topLeftModel))
-                        .select(VaultSection.TOP_MIDDLE, plainVariant(topMiddleModel))
-                        .select(VaultSection.TOP_RIGHT, plainVariant(topRightModel))
-                        .select(VaultSection.MIDDLE_LEFT, plainVariant(middleLeftModel))
-                        .select(VaultSection.MIDDLE_MIDDLE, plainVariant(middleMiddleModel))
-                        .select(VaultSection.MIDDLE_RIGHT, plainVariant(middleRightModel))
-                        .select(VaultSection.BOTTOM_LEFT, plainVariant(bottomLeftModel))
-                        .select(VaultSection.BOTTOM_MIDDLE, plainVariant(bottomMiddleModel))
-                        .select(VaultSection.BOTTOM_RIGHT, plainVariant(bottomRightModel))
-                )
-        )
-    }
-
-
-    fun ItemModelGenerators.generateTrimmableItemE(p_376312_: Item, p_375739_: ResourceKey<EquipmentAsset?>, p_396254_: ResourceLocation, p_377962_: Boolean) {
-        val resourcelocation: ResourceLocation = ModelLocationUtils.getModelLocation(p_376312_)
-        val resourcelocation1: ResourceLocation = TextureMapping.getItemTexture(p_376312_)
-        val resourcelocation2: ResourceLocation = TextureMapping.getItemTexture(p_376312_, "_overlay")
+    fun ItemModelGenerators.generateTrimmableItemE(item: Item, resourceKey: ResourceKey<EquipmentAsset?>, resourceLocation: ResourceLocation, p_377962_: Boolean) {
+        val resourcelocation: ResourceLocation = ModelLocationUtils.getModelLocation(item)
+        val resourcelocation1: ResourceLocation = TextureMapping.getItemTexture(item)
+        val resourcelocation2: ResourceLocation = TextureMapping.getItemTexture(item, "_overlay")
         val list: MutableList<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>?> =
             ArrayList(
                 TRIM_MATERIAL_MODELS.size
@@ -669,8 +638,8 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
             val resourcelocation3 = resourcelocation.withSuffix(
                 "_" + `itemmodelgenerators$trimmaterialdata`.assets!!.base().suffix() + "_trim"
             )
-            val resourcelocation4 = p_396254_.withSuffix(
-                "_" + `itemmodelgenerators$trimmaterialdata`.assets.assetId(p_375739_).suffix()
+            val resourcelocation4 = resourceLocation.withSuffix(
+                "_" + `itemmodelgenerators$trimmaterialdata`.assets.assetId(resourceKey).suffix()
             )
             val `itemmodel$unbaked`: ItemModel.Unbaked?
             if (p_377962_) {
@@ -707,7 +676,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         }
 
         this.itemModelOutput.accept(
-            p_376312_,
+            item,
             ItemModelUtils.select(TrimMaterialProperty(), `itemmodel$unbaked1`, list)
         )
     }

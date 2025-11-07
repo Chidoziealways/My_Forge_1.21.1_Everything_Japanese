@@ -1,8 +1,7 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
-import net.Chidoziealways.everythingjapanese.EverythingJapanese
-import net.Chidoziealways.everythingjapanese.MOD_ID
-import net.Chidoziealways.everythingjapanese.block.ModBlocks
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.structure.ModStructures
 import net.Chidoziealways.everythingjapanese.worldgen.dimension.ModDimensions
 import net.minecraft.advancements.Advancement
@@ -25,16 +24,16 @@ import java.util.function.Consumer
 class HellAdvancementProvider : AdvancementSubProvider {
     override fun generate(
         registries: HolderLookup.Provider,
-        saver: Consumer<AdvancementHolder?>
+        saver: Consumer<AdvancementHolder>
     ) {
-        val holderGetter: HolderGetter<Structure?> = registries.lookupOrThrow<Structure?>(Registries.STRUCTURE)
+        val holderGetter: HolderGetter<Structure> = registries.lookupOrThrow(Registries.STRUCTURE)
 
         val enteredHell = Advancement.Builder.advancement()
             .display(
-                ModBlocks.PYRITE_BLOCK,
+                JModBlocks.PYRITE_BLOCK,
                 Component.translatable("advancements.hell.root.title"),
                 Component.translatable("advancements.hell.root.description"),
-                ResourceLocation.fromNamespaceAndPath(MOD_ID, "gui/advancements/backgrounds/hell"),
+                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "gui/advancements/backgrounds/hell"),
                 AdvancementType.TASK,
                 false,
                 false,
@@ -44,7 +43,7 @@ class HellAdvancementProvider : AdvancementSubProvider {
                 "entered_hell",
                 ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(ModDimensions.HELL_LEVEL_KEY)
             )
-            .save(saver, ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell/root"))
+            .save(saver, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell/root"))
 
         val findTemple = Advancement.Builder.advancement()
             .parent(enteredHell)
@@ -65,6 +64,6 @@ class HellAdvancementProvider : AdvancementSubProvider {
                     LocationPredicate.Builder.inStructure(holderGetter.getOrThrow(ModStructures.HELL_TEMPLE))
                 )
             )
-            .save(saver, ResourceLocation.fromNamespaceAndPath(MOD_ID, "hell/find_temple"))
+            .save(saver, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell/find_temple"))
     }
 }

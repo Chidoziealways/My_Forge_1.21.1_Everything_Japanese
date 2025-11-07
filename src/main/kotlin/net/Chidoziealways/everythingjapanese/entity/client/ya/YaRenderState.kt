@@ -1,9 +1,10 @@
 package net.Chidoziealways.everythingjapanese.entity.client.ya
 
 import net.Chidoziealways.everythingjapanese.entity.custom.YaProjectileEntity
+import net.minecraft.client.renderer.entity.state.ArrowRenderState
 import net.minecraft.client.renderer.entity.state.EntityRenderState
 
-class YaRenderState : EntityRenderState() {
+class YaRenderState : ArrowRenderState() {
     private var partialTicks = 0f
     private var entity: YaProjectileEntity? = null
 

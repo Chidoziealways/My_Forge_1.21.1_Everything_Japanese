@@ -3,6 +3,7 @@ package net.Chidoziealways.everythingjapanese.fluids.custom
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.fluids.ModFluidTypes
 import net.Chidoziealways.everythingjapanese.fluids.ModFluids
+import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.LiquidBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
+import net.minecraft.world.level.gamerules.GameRules
 import net.minecraft.world.level.material.FlowingFluid
 import net.minecraft.world.level.material.Fluid
 import net.minecraft.world.level.material.FluidState
@@ -32,14 +34,14 @@ abstract class BloodFluid: FlowingFluid() {
     override fun getFlowing(): Fluid = ModFluids.FLOWING_BLOOD.get()
     override fun getSource(): Fluid = ModFluids.BLOOD.get()
     override fun getFluidType(): FluidType = ModFluidTypes.BLOOD_TYPE
-    override fun getPickupSound(): Optional<SoundEvent?> = Optional.empty<SoundEvent?>() as Optional<SoundEvent?>
+    override fun getPickupSound(): Optional<SoundEvent> = Optional.empty<SoundEvent>() as Optional<SoundEvent>
     override fun getDripParticle(): ParticleOptions? {
         return super.getDripParticle()
     }
-    override fun getBucket(): Item? = null
+    override fun getBucket(): Item = JModItems.BLOOD_BUCKET
 
     public override fun animateTick(p_230606_: Level, p_230607_: BlockPos, p_230608_: FluidState, p_230609_: RandomSource) {
-        if (!p_230608_.isSource() && !p_230608_.getValue<Boolean?>(FALLING)) {
+        if (!p_230608_.isSource() && !p_230608_.getValue<Boolean>(FALLING)) {
             if (p_230609_.nextInt(64) == 0) {
                 p_230606_.playLocalSound(
                     p_230607_.getX() + 0.5,
@@ -66,7 +68,7 @@ abstract class BloodFluid: FlowingFluid() {
     }
 
     override fun canConvertToSource(p_376722_: ServerLevel): Boolean {
-        return p_376722_.gameRules.getBoolean(GameRules.RULE_WATER_SOURCE_CONVERSION)
+        return p_376722_.gameRules.get(GameRules.WATER_SOURCE_CONVERSION)
     }
 
     override fun beforeDestroyingBlock(level: LevelAccessor, pos: BlockPos, state: BlockState) {
@@ -119,7 +121,7 @@ abstract class BloodFluid: FlowingFluid() {
 }
 
 class FlowingBloodFluid: BloodFluid() {
-    override fun createFluidStateDefinition(builder: StateDefinition.Builder<Fluid?, FluidState?>) {
+    override fun createFluidStateDefinition(builder: StateDefinition.Builder<Fluid, FluidState>) {
         super.createFluidStateDefinition(builder)
         builder.add(LEVEL)
     }

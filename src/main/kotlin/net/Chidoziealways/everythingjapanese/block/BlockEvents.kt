@@ -17,7 +17,7 @@ object BlockEvents {
 
         val lock = level.getCapability(ModCapabilities.LOCK_CAPABILITY, pos) ?: return
         if (lock.isLocked() && lock.getOwner() != player.uuid) {
-            player.displayClientMessage(Component.literal("This block is sealed by another player!"), true)
+            player.sendOverlayMessage(Component.literal("This block is sealed by another player!"))
             event.isCanceled = true
         }
     }

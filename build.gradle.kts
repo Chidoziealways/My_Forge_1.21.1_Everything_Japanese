@@ -122,6 +122,7 @@ sourceSets {
 
 repositories {
     mavenLocal()
+    gradlePluginPortal()
     // Forge and Maven Central included automatically
     maven {
         name = "Jared's maven"
@@ -154,10 +155,10 @@ dependencies {
 
     //implementation("net.Chidoziealways.everythingkorean:everythingkorean:0.0.8-1.21.10")
 
-    implementation("net.Chidoziealways.everythingcore:EverythingCore:5.0.0")
+    implementation("net.Chidoziealways.everythingcore:EverythingCore:6.0.0")
     // Uncomment and add if you want those libs
     // implementation(fg.deobf("com.github.glitchfiend:TerraBlender-forge:$minecraftVersion-$terrablender_version"))
-    implementation("software.bernie.geckolib:geckolib-neoforge-1.21.10:5.3-alpha-1")
+    implementation("com.geckolib:geckolib-neoforge-26.1:5.5")
 }
 
 //Make the result of the jarJar task the one with no classifier instead of no classifier and "all"

@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*
 import net.minecraft.util.Mth
 import java.util.function.Consumer
 
-class TriceratopsModel<T : TriceratopsEntity?>(root: ModelPart) : EntityModel<TriceratopsRenderState?>(root) {
+class TriceratopsModel<T : TriceratopsEntity?>(root: ModelPart) : EntityModel<TriceratopsRenderState>(root) {
     private val walkAnimation: KeyframeAnimation
     private val idleAnimation: KeyframeAnimation
 
@@ -24,7 +24,7 @@ class TriceratopsModel<T : TriceratopsEntity?>(root: ModelPart) : EntityModel<Tr
         idleAnimation = TriceratopsAnimations.ANIM_TRICERATOPS_IDLE.bake(root)
     }
 
-    override fun setupAnim(state: TriceratopsRenderState?) {
+    override fun setupAnim(state: TriceratopsRenderState) {
         super.setupAnim(state!!)
         this.root().getAllParts().forEach(Consumer { obj: ModelPart? -> obj!!.resetPose() })
         this.applyHeadRotation(state.netHeadYaw, state.headPitch)
@@ -43,7 +43,7 @@ class TriceratopsModel<T : TriceratopsEntity?>(root: ModelPart) : EntityModel<Tr
     }
 
     companion object {
-        val BABY_TRANSFORMER: MeshTransformer = BabyModelTransform(true, 8.0f, 6.0f, mutableSetOf<String?>("head"))
+        val BABY_TRANSFORMER: MeshTransformer = BabyModelTransform(true, 8.0f, 6.0f, mutableSetOf<String>("head"))
         fun createBodyLayer(): LayerDefinition {
             val meshdefinition = MeshDefinition()
             val partdefinition = meshdefinition.getRoot()

@@ -7,7 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
 import net.minecraft.network.syncher.SynchedEntityData
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.LivingEntity
@@ -109,7 +109,7 @@ class ChiretsuShōProjectileEntity(
 
         get() {
             val idString = entityData.get(BLOCK_ID)
-            val block: Block = BuiltInRegistries.BLOCK.getValue(ResourceLocation.tryParse(idString)) ?: Blocks.AIR
+            val block: Block = BuiltInRegistries.BLOCK.getValue(Identifier.tryParse(idString)) ?: Blocks.AIR
             return block.defaultBlockState()
         }
 
@@ -130,7 +130,6 @@ class ChiretsuShōProjectileEntity(
 
         // Straight-line velocity
         this.deltaMovement = Vec3(dx / distance * velocity, dy / distance * velocity, dz / distance * velocity)
-        this.hasImpulse = true
 
         // Set rotation to face movement direction
         val horizontal = sqrt(deltaMovement.x * deltaMovement.x + deltaMovement.z * deltaMovement.z)
@@ -160,7 +159,7 @@ class ChiretsuShōProjectileEntity(
     override fun readAdditionalSaveData(input: ValueInput) {
         super.readAdditionalSaveData(input)
         val blockIdStr = input.getStringOr("BlockID", "minecraft:air")
-        val block = BuiltInRegistries.BLOCK.getValue(ResourceLocation.tryParse(blockIdStr)) ?: Blocks.AIR
+        val block = BuiltInRegistries.BLOCK.getValue(Identifier.tryParse(blockIdStr)) ?: Blocks.AIR
         blockState = block.defaultBlockState()
     }
 
@@ -180,7 +179,7 @@ class ChiretsuShōProjectileEntity(
                 level.destroyBlock(pos, true) // true to drop items
             }
 
-            MasteryHandler.addMastery(shooter, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"), 0.02f)
+            MasteryHandler.addMastery(shooter, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"), 0.02f)
 
             this.discard() // Remove the projectile after hitting
         }
@@ -197,7 +196,7 @@ class ChiretsuShōProjectileEntity(
         if (level is ServerLevel && shooter is ServerPlayer) {
             val baseDamage = 5.0f
 
-            val mastery = MasteryHandler.getMastery(shooter, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"))
+            val mastery = MasteryHandler.getMastery(shooter, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"))
 
             val scaledDamage = baseDamage * (1f + (mastery / 200f))
 
@@ -225,7 +224,7 @@ class ChiretsuShōProjectileEntity(
 
                 MasteryHandler.addMastery(
                     shooter,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"),
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"),
                     gain
                 )
 

@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.entity.TriceratopsVariant
 import net.Chidoziealways.everythingjapanese.item.JModItems
-import net.minecraft.Util
 import net.minecraft.network.chat.Component
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
@@ -14,6 +13,7 @@ import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
+import net.minecraft.util.Util
 import net.minecraft.world.BossEvent
 import net.minecraft.world.DifficultyInstance
 import net.minecraft.world.damagesource.DamageSource
@@ -29,11 +29,12 @@ import net.minecraft.world.level.ServerLevelAccessor
 import net.minecraft.world.level.storage.ValueInput
 import net.minecraft.world.level.storage.ValueOutput
 
-class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Animal(pEntityType, pLevel) {
+class TriceratopsEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(pEntityType, pLevel) {
     val idleAnimationState: AnimationState = AnimationState()
     private var idleAnimationTimeout = 0
 
     private val bossEvent = ServerBossEvent(
+        uuid,
         Component.literal("私たちのかっこいトリケラトプス(Our Cool Triceratops)"),
         BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.NOTCHED_20
     )
@@ -140,17 +141,17 @@ class TriceratopsEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : A
 
     override fun startSeenByPlayer(pServerPlayer: ServerPlayer) {
         super.startSeenByPlayer(pServerPlayer)
-        this.bossEvent.addPlayer(pServerPlayer)
+        //this.bossEvent.addPlayer(pServerPlayer)
     }
 
     override fun stopSeenByPlayer(pServerPlayer: ServerPlayer) {
         super.stopSeenByPlayer(pServerPlayer)
-        this.bossEvent.removePlayer(pServerPlayer)
+        //this.bossEvent.removePlayer(pServerPlayer)
     }
 
     override fun aiStep() {
         super.aiStep()
-        this.bossEvent.setProgress(this.health / this.maxHealth)
+        //this.bossEvent.setProgress(this.health / this.maxHealth)
     }
 
     companion object {

@@ -27,7 +27,7 @@ class TatamiMatBlock(props: Properties): Block(props) {
         )
     }
 
-    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
         builder.add(FACING)
     }
 

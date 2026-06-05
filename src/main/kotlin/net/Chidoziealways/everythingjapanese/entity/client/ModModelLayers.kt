@@ -3,7 +3,7 @@ package net.Chidoziealways.everythingjapanese.entity.client
 import com.google.common.collect.Sets
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.client.model.geom.ModelLayerLocation
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
 object ModModelLayers {
     private val ALL_MODELS: MutableSet<ModelLayerLocation?> = Sets.newHashSet<ModelLayerLocation?>()
@@ -23,6 +23,6 @@ object ModModelLayers {
     }
 
     private fun createLocation(pPath: String, pModel: String): ModelLayerLocation {
-        return ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pPath), pModel)
+        return ModelLayerLocation(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, pPath), pModel)
     }
 }

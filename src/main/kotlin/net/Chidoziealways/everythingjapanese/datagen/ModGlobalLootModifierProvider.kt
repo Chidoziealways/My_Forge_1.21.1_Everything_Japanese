@@ -5,7 +5,7 @@ import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.loot.AddItemModifier
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition
@@ -23,49 +23,49 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
                 arrayOf<LootItemCondition>(
                     LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SHORT_GRASS).build(),
                     LootItemRandomChanceCondition.randomChance(0.5f).build()
-                ) as Array<LootItemCondition?>, JModItems.RICE_SEEDS
+                ) as Array<LootItemCondition>, JModItems.RICE_SEEDS
             )
         )
-        this.add<AddItemModifier?>(
+        this.add<AddItemModifier>(
             "rice_seeds_from_tall_grass",
             AddItemModifier(
                 arrayOf<LootItemCondition>(
                     LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build(),
                     LootItemRandomChanceCondition.randomChance(0.9f).build()
-                ) as Array<LootItemCondition?>, JModItems.RICE_SEEDS
+                ) as Array<LootItemCondition>, JModItems.RICE_SEEDS
             )
         )
-        this.add<AddItemModifier?>(
+        this.add<AddItemModifier>(
             "chisel_from_jungle_temple",
             AddItemModifier(
                 arrayOf<LootItemCondition>(
-                    LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/jungle_temple")).build()
-                ) as Array<LootItemCondition?>, JModItems.CHISEL
+                    LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/jungle_temple")).build()
+                ) as Array<LootItemCondition>, JModItems.CHISEL
             )
         )
-        this.add<AddItemModifier?>(
+        this.add<AddItemModifier>(
             "large_fireballjutsu_from_ancient_city",
             AddItemModifier(
                 arrayOf<LootItemCondition>(
-                    LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/ancient_city")).build()
-                ) as Array<LootItemCondition?>, JModItems.FIREBALL_SCROLL
+                    LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/ancient_city")).build()
+                ) as Array<LootItemCondition>, JModItems.FIREBALL_SCROLL
             )
         )
-        this.add<AddItemModifier?>(
+        this.add<AddItemModifier>(
             "small_windballjutsu_from_end_city",
             AddItemModifier(
                 arrayOf<LootItemCondition>(
-                    LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/end_city_treasure")).build()
-                ) as Array<LootItemCondition?>, JModItems.WINDBALL_SCROLL
+                    LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/end_city_treasure")).build()
+                ) as Array<LootItemCondition>, JModItems.WINDBALL_SCROLL
             )
         )
-        this.add<AddItemModifier?>(
+        this.add<AddItemModifier>(
             "rice_from_creeper",
             AddItemModifier(
                 arrayOf<LootItemCondition>(
-                    LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("entities/creeper"))
+                    LootTableIdCondition.Builder(Identifier.withDefaultNamespace("entities/creeper"))
                         .and(LootItemRandomChanceCondition.randomChance(0.29f)).build()
-                ) as Array<LootItemCondition?>,
+                ) as Array<LootItemCondition>,
                 JModItems.RICE
             )
         )

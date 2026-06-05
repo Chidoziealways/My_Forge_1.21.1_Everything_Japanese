@@ -3,7 +3,7 @@ package net.Chidoziealways.everythingjapanese.util
 import com.mojang.blaze3d.platform.InputConstants
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.client.KeyMapping
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent
@@ -20,7 +20,7 @@ object ModKeyBinds {
 
     @SubscribeEvent
     fun registerKeyMappings(event: RegisterKeyMappingsEvent) {
-        CATEGORY_JUTSU = KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu"))
+        CATEGORY_JUTSU = KeyMapping.Category(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu"))
 
         CAST_JUTSU = KeyMapping(
             "key.everythingjapanese.cast_jutsu",
@@ -36,7 +36,7 @@ object ModKeyBinds {
             CATEGORY_JUTSU
         )
 
-        CATEGORY_CHAKRA = KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chakra"))
+        CATEGORY_CHAKRA = KeyMapping.Category(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chakra"))
 
         REGEN_CHAKRA = KeyMapping(
             "key.everythingjapanese.regen_chakra",

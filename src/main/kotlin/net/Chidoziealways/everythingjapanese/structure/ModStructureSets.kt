@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.level.levelgen.structure.StructureSet
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType
@@ -48,7 +48,7 @@ object ModStructureSets {
     private fun register(pName: String): ResourceKey<StructureSet> {
         return ResourceKey.create(
             Registries.STRUCTURE_SET,
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
         )
     }
 }

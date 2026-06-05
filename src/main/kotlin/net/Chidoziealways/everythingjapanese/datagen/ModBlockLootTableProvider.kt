@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.state.properties.ModBlockStateProperties
-import net.minecraft.advancements.critereon.StatePropertiesPredicate
+import net.minecraft.advancements.criterion.StatePropertiesPredicate
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
@@ -118,12 +118,12 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
                 JModItems.RAW_RICE, JModItems.RICE_SEEDS, lootItemConditionBuilder
             )
         )
-        val registrylookup: HolderLookup.RegistryLookup<Enchantment?> =
-            this.registries.lookupOrThrow<Enchantment?>(Registries.ENCHANTMENT)
+        val registrylookup: HolderLookup.RegistryLookup<Enchantment> =
+            this.registries.lookupOrThrow<Enchantment>(Registries.ENCHANTMENT)
         this.add(
             JModBlocks.YAMAZAKI_BERRY_BUSH
-        ) { block: Block? ->
-            this.applyExplosionDecay<LootTable.Builder?>(
+        ) { block: Block ->
+            this.applyExplosionDecay<LootTable.Builder>(
                 block, LootTable.lootTable().withPool(
                     LootPool.lootPool().`when`(
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(JModBlocks.YAMAZAKI_BERRY_BUSH)
@@ -187,8 +187,8 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
         minDrops: Float,
         maxDrops: Float
     ): LootTable.Builder {
-        val registrylookup: HolderLookup.RegistryLookup<Enchantment?> =
-            this.registries.lookupOrThrow<Enchantment?>(Registries.ENCHANTMENT)
+        val registrylookup: HolderLookup.RegistryLookup<Enchantment> =
+            this.registries.lookupOrThrow<Enchantment>(Registries.ENCHANTMENT)
         return this.createSilkTouchDispatchTable(
             pBlock, this.applyExplosionDecay(
                 pBlock, LootItem.lootTableItem(item)

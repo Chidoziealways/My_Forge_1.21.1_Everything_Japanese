@@ -18,7 +18,7 @@ import net.minecraft.world.item.crafting.SmithingRecipeInput
 import java.util.Optional
 
 data class SmithingKanjiRecipe(private val template: Ingredient, private val base: Ingredient, private val kanji: Holder<KanjiType>): SmithingRecipe {
-    override fun getSerializer(): RecipeSerializer<out SmithingRecipe?> = ModRecipes.SMITHING_KANJI_SERIALIZER
+    override fun getSerializer(): RecipeSerializer<out SmithingRecipe> = ModRecipes.SMITHING_KANJI_SERIALIZER
 
     override fun templateIngredient(): Optional<Ingredient> = Optional.of(template)
 
@@ -35,35 +35,31 @@ data class SmithingKanjiRecipe(private val template: Ingredient, private val bas
             TalismanItem.setKanji(copy, type)
             return copy
         }
+        val CODEC: MapCodec<SmithingKanjiRecipe> = RecordCodecBuilder.mapCodec{ instance ->
+            instance.group(
+                Ingredient.CODEC.fieldOf("template").forGetter { it.template },
+                Ingredient.CODEC.fieldOf("base").forGetter { it.base },
+                KanjiType.CODEC.fieldOf("kanji").forGetter { it.kanji }
+            ).apply(instance, ::SmithingKanjiRecipe)
+        }
+
+        val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SmithingKanjiRecipe> = StreamCodec.composite(
+            Ingredient.CONTENTS_STREAM_CODEC, {it.template},
+            Ingredient.CONTENTS_STREAM_CODEC, {it.base},
+            KanjiType.STREAM_CODEC, {it.kanji},
+            ::SmithingKanjiRecipe
+        )
+        val SERIALIZER = RecipeSerializer(CODEC, STREAM_CODEC);
     }
 
     override fun assemble(
         input: SmithingRecipeInput,
-        registries: HolderLookup.Provider
     ): ItemStack = applyKanji(input.base, this.kanji)
+
+    override fun showNotification(): Boolean = true
+
+    override fun group(): String = ""
 
     override fun placementInfo(): PlacementInfo = PlacementInfo.create(listOf(template, base))
 
-    class Serializer: RecipeSerializer<SmithingKanjiRecipe> {
-        companion object {
-            val CODEC: MapCodec<SmithingKanjiRecipe> = RecordCodecBuilder.mapCodec{ instance ->
-                instance.group(
-                    Ingredient.CODEC.fieldOf("template").forGetter { it.template },
-                    Ingredient.CODEC.fieldOf("base").forGetter { it.base },
-                    KanjiType.CODEC.fieldOf("kanji").forGetter { it.kanji }
-                ).apply(instance, ::SmithingKanjiRecipe)
-            }
-
-            val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SmithingKanjiRecipe> = StreamCodec.composite(
-                Ingredient.CONTENTS_STREAM_CODEC, {it.template},
-                Ingredient.CONTENTS_STREAM_CODEC, {it.base},
-                KanjiType.STREAM_CODEC, {it.kanji},
-                ::SmithingKanjiRecipe
-            )
-        }
-
-        override fun codec(): MapCodec<SmithingKanjiRecipe> = CODEC
-
-        override fun streamCodec(): StreamCodec<RegistryFriendlyByteBuf, SmithingKanjiRecipe> = STREAM_CODEC
-    }
 }

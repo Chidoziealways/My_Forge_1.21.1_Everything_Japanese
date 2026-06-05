@@ -130,7 +130,7 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         add(JModItems.DIESEL, "柴油")
         add(JModItems.INCENSE, "线香")
         add(JModItems.UDON, "乌冬")
-        add(JModItems.HELL_PORTAL_ACTIVATOR, "地狱传送门激活器")
+        //add(JModItems.HELL_PORTAL_ACTIVATOR, "地狱传送门激活器")
         add(JModItems.YA, "弓箭")
         add(JModItems.TALISMAN_ITEM, "符咒")
         add(JModItems.PYRITE_AXE, "黄铁矿斧")
@@ -186,6 +186,7 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         //add(JModItems.SOUL_GUITAR, "灵魂吉他")
         add(JModItems.GUN, "枪")
         add(JModItems.BULLET, "子弹")
+        add(JModItems.POWERED_SWORD, "力量之剑")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "风球术")

@@ -1,6 +1,7 @@
 package net.Chidoziealways.everythingjapanese.villager
 
 import com.google.common.collect.ImmutableSet
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
@@ -8,7 +9,7 @@ import net.minecraft.core.Holder
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.entity.ai.village.poi.PoiType
-import net.minecraft.world.entity.npc.VillagerProfession
+import net.minecraft.world.entity.npc.villager.VillagerProfession
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Supplier
@@ -35,7 +36,8 @@ object ModVillagers {
                 { holder: Holder<PoiType> -> holder.value() === FURNITURE_POI.get() },
                 ImmutableSet.of(),
                 ImmutableSet.of(),
-                ModSounds.MAGIC_BLOCK_HIT.get()
+                ModSounds.MAGIC_BLOCK_HIT.get(),
+                Int2ObjectMap.ofEntries()
             )
         })
 

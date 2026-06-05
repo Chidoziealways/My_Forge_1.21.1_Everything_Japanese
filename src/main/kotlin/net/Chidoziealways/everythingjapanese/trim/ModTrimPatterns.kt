@@ -1,12 +1,12 @@
 package net.Chidoziealways.everythingjapanese.trim
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
-import net.minecraft.Util
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
+import net.minecraft.util.Util
 import net.minecraft.world.item.equipment.trim.TrimPattern
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -23,7 +23,7 @@ object ModTrimPatterns {
     private fun register(context: BootstrapContext<TrimPattern>, key: ResourceKey<TrimPattern>) {
         val trimPattern = TrimPattern(
             defaultAssetId(key),
-            Component.translatable(Util.makeDescriptionId("trim_pattern", key.location())), false
+            Component.translatable(Util.makeDescriptionId("trim_pattern", key.registry())), false
         )
         context.register(key, trimPattern)
     }
@@ -31,11 +31,11 @@ object ModTrimPatterns {
     private fun registryKey(pName: String): ResourceKey<TrimPattern> {
         return ResourceKey.create(
             Registries.TRIM_PATTERN,
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
         )
     }
 
-    fun defaultAssetId(p_394517_: ResourceKey<TrimPattern>): ResourceLocation {
-        return p_394517_.location()
+    fun defaultAssetId(p_394517_: ResourceKey<TrimPattern>): Identifier {
+        return p_394517_.registry()
     }
 }

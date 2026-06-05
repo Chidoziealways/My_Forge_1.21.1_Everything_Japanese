@@ -19,7 +19,7 @@ object ModPoiTypes {
         "hell_portal",
         Supplier {
             PoiType(
-                ImmutableSet.copyOf<BlockState?>(
+                ImmutableSet.copyOf<BlockState>(
                     JModBlocks.HELL_PORTAL.getStateDefinition().getPossibleStates()
                 ), 1, 1
             )

@@ -2,7 +2,7 @@ package net.Chidoziealways.everythingjapanese.util
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.biome.Biome
@@ -21,7 +21,7 @@ class ModTags {
         private fun createBlockTag(name: String): TagKey<Block> {
             return TagKey.create(
                 Registries.BLOCK,
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
             )
         }
     }
@@ -40,20 +40,24 @@ class ModTags {
         private fun createItemTag(name: String): TagKey<Item> {
             return TagKey.create(
                 Registries.ITEM,
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
             )
         }
     }
 
     object Biomes {
-        val HAS_HELL_TEMPLE: TagKey<Biome?> = createBiomeTag("has_structure/hell_temple")
-        val HAS_DOJO: TagKey<Biome?> = createBiomeTag("has_structure/dojo")
-        val IS_HELL: TagKey<Biome?> = createBiomeTag("is_hell")
+        val HAS_HELL_TEMPLE: TagKey<Biome> = createBiomeTag("has_structure/hell_temple")
+        val HAS_DOJO: TagKey<Biome> = createBiomeTag("has_structure/dojo")
 
-        private fun createBiomeTag(name: String): TagKey<Biome?> {
-            return TagKey.create<Biome?>(
+        val HAS_SHOJI_HOUSE: TagKey<Biome> = createBiomeTag("has_structure/shoji_house")
+        val IS_HELL: TagKey<Biome> = createBiomeTag("is_hell")
+
+        val HAS_SHINTO_SHRINE = createBiomeTag("has_structure/has_shinto_shrine")
+
+        private fun createBiomeTag(name: String): TagKey<Biome> {
+            return TagKey.create<Biome>(
                 Registries.BIOME,
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
             )
         }
     }
@@ -64,7 +68,7 @@ class ModTags {
         private fun createFluidTage(name: String): TagKey<Fluid> {
             return TagKey.create(
                 Registries.FLUID,
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
             )
         }
     }

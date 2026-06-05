@@ -4,15 +4,15 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
 data class ChakraSyncPacket(@JvmField val chakra: Float, val maxChakra: Int): CustomPacketPayload {
-    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> {
+    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload> {
         return TYPE
     }
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chakra_sync")
+        val ID = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chakra_sync")
         val TYPE = CustomPacketPayload.Type<ChakraSyncPacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, ChakraSyncPacket> =

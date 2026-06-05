@@ -1,6 +1,0 @@
-{
-  "type": "everythingjapanese:smithing_kanji",
-  "base": "everythingjapanese:talisman_item",
-  "kanji": "everythingjapanese:water",
-  "template": "minecraft:water_bucket"
-}

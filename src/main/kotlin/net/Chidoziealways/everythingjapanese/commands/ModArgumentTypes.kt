@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Function
 
 object ModArgumentTypes {
-    val ARGUMENT_TYPES = DeferredRegister.create<ArgumentTypeInfo<*, *>?>(Registries.COMMAND_ARGUMENT_TYPE, JAPANESE_MOD_ID)
+    val ARGUMENT_TYPES = DeferredRegister.create<ArgumentTypeInfo<*, *>>(Registries.COMMAND_ARGUMENT_TYPE, JAPANESE_MOD_ID)
 
     val JUTSU_ARGUMENT =
         ARGUMENT_TYPES.register(
@@ -20,7 +20,7 @@ object ModArgumentTypes {
             { ->
                 ArgumentTypeInfos.registerByClass(
                     JutsuArgument::class.java,
-                    SingletonArgumentInfo.contextAware<JutsuArgument?>(Function { context: CommandBuildContext? ->
+                    SingletonArgumentInfo.contextAware<JutsuArgument>(Function { context: CommandBuildContext? ->
                         JutsuArgument.Companion.jutsu(context)
                     })
                 )

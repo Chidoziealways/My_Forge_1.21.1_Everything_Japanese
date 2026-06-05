@@ -2,11 +2,11 @@ package net.Chidoziealways.everythingjapanese.datagen
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 //import net.Chidoziealways.everythingkorean.datagen.KModDatapackEntries
-import net.minecraft.Util
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.loot.LootTableProvider
 import net.minecraft.data.loot.LootTableProvider.SubProviderEntry
 import net.minecraft.data.registries.RegistryPatchGenerator
+import net.minecraft.util.Util
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.data.event.GatherDataEvent

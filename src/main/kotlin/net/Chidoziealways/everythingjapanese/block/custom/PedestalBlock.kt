@@ -104,8 +104,8 @@ class PedestalBlock(pProperties: BlockBehaviour.Properties) : BaseEntityBlock(pP
 
     companion object {
         val SHAPE: VoxelShape = box(2.0, 0.0, 2.0, 14.0, 13.0, 14.0)
-        val CODEC: MapCodec<PedestalBlock?> =
-            BlockBehaviour.simpleCodec<PedestalBlock?>(java.util.function.Function { pProperties: BlockBehaviour.Properties ->
+        val CODEC: MapCodec<PedestalBlock> =
+            BlockBehaviour.simpleCodec<PedestalBlock>(java.util.function.Function { pProperties: BlockBehaviour.Properties ->
                 PedestalBlock(pProperties)
             })
     }

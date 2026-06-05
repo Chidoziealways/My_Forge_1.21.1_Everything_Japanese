@@ -6,15 +6,15 @@ import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.ByteBufCodecs
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.network.handling.IPayloadContext
 
 data class SetScrollTextPacket(val text: String, val stack: ItemStack): CustomPacketPayload {
-    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
+    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload> = TYPE
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scroll_text")
+        val ID = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "scroll_text")
         val TYPE = CustomPacketPayload.Type<SetScrollTextPacket>(ID)
 
         val CODEC: StreamCodec<RegistryFriendlyByteBuf, SetScrollTextPacket> = StreamCodec.composite(

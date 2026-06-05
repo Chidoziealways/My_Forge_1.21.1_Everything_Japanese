@@ -28,7 +28,7 @@ class LightningStrikerEnchantmentEffect : EnchantmentEntityEffect {
     }
 
     companion object {
-        val CODEC: MapCodec<LightningStrikerEnchantmentEffect?> = MapCodec.unit<LightningStrikerEnchantmentEffect?>(
+        val CODEC: MapCodec<LightningStrikerEnchantmentEffect> = MapCodec.unit<LightningStrikerEnchantmentEffect>(
             Supplier { LightningStrikerEnchantmentEffect() })
     }
 }

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "everythingjapanese:block/stripped_hinoki_maruta_top",
-    "side": "everythingjapanese:block/stripped_hinoki_maruta"
-  }
-}

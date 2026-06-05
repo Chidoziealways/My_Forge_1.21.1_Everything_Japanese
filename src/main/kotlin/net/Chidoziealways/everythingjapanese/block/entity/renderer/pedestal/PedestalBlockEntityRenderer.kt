@@ -4,17 +4,14 @@ import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Axis
 import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.LightTexture
 import net.minecraft.client.renderer.MultiBufferSource
-import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.Sheets
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
-import net.minecraft.client.renderer.entity.ItemRenderer
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer
 import net.minecraft.client.renderer.item.ItemStackRenderState
-import net.minecraft.client.renderer.state.CameraRenderState
+import net.minecraft.client.renderer.state.level.CameraRenderState
 import net.minecraft.client.renderer.texture.OverlayTexture
 import net.minecraft.core.BlockPos
 import net.minecraft.world.item.ItemDisplayContext
@@ -24,13 +21,8 @@ import net.minecraft.world.level.LightLayer
 import net.minecraft.world.phys.Vec3
 import kotlin.random.Random
 
-class PedestalBlockEntityRenderer(context: BlockEntityRendererProvider.Context?) :
+class PedestalBlockEntityRenderer(context: BlockEntityRendererProvider.Context) :
     BlockEntityRenderer<PedestalBlockEntity, PedestalBlockEntityRenderState> {
-    private fun getLightLevel(level: Level, pos: BlockPos): Int {
-        val bLight = level.getBrightness(LightLayer.BLOCK, pos)
-        val sLight = level.getBrightness(LightLayer.SKY, pos)
-        return LightTexture.pack(bLight, sLight)
-    }
 
     override fun createRenderState(): PedestalBlockEntityRenderState {
         return PedestalBlockEntityRenderState()
@@ -69,7 +61,7 @@ class PedestalBlockEntityRenderer(context: BlockEntityRendererProvider.Context?)
         state.itemStackRenderState!!.submit(
             poseStack,
             collector,
-            getLightLevel(pBlockEntity.getLevel()!!, pBlockEntity.blockPos),
+            state.lightCoords,
             OverlayTexture.NO_OVERLAY,
             0 // outline color
         )

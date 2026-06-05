@@ -18,7 +18,7 @@ import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 
-class SikaDeerEntity(pEntityType: EntityType<out Animal?>, pLevel: Level) : Animal(pEntityType, pLevel) {
+class SikaDeerEntity(pEntityType: EntityType<out Animal>, pLevel: Level) : Animal(pEntityType, pLevel) {
     val idleAnimationState: AnimationState = AnimationState()
     private var idleAnimationTimeout = 0
 

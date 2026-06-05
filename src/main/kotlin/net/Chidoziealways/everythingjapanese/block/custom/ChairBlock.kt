@@ -63,19 +63,19 @@ class ChairBlock(pProperties: Properties) : HorizontalDirectionalBlock(pProperti
         return CODEC
     }
 
-    override fun getStateForPlacement(pContext: BlockPlaceContext): BlockState? {
+    override fun getStateForPlacement(pContext: BlockPlaceContext): BlockState {
         return this.defaultBlockState()
-            .setValue<Direction?, Direction?>(FACING, pContext.getHorizontalDirection().getOpposite())
+            .setValue<Direction, Direction>(FACING, pContext.horizontalDirection.opposite)
     }
 
-    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
         pBuilder.add(FACING)
     }
 
     companion object {
-        val CODEC: MapCodec<ChairBlock?> = simpleCodec<ChairBlock?>(Function { pProperties: Properties? ->
+        val CODEC: MapCodec<ChairBlock> = simpleCodec<ChairBlock>(Function { pProperties: Properties ->
             ChairBlock(
-                pProperties!!
+                pProperties
             )
         })
         val SHAPE: VoxelShape = box(3.0, 0.0, 3.0, 13.0, 16.0, 13.0)

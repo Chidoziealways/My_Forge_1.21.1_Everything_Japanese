@@ -13,7 +13,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.component.DataComponentType
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.codec.ByteBufCodecs
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.neoforge.registries.DeferredHolder
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -51,7 +51,9 @@ object ModDataComponentTypes {
     val CURRENT_MORPH = register("current_morph") { it.persistent(Codec.STRING).networkSynchronized(
         ByteBufCodecs.STRING_UTF8)}
 
-    private fun <I> register(
+    val KARMA = register("karma") { it.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT) }
+
+    private fun <I : Any> register(
         name: String,
         builderOperator: UnaryOperator<DataComponentType.Builder<I>>
     ): DeferredHolder<DataComponentType<*>, DataComponentType<I>> {

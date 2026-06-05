@@ -9,16 +9,16 @@ import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.MobRenderer
-import net.minecraft.client.renderer.state.CameraRenderState
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.client.renderer.state.level.CameraRenderState
+import net.minecraft.resources.Identifier
 
 class SikaDeerRenderer(pContext: EntityRendererProvider.Context) :
-    MobRenderer<SikaDeerEntity, SikaDeerRenderState, SikaDeerModel<SikaDeerEntity?>?>(
+    MobRenderer<SikaDeerEntity, SikaDeerRenderState, SikaDeerModel<SikaDeerEntity>>(
         pContext,
-        SikaDeerModel<SikaDeerEntity?>(pContext.bakeLayer(ModModelLayers.SIKA_DEER)),
+        SikaDeerModel<SikaDeerEntity>(pContext.bakeLayer(ModModelLayers.SIKA_DEER)),
         0.86f
     ) {
-    private val models: AdultAndBabyModelPair<SikaDeerModel<SikaDeerEntity?>?>
+    private val models: AdultAndBabyModelPair<SikaDeerModel<SikaDeerEntity>>
 
     init {
         this.models = bakeModel(pContext)
@@ -34,8 +34,8 @@ class SikaDeerRenderer(pContext: EntityRendererProvider.Context) :
         renderState.idleAnimationState.copyFrom(entity.idleAnimationState)
     }
 
-    override fun getTextureLocation(pEntity: SikaDeerRenderState): ResourceLocation {
-        return ResourceLocation.fromNamespaceAndPath(
+    override fun getTextureLocation(pEntity: SikaDeerRenderState): Identifier {
+        return Identifier.fromNamespaceAndPath(
             JAPANESE_MOD_ID,
             "textures/entity/sikadeer/sika_deer.png"
         )
@@ -58,15 +58,15 @@ class SikaDeerRenderer(pContext: EntityRendererProvider.Context) :
     }
 
     companion object {
-        private fun bakeModel(context: EntityRendererProvider.Context): AdultAndBabyModelPair<SikaDeerModel<SikaDeerEntity?>?> {
+        private fun bakeModel(context: EntityRendererProvider.Context): AdultAndBabyModelPair<SikaDeerModel<SikaDeerEntity>> {
             // Assume you have two ModelLayerLocations defined somewhere:
             //   SIKA_DEER_ADULT_LAYER  and  SIKA_DEER_BABY_LAYER
             val adult =
-                SikaDeerModel<SikaDeerEntity?>(context.bakeLayer(ModModelLayers.SIKA_DEER))
+                SikaDeerModel<SikaDeerEntity>(context.bakeLayer(ModModelLayers.SIKA_DEER))
             val baby =
-                SikaDeerModel<SikaDeerEntity?>(context.bakeLayer(ModModelLayers.SIKA_DEER_BABY))
+                SikaDeerModel<SikaDeerEntity>(context.bakeLayer(ModModelLayers.SIKA_DEER_BABY))
 
-            return AdultAndBabyModelPair<SikaDeerModel<SikaDeerEntity?>?>(adult, baby)
+            return AdultAndBabyModelPair<SikaDeerModel<SikaDeerEntity>>(adult, baby)
         }
     }
 }

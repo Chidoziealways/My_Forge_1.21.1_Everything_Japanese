@@ -24,7 +24,7 @@ gradle.settingsEvaluated {
 
 pluginManagement {
     repositories {
-        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") } // fast for some regions
+        //maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") } // fast for some regions
         maven { url = uri("https://plugins.gradle.org/m2/") }
         mavenCentral()
         mavenLocal()

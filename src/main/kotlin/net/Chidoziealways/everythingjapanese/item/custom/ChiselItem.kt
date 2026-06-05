@@ -45,19 +45,19 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
 
                 level.playSound(null, context.clickedPos, ModSounds.CHISEL_USE.get(), SoundSource.BLOCKS)
 
-                level.sendParticles<BlockParticleOption?>(
+                level.sendParticles<BlockParticleOption>(
                     BlockParticleOption(ParticleTypes.BLOCK, clickedBlock.defaultBlockState()),
                     context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 1.0,
                     context.getClickedPos().getZ() + 0.5, 10, 0.0, 0.0, 0.0, 1.0
                 )
 
-                level.sendParticles<SimpleParticleType?>(
+                level.sendParticles<SimpleParticleType>(
                     ParticleTypes.ENCHANT,
                     context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 1.5,
                     context.getClickedPos().getZ() + 0.5, 10, 0.0, 0.0, 0.0, 3.0
                 )
 
-                level.sendParticles<SimpleParticleType?>(
+                level.sendParticles<SimpleParticleType>(
                     ModParticles.PYRITE_PARTICLES,
                     context.getClickedPos().getX() + 0.5, context.getClickedPos().getY() + 1.5,
                     context.getClickedPos().getZ() + 0.5, 15, 0.0, 0.0, 0.0, 2.0
@@ -66,7 +66,7 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
                 context.itemInHand
                     .set(ModDataComponentTypes.COORDINATES, context.clickedPos)
                 context.itemInHand
-                    .set<BlockItemStateProperties?>(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY)
+                    .set<BlockItemStateProperties>(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY)
             }
         }
 
@@ -78,7 +78,7 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
         pStack: ItemStack,
         pContext: TooltipContext,
         display: TooltipDisplay,
-        pTooltipComponents: Consumer<Component?>,
+        pTooltipComponents: Consumer<Component>,
         pTooltipFlag: TooltipFlag
     ) {
         val minecraft = Minecraft.getInstance()
@@ -88,19 +88,19 @@ class ChiselItem(pProperties: Properties) : Item(pProperties) {
             pTooltipComponents.accept(Component.translatable("tooltip.everythingjapanese.chisel_item.shift_down"))
         }
 
-        if (pStack.get<BlockPos?>(ModDataComponentTypes.COORDINATES) != null) {
+        if (pStack.get<BlockPos>(ModDataComponentTypes.COORDINATES) != null) {
             pTooltipComponents.accept(
                 Component.literal(
-                    "Last Block Changed at :" + pStack.get<BlockPos?>(
+                    "Last Block Changed at :" + pStack.get<BlockPos>(
                         ModDataComponentTypes.COORDINATES
                     )
                 )
             )
         }
-        if (pStack.get<BlockItemStateProperties?>(DataComponents.BLOCK_STATE) != null) {
+        if (pStack.get<BlockItemStateProperties>(DataComponents.BLOCK_STATE) != null) {
             pTooltipComponents.accept(
                 Component.literal(
-                    "Last Block Changed's state:" + pStack.get<BlockItemStateProperties?>(
+                    "Last Block Changed's state:" + pStack.get<BlockItemStateProperties>(
                         DataComponents.BLOCK_STATE
                     )
                 )

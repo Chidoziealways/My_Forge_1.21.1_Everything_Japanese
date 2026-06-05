@@ -4,20 +4,20 @@ import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.advancements.Advancement
 import net.minecraft.advancements.AdvancementHolder
 import net.minecraft.advancements.AdvancementType
-import net.minecraft.advancements.critereon.InventoryChangeTrigger
+import net.minecraft.advancements.criterion.InventoryChangeTrigger
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.advancements.AdvancementSubProvider
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import java.util.function.Consumer
 
 class StoryAdvancementProvider : AdvancementSubProvider {
     override fun generate(
         registries: HolderLookup.Provider,
-        saver: Consumer<AdvancementHolder?>
+        saver: Consumer<AdvancementHolder>
     ) {
         val pyrite = Advancement.Builder.advancement()
-            .parent(ResourceLocation.withDefaultNamespace("story/smelt_iron"))
+            .parent(Identifier.withDefaultNamespace("story/smelt_iron"))
             .display(
                 JModItems.PYRITE_INGOT,
                 Component.literal("Fake Gold!"),

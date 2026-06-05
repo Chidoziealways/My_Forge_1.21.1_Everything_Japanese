@@ -8,7 +8,7 @@ import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.ItemTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.item.Item
@@ -83,9 +83,9 @@ class ModItemTagProvider(
     }
 
     companion object {
-        val TRIM_TEMPLATES: TagKey<Item?> = TagKey.create<Item?>(
+        val TRIM_TEMPLATES: TagKey<Item> = TagKey.create<Item>(
             Registries.ITEM,
-            ResourceLocation.withDefaultNamespace("trim_templates")
+            Identifier.withDefaultNamespace("trim_templates")
         )
     }
 }

@@ -26,6 +26,10 @@ data class SmithingBladeRecipe(private val template: Ingredient, private val bas
 
     override fun additionIngredient(): Optional<Ingredient> = Optional.empty()
 
+    override fun showNotification(): Boolean = true
+
+    override fun group(): String = ""
+
     companion object {
         fun applyBlade(base: ItemStack, bladeType: BladeType): ItemStack {
             val current = KatanaItem.getBlade(base)
@@ -35,35 +39,31 @@ data class SmithingBladeRecipe(private val template: Ingredient, private val bas
             KatanaItem.setBlade(copy, bladeType)
             return copy
         }
+
+        val CODEC: MapCodec<SmithingBladeRecipe> = RecordCodecBuilder.mapCodec { instance ->
+            instance.group(
+                Ingredient.CODEC.fieldOf("template").forGetter { it.template },
+                Ingredient.CODEC.fieldOf("base").forGetter { it.base },
+                BladeType.CODEC.fieldOf("blade").forGetter { it.blade }
+            ).apply(instance, ::SmithingBladeRecipe)
+        }
+
+        val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SmithingBladeRecipe> = StreamCodec.composite(
+            Ingredient.CONTENTS_STREAM_CODEC, {it.template},
+            Ingredient.CONTENTS_STREAM_CODEC, {it.base},
+            BladeType.STREAM_CODEC, {it.blade},
+            ::SmithingBladeRecipe
+        )
+        val SERIALIZER: RecipeSerializer<SmithingBladeRecipe> = RecipeSerializer(CODEC, STREAM_CODEC)
+
+        init {
+
+        }
     }
 
     override fun assemble(
         input: SmithingRecipeInput,
-        registries: HolderLookup.Provider
     ): ItemStack = applyBlade(input.base, this.blade)
 
     override fun placementInfo(): PlacementInfo = PlacementInfo.create(listOf(template, base))
-
-    class Serializer: RecipeSerializer<SmithingBladeRecipe> {
-        companion object {
-            val CODEC: MapCodec<SmithingBladeRecipe> = RecordCodecBuilder.mapCodec { instance ->
-                instance.group(
-                    Ingredient.CODEC.fieldOf("template").forGetter { it.template },
-                    Ingredient.CODEC.fieldOf("base").forGetter { it.base },
-                    BladeType.CODEC.fieldOf("blade").forGetter { it.blade }
-                ).apply(instance, ::SmithingBladeRecipe)
-            }
-
-            val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SmithingBladeRecipe> = StreamCodec.composite(
-                Ingredient.CONTENTS_STREAM_CODEC, {it.template},
-                Ingredient.CONTENTS_STREAM_CODEC, {it.base},
-                BladeType.STREAM_CODEC, {it.blade},
-                ::SmithingBladeRecipe
-            )
-        }
-
-        override fun codec(): MapCodec<SmithingBladeRecipe> = CODEC
-
-        override fun streamCodec(): StreamCodec<RegistryFriendlyByteBuf, SmithingBladeRecipe> = STREAM_CODEC
-    }
 }

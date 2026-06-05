@@ -10,24 +10,24 @@ import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.MobRenderer
-import net.minecraft.client.renderer.state.CameraRenderState
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.client.renderer.state.level.CameraRenderState
+import net.minecraft.resources.Identifier
 import java.util.*
 
 class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
-    MobRenderer<TriceratopsEntity, TriceratopsRenderState, TriceratopsModel<TriceratopsEntity?>?>(
+    MobRenderer<TriceratopsEntity, TriceratopsRenderState, TriceratopsModel<TriceratopsEntity>>(
         pContext,
-        TriceratopsModel<TriceratopsEntity?>(pContext.bakeLayer(ModModelLayers.TRICERATOPS)),
+        TriceratopsModel<TriceratopsEntity>(pContext.bakeLayer(ModModelLayers.TRICERATOPS)),
         0.86f
     ) {
-    private val model: AdultAndBabyModelPair<TriceratopsModel<TriceratopsEntity?>?>
+    private val model: AdultAndBabyModelPair<TriceratopsModel<TriceratopsEntity>>
 
 
     init {
         this.model = bakeModel(pContext)
     }
 
-    override fun getTextureLocation(state: TriceratopsRenderState): ResourceLocation {
+    override fun getTextureLocation(state: TriceratopsRenderState): Identifier {
         return LOCATION_BY_VARIANT[state.entity!!.variant]!!
     }
 
@@ -55,18 +55,18 @@ class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
     }
 
     companion object {
-        private val LOCATION_BY_VARIANT: Map<TriceratopsVariant, ResourceLocation> by lazy {
-            EnumMap<TriceratopsVariant, ResourceLocation>(TriceratopsVariant::class.java).apply {
+        private val LOCATION_BY_VARIANT: Map<TriceratopsVariant, Identifier> by lazy {
+            EnumMap<TriceratopsVariant, Identifier>(TriceratopsVariant::class.java).apply {
                 put(
                     TriceratopsVariant.GRAY,
-                    ResourceLocation.fromNamespaceAndPath(
+                    Identifier.fromNamespaceAndPath(
                         JAPANESE_MOD_ID,
                         "textures/entity/triceratops/triceratops_gray.png"
                     )
                 )
                 put(
                     TriceratopsVariant.GREEN,
-                    ResourceLocation.fromNamespaceAndPath(
+                    Identifier.fromNamespaceAndPath(
                         JAPANESE_MOD_ID,
                         "textures/entity/triceratops/triceratops_green.png"
                     )
@@ -74,12 +74,12 @@ class TriceratopsRenderer(pContext: EntityRendererProvider.Context) :
             }
         }
 
-        private fun bakeModel(context: EntityRendererProvider.Context): AdultAndBabyModelPair<TriceratopsModel<TriceratopsEntity?>?> {
+        private fun bakeModel(context: EntityRendererProvider.Context): AdultAndBabyModelPair<TriceratopsModel<TriceratopsEntity>> {
             val adult =
-                TriceratopsModel<TriceratopsEntity?>(context.bakeLayer(ModModelLayers.TRICERATOPS))
+                TriceratopsModel<TriceratopsEntity>(context.bakeLayer(ModModelLayers.TRICERATOPS))
             val baby =
-                TriceratopsModel<TriceratopsEntity?>(context.bakeLayer(ModModelLayers.TRICERATOPS_BABY))
-            return AdultAndBabyModelPair<TriceratopsModel<TriceratopsEntity?>?>(adult, baby)
+                TriceratopsModel<TriceratopsEntity>(context.bakeLayer(ModModelLayers.TRICERATOPS_BABY))
+            return AdultAndBabyModelPair<TriceratopsModel<TriceratopsEntity>>(adult, baby)
         }
     }
 }

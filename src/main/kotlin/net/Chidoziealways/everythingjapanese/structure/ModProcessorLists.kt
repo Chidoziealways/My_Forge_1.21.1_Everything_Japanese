@@ -5,7 +5,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.levelgen.structure.templatesystem.*
@@ -15,10 +15,12 @@ object ModProcessorLists {
     val HELL_TEMPLE_START_DEGRADATION: ResourceKey<StructureProcessorList> = createKey("hell_temple_start_degradation")
     val HELL_TEMPLE_COURT_DEGRADATION: ResourceKey<StructureProcessorList> = createKey("hell_temple_court_degradation")
 
+    val SHINTO_SHRINE_DEGRADATION = createKey("shinto_shrine_torii_degradation")
+
     private fun createKey(pName: String): ResourceKey<StructureProcessorList> {
         return ResourceKey.create(
             Registries.PROCESSOR_LIST,
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, pName)
         )
     }
 
@@ -43,6 +45,28 @@ object ModProcessorLists {
             Blocks.BLACKSTONE.defaultBlockState()
         )
         register(pContext, EMPTY, ImmutableList.of<StructureProcessor>())
+
+        register(
+            pContext,
+            SHINTO_SHRINE_DEGRADATION,
+            ImmutableList.of(
+                RuleProcessor(
+                    ImmutableList.of(
+                        ProcessorRule(
+                            RandomBlockMatchTest(Blocks.STONE, 0.4f),
+                            AlwaysTrueTest.INSTANCE,
+                            Blocks.COBBLESTONE.defaultBlockState()
+                        ),
+                        ProcessorRule(
+                            RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.2f),
+                            AlwaysTrueTest.INSTANCE,
+                            Blocks.CRACKED_STONE_BRICKS.defaultBlockState()
+                        )
+                    )
+                ),
+                ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+            )
+        )
 
         register(
             pContext,

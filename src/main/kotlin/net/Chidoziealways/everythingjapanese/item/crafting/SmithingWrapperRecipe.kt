@@ -34,35 +34,30 @@ data class SmithingWrapperRecipe(private val template: Ingredient, private val b
             KatanaItem.setWrap(copy, wrapper)
             return copy
         }
+        val CODEC: MapCodec<SmithingWrapperRecipe> = RecordCodecBuilder.mapCodec { instance ->
+            instance.group(
+                Ingredient.CODEC.fieldOf("template").forGetter { it.template },
+                Ingredient.CODEC.fieldOf("base").forGetter { it.base },
+                Wrapping.CODEC.fieldOf("wrapper").forGetter { it.wrapper }
+            ).apply(instance, ::SmithingWrapperRecipe)
+        }
+
+        val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SmithingWrapperRecipe> = StreamCodec.composite(
+            Ingredient.CONTENTS_STREAM_CODEC, {it.template},
+            Ingredient.CONTENTS_STREAM_CODEC, {it.base},
+            Wrapping.STREAM_CODEC, {it.wrapper},
+            ::SmithingWrapperRecipe
+        )
+        val SERIALIZER = RecipeSerializer(CODEC, STREAM_CODEC)
     }
 
     override fun assemble(
         input: SmithingRecipeInput,
-        registries: HolderLookup.Provider
     ): ItemStack = applyBlade(input.base, this.wrapper)
 
+    override fun showNotification(): Boolean = true
+
+    override fun group(): String = ""
+
     override fun placementInfo(): PlacementInfo = PlacementInfo.create(listOf(template, base))
-
-    class Serializer: RecipeSerializer<SmithingWrapperRecipe> {
-        companion object {
-            val CODEC: MapCodec<SmithingWrapperRecipe> = RecordCodecBuilder.mapCodec { instance ->
-                instance.group(
-                    Ingredient.CODEC.fieldOf("template").forGetter { it.template },
-                    Ingredient.CODEC.fieldOf("base").forGetter { it.base },
-                    Wrapping.CODEC.fieldOf("wrapper").forGetter { it.wrapper }
-                ).apply(instance, ::SmithingWrapperRecipe)
-            }
-
-            val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SmithingWrapperRecipe> = StreamCodec.composite(
-                Ingredient.CONTENTS_STREAM_CODEC, {it.template},
-                Ingredient.CONTENTS_STREAM_CODEC, {it.base},
-                Wrapping.STREAM_CODEC, {it.wrapper},
-                ::SmithingWrapperRecipe
-            )
-        }
-
-        override fun codec(): MapCodec<SmithingWrapperRecipe> = CODEC
-
-        override fun streamCodec(): StreamCodec<RegistryFriendlyByteBuf, SmithingWrapperRecipe> = STREAM_CODEC
-    }
 }

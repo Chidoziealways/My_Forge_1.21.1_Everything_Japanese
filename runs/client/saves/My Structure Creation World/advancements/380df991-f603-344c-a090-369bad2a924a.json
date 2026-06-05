@@ -314,12 +314,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/chain": {
-    "criteria": {
-      "has_iron_ingot": "2025-07-25 09:45:09 +0100"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/iron_block": {
     "criteria": {
       "has_iron_ingot": "2025-07-25 09:45:09 +0100"
@@ -1570,5 +1564,59 @@
     },
     "done": true
   },
-  "DataVersion": 4440
+  "everythingjapanese:recipes/combat/soul_dagger": {
+    "criteria": {
+      "has_stick": "2025-11-09 14:20:20 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/iron_chain": {
+    "criteria": {
+      "has_iron_ingot": "2025-11-09 14:20:20 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/decorations/hinoki_fence": {
+    "criteria": {
+      "has_hinoki_ban": "2025-11-17 14:09:40 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/hinoki_pressure_plate": {
+    "criteria": {
+      "has_hinoki_ban": "2025-11-17 14:09:40 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/hinoki_button": {
+    "criteria": {
+      "has_hinoki_ban": "2025-11-17 14:09:40 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/hinoki_stairs": {
+    "criteria": {
+      "has_hinoki_ban": "2025-11-17 14:09:40 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/redstone/hinoki_fence_gate": {
+    "criteria": {
+      "has_hinoki_ban": "2025-11-17 14:09:40 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/building_blocks/hinoki_slab": {
+    "criteria": {
+      "has_hinoki_ban": "2025-11-17 14:09:40 +0100"
+    },
+    "done": true
+  },
+  "everythingjapanese:recipes/combat/wrap_white_smithing_wrapper": {
+    "criteria": {
+      "has_smithing_wrapper_template": "2025-11-17 14:19:27 +0100"
+    },
+    "done": true
+  },
+  "DataVersion": 4556
 }

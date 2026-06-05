@@ -1,26 +1,19 @@
 package net.Chidoziealways.everythingjapanese.entity.client.chiretsusho
 
 import com.mojang.blaze3d.vertex.PoseStack
-import com.mojang.blaze3d.vertex.VertexConsumer
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.MultiBufferSource
-import net.minecraft.client.renderer.RenderType
-import net.minecraft.client.renderer.block.BlockRenderDispatcher
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 import net.minecraft.client.renderer.entity.EntityRenderer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
-import net.minecraft.core.BlockPos
 import net.minecraft.util.RandomSource
-import net.minecraft.world.level.EmptyBlockAndTintGetter
 import net.Chidoziealways.everythingjapanese.entity.custom.ChiretsuShōProjectileEntity
 import net.minecraft.client.renderer.SubmitNodeCollector
+import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState
-import net.minecraft.client.renderer.state.CameraRenderState
-import net.minecraft.world.level.block.BaseEntityBlock
+import net.minecraft.client.renderer.rendertype.RenderTypes
+import net.minecraft.client.renderer.state.level.CameraRenderState
 import net.minecraft.world.level.block.entity.BlockEntity
-import net.minecraft.world.level.block.entity.BlockEntityType
-import net.minecraft.world.level.block.state.BlockState
 import org.joml.Quaternionf
 
 class ChiretsuShoProjectileRenderer(context: EntityRendererProvider.Context):
@@ -28,7 +21,7 @@ EntityRenderer<ChiretsuShōProjectileEntity, ChiretsuShoProjectileRenderState>(c
 
     val minecraft = Minecraft.getInstance()
 
-    private val blockRendererDispatcher: BlockRenderDispatcher = minecraft.blockRenderer
+    private val modelManager = minecraft.modelManager;
     private val blockEntityRendererDispatcher: BlockEntityRenderDispatcher = minecraft.blockEntityRenderDispatcher
 
     override fun submit(
@@ -42,7 +35,7 @@ EntityRenderer<ChiretsuShōProjectileEntity, ChiretsuShoProjectileRenderState>(c
         val blockState = renderState.blockState ?: return
         val entity = renderState.entity ?: return
         val blockEntity = renderState.blockEntityCopy
-        val level = entity.level() ?: minecraft.level ?: EmptyBlockAndTintGetter.INSTANCE
+        val level = entity.level()
         val blockPos = entity.blockPosition()
 
         poseStack.pushPose()
@@ -65,19 +58,28 @@ EntityRenderer<ChiretsuShōProjectileEntity, ChiretsuShoProjectileRenderState>(c
         } else {
             ChunkSectionLayer.values().forEach { layer ->
                 val renderType = when (layer) {
-                    ChunkSectionLayer.SOLID -> RenderType.solid()
-                    ChunkSectionLayer.CUTOUT, ChunkSectionLayer.CUTOUT_MIPPED -> RenderType.cutout()
-                    ChunkSectionLayer.TRANSLUCENT -> RenderType.translucentMovingBlock()
-                    ChunkSectionLayer.TRIPWIRE -> RenderType.cutout()
+                    ChunkSectionLayer.SOLID -> RenderTypes.solidMovingBlock()
+                    ChunkSectionLayer.CUTOUT -> RenderTypes.cutoutMovingBlock()
+                    ChunkSectionLayer.TRANSLUCENT -> RenderTypes.translucentMovingBlock()
                 }
+                val model = modelManager.blockStateModelSet.get(blockState)
+
+                val parts = mutableListOf<BlockStateModelPart>()
+
+                model.collectParts(
+                    RandomSource.create(),
+                    parts
+                )
+
+
                 collector.submitBlockModel(
                     poseStack,
                     renderType,
-                    blockRendererDispatcher.getBlockModel(blockState),
-                    1f, 1f, 1f, // RGB multiplier
+                    parts,
+                    intArrayOf(-1, -1),
                     renderState.lightCoords,
                     0, // overlay
-                    0 // outline
+                    1
                 )
             }
         }

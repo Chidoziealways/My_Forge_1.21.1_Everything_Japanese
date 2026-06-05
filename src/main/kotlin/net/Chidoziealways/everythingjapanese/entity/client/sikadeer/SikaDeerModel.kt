@@ -15,7 +15,7 @@ import java.util.function.Consumer
 // Paste this class into your mod and generate all required imports
 
 
-class SikaDeerModel<T : SikaDeerEntity?>(root: ModelPart) : EntityModel<SikaDeerRenderState?>(root) {
+class SikaDeerModel<T : SikaDeerEntity?>(root: ModelPart) : EntityModel<SikaDeerRenderState>(root) {
     private val walkAnimation: KeyframeAnimation
     private val idleAnimation: KeyframeAnimation
 
@@ -59,7 +59,7 @@ class SikaDeerModel<T : SikaDeerEntity?>(root: ModelPart) : EntityModel<SikaDeer
         idleAnimation = SikaDeerAnimations.IDLE.bake(root)
     }
 
-    override fun setupAnim(state: SikaDeerRenderState?) {
+    override fun setupAnim(state: SikaDeerRenderState) {
         super.setupAnim(state!!)
         this.root().getAllParts().forEach(Consumer { obj: ModelPart? -> obj!!.resetPose() })
         this.applyHeadRotation(state!!.netHeadYaw, state.headPitch)
@@ -80,7 +80,7 @@ class SikaDeerModel<T : SikaDeerEntity?>(root: ModelPart) : EntityModel<SikaDeer
     companion object {
         private const val MAX_WALK_ANIMATION_SPEED = 2.0f
         private const val WALK_ANIMATION_SCALE_FACTOR = 2.5f
-        val BABY_TRANSFORMER: MeshTransformer = BabyModelTransform(true, 8.0f, 6.0f, mutableSetOf<String?>("head"))
+        val BABY_TRANSFORMER: MeshTransformer = BabyModelTransform(true, 8.0f, 6.0f, mutableSetOf<String>("head"))
         fun createBodyLayer(): LayerDefinition {
             val meshdefinition = MeshDefinition()
             val partdefinition = meshdefinition.getRoot()

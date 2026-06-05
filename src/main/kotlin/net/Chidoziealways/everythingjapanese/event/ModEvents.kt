@@ -15,8 +15,7 @@ import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.animal.Animal
-import net.minecraft.world.entity.npc.VillagerProfession
-import net.minecraft.world.entity.npc.VillagerTrades.ItemListing
+import net.minecraft.world.entity.npc.villager.VillagerProfession
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
@@ -24,13 +23,12 @@ import net.minecraft.world.item.Items
 import net.minecraft.world.item.alchemy.Potions
 import net.minecraft.world.item.trading.ItemCost
 import net.minecraft.world.item.trading.MerchantOffer
+import net.minecraft.world.item.trading.VillagerTrades
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent
 import net.neoforged.neoforge.event.level.BlockEvent
-import net.neoforged.neoforge.event.village.VillagerTradesEvent
-import net.neoforged.neoforge.event.village.WandererTradesEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
 @KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
@@ -67,11 +65,11 @@ object ModEvents {
             val touchedEntity = event.target
             if (event.target is Animal) {
                 if (player.mainHandItem == Items.AIR.defaultInstance) {
-                    player.displayClientMessage(
+                    player.sendOverlayMessage(
                         Component.literal(
                             player.name.string + " Just Right Clicked " + touchedEntity!!.getName()
                                 .string
-                        ), true
+                        )
                     )
                 }
             }
@@ -85,11 +83,11 @@ object ModEvents {
             if (event.entity is Animal) {
                 val hitEntity = event.entity
                 val murderItem: Item = player.mainHandItem.item
-                player.displayClientMessage(
+                player.sendOverlayMessage(
                     Component.literal(
                         player.name.string + " Just Hit a Fricking " + hitEntity.getName()
                             .string + " with " + murderItem.getName(murderItem.defaultInstance).string
-                    ), true
+                    )
                 )
                 hitEntity.addEffect(MobEffectInstance(MobEffects.POISON, 600, 5))
             }
@@ -123,82 +121,82 @@ object ModEvents {
     }
 
     
-    @SubscribeEvent
-    fun addCustomTrades(event: VillagerTradesEvent) {
+    /*@SubscribeEvent
+    fun addCustomTrades(event: TradesEvent) {
         if (event.getType() === VillagerProfession.ARMORER) {
             val trades = event.getTrades()
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
                     ItemStack(JModItems.PYRITE_SWORD, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
                     ItemStack(JModItems.PYRITE_AXE, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
                     ItemStack(JModItems.PYRITE_SHOVEL, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
                     ItemStack(JModItems.PYRITE_HOE, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 15),
                     ItemStack(JModItems.PYRITE_BATTLE_AXE, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
                     ItemStack(JModItems.PYRITE_HAMMER, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 10),
                     ItemStack(JModItems.PYRITE_HORSE_ARMOR, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
                     ItemStack(JModItems.PYRITE_HELMET, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
                     ItemStack(JModItems.PYRITE_CHESTPLATE, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
                     ItemStack(JModItems.PYRITE_LEGGINGS, 1), 6, 4, 0.05f
                 )
             })
 
-            trades.get(2)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(2)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.EMERALD, 16),
                     ItemStack(JModItems.PYRITE_BOOTS, 1), 6, 4, 0.05f
@@ -208,7 +206,7 @@ object ModEvents {
         if (event.getType() === ModVillagers.FURNITURE_MAKER.getKey()) {
             val trades = event.getTrades()
 
-            trades.get(1)!!.add(ItemListing { pTrader: Entity?, pRandom: RandomSource? ->
+            trades.get(1)!!.add(VillagerTrades.ItemListing { level, pTrader: Entity, pRandom: RandomSource ->
                 MerchantOffer(
                     ItemCost(Items.DIAMOND, 18),
                     ItemStack(JModBlocks.CHAIR, 20), 6, 4, 0.6f
@@ -223,14 +221,14 @@ object ModEvents {
         val genericTrades = event.genericTrades
         val rareTrades = event.rareTrades
 
-        genericTrades.add { entity, randomSource -> MerchantOffer(
+        genericTrades.add { level, entity, randomSource -> MerchantOffer(
             ItemCost(Items.DIAMOND, 12),
             ItemStack(JModItems.RADIATION_STAFF, 1), 1, 10, 0.2f
         ) }
 
-        rareTrades.add { entity, randomSource -> MerchantOffer(
+        rareTrades.add { level, entity, randomSource -> MerchantOffer(
             ItemCost(Items.NETHERITE_INGOT, 8),
             ItemStack(JModItems.AO_TO_NATSU_MUSIC_DISC, 1), 1, 10, 0.2f
         ) }
-    }
+    }*/
 }

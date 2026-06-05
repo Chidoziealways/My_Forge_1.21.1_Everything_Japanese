@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "everythingjapanese:item/sika_deer_spawn_egg"
-  }
-}

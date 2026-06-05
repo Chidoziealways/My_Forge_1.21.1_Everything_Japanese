@@ -6,14 +6,14 @@ import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.chat.Component
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerPlayer
 import net.neoforged.neoforge.network.handling.IPayloadContext
 
 object CycleJutsuPacket: CustomPacketPayload {
-    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
+    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload> = TYPE
 
-        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu_cycle")
+        val ID = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "jutsu_cycle")
         val TYPE = CustomPacketPayload.Type<CycleJutsuPacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, CycleJutsuPacket> = StreamCodec.unit(CycleJutsuPacket)
@@ -24,9 +24,8 @@ object CycleJutsuPacket: CustomPacketPayload {
                 if (player is ServerPlayer) {
                     val jutsu = player.getCapability(ModCapabilities.JUTSU_CAPABILITY)
                     jutsu!!.cycleJutsu(player)
-                    player.displayClientMessage(
+                    player.sendOverlayMessage(
                         Component.literal("Selected Jutsu: " + jutsu.getSelectedJutsu()),
-                        true
                     )
                 }
             })

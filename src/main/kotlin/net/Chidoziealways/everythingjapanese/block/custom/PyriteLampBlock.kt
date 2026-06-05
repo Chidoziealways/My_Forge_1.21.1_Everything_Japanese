@@ -14,7 +14,7 @@ class PyriteLampBlock(properties: BlockBehaviour.Properties) : Block(properties)
     init {
         this.registerDefaultState(
             this.defaultBlockState()
-                .setValue<Boolean, Boolean?>(CLICKED, false)
+                .setValue<Boolean, Boolean>(CLICKED, false)
         )
     }
 
@@ -26,14 +26,14 @@ class PyriteLampBlock(properties: BlockBehaviour.Properties) : Block(properties)
             val currentState: Boolean = pState.getValue<Boolean>(CLICKED)
             pLevel.setBlockAndUpdate(
                 pPos,
-                pState.setValue<Boolean, Boolean?>(CLICKED, !currentState)
+                pState.setValue<Boolean, Boolean>(CLICKED, !currentState)
             )
         }
 
         return InteractionResult.SUCCESS
     }
 
-    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
         pBuilder.add(CLICKED)
     }
 

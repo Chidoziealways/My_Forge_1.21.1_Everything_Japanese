@@ -171,8 +171,8 @@ class ShojiDoorBlock(properties: BlockBehaviour.Properties): BaseEntityBlock(pro
         val FACING: EnumProperty<Direction> = HorizontalDirectionalBlock.FACING
         val HINGE: EnumProperty<DoorHingeSide> = BlockStateProperties.DOOR_HINGE
 
-        val CODEC: MapCodec<ShojiDoorBlock?> =
-            BlockBehaviour.simpleCodec<ShojiDoorBlock?> { pProperties: BlockBehaviour.Properties ->
+        val CODEC: MapCodec<ShojiDoorBlock> =
+            BlockBehaviour.simpleCodec<ShojiDoorBlock> { pProperties: BlockBehaviour.Properties ->
                 ShojiDoorBlock(pProperties)
             }
     }

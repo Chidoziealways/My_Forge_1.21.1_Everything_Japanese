@@ -6,14 +6,14 @@ import net.minecraft.client.Minecraft
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.neoforged.neoforge.network.handling.IPayloadContext
 
 data class StaminaIncreasePacket(val amount: Float): CustomPacketPayload {
-    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload?> = TYPE
+    override fun type(): CustomPacketPayload.Type<out CustomPacketPayload> = TYPE
 
     companion object {
-        val ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "stamina_increase")
+        val ID = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "stamina_increase")
         val TYPE = CustomPacketPayload.Type<StaminaIncreasePacket>(ID)
 
         val CODEC: StreamCodec<FriendlyByteBuf, StaminaIncreasePacket> = StreamCodec.of(

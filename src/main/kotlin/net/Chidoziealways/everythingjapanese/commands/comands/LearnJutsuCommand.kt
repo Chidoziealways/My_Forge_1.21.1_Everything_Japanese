@@ -6,7 +6,7 @@ import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.jutsu.IJutsuCapability
 import net.minecraft.commands.CommandSourceStack
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.player.Player
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.RegisterCommandsEvent
@@ -30,8 +30,8 @@ object LearnJutsuCommand {
 //        );
     }
 
-    private fun learnJutsu(source: CommandSourceStack, target: Player, jutsuId: ResourceLocation): Int {
-        val jutsu = target.getCapability<IJutsuCapability?>(ModCapabilities.JUTSU_CAPABILITY)
+    private fun learnJutsu(source: CommandSourceStack, target: Player, jutsuId: Identifier): Int {
+        val jutsu = target.getCapability<IJutsuCapability>(ModCapabilities.JUTSU_CAPABILITY)
         //jutsu!!.learnJutsu(jutsuId.path)
         source.sendSuccess(
             { Component.literal("You have learned the Jutsu: " + jutsuId.path) },

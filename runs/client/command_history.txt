@@ -1,50 +1,50 @@
-/tick rate 20
-/tick rate 2
-/tick rate 20
-/tick rate 2
-/tick rate 20
 /summon villager
-/tick rate 2
-/tick rate 20
+/
 /summon villager
-/summon ske
-/summon minecraft:skeleton
-/tick rate 2
-/tick rate 20
-/tick rate 2
-/tick rate 20
-/summon minecraft:pig
-/tick rate 2
-/tick rate 20
-/summon pig
-/give Dev everythingjapanese:bullet
-/give Dev everythingjapanese:bullet 64
-/summon minecraft:villager
-/tick rate 2
-/summon minecraft:villager
-/tick rate 2
-/tick rate 20
-/tick rate 2
-/tick rate 20
-/locate poi everythingjapanese:hell_portal
-/tp @s 54 ~ 0
-/locate poi everythingjapanese:hell_portal
-/tp @s 54 ~ 1
-/give dev everythingjapanese:blade_steel
-/give dev everythingjapanese:katana
-/give dev everythingjapanese:ramen
-/give dev everythingjapanese:soul_dagger
-/summon minecraft:ender_dragon
-/give dev minecraft:enchanted_golden_apple 30
+/
+/summon villager
+/kill zombie
+/tp ~1000 ~ ~10000
 /time set day
-/summon minecraft:ender_dragon
-/gamemode creative
-/give Dev everythingjapanese:gun
-/give Dev everythingjapanese:bullet 500
-/give Dev everythingjapanese:japanese_flag
-/kill @e[type= minecraft:ender_dragon]
+/kill zombie
+/kill @e[type= zombie]
+/kill @e[type= minecraft:skeleton]
+/kill @e[type= minecraft:spider]
+/kill @e[type= minecraft:creeper]
+/kill @e[type= minecraft:skeleton]
+/kill @e[type= minecraft:spider]
+/kill @e[type= zombie]
+/tp ~1000 ~ ~10000
+/tp ~10000 ~ ~100000
+/spawnpoint
+/gamerule keep_inventory true
+/tick rate 0
+/tick rate 1
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick rate 20
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/toggleEJGuiInfo
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/tick freeze
+/tick unfreeze
+/startQuest everythingjapanese:village
+/kill @e[type=everythingjapanese:chiretsu_sho_projectile]
+/tick freeze
+/tick unfreeze
+/kill @e[type=everythingjapanese:chiretsu_sho_projectile]
 /summon everythingjapanese:cursed_samurai
-/give Dev minecraft:enchanted_golden_apple 64
-/summon everythingjapanese:cursed_samurai
-/time set night
-/gamerule doMobSpawning true

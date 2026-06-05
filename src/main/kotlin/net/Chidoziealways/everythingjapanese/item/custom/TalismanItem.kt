@@ -77,7 +77,7 @@ class TalismanItem(props: Properties): Item(props) {
         val kanji = getKanji(stack) ?: return InteractionResult.PASS
 
         if (!player.level().isClientSide) {
-            interactionTarget.setData(ModAttachments.ACTIVE_TALISMAN, kanji)
+            //interactionTarget.setData(ModAttachments.ACTIVE_TALISMAN, kanji)
             kanji.value().entityEffect?.apply(player.level() as ServerLevel, interactionTarget.blockPosition(), player, interactionTarget)
             /*when(kanji) {
                 KanjiType.FIRE -> interactionTarget.igniteForSeconds(5f)
@@ -92,33 +92,5 @@ class TalismanItem(props: Properties): Item(props) {
             stack.shrink(1)
         }
         return InteractionResult.SUCCESS
-    }
-
-    private fun fireEffect(level: Level, pos: BlockPos, player: Player) {
-        val target = pos.relative(player.direction)
-        if (level.isEmptyBlock(target)) {
-            level.setBlock(target, Blocks.FIRE.defaultBlockState(), 11)
-        }
-    }
-
-    private fun waterEffect(level: Level, pos: BlockPos, player: Player) {
-        val target = pos.relative(player.direction)
-        if (level.isEmptyBlock(target)) {
-            level.setBlock(target, Blocks.WATER.defaultBlockState(), 11)
-        }
-    }
-
-    private fun sealEffect(level: Level, pos: BlockPos, player: Player) {
-        val lock = level.getCapability(ModCapabilities.LOCK_CAPABILITY, pos) ?: return
-        lock.setLocked(true)
-        lock.setOwner(player.uuid)
-        player.displayClientMessage(Component.literal("Sealed Block! Owner is ${player.uuid}"), true)
-    }
-
-    private fun lightningEffect(level: Level, pos: BlockPos, player: Player) {
-        if (level is ServerLevel) {
-            val lightning = EntityType.LIGHTNING_BOLT.spawn(level, pos, EntitySpawnReason.MOB_SUMMONED)
-            lightning?.setPos(pos.x + 0.5, pos.y.toDouble(), pos.z + 0.5)
-        }
     }
 }

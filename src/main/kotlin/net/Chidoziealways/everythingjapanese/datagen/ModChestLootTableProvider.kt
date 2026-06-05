@@ -12,7 +12,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue
 import java.util.function.BiConsumer
 
 class ModChestLootTableProvider(registries: HolderLookup.Provider): LootTableSubProvider {
-    override fun generate(builder: BiConsumer<ResourceKey<LootTable?>?, LootTable.Builder?>) {
+    override fun generate(builder: BiConsumer<ResourceKey<LootTable>, LootTable.Builder>) {
         builder.accept(
             ModLootTables.DOJO,
             LootTable.lootTable()

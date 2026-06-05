@@ -64,7 +64,7 @@ object ModBlockEntities {
                         pPos,
                         pBlockState
                     ) },
-                    mutableSetOf<Block?>(JModBlocks.PEDESTAL))
+                    mutableSetOf<Block>(JModBlocks.PEDESTAL))
         }
 
     val GROWTH_CHAMBER_BE by BLOCK_ENTITIES.register("growth_chamber_be") { ->
@@ -74,7 +74,7 @@ object ModBlockEntities {
                     pPos,
                     pState
                 ) },
-            mutableSetOf<Block?>(JModBlocks.GROWTH_CHAMBER)
+            mutableSetOf<Block>(JModBlocks.GROWTH_CHAMBER)
         )
     }
 

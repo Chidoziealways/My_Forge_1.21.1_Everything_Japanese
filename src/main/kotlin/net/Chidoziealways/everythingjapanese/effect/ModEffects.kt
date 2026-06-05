@@ -2,7 +2,7 @@ package net.Chidoziealways.everythingjapanese.effect
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.effect.MobEffectCategory
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
@@ -18,19 +18,19 @@ object ModEffects {
             AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x36ebab)
                 .addAttributeModifier(
                     Attributes.MOVEMENT_SPEED,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "adrenaline"),
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "adrenaline"),
                     -0.25,
                     AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                 )
                 .addAttributeModifier(
                     Attributes.MINING_EFFICIENCY,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "adrenaline"),
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "adrenaline"),
                     2.0,
                     AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                 )
                 .addAttributeModifier(
                     Attributes.SUBMERGED_MINING_SPEED,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "adrenaline"),
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "adrenaline"),
                     2.0,
                     AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                 )

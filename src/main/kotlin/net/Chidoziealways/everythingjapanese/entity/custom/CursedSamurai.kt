@@ -1,10 +1,23 @@
 package net.Chidoziealways.everythingjapanese.entity.custom
 
+import com.geckolib.animatable.GeoEntity
+import com.geckolib.animatable.instance.AnimatableInstanceCache
+import com.geckolib.animatable.manager.AnimatableManager
+import com.geckolib.animation.AnimationController
+import com.geckolib.animation.RawAnimation
+import com.geckolib.animation.`object`.PlayState
+import com.geckolib.animation.state.AnimationTest
+import com.geckolib.util.GeckoLibUtil
+import net.Chidoziealways.everythingcore.capabilities.SharedCapabilities
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.entity.getAnimationSeconds
 import net.Chidoziealways.everythingjapanese.entity.getAnimationTick
 import net.Chidoziealways.everythingjapanese.entity.isAnimationPlaying
+import net.Chidoziealways.everythingjapanese.quest.ModQuests
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.server.level.ServerPlayer
+import net.minecraft.world.InteractionHand
+import net.minecraft.world.InteractionResult
 import net.minecraft.world.damagesource.DamageSource
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
@@ -15,24 +28,17 @@ import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal
-import net.minecraft.world.entity.animal.IronGolem
+import net.minecraft.world.entity.animal.golem.IronGolem
 import net.minecraft.world.entity.monster.Monster
-import net.minecraft.world.entity.npc.AbstractVillager
+import net.minecraft.world.entity.npc.Npc
+import net.minecraft.world.entity.npc.villager.AbstractVillager
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.gameevent.GameEvent
 import net.neoforged.neoforge.common.CommonHooks
-import software.bernie.geckolib.animatable.GeoEntity
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache
-import software.bernie.geckolib.animatable.manager.AnimatableManager
-import software.bernie.geckolib.animatable.processing.AnimationController
-import software.bernie.geckolib.animatable.processing.AnimationTest
-import software.bernie.geckolib.animation.PlayState
-import software.bernie.geckolib.animation.RawAnimation
-import software.bernie.geckolib.util.GeckoLibUtil
 import java.util.Random
 
-class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), GeoEntity {
+class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), Npc, GeoEntity {
 
     val WALK = RawAnimation.begin().thenLoop("walk")
     val IDLE = RawAnimation.begin().thenLoop("idle")
@@ -47,8 +53,8 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
     private var hitsRemaining: Int = 0
 
     override fun registerControllers(controllers: AnimatableManager.ControllerRegistrar) {
-        controllers.add(AnimationController("Movement", 5, this::walkAnimController))
-        controllers.add(AnimationController<CursedSamurai>("horizontal_attack_controller", 0) { animState ->
+        controllers.add(AnimationController<CursedSamurai>("Movement", 5, this::walkAnimController))
+        controllers.add(AnimationController<CursedSamurai>("horizontal_attack_controller", 0) { animState: AnimationTest<CursedSamurai> ->
             if (animState.isAnimationPlaying()) {
                 print("HORIZONTAL ATTACK")
                 performAttackIfFrame(animState, "horizontal_sword_swing", listOf(2))
@@ -56,7 +62,7 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
             PlayState.STOP
         }.triggerableAnim("horizontal_sword_swing", HORIZONTAL_SWORD_SWING))
 
-        controllers.add(AnimationController<CursedSamurai>("successive_attack_controller", 0) { animState ->
+        controllers.add(AnimationController<CursedSamurai>("successive_attack_controller", 0) { animState: AnimationTest<CursedSamurai> ->
             if (animState.isAnimationPlaying()) {
                 print("SUCCESSIVE ATTACK")
                 performAttackIfFrame(animState, "successive_sword_swing", listOf(2, 3, 4, 5))
@@ -99,12 +105,12 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
     }
 
     fun addBehaviourGoals() {
-        goalSelector.addGoal(9, MeleeAttackGoal(this, 1.0, true))
+        //goalSelector.addGoal(9, MeleeAttackGoal(this, 1.0, true))
         goalSelector.addGoal(6, MoveThroughVillageGoal(this, 1.0, false, 6) {true})
         targetSelector.addGoal(5, HurtByTargetGoal(this).setAlertOthers(CursedSamurai::class.java))
-        targetSelector.addGoal(10, NearestAttackableTargetGoal(this, Player::class.java, false))
-        targetSelector.addGoal(10, NearestAttackableTargetGoal(this, AbstractVillager::class.java, false))
-        targetSelector.addGoal(10, NearestAttackableTargetGoal(this, IronGolem::class.java, false))
+        //targetSelector.addGoal(10, NearestAttackableTargetGoal(this, Player::class.java, false))
+        //targetSelector.addGoal(10, NearestAttackableTargetGoal(this, AbstractVillager::class.java, false))
+        //targetSelector.addGoal(10, NearestAttackableTargetGoal(this, IronGolem::class.java, false))
     }
 
     override fun doHurtTarget(server: ServerLevel, entity: Entity): Boolean {
@@ -144,6 +150,15 @@ class CursedSamurai(level: Level): Monster(ModEntities.CURSED_SAMURAI, level), G
         if (deathTime >= 60 && !level().isClientSide) {
             remove(RemovalReason.KILLED)
         }
+    }
+
+    override fun mobInteract(player: Player, hand: InteractionHand): InteractionResult {
+        if (this.level().isClientSide) return super.mobInteract(player, hand)
+        val stack = player.getItemInHand(hand)
+        if (!stack.isEmpty) return super.mobInteract(player, hand)
+        val cap = player.getCapability(SharedCapabilities.QUEST_CAPABILITY) ?: return super.mobInteract(player, hand)
+        cap.giveQuest(ModQuests.VILLAGE.identifier(), player as ServerPlayer)
+        return super.mobInteract(player, hand)
     }
 
     override fun die(damageSource: DamageSource) {

@@ -127,5 +127,5 @@ class SoulGuitarItem(props: Properties) : Item(props) {
     }
 }
 
-private fun Vec3.with(x: Double = this.x, y: Double = this.y, z: Double = this.z): Vec3 =
+fun Vec3.with(x: Double = this.x, y: Double = this.y, z: Double = this.z): Vec3 =
     Vec3(x, y, z)

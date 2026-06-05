@@ -42,7 +42,7 @@ object ModMenuTypes {
         MENUS.register(
             "growth_chamber_menu",
             Supplier {
-                IMenuTypeExtension.create<GrowthChamberMenu?> { pContainerId: Int, inv: Inventory, extraData: FriendlyByteBuf ->
+                IMenuTypeExtension.create<GrowthChamberMenu> { pContainerId: Int, inv: Inventory, extraData: FriendlyByteBuf ->
                     GrowthChamberMenu(
                         pContainerId,
                         inv,

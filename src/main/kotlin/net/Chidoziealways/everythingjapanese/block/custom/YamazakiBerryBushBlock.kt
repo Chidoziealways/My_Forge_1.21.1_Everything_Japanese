@@ -44,7 +44,7 @@ class YamazakiBerryBushBlock(properties: Properties) : SweetBerryBushBlock(prope
                 1.0f,
                 0.8f + pLevel.random.nextFloat() * 0.4f
             )
-            val blockstate = pState.setValue<Int, Int?>(AGE, 1)
+            val blockstate = pState.setValue<Int, Int>(AGE, 1)
             pLevel.setBlock(pPos, blockstate, 2)
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate))
             return InteractionResult.SUCCESS

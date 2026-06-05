@@ -3,8 +3,9 @@ package net.Chidoziealways.everythingjapanese.quest
 import net.Chidoziealways.everythingcore.Everythingcore
 import net.Chidoziealways.everythingcore.quest.Quest
 import net.Chidoziealways.everythingcore.util.SharedRegistries
+import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
 object ModQuests {
     val VILLAGE: ResourceKey<Quest> = createKey("village")
@@ -15,7 +16,7 @@ object ModQuests {
     private fun createKey(name: String): ResourceKey<Quest> {
         return ResourceKey.create(
             SharedRegistries.QUEST,
-            ResourceLocation.fromNamespaceAndPath(Everythingcore.ID, name)
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
         )
     }
 }

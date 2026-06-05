@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.custom.*
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobCategory
 import net.minecraft.world.level.Level
@@ -17,7 +17,7 @@ object ModEntities {
     val ENTITY_TYPES = DeferredRegister.create(Registries.ENTITY_TYPE, JAPANESE_MOD_ID)
     
     val TRICERATOPS by ENTITY_TYPES.register("triceratops") { ->
-            EntityType.Builder.of<TriceratopsEntity?>({ pEntityType: EntityType<TriceratopsEntity?>, pLevel: Level ->
+            EntityType.Builder.of<TriceratopsEntity>({ pEntityType: EntityType<TriceratopsEntity>, pLevel: Level ->
                 TriceratopsEntity(
                     pEntityType,
                     pLevel
@@ -26,10 +26,24 @@ object ModEntities {
                 .sized(1.5f, 1.5f).build(
                     ResourceKey.create(
                         Registries.ENTITY_TYPE,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "triceratops")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "triceratops")
                     )
                 )
         }
+
+    val ASPIRATION by ENTITY_TYPES.register("aspiration") { ->
+        EntityType.Builder.of({ _, level ->
+            AspirationEntity(
+                level
+            )
+        }, MobCategory.AMBIENT)
+            .sized(0.5f, 0.5f).build(
+                ResourceKey.create(
+                    Registries.ENTITY_TYPE,
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "aspiration")
+                )
+            )
+    }
 
     val CURSED_SAMURAI by ENTITY_TYPES.register("cursed_samurai") { ->
         EntityType.Builder.of<CursedSamurai>( { entityType, level ->
@@ -40,7 +54,7 @@ object ModEntities {
             .sized(1f, 2f).build(
                 ResourceKey.create(
                     Registries.ENTITY_TYPE,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "cursed_samurai")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "cursed_samurai")
                 )
             )
     }
@@ -54,13 +68,13 @@ object ModEntities {
             .sized(1f, 2f).build(
                 ResourceKey.create(
                     Registries.ENTITY_TYPE,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "bullet")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "bullet")
                 )
             )
     }
-    
+
     val SIKA_DEER by ENTITY_TYPES.register("sika_deer") { ->
-            EntityType.Builder.of<SikaDeerEntity?>({ pEntityType: EntityType<SikaDeerEntity?>, pLevel: Level ->
+            EntityType.Builder.of<SikaDeerEntity>({ pEntityType: EntityType<SikaDeerEntity>, pLevel: Level ->
                 SikaDeerEntity(
                     pEntityType,
                     pLevel
@@ -69,7 +83,7 @@ object ModEntities {
                 .sized(3.0f, 10.0f).build(
                     ResourceKey.create(
                         Registries.ENTITY_TYPE,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "sika_deer")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "sika_deer")
                     )
                 )
         }
@@ -84,7 +98,7 @@ object ModEntities {
                 .sized(0.5f, 1.15f).build(
                     ResourceKey.create(
                         Registries.ENTITY_TYPE,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe")
                     )
                 )
         }
@@ -98,7 +112,7 @@ object ModEntities {
             .sized(1f, 1f).build(
                 ResourceKey.create(
                     Registries.ENTITY_TYPE,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_projectile")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_projectile")
                 )
             )
     }
@@ -112,13 +126,13 @@ object ModEntities {
             .sized(1f, 1f).build (
                 ResourceKey.create(
                     Registries.ENTITY_TYPE,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_projectile")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_projectile")
                 )
             )
     }
 
     val YA by ENTITY_TYPES.register("ya") { ->
-            EntityType.Builder.of<YaProjectileEntity?>({ entityType: EntityType<YaProjectileEntity?>, level: Level ->
+            EntityType.Builder.of<YaProjectileEntity>({ entityType: EntityType<YaProjectileEntity>, level: Level ->
                 YaProjectileEntity(
                     entityType,
                     level
@@ -127,13 +141,13 @@ object ModEntities {
                 .sized(1.15f, 1f).build(
                     ResourceKey.create(
                         Registries.ENTITY_TYPE,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ya")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ya")
                     )
                 )
         }
 
     val CHAIR by ENTITY_TYPES.register("chair_entity") { ->
-            EntityType.Builder.of<ChairEntity?>({ pEntityType: EntityType<ChairEntity?>, pLevel: Level ->
+            EntityType.Builder.of<ChairEntity>({ pEntityType: EntityType<ChairEntity>, pLevel: Level ->
                 ChairEntity(
                     pEntityType,
                     pLevel
@@ -142,7 +156,7 @@ object ModEntities {
                 .sized(0.5f, 0.5f).build(
                     ResourceKey.create(
                         Registries.ENTITY_TYPE,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chair_entity")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chair_entity")
                     )
                 )
         }

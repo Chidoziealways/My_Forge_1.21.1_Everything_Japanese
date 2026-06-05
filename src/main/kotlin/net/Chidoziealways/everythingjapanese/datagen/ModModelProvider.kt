@@ -6,7 +6,6 @@ import net.Chidoziealways.everythingcore.datagen.createBlockstateWithRotation
 import net.Chidoziealways.everythingcore.datagen.createItemDefiniton
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
-import net.Chidoziealways.everythingjapanese.datagen.ModModelProvider.MyItemModelGenerators.Companion.TRIM_MATERIAL_MODELS
 import net.Chidoziealways.everythingjapanese.kanji.KanjiType
 import net.Chidoziealways.everythingjapanese.item.ModEquipmentAssets
 import net.Chidoziealways.everythingjapanese.item.JModItems
@@ -14,6 +13,7 @@ import net.Chidoziealways.everythingjapanese.item.katana.BladeType
 import net.Chidoziealways.everythingjapanese.item.katana.BladeWrapProperty
 import net.Chidoziealways.everythingjapanese.item.katana.Wrapping
 import net.Chidoziealways.everythingjapanese.kanji.KanjiProperty
+import net.Chidoziealways.everythingjapanese.karma.KarmaProperty
 import net.Chidoziealways.everythingjapanese.state.properties.ModBlockStateProperties
 import net.Chidoziealways.everythingjapanese.trim.ModMaterialAssetGroup
 import net.Chidoziealways.everythingjapanese.trim.ModTrimMaterials
@@ -24,17 +24,19 @@ import net.minecraft.client.data.models.BlockModelGenerators.plainVariant
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator
 import net.minecraft.client.data.models.blockstates.PropertyDispatch
 import net.minecraft.client.data.models.model.*
-import net.minecraft.client.renderer.block.model.VariantMutator
+import net.minecraft.client.data.models.model.ItemModelUtils.select
+import net.minecraft.client.renderer.block.dispatch.VariantMutator
 import net.minecraft.client.renderer.item.ItemModel
 import net.minecraft.client.renderer.item.SelectItemModel
 import net.minecraft.client.renderer.item.properties.numeric.CustomModelDataProperty
 import net.minecraft.client.renderer.item.properties.select.DisplayContext
 import net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty
+import net.minecraft.client.resources.model.sprite.Material
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemDisplayContext
 import net.minecraft.world.item.equipment.EquipmentAsset
@@ -147,8 +149,10 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         itemModels.generateFlatItem(JModItems.RAMEN, ModelTemplates.FLAT_HANDHELD_ITEM)
         itemModels.generateFlatItem(JModItems.FIREBALL_SCROLL!!, ModelTemplates.FLAT_HANDHELD_ITEM)
         itemModels.generateFlatItem(JModItems.WINDBALL_SCROLL!!, ModelTemplates.FLAT_HANDHELD_ITEM)
-        itemModels.generateFlatItem(JModItems.HELL_PORTAL_ACTIVATOR!!, ModelTemplates.FLAT_HANDHELD_ROD_ITEM)
+        //itemModels.generateFlatItem(JModItems.HELL_PORTAL_ACTIVATOR!!, ModelTemplates.FLAT_HANDHELD_ROD_ITEM)
         itemModels.generateBow(JModItems.DAIKYU!!)
+        itemModels.generateFlatItem(JModItems.POCKET_BLADE, ModelTemplates.FLAT_HANDHELD_ITEM)
+        itemModels.createPoweredSword()
         itemModels.generateFlatItem(JModItems.NEPHRITE!!, ModelTemplates.FLAT_ITEM)
         itemModels.generateFlatItem(JModItems.PYRITE_SWORD!!, ModelTemplates.FLAT_HANDHELD_ITEM)
         itemModels.generateFlatItem(JModItems.PYRITE_PICKAXE!!, ModelTemplates.FLAT_HANDHELD_ITEM)
@@ -166,13 +170,14 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         itemModels.generateFlatItem(JModItems.BLACK_WRAP, ModelTemplates.FLAT_ITEM)
         itemModels.generateFlatItem(JModItems.RED_WRAP, ModelTemplates.FLAT_ITEM)
         itemModels.generateFlatItem(JModItems.WHITE_WRAP, ModelTemplates.FLAT_ITEM)
-        itemModels.generateTrimmableItemE(
+        itemModels.generateFlatItem(JModItems.BLOOD_BUCKET, ModelTemplates.FLAT_ITEM)
+        itemModels.generateTrimmableItem(
             JModItems.PYRITE_HELMET!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_HELMET,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.PYRITE_CHESTPLATE!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
@@ -180,61 +185,61 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         )
         itemModels.createTalisman()
         itemModels.createKatana(JModItems.KATANA, false)
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.PYRITE_LEGGINGS!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.PYRITE_BOOTS!! ,
             ModEquipmentAssets.Companion.PYRITE,
             ItemModelGenerators.TRIM_PREFIX_BOOTS,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.NEPHRITE_HELMET!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_HELMET,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.NEPHRITE_CHESTPLATE!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.NEPHRITE_LEGGINGS!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.NEPHRITE_BOOTS!! ,
             ModEquipmentAssets.Companion.NEPHRITE,
             ItemModelGenerators.TRIM_PREFIX_BOOTS,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.SAMURAI_HELMET!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_HELMET,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.SAMURAI_CHESTPLATE!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_CHESTPLATE,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.SAMURAI_LEGGINGS!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_LEGGINGS,
             false
         )
-        itemModels.generateTrimmableItemE(
+        itemModels.generateTrimmableItem(
             JModItems.SAMURAI_BOOTS!! ,
             ModEquipmentAssets.Companion.SAMURAI,
             ItemModelGenerators.TRIM_PREFIX_BOOTS,
@@ -248,7 +253,6 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         itemModels.generateFlatItem(JModItems.BULLET, ModelTemplates.FLAT_ITEM)
         itemModels.createItemDefiniton(JModItems.GUN, "gun", JAPANESE_MOD_ID)
     }
-
     fun BlockModelGenerators.createYamazakiBerryBush() {
         this.registerSimpleFlatItemModel(JModItems.YAMAZAKI_BERRIES)
         this.blockStateOutput
@@ -262,8 +266,8 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                                         JModBlocks.YAMAZAKI_BERRY_BUSH,
                                         "_stage$p_389159_",
                                         ModelTemplates.CROSS
-                                    ) { p_378193_: ResourceLocation ->
-                                        TextureMapping.cross(p_378193_)
+                                    ) { p_378193_: Material ->
+                                          TextureMapping.cross(p_378193_)
                                     }
                                 )
                             }
@@ -283,7 +287,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                 JModBlocks.PYRITE_LAMP,
                 "_on",
                 ModelTemplates.CUBE_ALL
-            ) { p_377582_: ResourceLocation -> TextureMapping.cube(p_377582_) }
+            ) { p_377582_: Material -> TextureMapping.cube(p_377582_) }
         )
         this.blockStateOutput
             .accept(MultiVariantGenerator.dispatch(JModBlocks.PYRITE_LAMP).with(
@@ -302,15 +306,25 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         this.blockStateOutput.accept(
             MultiVariantGenerator.dispatch(JModBlocks.CHOCOLATE_CAKE)
                 .with(
-                    PropertyDispatch.initial(ModBlockStateProperties.BITES_16).run {
-                        var dispatch = this.select(0, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake")))
-                        for (bite in 1..16) {
-                            dispatch = select(bite, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice$bite")))
-                        }
-                        dispatch
-                    }
-                )
-        )
+                    PropertyDispatch.initial(ModBlockStateProperties.BITES_16)
+                        .select(0, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake")))
+                        .select(1, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice1")))
+                        .select(2, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice2")))
+                        .select(3, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice3")))
+                        .select(4, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice4")))
+                        .select(5, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice5")))
+                        .select(6, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice6")))
+                        .select(7, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice7")))
+                        .select(8, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice8")))
+                        .select(9, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice9")))
+                        .select(10, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice10")))
+                        .select(11, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice11")))
+                        .select(12, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice12")))
+                        .select(13, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice13")))
+                        .select(14, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice14")))
+                        .select(15, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice15")))
+                        .select(16, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chocolate_cake_slice16")))
+                ))
     }
 
     fun BlockModelGenerators.createJapaneseCheeseCake() {
@@ -319,15 +333,19 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         this.blockStateOutput.accept(
             MultiVariantGenerator.dispatch(JModBlocks.JAPANESE_CHEESECAKE)
                 .with(
-                    PropertyDispatch.initial(ModBlockStateProperties.BITES_11).run {
-                        var dispatch = this.select(0, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake")))
-                        for (bite in 1..11) {
-                            dispatch = select(bite, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice$bite")))
-                        }
-                        dispatch
-                    }
-                )
-        )
+                    PropertyDispatch.initial(ModBlockStateProperties.BITES_11)
+                        .select(0, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake")))
+                        .select(1, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice1")))
+                        .select(2, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice2")))
+                        .select(3, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice3")))
+                        .select(4, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice4")))
+                        .select(5, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice5")))
+                        .select(6, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice6")))
+                        .select(7, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice7")))
+                        .select(8, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice8")))
+                        .select(9, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice9")))
+                        .select(10, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice10")))
+                        .select(11, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/japanese_cheesecake_slice11")))))
     }
 
     fun BlockModelGenerators.createShojiDoor() {
@@ -335,10 +353,10 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
         registerSimpleFlatItemModel(block.asItem())
 
-        val closedLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
-        val closedRight = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
-        val openLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
-        val openRight = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
+        val closedLeft = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
+        val closedRight = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
+        val openLeft = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
+        val openRight = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
 
         blockStateOutput.accept(
             MultiVariantGenerator.dispatch(block)
@@ -380,10 +398,10 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
         registerSimpleFlatItemModel(block.asItem())
 
-        val closedLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
-        val closedRight = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
-        val openLeft = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
-        val openRight = plainVariant(ResourceLocation.withDefaultNamespace("builtin/entity"))
+        val closedLeft = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
+        val closedRight = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
+        val openLeft = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
+        val openRight = plainVariant(Identifier.withDefaultNamespace("builtin/entity"))
 
         blockStateOutput.accept(
             MultiVariantGenerator.dispatch(block)
@@ -421,19 +439,19 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun BlockModelGenerators.createPedestal() {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/pedestal"))
+        val variant = plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/pedestal"))
 
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(JModBlocks.PEDESTAL, variant))
     }
 
     fun BlockModelGenerators.createChabudai() {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chabudai"))
+        val variant = plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chabudai"))
 
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(JModBlocks.CHABUDAI, variant))
     }
 
     fun BlockModelGenerators.createTatamiMat() {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/tatami_mat"))
+        val variant = plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/tatami_mat"))
 
         this.blockStateOutput.accept(
             MultiVariantGenerator.dispatch(JModBlocks.TATAMI_MAT)
@@ -453,7 +471,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createTatamiMat() {
-        val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/tatami_mat"))
+        val model = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/tatami_mat"))
         this.itemModelOutput.accept(JModBlocks.TATAMI_MAT.asItem(), model)
     }
 
@@ -467,13 +485,13 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
             MultiVariantGenerator.dispatch(JModBlocks.CHAIR)
                 .with(
                     PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_FACING)
-                        .select(Direction.NORTH, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")))
-                        .select(Direction.SOUTH, plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
+                        .select(Direction.NORTH, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")))
+                        .select(Direction.SOUTH, plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
                             rotationMutator(Quadrant.R0, Quadrant.R180)))
-                        .select(Direction.EAST,  plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
+                        .select(Direction.EAST,  plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
                             rotationMutator(Quadrant.R0, Quadrant.R90)
                         ))
-                        .select(Direction.WEST,  plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
+                        .select(Direction.WEST,  plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chair")).with(
                             rotationMutator(Quadrant.R0, Quadrant.R270)
                         ))
                 )
@@ -481,7 +499,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun BlockModelGenerators.createZabuton(block: Block, name: String) {
-        val variant = plainVariant(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/$name"))
+        val variant = plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/$name"))
 
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, variant))
     }
@@ -515,7 +533,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createTalisman() {
-        val base = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_base"))
+        val base = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_base"))
 
         // Property: the actual KanjiType from the component
         val kanjiProp = KanjiProperty()
@@ -530,7 +548,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
             val key: ResourceKey<KanjiType> = entry.key()
             val kanjiType = entry.value()
             val overlayModel = ItemModelUtils.plainModel(
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_${kanjiType.id}_overlay")
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_${kanjiType.id}_overlay")
             )
             overlayCases.add(ItemModelUtils.`when`(key, overlayModel))
         }
@@ -549,7 +567,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createKatana(item: Item, hasTint: Boolean) {
-        val modelLocation: ResourceLocation = ModelLocationUtils.getModelLocation(item)
+        val modelLocation: Identifier = ModelLocationUtils.getModelLocation(item)
         val baseTexture = TextureMapping.getItemTexture(item)
 
         val comboModels = mutableListOf<SelectItemModel.SwitchCase<Pair<BladeType, Wrapping>>>()
@@ -559,8 +577,8 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                 val comboModelLocation = modelLocation.withSuffix("_${blade.id}_${wrap.id}")
 
                 // Use the overlays provided by BladeType and Wrapping
-                val bladeTexture = blade.overlay
-                val wrapTexture = wrap.overlay
+                val bladeTexture = Material(blade.overlay)
+                val wrapTexture = Material(wrap.overlay)
 
                 // Generate layered item for this blade+wrap combo
                 this.generateLayeredItem(comboModelLocation, baseTexture, bladeTexture, wrapTexture)
@@ -577,7 +595,7 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
         // Base model (fallback)
         val baseModel = if (hasTint) {
-            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(baseTexture, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "empty")), this.modelOutput)
+            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(baseTexture, Material(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "empty"))), this.modelOutput)
             ItemModelUtils.tintedModel(modelLocation, Dye(-6265536))
         } else {
             ModelTemplates.FLAT_HANDHELD_ITEM.create(modelLocation, TextureMapping.layer0(baseTexture), this.modelOutput)
@@ -594,9 +612,26 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         this.itemModelOutput.accept(item, select)
     }
 
+    fun ItemModelGenerators.createPoweredSword() {
+        val baseModel = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/powered_sword"))
+        val divineModel = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/powered_sword_divine"))
+        val cursedModel = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/powered_sword_cursed"))
+
+        val prop = KarmaProperty()
+
+        val entries = listOf(
+            ItemModelUtils.override(divineModel, 1f),
+            ItemModelUtils.override(cursedModel, Float.MIN_VALUE)
+        )
+
+        val model = ItemModelUtils.rangeSelect(prop, baseModel, entries)
+
+        itemModelOutput.accept(JModItems.POWERED_SWORD, model)
+    }
+
     fun ItemModelGenerators.createChisel() {
-        val baseModel = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/chisel"))
-        val usedModel = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/chisel_used"))
+        val baseModel = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/chisel"))
+        val usedModel = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/chisel_used"))
 
         val property = CustomModelDataProperty(0)
 
@@ -608,8 +643,8 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createRadiationStaff() {
-        val model2d = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/radiation_staff_2d"))
-        val model3d = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/radiation_staff_3d"))
+        val model2d = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/radiation_staff_2d"))
+        val model3d = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/radiation_staff_3d"))
 
         val property = DisplayContext()
 
@@ -621,38 +656,38 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
     }
 
     fun ItemModelGenerators.createIronBattleAxe() {
-        val model = ItemModelUtils.plainModel(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/iron_battle_axe"))
+        val model = ItemModelUtils.plainModel(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/iron_battle_axe"))
         this.itemModelOutput.accept(JModItems.IRON_BATTLE_AXE, model)
     }
 
-    fun ItemModelGenerators.generateTrimmableItemE(item: Item, resourceKey: ResourceKey<EquipmentAsset?>, resourceLocation: ResourceLocation, p_377962_: Boolean) {
-        val resourcelocation: ResourceLocation = ModelLocationUtils.getModelLocation(item)
-        val resourcelocation1: ResourceLocation = TextureMapping.getItemTexture(item)
-        val resourcelocation2: ResourceLocation = TextureMapping.getItemTexture(item, "_overlay")
-        val list: MutableList<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>?> =
+    /*fun ItemModelGenerators.generateTrimmableItemE(item: Item, resourceKey: ResourceKey<EquipmentAsset>, identifier: Identifier, p_377962_: Boolean) {
+        val main: Identifier = ModelLocationUtils.getModelLocation(item)
+        val itemTexture1: Identifier = TextureMapping.getItemTexture(item)
+        val itemTexture2: Identifier = TextureMapping.getItemTexture(item, "_overlay")
+        val list: MutableList<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> =
             ArrayList(
                 TRIM_MATERIAL_MODELS.size
             )
 
-        for (`itemmodelgenerators$trimmaterialdata` in TRIM_MATERIAL_MODELS) {
-            val resourcelocation3 = resourcelocation.withSuffix(
-                "_" + `itemmodelgenerators$trimmaterialdata`.assets!!.base().suffix() + "_trim"
+        for (trimMaterialData in TRIM_MATERIAL_MODELS) {
+            val Identifier3 = main.withSuffix(
+                "_" + trimMaterialData.assets.base().suffix() + "_trim"
             )
-            val resourcelocation4 = resourceLocation.withSuffix(
-                "_" + `itemmodelgenerators$trimmaterialdata`.assets.assetId(resourceKey).suffix()
+            val Identifier4 = identifier.withSuffix(
+                "_" + trimMaterialData.assets.assetId(resourceKey).suffix()
             )
             val `itemmodel$unbaked`: ItemModel.Unbaked?
             if (p_377962_) {
-                this.generateLayeredItem(resourcelocation3, resourcelocation1, resourcelocation2, resourcelocation4)
-                `itemmodel$unbaked` = ItemModelUtils.tintedModel(resourcelocation3, Dye(-6265536))
+                this.generateLayeredItem(Identifier3, itemTexture1, itemTexture2, Identifier4)
+                `itemmodel$unbaked` = ItemModelUtils.tintedModel(Identifier3, Dye(-6265536))
             } else {
-                this.generateLayeredItem(resourcelocation3, resourcelocation1, resourcelocation4)
-                `itemmodel$unbaked` = ItemModelUtils.plainModel(resourcelocation3)
+                this.generateLayeredItem(Identifier3, itemTexture1, Identifier4)
+                `itemmodel$unbaked` = ItemModelUtils.plainModel(Identifier3)
             }
 
             list.add(
                 ItemModelUtils.`when`(
-                    `itemmodelgenerators$trimmaterialdata`.materialKey,
+                    trimMaterialData.materialKey,
                     `itemmodel$unbaked`
                 )
             )
@@ -661,18 +696,18 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         val `itemmodel$unbaked1`: ItemModel.Unbaked?
         if (p_377962_) {
             ModelTemplates.TWO_LAYERED_ITEM.create(
-                resourcelocation,
-                TextureMapping.layered(resourcelocation1, resourcelocation2),
+                main,
+                TextureMapping.layered(itemTexture1, itemTexture2),
                 this.modelOutput
             )
-            `itemmodel$unbaked1` = ItemModelUtils.tintedModel(resourcelocation, Dye(-6265536))
+            `itemmodel$unbaked1` = ItemModelUtils.tintedModel(main, Dye(-6265536))
         } else {
             ModelTemplates.FLAT_ITEM.create(
-                resourcelocation,
-                TextureMapping.layer0(resourcelocation1),
+                main,
+                TextureMapping.layer0(itemTexture1),
                 this.modelOutput
             )
-            `itemmodel$unbaked1` = ItemModelUtils.plainModel(resourcelocation)
+            `itemmodel$unbaked1` = ItemModelUtils.plainModel(main)
         }
 
         this.itemModelOutput.accept(
@@ -683,9 +718,9 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
 
     private class MyItemModelGenerators(
         pItemModelOutput: ItemModelOutput,
-        pModelOutput: BiConsumer<ResourceLocation?, ModelInstance?>
+        pModelOutput: BiConsumer<Identifier, ModelInstance>
     ) : ItemModelGenerators(pItemModelOutput, pModelOutput) {
-        data class MyTrimMaterialData(val assets: MaterialAssetGroup?, val materialKey: ResourceKey<TrimMaterial>)
+        data class MyTrimMaterialData(val assets: MaterialAssetGroup, val materialKey: ResourceKey<TrimMaterial>)
 
         companion object {
             val TRIM_MATERIAL_MODELS: MutableList<MyTrimMaterialData> = listOf<MyTrimMaterialData>(
@@ -703,5 +738,5 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
                 MyTrimMaterialData(MaterialAssetGroup.RESIN, TrimMaterials.RESIN)
             ) as MutableList<MyTrimMaterialData>
         }
-    }
+    }*/
 }

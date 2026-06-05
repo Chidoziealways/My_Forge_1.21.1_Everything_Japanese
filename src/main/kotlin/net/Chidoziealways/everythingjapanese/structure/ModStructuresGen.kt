@@ -2,11 +2,12 @@ package net.Chidoziealways.everythingjapanese.structure
 
 import net.Chidoziealways.everythingjapanese.structure.custom.dojo.DojoStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.hellTemple.HellTempleStructurePieces
+import net.Chidoziealways.everythingjapanese.structure.custom.shinto_shrine.ShintoShrineStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.shoji_house.ShojiHouseStructurePieces
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.MobCategory
 import net.minecraft.world.level.biome.Biome
 import net.minecraft.world.level.levelgen.GenerationStep
@@ -32,7 +33,7 @@ object ModStructuresGen {
     fun bootstrap(context: BootstrapContext<Structure>) {
         val holdergetter = context.lookup(Registries.BIOME)
         val holdergetter1 = context.lookup(Registries.TEMPLATE_POOL)
-        log.info("Bootstrapping Structures: {}", ModStructures.HELL_TEMPLE.location())
+        log.info("Bootstrapping Structures: {}", ModStructures.HELL_TEMPLE.registry())
         context.register(
             ModStructures.HELL_TEMPLE,
             JigsawStructure(
@@ -49,13 +50,13 @@ object ModStructuresGen {
                     .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
                     .build(),
                 holdergetter1.getOrThrow(HellTempleStructurePieces.START),
-                Optional.empty<ResourceLocation?>(),
+                Optional.empty<Identifier?>(),
                 7,
                 ConstantHeight.of(VerticalAnchor.absolute(-27)),
                 false,
                 Optional.empty<Heightmap.Types?>(),
                 JigsawStructure.MaxDistance(116),
-                mutableListOf<PoolAliasBinding?>(),
+                mutableListOf<PoolAliasBinding>(),
                 JigsawStructure.DEFAULT_DIMENSION_PADDING,
                 JigsawStructure.DEFAULT_LIQUID_SETTINGS
             )
@@ -78,11 +79,25 @@ object ModStructuresGen {
         context.register(
             ModStructures.SHOJI_HOUSE,
             JigsawStructure(
-                StructureSettings.Builder(holdergetter.getOrThrow(ModTags.Biomes.HAS_DOJO))
+                StructureSettings.Builder(holdergetter.getOrThrow(ModTags.Biomes.HAS_SHOJI_HOUSE))
                     .terrainAdapation(TerrainAdjustment.BEARD_THIN)
                     .build(),
                 holdergetter1.getOrThrow(ShojiHouseStructurePieces.START),
-                6,
+                19,
+                ConstantHeight.of(VerticalAnchor.absolute(0)),
+                true,
+                Heightmap.Types.WORLD_SURFACE_WG
+            )
+        )
+
+        context.register(
+            ModStructures.SHINTO_SHRINE,
+            JigsawStructure(
+                StructureSettings.Builder(holdergetter.getOrThrow(ModTags.Biomes.HAS_SHINTO_SHRINE))
+                    .terrainAdapation(TerrainAdjustment.BEARD_THIN)
+                    .build(),
+                holdergetter1.getOrThrow(ShintoShrineStructurePieces.START),
+                19,
                 ConstantHeight.of(VerticalAnchor.absolute(0)),
                 true,
                 Heightmap.Types.WORLD_SURFACE_WG

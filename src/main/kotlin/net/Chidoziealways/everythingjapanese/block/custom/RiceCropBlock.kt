@@ -23,7 +23,7 @@ class RiceCropBlock(properties: Properties) : CropBlock(properties) {
         return ModBlockStateProperties.AGE_4
     }
 
-    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
         pBuilder.add(ModBlockStateProperties.AGE_4)
     }
 

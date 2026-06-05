@@ -11,19 +11,19 @@ import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.common.ItemAbility
 
 class ModFlammableRotatedPillarBlock(properties: Properties) : RotatedPillarBlock(properties) {
-    override fun isFlammable(state: BlockState?, level: BlockGetter?, pos: BlockPos?, direction: Direction?): Boolean {
+    override fun isFlammable(state: BlockState, level: BlockGetter, pos: BlockPos, direction: Direction): Boolean {
         return true
     }
 
-    override fun getFlammability(state: BlockState?, level: BlockGetter?, pos: BlockPos?, direction: Direction?): Int {
+    override fun getFlammability(state: BlockState, level: BlockGetter, pos: BlockPos, direction: Direction): Int {
         return 5
     }
 
     override fun getFireSpreadSpeed(
-        state: BlockState?,
-        level: BlockGetter?,
-        pos: BlockPos?,
-        direction: Direction?
+        state: BlockState,
+        level: BlockGetter,
+        pos: BlockPos,
+        direction: Direction
     ): Int {
         return 5
     }

@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.player.Player
 import net.Chidoziealways.everythingjapanese.entity.custom.ChiretsuShōProjectileEntity
 import net.Chidoziealways.everythingjapanese.jutsu.ChiretsuShoMastery
@@ -21,7 +21,7 @@ import java.util.function.Predicate
 import kotlin.math.sqrt
 
 class ChiretsuShōJutsu: Jutsu(
-    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"),
+    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_jutsu"),
     "Chiretsu Shō",
     15f,
     3,
@@ -74,7 +74,7 @@ class ChiretsuShōJutsu: Jutsu(
                 }
 
                 if (blocks.isEmpty()) {
-                    player.displayClientMessage(Component.literal("No Blocks to levitate"), true)
+                    player.sendOverlayMessage(Component.literal("No Blocks to levitate"), )
                     return false
                 }
 
@@ -98,9 +98,9 @@ class ChiretsuShōJutsu: Jutsu(
                     // Track only first projectile for the recast launch
                     ChiretsuJutsuTracker.add(player, proj)
                 }
-                player.displayClientMessage(Component.literal("Blocks levitated! (${blocks.size} blocks, radius $radius"), true)
+                player.sendOverlayMessage(Component.literal("Blocks levitated! (${blocks.size} blocks, radius $radius"), )
             } else {
-                player.displayClientMessage(Component.literal("No block in sight!"), true)
+                player.sendOverlayMessage(Component.literal("No block in sight!"),)
                 return false
             }
         } else {
@@ -125,9 +125,9 @@ class ChiretsuShōJutsu: Jutsu(
                     }
                 }
 
-                player.displayClientMessage(Component.literal("${projectiles.size} blocks launched!"), true)
+                player.sendOverlayMessage(Component.literal("${projectiles.size} blocks launched!"), )
             } else {
-                player.displayClientMessage(Component.literal("No levitating blocks found."), true)
+                player.sendOverlayMessage(Component.literal("No levitating blocks found."), )
                 return false
             }
             ChiretsuJutsuTracker.clear(player)

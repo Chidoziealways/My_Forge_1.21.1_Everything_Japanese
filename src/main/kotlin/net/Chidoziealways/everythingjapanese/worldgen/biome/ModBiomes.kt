@@ -6,8 +6,9 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BiomeDefaultFeatures
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.sounds.Musics
+import net.minecraft.world.attribute.AmbientMoodSettings
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobCategory
 import net.minecraft.world.level.biome.*
@@ -17,9 +18,9 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver
 import net.minecraft.world.level.levelgen.placement.PlacedFeature
 
 object ModBiomes {
-    val HELL_BIOME: ResourceKey<Biome?> = ResourceKey.create<Biome?>(
+    val HELL_BIOME: ResourceKey<Biome> = ResourceKey.create<Biome>(
         Registries.BIOME,
-        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_biome")
+        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_biome")
     )
 
     fun bootstrap(context: BootstrapContext<Biome>) {
@@ -38,11 +39,11 @@ object ModBiomes {
         val spawnBuilder = MobSpawnSettings.Builder()
         spawnBuilder.addSpawn(MobCategory.MONSTER, 10, SpawnerData(EntityType.ZOMBIE, 50, 100))
 
-        BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 100, false)
+        BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 100, 10, false)
 
         val biomeBuilder =
             BiomeGenerationSettings.Builder(
-                context.lookup<PlacedFeature?>(Registries.PLACED_FEATURE), context.lookup<ConfiguredWorldCarver<*>?>(
+                context.lookup<PlacedFeature>(Registries.PLACED_FEATURE), context.lookup<ConfiguredWorldCarver<*>>(
                     Registries.CONFIGURED_CARVER
                 )
             )
@@ -57,13 +58,8 @@ object ModBiomes {
             .specialEffects(
                 (BiomeSpecialEffects.Builder())
                     .waterColor(0xe82e3b)
-                    .waterFogColor(0xbf1b26)
-                    .skyColor(0x30c918)
                     .grassColorOverride(0x7f03fc)
-                    .foliageColorOverride(0xd203fc)
-                    .fogColor(0x22a1e6)
-                    .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                    .backgroundMusic(Musics.createGameMusic(ModSounds.AO_TO_NATSU.delegate)).build()
+                    .foliageColorOverride(0xd203fc).build()
             )
             .build()
     }

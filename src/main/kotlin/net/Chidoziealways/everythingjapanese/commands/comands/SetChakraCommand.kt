@@ -11,6 +11,7 @@ import net.minecraft.commands.arguments.EntityArgument
 import net.minecraft.commands.arguments.selector.EntitySelector
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerPlayer
+import net.minecraft.server.permissions.Permissions
 import net.minecraft.world.entity.player.Player
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.RegisterCommandsEvent
@@ -25,12 +26,13 @@ object SetChakraCommand {
 
         dispatcher.register(
             Commands.literal("setChakra")
-                .requires(Predicate { commandSourceStack: CommandSourceStack? -> commandSourceStack!!.hasPermission(4) })
+                .requires(Predicate { commandSourceStack: CommandSourceStack? -> commandSourceStack!!.permissions().hasPermission(
+                    Permissions.COMMANDS_OWNER) })
                 .then(
-                    Commands.argument<EntitySelector?>("target", EntityArgument.player())
+                    Commands.argument<EntitySelector>("target", EntityArgument.player())
                         .then(
-                            Commands.argument<Int?>("amount", IntegerArgumentType.integer(0))
-                                .executes(Command { context: CommandContext<CommandSourceStack?>? ->
+                            Commands.argument<Int>("amount", IntegerArgumentType.integer(0))
+                                .executes(Command { context: CommandContext<CommandSourceStack> ->
                                     SetChakraCommand.setChakra(
                                         context!!.getSource()!!,
                                         EntityArgument.getPlayer(context, "target"),

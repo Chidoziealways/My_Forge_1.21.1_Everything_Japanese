@@ -44,12 +44,12 @@ object ToolTipEventHandler {
 
             if (pStack.get(ModDataComponentTypes.COORDINATES) != null) {
                 event.toolTip
-                    .add(Component.literal("Last Block Changed at :" + pStack.get<BlockPos?>(ModDataComponentTypes.COORDINATES)))
+                    .add(Component.literal("Last Block Changed at :" + pStack.get<BlockPos>(ModDataComponentTypes.COORDINATES)))
             }
             if (pStack.get(DataComponents.BLOCK_STATE) != null) {
                 event.toolTip.add(
                     Component.literal(
-                        "Last Block Changed state:" + pStack.get<BlockItemStateProperties?>(DataComponents.BLOCK_STATE)
+                        "Last Block Changed state:" + pStack.get<BlockItemStateProperties>(DataComponents.BLOCK_STATE)
                     )
                 )
             }

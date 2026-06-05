@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "everythingjapanese:block/yamazaki_berry_bush_stage3"
-  }
-}

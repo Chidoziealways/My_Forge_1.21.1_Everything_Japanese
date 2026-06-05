@@ -58,8 +58,8 @@ class PedestalBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
         for (i in 0..<inventory.getSlots()) {
             inv.setItem(i, inventory.getStackInSlot(i))
         }
-
-        Containers.dropContents(this.level, this.worldPosition, inv)
+        val lvl = this.level ?: return
+        Containers.dropContents(lvl, this.worldPosition, inv)
         super.preRemoveSideEffects(p_397404_, p_395805_)
     }
 
@@ -73,7 +73,7 @@ class PedestalBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
         inventory.deserialize(input)
     }
 
-    override fun getUpdatePacket(): Packet<ClientGamePacketListener?>? {
+    override fun getUpdatePacket(): Packet<ClientGamePacketListener> {
         return ClientboundBlockEntityDataPacket.create(this)
     }
 

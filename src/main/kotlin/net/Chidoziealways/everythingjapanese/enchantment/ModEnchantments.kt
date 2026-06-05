@@ -5,7 +5,7 @@ import net.Chidoziealways.everythingjapanese.enchantment.custom.LightningStriker
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.EnchantmentTags
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.entity.EquipmentSlotGroup
@@ -17,7 +17,7 @@ import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect
 object ModEnchantments {
     val LIGHTNING_STRIKER: ResourceKey<Enchantment> = ResourceKey.create(
         Registries.ENCHANTMENT,
-        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning_striker")
+        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning_striker")
     )
 
     fun bootstrap(context: BootstrapContext<Enchantment>) {
@@ -28,7 +28,7 @@ object ModEnchantments {
             context, LIGHTNING_STRIKER, Enchantment.enchantment(
                 Enchantment.definition(
                     items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                    items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                    items.getOrThrow(ItemTags.MELEE_WEAPON_ENCHANTABLE),
                     5,
                     255,
                     Enchantment.dynamicCost(5, 8),
@@ -38,7 +38,7 @@ object ModEnchantments {
                 )
             )
                 .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
-                .withEffect<EnchantmentEntityEffect?>(
+                .withEffect<EnchantmentEntityEffect>(
                     EnchantmentEffectComponents.POST_ATTACK, EnchantmentTarget.ATTACKER,
                     EnchantmentTarget.VICTIM, LightningStrikerEnchantmentEffect()
                 )
@@ -51,6 +51,6 @@ object ModEnchantments {
         key: ResourceKey<Enchantment>,
         builder: Enchantment.Builder
     ) {
-        registry.register(key, builder.build(key.location()))
+        registry.register(key, builder.build(key.registry()))
     }
 }

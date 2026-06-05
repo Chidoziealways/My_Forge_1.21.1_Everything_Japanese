@@ -5,15 +5,15 @@ import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
 import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
-import net.minecraft.world.entity.projectile.windcharge.WindCharge
+import net.minecraft.world.entity.projectile.hurtingprojectile.windcharge.WindCharge
 import net.minecraft.world.phys.Vec3
 
 class SmallWindballJutsu : Jutsu(
-    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "small_windball"),
+    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "small_windball"),
     "Small Windball",
     20f,
     5,
@@ -21,7 +21,7 @@ class SmallWindballJutsu : Jutsu(
     JutsuType.NINJUTSU
 ) {
     override fun cast(player: ServerPlayer): Boolean {
-        player.displayClientMessage(Component.literal("Casting: $name"), true)
+        player.sendOverlayMessage(Component.literal("Casting: $name"), )
         val world = player.level()
         val lookVec = player.lookAngle
         val eyePos = player.getEyePosition(1.0f)

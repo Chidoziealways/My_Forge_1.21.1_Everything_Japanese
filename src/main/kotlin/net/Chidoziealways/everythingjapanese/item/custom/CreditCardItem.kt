@@ -31,15 +31,13 @@ class CreditCardItem(props: Properties): Item(props) {
         }
         if (player.isShiftKeyDown) {
             val withdrawn = vault.withdraw(moneyCap, 50)
-            player.displayClientMessage(
+            player.sendOverlayMessage(
                 Component.literal(if (withdrawn) "Withdrew ¥50 from the vault!" else "Vault is empty"),
-                true
             )
         } else {
             val deposited = vault.deposit(moneyCap, 50)
-            player.displayClientMessage(
+            player.sendOverlayMessage(
                 Component.literal(deposited),
-                true
             )
         }
 

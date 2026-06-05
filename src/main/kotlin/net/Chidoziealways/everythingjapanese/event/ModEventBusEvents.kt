@@ -19,6 +19,7 @@ import net.minecraft.world.entity.SpawnPlacementTypes
 import net.minecraft.world.entity.animal.Animal
 import net.minecraft.world.entity.monster.Monster
 import net.minecraft.world.level.ServerLevelAccessor
+import net.minecraft.world.level.block.LeavesBlock
 import net.minecraft.world.level.levelgen.Heightmap
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.client.event.EntityRenderersEvent
@@ -61,11 +62,31 @@ object ModEventBusEvents {
     
     @SubscribeEvent
     fun registerSpawnPlacements(event: RegisterSpawnPlacementsEvent) {
+        //event.register(
+          //  ModEntities.ASPIRATION,
+            //SpawnPlacementTypes.ON_GROUND,
+            //Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            //{ entityType, world, reason, pos, random ->
+              //  val blockPos = pos.below()  // check the block under the spawn pos
+                //val blockState = world.getBlockState(blockPos)
+
+                // Conditions
+                //val isSolidGround = blockState.blocksMotion()  // solid block under
+                //val isNotLeaves = blockState.block !is LeavesBlock  // avoid spawning on leaves
+                //val time = world.gameTime % 24000
+                //val isNight = time in 12000..<24000 // optional: spawn only at night
+                //val chance = random.nextFloat() < 0.05f  // 5% chance to spawn
+
+             //   isSolidGround && isNotLeaves && isNight && chance
+            //},
+            //RegisterSpawnPlacementsEvent.Operation.REPLACE
+        //)
+
         event.register<TriceratopsEntity>(
             ModEntities.TRICERATOPS,
             SpawnPlacementTypes.ON_GROUND,
             Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-            { p_218105_: EntityType<TriceratopsEntity?>?, p_218106_: ServerLevelAccessor?, p_367954_: EntitySpawnReason?, p_218108_: BlockPos?, p_218109_: RandomSource? ->
+            { p_218105_: EntityType<TriceratopsEntity>, p_218106_: ServerLevelAccessor, p_367954_: EntitySpawnReason, p_218108_: BlockPos, p_218109_: RandomSource ->
                 Animal.checkAnimalSpawnRules(
                     p_218105_,
                     p_218106_,
@@ -95,7 +116,7 @@ object ModEventBusEvents {
             ModEntities.SIKA_DEER,
             SpawnPlacementTypes.ON_GROUND,
             Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-            { p_218105_: EntityType<SikaDeerEntity?>?, p_218106_: ServerLevelAccessor?, p_367954_: EntitySpawnReason?, p_218108_: BlockPos?, p_218109_: RandomSource? ->
+            { p_218105_: EntityType<SikaDeerEntity>, p_218106_: ServerLevelAccessor, p_367954_: EntitySpawnReason, p_218108_: BlockPos, p_218109_: RandomSource ->
                 Animal.checkAnimalSpawnRules(
                     p_218105_,
                     p_218106_,

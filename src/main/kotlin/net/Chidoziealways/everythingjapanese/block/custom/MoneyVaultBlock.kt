@@ -59,15 +59,14 @@ class MoneyVaultBlock(props: Properties): BaseEntityBlock(props) {
 
         if (player.isShiftKeyDown) {
             val withdrawn = vault.withdrawFromPlayer(moneyCap, 50, player)
-            player.displayClientMessage(
+            player.sendOverlayMessage(
                 Component.literal(if (withdrawn) "Withdrew ¥50 from the vault!" else "Vault is empty"),
-                true
+
             )
         } else {
             val deposited = vault.depositFromPlayer(moneyCap, 50, player)
-            player.displayClientMessage(
+            player.sendOverlayMessage(
                 Component.literal(deposited),
-                true
             )
         }
 

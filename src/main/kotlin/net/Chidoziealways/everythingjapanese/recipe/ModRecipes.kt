@@ -13,16 +13,16 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object ModRecipes {
-    val SERIALIZERS = DeferredRegister.create<RecipeSerializer<*>?>(Registries.RECIPE_SERIALIZER, JAPANESE_MOD_ID)
-    val TYPES = DeferredRegister.create<RecipeType<*>?>(Registries.RECIPE_TYPE, JAPANESE_MOD_ID)
+    val SERIALIZERS = DeferredRegister.create<RecipeSerializer<*>>(Registries.RECIPE_SERIALIZER, JAPANESE_MOD_ID)
+    val TYPES = DeferredRegister.create<RecipeType<*>>(Registries.RECIPE_TYPE, JAPANESE_MOD_ID)
 
     val GROWTH_CHAMBER_SERIALIZER by
         SERIALIZERS.register(
             "growth_chamber",
-            Supplier { GrowthChamberRecipe.Serializer() })
+            Supplier { GrowthChamberRecipe.SERIALIZER })
     val GROWTH_CHAMBER_TYPE by
         TYPES.register("growth_chamber", Supplier {
-            object : RecipeType<GrowthChamberRecipe?> {
+            object : RecipeType<GrowthChamberRecipe> {
                 override fun toString(): String {
                     return "growth_chamber"
                 }
@@ -32,7 +32,7 @@ object ModRecipes {
     val SMITHING_KANJI_SERIALIZER by
             SERIALIZERS.register(
                 "smithing_kanji",
-                Supplier{ SmithingKanjiRecipe.Serializer() })
+                Supplier{ SmithingKanjiRecipe.SERIALIZER })
 
     val SMITHING_KANJI_TYPE by
             TYPES.register("smithing_kanji", Supplier {
@@ -45,7 +45,7 @@ object ModRecipes {
 
     val SMITHING_BLADE_SERIALIZER by
             SERIALIZERS.register("smithing_blade",
-                Supplier { SmithingBladeRecipe.Serializer() })
+                Supplier { SmithingBladeRecipe.SERIALIZER })
 
     val SMITHING_BLADE_TYPE by
             TYPES.register("smithing_blade", Supplier {
@@ -58,7 +58,7 @@ object ModRecipes {
 
     val SMITHING_WRAPPER_SERIALIZER by
     SERIALIZERS.register("smithing_wrapper",
-        Supplier { SmithingWrapperRecipe.Serializer() })
+        Supplier { SmithingWrapperRecipe.SERIALIZER })
 
     val SMITHING_WRAPPER_TYPE by
     TYPES.register("smithing_wrapper", Supplier {

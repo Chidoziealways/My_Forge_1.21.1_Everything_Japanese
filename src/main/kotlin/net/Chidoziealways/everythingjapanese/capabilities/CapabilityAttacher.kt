@@ -5,6 +5,7 @@ import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.chakra.Chakra
 import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuCapability
+import net.Chidoziealways.everythingjapanese.karma.Karma
 import net.Chidoziealways.everythingjapanese.money.MoneyCapabilityBlock
 import net.Chidoziealways.everythingjapanese.money.MoneyCapabilityEntity
 import net.Chidoziealways.everythingjapanese.money.MoneyCapabilityItem
@@ -29,6 +30,8 @@ object CapabilityAttacher {
     private val moneyEntityMap = mutableMapOf<Player, MoneyCapabilityEntity>()
     private val moneyBlockMap = mutableMapOf<BlockPos, MoneyCapabilityBlock>()
     private val moneyItemMap = mutableMapOf<ItemStack, MoneyCapabilityItem>()
+
+    private val karmaMap = mutableMapOf<Player, Karma>()
 
     @SubscribeEvent
     fun onAttachCapabilities(event: RegisterCapabilitiesEvent) {
@@ -71,5 +74,10 @@ object CapabilityAttacher {
             {stack, _ -> moneyItemMap.getOrPut(stack) { MoneyCapabilityItem() } },
             JModItems.CREDIT_CARD_ITEM
         )
+        event.registerEntity(
+            ModCapabilities.KARMA_CAPABILITY,
+            EntityType.PLAYER) { entity, _ ->
+            karmaMap.getOrPut(entity) { Karma() }
+        }
     }
 }

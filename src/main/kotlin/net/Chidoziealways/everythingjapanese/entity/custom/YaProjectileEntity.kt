@@ -12,14 +12,14 @@ import net.minecraft.network.syncher.SynchedEntityData
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.entity.projectile.AbstractArrow
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.alchemy.PotionContents
 import net.minecraft.world.level.Level
 import kotlin.math.max
 
 class YaProjectileEntity : AbstractArrow {
-    constructor(entityType: EntityType<out AbstractArrow?>, level: Level) : super(entityType, level)
+    constructor(entityType: EntityType<out AbstractArrow>, level: Level) : super(entityType, level)
 
     constructor(
         pLevel: Level,
@@ -43,12 +43,12 @@ class YaProjectileEntity : AbstractArrow {
     }
 
     private fun getPotionContents(): PotionContents {
-        return this.getPickupItemStackOrigin()
+        return this.pickupItemStackOrigin
             .getOrDefault<PotionContents>(DataComponents.POTION_CONTENTS, PotionContents.EMPTY)
     }
 
     private fun setPotionContents(pPotionContents: PotionContents?) {
-        this.getPickupItemStackOrigin().set<PotionContents?>(DataComponents.POTION_CONTENTS, pPotionContents)
+        this.pickupItemStackOrigin.set<PotionContents>(DataComponents.POTION_CONTENTS, pPotionContents)
         this.updateColor()
     }
 
@@ -59,7 +59,7 @@ class YaProjectileEntity : AbstractArrow {
 
     private fun updateColor() {
         val potioncontents = this.getPotionContents()
-        this.entityData.set<Int?>(
+        this.entityData.set<Int>(
             ID_EFFECT_COLOR,
             if (potioncontents == PotionContents.EMPTY) -1 else potioncontents.getColor()
         )
@@ -71,7 +71,7 @@ class YaProjectileEntity : AbstractArrow {
 
     override fun defineSynchedData(pBuilder: SynchedEntityData.Builder) {
         super.defineSynchedData(pBuilder)
-        pBuilder.define<Int?>(ID_EFFECT_COLOR, -1)
+        pBuilder.define<Int>(ID_EFFECT_COLOR, -1)
     }
 
     override fun tick() {
@@ -109,7 +109,7 @@ class YaProjectileEntity : AbstractArrow {
     }
 
     fun getColor(): Int {
-        return this.entityData.get<Int?>(ID_EFFECT_COLOR)
+        return this.entityData.get<Int>(ID_EFFECT_COLOR)
     }
 
     override fun doPostHurtEffects(pLiving: LivingEntity) {
@@ -169,8 +169,8 @@ class YaProjectileEntity : AbstractArrow {
     companion object {
         private const val EXPOSED_POTION_DECAY_TIME = 600
         private val NO_EFFECT_COLOR = -1
-        private val ID_EFFECT_COLOR: EntityDataAccessor<Int?> =
-            SynchedEntityData.defineId<Int?>(YaProjectileEntity::class.java, EntityDataSerializers.INT)
+        private val ID_EFFECT_COLOR: EntityDataAccessor<Int> =
+            SynchedEntityData.defineId<Int>(YaProjectileEntity::class.java, EntityDataSerializers.INT)
         private const val EVENT_POTION_PUFF: Byte = 0
     }
 }

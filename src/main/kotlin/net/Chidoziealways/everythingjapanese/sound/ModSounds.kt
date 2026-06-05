@@ -3,7 +3,7 @@ package net.Chidoziealways.everythingjapanese.sound
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.world.item.JukeboxSong
 import net.neoforged.bus.api.IEventBus
@@ -30,9 +30,9 @@ object ModSounds {
     )
 
     val AO_TO_NATSU = registerSoundEvent("ao_to_natsu")
-    val AO_TO_NATSU_KEY: ResourceKey<JukeboxSong?> = ResourceKey.create<JukeboxSong?>(
+    val AO_TO_NATSU_KEY: ResourceKey<JukeboxSong> = ResourceKey.create<JukeboxSong>(
         Registries.JUKEBOX_SONG,
-        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ao_to_natsu")
+        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ao_to_natsu")
     )
 
 
@@ -41,7 +41,7 @@ object ModSounds {
             name,
             Supplier {
                 SoundEvent.createVariableRangeEvent(
-                    ResourceLocation.fromNamespaceAndPath(
+                    Identifier.fromNamespaceAndPath(
                         JAPANESE_MOD_ID,
                         name
                     )

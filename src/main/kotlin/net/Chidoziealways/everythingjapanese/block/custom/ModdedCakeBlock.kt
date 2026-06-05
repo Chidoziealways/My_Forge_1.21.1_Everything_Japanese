@@ -31,7 +31,7 @@ class ModdedCakeBlock(properties: BlockBehaviour.Properties) : Block(properties)
         )
     }
 
-    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
         builder.add(ModdedCakeBlock.Companion.BITES)
     }
 
@@ -144,7 +144,7 @@ class ModdedCakeBlock(properties: BlockBehaviour.Properties) : Block(properties)
                 if (i < 16) {
                     level.setBlock(
                         pos,
-                        state.setValue<Int, Int?>(BITES, i + 1),
+                        state.setValue<Int, Int>(BITES, i + 1),
                         3
                     )
                 } else {

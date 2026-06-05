@@ -22,6 +22,11 @@ object PlayerEvents {
         log.info("Saving Chakra")
         player.persistentData.put("everythingjapanese:chakra_data", chakraTag!!) // Save Chakra data to persistent NBT
 
+        val karma =  player.getCapability(ModCapabilities.KARMA_CAPABILITY)
+        val karmaTag = karma!!.serializeNBT()
+        log.info("Saving Karma")
+        player.persistentData.put("everythingjapanese:karma_data", karmaTag!!) // Save Karma data to persistent NBT
+
         val stamina =  player.getCapability(ModCapabilities.STAMINA_CAPABILITY)
         val staminaTag = stamina!!.serializeNBT()
         log.info("Saving Stamina")
@@ -64,6 +69,13 @@ object PlayerEvents {
             val chakra = player.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
             log.info("Loading Chakra data from persistent NBT")
             chakra!!.deserializeNBT(chakraTag)
+        }
+
+        if (player.persistentData.contains("everythingjapanese:karma_data")) {
+            val karmaTag = player.persistentData.getCompoundOrEmpty("everythingjapanese:karma_data")
+            val karma = player.getCapability(ModCapabilities.KARMA_CAPABILITY)
+            log.info("Loading Karma data from persistent NBT")
+            karma!!.deserializeNBT(karmaTag)
         }
 
         if (player.persistentData.contains("everythingjapanese:stamina_data")) {
@@ -110,11 +122,20 @@ object PlayerEvents {
         // Restore Chakra data
         if (oldPlayer.persistentData.contains("everythingjapanese:chakra_data")) {
             val chakraTag = oldPlayer.persistentData.getCompoundOrEmpty("everythingjapanese:chakra_data")
-            val chakra =  newPlayer.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+            val chakra =  newPlayer.getCapability<IChakra>(ModCapabilities.CHAKRA_CAPABILITY)
             log.info("Restoring Chakra Data")
             chakra!!.deserializeNBT(chakraTag)
         } else {
             log.error("Doesn't contain chakra_data")
+        }
+
+        if (oldPlayer.persistentData.contains("everythingjapanese:karma_data")) {
+            val karmaTag = oldPlayer.persistentData.getCompoundOrEmpty("everythingjapanese:karma_data")
+            val karma =  newPlayer.getCapability(ModCapabilities.KARMA_CAPABILITY)
+            log.info("Restoring Karma Data")
+            karma!!.deserializeNBT(karmaTag)
+        } else {
+            log.error("Doesn't contain karma_data")
         }
 
         if (oldPlayer.persistentData.contains("everythingjapanese:stamina_data")) {
@@ -129,7 +150,7 @@ object PlayerEvents {
         // Restore Jutsu data
         if (oldPlayer.persistentData.contains("everythingjapanese:jutsu_data")) {
             val jutsuTag = oldPlayer.persistentData.getCompoundOrEmpty("everythingjapanese:jutsu_data")
-            val jutsu = newPlayer.getCapability<IJutsuCapability?>(ModCapabilities.JUTSU_CAPABILITY)
+            val jutsu = newPlayer.getCapability<IJutsuCapability>(ModCapabilities.JUTSU_CAPABILITY)
             log.info("Restoring Jutsu Data")
             jutsu!!.deserializeNBT(jutsuTag)
         } else {

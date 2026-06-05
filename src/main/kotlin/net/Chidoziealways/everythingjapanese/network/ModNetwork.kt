@@ -8,6 +8,7 @@ import net.Chidoziealways.everythingjapanese.item.custom.SetScrollTextPacket
 import net.Chidoziealways.everythingjapanese.jutsu.CycleJutsuPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuSyncPacket
+import net.Chidoziealways.everythingjapanese.karma.KarmaSync
 import net.Chidoziealways.everythingjapanese.money.packets.MoneySyncPacket
 import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaDecreasePacket
 import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaIncreasePacket
@@ -30,6 +31,8 @@ object ModNetwork {
                 chakra.setMaxChakra(message.maxChakra)
             }
         }
+
+        registrar.playToClient(KarmaSync.TYPE, KarmaSync.CODEC, KarmaSync::handle)
 
         registrar.playToServer(JutsuCastPacket.TYPE, JutsuCastPacket.STREAM_CODEC) { message, context ->
             context.enqueueWork { JutsuCastPacket.handle(message, context) }

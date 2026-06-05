@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture
 class ModBiomeTagProvider(
     p_255800_: PackOutput,
     p_256205_: CompletableFuture<HolderLookup.Provider>
-) : KeyTagProvider<Biome?>(p_255800_, Registries.BIOME, p_256205_, JAPANESE_MOD_ID) {
+) : KeyTagProvider<Biome>(p_255800_, Registries.BIOME, p_256205_, JAPANESE_MOD_ID) {
     override fun addTags(p_256485_: HolderLookup.Provider) {
         tag(ModTags.Biomes.IS_HELL)
             .add(ModBiomes.HELL_BIOME)
@@ -22,10 +22,22 @@ class ModBiomeTagProvider(
         tag(ModTags.Biomes.HAS_HELL_TEMPLE)
             .addTag(ModTags.Biomes.IS_HELL)
 
+        tag(ModTags.Biomes.HAS_SHINTO_SHRINE)
+            .add(Biomes.CHERRY_GROVE)
+            .add(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
+            .add(Biomes.TAIGA)
+            .add(Biomes.JAGGED_PEAKS)
+
+        tag(ModTags.Biomes.HAS_SHOJI_HOUSE)
+            .add(Biomes.DARK_FOREST)
+            .add(Biomes.BADLANDS)
+            .add(Biomes.BAMBOO_JUNGLE)
+            .add(Biomes.JUNGLE)
+            .add(Biomes.SPARSE_JUNGLE)
+
         tag(ModTags.Biomes.HAS_DOJO)
             .add(Biomes.PLAINS)
             .add(Biomes.CHERRY_GROVE)
-            .add(Biomes.DARK_FOREST)
             .add(Biomes.FOREST)
             .add(Biomes.BIRCH_FOREST)
     }

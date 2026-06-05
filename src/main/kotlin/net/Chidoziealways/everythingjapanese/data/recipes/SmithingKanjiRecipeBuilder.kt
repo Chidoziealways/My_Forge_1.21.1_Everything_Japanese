@@ -5,7 +5,7 @@ import net.Chidoziealways.everythingjapanese.item.crafting.SmithingKanjiRecipe
 import net.minecraft.advancements.AdvancementRequirements
 import net.minecraft.advancements.AdvancementRewards
 import net.minecraft.advancements.Criterion
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger
+import net.minecraft.advancements.criterion.RecipeUnlockedTrigger
 import net.minecraft.core.Holder
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.item.crafting.Ingredient
@@ -51,13 +51,13 @@ class SmithingKanjiRecipeBuilder(
         output.accept(
             recipeKey,
             recipe,
-            advancementBuilder.build(recipeKey.location().withPrefix("recipes/${category.folderName}/"))
+            advancementBuilder.build(recipeKey.registry().withPrefix("recipes/${category.folderName}/"))
         )
     }
 
     private fun ensureValid(recipeKey: ResourceKey<Recipe<*>>) {
         if (criteria.isEmpty()) {
-            throw IllegalStateException("No way of obtaining recipe ${recipeKey.location()}")
+            throw IllegalStateException("No way of obtaining recipe ${recipeKey.registry()}")
         }
     }
 }

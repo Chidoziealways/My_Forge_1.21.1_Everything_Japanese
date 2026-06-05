@@ -19,7 +19,7 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
 import net.minecraft.data.recipes.*
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.item.AxeItem
 import net.minecraft.world.item.HoeItem
@@ -94,6 +94,17 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                 .pattern("AAA")
                 .define('A', JModItems.NEPHRITE),
             JModItems.NEPHRITE
+        )
+
+        saveShapedRecipe(
+            shaped(RecipeCategory.COMBAT, JModItems.POWERED_SWORD)
+                .pattern("  A")
+                .pattern(" B ")
+                .pattern("C  ")
+                .define('A', Items.NETHERITE_INGOT)
+                .define('B', Items.DIAMOND)
+                .define('C', Items.STICK),
+            Items.NETHERITE_INGOT
         )
 
         saveShapelessRecipe(shapeless(RecipeCategory.TOOLS, JModItems.TALISMAN_ITEM, 5).requires(Items.BAMBOO).requires(Items.INK_SAC),
@@ -376,8 +387,9 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         woodFromLogs(JModBlocks.HINOKI_MOKUZAI, JModBlocks.HINOKI_MARUTA)
 
         smelting(this.output,
-            PYRITE_SMELTABLES as MutableList<ItemLike>, RecipeCategory.MISC, JModItems.PYRITE_INGOT, 1f, 200, "pyrite")
-        oreBlasting(this.output, PYRITE_SMELTABLES, RecipeCategory.MISC, JModItems.PYRITE_INGOT, 1f, 100, "pyrite")
+            PYRITE_SMELTABLES as MutableList<ItemLike>, RecipeCategory.MISC, CookingBookCategory.MISC, JModItems.PYRITE_INGOT, 1f, 200, "pyrite")
+        oreBlasting(this.output, PYRITE_SMELTABLES, RecipeCategory.MISC, JModItems.PYRITE_INGOT, 1f, 100, "pyrite",
+            CookingBookCategory.MISC)
         smoking(
             this.output,
             listOf<ItemLike>(JModItems.RAW_RICE) as MutableList<ItemLike>,
@@ -385,7 +397,8 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             JModItems.RICE,
             1f,
             100,
-            "rice"
+            "rice",
+            CookingBookCategory.FOOD
         )
 
         stairBuilder(JModBlocks.PYRITE_STAIRS, Ingredient.of(JModItems.PYRITE_INGOT)).group("pyrite")
@@ -473,13 +486,13 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
 
 
     protected fun smelting(
-        recipeOutput: RecipeOutput, pIngredients: MutableList<ItemLike>, pCategory: RecipeCategory, pResult: ItemLike,
+        recipeOutput: RecipeOutput, pIngredients: MutableList<ItemLike>, pCategory: RecipeCategory, pCookingCategory: CookingBookCategory,  pResult: ItemLike,
         pExperience: Float, pCookingTIme: Int, pGroup: String
     ) {
         cooking<SmeltingRecipe>(
             recipeOutput,
-            RecipeSerializer.SMELTING_RECIPE,
-            { p_250200_: String, p_251114_: CookingBookCategory, p_250340_: Ingredient, p_250306_: ItemStack, p_249577_: Float, p_250030_: Int ->
+            SmeltingRecipe.SERIALIZER,
+            { p_250200_, p_251114_, p_250340_, p_250306_, p_249577_, p_250030_ ->
                 SmeltingRecipe(
                     p_250200_,
                     p_251114_,
@@ -491,6 +504,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             },
             pIngredients,
             pCategory,
+            pCookingCategory,
             pResult,
             pExperience,
             pCookingTIme,
@@ -501,12 +515,12 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
 
     protected fun smoking(
         recipeOutput: RecipeOutput, pIngredients: MutableList<ItemLike>, pCategory: RecipeCategory, pResult: ItemLike,
-        pExperience: Float, pCookingTIme: Int, pGroup: String
+        pExperience: Float, pCookingTIme: Int, pGroup: String, pCookingCategory: CookingBookCategory
     ) {
         cooking<SmokingRecipe>(
             recipeOutput,
-            RecipeSerializer.SMOKING_RECIPE,
-            { p_249312_: String, p_251017_: CookingBookCategory, p_252345_: Ingredient, p_250002_: ItemStack, p_250535_: Float, p_251222_: Int ->
+            SmokingRecipe.SERIALIZER,
+            { p_249312_, p_251017_, p_252345_, p_250002_, p_250535_: Float, p_251222_: Int ->
                 SmokingRecipe(
                     p_249312_,
                     p_251017_,
@@ -518,6 +532,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             },
             pIngredients,
             pCategory,
+            pCookingCategory,
             pResult,
             pExperience,
             pCookingTIme,
@@ -528,12 +543,12 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
 
     protected fun oreBlasting(
         recipeOutput: RecipeOutput, pIngredients: MutableList<ItemLike>, pCategory: RecipeCategory, pResult: ItemLike,
-        pExperience: Float, pCookingTime: Int, pGroup: String
+        pExperience: Float, pCookingTime: Int, pGroup: String, pCookingCategory: CookingBookCategory
     ) {
         cooking<BlastingRecipe>(
             recipeOutput,
-            RecipeSerializer.BLASTING_RECIPE,
-            { p_251053_: String, p_249936_: CookingBookCategory, p_251550_: Ingredient, p_251027_: ItemStack, p_250843_: Float, p_249841_: Int ->
+            BlastingRecipe.SERIALIZER,
+            { p_251053_, p_249936_, p_251550_, p_251027_, p_250843_: Float, p_249841_: Int ->
                 BlastingRecipe(
                     p_251053_,
                     p_249936_,
@@ -545,6 +560,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             },
             pIngredients,
             pCategory,
+            pCookingCategory,
             pResult,
             pExperience,
             pCookingTime,
@@ -559,6 +575,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
         factory: AbstractCookingRecipe.Factory<T>,
         pIngredients: MutableList<ItemLike>,
         pCategory: RecipeCategory,
+        pCookingCategory: CookingBookCategory,
         pResult: ItemLike,
         pExperience: Float,
         pCookingTime: Int,
@@ -569,10 +586,10 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             SimpleCookingRecipeBuilder.generic<T>(
                 Ingredient.of(itemlike),
                 pCategory,
+                pCookingCategory,
                 pResult,
                 pExperience,
                 pCookingTime,
-                pCookingSerializer,
                 factory
             ).group(pGroup).unlockedBy(
                 getHasName(itemlike), has(itemlike)
@@ -599,7 +616,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey = registryObjectResourceKeyPair.getSecond()
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
-                        ResourceLocation.fromNamespaceAndPath(
+                        Identifier.fromNamespaceAndPath(
                             JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_trim"
                         )
@@ -632,7 +649,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey = registryObjectResourceKeyPair.getSecond()
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
-                        ResourceLocation.fromNamespaceAndPath(
+                        Identifier.fromNamespaceAndPath(
                             JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_kanji"
                         )
@@ -653,7 +670,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey = registryObjectResourceKeyPair.getSecond()
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
-                        ResourceLocation.fromNamespaceAndPath(
+                        Identifier.fromNamespaceAndPath(
                             JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_blade"
                         )
@@ -682,7 +699,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     val resourceKey = registryObjectResourceKeyPair.getSecond()
                     val resourceKey1 = ResourceKey.create(
                         Registries.RECIPE,
-                        ResourceLocation.fromNamespaceAndPath(
+                        Identifier.fromNamespaceAndPath(
                             JAPANESE_MOD_ID,
                             getItemName(item) + "_smithing_wrapper"
                         )

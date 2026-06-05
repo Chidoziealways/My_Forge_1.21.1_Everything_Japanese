@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "everythingjapanese:block/rice_crop_stage4"
-  }
-}

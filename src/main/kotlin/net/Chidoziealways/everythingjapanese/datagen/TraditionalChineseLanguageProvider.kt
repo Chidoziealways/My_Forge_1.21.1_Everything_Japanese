@@ -130,7 +130,7 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         add(JModItems.DIESEL, "柴油")
         add(JModItems.INCENSE, "線香")
         add(JModItems.UDON, "烏冬")
-        add(JModItems.HELL_PORTAL_ACTIVATOR, "地獄傳送門激活器")
+        //add(JModItems.HELL_PORTAL_ACTIVATOR, "地獄傳送門激活器")
         add(JModItems.YA, "弓箭")
         add(JModItems.TALISMAN_ITEM, "符咒")
         add(JModItems.PYRITE_AXE, "黃鐵礦斧")
@@ -186,6 +186,7 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         //add(JModItems.SOUL_GUITAR, "靈魂吉他")
         add(JModItems.GUN, "槍")
         add(JModItems.BULLET, "子彈")
+        add(JModItems.POWERED_SWORD, "力量之劍")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "風球術")

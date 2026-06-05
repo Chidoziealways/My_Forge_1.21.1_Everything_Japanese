@@ -129,7 +129,7 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, JA
         add(JModItems.DIESEL, "ディーゼル")
         add(JModItems.INCENSE, "お香")
         add(JModItems.UDON, "うどん")
-        add(JModItems.HELL_PORTAL_ACTIVATOR, "地獄のポータル起動器")
+        //add(JModItems.HELL_PORTAL_ACTIVATOR, "地獄のポータル起動器")
         add(JModItems.YA, "ヤー")
         add(JModItems.RAMEN, "ラーメン")
         add(JModItems.TALISMAN_ITEM, "護符")
@@ -185,6 +185,7 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, JA
         //add(JModItems.SOUL_GUITAR, "ソウルギター")
         add(JModItems.GUN, "銃")
         add(JModItems.BULLET, "弾丸")
+        add(JModItems.POWERED_SWORD, "動力剣")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "風の玉")

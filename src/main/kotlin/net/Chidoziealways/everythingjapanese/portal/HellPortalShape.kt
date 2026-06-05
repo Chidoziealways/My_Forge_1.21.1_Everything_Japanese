@@ -2,12 +2,12 @@ package net.Chidoziealways.everythingjapanese.portal
 
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
-import net.minecraft.BlockUtil.FoundRectangle
 import net.minecraft.core.BlockPos
 import net.minecraft.core.BlockPos.MutableBlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.tags.BlockTags
+import net.minecraft.util.BlockUtil
 import net.minecraft.util.Mth
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.EntityDimensions
@@ -39,12 +39,12 @@ class HellPortalShape private constructor(
 
     fun createPortalBlocks(p_366077_: LevelAccessor) {
         val blockstate = JModBlocks.HELL_PORTAL.defaultBlockState()
-            .setValue<Direction.Axis?, Direction.Axis?>(HellPortalBlock.AXIS, this.axis)
+            .setValue<Direction.Axis, Direction.Axis>(HellPortalBlock.AXIS, this.axis)
         BlockPos.betweenClosed(
             this.bottomLeft,
             this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)
         )
-            .forEach(Consumer { p_360642_: BlockPos? -> p_366077_.setBlock(p_360642_, blockstate, 18) })
+            .forEach(Consumer { p_360642_: BlockPos -> p_366077_.setBlock(p_360642_, blockstate, 18) })
     }
 
     val isComplete: Boolean
@@ -236,7 +236,7 @@ class HellPortalShape private constructor(
         }
 
         fun getRelativePosition(
-            p_77739_: FoundRectangle,
+            p_77739_: BlockUtil.FoundRectangle,
             p_77740_: Direction.Axis,
             p_77741_: Vec3,
             p_77742_: EntityDimensions

@@ -76,19 +76,19 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
     }
 
     override fun preRemoveSideEffects(p_397404_: BlockPos, p_395805_: BlockState) {
-        val inventory: SimpleContainer = SimpleContainer(itemHandler.getSlots())
+        val inventory = SimpleContainer(itemHandler.getSlots())
         for (i in 0..<itemHandler.getSlots()) {
             inventory.setItem(i, itemHandler.getStackInSlot(i))
         }
-
-        Containers.dropContents(this.level, this.worldPosition, inventory)
+        val levl = this.level ?: return
+        Containers.dropContents(levl, this.worldPosition, inventory)
         super.preRemoveSideEffects(p_397404_, p_395805_)
     }
 
     override fun saveAdditional(output: ValueOutput) {
         itemHandler.serialize(output)
-        output.store<Int?>("growth_chamber.progress", Codec.INT, progress)
-        output.store<Int?>("growth_chamber.max_progress", Codec.INT, maxProgress)
+        output.store<Int>("growth_chamber.progress", Codec.INT, progress)
+        output.store<Int>("growth_chamber.max_progress", Codec.INT, maxProgress)
 
         super.saveAdditional(output)
     }
@@ -158,15 +158,15 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
                 && canInsertAmountIntoOutputSlot(output!!.count)
     }
 
-    private val currentRecipe: Optional<out RecipeHolder<out GrowthChamberRecipe?>?>?
+    private val currentRecipe: Optional<out RecipeHolder<out GrowthChamberRecipe>>
         get() {
-            if (level is ServerLevel) {
-                return level?.server?.recipeManager
-                    ?.getRecipeFor<GrowthChamberRecipeInput?, GrowthChamberRecipe?>(
+            (level as? ServerLevel)?.let {
+                return it?.server?.recipeManager
+                    ?.getRecipeFor(
                         ModRecipes.GROWTH_CHAMBER_TYPE,
                         GrowthChamberRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)),
-                        level
-                    )
+                        it
+                    ) ?: return@let
             }
             return Optional.empty<RecipeHolder<GrowthChamberRecipe>>()
         }
@@ -189,7 +189,7 @@ class GrowthChamberBlockEntity(pPos: BlockPos, pBlockState: BlockState) :
         return saveWithoutMetadata(pRegistries)
     }
 
-    override fun getUpdatePacket(): Packet<ClientGamePacketListener?> {
+    override fun getUpdatePacket(): Packet<ClientGamePacketListener> {
         return ClientboundBlockEntityDataPacket.create(this)
     }
 

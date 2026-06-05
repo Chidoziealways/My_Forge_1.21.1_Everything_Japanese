@@ -32,12 +32,12 @@ class Drinks(pProperties: Properties) : Item(pProperties) {
 
     override fun getDefaultInstance(): ItemStack {
         val itemstack = super.getDefaultInstance()
-        itemstack.set<PotionContents?>(DataComponents.POTION_CONTENTS, PotionContents(Potions.WATER))
+        itemstack.set<PotionContents>(DataComponents.POTION_CONTENTS, PotionContents(Potions.WATER))
         return itemstack
     }
 
     override fun finishUsingItem(pStack: ItemStack, pLevel: Level, pEntityLiving: LivingEntity): ItemStack {
-        val player = if (pEntityLiving is Player) pEntityLiving else null
+        val player = pEntityLiving as? Player
         if (player is ServerPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger(player, pStack)
         }
@@ -51,7 +51,7 @@ class Drinks(pProperties: Properties) : Item(pProperties) {
                         (pLevel as ServerLevel),
                         player,
                         pEntityLiving,
-                        player,
+                        pEntityLiving,
                         p_327729_.getAmplifier(),
                         1.0
                     )
@@ -102,7 +102,7 @@ class Drinks(pProperties: Properties) : Item(pProperties) {
                 val serverlevel = level as ServerLevel
 
                 for (i in 0..4) {
-                    serverlevel.sendParticles<SimpleParticleType?>(
+                    serverlevel.sendParticles<SimpleParticleType>(
                         ParticleTypes.SPLASH,
                         blockpos.getX().toDouble() + level.random.nextDouble(),
                         (blockpos.getY() + 1).toDouble(),

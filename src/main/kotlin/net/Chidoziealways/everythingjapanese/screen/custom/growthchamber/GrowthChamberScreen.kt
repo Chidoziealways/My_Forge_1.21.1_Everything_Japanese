@@ -1,20 +1,20 @@
 package net.Chidoziealways.everythingjapanese.screen.custom.growthchamber
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
-import net.minecraft.client.gui.GuiGraphics
+import net.minecraft.client.gui.GuiGraphicsExtractor
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
 import net.minecraft.client.renderer.RenderPipelines
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.player.Inventory
 
 class GrowthChamberScreen(pMenu: GrowthChamberMenu, pPlayerInventory: Inventory, pTitle: Component) :
     AbstractContainerScreen<GrowthChamberMenu>(pMenu, pPlayerInventory, pTitle) {
         init {
-            imageWidth = 256
-            imageHeight = 256
+            //imageWidth = 256
+            //imageHeight = 256
         }
-    override fun renderBg(gui: GuiGraphics, partialTicks: Float, mouseX: Int, mouseY: Int) {
+    override fun extractBackground(gui: GuiGraphicsExtractor, mouseX: Int, mouseY: Int, partialTicks: Float) {
         // 1) Compute top‑left corner to center the GUI
         val x = (this.width - this.imageWidth) / 2
         val y = (this.height - this.imageHeight) / 2
@@ -24,7 +24,7 @@ class GrowthChamberScreen(pMenu: GrowthChamberMenu, pPlayerInventory: Inventory,
         //    – blit now takes a RenderType supplier + texture + coords + texture‑size
         gui.blit(
             RenderPipelines.GUI_TEXTURED,
-            GUI_TEXTURE,  // your GUI texture ResourceLocation
+            GUI_TEXTURE,  // your GUI texture Identifier
             x, y,  // screen position
             0F, 0F,  // u/v start in the texture
             imageWidth, imageHeight,  // width/height to draw
@@ -35,7 +35,7 @@ class GrowthChamberScreen(pMenu: GrowthChamberMenu, pPlayerInventory: Inventory,
         renderProgressArrow(gui, x, y)
     }
 
-    private fun renderProgressArrow(gui: GuiGraphics, x: Int, y: Int) {
+    private fun renderProgressArrow(gui: GuiGraphicsExtractor, x: Int, y: Int) {
         if (!menu.isCrafting) return
 
         val arrowWidth = menu.scaledArrowProgress
@@ -51,17 +51,17 @@ class GrowthChamberScreen(pMenu: GrowthChamberMenu, pPlayerInventory: Inventory,
     }
 
 
-    override fun render(pGuiGraphics: GuiGraphics, pMouseX: Int, pMouseY: Int, pPartialTick: Float) {
-        super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick)
-        renderTooltip(pGuiGraphics, pMouseX, pMouseY)
+    override fun extractRenderState(pGuiGraphics: GuiGraphicsExtractor, pMouseX: Int, pMouseY: Int, pPartialTick: Float) {
+        super.extractRenderState(pGuiGraphics, pMouseX, pMouseY, pPartialTick)
+        extractTooltip(pGuiGraphics, pMouseX, pMouseY)
     }
 
     companion object {
-        private val GUI_TEXTURE: ResourceLocation = ResourceLocation.fromNamespaceAndPath(
+        private val GUI_TEXTURE: Identifier = Identifier.fromNamespaceAndPath(
             JAPANESE_MOD_ID,
             "textures/gui/growth_chamber/growth_chamber_gui.png"
         )
-        private val ARROW_TEXTURE: ResourceLocation =
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "textures/gui/arrow_progress.png")
+        private val ARROW_TEXTURE: Identifier =
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "textures/gui/arrow_progress.png")
     }
 }

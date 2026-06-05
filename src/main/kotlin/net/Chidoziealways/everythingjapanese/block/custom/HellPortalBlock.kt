@@ -4,11 +4,10 @@ import com.mojang.serialization.MapCodec
 import net.Chidoziealways.everythingjapanese.portal.HellPortalForcer
 import net.Chidoziealways.everythingjapanese.portal.HellPortalShape
 import net.Chidoziealways.everythingjapanese.worldgen.dimension.ModDimensions
-import net.minecraft.BlockUtil
-import net.minecraft.BlockUtil.FoundRectangle
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.util.BlockUtil
 import net.minecraft.util.RandomSource
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.InsideBlockEffectApplier
@@ -16,7 +15,6 @@ import net.minecraft.world.entity.Relative
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.BlockGetter
-import net.minecraft.world.level.GameRules
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.ScheduledTickAccess
@@ -29,6 +27,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.EnumProperty
 import net.minecraft.world.level.border.WorldBorder
 import net.minecraft.world.level.dimension.DimensionType
+import net.minecraft.world.level.gamerules.GameRules
 import net.minecraft.world.level.portal.PortalShape
 import net.minecraft.world.level.portal.TeleportTransition
 import net.minecraft.world.level.portal.TeleportTransition.PostTeleportTransition
@@ -46,7 +45,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
 
     init {
         this.registerDefaultState(
-            this.stateDefinition.any().setValue<Direction.Axis?, Direction.Axis?>(AXIS, Direction.Axis.X)
+            this.stateDefinition.any().setValue<Direction.Axis, Direction.Axis>(AXIS, Direction.Axis.X)
         )
     }
 
@@ -91,8 +90,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
     override fun getPortalTransitionTime(serverLevel: ServerLevel, entity: Entity): Int {
         return if (entity is Player) max(
             0,
-            serverLevel.gameRules
-                .getInt(if (entity.abilities.invulnerable) GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY else GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
+            serverLevel.gameRules.get (if (entity.abilities.invulnerable)  GameRules.PLAYERS_NETHER_PORTAL_CREATIVE_DELAY else GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY)
         ) else
             0
     }
@@ -122,7 +120,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
     ): TeleportTransition? {
         val forcer = HellPortalForcer(pLevel)
         val optional = forcer.findClosestPortalPosition(pExitPos, pIsNether, pWorldBorder)
-        val foundRectangle: FoundRectangle
+        val foundRectangle: BlockUtil.FoundRectangle
         val postTeleportTransition: PostTeleportTransition
         if (optional.isPresent) {
             val blockpos = optional.get()
@@ -176,7 +174,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
         return ItemStack.EMPTY
     }
 
-    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
         pBuilder.add(AXIS)
     }
 
@@ -194,7 +192,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
         private fun getDimensionTransitionFromExit(
             pEntity: Entity,
             pPos: BlockPos,
-            pRectangle: FoundRectangle,
+            pRectangle: BlockUtil.FoundRectangle,
             pLevel: ServerLevel,
             pPostTeleportTransition: PostTeleportTransition
         ): TeleportTransition {
@@ -228,7 +226,7 @@ class HellPortalBlock(properties: Properties) : Block(properties), Portal {
 
         private fun createDimensionTransition(
             pLevel: ServerLevel,
-            pRectangle: FoundRectangle,
+            pRectangle: BlockUtil.FoundRectangle,
             pAxis: Direction.Axis?,
             pOffset: Vec3,
             pEntity: Entity,

@@ -4,15 +4,16 @@ import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.blaze3d.vertex.VertexConsumer
 import net.Chidoziealways.everythingjapanese.block.custom.hanging_scroll.HangingScrollBlock
 import net.Chidoziealways.everythingjapanese.block.entity.custom.HangingScrollBlockEntity
-import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer
-import net.minecraft.client.renderer.state.CameraRenderState
+import net.minecraft.client.renderer.rendertype.RenderType
+import net.minecraft.client.renderer.rendertype.RenderTypes
+import net.minecraft.client.renderer.state.level.CameraRenderState
 import net.minecraft.client.renderer.texture.OverlayTexture
 import net.minecraft.core.Direction
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.phys.Vec3
 import org.joml.Quaternionf
 
@@ -81,27 +82,51 @@ class HangingScrollBlockEntityRenderer(context: BlockEntityRendererProvider.Cont
 }
 
 object HangingScrollModel {
-    fun material(texture: ResourceLocation) = RenderType.entityCutoutNoCull(texture)
+
+    fun material(texture: Identifier) = RenderTypes.entityCutout(texture)
 
     fun render(vertexConsumer: VertexConsumer, pose: PoseStack.Pose, from: FloatArray, to: FloatArray) {
-        val x0 = (from[0] / 16f) - 0.5f
-        val y0 = (from[1] / 16f) - 0.5f
-        val z0 = (from[2] / 16f) - 0.5f
-        val x1 = (to[0] / 16f) - 0.5f
-        val y1 = (to[1] / 16f) - 0.5f
-        val z1 = (to[2] / 16f) - 0.5f
+        val x0 = from[0] / 16f - 0.5f
+        val y0 = from[1] / 16f - 0.5f
+        val z0 = from[2] / 16f - 0.5f
+        val x1 = to[0] / 16f - 0.5f
+        val y1 = to[1] / 16f - 0.5f
+        val z1 = to[2] / 16f - 0.5f
         val epsilon = 0.001f
 
-        // Front face
-        vertexConsumer.addVertex(pose.pose(), x0, y0, z1 + epsilon)
-        vertexConsumer.addVertex(pose.pose(), x1, y0, z1 + epsilon)
-        vertexConsumer.addVertex(pose.pose(), x1, y1, z1 + epsilon)
-        vertexConsumer.addVertex(pose.pose(), x0, y1, z1 + epsilon)
+        // Define UVs (simple full-face mapping; you can adapt to Blockbench UVs)
+        val uvsFront = arrayOf(
+            floatArrayOf(0f, 1f),
+            floatArrayOf(1f, 1f),
+            floatArrayOf(1f, 0f),
+            floatArrayOf(0f, 0f)
+        )
+        val uvsBack = arrayOf(
+            floatArrayOf(0f, 0f),
+            floatArrayOf(1f, 0f),
+            floatArrayOf(1f, 1f),
+            floatArrayOf(0f, 1f)
+        )
 
-        // Back face
-        vertexConsumer.addVertex(pose.pose(), x0, y0, z0 - epsilon)
-        vertexConsumer.addVertex(pose.pose(), x1, y0, z0 - epsilon)
-        vertexConsumer.addVertex(pose.pose(), x1, y1, z0 - epsilon)
-        vertexConsumer.addVertex(pose.pose(), x0, y1, z0 - epsilon)
+        fun vertex(x: Float, y: Float, z: Float, u: Float, v: Float, nx: Float, ny: Float, nz: Float) {
+            vertexConsumer.addVertex(pose.pose(), x, y, z)
+                .setColor(255, 255, 255, 255)
+                .setUv(u, v)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setUv2(0xf0, 0xf0)
+                .setNormal(nx, ny, nz)
+        }
+
+        // Front face (+Z)
+        vertex(x0, y0, z1 + epsilon, uvsFront[0][0], uvsFront[0][1], 0f, 0f, 1f)
+        vertex(x1, y0, z1 + epsilon, uvsFront[1][0], uvsFront[1][1], 0f, 0f, 1f)
+        vertex(x1, y1, z1 + epsilon, uvsFront[2][0], uvsFront[2][1], 0f, 0f, 1f)
+        vertex(x0, y1, z1 + epsilon, uvsFront[3][0], uvsFront[3][1], 0f, 0f, 1f)
+
+        // Back face (-Z)
+        vertex(x0, y0, z0 - epsilon, uvsBack[0][0], uvsBack[0][1], 0f, 0f, -1f)
+        vertex(x1, y0, z0 - epsilon, uvsBack[1][0], uvsBack[1][1], 0f, 0f, -1f)
+        vertex(x1, y1, z0 - epsilon, uvsBack[2][0], uvsBack[2][1], 0f, 0f, -1f)
+        vertex(x0, y1, z0 - epsilon, uvsBack[3][0], uvsBack[3][1], 0f, 0f, -1f)
     }
 }

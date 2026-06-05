@@ -9,9 +9,11 @@ import net.Chidoziealways.everythingjapanese.block.entity.renderer.pedestal.Pede
 import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
 import net.Chidoziealways.everythingjapanese.commands.ModArgumentTypes
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
+import net.Chidoziealways.everythingjapanese.dialog.JModDialog
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantmentEffects
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
+import net.Chidoziealways.everythingjapanese.entity.client.aspiration.AspirationRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.bullet.BulletRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.chair.ChairRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.chiretsusho.ChiretsuShoProjectileRenderer
@@ -43,19 +45,19 @@ import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.Chidoziealways.everythingjapanese.villager.ModVillagers
 import net.minecraft.client.Minecraft
 import net.minecraft.client.particle.SpriteSet
-import net.minecraft.client.renderer.ItemBlockRenderTypes
+import net.minecraft.client.renderer.block.FluidModel
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.EntityRenderers
+import net.minecraft.client.resources.model.sprite.Material
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Holder
 import net.minecraft.core.RegistryAccess
 import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.MinecraftServer
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
-import net.minecraft.world.level.BlockAndTintGetter
 import net.minecraft.world.level.material.FluidState
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
@@ -65,8 +67,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.neoforge.client.NeoForgeRenderTypes
 import net.neoforged.neoforge.client.event.EntityRenderersEvent
+import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
-import net.neoforged.neoforge.client.event.RegisterNamedRenderTypesEvent
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent
@@ -184,36 +186,29 @@ object EverythingJapanese {
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID, value = [Dist.CLIENT])
     object ClientModEvents {
-        @SubscribeEvent
-        fun onRegisterRender(event: RegisterNamedRenderTypesEvent) {
-            event.register(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "washi_window"),
-                ChunkSectionLayer.TRANSLUCENT,
-                NeoForgeRenderTypes.ITEM_LAYERED_TRANSLUCENT.get()
-            )
-        }
 
         @SubscribeEvent
         fun onRegisterClientExtensions(event: RegisterClientExtensionsEvent) {
             event.registerFluidType(object : IClientFluidTypeExtensions {
-                val BLOOD_STILL = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_still")
-                val BLOOD_FLOW = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_flow")
-                val BLOOD_OVERLAY = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_overlay")
-
-                override fun getStillTexture(): ResourceLocation = BLOOD_STILL
-
-                override fun getFlowingTexture(): ResourceLocation = BLOOD_FLOW
-
-                override fun getOverlayTexture(): ResourceLocation? = BLOOD_OVERLAY
-
-                override fun getRenderOverlayTexture(mc: Minecraft): ResourceLocation? {
-                    return ResourceLocation.withDefaultNamespace("textures/misc/underwater.png")
+                override fun getRenderOverlayTexture(mc: Minecraft): Identifier? {
+                    return Identifier.withDefaultNamespace("textures/misc/underwater.png")
                 }
-
-                override fun getTintColor(): Int = 0xFFFF0000.toInt()
-
-                override fun getTintColor(state: FluidState, getter: BlockAndTintGetter, pos: BlockPos): Int = 0xFFFF0000.toInt()
-
             }, ModFluidTypes.BLOOD_TYPE)
+        }
+
+        @SubscribeEvent
+        fun onRegisterFluidModels(event: RegisterFluidModelsEvent) {
+            val BLOOD_STILL = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_still")
+            val BLOOD_FLOW = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_flow")
+            val BLOOD_OVERLAY = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/blood_overlay")
+            val stillFluid = ModFluids.BLOOD.value();
+            val flowingFluid = ModFluids.FLOWING_BLOOD.value();
+            event.register(FluidModel.Unbaked(
+                Material(BLOOD_STILL),
+                Material(BLOOD_FLOW),
+                Material(BLOOD_OVERLAY),
+                null,
+            ), stillFluid, flowingFluid)
         }
 
         @SubscribeEvent
@@ -240,16 +235,6 @@ object EverythingJapanese {
         
         @SubscribeEvent
         fun onClientSetup(event: FMLClientSetupEvent?) {
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.HINOKI_NAEGI, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.YAMAZAKI_BERRY_BUSH, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.RICE_CROP, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.PYRITE_DOOR, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.PYRITE_TRAPDOOR, ChunkSectionLayer.CUTOUT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.WASHI_WINDOW, ChunkSectionLayer.TRANSLUCENT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.WASHI_WINDOW_PANE, ChunkSectionLayer.TRANSLUCENT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.SHOJI_WINDOW, ChunkSectionLayer.TRANSLUCENT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.SHOJI_WINDOW_PANE, ChunkSectionLayer.TRANSLUCENT)
-            ItemBlockRenderTypes.setRenderLayer(JModBlocks.SHOJI_DOOR, ChunkSectionLayer.TRANSLUCENT)
         }
 
         
@@ -290,6 +275,8 @@ object EverythingJapanese {
 
             event.registerEntityRenderer(ModEntities.CURSED_SAMURAI
             ) { pContext -> CursedSamuraiRenderer(pContext) }
+
+            event.registerEntityRenderer(ModEntities.ASPIRATION) { AspirationRenderer(it) }
 
             event.registerEntityRenderer(
                 ModEntities.IRON_BATTLE_AXE
@@ -367,7 +354,7 @@ object EverythingJapanese {
         if (optionalTag.isPresent) {
             val tagSet = optionalTag.get()
             logDebug("Tag is LOADED and contains: " + tagSet.size() + " entries")
-            tagSet.forEach(Consumer { itemHolder: Holder<Item?>? -> logDebug(" - " + itemHolder!!.value()) })
+            tagSet.forEach(Consumer { itemHolder: Holder<Item> -> logDebug(" - " + itemHolder!!.value()) })
         } else {
             logError("Tag is NOT present")
         }

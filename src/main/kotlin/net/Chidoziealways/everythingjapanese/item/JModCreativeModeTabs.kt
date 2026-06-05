@@ -27,6 +27,7 @@ object JModCreativeModeTabs {
                     output.accept(JModItems.CHISEL)
                     output.accept(JModItems.RADIATION_STAFF)
                     output.accept { JModItems.TALISMAN_ITEM }
+                    output.accept(JModItems.BLOOD_BUCKET)
                     //output.accept(JModItems.SCROLL)
                 }
                 .build()
@@ -46,16 +47,16 @@ object JModCreativeModeTabs {
                 .build()
         })
 
-    val HELL = CREATIVE_MODE_TABS.register(
+    /*val HELL = CREATIVE_MODE_TABS.register(
         "hell",
         Supplier {
             CreativeModeTab.builder().icon { ItemStack(JModItems.HELL_PORTAL_ACTIVATOR) }
                 .title(Component.translatable("creativetab.everythingjapanese.hell"))
                 .displayItems { _, output: CreativeModeTab.Output ->
-                    output.accept(JModItems.HELL_PORTAL_ACTIVATOR)
+                    //output.accept(JModItems.HELL_PORTAL_ACTIVATOR)
                 }
                 .build()
-        })
+        })*/
 
     val JAPANESE_ENTITIES = CREATIVE_MODE_TABS.register(
         "japanese_entities",
@@ -139,6 +140,7 @@ object JModCreativeModeTabs {
                     output.accept(JModItems.SOUL_DAGGER)
                     output.accept(JModItems.GUN)
                     output.accept(JModItems.BULLET)
+                    output.accept(JModItems.POWERED_SWORD)
                 }
                 .build()
         })

@@ -45,12 +45,12 @@ object HellTempleStructurePools {
             "hell_temple/court",
             StructureTemplatePool(
                 holder3,
-                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>?>(
-                    Pair.of<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>(
+                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>>(
+                    Pair.of<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>(
                         StructurePoolElement.empty(),
                         7
                     ),
-                    Pair.of<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>(
+                    Pair.of<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>(
                         StructurePoolElement.single("everythingjapanese:hell_temple/court/hell_court1", holder4),
                         10
                     )

@@ -22,13 +22,13 @@ enum class GrowthChamberCategory(val disName: String, private val id: Int) : Str
 
     companion object {
         val CODEC = StringRepresentable.fromEnum(Supplier { entries.toTypedArray() })
-        val BY_ID: IntFunction<GrowthChamberCategory?> = ByIdMap.continuous<GrowthChamberCategory?>(
-            ToIntFunction { obj: GrowthChamberCategory? -> obj!!.id() },
+        val BY_ID: IntFunction<GrowthChamberCategory> = ByIdMap.continuous<GrowthChamberCategory>(
+            ToIntFunction { obj: GrowthChamberCategory -> obj!!.id() },
             entries.toTypedArray(),
             ByIdMap.OutOfBoundsStrategy.ZERO
         )
-        val STREAM_CODEC: StreamCodec<ByteBuf?, GrowthChamberCategory?> =
-            ByteBufCodecs.idMapper<GrowthChamberCategory?>(
-                BY_ID, ToIntFunction { obj: GrowthChamberCategory? -> obj!!.id() })
+        val STREAM_CODEC: StreamCodec<ByteBuf, GrowthChamberCategory> =
+            ByteBufCodecs.idMapper<GrowthChamberCategory>(
+                BY_ID, ToIntFunction { obj: GrowthChamberCategory -> obj!!.id() })
     }
 }

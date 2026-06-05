@@ -97,7 +97,7 @@ class HangingScrollBlock(properties: Properties): BaseEntityBlock(properties) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)))
     }
 
-    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
         builder.add(FACING)
     }
 

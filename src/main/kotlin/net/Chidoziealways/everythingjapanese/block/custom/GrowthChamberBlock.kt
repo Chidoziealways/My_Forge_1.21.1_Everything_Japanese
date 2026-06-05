@@ -77,7 +77,7 @@ class GrowthChamberBlock(pProperties: BlockBehaviour.Properties) : BaseEntityBlo
     }
 
 
-    override fun <T : BlockEntity?> getTicker(
+    override fun <T : BlockEntity> getTicker(
         pLevel: Level,
         pState: BlockState,
         pBlockEntityType: BlockEntityType<T>
@@ -95,8 +95,8 @@ class GrowthChamberBlock(pProperties: BlockBehaviour.Properties) : BaseEntityBlo
     }
 
     companion object {
-        val CODEC: MapCodec<GrowthChamberBlock?> =
-            BlockBehaviour.simpleCodec<GrowthChamberBlock?>(java.util.function.Function { pProperties: BlockBehaviour.Properties ->
+        val CODEC: MapCodec<GrowthChamberBlock> =
+            BlockBehaviour.simpleCodec<GrowthChamberBlock>(java.util.function.Function { pProperties: BlockBehaviour.Properties ->
                 GrowthChamberBlock(pProperties)
             })
     }

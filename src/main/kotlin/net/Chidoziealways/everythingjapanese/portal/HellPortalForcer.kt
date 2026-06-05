@@ -3,10 +3,11 @@ package net.Chidoziealways.everythingjapanese.portal
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
 import net.Chidoziealways.everythingjapanese.poi.ModPoiTypes
-import net.minecraft.BlockUtil
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.core.Vec3i
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.util.BlockUtil
 import net.minecraft.util.Mth
 import net.minecraft.world.entity.ai.village.poi.PoiManager
 import net.minecraft.world.entity.ai.village.poi.PoiRecord
@@ -34,17 +35,17 @@ class HellPortalForcer(p_77650_: ServerLevel) {
         val poimanager: PoiManager = this.level.poiManager
         val i = if (p_345384_) 16 else 128
         poimanager.ensureLoadedAndValid(this.level, p_345495_, i)
-        return poimanager.getInSquare({ p_230634_: net.minecraft.core.Holder<PoiType?>? ->
+        return poimanager.getInSquare({ p_230634_: net.minecraft.core.Holder<PoiType> ->
             p_230634_!!.`is`(
                 ModPoiTypes.HELL_PORTAL.getKey()
             )
         }, p_345495_, i, PoiManager.Occupancy.ANY)
-            .map<BlockPos?> { obj: PoiRecord? -> obj!!.getPos() }
-            .filter { p_61938_: BlockPos? -> p_344228_.isWithinBounds(p_61938_) }
-            .filter { p_341965_: BlockPos? ->
+            .map<BlockPos> { obj: PoiRecord -> obj!!.getPos() }
+            .filter { p_61938_: BlockPos -> p_344228_.isWithinBounds(p_61938_) }
+            .filter { p_341965_: BlockPos ->
                 this.level.getBlockState(p_341965_).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)
             }
-            .min(java.util.Comparator.comparingDouble<BlockPos?>(java.util.function.ToDoubleFunction { p_341964_: BlockPos? ->
+            .min(java.util.Comparator.comparingDouble<BlockPos?>(java.util.function.ToDoubleFunction { p_341964_: BlockPos ->
                 p_341964_!!.distSqr(
                     p_345495_
                 )
@@ -57,7 +58,7 @@ class HellPortalForcer(p_77650_: ServerLevel) {
     ): Optional<BlockUtil.FoundRectangle> {
         val direction = Direction.get(Direction.AxisDirection.POSITIVE, p_77668_)
         var d0 = -1.0
-        var blockpos: BlockPos? = null
+        var blockpos: Vec3i? = null
         var d1 = -1.0
         var blockpos1: BlockPos? = null
         val worldborder: WorldBorder = this.level.getWorldBorder()
@@ -185,7 +186,7 @@ class HellPortalForcer(p_77650_: ServerLevel) {
             for (j2 in -1..3) {
                 if (l1 == -1 || l1 == 2 || j2 == -1 || j2 == 3) {
                     `blockpos$mutableblockpos`.setWithOffset(
-                        blockpos,
+                        blockpos!!,
                         l1 * direction.getStepX(),
                         j2,
                         l1 * direction.getStepZ()
@@ -208,7 +209,7 @@ class HellPortalForcer(p_77650_: ServerLevel) {
         for (k2 in 0..1) {
             for (l2 in 0..2) {
                 `blockpos$mutableblockpos`.setWithOffset(
-                    blockpos,
+                    blockpos!!,
                     k2 * direction.stepX,
                     l2,
                     k2 * direction.stepZ
@@ -217,7 +218,8 @@ class HellPortalForcer(p_77650_: ServerLevel) {
             }
         }
 
-        return Optional.of<BlockUtil.FoundRectangle>(BlockUtil.FoundRectangle(blockpos!!.immutable(), 2, 3))
+        val blockps = BlockPos(blockpos!!)
+        return Optional.of<BlockUtil.FoundRectangle>(BlockUtil.FoundRectangle(blockps.immutable(), 2, 3))
     }
 
     private fun canPortalReplaceBlock(p_248971_: BlockPos.MutableBlockPos): Boolean {

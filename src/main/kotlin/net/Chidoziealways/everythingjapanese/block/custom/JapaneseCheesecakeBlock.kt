@@ -29,7 +29,7 @@ class JapaneseCheesecakeBlock(properties: Properties): Block(properties) {
         )
     }
 
-    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
         builder.add(BITES)
     }
 

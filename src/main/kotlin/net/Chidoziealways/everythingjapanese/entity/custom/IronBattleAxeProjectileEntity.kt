@@ -5,7 +5,7 @@ import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.core.Direction
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.entity.projectile.AbstractArrow
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.phys.BlockHitResult
@@ -16,7 +16,7 @@ class IronBattleAxeProjectileEntity : AbstractArrow {
     private var rotation = 0f
     var groundedOffset: Vec2? = null
 
-    constructor(pEntityType: EntityType<out AbstractArrow?>, pLevel: Level) : super(pEntityType, pLevel)
+    constructor(pEntityType: EntityType<out AbstractArrow>, pLevel: Level) : super(pEntityType, pLevel)
 
     constructor(shooter: LivingEntity, level: Level) : super(
         ModEntities.IRON_BATTLE_AXE,

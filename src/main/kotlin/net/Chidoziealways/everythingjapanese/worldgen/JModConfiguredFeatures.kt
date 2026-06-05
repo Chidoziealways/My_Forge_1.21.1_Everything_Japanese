@@ -38,13 +38,13 @@ object JModConfiguredFeatures {
         val stoneReplaceables: RuleTest = TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES)
         val deepslateReplaceables: RuleTest = TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES)
 
-        val pyriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState?> =
+        val pyriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState> =
             mutableListOf(
                 OreConfiguration.target(stoneReplaceables, JModBlocks.PYRITE_ORE.defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, JModBlocks.PYRITE_DEEPSLATE_ORE.defaultBlockState())
             )
 
-        val nephriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState?> =
+        val nephriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState> =
             mutableListOf(
                 OreConfiguration.target(stoneReplaceables, JModBlocks.NEPHRITE_ORE.defaultBlockState()),
                 OreConfiguration.target(
@@ -87,17 +87,13 @@ object JModConfiguredFeatures {
         register(
             context,
             YAMAZAKI_BERRY_BUSH_KEY,
-            Feature.RANDOM_PATCH,
-            FeatureUtils.simplePatchConfiguration(
-                Feature.SIMPLE_BLOCK,
-                SimpleBlockConfiguration(
+            Feature.SIMPLE_BLOCK,
+            SimpleBlockConfiguration(
                     BlockStateProvider.simple(
                         JModBlocks.YAMAZAKI_BERRY_BUSH.defaultBlockState()
                             .setValue(SweetBerryBushBlock.AGE, 3)
                     )
                 ),
-                listOf<Block?>(Blocks.GRASS_BLOCK)
-            )
         )
     }
 
@@ -105,14 +101,14 @@ object JModConfiguredFeatures {
     fun registerKey(name: kotlin.String): ResourceKey<ConfiguredFeature<*, *>> {
         return ResourceKey.create(
             net.minecraft.core.registries.Registries.CONFIGURED_FEATURE,
-            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+            net.minecraft.resources.Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
         )
     }
 
-    private fun <FC : FeatureConfiguration?, F : Feature<FC?>?> register(
+    private fun <FC : FeatureConfiguration, F : Feature<FC>> register(
         context: BootstrapContext<ConfiguredFeature<*, *>>,
-        key: ResourceKey<ConfiguredFeature<*, *>>, feature: F?, configuration: FC?
+        key: ResourceKey<ConfiguredFeature<*, *>>, feature: F, configuration: FC
     ) {
-        context.register(key, ConfiguredFeature<FC?, F?>(feature, configuration))
+        context.register(key, ConfiguredFeature<FC, F>(feature, configuration))
     }
 }

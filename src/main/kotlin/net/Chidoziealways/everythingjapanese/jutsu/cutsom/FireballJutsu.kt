@@ -5,15 +5,15 @@ import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuType
 import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
-import net.minecraft.world.entity.projectile.LargeFireball
-import net.minecraft.world.entity.projectile.SmallFireball
+import net.minecraft.world.entity.projectile.hurtingprojectile.LargeFireball
+import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball
 
 class FireballJutsu : Jutsu(
-    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "fireball"),
+    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "fireball"),
     "Fireball",
     20f,
     2,
@@ -21,7 +21,7 @@ class FireballJutsu : Jutsu(
     JutsuType.TAIJUTSU
 ) {
     override fun cast(player: ServerPlayer): Boolean {
-        player.displayClientMessage(Component.literal("Casting: $name"), true)
+        player.sendOverlayMessage(Component.literal("Casting: $name"), )
 
         val world = player.level()
         val lookVec = player.lookAngle

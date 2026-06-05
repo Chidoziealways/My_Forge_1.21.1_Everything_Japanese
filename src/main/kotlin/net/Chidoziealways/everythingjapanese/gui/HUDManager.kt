@@ -6,10 +6,11 @@ import net.Chidoziealways.everythingjapanese.jutsu.MasteryHandler
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.client.DeltaTracker
 import net.minecraft.client.Minecraft
-import net.minecraft.client.gui.GuiGraphics
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.client.gui.GuiGraphicsExtractor
+import net.minecraft.resources.Identifier
 
 object HUDManager {
+    var hudEnabled = true
 
     private const val BAR_WIDTH = 100
     private const val BAR_HEIGHT = 8
@@ -17,7 +18,8 @@ object HUDManager {
 
     var startY = 10
 
-    fun renderJutsuHUD(gui: GuiGraphics, partialTicks: DeltaTracker) {
+    fun renderJutsuHUD(gui: GuiGraphicsExtractor, partialTicks: DeltaTracker) {
+        if (!hudEnabled) return
         val mc = Minecraft.getInstance()
         val player = mc.player ?: return
 
@@ -28,11 +30,11 @@ object HUDManager {
         val startX = 10
         startY = 10
 
-        ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, selectedJutsuId)).ifPresent { selectedJutsu ->
-            gui.drawString(mc.font, "Jutsu: ${selectedJutsu.name}", startX, startY, 0xFFFFFFFF.toInt())
+        ModRegistries.JUTSU.getOptional(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, selectedJutsuId)).ifPresent { selectedJutsu ->
+            gui.text(mc.font, "Jutsu: ${selectedJutsu.name}", startX, startY, 0xFFFFFFFF.toInt())
             startY += PADDING + 20
 
-            val masteryValue = MasteryHandler.getMastery(player, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, selectedJutsuId))
+            val masteryValue = MasteryHandler.getMastery(player, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, selectedJutsuId))
             val masteryFraction = masteryValue / 1000
             gui.fill(
                 startX,
@@ -43,21 +45,21 @@ object HUDManager {
             )
             val masteryText = "Mastery: $masteryValue / 1000"
             val masteryTextWidth = mc.font.width(masteryText)
-            gui.drawString(mc.font, masteryText, startX + (BAR_WIDTH - masteryTextWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
+            gui.text(mc.font, masteryText, startX + (BAR_WIDTH - masteryTextWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
 
             startY += BAR_HEIGHT + 10
 
             for (jutsuId in allJutsus) {
                 val color = if (jutsuId == selectedJutsuId) 0xFF00FF00.toInt() else 0xFFFFFFFF.toInt()
-                ModRegistries.JUTSU.getOptional(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsuId)).ifPresent { juts ->
-                    gui.drawString(mc.font, juts.name, startX, startY, color)
+                ModRegistries.JUTSU.getOptional(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsuId)).ifPresent { juts ->
+                    gui.text(mc.font, juts.name, startX, startY, color)
                     startY += 12
                 }
             }
         }
     }
 
-    fun renderChakraHUD(gui: GuiGraphics, deltaTracker: DeltaTracker) {
+    fun renderChakraHUD(gui: GuiGraphicsExtractor, deltaTracker: DeltaTracker) {
         val mc = Minecraft.getInstance()
         val player = mc.player ?: return
         val chakraCap = player.getCapability(ModCapabilities.CHAKRA_CAPABILITY) ?: return
@@ -75,12 +77,12 @@ object HUDManager {
 
         val text = "Chakra: $chakra / $maxChakra"
         val textWidth = mc.font.width(text)
-        gui.drawString(mc.font, text, startX + (BAR_WIDTH - textWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
+        gui.text(mc.font, text, startX + (BAR_WIDTH - textWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
 
         startY += BAR_HEIGHT
     }
 
-    fun renderStaminaHUD(gui: GuiGraphics, deltaTracker: DeltaTracker) {
+    fun renderStaminaHUD(gui: GuiGraphicsExtractor, deltaTracker: DeltaTracker) {
         val mc = Minecraft.getInstance()
         val player = mc.player ?: return
         val staminaCap = player.getCapability(ModCapabilities.STAMINA_CAPABILITY) ?: return
@@ -98,10 +100,10 @@ object HUDManager {
 
         val text = "Stamina: $stamina / $maxStamina"
         val textWidth = mc.font.width(text)
-        gui.drawString(mc.font, text, startX + (BAR_WIDTH - textWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
+        gui.text(mc.font, text, startX + (BAR_WIDTH - textWidth) / 2, startY - 10, 0xFFFFFFFF.toInt(), false)
     }
 
-    fun renderMoneyHUD(gui: GuiGraphics, deltaTracker: DeltaTracker) {
+    fun renderMoneyHUD(gui: GuiGraphicsExtractor, deltaTracker: DeltaTracker) {
         val mc = Minecraft.getInstance()
         val player = mc.player ?: return
         val moneyCap = player.getCapability(ModCapabilities.MONEY_CAPABILITY_ENTITY) ?: return
@@ -109,7 +111,7 @@ object HUDManager {
         val money = moneyCap.getMoney()
         val startX = 10
         startY += 10
-        gui.drawString(mc.font, "¥ $money", startX, startY, 0xFFFFFF00.toInt())
+        gui.text(mc.font, "¥ $money", startX, startY, 0xFFFFFF00.toInt())
         startY += 12
     }
 }

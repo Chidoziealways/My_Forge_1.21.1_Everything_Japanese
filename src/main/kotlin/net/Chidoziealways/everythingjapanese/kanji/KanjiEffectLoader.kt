@@ -7,7 +7,7 @@ import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.minecraft.core.BlockPos
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.packs.resources.PreparableReloadListener
 import net.minecraft.server.packs.resources.Resource
@@ -31,28 +31,28 @@ import java.util.function.BiFunction
 
 object KanjiEffectLoader: PreparableReloadListener {
 
-    val MODULES_PATH = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/modules")
-    val BLOCK_EFFECTS_PATH = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/effects/block")
-    val ENTITY_EFFECTS_PATH = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/effects/entity")
+    val MODULES_PATH = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/modules")
+    val BLOCK_EFFECTS_PATH = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/effects/block")
+    val ENTITY_EFFECTS_PATH = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "scripts/effects/entity")
 
     private val globals by lazy { JsePlatform.standardGlobals() }
 
-    private var KANJI_BLOCK_EFFECTS: Map<ResourceLocation, KanjiBlockEffect> = emptyMap()
-    private var KANJI_ENTITY_EFFECTS: Map<ResourceLocation, KanjiEntityEffect> = emptyMap()
+    private var KANJI_BLOCK_EFFECTS: Map<Identifier, KanjiBlockEffect> = emptyMap()
+    private var KANJI_ENTITY_EFFECTS: Map<Identifier, KanjiEntityEffect> = emptyMap()
 
-    fun getBlockEffect(effectId: ResourceLocation): KanjiBlockEffect? = KANJI_BLOCK_EFFECTS[effectId]
-    fun getBlockEffectOrEmpty(effectId: ResourceLocation): KanjiBlockEffect = KANJI_BLOCK_EFFECTS[effectId] ?: KanjiBlockEffect { _, _, _-> }
+    fun getBlockEffect(effectId: Identifier): KanjiBlockEffect? = KANJI_BLOCK_EFFECTS[effectId]
+    fun getBlockEffectOrEmpty(effectId: Identifier): KanjiBlockEffect = KANJI_BLOCK_EFFECTS[effectId] ?: KanjiBlockEffect { _, _, _-> }
 
-    fun getEntityEffect(effectId: ResourceLocation): KanjiEntityEffect? = KANJI_ENTITY_EFFECTS[effectId]
-    fun getEntityEffectOrEmpty(effectId: ResourceLocation): KanjiEntityEffect = KANJI_ENTITY_EFFECTS[effectId] ?: KanjiEntityEffect { _, _, _, _-> }
+    fun getEntityEffect(effectId: Identifier): KanjiEntityEffect? = KANJI_ENTITY_EFFECTS[effectId]
+    fun getEntityEffectOrEmpty(effectId: Identifier): KanjiEntityEffect = KANJI_ENTITY_EFFECTS[effectId] ?: KanjiEntityEffect { _, _, _, _-> }
 
     data class KanjiBlockEffectDef(
-        val id: ResourceLocation,
+        val id: Identifier,
         val luaFunc: LuaValue
     )
 
     data class KanjiEntityEffectDef(
-        val id: ResourceLocation,
+        val id: Identifier,
         val luaFunc: LuaValue
     )
 
@@ -61,7 +61,7 @@ object KanjiEffectLoader: PreparableReloadListener {
         backgroundExecutor: Executor,
         stage: PreparationBarrier,
         gameExecutor: Executor
-    ): CompletableFuture<Void?> {
+    ): CompletableFuture<Void> {
         setupLuaGlobals()
 
         val resourceManager = sharedState.resourceManager()
@@ -108,7 +108,7 @@ object KanjiEffectLoader: PreparableReloadListener {
     private fun loadBlockEffects(
         executor: Executor,
         resourceManager: ResourceManager
-    ): CompletableFuture<Map<ResourceLocation, KanjiBlockEffectDef>> {
+    ): CompletableFuture<Map<Identifier, KanjiBlockEffectDef>> {
         return loadResources(executor, resourceManager, BLOCK_EFFECTS_PATH.path, "lua") { id, res -> id to res }
             .thenApply { list ->
                 list.associate { pair ->
@@ -127,7 +127,7 @@ object KanjiEffectLoader: PreparableReloadListener {
     private fun loadEntityEffects(
         executor: Executor,
         resourceManager: ResourceManager
-    ): CompletableFuture<Map<ResourceLocation, KanjiEntityEffectDef>> {
+    ): CompletableFuture<Map<Identifier, KanjiEntityEffectDef>> {
         return loadResources(executor, resourceManager, ENTITY_EFFECTS_PATH.path, "lua") { id, res -> id to res }
             .thenApply { list ->
                 list.associate { pair ->
@@ -149,8 +149,8 @@ object KanjiEffectLoader: PreparableReloadListener {
         resourceManager: ResourceManager,
         assetPath: String,
         fileExtension: String,
-        elementFactory: BiFunction<ResourceLocation, Resource, T>
-    ): CompletableFuture<List<Pair<ResourceLocation, T>>> {
+        elementFactory: BiFunction<Identifier, Resource, T>
+    ): CompletableFuture<List<Pair<Identifier, T>>> {
         val suffix = ".$fileExtension"
 
         println("Loading Resources!")
@@ -159,7 +159,7 @@ object KanjiEffectLoader: PreparableReloadListener {
             { resourceManager.listResources(assetPath) { it.path.endsWith(suffix) } },
             executor
         ).thenCompose { resources ->
-            val tasks = ObjectArrayList<CompletableFuture<Pair<ResourceLocation, T>>>(resources.size)
+            val tasks = ObjectArrayList<CompletableFuture<Pair<Identifier, T>>>(resources.size)
 
             println("Running .thenCompose")
 
@@ -169,7 +169,7 @@ object KanjiEffectLoader: PreparableReloadListener {
             }
 
             // ✅ Wrap the `allOf` future in a typed future
-            val allDoneFuture: CompletableFuture<List<Pair<ResourceLocation, T>>> =
+            val allDoneFuture: CompletableFuture<List<Pair<Identifier, T>>> =
                 CompletableFuture.allOf(*tasks.toTypedArray())
                     .thenApply {
                         tasks.map { it.join() }
@@ -189,7 +189,7 @@ object KanjiEffectLoader: PreparableReloadListener {
         }
     }
 
-    private fun coerceToKanjiBlockEffect(id: ResourceLocation, chunk: LuaValue): KanjiBlockEffect {
+    private fun coerceToKanjiBlockEffect(id: Identifier, chunk: LuaValue): KanjiBlockEffect {
         println("Coercing $id")
 
         // DO NOT call the chunk here; defer execution until runtime
@@ -216,7 +216,7 @@ object KanjiEffectLoader: PreparableReloadListener {
         }
     }
 
-    private fun coerceToKanjiEntityEffect(id: ResourceLocation, chunk: LuaValue): KanjiEntityEffect {
+    private fun coerceToKanjiEntityEffect(id: Identifier, chunk: LuaValue): KanjiEntityEffect {
         println("Coercing $id")
 
         // DO NOT call the chunk here; defer execution until runtime
@@ -244,7 +244,7 @@ object KanjiEffectLoader: PreparableReloadListener {
         }
     }
 
-    private fun stripPrefixAndSuffix(id: ResourceLocation): ResourceLocation {
+    private fun stripPrefixAndSuffix(id: Identifier): Identifier {
         val parts = id.path.split("/")
         // Drop first 2 folders
         val strippedPath = if (parts.size == 2) parts.drop(2).joinToString("/") else if (parts.size == 3) parts.drop(3).joinToString("/") else parts.last()
@@ -257,14 +257,14 @@ object KanjiEffectLoader: PreparableReloadListener {
         // Expose utility functions and APIs to Lua scripts
         globals.set("getBlock", object : OneArgFunction(){
             override fun call(arg: LuaValue): LuaValue {
-                val block = BuiltInRegistries.BLOCK.getValue(getResourceLocation(arg.checkjstring()))
+                val block = BuiltInRegistries.BLOCK.getValue(getIdentifier(arg.checkjstring()))
                 return CoerceJavaToLua.coerce(block)
             }
         })
 
         globals.set("getItem", object : OneArgFunction() {
             override fun call(arg: LuaValue): LuaValue {
-                val item = BuiltInRegistries.ITEM.getValue(getResourceLocation(arg.checkjstring()))
+                val item = BuiltInRegistries.ITEM.getValue(getIdentifier(arg.checkjstring()))
                 return CoerceJavaToLua.coerce(item)
             }
         })
@@ -291,12 +291,12 @@ object KanjiEffectLoader: PreparableReloadListener {
             }
         })
 
-        globals.set("displayClientMessage", object : ThreeArgFunction() {
+        globals.set("sendOverlayMessage", object : ThreeArgFunction() {
             override fun call(arg1: LuaValue, arg2: LuaValue, arg3: LuaValue): LuaValue {
                 val player = CoerceLuaToJava.coerce(arg1, Player::class.java) as Player
                 val message = CoerceLuaToJava.coerce(arg2, Component::class.java) as Component
                 val showActionBar = arg3.checkboolean()
-                player.displayClientMessage(message, showActionBar)
+                player.sendOverlayMessage(message)
                 return NIL
             }
         })
@@ -306,7 +306,7 @@ object KanjiEffectLoader: PreparableReloadListener {
                 val level = CoerceLuaToJava.coerce(arg1, Level::class.java) as Level
                 val pos = CoerceLuaToJava.coerce(arg2, BlockPos::class.java) as BlockPos
                 if (level !is ServerLevel) return NIL
-                val type = BuiltInRegistries.ENTITY_TYPE.getValue(ResourceLocation.tryParse(arg3.checkjstring())!!) ?: return NIL
+                val type = BuiltInRegistries.ENTITY_TYPE.getValue(Identifier.tryParse(arg3.checkjstring())!!) ?: return NIL
                 type.spawn(level, null, null, pos, EntitySpawnReason.MOB_SUMMONED, true, true)
                 return NIL
             }
@@ -314,12 +314,12 @@ object KanjiEffectLoader: PreparableReloadListener {
 
         globals.set("getEffect", object : OneArgFunction() {
             override fun call(arg: LuaValue): LuaValue {
-                val effect = BuiltInRegistries.MOB_EFFECT.getValue(getResourceLocation(arg.checkjstring()))
+                val effect = BuiltInRegistries.MOB_EFFECT.getValue(getIdentifier(arg.checkjstring()))
                 return CoerceJavaToLua.coerce(effect)
             }
         })
     }
 
-    // Utility for ResourceLocation conversion
-    private fun getResourceLocation(id: String) = ResourceLocation.tryParse(id)!!
+    // Utility for Identifier conversion
+    private fun getIdentifier(id: String) = Identifier.tryParse(id)!!
 }

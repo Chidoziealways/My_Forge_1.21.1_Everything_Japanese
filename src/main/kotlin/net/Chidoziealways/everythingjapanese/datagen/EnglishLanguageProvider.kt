@@ -130,7 +130,7 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         add(JModItems.DIESEL, "Diesel")
         add(JModItems.INCENSE, "Incense")
         add(JModItems.UDON, "Udon")
-        add(JModItems.HELL_PORTAL_ACTIVATOR, "Hell Portal Activator")
+        //add(JModItems.HELL_PORTAL_ACTIVATOR, "Hell Portal Activator")
         add(JModItems.YA, "Ya")
         add(JModItems.TALISMAN_ITEM, "Talisman")
         add(JModItems.PYRITE_AXE, "Pyrite Axe")
@@ -163,6 +163,7 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         add(JModItems.KOI_FISH_ARMOR_TRIM_SMITHING_TEMPLATE, "Koi Fish Smithing Template")
         add(JModItems.DAIKYU, "Long Bow")
         add(JModItems.RAMEN, "Ramen")
+        add(JModItems.POCKET_BLADE, "Pocket Blade")
         add(JModItems.AO_TO_NATSU_MUSIC_DISC, "Ao to Natsu Music Disc")
         add("item.everythingjapanese.ao_to_natsu_music_disc.desc", "Mrs. Green Apple - Ao to Natsu")
         add("item.minecraft.potion.effect.adrenaline_potion", "Adrenaline Potion")
@@ -186,6 +187,7 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         //add(JModItems.SOUL_GUITAR, "Soul Guitar")
         add(JModItems.GUN, "Gun")
         add(JModItems.BULLET, "Bullet")
+        add(JModItems.POWERED_SWORD, "Powered Sword")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "Windball")

@@ -1,5 +1,6 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
+import net.Chidoziealways.everythingcore.Everythingcore
 import net.Chidoziealways.everythingcore.quest.Quest
 import net.Chidoziealways.everythingcore.util.SharedRegistries
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
@@ -21,7 +22,6 @@ import net.Chidoziealways.everythingjapanese.worldgen.JModConfiguredFeatures
 import net.Chidoziealways.everythingjapanese.worldgen.JModPlacedFeatures
 import net.Chidoziealways.everythingjapanese.worldgen.biome.ModBiomes
 import net.Chidoziealways.everythingjapanese.worldgen.dimension.ModDimensions
-import net.minecraft.Util
 import net.minecraft.core.*
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
@@ -36,17 +36,26 @@ import net.minecraft.gametest.framework.GameTestInstances
 import net.minecraft.gametest.framework.TestEnvironmentDefinition
 import net.minecraft.network.chat.ChatType
 import net.minecraft.resources.ResourceKey
+import net.minecraft.util.Util
 import net.minecraft.world.damagesource.DamageType
 import net.minecraft.world.damagesource.DamageTypes
 import net.minecraft.world.entity.animal.*
+import net.minecraft.world.entity.animal.chicken.ChickenVariant
+import net.minecraft.world.entity.animal.chicken.ChickenVariants
+import net.minecraft.world.entity.animal.cow.CowVariant
+import net.minecraft.world.entity.animal.cow.CowVariants
+import net.minecraft.world.entity.animal.feline.CatVariant
+import net.minecraft.world.entity.animal.feline.CatVariants
 import net.minecraft.world.entity.animal.frog.FrogVariant
 import net.minecraft.world.entity.animal.frog.FrogVariants
+import net.minecraft.world.entity.animal.pig.PigVariant
+import net.minecraft.world.entity.animal.pig.PigVariants
 import net.minecraft.world.entity.animal.wolf.WolfSoundVariant
 import net.minecraft.world.entity.animal.wolf.WolfSoundVariants
 import net.minecraft.world.entity.animal.wolf.WolfVariant
 import net.minecraft.world.entity.animal.wolf.WolfVariants
-import net.minecraft.world.entity.decoration.PaintingVariant
-import net.minecraft.world.entity.decoration.PaintingVariants
+import net.minecraft.world.entity.decoration.painting.PaintingVariant
+import net.minecraft.world.entity.decoration.painting.PaintingVariants
 import net.minecraft.world.item.Instrument
 import net.minecraft.world.item.Instruments
 import net.minecraft.world.item.JukeboxSong
@@ -186,7 +195,6 @@ class JModDatapackEntries(output: PackOutput, registries: CompletableFuture<Hold
                 ModStructuresGen.bootstrap(context)
                 Structures.bootstrap(context)
             }
-            .add(SharedRegistries.QUEST) { context: BootstrapContext<Quest> -> ModQuestsGen.bootstrap(context) }
             .add(Registries.STRUCTURE_SET) { context: BootstrapContext<StructureSet> ->
                 ModStructureSets.bootstrap(context)
                 StructureSets.bootstrap(context)
@@ -218,7 +226,7 @@ class JModDatapackEntries(output: PackOutput, registries: CompletableFuture<Hold
                 ModEnchantments.bootstrap(obj)
                 Enchantments.bootstrap(obj)
             }
-            .add(Registries.TEST_ENVIRONMENT) { pContext: BootstrapContext<TestEnvironmentDefinition> ->
+            .add(Registries.TEST_ENVIRONMENT) { pContext: BootstrapContext<TestEnvironmentDefinition<*>> ->
                 ModGameTestEnvironments.bootstrap(pContext)
                 GameTestEnvironments.bootstrap(pContext)
             }
@@ -229,6 +237,10 @@ class JModDatapackEntries(output: PackOutput, registries: CompletableFuture<Hold
             .add(ModRegistries.KANJI) { context ->
                 KanjiTypes.bootstrap(context)
             }.add(ModRegistries.DESIGN, Designs::bootstrap)
+            .add(SharedRegistries.QUEST) { context: BootstrapContext<Quest> ->
+                println("GEnerating Quests")
+                ModQuestsGen.bootstrap(context)
+            }
 
         val DATAPACK_REGISTRY_KEYS: MutableList<out ResourceKey<out Registry<*>>> = BUILDER.entryKeys
 
@@ -245,7 +257,7 @@ class JModDatapackEntries(output: PackOutput, registries: CompletableFuture<Hold
             pBiomes: HolderLookup<Biome>
         ) {
             pBiomes.listElements().forEach { p_256326_: Holder.Reference<Biome> ->
-                val resourcelocation = p_256326_.key().location()
+                val resourcelocation = p_256326_.key().registry()
                 val list = p_256326_.value().generationSettings.features()
                 list.stream().flatMap { obj: HolderSet<PlacedFeature> -> obj.stream() }
                     .forEach { p_256657_: Holder<PlacedFeature> ->
@@ -253,7 +265,7 @@ class JModDatapackEntries(output: PackOutput, registries: CompletableFuture<Hold
                             Consumer { p_325923_: ResourceKey<PlacedFeature> ->
                                 val reference = pFeatures.getOrThrow(p_325923_)
                                 if (!validatePlacedFeature(reference.value())) {
-                                    Util.logAndPauseIfInIde("Placed feature " + p_325923_.location() + " in biome " + resourcelocation + " is missing BiomeFilter.biome()")
+                                    Util.logAndPauseIfInIde("Placed feature " + p_325923_.registry() + " in biome " + resourcelocation + " is missing BiomeFilter.biome()")
                                 }
                             }).ifRight(Consumer { p_325920_: PlacedFeature ->
                             if (!validatePlacedFeature(p_325920_)) {

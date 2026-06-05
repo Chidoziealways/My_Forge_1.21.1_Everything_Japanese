@@ -6,7 +6,7 @@
 
 return function(player, level)
     for i = 1, 65 do
-        local iron = getItem("minecraft:iron"):getDefaultInstance()
+        local iron = getItem("minecraft:iron_ingot"):getDefaultInstance()
         player.getInventory():add(iron)
     end
 end

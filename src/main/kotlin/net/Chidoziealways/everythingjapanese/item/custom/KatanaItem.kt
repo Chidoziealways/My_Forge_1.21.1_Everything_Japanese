@@ -6,7 +6,7 @@ import net.Chidoziealways.everythingjapanese.item.ModToolMaterials
 import net.Chidoziealways.everythingjapanese.item.katana.BladeType
 import net.Chidoziealways.everythingjapanese.item.katana.Wrapping
 import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.EquipmentSlotGroup
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
@@ -14,6 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.ItemUseAnimation
 import net.minecraft.world.item.component.ItemAttributeModifiers
 
 class KatanaItem(props: Properties): Item(props.sword(ModToolMaterials.STEEL, 4f, 3f).stacksTo(1)) {
@@ -25,8 +26,8 @@ class KatanaItem(props: Properties): Item(props.sword(ModToolMaterials.STEEL, 4f
     }
 
     companion object {
-        private val DAMAGE_ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana_damage")
-        private val SPEED_ID = ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana_speed")
+        private val DAMAGE_ID = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana_damage")
+        private val SPEED_ID = Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana_speed")
 
         fun setBlade(stack: ItemStack, type: BladeType) {
             stack.set(ModDataComponentTypes.BLADE.get(), type)
@@ -89,4 +90,6 @@ class KatanaItem(props: Properties): Item(props.sword(ModToolMaterials.STEEL, 4f
         }
         return Component.literal(name)
     }
+
+    override fun getUseAnimation(stack: ItemStack): ItemUseAnimation = ItemUseAnimation.BOW
 }

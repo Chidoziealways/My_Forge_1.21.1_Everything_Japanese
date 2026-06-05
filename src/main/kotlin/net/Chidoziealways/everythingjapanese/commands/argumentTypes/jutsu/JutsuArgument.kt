@@ -27,7 +27,7 @@ class JutsuArgument(context: CommandBuildContext) : ArgumentType<JutsuInput?> {
     override fun <S> listSuggestions(
         context: CommandContext<S?>?,
         builder: SuggestionsBuilder
-    ): CompletableFuture<Suggestions?>? {
+    ): CompletableFuture<Suggestions> {
         return this.parser.fillSuggestions(builder)
     }
 

@@ -9,7 +9,7 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.data.worldgen.Pools
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList
@@ -17,7 +17,7 @@ import java.util.function.Function
 
 object HellTempleStructurePieces {
     val START: ResourceKey<StructureTemplatePool> =
-        Pools.createKey(ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_temple/stairs"))
+        Pools.createKey(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_temple/stairs"))
 
     fun bootstrap(context: BootstrapContext<StructureTemplatePool>) {
         val holdergetter = context.lookup(Registries.PROCESSOR_LIST)
@@ -29,8 +29,8 @@ object HellTempleStructurePieces {
             START,
             StructureTemplatePool(
                 holder1,
-                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>?>(
-                    Pair.of<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>(
+                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>>(
+                    Pair.of<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>(
                         StructurePoolElement.single("everythingjapanese:hell_temple/hell_stairs", holder),
                         1
                     )

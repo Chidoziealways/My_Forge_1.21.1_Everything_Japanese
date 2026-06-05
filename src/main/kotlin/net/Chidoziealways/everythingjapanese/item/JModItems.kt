@@ -13,7 +13,7 @@ import net.minecraft.core.HolderSet
 import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.tags.DamageTypeTags
@@ -24,6 +24,7 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.component.BlocksAttacks
 import net.minecraft.world.item.component.BlocksAttacks.DamageReduction
 import net.minecraft.world.item.component.BlocksAttacks.ItemDamageFunction
+import net.minecraft.world.item.component.PiercingWeapon
 import net.minecraft.world.item.equipment.ArmorType
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -33,7 +34,7 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.*
 
 object JModItems {
-    private val log: Logger? = LoggerFactory.getLogger(JModItems::class.java)
+    private val log: Logger = LoggerFactory.getLogger(JModItems::class.java)
 
     val ITEMS = DeferredRegister.createItems(JAPANESE_MOD_ID)
 
@@ -41,24 +42,52 @@ object JModItems {
         { ->
             Item(Item.Properties()
                 .trimMaterial(ModTrimMaterials.PYRITE)
-                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_ingot"))))
-        }
+                .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_ingot"))))
+    }
+
+    val POCKET_BLADE by ITEMS.register("pocket_blade")
+    { ->
+        PocketBlade(Item.Properties()
+            .component(
+                DataComponents.PIERCING_WEAPON,
+                PiercingWeapon(
+                    true,
+                    false,
+                    Optional.of(SoundEvents.SPEAR_ATTACK),
+                    Optional.of(SoundEvents.SPEAR_HIT)
+                )
+            )
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pocket_blade"))))
+    }
+
+    val POWERED_SWORD by ITEMS.register("powered_sword")
+    { ->
+        PoweredSword(Item.Properties()
+            .sword(ToolMaterial.DIAMOND, 12f, 2f)
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "powered_sword"))))
+    }
+
+    val BLOOD_BUCKET by ITEMS.register("blood_bucket")
+    { ->
+        Item(Item.Properties()
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "blood_bucket"))))
+    }
 
     val CREDIT_CARD_ITEM by ITEMS.register("credit_card")
     { ->
-        CreditCardItem(Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "credit_card"))))
+        CreditCardItem(Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "credit_card"))))
     }
 
     val KATANA by ITEMS.register("katana")
         { ->
             KatanaItem(Item.Properties()
-                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana"))))
+                .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "katana"))))
         }
 
     val BULLET by ITEMS.register("bullet")
     { ->
         BulletItem(Item.Properties()
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "bullet"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "bullet"))))
     }
 
     val GUN by ITEMS.register("gun")
@@ -66,45 +95,45 @@ object JModItems {
         GunItem(
             Item.Properties()
                 .durability(10000)
-                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "gun")))
+                .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "gun")))
         )
     }
 
     val SOUL_DAGGER by ITEMS.register("soul_dagger")
     { ->
         SoulDaggerItem(Item.Properties()
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "soul_dagger"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "soul_dagger"))))
     }
 
     val BLADE_STEEL by ITEMS.register("blade_steel")
     { ->
         Item(Item.Properties()
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "blade_steel"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "blade_steel"))))
     }
 
     val BLACK_WRAP by ITEMS.register("wrap_black")
     { ->
         Item(Item.Properties()
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "wrap_black"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "wrap_black"))))
     }
 
     val RED_WRAP by ITEMS.register("wrap_red")
     { ->
         Item(Item.Properties()
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "wrap_red"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "wrap_red"))))
     }
 
     val WHITE_WRAP by ITEMS.register("wrap_white")
     { ->
         Item(Item.Properties()
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "wrap_white"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "wrap_white"))))
     }
 
     /*val SCROLL by ITEMS.register("scroll")
     { ->
         ScrollItem(Item.Properties()
             .component(ModDataComponentTypes.EDITABLE_TEXT, "Text")
-            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "scroll"))))
+            .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "scroll"))))
     }*/
 
     val CHIRETSU_SHO_SCROLL by ITEMS.register("chiretsu_sho_scroll")
@@ -114,7 +143,7 @@ object JModItems {
             Item.Properties().setId(
                 ResourceKey.create(
                     Registries.ITEM,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_scroll")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chiretsu_sho_scroll")
                 )
             )
         )
@@ -127,7 +156,7 @@ object JModItems {
             Item.Properties().setId(
                 ResourceKey.create(
                     Registries.ITEM,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_scroll")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_scroll")
                 )
             )
         )
@@ -137,7 +166,7 @@ object JModItems {
     { ->
         TalismanItem(Item.Properties().setId(ResourceKey.create(
             Registries.ITEM,
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "talisman_item")
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "talisman_item")
         )))
     }
 
@@ -149,7 +178,7 @@ object JModItems {
                 Item.Properties().setId(
                     ResourceKey.create(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "fireball_scroll")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "fireball_scroll")
                     )
                 )
             )
@@ -161,35 +190,35 @@ object JModItems {
             JutsuScrollItem(
                 "small_windball",
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "windball_scroll")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "windball_scroll")
                     )
                 )
             )
         }
 
-    val HELL_PORTAL_ACTIVATOR by ITEMS.register(
+    /*val HELL_PORTAL_ACTIVATOR by ITEMS.register(
         "hell_portal_activator")
         { ->
             HellPortalItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_portal_activator")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_portal_activator")
                     )
                 )
             )
-        }
+        }*/
 
     val NEPHRITE by ITEMS.register(
         "nephrite")
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite")
                     )
                 )
             )
@@ -200,9 +229,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "raw_pyrite")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "raw_pyrite")
                     )
                 )
             )
@@ -213,9 +242,9 @@ object JModItems {
         { ->
             ChiselItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chisel")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chisel")
                     )
                 )
                     .durability(100).stacksTo(1)
@@ -228,29 +257,29 @@ object JModItems {
             Item(
                 Item.Properties()
                     .setId(
-                        ResourceKey.create<Item?>(
+                        ResourceKey.create<Item>(
                             Registries.ITEM,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_sword")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_sword")
                         )
                     )
                     .sword(ModToolMaterials.PYRITE, 3f, -2.4f)
-                    .component<BlocksAttacks?>(
-                        DataComponents.BLOCKS_ATTACKS, BlocksAttacks(
+                    .delayedComponent<BlocksAttacks>(
+                        DataComponents.BLOCKS_ATTACKS, {context->BlocksAttacks(
                             0.25f,
                             1.0f,
-                            listOf<DamageReduction?>(
+                            listOf<DamageReduction>(
                                 DamageReduction(
                                     90.0f,
-                                    Optional.empty<HolderSet<DamageType?>?>(),
+                                    Optional.empty<HolderSet<DamageType>>(),
                                     0.0f,
                                     0.5f
                                 )
                             ),
                             ItemDamageFunction(3.0f, 1.0f, 1.0f),
-                            Optional.of<TagKey<DamageType?>?>(DamageTypeTags.BYPASSES_SHIELD),
-                            Optional.of<Holder<SoundEvent?>?>(SoundEvents.SHIELD_BLOCK),
-                            Optional.of<Holder<SoundEvent?>?>(SoundEvents.SHIELD_BREAK)
-                        )
+                            Optional.of<HolderSet<DamageType>>(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
+                            Optional.of<Holder<SoundEvent>>(SoundEvents.SHIELD_BLOCK),
+                            Optional.of<Holder<SoundEvent>>(SoundEvents.SHIELD_BREAK)
+                        )}
                     )
             )
         }
@@ -262,9 +291,9 @@ object JModItems {
                 Item.Properties()
                     .pickaxe(ModToolMaterials.PYRITE, 1f, -2.8f)
                     .setId(
-                        ResourceKey.create<Item?>(
+                        ResourceKey.create<Item>(
                             Registries.ITEM,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_pickaxe")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_pickaxe")
                         )
                     )
             )
@@ -276,9 +305,9 @@ object JModItems {
             ShovelItem(
                 ModToolMaterials.PYRITE, 1.5f, -3.0f,
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_shovel")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_shovel")
                     )
                 )
             )
@@ -290,9 +319,9 @@ object JModItems {
             AxeItem(
                 ModToolMaterials.PYRITE, 6f, -3.2f,
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_axe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_axe")
                     )
                 )
             )
@@ -304,9 +333,9 @@ object JModItems {
             HoeItem(
                 ModToolMaterials.PYRITE, 0f, -3.0f,
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_hoe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_hoe")
                     )
                 )
             )
@@ -317,9 +346,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "sushi")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "sushi")
                     )
                 )
                     .food(ModFoodProperties.SUSHI, ModFoodProperties.SUSHI_EFFECT).usingConvertsTo(Items.BOWL)
@@ -333,7 +362,7 @@ object JModItems {
             Item.Properties().setId(
                 ResourceKey.create(
                     Registries.ITEM,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ramen")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ramen")
                 )
             )
                 .food(ModFoodProperties.RAMEN)
@@ -345,9 +374,9 @@ object JModItems {
         { ->
             Drinks(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "green_tea")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "green_tea")
                     )
                 )
                     .stacksTo(1)
@@ -359,9 +388,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "diesel")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "diesel")
                     )
                 )
                     .stacksTo(1)
@@ -373,9 +402,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "udon")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "udon")
                     )
                 )
                     .food(ModFoodProperties.UDON, ModFoodProperties.UDON_EFFECT).usingConvertsTo(Items.BOWL).stacksTo(1)
@@ -387,9 +416,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "incense")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "incense")
                     )
                 )
                     .stacksTo(1)
@@ -401,9 +430,9 @@ object JModItems {
         { ->
             ArrowItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ya")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ya")
                     )
                 )
             )
@@ -414,29 +443,29 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_sword")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_sword")
                     )
                 )
                     .sword(ModToolMaterials.NEPHRITE, 7f, -1.9f)
-                    .component<BlocksAttacks?>(
-                        DataComponents.BLOCKS_ATTACKS, BlocksAttacks(
+                    .delayedComponent<BlocksAttacks>(
+                        DataComponents.BLOCKS_ATTACKS, {context ->BlocksAttacks(
                             0.1f,
                             1.4f,
-                            listOf<DamageReduction?>(
+                            listOf<DamageReduction>(
                                 DamageReduction(
                                     90.0f,
-                                    Optional.empty<HolderSet<DamageType?>?>(),
+                                    Optional.empty<HolderSet<DamageType>>(),
                                     0.0f,
                                     0.5f
                                 )
                             ),
                             ItemDamageFunction(3.0f, 1.0f, 1.0f),
-                            Optional.of<TagKey<DamageType?>?>(DamageTypeTags.BYPASSES_SHIELD),
-                            Optional.of<Holder<SoundEvent?>?>(SoundEvents.SHIELD_BLOCK),
-                            Optional.of<Holder<SoundEvent?>?>(SoundEvents.SHIELD_BREAK)
-                        )
+                            Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
+                            Optional.of<Holder<SoundEvent>>(SoundEvents.SHIELD_BLOCK),
+                            Optional.of<Holder<SoundEvent>>(SoundEvents.SHIELD_BREAK)
+                        )}
                     )
             )
         }
@@ -446,9 +475,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_pickaxe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_pickaxe")
                     )
                 )
                     .pickaxe(ModToolMaterials.NEPHRITE, 5f, -2.5f)
@@ -461,9 +490,9 @@ object JModItems {
             ShovelItem(
                     ModToolMaterials.NEPHRITE, 4.0f, -2.0f,
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_shovel")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_shovel")
                     )
                 )
             )
@@ -475,9 +504,9 @@ object JModItems {
             AxeItem(
                 ModToolMaterials.NEPHRITE, 11f, -2.9f,
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_axe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_axe")
                     )
                 )
             )
@@ -489,9 +518,9 @@ object JModItems {
             HoeItem(
                 ModToolMaterials.NEPHRITE, 1f, -3.0f,
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_hoe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_hoe")
                     )
                 )
             )
@@ -502,9 +531,9 @@ object JModItems {
         { ->
             HammerItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_hammer")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_hammer")
                     )
                 )
                     .pickaxe(ModToolMaterials.PYRITE, 7f, -2.5f)
@@ -516,9 +545,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_helmet")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_helmet")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.HELMET)
@@ -530,9 +559,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_chestplate")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_chestplate")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.CHESTPLATE)
@@ -544,9 +573,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_leggings")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_leggings")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.LEGGINGS)
@@ -558,9 +587,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_boots")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_boots")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.PYRITE, ArmorType.BOOTS)
@@ -572,9 +601,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_helmet")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_helmet")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.HELMET)
@@ -586,9 +615,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_chestplate")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_chestplate")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.CHESTPLATE)
@@ -600,9 +629,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_leggings")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_leggings")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.LEGGINGS)
@@ -614,9 +643,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_boots")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_boots")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.NEPHRITE, ArmorType.BOOTS)
@@ -628,9 +657,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_horse_armor")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_horse_armor")
                     )
                 )
                     .horseArmor(ModArmorMaterials.PYRITE)
@@ -643,9 +672,9 @@ object JModItems {
             SmithingTemplateItem.createArmorTrimTemplate(
                 Item.Properties()
                     .setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(
+                        Identifier.fromNamespaceAndPath(
                             JAPANESE_MOD_ID,
                             "koi_fish_armor_trim_smithing_template"
                         )
@@ -660,9 +689,9 @@ object JModItems {
         { ->
             BowItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "daikyu")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "daikyu")
                     )
                 )
                     .durability(600)
@@ -674,9 +703,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ao_to_natsu_music_disc")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ao_to_natsu_music_disc")
                     )
                 )
                     .jukeboxPlayable(ModSounds.AO_TO_NATSU_KEY).stacksTo(1)
@@ -689,9 +718,9 @@ object JModItems {
             BlockItem(
                 JModBlocks.RICE_CROP, Item.Properties().useItemDescriptionPrefix()
                     .setId(
-                        ResourceKey.create<Item?>(
+                        ResourceKey.create<Item>(
                             Registries.ITEM,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "rice_seeds")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "rice_seeds")
                         )
                     )
             )
@@ -702,9 +731,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "rice")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "rice")
                     )
                 )
                     .food(ModFoodProperties.RICE).usingConvertsTo(Items.BOWL)
@@ -716,9 +745,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "raw_rice")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "raw_rice")
                     )
                 )
             )
@@ -730,9 +759,9 @@ object JModItems {
             BlockItem(
                 JModBlocks.YAMAZAKI_BERRY_BUSH, Item.Properties().useItemDescriptionPrefix()
                     .setId(
-                        ResourceKey.create<Item?>(
+                        ResourceKey.create<Item>(
                             Registries.ITEM,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "yamazaki_berries")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "yamazaki_berries")
                         )
                     )
                     .food(ModFoodProperties.YAMAZAKI_BERRIES)
@@ -744,9 +773,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_helmet")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_helmet")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.HELMET)
@@ -758,9 +787,9 @@ object JModItems {
          { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_chestplate")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_chestplate")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.CHESTPLATE)
@@ -772,9 +801,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_leggings")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_leggings")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.LEGGINGS)
@@ -786,9 +815,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_boots")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "samurai_boots")
                     )
                 )
                     .humanoidArmor(ModArmorMaterials.SAMURAI_ARMOR_MATERIAL, ArmorType.BOOTS)
@@ -800,9 +829,9 @@ object JModItems {
         { ->
             SpawnEggItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "triceratops_spawn_egg")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "triceratops_spawn_egg")
                     )
                 )
                     .spawnEgg(ModEntities.TRICERATOPS)
@@ -816,7 +845,7 @@ object JModItems {
             Item.Properties().setId(
                 ResourceKey.create(
                     Registries.ITEM,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "cursed_samurai_spawn_egg")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "cursed_samurai_spawn_egg")
                 )
             )
                 .spawnEgg(ModEntities.CURSED_SAMURAI)
@@ -828,9 +857,9 @@ object JModItems {
         { ->
             SpawnEggItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "sika_deer_spawn_egg")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "sika_deer_spawn_egg")
                     )
                 )
                     .spawnEgg(ModEntities.SIKA_DEER)
@@ -842,9 +871,9 @@ object JModItems {
         { ->
             MaceItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_battle_axe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_battle_axe")
                     )
                 )
             )
@@ -857,7 +886,7 @@ object JModItems {
 //            Item.Properties().setId(
 //                ResourceKey.create(
 //                    Registries.ITEM,
-//                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "soul_guitar")
+//                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "soul_guitar")
 //                )
 //            )
 //        )
@@ -868,9 +897,9 @@ object JModItems {
         { ->
             IronBattleAxeItem(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe")
                     )
                 )
                     .stacksTo(16)
@@ -882,9 +911,9 @@ object JModItems {
         { ->
             Item(
                 Item.Properties().setId(
-                    ResourceKey.create<Item?>(
+                    ResourceKey.create<Item>(
                         Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "radiation_staff")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "radiation_staff")
                     )
                 )
                     .stacksTo(1)

@@ -166,8 +166,8 @@ class FusumaDoorBlock(properties: Properties): BaseEntityBlock(properties) {
         val FACING: EnumProperty<Direction> = HorizontalDirectionalBlock.FACING
         val HINGE: EnumProperty<DoorHingeSide> = BlockStateProperties.DOOR_HINGE
 
-        val CODEC: MapCodec<FusumaDoorBlock?> =
-            simpleCodec<FusumaDoorBlock?> { pProperties: Properties ->
+        val CODEC: MapCodec<FusumaDoorBlock> =
+            simpleCodec<FusumaDoorBlock> { pProperties: Properties ->
                 FusumaDoorBlock(pProperties)
             }
     }

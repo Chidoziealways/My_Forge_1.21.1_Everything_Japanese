@@ -1,13 +1,14 @@
 package net.Chidoziealways.everythingjapanese.entity
 
-import software.bernie.geckolib.animatable.GeoAnimatable
-import software.bernie.geckolib.animatable.processing.AnimationController
-import software.bernie.geckolib.animatable.processing.AnimationTest
+import com.geckolib.animatable.GeoAnimatable
+import com.geckolib.animation.AnimationController
+import com.geckolib.animation.`object`.PlayState
+import com.geckolib.animation.state.AnimationTest
 import java.lang.reflect.Field
 
 fun <T : GeoAnimatable> AnimationController<T>.isAnimationPlaying(): Boolean {
     return this.currentRawAnimation!= null &&
-            (this.animationState == AnimationController.State.RUNNING || this.animationState == AnimationController.State.TRANSITIONING)
+            (this.playState == PlayState.PAUSE || this.playState == PlayState.CONTINUE)
 }
 
 fun <T : GeoAnimatable> AnimationTest<T>.isAnimationPlaying(): Boolean {
@@ -22,7 +23,7 @@ fun <T : GeoAnimatable> AnimationController<T>.getAnimationTick(): Double {
 }
 
 fun <T : GeoAnimatable> AnimationController<T>.getAnimationSeconds(): Double {
-    return this.currentAnimationSeconds
+    return this.getAnimationSeconds()
 }
 
 

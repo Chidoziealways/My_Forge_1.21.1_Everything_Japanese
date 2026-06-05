@@ -22,14 +22,14 @@ object DojoStructurePools {
         val holder4: Holder<StructureProcessorList> =
             holdergetter1.getOrThrow(ModProcessorLists.HELL_TEMPLE_COURT_DEGRADATION)
         val holdergetter2 = context.lookup(Registries.TEMPLATE_POOL)
-        val holder3: Holder<StructureTemplatePool?> = holdergetter2.getOrThrow(Pools.EMPTY)
+        val holder3: Holder<StructureTemplatePool> = holdergetter2.getOrThrow(Pools.EMPTY)
         ModPools.register(
             context,
             "dojo/hallway",
             StructureTemplatePool(
                 holder3,
-                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>?>(
-                    Pair.of<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>(
+                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>>(
+                    Pair.of<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>(
                         StructurePoolElement.single("everythingjapanese:dojo/hallway", holder1),
                         10
                     )
@@ -43,8 +43,8 @@ object DojoStructurePools {
             "dojo/extras",
             StructureTemplatePool(
                 holder3,
-                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>?>(
-                    Pair.of<Function<StructureTemplatePool.Projection?, out StructurePoolElement?>?, Int?>(
+                ImmutableList.of<Pair<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>>(
+                    Pair.of<Function<StructureTemplatePool.Projection, out StructurePoolElement>, Int>(
                         StructurePoolElement.single("everythingjapanese:dojo/hallway", holder1),
                         5
                     )

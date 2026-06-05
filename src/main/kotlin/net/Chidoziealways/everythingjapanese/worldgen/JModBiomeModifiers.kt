@@ -6,7 +6,7 @@ import net.minecraft.core.HolderSet
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.BiomeTags
 import net.minecraft.util.random.WeightedList
 import net.minecraft.world.level.biome.Biome
@@ -32,6 +32,8 @@ object JModBiomeModifiers {
     val SPAWN_CURSED_SAMURAI: ResourceKey<BiomeModifier> = registerKey("spawn_cursed_samurai")
 
     val SPAWN_SIKA_DEER: ResourceKey<BiomeModifier> = registerKey("spawn_sika_deer")
+
+    val SPAWN_ASPIRATION = registerKey("spawn_aspiration")
 
 
     fun bootstrap(context: BootstrapContext<BiomeModifier>) {
@@ -83,6 +85,19 @@ object JModBiomeModifiers {
                 WeightedList.of<SpawnerData>(SpawnerData(ModEntities.TRICERATOPS, 3, 25))
             )
         )
+        /*context.register(
+            SPAWN_ASPIRATION, BiomeModifiers.AddSpawnsBiomeModifier(
+                HolderSet.direct(
+                    biomes.getOrThrow(Biomes.FOREST),
+                    biomes.getOrThrow(Biomes.TAIGA),
+                    biomes.getOrThrow(Biomes.PLAINS),
+                    biomes.getOrThrow(Biomes.JUNGLE),
+                    biomes.getOrThrow(Biomes.BAMBOO_JUNGLE),
+                    biomes.getOrThrow(Biomes.JAGGED_PEAKS)
+                ),
+                WeightedList.of(SpawnerData(ModEntities.ASPIRATION, 1, 5))
+            )
+        )*/
 
         context.register(
             SPAWN_CURSED_SAMURAI, BiomeModifiers.AddSpawnsBiomeModifier(
@@ -118,7 +133,7 @@ object JModBiomeModifiers {
     private fun registerKey(name: String): ResourceKey<BiomeModifier> {
         return ResourceKey.create<BiomeModifier>(
             NeoForgeRegistries.Keys.BIOME_MODIFIERS,
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
         )
     }
 }

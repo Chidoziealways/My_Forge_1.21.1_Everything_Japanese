@@ -2,14 +2,16 @@ package net.Chidoziealways.everythingjapanese.entity.client.ekiretsusho
 
 import com.mojang.blaze3d.vertex.PoseStack
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 import net.minecraft.client.renderer.entity.EntityRenderer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.Chidoziealways.everythingjapanese.entity.custom.EkiretsuShōProjectileEntity
 import net.minecraft.client.renderer.SubmitNodeCollector
-import net.minecraft.client.renderer.state.CameraRenderState
-import net.minecraft.world.level.BlockAndTintGetter
+import net.minecraft.client.renderer.block.BlockAndTintGetter
+import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart
+import net.minecraft.client.renderer.rendertype.RenderTypes
+import net.minecraft.client.renderer.state.level.CameraRenderState
+import net.minecraft.util.RandomSource
 import org.joml.Quaternionf
 
 class EkiretsuShoProjectileRenderer(context: EntityRendererProvider.Context):
@@ -50,17 +52,32 @@ EntityRenderer<EkiretsuShōProjectileEntity, EkiretsuShoProjectileRenderState>(c
         ChunkSectionLayer.values().forEach { _ ->
             val pos = renderState.blockPos!! // floors the x, y, z to nearest block
             val blockState = entity.level().getBlockState(pos)
-            collector.submitCustomGeometry(poseStack, RenderType.translucentMovingBlock()
-            ) { _, vertexConsumer ->
-                val level: BlockAndTintGetter = entity.level()
-                minecraft.blockRenderer.liquidBlockRenderer.tesselate(
-                    level,
-                    pos,
-                    vertexConsumer,
-                    blockState,
-                    fluidState
-                )
-            }
+            val model = minecraft.modelManager.blockStateModelSet.get(blockState)
+            val parts = mutableListOf<BlockStateModelPart>()
+
+            model.collectParts(RandomSource.create(), parts)
+            collector.submitBlockModel(
+                poseStack,
+                RenderTypes.translucentMovingBlock(),
+                parts,
+                intArrayOf(-1, -1),
+                renderState.lightCoords,
+                0, // overlay
+                1
+            )
+//            collector.submitCustomGeometry(poseStack, RenderTypes.translucentMovingBlock()
+//            ) { _, vertexConsumer ->
+//                val level = entity.level()
+//
+//
+//                minecraft.blockRenderer.liquidBlockRenderer.tesselate(
+//                    level,
+//                    pos,
+//                    vertexConsumer,
+//                    blockState,
+//                    fluidState
+//                )
+//            }
         }
 
         poseStack.popPose()

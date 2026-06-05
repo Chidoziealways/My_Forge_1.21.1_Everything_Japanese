@@ -8,7 +8,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.syncher.EntityDataSerializers
 import net.minecraft.network.syncher.SynchedEntityData
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.LivingEntity
@@ -112,7 +112,7 @@ class EkiretsuShōProjectileEntity (
 
         get() {
             val idString = entityData.get(FLUID_ID)
-            val fluid: Fluid = BuiltInRegistries.FLUID.getValue(ResourceLocation.tryParse(idString))
+            val fluid: Fluid = BuiltInRegistries.FLUID.getValue(Identifier.tryParse(idString))
             return fluid.defaultFluidState()
         }
 
@@ -137,7 +137,6 @@ class EkiretsuShōProjectileEntity (
 
         // Straight-line velocity
         this.deltaMovement = Vec3(dx / distance * velocity, dy / distance * velocity, dz / distance * velocity)
-        this.hasImpulse = true
 
         // Set rotation to face movement direction
         val horizontal = sqrt(deltaMovement.x * deltaMovement.x + deltaMovement.z * deltaMovement.z)
@@ -160,7 +159,7 @@ class EkiretsuShōProjectileEntity (
     override fun readAdditionalSaveData(input: ValueInput) {
         super.readAdditionalSaveData(input)
         val blockIdStr = input.getStringOr("FluidID", "minecraft:empty")
-        val block = BuiltInRegistries.FLUID.getValue(ResourceLocation.tryParse(blockIdStr))
+        val block = BuiltInRegistries.FLUID.getValue(Identifier.tryParse(blockIdStr))
         fluidState = block.defaultFluidState()
     }
 
@@ -180,7 +179,7 @@ class EkiretsuShōProjectileEntity (
                 level.destroyBlock(pos, true) // true to drop items
             }
 
-            MasteryHandler.addMastery(shooter, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_jutsu"), 0.02f)
+            MasteryHandler.addMastery(shooter, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_jutsu"), 0.02f)
 
             this.discard() // Remove the projectile after hitting
         }
@@ -197,7 +196,7 @@ class EkiretsuShōProjectileEntity (
         if (level is ServerLevel && shooter is ServerPlayer) {
             val baseDamage = 5.0f
 
-            val mastery = MasteryHandler.getMastery(shooter, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_jutsu"))
+            val mastery = MasteryHandler.getMastery(shooter, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_jutsu"))
 
             val scaledDamage = baseDamage * (1f + (mastery / 200f))
 
@@ -225,7 +224,7 @@ class EkiretsuShōProjectileEntity (
 
                 MasteryHandler.addMastery(
                     shooter,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_jutsu"),
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "ekiretsu_sho_jutsu"),
                     gain
                 )
 

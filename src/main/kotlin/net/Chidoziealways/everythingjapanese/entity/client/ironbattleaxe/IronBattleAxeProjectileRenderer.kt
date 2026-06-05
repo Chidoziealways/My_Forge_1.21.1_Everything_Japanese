@@ -8,10 +8,9 @@ import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRenderer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
-import net.minecraft.client.renderer.entity.ItemRenderer
-import net.minecraft.client.renderer.state.CameraRenderState
+import net.minecraft.client.renderer.state.level.CameraRenderState
 import net.minecraft.client.renderer.texture.OverlayTexture
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.util.Mth
 
 class IronBattleAxeProjectileRenderer(pContext: EntityRendererProvider.Context) :
@@ -73,9 +72,9 @@ class IronBattleAxeProjectileRenderer(pContext: EntityRendererProvider.Context) 
     }
 
 
-    private fun determineTexture(entity: IronBattleAxeProjectileEntity?): ResourceLocation {
+    private fun determineTexture(entity: IronBattleAxeProjectileEntity?): Identifier {
         // Logic to determine the appropriate texture based on the entity's state
-        return ResourceLocation.fromNamespaceAndPath(
+        return Identifier.fromNamespaceAndPath(
             JAPANESE_MOD_ID,
             "textures/entity/ironbattleaxe/iron_battle_axe.png"
         )

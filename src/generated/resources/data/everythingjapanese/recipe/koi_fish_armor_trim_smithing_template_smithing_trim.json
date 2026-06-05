@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:smithing_trim",
-  "addition": "#minecraft:trim_materials",
-  "base": "#minecraft:trimmable_armor",
-  "pattern": "everythingjapanese:koi_fish",
-  "template": "everythingjapanese:koi_fish_armor_trim_smithing_template"
-}

@@ -8,7 +8,7 @@ import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.data.worldgen.placement.PlacementUtils
 import net.minecraft.data.worldgen.placement.VegetationPlacements
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.level.levelgen.VerticalAnchor
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature
 import net.minecraft.world.level.levelgen.placement.*
@@ -68,7 +68,7 @@ object JModPlacedFeatures {
     fun registerKey(name: String): ResourceKey<PlacedFeature> {
         return ResourceKey.create<PlacedFeature>(
             Registries.PLACED_FEATURE,
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
         )
     }
 
@@ -76,7 +76,7 @@ object JModPlacedFeatures {
         context: BootstrapContext<PlacedFeature>,
         key: ResourceKey<PlacedFeature>,
         configuration: Holder<ConfiguredFeature<*, *>>,
-        modifiers: MutableList<PlacementModifier?>
+        modifiers: MutableList<PlacementModifier>
     ) {
         context.register(key, PlacedFeature(configuration, List.copyOf<PlacementModifier>(modifiers)))
     }

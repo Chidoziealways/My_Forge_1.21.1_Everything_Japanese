@@ -15,11 +15,11 @@ import java.util.function.Function
 
 @JvmRecord
 data class GrowthChamberRecipe(
-    val inputItem: Ingredient?,
-    val output: ItemStack?,
-    val category: GrowthChamberCategory?
-) : Recipe<GrowthChamberRecipeInput?> {
-    override fun matches(growthChamberRecipeInput: GrowthChamberRecipeInput?, level: Level): Boolean {
+    val inputItem: Ingredient,
+    val output: ItemStack,
+    val category: GrowthChamberCategory
+) : Recipe<GrowthChamberRecipeInput> {
+    override fun matches(growthChamberRecipeInput: GrowthChamberRecipeInput, level: Level): Boolean {
         if (level.isClientSide()) {
             return false
         }
@@ -28,17 +28,20 @@ data class GrowthChamberRecipe(
     }
 
     override fun assemble(
-        growthChamberRecipeInput: GrowthChamberRecipeInput?,
-        provider: HolderLookup.Provider
+        growthChamberRecipeInput: GrowthChamberRecipeInput,
     ): ItemStack {
         return output!!.copy()
     }
 
-    override fun getSerializer(): RecipeSerializer<out Recipe<GrowthChamberRecipeInput?>?> {
+    override fun showNotification(): Boolean = true
+
+    override fun group(): String = ""
+
+    override fun getSerializer(): RecipeSerializer<out Recipe<GrowthChamberRecipeInput>> {
         return ModRecipes.GROWTH_CHAMBER_SERIALIZER
     }
 
-    override fun getType(): RecipeType<out Recipe<GrowthChamberRecipeInput?>?> {
+    override fun getType(): RecipeType<out Recipe<GrowthChamberRecipeInput>> {
         return ModRecipes.GROWTH_CHAMBER_TYPE
     }
 
@@ -62,52 +65,42 @@ data class GrowthChamberRecipe(
         }
     }
 
-    class Serializer : RecipeSerializer<GrowthChamberRecipe?> {
-        override fun codec(): MapCodec<GrowthChamberRecipe?> {
-            return CODEC
-        }
+    companion object {
+        private var placementInfo: PlacementInfo? = null
 
-        override fun streamCodec(): StreamCodec<RegistryFriendlyByteBuf?, GrowthChamberRecipe?> {
-            return STREAM_CODEC
-        }
-
-        companion object {
-            val CODEC: MapCodec<GrowthChamberRecipe?> =
-                RecordCodecBuilder.mapCodec<GrowthChamberRecipe?>(Function { inst: RecordCodecBuilder.Instance<GrowthChamberRecipe?>? ->
-                    inst!!.group<Ingredient?, ItemStack?, GrowthChamberCategory?>(
-                        Ingredient.CODEC.fieldOf("ingredient")
-                            .forGetter<GrowthChamberRecipe?>(Function { obj: GrowthChamberRecipe? -> obj!!.inputItem }),
-                        ItemStack.CODEC.fieldOf("result")
-                            .forGetter<GrowthChamberRecipe?>(Function { obj: GrowthChamberRecipe? -> obj!!.output }),
-                        GrowthChamberCategory.Companion.CODEC.fieldOf("category")
-                            .forGetter<GrowthChamberRecipe?>(GrowthChamberRecipe::category)
-                    ).apply<GrowthChamberRecipe?>(
-                        inst,
-                        Function3 { inputItem: Ingredient?, output: ItemStack?, category: GrowthChamberCategory? ->
-                            GrowthChamberRecipe(
-                                inputItem,
-                                output,
-                                category
-                            )
-                        })
-                })
-
-            val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf?, GrowthChamberRecipe?> =
-                StreamCodec.composite<RegistryFriendlyByteBuf?, GrowthChamberRecipe?, Ingredient?, ItemStack?, GrowthChamberCategory?>(
-                    Ingredient.CONTENTS_STREAM_CODEC, { obj: GrowthChamberRecipe? -> obj!!.inputItem },
-                    ItemStack.STREAM_CODEC, { obj: GrowthChamberRecipe? -> obj!!.output },
-                    GrowthChamberCategory.Companion.STREAM_CODEC, GrowthChamberRecipe::category,
-                    { inputItem: Ingredient?, output: ItemStack?, category: GrowthChamberCategory? ->
+        val CODEC: MapCodec<GrowthChamberRecipe> =
+            RecordCodecBuilder.mapCodec<GrowthChamberRecipe>(Function { inst: RecordCodecBuilder.Instance<GrowthChamberRecipe> ->
+                inst!!.group<Ingredient, ItemStack, GrowthChamberCategory>(
+                    Ingredient.CODEC.fieldOf("ingredient")
+                        .forGetter<GrowthChamberRecipe>(Function { obj: GrowthChamberRecipe -> obj!!.inputItem }),
+                    ItemStack.CODEC.fieldOf("result")
+                        .forGetter<GrowthChamberRecipe>(Function { obj: GrowthChamberRecipe -> obj!!.output }),
+                    GrowthChamberCategory.Companion.CODEC.fieldOf("category")
+                        .forGetter<GrowthChamberRecipe>(GrowthChamberRecipe::category)
+                ).apply<GrowthChamberRecipe>(
+                    inst,
+                    Function3 { inputItem: Ingredient, output: ItemStack, category: GrowthChamberCategory ->
                         GrowthChamberRecipe(
                             inputItem,
                             output,
                             category
                         )
                     })
-        }
-    }
+            })
 
-    companion object {
-        private var placementInfo: PlacementInfo? = null
+        val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, GrowthChamberRecipe> =
+            StreamCodec.composite<RegistryFriendlyByteBuf, GrowthChamberRecipe, Ingredient, ItemStack, GrowthChamberCategory>(
+                Ingredient.CONTENTS_STREAM_CODEC, { obj: GrowthChamberRecipe -> obj!!.inputItem },
+                ItemStack.STREAM_CODEC, { obj: GrowthChamberRecipe -> obj!!.output },
+                GrowthChamberCategory.Companion.STREAM_CODEC, GrowthChamberRecipe::category,
+                { inputItem: Ingredient, output: ItemStack, category: GrowthChamberCategory ->
+                    GrowthChamberRecipe(
+                        inputItem,
+                        output,
+                        category
+                    )
+                })
+
+        val SERIALIZER = RecipeSerializer(CODEC, STREAM_CODEC)
     }
 }

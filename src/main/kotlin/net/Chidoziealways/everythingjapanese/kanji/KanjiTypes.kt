@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
 object KanjiTypes {
     val FIRE: ResourceKey<KanjiType> = register("fire")
@@ -13,7 +13,7 @@ object KanjiTypes {
     val LIGHTNING: ResourceKey<KanjiType> = register("lightning")
 
     fun register(name: String): ResourceKey<KanjiType> {
-        return ResourceKey.create(ModRegistries.KANJI, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name))
+        return ResourceKey.create(ModRegistries.KANJI, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name))
     }
 
     fun bootstrap(context: BootstrapContext<KanjiType>) {
@@ -21,36 +21,36 @@ object KanjiTypes {
             FIRE,
             KanjiType(
                 "fire",
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "fire"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "fire"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_fire_overlay")
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "fire"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "fire"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_fire_overlay")
             )
         )
         context.register(
             WATER,
             KanjiType(
                 "water",
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "water"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "water"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_water_overlay")
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "water"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "water"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_water_overlay")
             )
         )
         context.register(
             SEAL,
             KanjiType(
                 "seal",
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "seal"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "seal"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_seal_overlay")
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "seal"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "seal"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_seal_overlay")
             )
         )
         context.register(
             LIGHTNING,
             KanjiType(
                 "lightning",
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning"),
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_lightning_overlay")
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "lightning"),
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "item/talisman_lightning_overlay")
             )
         )
     }

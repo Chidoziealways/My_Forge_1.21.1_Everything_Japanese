@@ -24,7 +24,7 @@ fun <T> FriendlyByteBuf.readSet(readElement: (FriendlyByteBuf) -> T): MutableSet
     return result
 }
 
-fun <T> setStreamCodecOf(
+fun <T : Any> setStreamCodecOf(
     elementCodec: StreamCodec<ByteBuf, T>
 ): StreamCodec<FriendlyByteBuf, Set<T>> {
     return StreamCodec.of(

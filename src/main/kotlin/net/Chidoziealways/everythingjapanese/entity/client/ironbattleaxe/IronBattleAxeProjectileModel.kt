@@ -9,27 +9,27 @@ import net.minecraft.client.model.geom.builders.CubeDeformation
 import net.minecraft.client.model.geom.builders.CubeListBuilder
 import net.minecraft.client.model.geom.builders.LayerDefinition
 import net.minecraft.client.model.geom.builders.MeshDefinition
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
 // Made with Blockbench 4.9.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
 
-class IronBattleAxeProjectileModel(root: ModelPart) : EntityModel<IronBattleAxeRenderState?>(root) {
+class IronBattleAxeProjectileModel(root: ModelPart) : EntityModel<IronBattleAxeRenderState>(root) {
     private val tomahawk: ModelPart
 
     init {
         this.tomahawk = root.getChild("tomahawk")
     }
 
-    override fun setupAnim(renderState: IronBattleAxeRenderState?) {
+    override fun setupAnim(renderState: IronBattleAxeRenderState) {
     }
 
     companion object {
         // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
         val LAYER_LOCATION: ModelLayerLocation = ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe"),
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "iron_battle_axe"),
             "main"
         )
 

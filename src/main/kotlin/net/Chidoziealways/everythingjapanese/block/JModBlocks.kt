@@ -29,7 +29,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.util.valueproviders.UniformInt
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
@@ -60,7 +60,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_block")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_block")
                     )
                 )
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
@@ -74,7 +74,7 @@ object JModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.CARTOGRAPHY_TABLE)
                 .setId(ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "calligraphy_table")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "calligraphy_table")
                 ))
         )
     }*/
@@ -86,7 +86,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_block")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_block")
                 )
             )
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)
@@ -101,7 +101,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "raw_pyrite_block")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "raw_pyrite_block")
                 )
             )
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
@@ -116,7 +116,7 @@ object JModBlocks {
                 .strength(0.15F)
                 .sound(SoundType.GLASS)
                 .noOcclusion()
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "washi_window")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "washi_window")))
         )
     }
 
@@ -128,7 +128,7 @@ object JModBlocks {
                 .sound(SoundType.GLASS)
                 .noOcclusion()
                 .noLootTable()
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "washi_window_pane")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "washi_window_pane")))
         )
     }
 
@@ -139,7 +139,7 @@ object JModBlocks {
                 .strength(0.15F)
                 .sound(SoundType.GLASS)
                 .noOcclusion()
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "shoji_window")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "shoji_window")))
         )
     }
 
@@ -151,7 +151,7 @@ object JModBlocks {
                 .sound(SoundType.GLASS)
                 .noOcclusion()
                 .noLootTable()
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "shoji_window_pane")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "shoji_window_pane")))
         )
     }
 
@@ -162,7 +162,7 @@ object JModBlocks {
                 .sound(SoundType.GLASS)
                 .strength(0.2F)
                 .noOcclusion()
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "shoji_door")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "shoji_door")))
         )
     }
 
@@ -174,7 +174,7 @@ object JModBlocks {
             .strength(0.5F)
             .setId(ResourceKey.create(
                 Registries.BLOCK,
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chabudai")
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chabudai")
             )))
     }
 
@@ -185,7 +185,7 @@ object JModBlocks {
                 .sound(SoundType.GLASS)
                 .strength(0.2F)
                 .noOcclusion()
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "fusuma_door")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "fusuma_door")))
         )
     }
 
@@ -194,7 +194,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pedestal")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pedestal")
                 )
             )
                 .noOcclusion()
@@ -204,7 +204,7 @@ object JModBlocks {
     val HANGING_SCROLL by registerBlock("hanging_scroll") {
         HangingScrollBlock(
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hanging_scroll")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hanging_scroll")))
                 .noOcclusion()
         )
     }
@@ -216,7 +216,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of()
                 .noOcclusion()
                 .sound(SoundType.WOOL)
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "byoubu")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "byoubu")))
         )
     }
      */
@@ -226,7 +226,7 @@ object JModBlocks {
         DropExperienceBlock(
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
-                    Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_ore")
+                    Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_ore")
                 )
             )
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)
@@ -238,7 +238,7 @@ object JModBlocks {
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_deepslate_ore")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_deepslate_ore")
                 )
             )
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)
@@ -250,7 +250,7 @@ object JModBlocks {
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_ore")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_ore")
                 )
             )
                 .strength(4f).requiresCorrectToolForDrops()
@@ -262,7 +262,7 @@ object JModBlocks {
             UniformInt.of(2, 10), BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_deepslate_ore")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "nephrite_deepslate_ore")
                 )
             )
                 .strength(4f).requiresCorrectToolForDrops()
@@ -275,7 +275,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of()
                 .sound(SoundType.IRON)
                 .strength(0.5f)
-                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "money_vault_block")))
+                .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "money_vault_block")))
         )
     }
 
@@ -285,7 +285,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "transformer_block")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "transformer_block")
                     )
                 )
                 .strength(2f).noLootTable().sound(ModSounds.MAGIC_BLOCK_SOUNDS).requiresCorrectToolForDrops()
@@ -297,7 +297,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "growth_chamber")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "growth_chamber")
                 )
             )
         )
@@ -311,7 +311,7 @@ object JModBlocks {
                 .setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chocolate_cake")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chocolate_cake")
                 )
             )
                 .forceSolidOn().strength(0.5f).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)
@@ -325,7 +325,7 @@ object JModBlocks {
                 .setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "japanese_cheesecake")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "japanese_cheesecake")
                 )
             )
                 .noLootTable()
@@ -340,7 +340,7 @@ object JModBlocks {
                     .setId(
                         ResourceKey.create(
                             Registries.BLOCK,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "rice_crop")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "rice_crop")
                         )
                     )
                     .randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY)
@@ -355,7 +355,7 @@ object JModBlocks {
                     .setId(
                         ResourceKey.create(
                             Registries.BLOCK,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "yamazaki_berry_bush")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "yamazaki_berry_bush")
                         )
                     )
             )
@@ -368,7 +368,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_maruta")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_maruta")
                     )
                 )
         )
@@ -380,7 +380,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_ban")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_ban")
                     )
                 )
         ) {
@@ -419,7 +419,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_stairs")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_stairs")
                     )
                 )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -431,7 +431,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_slab")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_slab")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -443,7 +443,7 @@ object JModBlocks {
             BlockSetType.IRON, BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_pressure_plate")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_pressure_plate")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -455,7 +455,7 @@ object JModBlocks {
             BlockSetType.IRON, 30, BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_button")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_button")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -467,7 +467,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_fence")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_fence")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -480,7 +480,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_fence_gate")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_fence_gate")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -493,7 +493,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_mokuzai")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_mokuzai")
                     )
                 )
         )
@@ -505,7 +505,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "stripped_hinoki_maruta")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "stripped_hinoki_maruta")
                     )
                 )
         )
@@ -517,7 +517,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "stripped_hinoki_mokuzai")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "stripped_hinoki_mokuzai")
                     )
                 )
         )
@@ -529,7 +529,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_ha")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_ha")
                     )
                 )
         )
@@ -547,7 +547,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_naegi")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_naegi")
                     )
                 )
         )
@@ -559,7 +559,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_naegi")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hinoki_naegi")
                     )
                 )
         )
@@ -574,7 +574,7 @@ object JModBlocks {
                 .setId(
                     ResourceKey.create(
                         Registries.BLOCK,
-                        ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_stairs")
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_stairs")
                     )
                 )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -588,7 +588,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_slab")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_slab")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -602,7 +602,7 @@ object JModBlocks {
             BlockSetType.IRON, BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_pressure_plate")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_pressure_plate")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -616,7 +616,7 @@ object JModBlocks {
             BlockSetType.IRON, 30, BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_button")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_button")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -630,7 +630,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_fence")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_fence")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -645,7 +645,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_fence_gate")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_fence_gate")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -659,7 +659,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_wall")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_wall")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops()
@@ -674,7 +674,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_door")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_door")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops().noOcclusion()
@@ -688,7 +688,7 @@ object JModBlocks {
             BlockSetType.IRON, BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_trapdoor")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_trapdoor")
                 )
             )
                 .strength(10f).requiresCorrectToolForDrops().noOcclusion()
@@ -701,7 +701,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_lamp")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "pyrite_lamp")
                 )
             )
                 .strength(10f)
@@ -715,7 +715,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "chair")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "chair")
                 )
             )
                 .noOcclusion()
@@ -728,7 +728,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "zabuton_blue")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "zabuton_blue")
                 )
             )
                 .noOcclusion()
@@ -741,7 +741,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "zabuton_green")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "zabuton_green")
                 )
             )
                 .noOcclusion()
@@ -754,7 +754,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "zabuton_red")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "zabuton_red")
                 )
             )
                 .noOcclusion()
@@ -767,7 +767,7 @@ object JModBlocks {
             BlockBehaviour.Properties.of().noOcclusion().setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "tatami_mat")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "tatami_mat")
                 )
             )
         )
@@ -779,7 +779,7 @@ object JModBlocks {
             .setId(
                 ResourceKey.create(
                     Registries.BLOCK,
-                    ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "japanese_flag")
+                    Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "japanese_flag")
                 )
             )
             .noOcclusion()
@@ -794,7 +794,7 @@ object JModBlocks {
                     .setId(
                         ResourceKey.create(
                             Registries.BLOCK,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_portal")
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "hell_portal")
                         )
                     )
                     
@@ -811,7 +811,7 @@ object JModBlocks {
     //FLUIDS
     val BLOOD by BLOCKS.register("blood") { ->
         object : LiquidBlock(ModFluids.BLOOD.get(), Properties.of()
-            .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, "blood")))
+            .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "blood")))
             
             .replaceable()
             .pushReaction(PushReaction.DESTROY)
@@ -825,14 +825,14 @@ object JModBlocks {
 
 
     // Register Blocks
-    private fun <T : Block?> registerBlock(name: String, block: Function0<T>): DeferredBlock<T> {
+    private fun <T : Block> registerBlock(name: String, block: Function0<T>): DeferredBlock<T> {
         val toReturn = BLOCKS.register(name, block)
         logInfo("Attempting to register block: $name")
         registerBlockItem(name, toReturn)
         return toReturn
     }
 
-    private fun <T : Block?> registerBlockItem(name: String, block: DeferredBlock<T>) {
+    private fun <T : Block> registerBlockItem(name: String, block: DeferredBlock<T>) {
         logInfo("Registering BlockItem for: $name")
         //System.out.println(" Is Chocolate Cake Present? true or false? " + CHOCOLATE_CAKE.isPresent());
         JModItems.ITEMS.register(name) { ->
@@ -842,7 +842,7 @@ object JModBlocks {
                     .setId(
                         ResourceKey.create(
                             Registries.ITEM,
-                            ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
+                            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name)
                         )
                     )
             )

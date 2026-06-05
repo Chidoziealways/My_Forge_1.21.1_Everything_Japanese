@@ -9,16 +9,16 @@ import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.ByteBufCodecs
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.resources.RegistryFileCodec
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 
 data class KanjiType(
     val id: String,
-    val blockEffectId: ResourceLocation,
-    val entityEffectId: ResourceLocation,
-    val overlay: ResourceLocation
+    val blockEffectId: Identifier,
+    val entityEffectId: Identifier,
+    val overlay: Identifier
 ) {
     val blockEffect: KanjiBlockEffect?
         get() = KanjiEffectLoader.getBlockEffect(blockEffectId)
@@ -31,16 +31,16 @@ data class KanjiType(
         val DIRECT_CODEC: Codec<KanjiType> = RecordCodecBuilder.create { instance ->
             instance.group(
                 Codec.STRING.fieldOf("id").forGetter { it.id },
-                ResourceLocation.CODEC.fieldOf("blockEffectId").forGetter { it.blockEffectId },
-                ResourceLocation.CODEC.fieldOf("entityEffectId").forGetter { it.entityEffectId },
-                ResourceLocation.CODEC.fieldOf("overlay").forGetter { it.overlay }
+                Identifier.CODEC.fieldOf("blockEffectId").forGetter { it.blockEffectId },
+                Identifier.CODEC.fieldOf("entityEffectId").forGetter { it.entityEffectId },
+                Identifier.CODEC.fieldOf("overlay").forGetter { it.overlay }
             ).apply(instance, ::KanjiType)
         }
         val DIRECT_STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, KanjiType> = StreamCodec.composite(
             ByteBufCodecs.STRING_UTF8, {it.id},
-            ResourceLocation.STREAM_CODEC, {it.blockEffectId},
-            ResourceLocation.STREAM_CODEC, {it.entityEffectId},
-            ResourceLocation.STREAM_CODEC, {it.overlay},
+            Identifier.STREAM_CODEC, {it.blockEffectId},
+            Identifier.STREAM_CODEC, {it.entityEffectId},
+            Identifier.STREAM_CODEC, {it.overlay},
             ::KanjiType)
         val CODEC: Codec<Holder<KanjiType>> = RegistryFileCodec.create(ModRegistries.KANJI, DIRECT_CODEC)
         val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, Holder<KanjiType>> = ByteBufCodecs.holder(

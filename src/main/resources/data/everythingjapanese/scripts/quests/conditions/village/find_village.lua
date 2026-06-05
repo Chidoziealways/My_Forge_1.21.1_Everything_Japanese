@@ -4,6 +4,9 @@
 --- DateTime: 10/18/2025 1:39 PM
 ---
 
+print("FIND_VILLAGE INITIALIZED!!!")
+
 return function(player, quest, stage)
-    return isInsideStructure(player, "minecraft:village_plains")
+    print("LOCATING VILLAGE")
+    return true
 end

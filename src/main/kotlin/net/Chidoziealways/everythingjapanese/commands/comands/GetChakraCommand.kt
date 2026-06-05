@@ -10,6 +10,7 @@ import net.minecraft.commands.Commands
 import net.minecraft.commands.arguments.EntityArgument
 import net.minecraft.commands.arguments.selector.EntitySelector
 import net.minecraft.network.chat.Component
+import net.minecraft.server.permissions.Permissions
 import net.minecraft.world.entity.player.Player
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.RegisterCommandsEvent
@@ -25,12 +26,13 @@ object GetChakraCommand {
 
         dispatcher.register(
             Commands.literal("getChakra")
-                .requires(Predicate { commandSourceStack: CommandSourceStack? -> commandSourceStack!!.hasPermission(1) })
+                .requires(Predicate { commandSourceStack: CommandSourceStack? -> commandSourceStack!!.permissions().hasPermission(
+                    Permissions.COMMANDS_MODERATOR) })
                 .then(
-                    Commands.argument<EntitySelector?>("target", EntityArgument.player())
-                        .executes(Command { context: CommandContext<CommandSourceStack?>? ->
+                    Commands.argument<EntitySelector>("target", EntityArgument.player())
+                        .executes(Command { context: CommandContext<CommandSourceStack> ->
                             GetChakraCommand.getChakra(
-                                context!!.getSource()!!,
+                                context.getSource()!!,
                                 EntityArgument.getPlayer(context, "target")
                             )
                         })
@@ -39,11 +41,11 @@ object GetChakraCommand {
     }
 
     private fun getChakra(sourceStack: CommandSourceStack, target: Player): Int {
-        val chakra = target.getCapability<IChakra?>(ModCapabilities.CHAKRA_CAPABILITY)
+        val chakra = target.getCapability<IChakra>(ModCapabilities.CHAKRA_CAPABILITY)
         sourceStack.sendSuccess(
             Supplier {
                 Component.literal(
-                    target.displayName?.string + "'s Current Chakra: " + chakra!!.getCurrentChakra()
+                    target.displayName.string + "'s Current Chakra: " + chakra!!.getCurrentChakra()
                 )
             }, true
         )

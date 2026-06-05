@@ -130,7 +130,7 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         add(JModItems.DIESEL, "디젤")
         add(JModItems.INCENSE, "향")
         add(JModItems.UDON, "우동")
-        add(JModItems.HELL_PORTAL_ACTIVATOR, "地獄 포탈 활성화기")
+        //add(JModItems.HELL_PORTAL_ACTIVATOR, "地獄 포탈 활성화기")
         add(JModItems.YA, "야")
         add(JModItems.TALISMAN_ITEM, "부적")
         add(JModItems.PYRITE_AXE, "黃鐵石의斧")
@@ -185,6 +185,7 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         //add(JModItems.SOUL_GUITAR, "소울 기타")
         add(JModItems.GUN, "銃")
         add(JModItems.BULLET, "彈丸")
+        add(JModItems.POWERED_SWORD, "動力劍")
 
         // JUTSU
         add("jutsu.everythingjapanese.small_windball", "바람구슬")

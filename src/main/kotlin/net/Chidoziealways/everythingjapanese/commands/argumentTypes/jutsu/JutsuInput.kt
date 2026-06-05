@@ -15,20 +15,20 @@ import net.minecraft.nbt.NbtOps
 import net.minecraft.nbt.Tag
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import java.util.*
 import java.util.function.Function
 import java.util.function.Supplier
 import java.util.stream.Collectors
 import java.util.stream.Stream
 
-class JutsuInput(jutsu: Holder<Jutsu?>?, pComponents: DataComponentPatch?) {
-    private val jutsu: Holder<Jutsu?>
+class JutsuInput(jutsu: Holder<Jutsu>, pComponents: DataComponentPatch?) {
+    private val jutsu: Holder<Jutsu>
     private val components: DataComponentPatch
 
     init {
         if (jutsu == null || !ModRegistries.JUTSU.containsKey(
-                ResourceLocation.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsu.value()?.name!!)
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, jutsu.value()?.name!!)
             )
         ) {
             throw INVALID_JUTSU.create()
@@ -37,7 +37,7 @@ class JutsuInput(jutsu: Holder<Jutsu?>?, pComponents: DataComponentPatch?) {
         this.components = pComponents!!
     }
 
-    fun getJutsu(): Holder<Jutsu?> {
+    fun getJutsu(): Holder<Jutsu> {
         return jutsu
     }
 
@@ -54,29 +54,29 @@ class JutsuInput(jutsu: Holder<Jutsu?>?, pComponents: DataComponentPatch?) {
     }
 
     private fun serializeComponents(pLevelRegistries: HolderLookup.Provider): String {
-        val dynamicops: DynamicOps<Tag?> = pLevelRegistries.createSerializationContext<Tag?>(NbtOps.INSTANCE)
+        val dynamicops: DynamicOps<Tag> = pLevelRegistries.createSerializationContext<Tag>(NbtOps.INSTANCE)
         return this.components.entrySet().stream()
-            .flatMap<String?> { p_340970_: MutableMap.MutableEntry<DataComponentType<*>?, Optional<*>?>? ->
+            .flatMap<String> { p_340970_: MutableMap.MutableEntry<DataComponentType<*>, Optional<*>> ->
                 val datacomponenttype: DataComponentType<*> = p_340970_!!.key!!
-                val resourcelocation = BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(datacomponenttype)
-                if (resourcelocation == null) {
+                val Identifier = BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(datacomponenttype)
+                if (Identifier == null) {
                     return@flatMap Stream.empty<String?>()
                 } else {
                     val optional: Optional<*> = p_340970_.value!!
                     if (optional.isPresent()) {
                         val typeddatacomponent: TypedDataComponent<*> =
                             TypedDataComponent.createUnchecked(datacomponenttype, optional.get())
-                        return@flatMap typeddatacomponent.encodeValue<Tag?>(dynamicops).result().stream()
-                            .map<String?> { p_340968_: Tag? -> resourcelocation.toString() + "=" + p_340968_ }
+                        return@flatMap typeddatacomponent.encodeValue<Tag>(dynamicops).result().stream()
+                            .map<String?> { p_340968_: Tag? -> "$Identifier=$p_340968_" }
                     } else {
-                        return@flatMap Stream.of<String?>("!" + resourcelocation.toString())
+                        return@flatMap Stream.of<String?>("!$Identifier")
                     }
                 }
             }.collect(Collectors.joining(','.toString()))
     }
 
     private fun getJutsuName(): String {
-        return this.jutsu.unwrapKey().map<Any?>(Function { obj: ResourceKey<Jutsu?>? -> obj!!.location() }).orElseGet(
+        return this.jutsu.unwrapKey().map<Any>(Function { obj: ResourceKey<Jutsu> -> obj.registry() }).orElseGet(
             Supplier { "unknown[" + this.jutsu + "]" }).toString()
     }
 

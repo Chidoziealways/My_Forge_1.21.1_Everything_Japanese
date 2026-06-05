@@ -4,9 +4,9 @@ import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.network.codec.StreamCodec
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
-data class Design(val location: ResourceLocation) {
+data class Design(val location: Identifier) {
     override fun toString(): String {
         return location.toString()
     }
@@ -14,12 +14,12 @@ data class Design(val location: ResourceLocation) {
     companion object {
         val CODEC: Codec<Design> = RecordCodecBuilder.create{ instance ->
             instance.group(
-                ResourceLocation.CODEC.fieldOf("location").forGetter { it.location }
+                Identifier.CODEC.fieldOf("location").forGetter { it.location }
             ).apply(instance, ::Design)
         }
 
         val STREAM_CODEC: StreamCodec<FriendlyByteBuf, Design> = StreamCodec.composite(
-            ResourceLocation.STREAM_CODEC, Design::location,
+            Identifier.STREAM_CODEC, Design::location,
             ::Design
         )
     }

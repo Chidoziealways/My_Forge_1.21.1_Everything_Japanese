@@ -13,8 +13,8 @@ class HammerItem(pProperties: Properties) : Item(pProperties) {
             range: Int,
             initialBlockPos: BlockPos,
             player: ServerPlayer
-        ): MutableList<BlockPos?> {
-            val positions: MutableList<BlockPos?> = ArrayList<BlockPos?>()
+        ): MutableList<BlockPos> {
+            val positions: MutableList<BlockPos> = ArrayList<BlockPos>()
 
             val traceResult = player.level().clip(
                 ClipContext(

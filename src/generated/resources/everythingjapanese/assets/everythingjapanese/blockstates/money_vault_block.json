@@ -1,0 +1,88 @@
+{
+  "variants": {
+    "section=bottom_left_back": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_left_back"
+    },
+    "section=bottom_left_front": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_left_front"
+    },
+    "section=bottom_left_middle": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_left_middle"
+    },
+    "section=bottom_middle_back": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_middle_back"
+    },
+    "section=bottom_middle_front": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_middle_front"
+    },
+    "section=bottom_middle_middle": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_middle_front"
+    },
+    "section=bottom_right_back": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_right_back"
+    },
+    "section=bottom_right_front": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_right_front"
+    },
+    "section=bottom_right_middle": {
+      "model": "everythingjapanese:block/money_vault_block_bottom_right_middle"
+    },
+    "section=middle_left_back": {
+      "model": "everythingjapanese:block/money_vault_block_middle_left_back"
+    },
+    "section=middle_left_front": {
+      "model": "everythingjapanese:block/money_vault_block_middle_left_front"
+    },
+    "section=middle_left_middle": {
+      "model": "everythingjapanese:block/money_vault_block_middle_left_middle"
+    },
+    "section=middle_middle_back": {
+      "model": "everythingjapanese:block/money_vault_block_middle_middle_back"
+    },
+    "section=middle_middle_front": {
+      "model": "everythingjapanese:block/money_vault_block_middle_middle_front"
+    },
+    "section=middle_middle_middle": {
+      "model": "everythingjapanese:block/money_vault_block_middle_middle_front"
+    },
+    "section=middle_right_back": {
+      "model": "everythingjapanese:block/money_vault_block_middle_right_back"
+    },
+    "section=middle_right_front": {
+      "model": "everythingjapanese:block/money_vault_block_middle_right_front"
+    },
+    "section=middle_right_middle": {
+      "model": "everythingjapanese:block/money_vault_block_middle_right_middle"
+    },
+    "section=single": {
+      "model": "everythingjapanese:block/money_vault_block"
+    },
+    "section=top_left_back": {
+      "model": "everythingjapanese:block/money_vault_block_top_left_back"
+    },
+    "section=top_left_front": {
+      "model": "everythingjapanese:block/money_vault_block_top_left_front"
+    },
+    "section=top_left_middle": {
+      "model": "everythingjapanese:block/money_vault_block_top_left_middle"
+    },
+    "section=top_middle_back": {
+      "model": "everythingjapanese:block/money_vault_block_top_middle_back"
+    },
+    "section=top_middle_front": {
+      "model": "everythingjapanese:block/money_vault_block_top_middle"
+    },
+    "section=top_middle_middle": {
+      "model": "everythingjapanese:block/money_vault_block_top_middle"
+    },
+    "section=top_right_back": {
+      "model": "everythingjapanese:block/money_vault_block_top_right_back"
+    },
+    "section=top_right_front": {
+      "model": "everythingjapanese:block/money_vault_block_top_right_front"
+    },
+    "section=top_right_middle": {
+      "model": "everythingjapanese:block/money_vault_block_top_right_middle"
+    }
+  }
+}

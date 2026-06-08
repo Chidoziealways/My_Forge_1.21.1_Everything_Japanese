@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pyrite",
+  "key": {
+    "#": "minecraft:stick",
+    "W": "everythingjapanese:hinoki_ban"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "everythingjapanese:hinoki_fence_gate"
+  }
+}

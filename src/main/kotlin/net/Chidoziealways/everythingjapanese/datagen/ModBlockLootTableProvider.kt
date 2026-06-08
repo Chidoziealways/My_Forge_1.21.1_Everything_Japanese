@@ -39,6 +39,7 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
         dropSelf(JModBlocks.HINOKI_BUTTON)
         dropSelf(JModBlocks.TATAMI_MAT)
         dropSelf(JModBlocks.PYRITE_FENCE)
+        dropSelf(JModBlocks.CURSED_BLOCK)
         dropSelf(JModBlocks.PYRITE_FENCE_GATE)
         dropSelf(JModBlocks.PYRITE_PRESSURE_PLATE)
         dropSelf(JModBlocks.HANGING_SCROLL)

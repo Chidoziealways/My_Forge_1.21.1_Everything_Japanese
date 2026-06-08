@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "everythingjapanese:block/hinoki_ha"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nephrite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:nephrite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everythingjapanese:nephrite_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nephrite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everythingjapanese:nephrite_block"
+    ]
+  }
+}

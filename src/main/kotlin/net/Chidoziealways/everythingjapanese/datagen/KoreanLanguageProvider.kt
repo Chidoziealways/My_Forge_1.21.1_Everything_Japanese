@@ -15,12 +15,12 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         add("advancements.hell.root.description", "탈출구가 없다")
 
         // ARGUMENTS
-        add("argument.jutsu.id.invalid", "알 수 없는 주술 '%s'")
-        add("arguments.jutsu.component.unknown", "알 수 없는 주술 구성 요소 '%s'")
-        add("arguments.jutsu.component.malformed", "잘못된 '%s' 구성 요소: '%s'")
-        add("arguments.jutsu.component.expected", "주술 구성 요소가 필요합니다")
-        add("arguments.jutsu.component.repeated", "주술 구성 요소 '%s'가 중복되었습니다. 하나만 지정할 수 있습니다")
-        add("arguments.jutsu.malformed", "잘못된 주술: '%s'")
+        add("argument.jutsu.id.invalid", "알수없는術 '%s'")
+        add("arguments.jutsu.component.unknown", "알수없는術構成要素 '%s'")
+        add("arguments.jutsu.component.malformed", "잘못된 '%s' 構成要素: '%s'")
+        add("arguments.jutsu.component.expected", "術構成要素가必要합니다")
+        add("arguments.jutsu.component.repeated", "術의構成要素 '%s'가重複되었습니다. 하나만指定할수있습니다")
+        add("arguments.jutsu.malformed", "잘못된術: '%s'")
 
         // BLOCKS
         add(JModBlocks.PYRITE_BLOCK, "黃鐵石 블록")
@@ -78,7 +78,8 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         add(JModBlocks.ZABUTON_GREEN, "녹색 座布団")
         add(JModBlocks.MONEY_VAULT_BLOCK, "머니 金庫")
         //add(JModBlocks.CALLIGRAPHY_TABLE, "書藝대")
-        add(JModBlocks.JAPANESE_FLAG, "日本의 旗")
+        add(JModBlocks.JAPANESE_FLAG, "日本의旗")
+        add(JModBlocks.CURSED_BLOCK, "呪詛의블록")
 
         // CONTAINERS
         add("container.calligraphy_table", "書藝대")
@@ -143,10 +144,11 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         add(JModItems.NEPHRITE_HOE, "軟玉의괭이")
         add(JModItems.PYRITE_HELMET, "黃鐵石의투구")
         add(JModItems.PYRITE_CHESTPLATE, "黃鐵石의胸甲")
-        add(JModItems.CHIRETSU_SHO_SCROLL, "地裂掌 주문서")
-        add(JModItems.EKIRETSU_SHO_SCROLL, "液裂掌 주문서")
-        add(JModItems.FIREBALL_SCROLL, "火炎球 주문서")
-        add(JModItems.WINDBALL_SCROLL, "바람구슬 주문서")
+        add(JModItems.CHIRETSU_SHO_SCROLL, "地裂掌의術의주문서")
+        add(JModItems.EKIRETSU_SHO_SCROLL, "液裂掌의術의주문서")
+        add(JModItems.FIREBALL_SCROLL, "火炎球의術의주문서")
+        add(JModItems.WINDBALL_SCROLL, "바람구슬의術의주문서")
+        add(JModItems.LIFE_STEAL_JUTSU_SCROLL, "生命吸收의術의주문서")
         //add(JModItems.SCROLL, "두루마리")
         add(JModItems.PYRITE_LEGGINGS, "黃鐵石 다리갑옷")
         add(JModItems.PYRITE_BOOTS, "黃鐵石 부츠")

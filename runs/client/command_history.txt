@@ -1,8 +1,6 @@
 /summon villager
 /
 /summon villager
-/
-/summon villager
 /kill zombie
 /tp ~1000 ~ ~10000
 /time set day
@@ -48,3 +46,5 @@
 /tick unfreeze
 /kill @e[type=everythingjapanese:chiretsu_sho_projectile]
 /summon everythingjapanese:cursed_samurai
+/give Dev everythingjapanese:cursed_block
+/give Dev everythingjapanese:life_steal_jutsu_scroll

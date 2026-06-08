@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everythingjapanese:windball_scroll",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everythingjapanese:fireball_scroll",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everythingjapanese:chiretsu_sho_scroll",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everythingjapanese:ekiretsu_sho_scroll",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_sword",
+          "weight": 30
+        }
+      ],
+      "rolls": 3.0
+    }
+  ],
+  "random_sequence": "everythingjapanese:chests/dojo"
+}

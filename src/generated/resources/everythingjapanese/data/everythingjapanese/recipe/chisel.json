@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "minecraft:wind_charge",
+    "B": "everythingjapanese:pyrite_ingot",
+    "C": "minecraft:blaze_powder",
+    "D": "minecraft:stick",
+    "E": "minecraft:ghast_tear"
+  },
+  "pattern": [
+    "ABC",
+    "EDE",
+    "CBA"
+  ],
+  "result": {
+    "id": "everythingjapanese:chisel"
+  }
+}

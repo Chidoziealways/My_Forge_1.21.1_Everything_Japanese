@@ -1,0 +1,26 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "entries": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "everythingjapanese:item/powered_sword_divine"
+        },
+        "threshold": 1.0
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "everythingjapanese:item/powered_sword_cursed"
+        },
+        "threshold": 1.4E-45
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "everythingjapanese:item/powered_sword"
+    },
+    "property": "everythingjapanese:karma"
+  }
+}

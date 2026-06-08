@@ -1,11 +1,12 @@
-# Version 1.25.1
-## Revival
+# Version 1.26
+## LifeSteal & Cursing
 
 ### Additions
-- N/A
+- A New LifeSteal *no* Jutsu
+- The 'Cursed' block which allows the player to curse another player in the server (takes chakra)
 
 ### Changes
-- Repurposed the Cursed Samurai for some time
+- N/A
 
 ### Coming Soon
 - Inhabitants for the Shoji House may arrive in a future update
@@ -18,4 +19,4 @@
 
 ---
 
-> *Dedicated to 時*
+> *Dedicated to 呪い呪われた人間*

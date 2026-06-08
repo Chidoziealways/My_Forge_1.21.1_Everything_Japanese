@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pyrite",
+  "key": {
+    "#": "minecraft:stick",
+    "W": "everythingjapanese:pyrite_ingot"
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "id": "everythingjapanese:pyrite_fence_gate"
+  }
+}

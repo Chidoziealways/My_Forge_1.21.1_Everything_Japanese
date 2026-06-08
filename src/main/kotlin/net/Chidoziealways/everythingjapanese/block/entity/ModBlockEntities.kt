@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.entity
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
+import net.Chidoziealways.everythingjapanese.block.entity.custom.CursedBlockEntity
 //import net.Chidoziealways.everythingjapanese.block.entity.custom.ByoubuBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.FusumaDoorBlockEntity
 import net.Chidoziealways.everythingjapanese.block.entity.custom.HangingScrollBlockEntity
@@ -28,6 +29,15 @@ object ModBlockEntities {
                 pPos,
                 pBlockState) },
             mutableSetOf<Block>(JModBlocks.SHOJI_DOOR))
+    }
+
+    val CURSED_BLOCK_BE by BLOCK_ENTITIES.register("cursed_block_be") {->
+        BlockEntityType(BlockEntitySupplier { pos: BlockPos, state: BlockState ->
+            CursedBlockEntity(
+                pos,
+                state
+            ) },
+            mutableSetOf<Block>(JModBlocks.CURSED_BLOCK))
     }
 
     val HANGING_SCROLL_BE by BLOCK_ENTITIES.register("hanging_scroll_be") { ->

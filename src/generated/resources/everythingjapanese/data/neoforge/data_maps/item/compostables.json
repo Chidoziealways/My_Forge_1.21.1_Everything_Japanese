@@ -1,0 +1,32 @@
+{
+  "values": {
+    "everythingjapanese:ramen": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    },
+    "everythingjapanese:raw_rice": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    },
+    "everythingjapanese:rice": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    },
+    "everythingjapanese:rice_seeds": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    },
+    "everythingjapanese:sushi": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    },
+    "everythingjapanese:udon": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    },
+    "everythingjapanese:yamazaki_berries": {
+      "can_villager_compost": true,
+      "chance": 1.0
+    }
+  }
+}

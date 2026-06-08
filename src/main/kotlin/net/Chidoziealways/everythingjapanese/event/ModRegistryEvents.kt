@@ -26,6 +26,7 @@ object ModRegistryEvents {
         log.info(marker, "Registering Custom Registries")
         event.register(ModRegistries.JUTSU)
         event.register(ModRegistries.MORPHS)
+        event.register(ModRegistries.CURSES)
 
         log.info(marker, "Finished Registering Registries")
     }

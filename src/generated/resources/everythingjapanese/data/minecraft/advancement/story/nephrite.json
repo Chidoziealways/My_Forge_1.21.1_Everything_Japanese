@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:story/smelt_pyrite",
+  "criteria": {
+    "nephrite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:nephrite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Acquire Nephrite",
+    "icon": {
+      "id": "everythingjapanese:nephrite"
+    },
+    "title": "Are these Emeralds?"
+  },
+  "requirements": [
+    [
+      "nephrite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

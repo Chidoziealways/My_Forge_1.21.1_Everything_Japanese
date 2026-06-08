@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": "minecraft:soul_sand",
+    "T": "minecraft:stick"
+  },
+  "pattern": [
+    "  S",
+    " S ",
+    "T  "
+  ],
+  "result": {
+    "id": "everythingjapanese:soul_dagger"
+  }
+}

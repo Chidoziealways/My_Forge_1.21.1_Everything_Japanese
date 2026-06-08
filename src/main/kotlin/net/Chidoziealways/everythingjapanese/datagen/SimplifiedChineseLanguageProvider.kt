@@ -79,6 +79,7 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         add(JModBlocks.MONEY_VAULT_BLOCK, "金库")
         //add(JModBlocks.CALLIGRAPHY_TABLE, "书法台")
         add(JModBlocks.JAPANESE_FLAG, "日本国旗")
+        add(JModBlocks.CURSED_BLOCK, "咒诅方块")
 
         // CONTAINERS
         add("container.calligraphy_table", "书法台")
@@ -148,6 +149,7 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         add(JModItems.FIREBALL_SCROLL, "火球术卷轴")
         add(JModItems.RAMEN, "拉面")
         add(JModItems.WINDBALL_SCROLL, "风球术卷轴")
+        add(JModItems.LIFE_STEAL_JUTSU_SCROLL, "生命吸收术卷轴")
         //add(JModItems.SCROLL, "卷轴")
         add(JModItems.PYRITE_LEGGINGS, "黄铁矿护腿")
         add(JModItems.PYRITE_BOOTS, "黄铁矿靴子")

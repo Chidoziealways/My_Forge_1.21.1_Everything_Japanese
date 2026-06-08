@@ -80,6 +80,8 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         add(JModBlocks.MONEY_VAULT_BLOCK, "Money Vault")
         //add(JModBlocks.CALLIGRAPHY_TABLE, "Calligraphy Table")
         add(JModBlocks.JAPANESE_FLAG, "Japanese Flag")
+        add(JModBlocks.CURSED_BLOCK, "Cursed Block")
+
 
         // CONTAINERS
         add("container.calligraphy_table", "Calligraphy Table")
@@ -146,6 +148,7 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         add(JModItems.CHIRETSU_SHO_SCROLL, "Chiretsu Shō Jutsu Scroll")
         add(JModItems.EKIRETSU_SHO_SCROLL, "Ekiretsu Shō Jutsu Scroll")
         add(JModItems.FIREBALL_SCROLL, "Fireball Jutsu Scroll")
+        add(JModItems.LIFE_STEAL_JUTSU_SCROLL, "LifeSteal Jutsu Scroll")
         add(JModItems.WINDBALL_SCROLL, "Windball Jutsu Scroll")
         //add(JModItems.SCROLL, "Scroll")
         add(JModItems.PYRITE_LEGGINGS, "Pyrite Leggings")

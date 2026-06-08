@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hinoki_ban": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:hinoki_ban"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everythingjapanese:hinoki_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hinoki_ban"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everythingjapanese:hinoki_slab"
+    ]
+  }
+}

@@ -9,6 +9,7 @@ import net.Chidoziealways.everythingjapanese.block.entity.renderer.pedestal.Pede
 import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
 import net.Chidoziealways.everythingjapanese.commands.ModArgumentTypes
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
+import net.Chidoziealways.everythingjapanese.curse.Curses
 import net.Chidoziealways.everythingjapanese.dialog.JModDialog
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantmentEffects
@@ -36,6 +37,7 @@ import net.Chidoziealways.everythingjapanese.potion.ModPotions
 import net.Chidoziealways.everythingjapanese.recipe.ModRecipes
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.Chidoziealways.everythingjapanese.screen.custom.calligraphytable.CalligraphyTableScreen
+import net.Chidoziealways.everythingjapanese.screen.custom.cursedblock.CursedBlockScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalScreen
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
@@ -146,6 +148,7 @@ object EverythingJapanese {
         ModFluidTypes.register(MOD_BUS)
         ModFluids.register(MOD_BUS)
         ModAttachments.register(MOD_BUS)
+        Curses.register(MOD_BUS)
 
         if (ModList.get().isLoaded("everythingkorean")) {
             logInfo("EVERYTHING KOREAN LOCKED AND LOADED!")
@@ -218,6 +221,11 @@ object EverythingJapanese {
             ) { menu, inventory, title ->
                 PedestalScreen(menu, inventory, title)
             }
+
+            event.register(
+                ModMenuTypes.CURSED_BLOCK_MENU,
+                ::CursedBlockScreen
+            )
 
             event.register(
                 ModMenuTypes.CALLIGRAPHY_TABLE_MENU

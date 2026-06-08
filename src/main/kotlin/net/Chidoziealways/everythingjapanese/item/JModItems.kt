@@ -162,6 +162,19 @@ object JModItems {
         )
     }
 
+    val LIFE_STEAL_JUTSU_SCROLL by ITEMS.register("life_steal_jutsu_scroll")
+    {->
+       JutsuScrollItem(
+           "life_steal_jutsu",
+           Item.Properties().setId(
+               ResourceKey.create(
+                   Registries.ITEM,
+                   Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "life_steal_jutsu_scroll")
+               )
+           )
+       )
+    }
+
     val TALISMAN_ITEM by ITEMS.register("talisman_item")
     { ->
         TalismanItem(Item.Properties().setId(ResourceKey.create(

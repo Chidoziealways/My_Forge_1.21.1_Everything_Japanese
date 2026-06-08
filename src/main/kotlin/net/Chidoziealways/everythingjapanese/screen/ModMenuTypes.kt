@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.screen
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.screen.custom.calligraphytable.CalligraphyTableMenu
+import net.Chidoziealways.everythingjapanese.screen.custom.cursedblock.CursedBlockMenu
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberMenu
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalMenu
 import net.minecraft.core.registries.Registries
@@ -27,6 +28,12 @@ object ModMenuTypes {
                 )
             }
         })
+
+    val CURSED_BLOCK_MENU by MENUS.register(
+        "cursed_block_menu", Supplier {
+        IMenuTypeExtension.create { i, stacks, buf ->
+            CursedBlockMenu(i, stacks, buf)
+        }})
 
     val CALLIGRAPHY_TABLE_MENU by MENUS.register(
         "calligraphy_table_menu") { ->

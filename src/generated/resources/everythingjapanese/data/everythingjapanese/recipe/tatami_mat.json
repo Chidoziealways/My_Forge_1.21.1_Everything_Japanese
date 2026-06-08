@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "H": "#everythingjapanese:animal_skin",
+    "W": "minecraft:wheat"
+  },
+  "pattern": [
+    "HHH",
+    "WWW",
+    "HHH"
+  ],
+  "result": {
+    "count": 2,
+    "id": "everythingjapanese:tatami_mat"
+  }
+}

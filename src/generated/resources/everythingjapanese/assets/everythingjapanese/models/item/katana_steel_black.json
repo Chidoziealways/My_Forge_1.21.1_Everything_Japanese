@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "everythingjapanese:item/katana",
+    "layer1": "everythingjapanese:item/blade_steel",
+    "layer2": "everythingjapanese:item/wrap_black"
+  }
+}

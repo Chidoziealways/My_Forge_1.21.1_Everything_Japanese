@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "hinoki",
+  "ingredients": [
+    "everythingjapanese:hinoki_ban"
+  ],
+  "result": {
+    "id": "everythingjapanese:hinoki_button"
+  }
+}

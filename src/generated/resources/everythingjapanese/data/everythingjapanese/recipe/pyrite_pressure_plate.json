@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "everythingjapanese:pyrite_ingot"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "everythingjapanese:pyrite_pressure_plate"
+  }
+}

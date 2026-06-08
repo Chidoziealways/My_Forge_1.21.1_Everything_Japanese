@@ -1,0 +1,18 @@
+{
+  "dependency": "everythingjapanese:dojo",
+  "description": "This Quest deals with the Shoji House and it's many secrets",
+  "id": "everythingjapanese:shoji_house",
+  "repeatable": true,
+  "rewards": [
+    {
+      "id": "everythingjapanese:gun"
+    }
+  ],
+  "stages": [
+    {
+      "completeWhenId": "everythingjapanese:find_shoji_house",
+      "objective": "Find the Shoji House"
+    }
+  ],
+  "title": "Shoji House"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:bamboo",
+    "minecraft:ink_sac"
+  ],
+  "result": {
+    "count": 5,
+    "id": "everythingjapanese:talisman_item"
+  }
+}

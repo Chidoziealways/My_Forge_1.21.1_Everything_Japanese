@@ -1,0 +1,30 @@
+{
+  "dependency": "everythingjapanese:air",
+  "description": "Find the place where villagers roam free and happy",
+  "id": "everythingjapanese:village",
+  "repeatable": true,
+  "rewards": [
+    {
+      "id": "everythingjapanese:give_xp"
+    }
+  ],
+  "stages": [
+    {
+      "completeWhenId": "everythingjapanese:find_village",
+      "objective": "Locate The Village"
+    },
+    {
+      "completeWhenId": "everythingjapanese:green_stone",
+      "objective": "Obtain a green stone"
+    },
+    {
+      "completeWhenId": "everythingjapanese:green_wool",
+      "objective": "Obtain green silk ※wool※"
+    },
+    {
+      "completeWhenId": "everythingjapanese:iron_golem",
+      "objective": "Kill the bodyguard"
+    }
+  ],
+  "title": "The Village"
+}

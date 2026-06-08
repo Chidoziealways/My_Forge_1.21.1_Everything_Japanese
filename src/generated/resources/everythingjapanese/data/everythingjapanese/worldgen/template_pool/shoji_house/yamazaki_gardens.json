@@ -1,0 +1,16 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "everythingjapanese:shoji_house/yamazaki_garden",
+        "processors": {
+          "processors": []
+        },
+        "projection": "terrain_matching"
+      },
+      "weight": 10
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

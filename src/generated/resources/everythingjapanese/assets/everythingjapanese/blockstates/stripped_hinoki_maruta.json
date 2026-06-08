@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "everythingjapanese:block/stripped_hinoki_maruta_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "everythingjapanese:block/stripped_hinoki_maruta"
+    },
+    "axis=z": {
+      "model": "everythingjapanese:block/stripped_hinoki_maruta_horizontal",
+      "x": 90
+    }
+  }
+}

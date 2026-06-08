@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": "everythingjapanese:pyrite_block",
+    "B": "everythingjapanese:chisel"
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "id": "everythingjapanese:transformer_block"
+  }
+}

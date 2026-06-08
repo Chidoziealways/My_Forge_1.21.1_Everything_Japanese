@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.util
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.custom.hanging_scroll.Design
+import net.Chidoziealways.everythingjapanese.curse.Curse
 import net.Chidoziealways.everythingjapanese.item.custom.fish_hook.MobMorph
 import net.Chidoziealways.everythingjapanese.kanji.KanjiType
 import net.Chidoziealways.everythingjapanese.jutsu.Jutsu
@@ -25,6 +26,15 @@ object ModRegistries {
 
     val DESIGN: ResourceKey<Registry<Design>> =
         ResourceKey.createRegistryKey(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "design"))
+
+    val CURSES_KEY: ResourceKey<Registry<Curse>> =
+        ResourceKey.createRegistryKey(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "curses"))
+
+    val CURSES: Registry<Curse> = RegistryBuilder(CURSES_KEY)
+        .sync(true)
+        .defaultKey(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "bllindness"))
+        .maxId(256)
+        .create()
 
     val MORPHS_KEY: ResourceKey<Registry<MobMorph>> =
         ResourceKey.createRegistryKey(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "morphs"))

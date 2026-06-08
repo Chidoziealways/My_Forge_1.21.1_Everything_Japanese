@@ -1,0 +1,10 @@
+{
+  "values": {
+    "everythingjapanese:diesel": {
+      "burn_time": 1200
+    },
+    "everythingjapanese:incense": {
+      "burn_time": 20000
+    }
+  }
+}

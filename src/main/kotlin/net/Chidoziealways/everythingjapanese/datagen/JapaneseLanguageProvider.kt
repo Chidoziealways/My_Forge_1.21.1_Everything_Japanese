@@ -79,6 +79,7 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, JA
         add(JModBlocks.MONEY_VAULT_BLOCK, "マネーヴォールト")
         //add(JModBlocks.CALLIGRAPHY_TABLE, "書道台")
         add(JModBlocks.JAPANESE_FLAG, "日本の旗")
+        add(JModBlocks.CURSED_BLOCK, "呪詛のブロック")
 
         // CONTAINERS
         add("container.calligraphy_table", "書道台")
@@ -143,10 +144,11 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, JA
         add(JModItems.NEPHRITE_HOE, "軟玉のクワ")
         add(JModItems.PYRITE_HELMET, "黄鉄鉱のヘルメット")
         add(JModItems.PYRITE_CHESTPLATE, "黄鉄鉱の胸甲")
-        add(JModItems.CHIRETSU_SHO_SCROLL, "地裂掌の巻物")
-        add(JModItems.EKIRETSU_SHO_SCROLL, "液裂掌の巻物")
-        add(JModItems.FIREBALL_SCROLL, "火の玉術の巻物")
-        add(JModItems.WINDBALL_SCROLL, "風の玉術の巻物")
+        add(JModItems.CHIRETSU_SHO_SCROLL, "地裂掌の術の巻物")
+        add(JModItems.EKIRETSU_SHO_SCROLL, "液裂掌の術の巻物")
+        add(JModItems.FIREBALL_SCROLL, "火の玉の術の巻物")
+        add(JModItems.WINDBALL_SCROLL, "風の玉の術の巻物")
+        add(JModItems.LIFE_STEAL_JUTSU_SCROLL, "生命吸収の術の巻物")
         //add(JModItems.SCROLL, "巻物")
         add(JModItems.PYRITE_LEGGINGS, "黄鉄鉱のレギンス")
         add(JModItems.PYRITE_BOOTS, "黄鉄鉱のブーツ")

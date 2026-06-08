@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "everythingjapanese:block/hinoki_slab"
+    },
+    "type=double": {
+      "model": "everythingjapanese:block/hinoki_ban"
+    },
+    "type=top": {
+      "model": "everythingjapanese:block/hinoki_slab_top"
+    }
+  }
+}

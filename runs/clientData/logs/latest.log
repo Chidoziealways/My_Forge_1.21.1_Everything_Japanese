@@ -1,18 +1,18 @@
-[10May2026 14:28:38.954] [main/INFO] [net.neoforged.fml.startup.Entrypoint/]: JVM Uptime at startup: 1715ms
-[10May2026 14:28:39.149] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Starting FancyModLoader version 11.0.12 (CLIENT in DEV)
-[10May2026 14:28:39.151] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Game directory: C:\Users\Hanzo\IdeaProjects\EverythingJapanese\runs\clientData
-[10May2026 14:28:39.830] [main/INFO] [net.neoforged.fml.loading.EarlyServiceDiscovery/]: Found 2 early service jars (out of 122) in 204ms
-[10May2026 14:28:39.832] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Loading FML Early Services:
-[10May2026 14:28:39.838] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/loader/11.0.12/d884bab13450950bcb425dbe29d33e505f7153e1/loader-11.0.12.jar
-[10May2026 14:28:39.842] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/earlydisplay/11.0.12/b817db67b61923f071fa98947f92a054c8598dd1/earlydisplay-11.0.12.jar
-[10May2026 14:28:39.882] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Not loading early display in headless mode.
-[10May2026 14:28:40.676] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.GameLocator/]: Detected a joined NeoForge and Minecraft configuration. Applying filtering...
-[10May2026 14:28:41.434] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.InDevFolderLocator/CORE]: Got mod coordinates everythingjapanese%%C:\\Users\\Hanzo\\IdeaProjects\\EverythingJapanese\\build\\sourcesSets\\main from env
-[10May2026 14:28:45.914] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: library:thedarkcolour.kotlinforforge.lang.neoforge. Using jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflang-neoforge/6.5.0/kfflang-neoforge-6.5.0.jar)
-[10May2026 14:28:45.916] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: library:thedarkcolour.kotlinforforge.lib.neoforge. Using jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflib-neoforge/6.5.0/kfflib-neoforge-6.5.0.jar)
-[10May2026 14:28:45.918] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: library:kotlinforforge.neoforge. Using jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar)
-[10May2026 14:28:45.921] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 11 dependencies adding them to mods collection
-[10May2026 14:28:45.937] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+[07Jun2026 12:39:34.870] [main/INFO] [net.neoforged.fml.startup.Entrypoint/]: JVM Uptime at startup: 505ms
+[07Jun2026 12:39:34.919] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Starting FancyModLoader version 11.0.12 (CLIENT in DEV)
+[07Jun2026 12:39:34.920] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Game directory: C:\Users\Hanzo\IdeaProjects\EverythingJapanese\runs\clientData
+[07Jun2026 12:39:35.155] [main/INFO] [net.neoforged.fml.loading.EarlyServiceDiscovery/]: Found 2 early service jars (out of 122) in 83ms
+[07Jun2026 12:39:35.156] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Loading FML Early Services:
+[07Jun2026 12:39:35.174] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/loader/11.0.12/d884bab13450950bcb425dbe29d33e505f7153e1/loader-11.0.12.jar
+[07Jun2026 12:39:35.176] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/earlydisplay/11.0.12/b817db67b61923f071fa98947f92a054c8598dd1/earlydisplay-11.0.12.jar
+[07Jun2026 12:39:35.200] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Not loading early display in headless mode.
+[07Jun2026 12:39:35.385] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.GameLocator/]: Detected a joined NeoForge and Minecraft configuration. Applying filtering...
+[07Jun2026 12:39:35.956] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.InDevFolderLocator/CORE]: Got mod coordinates everythingjapanese%%C:\\Users\\Hanzo\\IdeaProjects\\EverythingJapanese\\build\\sourcesSets\\main from env
+[07Jun2026 12:39:42.064] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: library:thedarkcolour.kotlinforforge.lang.neoforge. Using jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflang-neoforge/6.5.0/kfflang-neoforge-6.5.0.jar)
+[07Jun2026 12:39:42.066] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: library:thedarkcolour.kotlinforforge.lib.neoforge. Using jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflib-neoforge/6.5.0/kfflib-neoforge-6.5.0.jar)
+[07Jun2026 12:39:42.067] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: library:kotlinforforge.neoforge. Using jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar)
+[07Jun2026 12:39:42.067] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 11 dependencies adding them to mods collection
+[07Jun2026 12:39:42.072] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
      Mod List:
 		Name Version (Mod Id)
 
@@ -22,21 +22,21 @@
 		Kotlin For Forge 6.5.0 (kotlinforforge)
 		Minecraft 26.1.2 (minecraft)
 		NeoForge 26.1.2.13-beta (neoforge)
-[10May2026 14:29:03.882] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.1+mixin.0.8.7/1cca8837fa31d8cfbde11a391f108f2bda30bca4/sponge-mixin-0.17.1+mixin.0.8.7.jar Service=FML Env=CLIENT
-[10May2026 14:29:05.472] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Loading FML Plugins:
-[10May2026 14:29:05.484] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-serialization-core-jvm-1.10.0-RC.jar
-[10May2026 14:29:05.487] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-coroutines-jdk8-1.10.2.jar
-[10May2026 14:29:05.491] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-stdlib-2.3.0.jar
-[10May2026 14:29:05.510] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-serialization-json-jvm-1.10.0-RC.jar
-[10May2026 14:29:05.512] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/net/Chidoziealways/everythingcore/EverythingCore/6.0.0/EverythingCore-6.0.0.jar > luaj-jse-3.0.1.jar
-[10May2026 14:29:05.596] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar
-[10May2026 14:29:05.598] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-coroutines-core-jvm-1.10.2.jar
-[10May2026 14:29:05.600] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-reflect-2.3.0.jar
-[10May2026 14:29:05.601] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.13-beta/f0115e20977dc99bc3063e2d7891385dbf9bfc20/neoforge-26.1.2.13-beta-universal.jar > net.neoforged.neoforge-coremods-26.1.2.13-beta.jar
-[10May2026 14:29:05.670] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-stdlib-jdk8-2.3.0.jar
-[10May2026 14:29:05.698] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflang-neoforge/6.5.0/kfflang-neoforge-6.5.0.jar
-[10May2026 14:29:05.698] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-stdlib-jdk7-2.3.0.jar
-[10May2026 14:29:13.951] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Building game content classloader:
+[07Jun2026 12:39:43.372] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.1+mixin.0.8.7/1cca8837fa31d8cfbde11a391f108f2bda30bca4/sponge-mixin-0.17.1+mixin.0.8.7.jar Service=FML Env=CLIENT
+[07Jun2026 12:39:43.473] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Loading FML Plugins:
+[07Jun2026 12:39:43.474] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-serialization-core-jvm-1.10.0-RC.jar
+[07Jun2026 12:39:43.475] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-coroutines-jdk8-1.10.2.jar
+[07Jun2026 12:39:43.477] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-stdlib-2.3.0.jar
+[07Jun2026 12:39:43.478] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-serialization-json-jvm-1.10.0-RC.jar
+[07Jun2026 12:39:43.481] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/net/Chidoziealways/everythingcore/EverythingCore/6.0.0/EverythingCore-6.0.0.jar > luaj-jse-3.0.1.jar
+[07Jun2026 12:39:43.483] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar
+[07Jun2026 12:39:43.484] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlinx-coroutines-core-jvm-1.10.2.jar
+[07Jun2026 12:39:43.487] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-reflect-2.3.0.jar
+[07Jun2026 12:39:43.492] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.13-beta/f0115e20977dc99bc3063e2d7891385dbf9bfc20/neoforge-26.1.2.13-beta-universal.jar > net.neoforged.neoforge-coremods-26.1.2.13-beta.jar
+[07Jun2026 12:39:43.494] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-stdlib-jdk8-2.3.0.jar
+[07Jun2026 12:39:43.496] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflang-neoforge/6.5.0/kfflang-neoforge-6.5.0.jar
+[07Jun2026 12:39:43.498] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]:  - C:/Users/Hanzo/.m2/repository/thedarkcolour/kotlinforforge-neoforge/6.5.0/kotlinforforge-neoforge-6.5.0.jar > kotlin-stdlib-jdk7-2.3.0.jar
+[07Jun2026 12:39:44.111] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Building game content classloader:
  - everythingcore (jar(C:/Users/Hanzo/.m2/repository/net/Chidoziealways/everythingcore/EverythingCore/6.0.0/EverythingCore-6.0.0.jar))
  - everythingjapanese (folder(C:/Users/Hanzo/IdeaProjects/EverythingJapanese/build/sourcesSets/main))
  - geckolib (jar(C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/com.geckolib/geckolib-neoforge-26.1/5.5/cbcfee34b9037c5363151a95d2b98c0e6f78659d/geckolib-neoforge-26.1-5.5.jar))
@@ -46,7 +46,170 @@
  - neoforge (composite(filtered(jar(C:/Users/Hanzo/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.13-beta/f0115e20977dc99bc3063e2d7891385dbf9bfc20/neoforge-26.1.2.13-beta-universal.jar))))
  - net.neoforged.fml.generated (empty(VirtualJar/net.neoforged.fml.generated))
  - thedarkcolour.kotlinforforge.lib.neoforge (jar(C:/Users/Hanzo/.m2/repository/thedarkcolour/kfflib-neoforge/6.5.0/kfflib-neoforge-6.5.0.jar))
-[10May2026 14:29:14.664] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Built game content classloader in 1718ms
-[10May2026 14:29:18.022] [main/INFO] [mixin/]: Compatibility level set to JAVA_25
-[10May2026 14:29:20.880] [main/WARN] [mixin/]: Reference map 'everythingjapanese.refmap.json' for everythingjapanese.mixins.json could not be read. If this is a development environment you can ignore this message
-[10May2026 14:29:31.816] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[07Jun2026 12:39:44.177] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Built game content classloader in 182ms
+[07Jun2026 12:39:44.388] [main/INFO] [mixin/]: Compatibility level set to JAVA_25
+[07Jun2026 12:39:44.676] [main/WARN] [mixin/]: Reference map 'everythingjapanese.refmap.json' for everythingjapanese.mixins.json could not be read. If this is a development environment you can ignore this message
+[07Jun2026 12:39:49.773] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[07Jun2026 12:40:13.449] [main/INFO] [net.neoforged.neoforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [everythingjapanese, ixin.config=everythingjapanese.mixins.json]
+[07Jun2026 12:40:13.623] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 26.1.2.13-beta, for MC 26.1.2
+[07Jun2026 12:40:14.758] [modloading-worker-0/INFO] [everythingcore/]: Hello world!
+[07Jun2026 12:40:15.414] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_block
+[07Jun2026 12:40:15.415] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_block
+[07Jun2026 12:40:15.484] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: cursed_block
+[07Jun2026 12:40:15.485] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: cursed_block
+[07Jun2026 12:40:15.486] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_block
+[07Jun2026 12:40:15.486] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_block
+[07Jun2026 12:40:15.487] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: raw_pyrite_block
+[07Jun2026 12:40:15.488] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: raw_pyrite_block
+[07Jun2026 12:40:15.491] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: washi_window
+[07Jun2026 12:40:15.491] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: washi_window
+[07Jun2026 12:40:15.492] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: washi_window_pane
+[07Jun2026 12:40:15.492] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: washi_window_pane
+[07Jun2026 12:40:15.495] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: shoji_window
+[07Jun2026 12:40:15.495] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: shoji_window
+[07Jun2026 12:40:15.496] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: shoji_window_pane
+[07Jun2026 12:40:15.496] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: shoji_window_pane
+[07Jun2026 12:40:15.504] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: shoji_door
+[07Jun2026 12:40:15.504] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: shoji_door
+[07Jun2026 12:40:15.506] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chabudai
+[07Jun2026 12:40:15.506] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chabudai
+[07Jun2026 12:40:15.514] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: fusuma_door
+[07Jun2026 12:40:15.515] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: fusuma_door
+[07Jun2026 12:40:15.518] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pedestal
+[07Jun2026 12:40:15.518] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pedestal
+[07Jun2026 12:40:15.520] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hanging_scroll
+[07Jun2026 12:40:15.521] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hanging_scroll
+[07Jun2026 12:40:15.521] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_ore
+[07Jun2026 12:40:15.521] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_ore
+[07Jun2026 12:40:15.522] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_deepslate_ore
+[07Jun2026 12:40:15.522] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_deepslate_ore
+[07Jun2026 12:40:15.522] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_ore
+[07Jun2026 12:40:15.522] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_ore
+[07Jun2026 12:40:15.523] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: nephrite_deepslate_ore
+[07Jun2026 12:40:15.523] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: nephrite_deepslate_ore
+[07Jun2026 12:40:15.527] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: money_vault_block
+[07Jun2026 12:40:15.527] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: money_vault_block
+[07Jun2026 12:40:15.529] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: transformer_block
+[07Jun2026 12:40:15.530] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: transformer_block
+[07Jun2026 12:40:15.533] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: growth_chamber
+[07Jun2026 12:40:15.533] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: growth_chamber
+[07Jun2026 12:40:15.536] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chocolate_cake
+[07Jun2026 12:40:15.537] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chocolate_cake
+[07Jun2026 12:40:15.539] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: japanese_cheesecake
+[07Jun2026 12:40:15.539] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: japanese_cheesecake
+[07Jun2026 12:40:15.547] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_maruta
+[07Jun2026 12:40:15.547] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_maruta
+[07Jun2026 12:40:15.550] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ban
+[07Jun2026 12:40:15.550] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ban
+[07Jun2026 12:40:15.552] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_stairs
+[07Jun2026 12:40:15.552] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_stairs
+[07Jun2026 12:40:15.554] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_slab
+[07Jun2026 12:40:15.554] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_slab
+[07Jun2026 12:40:15.555] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_pressure_plate
+[07Jun2026 12:40:15.555] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_pressure_plate
+[07Jun2026 12:40:15.556] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_button
+[07Jun2026 12:40:15.556] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_button
+[07Jun2026 12:40:15.557] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_fence
+[07Jun2026 12:40:15.557] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_fence
+[07Jun2026 12:40:15.558] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_fence_gate
+[07Jun2026 12:40:15.558] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_fence_gate
+[07Jun2026 12:40:15.558] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_mokuzai
+[07Jun2026 12:40:15.559] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_mokuzai
+[07Jun2026 12:40:15.560] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_maruta
+[07Jun2026 12:40:15.560] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_maruta
+[07Jun2026 12:40:15.560] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: stripped_hinoki_mokuzai
+[07Jun2026 12:40:15.561] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: stripped_hinoki_mokuzai
+[07Jun2026 12:40:15.561] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_ha
+[07Jun2026 12:40:15.561] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_ha
+[07Jun2026 12:40:15.562] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: hinoki_naegi
+[07Jun2026 12:40:15.562] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: hinoki_naegi
+[07Jun2026 12:40:15.562] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: potted_hinoki_naegi
+[07Jun2026 12:40:15.562] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: potted_hinoki_naegi
+[07Jun2026 12:40:15.563] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_stairs
+[07Jun2026 12:40:15.563] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_stairs
+[07Jun2026 12:40:15.564] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_slab
+[07Jun2026 12:40:15.564] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_slab
+[07Jun2026 12:40:15.564] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_pressure_plate
+[07Jun2026 12:40:15.564] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_pressure_plate
+[07Jun2026 12:40:15.565] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_button
+[07Jun2026 12:40:15.565] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_button
+[07Jun2026 12:40:15.565] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence
+[07Jun2026 12:40:15.565] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence
+[07Jun2026 12:40:15.566] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_fence_gate
+[07Jun2026 12:40:15.566] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_fence_gate
+[07Jun2026 12:40:15.566] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_wall
+[07Jun2026 12:40:15.567] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_wall
+[07Jun2026 12:40:15.567] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_door
+[07Jun2026 12:40:15.567] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_door
+[07Jun2026 12:40:15.568] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_trapdoor
+[07Jun2026 12:40:15.568] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_trapdoor
+[07Jun2026 12:40:15.570] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: pyrite_lamp
+[07Jun2026 12:40:15.571] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: pyrite_lamp
+[07Jun2026 12:40:15.574] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: chair
+[07Jun2026 12:40:15.574] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: chair
+[07Jun2026 12:40:15.577] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: zabuton_blue
+[07Jun2026 12:40:15.577] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: zabuton_blue
+[07Jun2026 12:40:15.578] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: zabuton_green
+[07Jun2026 12:40:15.578] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: zabuton_green
+[07Jun2026 12:40:15.579] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: zabuton_red
+[07Jun2026 12:40:15.579] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: zabuton_red
+[07Jun2026 12:40:15.581] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: tatami_mat
+[07Jun2026 12:40:15.581] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: tatami_mat
+[07Jun2026 12:40:15.581] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Attempting to register block: japanese_flag
+[07Jun2026 12:40:15.582] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: Registering BlockItem for: japanese_flag
+[07Jun2026 12:40:15.605] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE DATA COMPONENT IN MODDATACOMPONENTTYPES
+[07Jun2026 12:40:15.621] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE ITEM IN MODITEMS
+[07Jun2026 12:40:15.645] [modloading-worker-0/INFO] [net.Chidoziealways.everythingjapanese.EverythingJapanese/]: REGISTERING EVERY SINGLE CREATIVEMODETAB IN MODCREATIVEMODETABS
+[07Jun2026 12:40:17.312] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingcore.event.SharedRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Registries
+[07Jun2026 12:40:17.313] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingcore.event.SharedRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Registries
+[07Jun2026 12:40:17.313] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Registries
+[07Jun2026 12:40:17.313] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Registries
+[07Jun2026 12:40:17.315] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingcore.event.SharedRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Datapack Registries
+[07Jun2026 12:40:17.329] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingcore.event.SharedRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Datapack Registries
+[07Jun2026 12:40:17.330] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Registering Custom Datapack Registries
+[07Jun2026 12:40:17.345] [modloading-sync-worker/INFO] [net.Chidoziealways.everythingjapanese.event.ModRegistryEvents/MODREGISTRYEVENTS]: Finished Registering Datapack Registries
+[07Jun2026 12:40:18.560] [modloading-sync-worker/ERROR] [net.minecraft.util.Util/]: Entity everythingjapanese:aspiration has no attributes
+[07Jun2026 12:40:24.695] [main/INFO] [net.Chidoziealways.everythingjapanese.structure.ModStructuresGen/]: Bootstrapping Structures: minecraft:worldgen/structure
+[07Jun2026 12:40:24.709] [main/INFO] [net.Chidoziealways.everythingjapanese.structure.ModStructuresGen/]: Finished with Bootstrap
+[07Jun2026 12:40:24.809] [main/INFO] [net.Chidoziealways.everythingjapanese.trim.ModTrimPatterns/]: Registering all Trim Patterns into DataPack Registry
+[07Jun2026 12:40:28.727] [main/INFO] [net.Chidoziealways.everythingjapanese.structure.ModStructuresGen/]: Bootstrapping Structures: minecraft:worldgen/structure
+[07Jun2026 12:40:28.728] [main/INFO] [net.Chidoziealways.everythingjapanese.structure.ModStructuresGen/]: Finished with Bootstrap
+[07Jun2026 12:40:28.740] [main/INFO] [net.Chidoziealways.everythingjapanese.trim.ModTrimPatterns/]: Registering all Trim Patterns into DataPack Registry
+[07Jun2026 12:40:30.040] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: en_us for mod: everythingjapanese
+[07Jun2026 12:40:30.228] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: en_us for mod: everythingjapanese finished after 186 ms
+[07Jun2026 12:40:30.228] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Data Maps
+[07Jun2026 12:40:30.270] [main/INFO] [net.minecraft.data.DataGenerator/]: Data Maps finished after 40 ms
+[07Jun2026 12:40:30.270] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: ja_jp for mod: everythingjapanese
+[07Jun2026 12:40:30.306] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: ja_jp for mod: everythingjapanese finished after 33 ms
+[07Jun2026 12:40:30.306] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: ko_kr for mod: everythingjapanese
+[07Jun2026 12:40:30.338] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: ko_kr for mod: everythingjapanese finished after 31 ms
+[07Jun2026 12:40:30.341] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: zh_cn for mod: everythingjapanese
+[07Jun2026 12:40:30.363] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: zh_cn for mod: everythingjapanese finished after 16 ms
+[07Jun2026 12:40:30.363] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: zh_tw for mod: everythingjapanese
+[07Jun2026 12:40:30.378] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: zh_tw for mod: everythingjapanese finished after 14 ms
+[07Jun2026 12:40:30.378] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[07Jun2026 12:40:30.652] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 271 ms
+[07Jun2026 12:40:30.652] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[07Jun2026 12:40:30.812] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 159 ms
+[07Jun2026 12:40:30.812] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id everythingjapanese
+[07Jun2026 12:40:30.831] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id everythingjapanese finished after 18 ms
+[07Jun2026 12:40:30.831] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id everythingjapanese
+[07Jun2026 12:40:30.835] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id everythingjapanese finished after 3 ms
+[07Jun2026 12:40:30.835] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:entity_type mod id everythingjapanese
+[07Jun2026 12:40:30.836] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:entity_type mod id everythingjapanese finished after 1 ms
+[07Jun2026 12:40:30.837] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:worldgen/biome mod id everythingjapanese
+[07Jun2026 12:40:30.839] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:worldgen/biome mod id everythingjapanese finished after 1 ms
+[07Jun2026 12:40:30.839] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:fluid mod id everythingjapanese
+[07Jun2026 12:40:30.842] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:fluid mod id everythingjapanese finished after 2 ms
+[07Jun2026 12:40:30.842] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Model Definitions - everythingjapanese
+[07Jun2026 12:40:31.866] [main/INFO] [net.minecraft.data.DataGenerator/]: Model Definitions - everythingjapanese finished after 1024 ms
+[07Jun2026 12:40:31.866] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : everythingjapanese
+[07Jun2026 12:40:31.911] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : everythingjapanese finished after 44 ms
+[07Jun2026 12:40:31.911] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[07Jun2026 12:40:33.282] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 1370 ms
+[07Jun2026 12:40:33.283] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
+[07Jun2026 12:40:33.500] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 217 ms
+[07Jun2026 12:40:33.500] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 3461 ms
+[07Jun2026 12:40:33.577] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 808, old count: 802, new count: 808, removed stale: 0, written: 18
+[07Jun2026 12:40:33.577] [main/INFO] [net.neoforged.fml.loading.FMLLoader/]: Closing FML Loader 7ed91036
+[07Jun2026 12:40:33.578] [main/INFO] [net.neoforged.fml.ModLoader/]: Clearing ModLoader

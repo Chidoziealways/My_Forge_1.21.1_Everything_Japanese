@@ -10,6 +10,7 @@ import net.Chidoziealways.everythingjapanese.jutsu.JutsuCastPacket
 import net.Chidoziealways.everythingjapanese.jutsu.JutsuSyncPacket
 import net.Chidoziealways.everythingjapanese.karma.KarmaSync
 import net.Chidoziealways.everythingjapanese.money.packets.MoneySyncPacket
+import net.Chidoziealways.everythingjapanese.screen.custom.cursedblock.SetPlayerNamePacket
 import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaDecreasePacket
 import net.Chidoziealways.everythingjapanese.stamina.packets.StaminaIncreasePacket
 import net.minecraft.client.Minecraft
@@ -63,5 +64,7 @@ object ModNetwork {
         registrar.playToClient(MoneySyncPacket.TYPE, MoneySyncPacket.CODEC, MoneySyncPacket::handle)
 
         registrar.playToServer(SetScrollTextPacket.TYPE, SetScrollTextPacket.CODEC, SetScrollTextPacket::handle)
+
+        registrar.playToServer(SetPlayerNamePacket.TYPE, SetPlayerNamePacket.CODEC, SetPlayerNamePacket::handle)
     }
 }

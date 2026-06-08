@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "everythingjapanese:block/tatami_mat",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "everythingjapanese:block/tatami_mat"
+    },
+    "facing=south": {
+      "model": "everythingjapanese:block/tatami_mat",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "everythingjapanese:block/tatami_mat",
+      "y": 270
+    }
+  }
+}

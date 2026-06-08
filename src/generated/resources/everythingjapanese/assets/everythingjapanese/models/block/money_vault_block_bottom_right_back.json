@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "everythingjapanese:block/money_vault_block_bottom",
+    "east": "everythingjapanese:block/money_vault_block_side_bottom_left",
+    "north": "everythingjapanese:block/money_vault_block_side_bottom_left",
+    "particle": "everythingjapanese:block/money_vault_block",
+    "south": "everythingjapanese:block/money_vault_block_side_bottom_right",
+    "up": "everythingjapanese:block/money_vault_block_top",
+    "west": "everythingjapanese:block/money_vault_block_side_bottom_left"
+  }
+}

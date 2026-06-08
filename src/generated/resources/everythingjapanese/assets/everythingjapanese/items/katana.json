@@ -1,0 +1,33 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "everythingjapanese:item/katana_steel_white"
+        },
+        "when": "steel_white"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "everythingjapanese:item/katana_steel_red"
+        },
+        "when": "steel_red"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "everythingjapanese:item/katana_steel_black"
+        },
+        "when": "steel_black"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "everythingjapanese:item/katana"
+    },
+    "property": "everythingjapanese:blade_wrap"
+  }
+}

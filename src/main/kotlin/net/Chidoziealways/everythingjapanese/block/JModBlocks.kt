@@ -4,6 +4,7 @@ import net.Chidoziealways.everythingjapanese.EverythingJapanese.logInfo
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.custom.CalligraphyTableBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ChairBlock
+import net.Chidoziealways.everythingjapanese.block.custom.CursedBlock
 import net.Chidoziealways.everythingjapanese.block.custom.FusumaDoorBlock
 import net.Chidoziealways.everythingjapanese.block.custom.JapaneseCheesecakeBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ShojiDoorBlock
@@ -64,6 +65,20 @@ object JModBlocks {
                     )
                 )
                 .strength(4f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
+        )
+    }
+
+    val CURSED_BLOCK by registerBlock(
+        "cursed_block"
+    ) {
+        CursedBlock(
+            BlockBehaviour.Properties.of()
+                .setId(
+                    ResourceKey.create(
+                        Registries.BLOCK,
+                        Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "cursed_block")
+                    )
+                )
         )
     }
 

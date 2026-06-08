@@ -79,6 +79,7 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         add(JModBlocks.MONEY_VAULT_BLOCK, "金庫")
         //add(JModBlocks.CALLIGRAPHY_TABLE, "書法台")
         add(JModBlocks.JAPANESE_FLAG, "日本國旗")
+        add(JModBlocks.CURSED_BLOCK, "咒詛方塊")
 
         // CONTAINERS
         add("container.calligraphy_table", "書法台")
@@ -148,6 +149,7 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         add(JModItems.EKIRETSU_SHO_SCROLL, "液裂掌卷軸")
         add(JModItems.FIREBALL_SCROLL, "火球術卷軸")
         add(JModItems.WINDBALL_SCROLL, "風球術卷軸")
+        add(JModItems.LIFE_STEAL_JUTSU_SCROLL, "生命吸收术卷轴")
         //add(JModItems.SCROLL, "卷軸")
         add(JModItems.PYRITE_LEGGINGS, "黃鐵礦護腿")
         add(JModItems.PYRITE_BOOTS, "黃鐵礦靴子")

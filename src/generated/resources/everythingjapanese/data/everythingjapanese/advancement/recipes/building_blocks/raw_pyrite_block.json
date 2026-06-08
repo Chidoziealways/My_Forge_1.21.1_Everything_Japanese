@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_pyrite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "everythingjapanese:raw_pyrite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "everythingjapanese:raw_pyrite_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_pyrite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "everythingjapanese:raw_pyrite_block"
+    ]
+  }
+}

@@ -2,9 +2,11 @@ package net.Chidoziealways.everythingjapanese.screen.custom.cursedblock
 
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.block.entity.custom.CursedBlockEntity
+import net.Chidoziealways.everythingjapanese.curse.Curse
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.inventory.AbstractContainerMenu
@@ -20,7 +22,8 @@ class CursedBlockMenu(id: Int, inv: Inventory, entity: BlockEntity?) : AbstractC
     }
 
     private var playerName = ""
-    private val toCurse: Player?
+    private var curse: Curse? = null
+    private val toCurse: ServerPlayer?
         get() {
             val serverLevel = level as? ServerLevel ?: return null
             return serverLevel.players()
@@ -57,5 +60,15 @@ class CursedBlockMenu(id: Int, inv: Inventory, entity: BlockEntity?) : AbstractC
 
     fun setPlayerName(name: String) {
         playerName = name
+    }
+
+    fun setCurse(curse: Curse) {
+        this.curse = curse
+    }
+
+    fun curse() {
+        toCurse ?: return
+        curse ?: return
+        curse!!.curse(toCurse!!)
     }
 }

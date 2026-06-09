@@ -4,6 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.curse.CurseList
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.client.gui.GuiGraphicsExtractor
+import net.minecraft.client.gui.components.Button
 import net.minecraft.client.gui.components.EditBox
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
 import net.minecraft.client.renderer.RenderPipelines
@@ -26,6 +27,7 @@ class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component)
     // Name of the Player to Curse
     private lateinit var playerName: EditBox
     private lateinit var curseList: CurseList
+    private lateinit var curseButton: Button
 
     override fun init() {
         super.init()
@@ -43,10 +45,13 @@ class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component)
         curseList = CurseList(
             minecraft,
             100,
-            130,
+            30,
             0,
-            18
-        )
+            50
+        ) { curse ->
+            val id = ModRegistries.CURSES.getKey(curse) ?: return@CurseList
+            ClientPacketDistributor.sendToServer(SelectCursePacket(id))
+        }
 
         curseList.x = leftPos + 29
         curseList.y = topPos + 65
@@ -57,6 +62,14 @@ class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component)
         }
 
         this.addRenderableWidget(curseList)
+
+        curseButton = Button.Builder(Component.literal("Curse")){
+            ClientPacketDistributor.sendToServer(CursePlayerPacket())
+        }.createNarration { sup->
+            return@createNarration sup.get().append(Component.literal(" Press this button to curse the selected player w/ the selected curse!"))
+        }.bounds(leftPos + 64, topPos + 136, 50, 50).build()
+
+        this.addRenderableWidget(curseButton)
     }
 
     override fun removed() {

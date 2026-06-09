@@ -11,7 +11,8 @@ class CurseList(
     width: Int,
     height: Int,
     top: Int,
-    itemHeight: Int
+    itemHeight: Int,
+    val onSelected: (Curse) -> Unit
 ): ObjectSelectionList<CurseList.Entry>(
     minecraft,
     width,
@@ -49,6 +50,7 @@ class CurseList(
         override fun mouseClicked(event: MouseButtonEvent, doubleClick: Boolean): Boolean {
             this@CurseList.selected = this
             this@CurseList.selectedCurse = curse
+            this@CurseList.onSelected(this.curse)
             return true
         }
     }

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": "minecraft:stone"
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "SSS"
+  ],
+  "result": {
+    "id": "everythingjapanese:tsukubai"
+  }
+}

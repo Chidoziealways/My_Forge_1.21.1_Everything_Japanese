@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:confirmation",
+  "can_close_with_escape": false,
+  "no": {
+    "label": {
+      "translate": "dialog.everythingjapanese.curse_no"
+    },
+    "width": 200
+  },
+  "title": {
+    "translate": "dialog.everythingjapanese.curse_confirm_dialog"
+  },
+  "yes": {
+    "action": {
+      "type": "minecraft:dynamic/custom",
+      "id": "everythingjapanese:curse_confirm"
+    },
+    "label": {
+      "translate": "dialog.everythingjapanese.curse_yes"
+    },
+    "width": 200
+  }
+}

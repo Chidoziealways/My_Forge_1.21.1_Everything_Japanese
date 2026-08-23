@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "minecraft:stone_slab",
+    "S": "minecraft:stone",
+    "T": "minecraft:torch"
+  },
+  "pattern": [
+    " C ",
+    "STS",
+    " C "
+  ],
+  "result": {
+    "id": "everythingjapanese:stone_lantern"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "everythingjapanese:adventure/shinto_shrine",
+  "criteria": {
+    "found_dojo": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "minecraft:location": {
+                "structures": "everythingjapanese:dojo"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": "Find & Enter a Dojo",
+    "icon": {
+      "id": "everythingjapanese:tatami_mat"
+    },
+    "title": "Time to train"
+  },
+  "requirements": [
+    [
+      "found_dojo"
+    ]
+  ],
+  "rewards": {
+    "experience": 2000
+  },
+  "sends_telemetry_event": true
+}

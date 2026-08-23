@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "filled=false": {
+      "model": "everythingjapanese:block/tsukubai"
+    },
+    "filled=true": {
+      "model": "everythingjapanese:block/tsukubai_water"
+    }
+  }
+}

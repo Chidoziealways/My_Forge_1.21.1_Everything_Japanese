@@ -1,6 +1,6 @@
 package net.Chidoziealways.everythingjapanese.item.custom
 
-import net.minecraft.advancements.CriteriaTriggers
+import net.minecraft.advancements.triggers.CriteriaTriggers
 import net.minecraft.core.Direction
 import net.minecraft.core.component.DataComponents
 import net.minecraft.core.particles.ParticleTypes
@@ -46,8 +46,8 @@ class Drinks(pProperties: Properties) : Item(pProperties) {
             val potioncontents =
                 pStack.getOrDefault<PotionContents>(DataComponents.POTION_CONTENTS, PotionContents.EMPTY)
             potioncontents.forEachEffect(Consumer { p_327729_: MobEffectInstance? ->
-                if (p_327729_!!.getEffect().value().isInstantenous()) {
-                    p_327729_.getEffect().value().applyInstantenousEffect(
+                if (p_327729_!!.getEffect().value().isInstantaneous) {
+                    p_327729_.getEffect().value().applyInstantaneousEffect(
                         (pLevel as ServerLevel),
                         player,
                         pEntityLiving,

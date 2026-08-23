@@ -1,34 +1,29 @@
 package net.Chidoziealways.everythingjapanese.event
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
-import net.Chidoziealways.everythingjapanese.block.JModBlocks
+import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
+import net.Chidoziealways.everythingjapanese.curse.CurseDialogManager
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
-import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.item.custom.HammerItem
 import net.Chidoziealways.everythingjapanese.potion.ModPotions
-import net.Chidoziealways.everythingjapanese.villager.ModVillagers
+import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.core.BlockPos
 import net.minecraft.network.chat.Component
+import net.minecraft.resources.Identifier
 import net.minecraft.server.level.ServerPlayer
-import net.minecraft.util.RandomSource
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
-import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.animal.Animal
-import net.minecraft.world.entity.npc.villager.VillagerProfession
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.alchemy.Potions
-import net.minecraft.world.item.trading.ItemCost
-import net.minecraft.world.item.trading.MerchantOffer
-import net.minecraft.world.item.trading.VillagerTrades
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent
+import net.neoforged.neoforge.event.entity.player.CustomClickActionEvent
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent
-import net.neoforged.neoforge.event.level.BlockEvent
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent
 import thedarkcolour.kotlinforforge.common.KotlinMod
 
 @KotlinMod.KotlinEventBusSubscriber(modId = JAPANESE_MOD_ID)
@@ -36,7 +31,46 @@ object ModEvents {
     private val HARVESTED_BLOCKS: MutableSet<BlockPos?> = HashSet<BlockPos?>()
 
     @SubscribeEvent
-    fun onHammerUsage(event: BlockEvent.BreakEvent) {
+    fun onCustomClick(event: CustomClickActionEvent) {
+        val sendingPlayer = event.player
+        if (sendingPlayer == null) {
+            event.isCanceled = true
+            return
+        }
+        val id = event.identifier
+        if (id == Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "curse_confirm")) {
+            val pendingCurse = CurseDialogManager.consume(sendingPlayer)
+            if (pendingCurse == null) {
+                event.isCanceled = true
+                return
+            }
+            val level = sendingPlayer.level()
+            val toCurse = level.server.playerList.getPlayer(pendingCurse.targetName)
+            if (toCurse == null) {
+                event.isCanceled = true
+                return
+            }
+            val curse = ModRegistries.CURSES.getValue(pendingCurse.curseID)
+            if (curse == null) {
+                event.isCanceled = true
+                return
+            }
+            val cap = sendingPlayer.getCapability(ModCapabilities.CHAKRA_CAPABILITY)
+            if (cap == null) {
+                event.isCanceled = true
+                return
+            }
+            val amt = curse.bonusCost + 50 // The cost of the cursing
+            if (cap.subtractChakra(amt, sendingPlayer))
+                curse.curse(toCurse)
+            else
+                sendingPlayer.sendOverlayMessage(Component.literal("Not Enough Chakra"))
+            event.isCanceled = true
+        }
+    }
+
+    @SubscribeEvent
+    fun onHammerUsage(event: BreakBlockEvent) {
         val player = event.player
         val mainHandItem = player.mainHandItem
 

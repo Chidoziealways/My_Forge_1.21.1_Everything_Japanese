@@ -1,11 +1,10 @@
 package net.Chidoziealways.everythingjapanese.jutsu
 
 enum class JutsuType {
-    NINJUTSU,  // Elemental or technique-based attacks
-    GENJUTSU,  // Illusions
+    NINJUTSU,  // Stealth Techniques
+    GENJUTSU,  // Illusion Techniques
     TAIJUTSU,  // Physical combat techniques
-    HINOJUTSU,  //Fire Technique
-    KUKINOJUTSU,  //Air Technique
-    TSUCHINOJUTSU //
+    JUJUTSU, // Cursed Techniques
+    JUUJUTSU // Soft Combat Techniques
 }
 

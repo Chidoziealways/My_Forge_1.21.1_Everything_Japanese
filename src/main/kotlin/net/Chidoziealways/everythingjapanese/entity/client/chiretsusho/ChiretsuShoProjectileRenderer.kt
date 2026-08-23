@@ -51,7 +51,7 @@ EntityRenderer<ChiretsuShōProjectileEntity, ChiretsuShoProjectileRenderState>(c
         poseStack.scale(1f, 1f, 1f)
 
         if (blockEntity != null) {
-            val beRenderState = blockEntityRendererDispatcher.tryExtractRenderState<BlockEntity, BlockEntityRenderState>(blockEntity, renderState.ageInTicks, null)
+            val beRenderState = blockEntityRendererDispatcher.tryExtractRenderState<BlockEntity, BlockEntityRenderState>(blockEntity, renderState.ageInTicks, null, true)
             if (beRenderState != null) {
                 blockEntityRendererDispatcher.submit(beRenderState, poseStack, collector, cameraRenderState)
             }

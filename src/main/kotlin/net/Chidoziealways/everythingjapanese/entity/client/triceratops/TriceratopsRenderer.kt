@@ -6,7 +6,6 @@ import net.Chidoziealways.everythingjapanese.entity.TriceratopsVariant
 import net.Chidoziealways.everythingjapanese.entity.client.ModModelLayers
 import net.Chidoziealways.everythingjapanese.entity.custom.TriceratopsEntity
 import net.minecraft.client.model.AdultAndBabyModelPair
-import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.MobRenderer

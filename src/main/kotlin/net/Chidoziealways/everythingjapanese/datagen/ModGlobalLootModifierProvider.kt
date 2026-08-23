@@ -1,6 +1,7 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.loot.AddItemModifier
 import net.minecraft.core.HolderLookup
@@ -52,11 +53,28 @@ class ModGlobalLootModifierProvider(output: PackOutput, registries: CompletableF
             )
         )
         this.add<AddItemModifier>(
+            "cursed_block_from_ancient_city",
+            AddItemModifier(
+                arrayOf<LootItemCondition>(
+                    LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/ancient_city")).build()
+                ) as Array<LootItemCondition>, JModBlocks.CURSED_BLOCK.asItem()
+            )
+        )
+        this.add<AddItemModifier>(
             "small_windballjutsu_from_end_city",
             AddItemModifier(
                 arrayOf<LootItemCondition>(
                     LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/end_city_treasure")).build()
                 ) as Array<LootItemCondition>, JModItems.WINDBALL_SCROLL
+            )
+        )
+
+        this.add<AddItemModifier>(
+            "lifestealjutsu_from_end_city",
+            AddItemModifier(
+                arrayOf<LootItemCondition>(
+                    LootTableIdCondition.Builder(Identifier.withDefaultNamespace("chests/end_city_treasure")).build()
+                ) as Array<LootItemCondition>, JModItems.LIFE_STEAL_JUTSU_SCROLL
             )
         )
         this.add<AddItemModifier>(

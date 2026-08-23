@@ -17,8 +17,7 @@ class SmallWindballJutsu : Jutsu(
     "Small Windball",
     20f,
     5,
-    JutsuType.KUKINOJUTSU,
-    JutsuType.NINJUTSU
+    JutsuType.JUJUTSU, JutsuType.NINJUTSU
 ) {
     override fun cast(player: ServerPlayer): Boolean {
         player.sendOverlayMessage(Component.literal("Casting: $name"), )

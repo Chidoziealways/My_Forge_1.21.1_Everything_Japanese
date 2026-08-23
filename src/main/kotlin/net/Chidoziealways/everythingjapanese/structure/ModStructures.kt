@@ -15,6 +15,8 @@ object ModStructures {
 
     val SHINTO_SHRINE = createKey("shinto_shrine")
 
+    val TEA_HOUSE = createKey("tea_house")
+
     private fun createKey(pName: String): ResourceKey<Structure> {
         return ResourceKey.create(
             Registries.STRUCTURE,

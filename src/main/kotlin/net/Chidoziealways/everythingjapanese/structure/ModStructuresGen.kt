@@ -4,6 +4,7 @@ import net.Chidoziealways.everythingjapanese.structure.custom.dojo.DojoStructure
 import net.Chidoziealways.everythingjapanese.structure.custom.hellTemple.HellTempleStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.shinto_shrine.ShintoShrineStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.shoji_house.ShojiHouseStructurePieces
+import net.Chidoziealways.everythingjapanese.structure.custom.teaHouse.TeaHouseStructure
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
@@ -98,6 +99,20 @@ object ModStructuresGen {
                     .build(),
                 holdergetter1.getOrThrow(ShintoShrineStructurePieces.START),
                 19,
+                ConstantHeight.of(VerticalAnchor.absolute(0)),
+                true,
+                Heightmap.Types.WORLD_SURFACE_WG
+            )
+        )
+
+        context.register(
+            ModStructures.TEA_HOUSE,
+            JigsawStructure(
+                StructureSettings.Builder(holdergetter.getOrThrow(ModTags.Biomes.HAS_SHINTO_SHRINE))
+                    .terrainAdapation(TerrainAdjustment.BEARD_THIN)
+                    .build(),
+                holdergetter1.getOrThrow(TeaHouseStructure.START),
+                5,
                 ConstantHeight.of(VerticalAnchor.absolute(0)),
                 true,
                 Heightmap.Types.WORLD_SURFACE_WG

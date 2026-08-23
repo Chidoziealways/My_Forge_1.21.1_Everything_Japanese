@@ -5,6 +5,7 @@ import net.Chidoziealways.everythingcore.quest.Quest
 import net.Chidoziealways.everythingcore.util.SharedRegistries
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.custom.hanging_scroll.Designs
+import net.Chidoziealways.everythingjapanese.dialog.JModDialog
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantments
 import net.Chidoziealways.everythingjapanese.kanji.KanjiTypes
 import net.Chidoziealways.everythingjapanese.quest.ModQuestsGen
@@ -240,6 +241,9 @@ class JModDatapackEntries(output: PackOutput, registries: CompletableFuture<Hold
             .add(SharedRegistries.QUEST) { context: BootstrapContext<Quest> ->
                 println("GEnerating Quests")
                 ModQuestsGen.bootstrap(context)
+            }
+            .add(Registries.DIALOG) { context ->
+                JModDialog.bootstrap(context)
             }
 
         val DATAPACK_REGISTRY_KEYS: MutableList<out ResourceKey<out Registry<*>>> = BUILDER.entryKeys

@@ -1,5 +1,6 @@
 package net.Chidoziealways.everythingjapanese.loot
 
+import com.mojang.datafixers.util.Function3
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import it.unimi.dsi.fastutil.objects.ObjectArrayList
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.common.loot.LootModifier
 import java.util.function.BiFunction
 import java.util.function.Function
 
-class AddItemModifier(conditionsIn: Array<LootItemCondition>, private val item: Item) : LootModifier(conditionsIn) {
+class AddItemModifier(conditionsIn: Array<LootItemCondition>, private val item: Item, priority: Int = 100) : LootModifier(conditionsIn, priority) {
     override fun doApply(
         generatedLoot: ObjectArrayList<ItemStack>,
         lootContext: LootContext
@@ -35,15 +36,15 @@ class AddItemModifier(conditionsIn: Array<LootItemCondition>, private val item: 
 
     companion object {
         val CODEC: MapCodec<AddItemModifier> =
-            RecordCodecBuilder.mapCodec<AddItemModifier>(Function { inst: RecordCodecBuilder.Instance<AddItemModifier> ->
-                codecStart<AddItemModifier>(inst).and<Item>(
+            RecordCodecBuilder.mapCodec(Function { inst: RecordCodecBuilder.Instance<AddItemModifier> ->
+                codecStart(inst).and(
                     BuiltInRegistries.ITEM.byNameCodec().fieldOf("item")
-                        .forGetter<AddItemModifier>(Function { e: AddItemModifier -> e.item })
-                ).apply<AddItemModifier>(inst, BiFunction { conditionsIn: Array<LootItemCondition>, item: Item ->
+                        .forGetter { e: AddItemModifier -> e.item }
+                ).apply(inst) { conditionsIn: Array<LootItemCondition>, priority: Int, item: Item ->
                     AddItemModifier(
-                        conditionsIn, item
+                        conditionsIn, item, priority
                     )
-                })
+                }
             })
     }
 }

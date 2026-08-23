@@ -15,5 +15,6 @@
       ]
     }
   ],
-  "item": "everythingjapanese:rice"
+  "item": "everythingjapanese:rice",
+  "priority": 100
 }

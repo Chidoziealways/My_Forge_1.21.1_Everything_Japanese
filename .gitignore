@@ -27,4 +27,4 @@ forge*changelog.txt
 x
 
 src/generated/resources/everythingjapanese/.cache
-runs
+runs/*

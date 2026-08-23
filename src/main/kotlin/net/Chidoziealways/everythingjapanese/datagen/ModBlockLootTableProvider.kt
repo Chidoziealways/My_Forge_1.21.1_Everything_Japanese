@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.Chidoziealways.everythingjapanese.state.properties.ModBlockStateProperties
-import net.minecraft.advancements.criterion.StatePropertiesPredicate
+import net.minecraft.advancements.predicates.StatePropertiesPredicate
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
@@ -45,6 +45,9 @@ class ModBlockLootTableProvider(pRegistries: HolderLookup.Provider) : BlockLootS
         dropSelf(JModBlocks.HANGING_SCROLL)
         dropSelf(JModBlocks.PYRITE_STAIRS)
         dropSelf(JModBlocks.JAPANESE_FLAG)
+        dropSelf(JModBlocks.STONE_LANTERN)
+        dropSelf(JModBlocks.TSUKUBAI)
+        dropSelf(JModBlocks.ANDON)
         //dropSelf(JModBlocks.CALLIGRAPHY_TABLE)
         dropSelf(JModBlocks.HINOKI_FENCE)
         dropSelf(JModBlocks.HINOKI_FENCE_GATE)

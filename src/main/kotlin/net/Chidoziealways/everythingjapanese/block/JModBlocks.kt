@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.block
 
 import net.Chidoziealways.everythingjapanese.EverythingJapanese.logInfo
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
+import net.Chidoziealways.everythingjapanese.block.custom.AndonBlock
 import net.Chidoziealways.everythingjapanese.block.custom.CalligraphyTableBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ChairBlock
 import net.Chidoziealways.everythingjapanese.block.custom.CursedBlock
@@ -12,7 +13,9 @@ import net.Chidoziealways.everythingjapanese.block.custom.PaperWindowBlock
 import net.Chidoziealways.everythingjapanese.custom.GrowthChamberBlock
 import net.Chidoziealways.everythingjapanese.block.custom.HellPortalBlock
 import net.Chidoziealways.everythingjapanese.block.custom.MoneyVaultBlock
+import net.Chidoziealways.everythingjapanese.block.custom.StoneLanternBlock
 import net.Chidoziealways.everythingjapanese.block.custom.TatamiMatBlock
+import net.Chidoziealways.everythingjapanese.block.custom.TsukubaiBlock
 import net.Chidoziealways.everythingjapanese.block.custom.ZabutonBlock
 import net.Chidoziealways.everythingjapanese.block.custom.hanging_scroll.HangingScrollBlock
 import net.Chidoziealways.everythingjapanese.custom.MagicBlock
@@ -724,6 +727,37 @@ object JModBlocks {
         )
     }
 
+    val STONE_LANTERN by registerBlock("stone_lantern") {
+        StoneLanternBlock(BlockBehaviour.Properties.of().setId(
+            ResourceKey.create(
+                Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "stone_lantern")
+        ))
+            .noOcclusion()
+            .lightLevel {_ -> 3000})
+    }
+
+    val TSUKUBAI by registerBlock("tsukubai") {
+        TsukubaiBlock(BlockBehaviour.Properties.of().setId(
+            ResourceKey.create(
+                Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "tsukubai")
+            )
+        )
+            .noOcclusion()
+        )
+    }
+
+    val ANDON by registerBlock("andon") {
+        AndonBlock(BlockBehaviour.Properties.of().setId(
+            ResourceKey.create(
+                Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "andon")
+            )
+        ).noOcclusion()
+            .lightLevel {_ -> 100})
+    }
+
     val CHAIR by registerBlock(
         "chair") {
         ChairBlock(
@@ -842,7 +876,6 @@ object JModBlocks {
     // Register Blocks
     private fun <T : Block> registerBlock(name: String, block: Function0<T>): DeferredBlock<T> {
         val toReturn = BLOCKS.register(name, block)
-        logInfo("Attempting to register block: $name")
         registerBlockItem(name, toReturn)
         return toReturn
     }

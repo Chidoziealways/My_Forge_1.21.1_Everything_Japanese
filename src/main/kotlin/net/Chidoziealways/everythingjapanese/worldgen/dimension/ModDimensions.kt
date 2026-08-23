@@ -47,6 +47,7 @@ object ModDimensions {
     )
 
     fun bootstrapType(context: BootstrapContext<DimensionType>) {
+        val blocks = context.lookup(Registries.BLOCK)
         val holdergetter = context.lookup(Registries.TIMELINE)
         val clocks = context.lookup(Registries.WORLD_CLOCK)
         context.register(
@@ -59,7 +60,7 @@ object ModDimensions {
                 112,
                 256,
                 90,
-                ModTags.Blocks.INFINIBURN_HELL,
+                blocks.getOrThrow(ModTags.Blocks.INFINIBURN_HELL),
                 3.0F,
                 MonsterSettings(UniformInt.of(0, 7), 1),
                 DimensionType.Skybox.END,

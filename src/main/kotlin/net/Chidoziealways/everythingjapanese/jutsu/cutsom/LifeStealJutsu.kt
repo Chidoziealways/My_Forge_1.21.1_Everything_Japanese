@@ -21,7 +21,7 @@ class LifeStealJutsu : Jutsu(
     "LifeSteal",
     50f,
     4,
-    JutsuType.NINJUTSU
+    JutsuType.JUJUTSU
 
 ) {
 

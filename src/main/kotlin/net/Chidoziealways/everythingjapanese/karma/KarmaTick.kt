@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.EntitySpawnReason
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.EntityTypes
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
@@ -31,25 +32,25 @@ object KarmaTick {
     val saiaku = -200 downTo Int.MIN_VALUE
 
     val innocentMobs = listOf(
-        EntityType.VILLAGER,
-        EntityType.IRON_GOLEM,
-        EntityType.BEE,
-        EntityType.CAMEL,
-        EntityType.HORSE,
-        EntityType.SNIFFER,
-        EntityType.ARMADILLO
+        EntityTypes.VILLAGER,
+        EntityTypes.IRON_GOLEM,
+        EntityTypes.BEE,
+        EntityTypes.CAMEL,
+        EntityTypes.HORSE,
+        EntityTypes.SNIFFER,
+        EntityTypes.ARMADILLO
     )
 
     val badMobs = listOf(
-        EntityType.ZOMBIE,
-        EntityType.ZOMBIE_VILLAGER,
-        EntityType.SKELETON,
-        EntityType.WITHER,
-        EntityType.WITCH,
-        EntityType.PILLAGER,
-        EntityType.CREEPER,
-        EntityType.SPIDER,
-        EntityType.CAVE_SPIDER
+        EntityTypes.ZOMBIE,
+        EntityTypes.ZOMBIE_VILLAGER,
+        EntityTypes.SKELETON,
+        EntityTypes.WITHER,
+        EntityTypes.WITCH,
+        EntityTypes.PILLAGER,
+        EntityTypes.CREEPER,
+        EntityTypes.SPIDER,
+        EntityTypes.CAVE_SPIDER
     )
 
     @SubscribeEvent
@@ -61,8 +62,8 @@ object KarmaTick {
 
             if (karma.getKarmaAmount() in worse) {
                 if (level.random.nextInt(100) < 4) {
-                    val zombie = EntityType.ZOMBIE.create(level, EntitySpawnReason.TRIGGERED) ?: return
-                    val skeleton = EntityType.SKELETON.create(level, EntitySpawnReason.TRIGGERED) ?: return
+                    val zombie = EntityTypes.ZOMBIE.create(level, EntitySpawnReason.TRIGGERED) ?: return
+                    val skeleton = EntityTypes.SKELETON.create(level, EntitySpawnReason.TRIGGERED) ?: return
 
                     // Equip armor for zombie
                     zombie.setItemSlot(EquipmentSlot.HEAD, ItemStack(Items.IRON_HELMET))

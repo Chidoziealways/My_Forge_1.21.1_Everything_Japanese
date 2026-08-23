@@ -80,6 +80,9 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         //add(JModBlocks.CALLIGRAPHY_TABLE, "书法台")
         add(JModBlocks.JAPANESE_FLAG, "日本国旗")
         add(JModBlocks.CURSED_BLOCK, "咒诅方块")
+        add(JModBlocks.STONE_LANTERN, "石灯笼")
+        add(JModBlocks.TSUKUBAI, "手水钵")
+        add(JModBlocks.ANDON, "行灯")
 
         // CONTAINERS
         add("container.calligraphy_table", "书法台")
@@ -225,5 +228,14 @@ class SimplifiedChineseLanguageProvider(output: PackOutput): LanguageProvider(ou
         // TRIM PATTERNS & MATERIALS
         add("trim_pattern.everythingjapanese.koi_fish", "锦鲤盔甲饰边")
         add("trim_material.everythingjapanese.pyrite", "黄铁矿材料")
+
+        // DIALOGS
+        add("dialog.everythingjapanese.curse_confirm_dialog", "确定要诅咒这个玩家吗？")
+        add("dialog.everythingjapanese.curse_name", "在毁掉这个玩家的一天之前，我们需要你的玩家名称")
+        add("dialog.everythingjapanese.curse_yes", "诅咒吧")
+        add("dialog.everythingjapanese.curse_no", "饶恕")
+
+        // SCREENS
+        add("screen.everythingjapanese.cursed_block", "诅咒玩家")
     }
 }

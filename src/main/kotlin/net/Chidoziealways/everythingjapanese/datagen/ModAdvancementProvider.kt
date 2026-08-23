@@ -15,7 +15,8 @@ object ModAdvancementProvider {
             pRegistries,
             listOf(
                 HellAdvancementProvider(),
-                StoryAdvancementProvider()
+                StoryAdvancementProvider(),
+                AdventureAdvancementProvider()
             )
         )
     }

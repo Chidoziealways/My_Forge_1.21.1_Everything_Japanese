@@ -4,8 +4,8 @@ import net.Chidoziealways.everythingjapanese.kanji.KanjiType
 import net.Chidoziealways.everythingjapanese.item.crafting.SmithingKanjiRecipe
 import net.minecraft.advancements.AdvancementRequirements
 import net.minecraft.advancements.AdvancementRewards
-import net.minecraft.advancements.Criterion
-import net.minecraft.advancements.criterion.RecipeUnlockedTrigger
+import net.minecraft.advancements.triggers.Criterion
+import net.minecraft.advancements.triggers.RecipeUnlockedTrigger
 import net.minecraft.core.Holder
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.item.crafting.Ingredient

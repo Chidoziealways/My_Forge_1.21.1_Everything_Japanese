@@ -17,8 +17,7 @@ class FireballJutsu : Jutsu(
     "Fireball",
     20f,
     2,
-    JutsuType.HINOJUTSU,
-    JutsuType.TAIJUTSU
+    JutsuType.JUJUTSU,
 ) {
     override fun cast(player: ServerPlayer): Boolean {
         player.sendOverlayMessage(Component.literal("Casting: $name"), )

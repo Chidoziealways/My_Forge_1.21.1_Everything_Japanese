@@ -2,9 +2,11 @@ package net.Chidoziealways.everythingjapanese.screen.custom.cursedblock
 
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.block.entity.custom.CursedBlockEntity
+import net.Chidoziealways.everythingjapanese.capabilities.ModCapabilities
 import net.Chidoziealways.everythingjapanese.curse.Curse
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.minecraft.network.FriendlyByteBuf
+import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.player.Inventory
@@ -58,6 +60,7 @@ class CursedBlockMenu(id: Int, inv: Inventory, entity: BlockEntity?) : AbstractC
         )
     }
 
+
     fun setPlayerName(name: String) {
         playerName = name
     }
@@ -69,6 +72,12 @@ class CursedBlockMenu(id: Int, inv: Inventory, entity: BlockEntity?) : AbstractC
     fun curse() {
         toCurse ?: return
         curse ?: return
-        curse!!.curse(toCurse!!)
+        val cap = toCurse!!.getCapability(ModCapabilities.CHAKRA_CAPABILITY) ?: return
+        val amt = curse!!.bonusCost + 50 // 50 is the guaranteed cost
+        if (cap.subtractChakra(amt, toCurse!!))
+            curse!!.curse(toCurse!!)
+        else {
+            toCurse!!.sendOverlayMessage(Component.literal("Not Enough Chakra!"))
+        }
     }
 }

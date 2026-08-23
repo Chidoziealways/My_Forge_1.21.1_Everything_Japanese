@@ -1,50 +1,50 @@
-/summon villager
-/
-/summon villager
-/kill zombie
-/tp ~1000 ~ ~10000
-/time set day
-/kill zombie
-/kill @e[type= zombie]
-/kill @e[type= minecraft:skeleton]
-/kill @e[type= minecraft:spider]
-/kill @e[type= minecraft:creeper]
-/kill @e[type= minecraft:skeleton]
-/kill @e[type= minecraft:spider]
-/kill @e[type= zombie]
-/tp ~1000 ~ ~10000
-/tp ~10000 ~ ~100000
-/spawnpoint
-/gamerule keep_inventory true
-/tick rate 0
-/tick rate 1
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick rate 20
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/toggleEJGuiInfo
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/tick freeze
-/tick unfreeze
-/startQuest everythingjapanese:village
-/kill @e[type=everythingjapanese:chiretsu_sho_projectile]
-/tick freeze
-/tick unfreeze
-/kill @e[type=everythingjapanese:chiretsu_sho_projectile]
-/summon everythingjapanese:cursed_samurai
 /give Dev everythingjapanese:cursed_block
 /give Dev everythingjapanese:life_steal_jutsu_scroll
+/spawnpoint
+/weather rain
+/weather clear
+/time set day
+/summon minecraft:sheep
+/kill
+/give Dev minecraft:netherite_sword
+/give Dev minecraft:cooked_beef 64
+/spawnpoint
+/tp ~1000 ~ ~
+/gamerule keep_inventory true
+/kill
+/tp 1009 -60 23
+/kill
+/attribute Dev minecraft:flying_speed base set 100000000000000
+/attribute Dev minecraft:movement_speed base set 100000000000000
+/kill
+/attribute Dev minecraft:movement_speed base set 100
+/kill
+/attribute Dev minecraft:movement_speed base set 10
+/kill
+/tick rate 1
+/tick rate 20
+/tick rate 1
+/tick rate 20
+/spectate @e[type=everythingjapanese:chiretsu_sho_projectile, distance=1]
+/spectate @e[type=everythingjapanese:chiretsu_sho_projectile, distance=0.5]
+/spectate @e[type=everythingjapanese:chiretsu_sho_projectile]
+/attribute Dev minecraft:movement_speed base set 1
+/spectate @e[type=everythingjapanese:chiretsu_sho_projectile, distance=0.00005]
+/kill @e[type=everythingjapanese:chiretsu_sho_projectile]
+/spectate @e[type=everythingjapanese:chiretsu_sho_projectile, limit=1]
+/kill
+/give Dev everythingjapanese:andon
+/time set minecraft:night
+/attribute Dev minecraft:scale base set 0.000000001
+/attribute Dev minecraft:scale base set 0.000000000000001
+/attribute Dev minecraft:scale base set 0.0000000000000000000000001
+/time set night
+/time set day
+/gamerule spawn_mobs false
+/kill @e[type=!player]
+/place structure everythingjapanese:shinto_shrine
+/time set day
+/weather clear
+/place structure everythingjapanese:tea_house
+/time set night
+/advancement grant Dev everything

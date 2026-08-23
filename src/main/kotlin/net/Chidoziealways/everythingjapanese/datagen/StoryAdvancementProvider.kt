@@ -4,7 +4,7 @@ import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.advancements.Advancement
 import net.minecraft.advancements.AdvancementHolder
 import net.minecraft.advancements.AdvancementType
-import net.minecraft.advancements.criterion.InventoryChangeTrigger
+import net.minecraft.advancements.triggers.InventoryChangeTrigger
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.advancements.AdvancementSubProvider
 import net.minecraft.network.chat.Component

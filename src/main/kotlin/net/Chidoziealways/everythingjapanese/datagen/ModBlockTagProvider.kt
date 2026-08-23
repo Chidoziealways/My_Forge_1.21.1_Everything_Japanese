@@ -4,23 +4,24 @@ import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.util.ModTags
 import net.minecraft.core.HolderLookup
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
-import net.minecraft.data.tags.IntrinsicHolderTagsProvider
+import net.minecraft.data.tags.TagAppender
+import net.minecraft.data.tags.TagsProvider
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.neoforged.neoforge.common.data.BlockTagsProvider
 import java.util.concurrent.CompletableFuture
 import java.util.function.Function
 
 class ModBlockTagProvider(
     output: PackOutput,
     lookupProvider: CompletableFuture<HolderLookup.Provider>
-) : IntrinsicHolderTagsProvider<Block>(
+) : BlockTagsProvider(
     output,
-    Registries.BLOCK,
     lookupProvider,
-    Function { block: Block? -> block!!.builtInRegistryHolder().key() },
     JAPANESE_MOD_ID
 ) {
     override fun addTags(pProvider: HolderLookup.Provider) {
@@ -74,11 +75,9 @@ class ModBlockTagProvider(
         tag(ModTags.Blocks.INCORRECT_FOR_NEPHRITE_TOOL)
             .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
             .replace(false)
+    }
 
-        tag(BlockTags.LOGS_THAT_BURN)
-            .add(JModBlocks.HINOKI_MARUTA)
-            .add(JModBlocks.HINOKI_MOKUZAI)
-            .add(JModBlocks.STRIPPED_HINOKI_MARUTA)
-            .add(JModBlocks.STRIPPED_HINOKI_MOKUZAI)
+    private fun TagAppender<Block>.add(block: Block): TagAppender<Block> {
+        return add(BuiltInRegistries.BLOCK.wrapAsHolder(block).key!!)
     }
 }

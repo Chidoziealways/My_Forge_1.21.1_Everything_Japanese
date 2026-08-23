@@ -166,3 +166,15 @@ object ModEntities {
         ENTITY_TYPES.register(eventBus)
     }
 }
+
+object ModEntitiesIds {
+    val CURSED_SAMURAI = create("cursed_samurai")
+
+    val TRICERATOPS = create("triceratops")
+
+    val SIKA_DEER = create("sika_deer")
+
+    private fun create(name: String) : ResourceKey<EntityType<*>> {
+        return ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, name))
+    }
+}

@@ -5,7 +5,7 @@ import net.minecraft.server.level.ServerPlayer
 
 interface IChakra {
     fun addChakra(amount: Float, player: ServerPlayer)
-    fun subtractChakra(amount: Float, player: ServerPlayer)
+    fun subtractChakra(amount: Float, player: ServerPlayer) : Boolean
     fun getMaxChakra(): Int
     fun setMaxChakra(max: Int)
     fun getCurrentChakra(): Float

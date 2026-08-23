@@ -10,6 +10,7 @@ import net.minecraft.resources.Identifier
 import net.minecraft.sounds.Musics
 import net.minecraft.world.attribute.AmbientMoodSettings
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.EntityTypes
 import net.minecraft.world.entity.MobCategory
 import net.minecraft.world.level.biome.*
 import net.minecraft.world.level.biome.Biome.BiomeBuilder
@@ -37,7 +38,7 @@ object ModBiomes {
 
     private fun hellBiome(context: BootstrapContext<Biome>): Biome {
         val spawnBuilder = MobSpawnSettings.Builder()
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, SpawnerData(EntityType.ZOMBIE, 50, 100))
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, SpawnerData(EntityTypes.ZOMBIE, 50, 100))
 
         BiomeDefaultFeatures.monsters(spawnBuilder, 95, 5, 100, 10, false)
 

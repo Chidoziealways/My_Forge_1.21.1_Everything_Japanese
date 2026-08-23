@@ -80,6 +80,9 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         //add(JModBlocks.CALLIGRAPHY_TABLE, "書藝대")
         add(JModBlocks.JAPANESE_FLAG, "日本의旗")
         add(JModBlocks.CURSED_BLOCK, "呪詛의블록")
+        add(JModBlocks.STONE_LANTERN, "石燈")
+        add(JModBlocks.TSUKUBAI, "手水鉢(수수발, 수반)")
+        add(JModBlocks.ANDON, "行燈(행등 일본의등실)")
 
         // CONTAINERS
         add("container.calligraphy_table", "書藝대")
@@ -224,5 +227,14 @@ class KoreanLanguageProvider(output: PackOutput) : LanguageProvider(output, JAPA
         // TRIM PATTERNS & MATERIALS
         add("trim_pattern.everythingjapanese.koi_fish", "잉어 갑옷 트림")
         add("trim_material.everythingjapanese.pyrite", "黃鐵石 재료")
+
+        // DIALOGS
+        add("dialog.everythingjapanese.curse_confirm_dialog", "정말이플레이어를詛呪(저주)하시겠습니까?")
+        add("dialog.everythingjapanese.curse_name", "이플레이어의一日(하루)를槌(망치)기前(전)에당신의플레이어名(이름)이必要(필요)합니다")
+        add("dialog.everythingjapanese.curse_yes", "詛呪(저주)하라")
+        add("dialog.everythingjapanese.curse_no", "容恕(용서)하라")
+
+        // SCREENS
+        add("screen.everythingjapanese.cursed_block", "플레이어를詛呪(저주)해")
     }
 }

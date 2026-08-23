@@ -67,8 +67,6 @@ object ModNetwork {
 
         registrar.playToServer(SetScrollTextPacket.TYPE, SetScrollTextPacket.CODEC, SetScrollTextPacket::handle)
 
-        registrar.playToServer(SetPlayerNamePacket.TYPE, SetPlayerNamePacket.CODEC, SetPlayerNamePacket::handle)
-
         registrar.playToServer(CursePlayerPacket.TYPE, CursePlayerPacket.CODEC, CursePlayerPacket::handle)
     }
 }

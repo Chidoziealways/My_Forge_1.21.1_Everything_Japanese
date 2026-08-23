@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer
 import com.mojang.math.Axis
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.custom.YaProjectileEntity
-import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.ArrowRenderer
 import net.minecraft.client.renderer.entity.EntityRenderer

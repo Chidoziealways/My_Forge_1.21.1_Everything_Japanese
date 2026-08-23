@@ -81,6 +81,9 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         //add(JModBlocks.CALLIGRAPHY_TABLE, "Calligraphy Table")
         add(JModBlocks.JAPANESE_FLAG, "Japanese Flag")
         add(JModBlocks.CURSED_BLOCK, "Cursed Block")
+        add(JModBlocks.STONE_LANTERN, "Stone Lantern")
+        add(JModBlocks.TSUKUBAI, "Water Basin")
+        add(JModBlocks.ANDON, "Andon (Traditional Japanese Paper Lantern)")
 
 
         // CONTAINERS
@@ -227,5 +230,14 @@ class EnglishLanguageProvider(output: PackOutput): LanguageProvider(output, JAPA
         // TRIM PATTERNS & MATERIALS
         add("trim_pattern.everythingjapanese.koi_fish", "Koi Fish Armor Trim")
         add("trim_material.everythingjapanese.pyrite", "Pyrite Material")
+
+        // DIALOGS
+        add("dialog.everythingjapanese.curse_confirm_dialog", "Are you sure you want to curse this player?")
+        add("dialog.everythingjapanese.curse_name", "We need your player name before you can mar this player's day")
+        add("dialog.everythingjapanese.curse_yes", "Curse Them")
+        add("dialog.everythingjapanese.curse_no", "I'll forgive them")
+
+        // SCREENS
+        add("screen.everythingjapanese.cursed_block", "Curse a Player")
     }
 }

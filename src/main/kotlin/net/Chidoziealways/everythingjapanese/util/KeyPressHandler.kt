@@ -23,7 +23,7 @@ object KeyPressHandler {
     fun onClientTick(event: InputEvent.Key) {
         val minecraft = Minecraft.getInstance()
 
-        if (minecraft.screen != null) return
+        if (minecraft.gui.screen() == null) return
 
         val player: Player? = minecraft.player
 

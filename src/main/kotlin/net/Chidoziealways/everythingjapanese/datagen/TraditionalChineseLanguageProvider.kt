@@ -80,6 +80,9 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         //add(JModBlocks.CALLIGRAPHY_TABLE, "書法台")
         add(JModBlocks.JAPANESE_FLAG, "日本國旗")
         add(JModBlocks.CURSED_BLOCK, "咒詛方塊")
+        add(JModBlocks.STONE_LANTERN, "石燈籠")
+        add(JModBlocks.TSUKUBAI, "手水鉢")
+        add(JModBlocks.ANDON, "行燈")
 
         // CONTAINERS
         add("container.calligraphy_table", "書法台")
@@ -225,5 +228,14 @@ class TraditionalChineseLanguageProvider(output: PackOutput): LanguageProvider(o
         // TRIM PATTERNS & MATERIALS
         add("trim_pattern.everythingjapanese.koi_fish", "錦鯉盔甲飾邊")
         add("trim_material.everythingjapanese.pyrite", "黃鐵礦材料")
+
+        // DIALOGS
+        add("dialog.everythingjapanese.curse_confirm_dialog", "確定要詛咒這個玩家嗎？")
+        add("dialog.everythingjapanese.curse_name", "在毀掉這個玩家的一天之前，我們需要你的玩家名稱")
+        add("dialog.everythingjapanese.curse_yes", "詛咒吧")
+        add("dialog.everythingjapanese.curse_no", "饒恕")
+
+        // SCREENS
+        add("screen.everythingjapanese.cursed_block", "詛咒玩家")
     }
 }

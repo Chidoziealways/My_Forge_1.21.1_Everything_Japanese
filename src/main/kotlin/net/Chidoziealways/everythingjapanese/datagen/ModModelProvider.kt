@@ -103,6 +103,9 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         blockModels.createDoor(JModBlocks.PYRITE_DOOR )
         blockModels.createTrapdoor(JModBlocks.PYRITE_TRAPDOOR )
         blockModels.createCropBlock(JModBlocks.RICE_CROP , ModBlockStateProperties.AGE_4, 0, 1, 2, 3, 4)
+        blockModels.createCustom("stone_lantern", JModBlocks.STONE_LANTERN)
+        blockModels.createCustom("andon", JModBlocks.ANDON)
+        blockModels.createTsukubai()
         blockModels.createYamazakiBerryBush()
         /*blockModels.createTrivialBlock(
             ModBlocks.JAPANESE_CHEESECAKE,
@@ -450,6 +453,12 @@ class ModModelProvider(output: PackOutput, val lookup: CompletableFuture<HolderL
         val variant = plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/chabudai"))
 
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(JModBlocks.CHABUDAI, variant))
+    }
+
+    fun BlockModelGenerators.createCustom(path: String, block: Block) {
+        val variant = plainVariant(Identifier.fromNamespaceAndPath(JAPANESE_MOD_ID, "block/$path"))
+
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, variant))
     }
 
     fun BlockModelGenerators.createTatamiMat() {

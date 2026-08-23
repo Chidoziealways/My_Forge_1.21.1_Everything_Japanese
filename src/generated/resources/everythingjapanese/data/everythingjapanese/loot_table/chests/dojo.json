@@ -2,7 +2,6 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -33,6 +32,16 @@
           "type": "minecraft:item",
           "name": "minecraft:iron_sword",
           "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everythingjapanese:life_steal_jutsu_scroll",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "everythingjapanese:cursed_block",
+          "weight": 8
         }
       ],
       "rolls": 3.0

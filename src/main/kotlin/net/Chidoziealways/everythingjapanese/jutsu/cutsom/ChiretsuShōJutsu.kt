@@ -25,7 +25,7 @@ class ChiretsuShōJutsu: Jutsu(
     "Chiretsu Shō",
     15f,
     3,
-    JutsuType.TAIJUTSU
+    JutsuType.JUJUTSU, JutsuType.NINJUTSU
 ) {
 
     fun raycastBlock(player: Player, maxDistance: Double = 5.0): BlockHitResult {

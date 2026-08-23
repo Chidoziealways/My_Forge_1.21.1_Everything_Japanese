@@ -9,6 +9,8 @@
     "BaseFireBlockMixin",
     "ModDataFixers"
   ],
+  "server": [
+  ],
   "package": "net.Chidoziealways.everythingjapanese.mixins",
   "refmap": "everythingjapanese.refmap.json",
   "required": true

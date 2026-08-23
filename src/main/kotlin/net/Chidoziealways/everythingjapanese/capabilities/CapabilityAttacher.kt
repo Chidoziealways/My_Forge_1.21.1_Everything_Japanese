@@ -13,6 +13,7 @@ import net.Chidoziealways.everythingjapanese.seal.SealLock
 import net.Chidoziealways.everythingjapanese.stamina.StaminaCapability
 import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.EntityTypes
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.Blocks
@@ -37,17 +38,17 @@ object CapabilityAttacher {
     fun onAttachCapabilities(event: RegisterCapabilitiesEvent) {
         event.registerEntity(
             ModCapabilities.CHAKRA_CAPABILITY,
-            EntityType.PLAYER) { entity, _ ->
+            EntityTypes.PLAYER) { entity, _ ->
             chakraMap.getOrPut(entity) { Chakra() }
         }
         event.registerEntity(
             ModCapabilities.STAMINA_CAPABILITY,
-            EntityType.PLAYER) { entity, _ ->
+            EntityTypes.PLAYER) { entity, _ ->
             staminaMap.getOrPut(entity) { StaminaCapability() }
         }
         event.registerEntity(
             ModCapabilities.JUTSU_CAPABILITY,
-            EntityType.PLAYER) { entity, _ ->
+            EntityTypes.PLAYER) { entity, _ ->
             jutsuMap.getOrPut(entity) { JutsuCapability() }
         }
         event.registerBlock(
@@ -59,7 +60,7 @@ object CapabilityAttacher {
         )
         event.registerEntity(
             ModCapabilities.MONEY_CAPABILITY_ENTITY,
-            EntityType.PLAYER) { entity, _ ->
+            EntityTypes.PLAYER) { entity, _ ->
             moneyEntityMap.getOrPut(entity) { MoneyCapabilityEntity() }
         }
         event.registerBlock(
@@ -76,7 +77,7 @@ object CapabilityAttacher {
         )
         event.registerEntity(
             ModCapabilities.KARMA_CAPABILITY,
-            EntityType.PLAYER) { entity, _ ->
+            EntityTypes.PLAYER) { entity, _ ->
             karmaMap.getOrPut(entity) { Karma() }
         }
     }

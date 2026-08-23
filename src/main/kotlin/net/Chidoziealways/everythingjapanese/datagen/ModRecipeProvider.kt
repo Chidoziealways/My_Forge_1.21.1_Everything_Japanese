@@ -107,6 +107,37 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
             Items.NETHERITE_INGOT
         )
 
+        saveShapedRecipe(
+            shaped(RecipeCategory.DECORATIONS, JModBlocks.ANDON)
+                .pattern("SPS")
+                .pattern("STS")
+                .pattern("SPS")
+                .define('S', Items.STICK)
+                .define('P', Items.PAPER)
+                .define('T', Items.TORCH),
+            Items.PAPER
+        )
+
+        saveShapedRecipe(
+            shaped(RecipeCategory.DECORATIONS, JModBlocks.STONE_LANTERN)
+                .pattern(" C ")
+                .pattern("STS")
+                .pattern(" C ")
+                .define('C', Items.STONE_SLAB)
+                .define('S', Items.STONE)
+                .define('T', Items.TORCH),
+            Items.STONE
+        )
+
+        saveShapedRecipe(
+            shaped(RecipeCategory.DECORATIONS, JModBlocks.TSUKUBAI)
+                .pattern("   ")
+                .pattern("S S")
+                .pattern("SSS")
+                .define('S', Items.STONE),
+            Items.STONE
+        )
+
         saveShapelessRecipe(shapeless(RecipeCategory.TOOLS, JModItems.TALISMAN_ITEM, 5).requires(Items.BAMBOO).requires(Items.INK_SAC),
             Items.INK_SAC)
 
@@ -640,7 +671,7 @@ open class ModRecipeProvider(lookup: HolderLookup.Provider, recipeOutput: Recipe
                     KanjiTypes.SEAL
                 ),
                 Pair.of(
-                    Items.LIGHTNING_ROD,
+                    Items.LIGHTNING_ROD.asList().first(),
                     KanjiTypes.LIGHTNING
                 )
             )

@@ -80,6 +80,9 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, JA
         //add(JModBlocks.CALLIGRAPHY_TABLE, "書道台")
         add(JModBlocks.JAPANESE_FLAG, "日本の旗")
         add(JModBlocks.CURSED_BLOCK, "呪詛のブロック")
+        add(JModBlocks.STONE_LANTERN, "石灯籠")
+        add(JModBlocks.TSUKUBAI, "手水鉢")
+        add(JModBlocks.ANDON, "行灯")
 
         // CONTAINERS
         add("container.calligraphy_table", "書道台")
@@ -224,5 +227,14 @@ class JapaneseLanguageProvider(output: PackOutput) : LanguageProvider(output, JA
         // TRIM PATTERNS & MATERIALS
         add("trim_pattern.everythingjapanese.koi_fish", "鯉の甲冑トリム")
         add("trim_material.everythingjapanese.pyrite", "黄鉄鉱素材")
+
+        // DIALOGS
+        add("dialog.everythingjapanese.curse_confirm_dialog", "本当にこのプレイヤーを呪いますか？")
+        add("dialog.everythingjapanese.curse_name", "このプレイヤーの一日を台無しにする前に、あなたのプレイヤー名が必要です")
+        add("dialog.everythingjapanese.curse_yes", "呪え")
+        add("dialog.everythingjapanese.curse_no", "許せ")
+
+        // SCREENS
+        add("screen.everythingjapanese.cursed_block", "プレイヤーを呪う")
     }
 }

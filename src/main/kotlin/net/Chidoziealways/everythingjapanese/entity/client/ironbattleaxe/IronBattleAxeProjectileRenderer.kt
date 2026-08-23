@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Axis
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.entity.custom.IronBattleAxeProjectileEntity
-import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.entity.EntityRenderer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
@@ -64,7 +63,8 @@ class IronBattleAxeProjectileRenderer(pContext: EntityRendererProvider.Context) 
                 pPoseStack,
                 consumer,
                 state.lightCoords,          // use your render state's light coords
-                OverlayTexture.NO_OVERLAY
+                OverlayTexture.NO_OVERLAY,
+                0xFF11FFFF.toInt()
             )
         }
 

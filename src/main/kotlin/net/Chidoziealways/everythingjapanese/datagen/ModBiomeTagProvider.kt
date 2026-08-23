@@ -6,7 +6,7 @@ import net.Chidoziealways.everythingjapanese.worldgen.biome.ModBiomes
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
-import net.minecraft.data.tags.KeyTagProvider
+import net.minecraft.data.tags.BiomeTagsProvider
 import net.minecraft.world.level.biome.Biome
 import net.minecraft.world.level.biome.Biomes
 import java.util.concurrent.CompletableFuture
@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture
 class ModBiomeTagProvider(
     p_255800_: PackOutput,
     p_256205_: CompletableFuture<HolderLookup.Provider>
-) : KeyTagProvider<Biome>(p_255800_, Registries.BIOME, p_256205_, JAPANESE_MOD_ID) {
+) : BiomeTagsProvider(p_255800_, p_256205_, JAPANESE_MOD_ID) {
     override fun addTags(p_256485_: HolderLookup.Provider) {
         tag(ModTags.Biomes.IS_HELL)
             .add(ModBiomes.HELL_BIOME)

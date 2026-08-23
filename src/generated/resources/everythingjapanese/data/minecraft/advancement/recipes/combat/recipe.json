@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "everythingjapanese:wrap_red"
+            "items": "everythingjapanese:wrap_black"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "everythingjapanese:wrap_red_smithing_wrapper"
+        "recipe": "everythingjapanese:wrap_black_smithing_wrapper"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "everythingjapanese:wrap_red_smithing_wrapper"
+      "everythingjapanese:wrap_black_smithing_wrapper"
     ]
   }
 }

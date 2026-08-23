@@ -1,12 +1,15 @@
 package net.Chidoziealways.everythingjapanese.screen.custom.cursedblock
 
+import com.mojang.blaze3d.platform.InputConstants
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.curse.CurseList
 import net.Chidoziealways.everythingjapanese.util.ModRegistries
 import net.minecraft.client.gui.GuiGraphicsExtractor
 import net.minecraft.client.gui.components.Button
 import net.minecraft.client.gui.components.EditBox
+import net.minecraft.client.gui.screens.Screen
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
+import net.minecraft.client.input.KeyEvent
 import net.minecraft.client.renderer.RenderPipelines
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.Identifier
@@ -15,24 +18,34 @@ import net.minecraft.world.inventory.AbstractContainerMenu
 import net.minecraft.world.inventory.ContainerListener
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.client.network.ClientPacketDistributor
+import kotlin.properties.Delegates
 
-class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component) : AbstractContainerScreen<CursedBlockMenu>(menu, inv, title),
+class CursedBlockScreen : Screen(Component.translatable("screen.everythingjapanese.cursed_block")),
     ContainerListener {
 
     init {
         println("SCREEN CRETED")
-        playerInventoryTitle = Component.literal("")
     }
+
+    var leftPos by Delegates.notNull<Int>()
+    var topPos by Delegates.notNull<Int>()
+    var imageWidth: Int = 176
+    var imageHeight: Int = 166
 
     // Name of the Player to Curse
     private lateinit var playerName: EditBox
     private lateinit var curseList: CurseList
     private lateinit var curseButton: Button
 
+    private var name: String = ""
+    private var curseID: Identifier = Identifier.fromNamespaceAndPath("","")
+
     override fun init() {
         super.init()
-        playerName = EditBox(font, leftPos+29, topPos+39, 150, 150, Component.literal("Enter Player Name"))
-        playerName.setCanLoseFocus(false)
+        this.leftPos = (this.width - this.imageWidth) / 2
+        this.topPos = (this.height - this.imageHeight) / 2
+        playerName = EditBox(font, leftPos+29, topPos+39, 150, 20, Component.literal("Enter Player Name"))
+        this.setInitialFocus(playerName)
         playerName.setTextColor(-1)
         playerName.setTextColorUneditable(-1)
         playerName.isBordered = false
@@ -47,24 +60,23 @@ class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component)
             100,
             30,
             0,
-            50
+            50,
+            this
         ) { curse ->
-            val id = ModRegistries.CURSES.getKey(curse) ?: return@CurseList
-            ClientPacketDistributor.sendToServer(SelectCursePacket(id))
+            curseID = ModRegistries.CURSES.getKey(curse) ?: return@CurseList
         }
 
         curseList.x = leftPos + 29
         curseList.y = topPos + 65
 
         ModRegistries.CURSES.forEach {
-            println("Curse: ${it.displayName}")
             this.curseList.addCurse(it)
         }
 
         this.addRenderableWidget(curseList)
 
         curseButton = Button.Builder(Component.literal("Curse")){
-            ClientPacketDistributor.sendToServer(CursePlayerPacket())
+            ClientPacketDistributor.sendToServer(CursePlayerPacket(name, curseID))
         }.createNarration { sup->
             return@createNarration sup.get().append(Component.literal(" Press this button to curse the selected player w/ the selected curse!"))
         }.bounds(leftPos + 64, topPos + 136, 50, 50).build()
@@ -77,7 +89,7 @@ class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component)
     }
 
     private fun onTextChanged(str: String) {
-        ClientPacketDistributor.sendToServer(SetPlayerNamePacket(playerName.value))
+        name = str
     }
 
     override fun slotChanged(
@@ -97,6 +109,13 @@ class CursedBlockScreen(menu: CursedBlockMenu, inv: Inventory, title: Component)
         val j = topPos
         graphics.blit(RenderPipelines.GUI_TEXTURED,
             BG_LOCATION, i, j, 0.0F, 0.0F, imageWidth, imageHeight, 256, 256)
+    }
+
+    override fun keyPressed(event: KeyEvent): Boolean {
+        if (minecraft.options.keyInventory.isActiveAndMatches(InputConstants.getKey(event)))
+            return false
+        else
+            return super.keyPressed(event)
     }
 
     companion object {

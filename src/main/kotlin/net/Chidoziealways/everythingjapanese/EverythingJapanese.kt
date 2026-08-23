@@ -2,17 +2,21 @@ package net.Chidoziealways.everythingjapanese
 
 import net.Chidoziealways.everythingjapanese.attachments.ModAttachments
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
-import net.Chidoziealways.everythingjapanese.block.entity.renderer.hanging_scroll.HangingScrollBlockEntityRenderer
-import net.Chidoziealways.everythingjapanese.block.entity.renderer.shoji_door.ShojiDoorRenderer
+import net.Chidoziealways.everythingjapanese.block.JModBlocks.HINOKI_BAN
+import net.Chidoziealways.everythingjapanese.block.JModBlocks.HINOKI_HA
+import net.Chidoziealways.everythingjapanese.block.JModBlocks.HINOKI_MOKUZAI
+import net.Chidoziealways.everythingjapanese.block.JModBlocks.STRIPPED_HINOKI_MARUTA
+import net.Chidoziealways.everythingjapanese.block.JModBlocks.STRIPPED_HINOKI_MOKUZAI
 import net.Chidoziealways.everythingjapanese.block.entity.renderer.fusuma_door.FusumaDoorRenderer
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.hanging_scroll.HangingScrollBlockEntityRenderer
 import net.Chidoziealways.everythingjapanese.block.entity.renderer.pedestal.PedestalBlockEntityRenderer
-import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
+import net.Chidoziealways.everythingjapanese.block.entity.renderer.shoji_door.ShojiDoorRenderer
 import net.Chidoziealways.everythingjapanese.commands.ModArgumentTypes
 import net.Chidoziealways.everythingjapanese.component.ModDataComponentTypes
 import net.Chidoziealways.everythingjapanese.curse.Curses
-import net.Chidoziealways.everythingjapanese.dialog.JModDialog
 import net.Chidoziealways.everythingjapanese.effect.ModEffects
 import net.Chidoziealways.everythingjapanese.enchantment.ModEnchantmentEffects
+import net.Chidoziealways.everythingjapanese.entity.ModBlockEntities
 import net.Chidoziealways.everythingjapanese.entity.ModEntities
 import net.Chidoziealways.everythingjapanese.entity.client.aspiration.AspirationRenderer
 import net.Chidoziealways.everythingjapanese.entity.client.bullet.BulletRenderer
@@ -37,7 +41,6 @@ import net.Chidoziealways.everythingjapanese.potion.ModPotions
 import net.Chidoziealways.everythingjapanese.recipe.ModRecipes
 import net.Chidoziealways.everythingjapanese.screen.ModMenuTypes
 import net.Chidoziealways.everythingjapanese.screen.custom.calligraphytable.CalligraphyTableScreen
-import net.Chidoziealways.everythingjapanese.screen.custom.cursedblock.CursedBlockScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.growthchamber.GrowthChamberScreen
 import net.Chidoziealways.everythingjapanese.screen.custom.pedestal.PedestalScreen
 import net.Chidoziealways.everythingjapanese.sound.ModSounds
@@ -48,11 +51,8 @@ import net.Chidoziealways.everythingjapanese.villager.ModVillagers
 import net.minecraft.client.Minecraft
 import net.minecraft.client.particle.SpriteSet
 import net.minecraft.client.renderer.block.FluidModel
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 import net.minecraft.client.renderer.entity.EntityRendererProvider
-import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.client.resources.model.sprite.Material
-import net.minecraft.core.BlockPos
 import net.minecraft.core.Holder
 import net.minecraft.core.RegistryAccess
 import net.minecraft.core.registries.Registries
@@ -60,14 +60,13 @@ import net.minecraft.resources.Identifier
 import net.minecraft.server.MinecraftServer
 import net.minecraft.world.item.CreativeModeTabs
 import net.minecraft.world.item.Item
-import net.minecraft.world.level.material.FluidState
+import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.FireBlock
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
-import net.neoforged.fml.ModList
 import net.neoforged.fml.config.ModConfig
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
-import net.neoforged.neoforge.client.NeoForgeRenderTypes
 import net.neoforged.neoforge.client.event.EntityRenderersEvent
 import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
@@ -150,10 +149,6 @@ object EverythingJapanese {
         ModAttachments.register(MOD_BUS)
         Curses.register(MOD_BUS)
 
-        if (ModList.get().isLoaded("everythingkorean")) {
-            logInfo("EVERYTHING KOREAN LOCKED AND LOADED!")
-        }
-
         logDebug("Hello")
 
         ModArgumentTypes.register(MOD_BUS)
@@ -168,6 +163,15 @@ object EverythingJapanese {
 
     @SubscribeEvent
     private fun commonSetup(event: FMLCommonSetupEvent) {
+        event.enqueueWork {
+            val fire = Blocks.FIRE as FireBlock
+            fire.setFlammable(JModBlocks.HINOKI_MARUTA, 5, 5)
+            fire.setFlammable(STRIPPED_HINOKI_MARUTA, 5, 5)
+            fire.setFlammable(HINOKI_MOKUZAI, 5, 5)
+            fire.setFlammable(STRIPPED_HINOKI_MOKUZAI, 5, 5)
+            fire.setFlammable(HINOKI_HA, 30, 60)
+            fire.setFlammable(HINOKI_BAN, 5, 20)
+        }
     }
 
     // Add the example block item to the building blocks tab
@@ -222,10 +226,6 @@ object EverythingJapanese {
                 PedestalScreen(menu, inventory, title)
             }
 
-            event.register(
-                ModMenuTypes.CURSED_BLOCK_MENU,
-                ::CursedBlockScreen
-            )
 
             event.register(
                 ModMenuTypes.CALLIGRAPHY_TABLE_MENU

@@ -38,9 +38,12 @@ class Chakra : IChakra {
 
     override fun getCurrentChakra(): Float = chakra
 
-    override fun subtractChakra(amount: Float, player: ServerPlayer) {
-        chakra = (chakra - amount.coerceAtLeast(0f)).coerceAtLeast(0f)
+    override fun subtractChakra(amount: Float, player: ServerPlayer) : Boolean {
+        val amt = (chakra - amount.coerceAtLeast(0f)).coerceAtLeast(0f)
+        if (chakra < amt) return false
+        chakra = amt
         PacketDistributor.sendToPlayer(player, ChakraSyncPacket(chakra, maxChakra))
+        return true
     }
 
     override fun getMaxChakra(): Int {

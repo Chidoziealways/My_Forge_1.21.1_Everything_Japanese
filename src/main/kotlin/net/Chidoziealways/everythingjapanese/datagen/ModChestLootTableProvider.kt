@@ -1,5 +1,6 @@
 package net.Chidoziealways.everythingjapanese.datagen
 
+import net.Chidoziealways.everythingjapanese.block.JModBlocks
 import net.Chidoziealways.everythingjapanese.item.JModItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.loot.LootTableSubProvider
@@ -25,6 +26,8 @@ class ModChestLootTableProvider(registries: HolderLookup.Provider): LootTableSub
                         .add(LootItem.lootTableItem(JModItems.CHIRETSU_SHO_SCROLL).setWeight(10))
                         .add(LootItem.lootTableItem(JModItems.EKIRETSU_SHO_SCROLL).setWeight(9))
                         .add(LootItem.lootTableItem { Items.IRON_SWORD }.setWeight(30))
+                        .add(LootItem.lootTableItem { JModItems.LIFE_STEAL_JUTSU_SCROLL }.setWeight(10))
+                        .add(LootItem.lootTableItem { JModBlocks.CURSED_BLOCK.asItem() }.setWeight(8))
                 )
         )
     }

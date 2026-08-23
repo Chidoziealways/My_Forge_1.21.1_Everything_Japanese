@@ -11,13 +11,13 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 object Curses {
     val CURSES = DeferredRegister.create(ModRegistries.CURSES_KEY, JAPANESE_MOD_ID)
     val POISON by CURSES.register("poison") { ->
-        Curse("Poison") { player ->
-            player.addEffect(MobEffectInstance(MobEffects.POISON))
+        Curse("Poison", 5F) { player ->
+            player.addEffect(MobEffectInstance(MobEffects.POISON, 100))
         }
     }
     val DEATH by CURSES.register("death") { ->
-        Curse("Death") { player ->
-            player.health = 0.0f
+        Curse("Death", 20F) { player ->
+            player.kill(player.level())
         }
     }
     fun register(eventBus: IEventBus) {

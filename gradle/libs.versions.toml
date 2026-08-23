@@ -1,12 +1,12 @@
 [versions]
-    everythingjapanese = "1.25.1"
+    everythingjapanese = "1.27"
 
     minecraft-range = "[26.1, 27.0)"
-    minecraft = "26.1.2"
+    minecraft = "26.2"
     jopt-simple = "5.0.4"
 
     kff-range = "[6.0,)"
-    neoforge = "26.1.2.13-beta"
+    neoforge = "26.2.0.36-beta"
     neoforge-range = "[26.1.1.0-beta,)"
     kff = "[6.3.0,)"
 

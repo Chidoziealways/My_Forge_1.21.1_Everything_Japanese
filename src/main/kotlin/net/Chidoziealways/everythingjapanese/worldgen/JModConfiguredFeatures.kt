@@ -2,6 +2,7 @@ package net.Chidoziealways.everythingjapanese.worldgen
 
 import net.Chidoziealways.everythingjapanese.JAPANESE_MOD_ID
 import net.Chidoziealways.everythingjapanese.block.JModBlocks
+import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.data.worldgen.features.FeatureUtils
 import net.minecraft.resources.ResourceKey
@@ -37,6 +38,8 @@ object JModConfiguredFeatures {
     fun bootstrap(context: BootstrapContext<ConfiguredFeature<*, *>>) {
         val stoneReplaceables: RuleTest = TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES)
         val deepslateReplaceables: RuleTest = TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES)
+        val biomes = context.lookup(Registries.BIOME)
+        val belowTrunk = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(biomes)
 
         val pyriteOres: kotlin.collections.MutableList<OreConfiguration.TargetBlockState> =
             mutableListOf(
@@ -78,7 +81,8 @@ object JModConfiguredFeatures {
                 BlockStateProvider.simple(JModBlocks.HINOKI_HA),
                 DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
 
-                ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty())
+                ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()),
+                belowTrunk
             )
 
                 .build()

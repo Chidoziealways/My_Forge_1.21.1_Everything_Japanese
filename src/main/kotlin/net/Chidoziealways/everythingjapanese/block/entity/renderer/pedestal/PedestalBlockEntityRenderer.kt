@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Axis
 import net.Chidoziealways.everythingjapanese.entity.custom.PedestalBlockEntity
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.Sheets
 import net.minecraft.client.renderer.SubmitNodeCollector
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer

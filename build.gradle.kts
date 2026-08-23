@@ -155,10 +155,10 @@ dependencies {
 
     //implementation("net.Chidoziealways.everythingkorean:everythingkorean:0.0.8-1.21.10")
 
-    implementation("net.Chidoziealways.everythingcore:EverythingCore:6.0.0")
+    implementation("net.Chidoziealways.everythingcore:EverythingCore:6.1.0")
     // Uncomment and add if you want those libs
     // implementation(fg.deobf("com.github.glitchfiend:TerraBlender-forge:$minecraftVersion-$terrablender_version"))
-    implementation("com.geckolib:geckolib-neoforge-26.1:5.5")
+    implementation("com.geckolib:geckolib-neoforge-26.2:5.5.3")
 }
 
 //Make the result of the jarJar task the one with no classifier instead of no classifier and "all"
@@ -185,6 +185,7 @@ modrinth {
     projectId = "H7XfH3TW"
     versionNumber.set(project.version.toString())
     versionName = "Everything Japanese ${project.version}"
+    versionType = "release"
     uploadFile.set(tasks.jar.flatMap { it.archiveFile })
     changelog.set(rootProject.file("changelog.md").readText(Charsets.UTF_8))
     gameVersions.set(listOf(minecraftVersion))

@@ -10,5 +10,6 @@
       "condition": "minecraft:random_chance"
     }
   ],
-  "item": "everythingjapanese:rice_seeds"
+  "item": "everythingjapanese:rice_seeds",
+  "priority": 100
 }

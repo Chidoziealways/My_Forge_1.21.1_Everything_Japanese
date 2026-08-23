@@ -17,6 +17,8 @@ object ModProcessorLists {
 
     val SHINTO_SHRINE_DEGRADATION = createKey("shinto_shrine_torii_degradation")
 
+    val TEA_GARDEN_DEGRADATION = createKey("tea_house_degradation")
+
     private fun createKey(pName: String): ResourceKey<StructureProcessorList> {
         return ResourceKey.create(
             Registries.PROCESSOR_LIST,
@@ -33,7 +35,7 @@ object ModProcessorLists {
     }
 
     fun bootstrap(pContext: BootstrapContext<StructureProcessorList>) {
-        val holdergetter = pContext.lookup(Registries.BLOCK)
+        val blocks = pContext.lookup(Registries.BLOCK)
         val processorrule = ProcessorRule(
             RandomBlockMatchTest(Blocks.BLACKSTONE, 0.01f),
             AlwaysTrueTest.INSTANCE,
@@ -64,7 +66,7 @@ object ModProcessorLists {
                         )
                     )
                 ),
-                ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+                ProtectedBlockProcessor(blocks.getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
             )
         )
 
@@ -106,7 +108,29 @@ object ModProcessorLists {
                         )
                     )
                 ),
-                ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+                ProtectedBlockProcessor(blocks.getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
+            )
+        )
+
+        register(
+            pContext,
+            TEA_GARDEN_DEGRADATION,
+            mutableListOf(
+                RuleProcessor(
+                    mutableListOf(
+                        ProcessorRule(
+                            RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.25f),
+                            AlwaysTrueTest.INSTANCE,
+                            Blocks.CRACKED_STONE_BRICKS.defaultBlockState()
+                        ),
+                        ProcessorRule(
+                            RandomBlockMatchTest(Blocks.STONE_BRICKS, 0.25f),
+                            AlwaysTrueTest.INSTANCE,
+                            Blocks.MOSSY_STONE_BRICKS.defaultBlockState()
+                        )
+                    )
+                ),
+                ProtectedBlockProcessor(blocks.getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
             )
         )
 
@@ -133,7 +157,7 @@ object ModProcessorLists {
                         )
                     )
                 ),
-                ProtectedBlockProcessor(BlockTags.FEATURES_CANNOT_REPLACE)
+                ProtectedBlockProcessor(blocks.getOrThrow(BlockTags.FEATURES_CANNOT_REPLACE))
             )
         )
     }

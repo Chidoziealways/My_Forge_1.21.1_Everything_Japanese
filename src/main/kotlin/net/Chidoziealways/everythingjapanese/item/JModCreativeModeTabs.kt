@@ -43,6 +43,7 @@ object JModCreativeModeTabs {
                     output.accept(JModItems.CHIRETSU_SHO_SCROLL)
                     output.accept(JModItems.EKIRETSU_SHO_SCROLL)
                     output.accept(JModItems.FIREBALL_SCROLL)
+                    output.accept(JModItems.LIFE_STEAL_JUTSU_SCROLL)
                 }
                 .build()
         })
@@ -103,6 +104,8 @@ object JModCreativeModeTabs {
                     output.accept(JModBlocks.HINOKI_HA)
                     output.accept(JModBlocks.HINOKI_NAEGI)
                     output.accept(JModBlocks.JAPANESE_FLAG)
+                    output.accept(JModBlocks.CURSED_BLOCK)
+
                 }
                 .build()
         })
@@ -299,6 +302,9 @@ object JModCreativeModeTabs {
                     output.accept(JModBlocks.HINOKI_SLAB)
                     output.accept(JModBlocks.HINOKI_STAIRS)
                     //output.accept(JModBlocks.CALLIGRAPHY_TABLE)
+                    output.accept(JModBlocks.STONE_LANTERN)
+                    output.accept(JModBlocks.TSUKUBAI)
+                    output.accept(JModBlocks.ANDON)
                 }.build()
         })
 

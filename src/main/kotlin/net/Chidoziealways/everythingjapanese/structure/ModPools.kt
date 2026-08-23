@@ -6,6 +6,7 @@ import net.Chidoziealways.everythingjapanese.structure.custom.dojo.DojoStructure
 import net.Chidoziealways.everythingjapanese.structure.custom.hellTemple.HellTempleStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.shinto_shrine.ShintoShrineStructurePieces
 import net.Chidoziealways.everythingjapanese.structure.custom.shoji_house.ShojiHouseStructurePieces
+import net.Chidoziealways.everythingjapanese.structure.custom.teaHouse.TeaHouseStructure
 import net.minecraft.core.Holder
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
@@ -51,5 +52,6 @@ object ModPools {
         DojoStructurePieces.bootstrap(pContext)
         ShojiHouseStructurePieces.bootstrap(pContext)
         ShintoShrineStructurePieces.bootstrap(pContext)
+        TeaHouseStructure.bootstrap(pContext)
     }
 }

@@ -2,6 +2,9 @@ package net.Chidoziealways.everythingjapanese.block.custom
 
 import com.mojang.serialization.MapCodec
 import net.Chidoziealways.everythingjapanese.block.entity.custom.CursedBlockEntity
+import net.Chidoziealways.everythingjapanese.screen.custom.cursedblock.CursedBlockScreen
+import net.minecraft.client.Minecraft
+import net.minecraft.client.player.LocalPlayer
 import net.minecraft.core.BlockPos
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerPlayer
@@ -34,7 +37,7 @@ class CursedBlock(properties: Properties) : BaseEntityBlock(properties) {
         pPlayer: Player
     ): BlockState {
         // Check if the block is actually being replaced (like on block break)
-        if (pState.getBlock() !== pLevel.getBlockState(pPos).block) {
+        if (pState.block !== pLevel.getBlockState(pPos).block) {
             // Get the block entity at the position and check if it's an instance of your GrowthChamberBlockEntity
             val blockEntity: BlockEntity? = pLevel.getBlockEntity(pPos)
             if (blockEntity is CursedBlockEntity) {
@@ -54,18 +57,16 @@ class CursedBlock(properties: Properties) : BaseEntityBlock(properties) {
         hand: InteractionHand,
         hitResult: BlockHitResult
     ): InteractionResult {
-        if (!level.isClientSide) {
-            val entity = level.getBlockEntity(pos)
-            if (entity !is CursedBlockEntity)
-                throw IllegalStateException("The Block Entity isn't a CursedBlockEntity?!")
+        if (level.isClientSide) {
+            Minecraft.getInstance().setScreenAndShow(CursedBlockScreen())
 
-            (player as ServerPlayer).openMenu(
-                SimpleMenuProvider(
-                    entity,
-                    Component.literal("Cursed Block")
-                ),
-                pos
-            )
+//            (player as ServerPlayer).openMenu(
+//                SimpleMenuProvider(
+//                    entity,
+//                    Component.literal("Cursed Block")
+//                ),
+//                pos
+//            )
         }
 
         return InteractionResult.SUCCESS
